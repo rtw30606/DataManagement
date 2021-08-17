@@ -1,0 +1,782 @@
+# The Single Entity
+
+> *I want to be alone.*
+>
+> Attributed to Greta Garbo
+
+### Learning Objectives {.unnumbered}
+
+Students completing this chapter will be able to
+
+-   model a single entity;
+
+-   define a single database;
+
+-   write queries for a single-table database.
+
+## The relational model {.unnumbered}
+
+The relational model introduced by Codd in 1970 is the most popular technology for managing large collections of data. In this chapter, the major concepts of the relational model are introduced. Extensive coverage of the relational model is left until Chapter 8, by which time you will have sufficient practical experience to appreciate fully its usefulness, value, and elegance.
+
+A **relation**, similar to the mathematical concept of a set, is a two-dimensional table arranged in rows and columns. This is a very familiar idea. You have been using tables for many years. A **relational database** is a collection of relations, where **relation** is a mathematical term for a table. One row of a table stores details of one observation, instance, or case of an item about which facts are retained---for example, one row for details of a particular student. All the rows in a table store data about the same type of item. Thus, a database might have one table for student data and another table for class data. Similarly, each column in the table contains the same type of data. For example, the first column might record a student's identification number. A key database design question is to decide what to store in each table. What should the rows and columns contain?
+
+In a relational database, each row must be uniquely identified. There must be a **primary key**, such as student identifier, so that a particular row can be designated. The use of unique identifiers is very common. Telephone numbers and e-mail addresses are examples of unique identifiers. Selection of the primary key, or unique identifier, is another key issue of database design.
+
+> 💠 **Global legal entity identifier (LEI)**
+>
+> There is no global standard for identifying legal entities across markets and jurisdictions. The need for such a standard was amplified by Lehman Brothers collapse in 2008. Lehman had 209 registered subsidiaries, legal entities, in 21 countries, and it was party to more than 900,000 derivatives contracts upon its collapse. Key stakeholders, such as financial regulators and Lehman's creditors, were unable to assess their exposure. Furthermore, others were unable to assess the possible ripple on them of the effects of the collapse because of the transitive nature of many investments (i.e., A owes B, B owes C, and C owes D).
+>
+> The adoption of a global legal entity identifier (LEI), should improve financial system regulation and corporate risk management. Regulators will find it easier to monitor and analyze threats to financial stability and risk managers will be more able evaluate their companies' risks.
+>
+> Source: <http://www.ny.frb.org/research/epr/2014/1403flem.pdf>
+
+The tables in a relational database are **connected** or **related** by means of the data in the tables. You will learn, in the next chapter, that this connection is through a pair of values---a primary key and a foreign key. Consider a table of airlines serving a city. When examining this table, you may not recognize the code of an airline, so you then go to another table to find the name of the airline. For example, if you inspect the following table, you find that AM is an international airline serving Atlanta.
+
+*International airlines serving Atlanta*
+
+| Airline |
+|:--------|
+| AM      |
+| JL      |
+| KX      |
+| LM      |
+| MA      |
+| OS      |
+| RG      |
+| SN      |
+| SR      |
+| LH      |
+| LY      |
+
+If you don't know which airline has the abbreviation AM, then you need to look at the following table of airline codes to discover that AeroMexico, with code AM, serves Atlanta. The two tables are related by airline code. Later, you will discover which is the primary key and which is the foreign key.
+
+*A partial list of airline codes*
+
+| Code | Airline                  |
+|:-----|:-------------------------|
+| AA   | American Airlines        |
+| AC   | Air Canada               |
+| AD   | Lone Star Airlines       |
+| AE   | Mandarin Airlines        |
+| AF   | Air France               |
+| AG   | Interprovincial Airlines |
+| AI   | Air India                |
+| AM   | AeroMexico               |
+| AQ   | Aloha Airlines           |
+
+When designing the relational model, Codd provided commands for processing multiple records at a time. His intention was to increase the productivity of programmers by moving beyond the record-at-a-time processing that is found in most programming languages. Consequently, the relational model supports set processing (multiple records-at-a-time), which is most frequently implemented as **Structured Query Language (SQL).**[^singleentity-1]
+
+[^singleentity-1]: Officially pronounced as "S-Q-L," but often also pronounced as "sequel".
+
+The relational model separates the logical design of a database from its physical storage. This notion of **data independence** simplifies data modeling and database programming. In this section, we focus on logical database design, and now that you have had a brief introduction to the relational model, you are ready to learn data modeling.
+
+## Getting started {.unnumbered}
+
+As with most construction projects, building a relational database must be preceded by a design phase. Data modeling, our design technique, is a method for creating a plan or blueprint of a database. The data model must accurately mirror real-world relationships if it is to support processing business transactions and managerial decision making.
+
+Rather than getting bogged down with a *theory first, application later* approach to database design and use, we will start with application. We will get back to theory when you have some experience in data modeling and database querying. After all, you did not learn to talk by first studying sentence formation; you just started by learning and using simple words. We start with the simplest data model, a single entity, and the simplest database, a single table, as follows.
+
+| Firm code | Firm's name         | Price |  Quantity | Dividend | PE ratio |
+|-----------|:--------------------|------:|----------:|---------:|---------:|
+| FC        | Freedonia Copper    |  27.5 |    10,529 |     1.84 |       16 |
+| PT        | Patagonian Tea      | 55.25 |    12,635 |     2.50 |       10 |
+| AR        | Abyssinian Ruby     | 31.82 |    22,010 |     1.32 |       13 |
+| SLG       | Sri Lankan Gold     | 50.37 |    32,868 |     2.68 |       16 |
+| ILZ       | Indian Lead & Zinc  | 37.75 |     6,390 |     3.00 |       12 |
+| BE        | Burmese Elephant    |  0.07 |   154,713 |     0.01 |        3 |
+| BS        | Bolivian Sheep      | 12.75 |   231,678 |     1.78 |       11 |
+| NG        | Nigerian Geese      | 35.00 |    12,323 |     1.68 |       10 |
+| CS        | Canadian Sugar      | 52.78 |     4,716 |     2.50 |       15 |
+| ROF       | Royal Ostrich Farms | 33.75 | 1,234,923 |     3.00 |        6 |
+
+## Modeling a single-entity database {.unnumbered}
+
+The simplest database contains information about one entity, which is some real-world thing. Some entities are physical---CUSTOMER, ORDER, and STUDENT; others are conceptual---WORK ASSIGNMENT and AUTHORSHIP. We represent an entity by a rectangle: the following figure shows a representation of the entity SHARE. The name of the entity is shown in singular form in uppercase in the top part of the rectangle.
+
+*The entity SHARE*
+
+![](Figures/Chapter%203/share.png){width="152"}
+
+An entity has characteristics or attributes. An **attribute** is a discrete element of data; it is not usually broken down into smaller components. Attributes identify data we want to store. Some attributes of the entity SHARE are *identification code*, *firm name*, *price*, *quantity owned*, *dividend*, and *price-to-earnings ratio*.[^singleentity-2] Attributes are shown below the entity's name. Notice that we refer to *share price*, rather than *price*, to avoid confusion if there should be another entity with an attribute called *price*. Attribute names must be carefully selected so that they are self-explanatory and unique. For example, *share dividend* is easily recognized as belonging to the entity SHARE.
+
+[^singleentity-2]: Attributes are shown in italics.
+
+*The entity SHARE and its attributes*
+
+![](Figures/Chapter%203/share%20with%20attributes.png){width="152"}
+
+An **instance** is a particular occurrence of an entity (e.g., facts about Freedonia Copper). To avoid confusion, each instance of an entity needs to be uniquely identified. Consider the case of customer billing. In most cases, a request to bill Smith \$100 cannot be accurately processed because a firm might have more than one Smith in its customer file. If a firm has carefully controlled procedures for ensuring that each customer has a unique means of identification, then a request to bill customer number 1789 \$100 can be accurately processed. An attribute or collection of attributes that uniquely identifies an instance of an entity is called an **identifier**. The identifier for the entity SHARE is *share code*, a unique identifier assigned by the stock exchange.
+
+There may be several attributes, or combinations of attributes, that are feasible identifiers for an instance of an entity. Attributes that are identifiers are prefixed by an asterisk. The following figure shows an example of a representation of an entity, its attributes, and identifier.
+
+*The entity SHARE, its attributes, and identifier*
+
+![](Figures/Chapter%203/share%20with%20identifier.png){width="152"}
+
+Briefly, entities are things in the environment about which we wish to store information. Attributes describe an entity. An entity must have a unique identifier.
+
+The modeling language used in this text is designed to record the essential details of a data model. The number of modeling symbols to learn is small, and they preserve all the fundamental concepts of data modeling. Since data modeling often occurs in a variety of settings, the symbols used have been selected so that they can be quickly drawn using pencil-and-paper, whiteboard, or a general-purpose drawing program. This also means that models can be quickly revised as parts can be readily erased and redrawn.
+
+The symbols are distinct and visual clutter is minimized because only the absolutely essential information is recorded. This also makes the language easy for clients to learn so they can read and amend models.
+
+Models can be rapidly translated to a set of tables for a relational database. More importantly, since this text implements the fundamental notions of all data modeling languages, you can quickly convert to another data modeling dialect. Data modeling is a high-level skill, and the emphasis needs to be on learning to think like a data modeler rather than on learning a modeling language. This text's goal is to get you off to a fast start.
+
+> ❓*Skill builder* A ship has a name, registration code, gross tonnage, and a year of construction. Ships are classified as cargo or passenger. Draw a data model for a ship.
+
+## Creating a single-table database {.unnumbered}
+
+The next stage is to translate the data model into a relational database. The translation rules are very direct:
+
+-   Each entity becomes a table.
+
+-   The entity name becomes the table name.
+
+-   Each attribute becomes a column.
+
+-   The identifier becomes the primary key.
+
+The American National Standards Institute's (ANSI) recommended language for relational database definition and manipulation is SQL, which is both a data definition language (DDL) (to define a database), a data manipulation language (DML) (to query and maintain a database), and a data control language (DCL) (to control access). SQL is a common standard for describing and querying databases and is available with many commercial relational database products, including DB2, Oracle, and Microsoft SQL Server, and open source products such as MySQL and PostgreSQL.
+
+In this book, MySQL is the relational database for teaching SQL. Because SQL is a standard, it does not matter which implementation of the relational model you use as the SQL language is common across both the proprietary and open variants.[^singleentity-3] SQL uses the CREATE[^singleentity-4] statement to define a table. It is not a particularly friendly command, and most products have friendlier interfaces for defining tables. However, it is important to learn the standard, because this is the command that SQL understands. Also, a table definition interface will generate a CREATE statement for execution by SQL. Your interface interactions ultimately translate into a standard SQL command.
+
+[^singleentity-3]: Now would be a good time to install the MySQL Community server <http:www.mysql.com/downloads/mysql/> on your computer, unless your instructor has set up a class server.
+
+[^singleentity-4]: SQL keywords are shown in uppercase.
+
+It is common practice to abbreviate attribute names, as is done in the following example.
+
+#### Defining a table {.unnumbered}
+
+The CREATE command to establish a table called `share` is as follows:
+
+```{sql, connection = db, eval = F}
+CREATE TABLE share (
+  shrcode CHAR(3),
+  shrfirm VARCHAR(20) NOT NULL,
+  shrprice DECIMAL(6,2),
+  shrqty DECIMAL(8),
+  shrdiv DECIMAL(5,2),
+  shrpe DECIMAL(2),
+  PRIMARY KEY (shrcode));
+```
+
+The first line of the command names the table; subsequent lines describe each of its columns. The first component is the name of the column (e.g., `shrcode`). The second component is the data type (e.g., CHAR), and its length is shown in parentheses. `shrfirm` is a variable-length character field of length 20, which means it can store up to 20 characters, including spaces. The column `shrdiv` stores a decimal number that can be as large as 999.99 because its total length is 5 digits and there are 2 digits to the right of the decimal point. Some examples of allowable data types are shown in the following table. The third component (e.g., NOT NULL), which is optional, indicates any instance that cannot have null values. A column might have a null value when it is either unknown or not applicable. In the case of the share table, we specify that `shrfirm` must be defined for each instance in the database.
+
+The final line of the CREATE statement defines `shrcode` as the primary key, the unique identifier for SHARE When a primary key is defined, the relational database management system (RDBMS) will enforce the requirement that the primary key is unique and not null. Before any row is added to the table SHARE, the RDBMS will check that the value of `shrcode` is not null and that there does not already exist a duplicate value for `shrcode` in an existing row of `share`. If either of these constraints is violated, the RDBMS will not permit the new row to be inserted. This constraint, the **entity integrity rule**, ensures that every row has a unique, non-null primary key. Allowing the primary key to take a null value would mean there could be a row of `share` that is not uniquely identified. Note that an SQL statement is terminated by a semicolon, though this is not always enforced.
+
+SQL statements can be written in any mix of valid upper and lowercase characters. To make it easier for you to learn the syntax, this book adopts the following conventions:
+
+-   SQL keywords are in uppercase.
+
+-   Table and column names are in lowercase.
+
+There are more elaborate layout styles, but we will bypass those because it is more important at this stage to learn SQL. You should lay out your SQL statements so that they are easily read by you and others.
+
+The following table shows some of the data types supported by most relational databases. Other implementations of the relational model may support some of these data types and additional ones. It is a good idea to review the available data types in your RDBMS before defining your first table.
+
+*Some allowable data types*
+
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Category  | Data type                | Description                                                                                                           |
++:==========+:=========================+:======================================================================================================================+
+| Numeric   | SMALLINT                 | A 15-bit signed binary value                                                                                          |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|           | INTEGER                  | A 31-bit signed binary value                                                                                          |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|           | FLOAT(p)                 | A scientific format number of p binary digits precision                                                               |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|           | DECIMAL(p,q)             | A packed decimal number of p digits total length; q decimal spaces to the right of the decimal point may be specified |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| String    | CHAR(n)                  | A fixed-length string of n characters                                                                                 |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|           | VARCHAR(n)               | A variable-length string of up to n characters                                                                        |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|           | TEXT                     | A variable-length string of up to 65,535 characters                                                                   |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Date/time | DATE                     | Date in the form yyyymmdd                                                                                             |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|           | TIME                     | Time in the form hhmmss                                                                                               |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|           | DATETIME                 | A combination of date and time in the form yyyymmdd hhmmss                                                            |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|           | TIMESTAMP                | A combination of date and time to the nearest microsecond                                                             |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+|           | TIMESTAMP WITH TIME ZONE | Same as timestamp, with the addition of an offset from universal time coordinated (UTC) of the specified time         |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| Logical   | BOOLEAN                  | A set of truth values: TRUE, FALSE, or UNKNOWN                                                                        |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
+
+The CHAR and VARCHAR data types are similar but differ in the way character strings are stored and retrieved. Both can be up to 255 characters long. The length of a CHAR column is fixed to the declared length. When values are stored, they are right-padded with spaces to the specified length. When CHAR values are retrieved, trailing spaces are removed. VARCHAR columns store variable-length strings and use only as many characters as are needed to store the string. Values are not padded; instead, trailing spaces are removed. In this book, we use VARCHAR to define most character strings, unless they are short (less than five characters is a good rule-of-thumb).
+
+### Data modeling with MySQL Workbench {.unnumbered}
+
+MySQL Workbench is a professional quality, open source, cross-platform tool for data modeling and SQL querying.[^singleentity-5] In this text, you will also learn some of the features of Workbench that support data modeling and using SQL. You will find it helpful to complete the MySQL Workbench tutorial on creating a data model[^singleentity-6] prior to further reading, as we will assume you have such proficiency.
+
+[^singleentity-5]: <http://wb.mysql.com/>
+
+[^singleentity-6]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-creating-a-model.html>
+
+*The entity share created with MySQL Workbench*
+
+![](Figures/Chapter%203/share-wb.png)
+
+You will notice some differences from the data model we have created previously. Workbench automatically generates the SQL code to create the table, so when modeling you establish the names you want for tables and columns. A gold key symbol is used to indicate the identifier, which becomes the primary key. An open diamond indicates that a column can be null, whereas a closed blue diamond indicate the column must have a value, as with `shrfirm` in this case.
+
+When specifying columns in Workbench you must also indicate the datatype. We opt to turn off the display of a column's datatype[^singleentity-7] in a model to maintain focus on the entity.
+
+[^singleentity-7]: Preferences \> Diagram \> Show Column Types
+
+A major advantage of using a tool such as Workbench is that it will automatically generate the CREATE statement code (Database \> Forward Engineer ...) and execute the code to create the database. The Workbench tutorial will have shown you how to do this, and you should try this out for yourself by creating a database with the single `share` table.
+
+#### Inserting rows into a table {.unnumbered}
+
+The rows of a table store instances of an entity. A particular shareholding (e.g., Freedonia Copper) is an example of an instance of the entity `share`. The SQL statement INSERT is used to add rows to a table. Although most implementations of the relational model use a spreadsheet for row insertion and you can also usually import a structured text file, the INSERT command is defined for completeness.
+
+The following command adds one row to the table `share`:
+
+```{sql, connection = db, eval = FALSE}
+INSERT INTO share
+  (shrcode,shrfirm,shrprice,shrqty,shrdiv,shrpe)
+  VALUES ('FC','Freedonia Copper',27.5,10529,1.84,16);
+```
+
+There is a one-to-one correspondence between a column name in the first set of parentheses and a value in the second set of parentheses. That is, `shrcode` has the value "FC," `shrfirm` the value "Freedonia Copper," and so on. Notice that the value of a column that stores a character string (e.g., `shrfirm`) is contained within straight quotes.
+
+The list of field names can be omitted when values are inserted in all columns of the table in the same order as that specified in the CREATE statement, so the preceding expression could be written
+
+```{sql, connection = db, eval = FALSE}
+INSERT INTO share
+  VALUES ('FC','Freedonia Copper',27.5,10529,1.84,16);
+```
+
+The data for the `share` table will be used in subsequent examples. If you have ready access to a relational database, it is a good idea to now create a table and enter the data. Then you will be able to use these data to practice querying the table.
+
+*Data for share*
+
+| Firm code | Firm's name         | Price |  Quantity | Dividend | PE ratio |
+|-----------|:--------------------|------:|----------:|---------:|---------:|
+| FC        | Freedonia Copper    |  27.5 |    10,529 |     1.84 |       16 |
+| PT        | Patagonian Tea      | 55.25 |    12,635 |     2.50 |       10 |
+| AR        | Abyssinian Ruby     | 31.82 |    22,010 |     1.32 |       13 |
+| SLG       | Sri Lankan Gold     | 50.37 |    32,868 |     2.68 |       16 |
+| ILZ       | Indian Lead & Zinc  | 37.75 |     6,390 |     3.00 |       12 |
+| BE        | Burmese Elephant    |  0.07 |   154,713 |     0.01 |        3 |
+| BS        | Bolivian Sheep      | 12.75 |   231,678 |     1.78 |       11 |
+| NG        | Nigerian Geese      | 35.00 |    12,323 |     1.68 |       10 |
+| CS        | Canadian Sugar      | 52.78 |     4,716 |     2.50 |       15 |
+| ROF       | Royal Ostrich Farms | 33.75 | 1,234,923 |     3.00 |        6 |
+
+Notice that `shrcode`,the primary key, is underlined in the preceding table. This is a convention we will use for denoting the primary key. In the relational model, an identifier becomes a primary key, a column that guarantees that each row of the table can be uniquely addressed.
+
+MySQL Workbench offers a spreadsheet interface for entering data, as explained in the tutorial on adding data to a database.[^singleentity-8]
+
+[^singleentity-8]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-adding-data.html>
+
+*Inserting rows with MySQL Workbench*
+
+![](Figures/Chapter%203/wb-input.png)
+
+> ❓*Skill builder* Create a relational database for the ship entity you modeled previously. Insert some rows.
+
+### Querying a database {.unnumbered}
+
+The objective of developing a database is to make it easier to use the stored data to solve problems. Typically, a manager raises a question (e.g., How many shares have a PE ratio greater than 12?). A question or request for information, usually called a query, is then translated into a specific data manipulation or query language. The most widely used query language for relational databases is SQL. After the query has been executed, the resulting data are displayed. In the case of a relational database, the answer to a query is always a table.
+
+There is also a query language called relational algebra, which describes a set of operations on tables. Sometimes it is useful to think of queries in terms of these operations. Where appropriate, we will introduce the corresponding relational algebra operation.
+
+Generally we use a four-phase format for describing queries:
+
+1.  A brief explanation of the query's purpose
+
+2.  The query italics, prefixed by •, and some phrasing you might expect from a manager
+
+3.  The SQL version of the query
+
+4.  The results of the query.
+
+#### Displaying an entire table {.unnumbered}
+
+All the data in a table can be displayed using the SELECT statement. In SQL, the all part is indicated by an asterisk (\*).
+
+List all data in the share table.
+
+```{sql, connection = db, eval = T}
+SELECT * FROM share;
+```
+
+#### Project---choosing columns {.unnumbered}
+
+The relational algebra operation **project** creates a new table from the columns of an existing table. Project takes a vertical slice through a table by selecting all the values in specified columns. The projection of `share` on columns `shrfirm` and `shrpe` produces a new table with 10 rows and 2 columns. The SQL syntax for the project operation simply lists the columns to be displayed.
+
+*Report a firm's name and price-earnings ratio.*
+
+```{sql, connection = db, eval = T}
+SELECT shrfirm, shrpe FROM share;
+```
+
+#### Restrict---choosing rows {.unnumbered}
+
+The relational algebra operation **restrict** creates a new table from the rows of an existing table. The operation restricts the new table to those rows that satisfy a specified condition. Restrict takes all columns of an existing table but only those rows that meet the specified condition. The restriction of `share` to those rows where the PE ratio is less than 12 will give a new table with five rows and six columns. These rows are shaded.
+
+*Restriction of share*
+
+Restrict is implemented in SQL using the WHERE clause to specify the condition on which rows are restricted.
+
+*Get all firms with a price-earnings ratio less than 12.*
+
+```{sql, connection = db, eval = T}
+SELECT * FROM share WHERE shrpe < 12;
+```
+
+In this example, we have a less than condition for the WHERE clause. All permissible comparison operators are listed below.
+
+| Comparison operator | Meaning                  |
+|:--------------------|:-------------------------|
+| =                   | Equal to                 |
+| \<                  | Less than                |
+| \<=                 | Less than orequal to     |
+| \>                  | Greater than             |
+| \>=                 | Greater than or equal to |
+| \<\>                | Not equal to             |
+
+In addition to the comparison operators, the BETWEEN construct is available.
+
+a BETWEEN x AND y is equivalent to a \>= x AND a \<= y
+
+#### Combining project and restrict---choosing rows and columns {.unnumbered}
+
+SQL permits project and restrict to be combined. A single SQL SELECT statement can specify which columns to project and which rows to restrict.
+
+*List the name, price, quantity, and dividend of each firm where the share holding is at least 100,000.*
+
+```{sql, connection = db, eval = T}
+SELECT shrfirm, shrprice, shrqty, shrdiv FROM share
+  WHERE shrqty >= 100000;
+```
+
+#### More about WHERE {.unnumbered}
+
+The WHERE clause can contain several conditions linked by AND or OR. A clause containing AND means all specified conditions must be true for a row to be selected. In the case of OR, at least one of the conditions must be true for a row to be selected.
+
+*Find all firms where the PE is 12 or higher and the share holding is less than 10,000.*
+
+```{sql, connection = db, eval = T}
+SELECT * FROM share
+  WHERE shrpe >= 12 AND shrqty < 10000;
+```
+
+#### The power of the primary key {.unnumbered}
+
+The purpose the primary key is to guarantee that any row in a table can be uniquely addressed. In this example, we use `shrcode` to return a single row because `shrcode` is unique for each instance of `share`. The sought code (AR) must be specified in quotes because `shrcode` was defined as a character string when the table was created.
+
+*Report firms whose code is AR.*
+
+```{sql, connection = db, eval = T}
+SELECT * FROM share WHERE shrcode = 'AR';
+```
+
+A query based on a non-primary-key column cannot guarantee that a single row is accessed, as the following illustrates.
+
+*Report firms with a dividend of 2.50.*
+
+```{sql, connection = db, eval = T}
+SELECT * FROM share WHERE shrdiv = 2.5;
+```
+
+#### The IN crowd {.unnumbered}
+
+The keyword IN is used with a list to specify a set of values. IN is always paired with a column name. All rows for which a value in the specified column has a match in the list are selected. It is a simpler way of writing a series of OR statements.
+
+*Report data on firms with codes of FC, AR, or SLG.*
+
+```{sql, connection = db, eval = F}
+SELECT * FROM share WHERE shrcode IN ('FC','AR','SLG');
+```
+
+The foregoing query could have also been written as
+
+```{sql, connection = db, eval = T}
+SELECT * FROM share
+  WHERE shrcode = 'FC' or shrcode = 'AR' or shrcode = 'SLG';
+```
+
+#### The NOT IN crowd {.unnumbered}
+
+A NOT IN list is used to report instances that do not match any of the values.
+
+*Report all firms other than those with the code CS or PT.*
+
+```{sql, connection = db, eval = F}
+SELECT * FROM share WHERE shrcode NOT IN ('CS','PT');
+```
+
+is equivalent to
+
+```{sql, connection = db, eval = TRUE}
+SELECT * FROM share WHERE shrcode <> 'CS' AND shrcode <> 'PT';
+```
+
+> ❓ *Skill Builder*\
+> List those shares where the value of the holding exceeds one million.
+
+#### Ordering columns {.unnumbered}
+
+The order of reporting columns is identical to their order in the SQL command. For instance, compare the output of the following queries.
+
+```{sql, connection = db, eval = T}
+SELECT shrcode, shrfirm FROM share WHERE shrpe = 10;
+```
+
+```{sql, connection = db, eval = T}
+SELECT shrfirm, shrcode FROM share WHERE shrpe = 10;
+```
+
+#### Ordering rows {.unnumbered}
+
+People can generally process an ordered (e.g., sorted alphabetically) report faster than an unordered one. In SQL, the ORDER BY clause specifies the row order in a report. The default ordering sequence is ascending (A before B, 1 before 2). Descending is specified by adding DESC after the column name.
+
+*List all firms where PE is at least 10, and order the report in descending PE. Where PE ratios are identical, list firms in alphabetical order.*
+
+```{sql, connection = db, eval = T}
+SELECT * FROM share WHERE shrpe >= 10
+  ORDER BY shrpe DESC, shrfirm;
+```
+
+#### Numeric versus character sorting {.unnumbered}
+
+Numeric data in character fields (e.g., a product code) do not always sort the way you initially expect. The difference arises from the way data are stored:
+
+-   Numeric fields are right justified and have leading zeros.
+
+-   Character fields are left justified and have trailing spaces.
+
+For example, the value 1066 stored as CHAR(4) would be stored as '1066' and the value 45 would be stored as '45 '. If the column containing these data is sorted in ascending order, then '1066' precedes ' 45 ' because the leftmost character '1' is less than '4'. You can avoid this problem by always storing numeric values as numeric data types (e.g., integer or decimal) or preceding numeric values with zeros when they are stored as character data. Alternatively, start numbering at 1,000 so that all values are four digits, though the best solution is to store numeric data as numbers rather than characters.
+
+#### Derived data {.unnumbered}
+
+One of the important principles of database design is to avoid redundancy. One form of redundancy is including a column in a table when these data can be derived from other columns. For example, we do not need a column for yield because it can be calculated by dividing dividend by price and multiplying by 100 to obtain the yield as a percentage. This means that the query language does the calculation when the value is required.
+
+*Get firm name, price, quantity, and firm yield.*
+
+```{sql, connection = db, eval = T}
+SELECT shrfirm, shrprice, shrqty, shrdiv/shrprice*100 AS yield FROM share;
+```
+
+You can give the results of the calculation a column name. In this case, a good choice is `yield`. Note the use of AS to indicate the name of the column in which the results of the calculation are displayed.
+
+In the preceding query, the keyword AS is introduced to specify an alias, or temporary name. The statement specifies that the result of the calculation is to be reported under the column heading yield. You can rename any column or specify a name for the results of an expression using an alias.
+
+#### Aggregate functions {.unnumbered}
+
+SQL has built-in functions to enhance its retrieval power and handle many common aggregation queries, such as computing the total value of a column. Four of these functions (AVG, SUM, MIN, and MAX) work very similarly. COUNT is a little different.
+
+##### COUNT {.unnumbered}
+
+COUNT computes the number of rows in a table. Use COUNT(\*) to count all rows irrespective of their content (i.e., null or not null), and use COUNT(`columnname`) to count rows without a null value for `columname`. Count can be used with a WHERE clause to specify a condition.
+
+*How many firms are there in the portfolio?*
+
+```{sql, connection = db, eval = T}
+SELECT COUNT(shrcode) AS investments FROM share;
+```
+
+*How many firms have a holding greater than 50,000?*
+
+```{sql, connection = db, eval = T}
+SELECT COUNT(shrfirm) AS bigholdings FROM share WHERE shrqty > 50000;
+```
+
+##### AVG---averaging {.unnumbered}
+
+AVG computes the average of the values in a column of numeric data. Null values in the column are not included in the calculation.
+
+*Find the average dividend.*
+
+```{sql, connection = db, eval = T}
+SELECT AVG(shrdiv) AS avgdiv FROM share;
+```
+
+*What is the average yield for the portfolio?*
+
+```{sql, connection = db, eval = T}
+SELECT AVG(shrdiv/shrprice*100) AS avgyield FROM share;
+```
+
+##### SUM, MIN, and MAX {.unnumbered}
+
+SUM, MIN, and MAX differ in the statistic they calculate but are used similarly to AVG. As with AVG, null values in a column are not included in the calculation. SUM computes the sum of a column of values. MIN finds the smallest value in a column; MAX finds the largest.
+
+#### Subqueries {.unnumbered}
+
+Sometimes we need the answer to another query before we can write the query of ultimate interest. For example, to list all shares with a PE ratio greater than the portfolio average, you first must find the average PE ratio for the portfolio. You could do the query in two stages:
+
+```{sql, connection = db, eval = F}
+SELECT AVG(shrpe) FROM share;
+```
+
+and
+
+```{sql, connection = db, eval = F}
+SELECT shrfirm, shrpe FROM share WHERE shrpe > x;
+```
+
+where x is the value returned from the first query.
+
+Unfortunately, the two-stage method introduces the possibility of errors. You might forget the value returned by the first query or enter it incorrectly. It also takes longer to get the results of the query. We can solve these problems by using parentheses to indicate the first query is nested within the second one. As a result, the value returned by the inner or nested subquery, the one in parentheses, is used in the outer query. In the following example, the nested query returns 11.20, which is then automatically substituted in the outer query.
+
+*Report all firms with a PE ratio greater than the average for the portfolio.*
+
+```{sql, connection = db, eval = T}
+SELECT shrfirm, shrpe FROM share
+  WHERE shrpe > (SELECT AVG(shrpe) FROM share);
+```
+
+> ⚠️ The preceding query is often mistakenly written as\
+> SELECT shrfirm, shrpe from share WHERE shrpe \> avg(shrpe);
+
+> ❓*Skill builder*\
+> Find the name of the firm for which the value of the holding is greatest.
+
+#### Regular expression---pattern matching {.unnumbered}
+
+Regular expression is a concise and powerful method for searching for a specified pattern in a nominated column. Regular expression processing is supported by languages such as Java, R, and PHP. In this chapter, we introduce a few typical regular expressions and will continue developing your knowledge of this feature in the next chapter.
+
+##### Search for a string {.unnumbered}
+
+*List all firms containing 'Ruby' in their name.*
+
+```{sql, connection = db, eval = T}
+SELECT shrfirm FROM share WHERE shrfirm REGEXP 'Ruby';
+```
+
+##### Search for alternative strings {.unnumbered}
+
+In some situations you want to find columns that contain more than one string. In this case, we use the alternation symbol '\|' to indicate the alternatives being sought. For example, a\|b finds 'a' or 'b'.
+
+*List the firms containing gold or zinc in their name, irrespective of case.*
+
+```{sql, connection = db, eval = T}
+SELECT shrfirm FROM share WHERE shrfirm REGEXP 'gold|zinc|Gold|Zinc';
+```
+
+##### Search for a beginning string {.unnumbered}
+
+If you are interested in finding a value in a column that starts with a particular character string, then use \^ to indicate this option.
+
+*List the firms whose name begins with Sri.*
+
+```{sql, connection = db, eval = T}
+SELECT shrfirm FROM share WHERE shrfirm REGEXP '^Sri';
+```
+
+##### Search for an ending string {.unnumbered}
+
+If you are interested in finding if a value in a column ends with a particular character string, then use \$ to indicate this option.
+
+*List the firms whose name ends with Geese.*
+
+```{sql, connection = db, eval = T}
+SELECT shrfirm FROM share WHERE shrfirm REGEXP 'Geese$';
+```
+
+> ❓*Skill builder*
+
+> List the firms containing "ian" in their name.
+
+#### DISTINCT---eliminating duplicate rows {.unnumbered}
+
+The DISTINCT clause is used to eliminate duplicate rows. It can be used with column functions or before a column name. When used with a column function, it ignores duplicate values.
+
+*Report the different values of the PE ratio.*
+
+```{sql, connection = db, eval = T}
+SELECT DISTINCT shrpe FROM share;
+```
+
+*Find the number of different PE ratios.*
+
+```{sql, connection = db, eval = T}
+SELECT COUNT(DISTINCT shrpe) as 'Different PEs' FROM share;
+```
+
+When used before a column name, DISTINCT prevents the selection of duplicate rows. Notice a slightly different use of the keyword AS. In this case, because the alias includes a space, the entire alias is enclosed in straight quotes.
+
+#### DELETE {.unnumbered}
+
+Rows in a table can be deleted using the DELETE clause in an SQL statement. DELETE is typically used with a WHERE clause to specify the rows to be deleted. If there is no WHERE clause, all rows are deleted.
+
+*Erase the data for Burmese Elephant. All the shares have been sold.*
+
+```{sql, connection = db, eval = F}
+DELETE FROM share WHERE shrfirm = 'Burmese Elephant';
+```
+
+In the preceding statement, `shrfirm` is used to indicate the row to be deleted.
+
+#### UPDATE {.unnumbered}
+
+Rows can be modified using SQL's UPDATE clause, which is used with a WHERE clause to specify the rows to be updated.
+
+*Change the share price of FC to 31.50.*
+
+```{sql, connection = db, eval = F}
+UPDATE share SET shrprice = 31.50 WHERE shrcode = 'FC';
+```
+
+*Increase the total number of shares for Nigerian Geese by 10% because of the recent bonus issue.*
+
+```{sql, connection = db, eval = F}
+UPDATE share SET shrqty = shrqty*1.1 WHERE shrfirm = 'Nigerian Geese';
+```
+
+#### Quotes {.unnumbered}
+
+There are three types of quotes that you can typically use with SQL. Double and single quotes are equivalent and can be used interchangeably. Note that single and double quotes must be straight rather than curly, and the back quote is to the left of the 1 key.
+
+| Type of quote | Representation |
+|:--------------|:---------------|
+| Single        | **'**          |
+| Double        | **"**          |
+| Back          | **\`**         |
+
+The following SQL illustrates the use of three types of quotes to find a person with a last name of O'Hara and where the column names are `person first` and `person last`.
+
+```{sql, connection = db, eval = T}
+SELECT `person first` FROM person WHERE `person last` = "O'Hara";
+```
+
+#### Debriefing {.unnumbered}
+
+Now that you have learned how to model a single entity, create a table, and specify queries, you are on the way to mastering the fundamental skills of database design, implementation, and use. Remember, planning occurs before action. A data model is a plan for a database. The action side of a database is inserting rows and running queries.
+
+### Summary {.unnumbered}
+
+The relational database model is an effective means of representing real-world relationships. Data modeling is used to determine what data must be stored and how data are related. An entity is something in the environment. An entity has attributes, which describe it, and an identifier, which uniquely distinguishes an instance of an entity. Every entity must have a unique identifier. A relational database consists of tables with rows and columns. A data model is readily translated into a relational database. The SQL statement CREATE is used to define a table. Rows are added to a table using INSERT. In SQL, queries are written using the SELECT statement. Project (choosing columns) and restrict (choosing rows) are common table operations. The WHERE clause is used to specify row selection criteria. WHERE can be combined with IN and NOT IN, which specify values for a single column. The rows of a report are sorted using the ORDER BY clause. Arithmetic expressions can appear in SQL statements, and SQL has built-in functions for common arithmetic operations. A subquery is a query within a query. Regular expressions are used to find string patterns within character strings. Duplicate rows are eliminated with the DISTINCT clause. Rows can be erased using DELETE or modified with UPDATE.
+
+### Key terms and concepts {.unnumbered}
+
+|                       |                     |
+|:----------------------|:--------------------|
+| Alias                 | Instance            |
+| AS                    | MAX                 |
+| Attribute             | MIN                 |
+| AVG                   | NOT IN              |
+| Column                | ORDER BY            |
+| COUNT                 | Primary key         |
+| CREATE                | Project             |
+| Data modeling         | Relational database |
+| Data type             | Restrict            |
+| Database              | Row                 |
+| DELETE                | SELECT              |
+| DISTINCT              | SQL                 |
+| Entity                | Subquery            |
+| Entity integrity rule | SUM                 |
+| Identifier            | Table               |
+| IN                    | UPDATE              |
+| INSERT                | WHERE               |
+
+#### Exercises {.unnumbered}
+
+1.  Draw data models for the following entities. In each case, make certain that you show the attributes and identifiers. Also, create a relational database and insert some rows for each of the models.
+
+<!-- -->
+
+a.  Aircraft: An aircraft has a manufacturer, model number, call sign (e.g., N123D), payload, and a year of construction. Aircraft are classified as civilian or military.
+
+b.  Car: A car has a manufacturer, range name, and style code (e.g., a Honda Accord DX, where Honda is the manufacturer, Accord is the range, and DX is the style). A car also has a vehicle identification code, registration code, and color.
+
+c.  Restaurant: A restaurant has an address, seating capacity, phone number, and style of food (e.g., French, Russian, Chinese).
+
+d.  Cow: A dairy cow has a name, date of birth, breed (e.g., Holstein), and a numbered plastic ear tag.
+
+<!-- -->
+
+2.  Do the following queries using SQL:
+
+<!-- -->
+
+a.  List a share's name and its code.
+
+b.  List full details for all shares with a price less than \$1.
+
+c.  List the names and prices of all shares with a price of at least \$10.
+
+d.  Create a report showing firm name, share price, share holding, and total value of shares held. (Value of shares held is price times quantity.)
+
+e.  List the names of all shares with a yield exceeding 5 percent.
+
+f.  Report the total dividend payment of Patagonian Tea. (The total dividend payment is dividend times quantity.)
+
+g.  Find all shares where the price is less than 20 times the dividend.
+
+h.  Find the share(s) with the minimum yield.
+
+i.  Find the total value of all shares with a PE ratio \> 10.
+
+j.  Find the share(s) with the maximum total dividend payment.
+
+k.  Find the value of the holdings in Abyssinian Ruby and Sri Lankan Gold.
+
+l.  Find the yield of all firms except Bolivian Sheep and Canadian Sugar.
+
+m.  Find the total value of the portfolio.
+
+n.  List firm name and value in descending order of value.
+
+o.  List shares with a firm name containing "Gold."
+
+p.  Find shares with a code starting with "B."
+
+<!-- -->
+
+3.  Run the following queries and explain the differences in output. Write each query as a manager might state it.
+
+<!-- -->
+
+a.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's';
+
+b.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 'S';
+
+c.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's\|S';
+
+d.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP '\^S';
+
+e.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's\$';
+
+<!-- -->
+
+4.  A weekly newspaper, sold at supermarket checkouts, frequently reports stories of aliens visiting Earth and taking humans on short trips. Sometimes a captured human sees Elvis commanding the spaceship. To keep track of all these reports, the newspaper has created the following data model.
+
+![](Figures/Chapter%203/alien%20entity.png){width="152"}
+
+The paper has also supplied some data for the last few sightings and asked you to create the database, add details of these aliens, and answer the following queries:
+
+What's the average number of heads of an alien?
+
+a.  Which alien has the most heads?
+
+b.  Are there any aliens with a double o in their names?
+
+c.  How many aliens are chartreuse?
+
+d.  Report details of all aliens sorted by smell and color.
+
+<!-- -->
+
+5.  Eduardo, a bibliophile, has a collection of several hundred books. Being a little disorganized, he has his books scattered around his den. They are piled on the floor, some are in bookcases, and others sit on top of his desk. Because he has so many books, he finds it difficult to remember what he has, and sometimes he cannot find the book he wants. Eduardo has a simple personal computer file system that is fine for a single entity or file. He has decided that he would like to list each book by author(s)' name and type of book (e.g., literature, travel, reference). Draw a data model for this problem, create a single entity table, and write some SQL queries.
+
+<!-- -->
+
+a.  How do you identify each instance of a book? (It might help to look at a few books.)
+
+b.  How should Eduardo physically organize his books to permit fast retrieval of a particular one?
+
+c.  Are there any shortcomings with the data model you have created?
+
+<!-- -->
+
+6.  What is an identifier? Why does a data model have an identifier?
+
+7.  What are entities?
+
+8.  What is the entity integrity rule?
