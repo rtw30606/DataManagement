@@ -4,7 +4,6 @@ editor_options:
     wrap: 72
 ---
 
-
 # Section 1 The Managerial Perspective {.unnumbered}
 
 > *People only see what they are prepared to see*.
@@ -36,15 +35,16 @@ these maps initially may be hard to read, and so you may need to consult
 them several times before you understand the landscape you are about to
 enter.
 
-The first map is based on the Newell-Simon model[^section-1] of the
-human information processing system, which shows that humans receive
-input, process it, and produce output. The processing is done by a
-processor, which is linked to a memory that stores both data and
-processes. The processor component retrieves both data and processes
-from memory. ![](Figures/Section%201/Simon-Newell.png)
+The first map is based on the Newell-Simon model[^1] of the human
+information processing system, which shows that humans receive input,
+process it, and produce output. The processing is done by a processor,
+which is linked to a memory that stores both data and processes. The
+processor component retrieves both data and processes from memory.
 
-[^section-1]: Newell, A., & Simon, H. A. (1972). Human problem solving.
+[^1]: Newell, A., & Simon, H. A. (1972). Human problem solving.
     Englewood Cliffs, NJ: Prentice-Hall.
+
+![](Figures/Section%201/s01-Simon%20Newell.png)
 
 To understand this model, consider a person arriving on a flight who has
 agreed to meet a fellow traveler in the terminal. She receives a text
@@ -68,7 +68,7 @@ The original model of human information processing can be extended to
 include external memory, for storing data and processes, and external
 processors, for executing processes.
 
-***Missing this image***
+![](Figures/Section%201/s01-augmented.png)
 
 This model of augmented human information processing translates directly
 to an organizational setting. Organizations collect inputs from the
@@ -82,7 +82,7 @@ analyst also requests a marketing consultant (an external processor) to
 analyze (process) some demographic reports (data) before deciding to
 launch a new sales campaign (output).
 
-![](Figures/Section%201/org%20info%20processing.png)
+![](Figures/Section%201/s01-organization.png)
 
 An organization's memory comes in a variety of forms, as you will see in
 Chapter 1. This memory also can be divided into data and processes. The
@@ -101,5 +101,3 @@ primarily concerned with data stored within the organization, there is
 also coverage of data in external memory. The process side of
 organizational memory is typically covered in a systems analysis and
 design or a business process management course.
-
-\newpage
