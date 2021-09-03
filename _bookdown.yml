@@ -1,0 +1,16 @@
+book_filename: "DataManagement"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+rmd_files: [
+ '001-frontmatter.Rmd','002-preface.RMD',
+ '100-section.Rmd', '101-data.Rmd', '102-information.Rmd',
+ '200-section.Rmd', 
+ '203-singleentity.Rmd'.
+ '204-onetomany.Rmd',
+ '205-manytomany.Rmd',
+ '206-recursive.Rmd',
+ '207-datamodeling.Rmd',
+ '317-textmining.Rmd',
+]
