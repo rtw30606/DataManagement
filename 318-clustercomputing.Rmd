@@ -6,7 +6,10 @@ editor_options:
 
 # Cluster computing
 
-> *Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to humans what we want the computer to do*
+> *Let us change our traditional attitude to the construction of
+> programs: Instead of imagining that our main task is to instruct a
+> computer what to do, let us concentrate rather on explaining to humans
+> what we want the computer to do*
 >
 > Donald E. Knuth, *Literate Programming*, 1984
 
@@ -14,9 +17,9 @@ editor_options:
 
 Students completing this chapter will:
 
-- Understand the paradigm shift in decision-oriented data processing;
+-   Understand the paradigm shift in decision-oriented data processing;
 
-- Understand the principles of cluster computing
+-   Understand the principles of cluster computing
 
 ## A paradigm shift {.unnumbered}
 
@@ -52,11 +55,11 @@ merged. While data still need to be moved to be processed, they are
 moved across a high speed data channel within a computer rather than the
 lower speed cables of a storage network.
 
-| Old                        | New                   |
-|:---------------------------|:----------------------|
-| Data to the program        | Program to the data   |
-| Mutable data               | Immutable data        |
-| Special purpose hardware   | Commodity hardware    |
+| Old                      | New                 |
+|:-------------------------|:--------------------|
+| Data to the program      | Program to the data |
+| Mutable data             | Immutable data      |
+| Special purpose hardware | Commodity hardware  |
 
 ## The drivers {.unnumbered}
 
@@ -100,13 +103,15 @@ the conversion, request, and interpretation bottlenecks.
 
 *Data analytics bottleneck*
 
-![](Figures/Chapter 18/bottleneck.png)
+![](Figures/Chapter%2018/bottleneck.png)
 
 The people skills problem is being addressed by the many universities
-that have added graduate courses in data analytics. The **Lambda Architecture**[^clustercomputing-1] 
-is a proposed general solution to the speed and cost problem.
+that have added graduate courses in data analytics. The **Lambda
+Architecture**[^clustercomputing-1] is a proposed general solution to
+the speed and cost problem.
 
-[^clustercomputing-1] : Marz, N., & Warren, J. (2012). *Big Data*: Manning Publications.
+[^clustercomputing-1]: Marz, N., & Warren, J. (2012). *Big Data*:
+    Manning Publications.
 
 ## Lambda Architecture {.unnumbered}
 
@@ -175,9 +180,10 @@ Because the speed layer modifies the results as each chunk of data
 (e.g., a transaction) is received, the merge of the batch and speed
 layer computations can be used to create real-time reports.
 
-*Merging speed and serving layer results to create a report (source: (Marz and Warren 2012))*
+*Merging speed and serving layer results to create a report (source:
+(Marz and Warren 2012))*
 
-![](Figures/Chapter 18/merge-speed-serving.png)
+![](Figures/Chapter%2018/merge-speed-serving.png)
 
 ### Putting the layers together {.unnumbered}
 
@@ -189,10 +195,10 @@ Assume batch~n-1~ has just been processed.
     the records received. The combination of these two data sets creates
     batch~n~.
 
-2. As the data for increment~n-1~ were received, speed layer
+2.  As the data for increment~n-1~ were received, speed layer
     (Sresults~n-1~) were dynamically recomputed.
 
-3. A current report can be created by combining speed layer and batch
+3.  A current report can be created by combining speed layer and batch
     layer results (i.e., Sresults~n-1~ and Bresults~n-1~).
 
 Now, assume batch computation resumes with batch~n~.
@@ -200,16 +206,17 @@ Now, assume batch computation resumes with batch~n~.
 1.  Sresults~n~ are computed from the data collected (increment~n~)
     while batch~n~ is being processing.
 
-2. Current reports are based on Bresults~n-1~, Sresults~n-1~, and
+2.  Current reports are based on Bresults~n-1~, Sresults~n-1~, and
     Sresults~n~.
 
-3. At the end of processing batch~n~, Sresults~n-1~ can be discarded
+3.  At the end of processing batch~n~, Sresults~n-1~ can be discarded
     because Bresults~n~ includes all the data from batch~n-1~ and
     increment~n-1.~
 
-*The preparation of a real-time report using batch and speed layer results when processing batch~n~*
+*The preparation of a real-time report using batch and speed layer
+results when processing batch~n~*
 
-![](Figures/Chapter 18/batch-and-speed.png)
+![](Figures/Chapter%2018/batch-and-speed.png)
 
 In summary, the batch layer pre-computes reports using all the currently
 available data. The serving layer indexes the results of the batch
@@ -219,7 +226,7 @@ Queries are handled by merging data from the serving and speed layers.
 
 *Lambda Architecture (source: (Marz and Warren 2012))*
 
-![](Figures/Chapter 18/lambda.png)
+![](Figures/Chapter%2018/lambda.png)
 
 ### Benefits of the Lambda Architecture {.unnumbered}
 
@@ -294,26 +301,28 @@ are fed to Lambda Architecture based business analytics.
 
 ## Hadoop {.unnumbered}
 
-Hadoop, an Apache project,[^clustercomputing-2] supports distributed processing of large
-data sets across a cluster of computers. A Hadoop cluster consists of
-many standard processors, nodes, with associated main memory and disks.
-They are connected by Ethernet or switches so they can pass data from
-node to node. Hadoop is highly scalable and reliable. It is a suitable
-technology for the batch layer of the Lambda architecture. Hadoop is a
-foundation for data analytics, machine learning, search ranking, email
-anti-spam, ad optimization, and other areas of applications which are
-constantly emerging.
+Hadoop, an Apache project,[^clustercomputing-2] supports distributed
+processing of large data sets across a cluster of computers. A Hadoop
+cluster consists of many standard processors, nodes, with associated
+main memory and disks. They are connected by Ethernet or switches so
+they can pass data from node to node. Hadoop is highly scalable and
+reliable. It is a suitable technology for the batch layer of the Lambda
+architecture. Hadoop is a foundation for data analytics, machine
+learning, search ranking, email anti-spam, ad optimization, and other
+areas of applications which are constantly emerging.
 
-[^clustercomputing-2] : [[http://hadoop.apache.org]{.underline}](http://hadoop.apache.org)
+[^clustercomputing-2]: [[http://hadoop.apache.org]{.ul}](http://hadoop.apache.org)
 
 A market analysis projects that the Hadoop market is growing at 58% per
-year.[^clustercomputing-3] It also asserts that, "Hadoop is the only cost-sensible and
-scalable open source alternative to commercially available Big Data
-management packages. It also becomes an integral part of almost any
-commercially available Big Data solution and de-facto industry standard
-for business intelligence (BI)."
+year.[\^clustercomputing-3] It also asserts that, "Hadoop is the only
+cost-sensible and scalable open source alternative to commercially
+available Big Data management packages. It also becomes an integral part
+of almost any commercially available Big Data solution and de-facto
+industry standard for business intelligence (BI)."
 
-[^clustercomputing-3] : [[https://www.marketanalysis.com/?p=279]{.underline}](https://www.marketanalysis.com/?p=279) (Hadoop Market Forecast 2017-2022, May 2017)
+[\^clustercomputing-3] :
+[[https://www.marketanalysis.com/?p=279]{.ul}](https://www.marketanalysis.com/?p=279)
+(Hadoop Market Forecast 2017-2022, May 2017)
 
 ### Hadoop distributed file system (HDFS) {.unnumbered}
 
@@ -326,9 +335,9 @@ multiple large blocks that are spread across multiple nodes. HDFS
 provides a set of functions for converting a file to and from HDFS
 format and handling HDFS.
 
-*Splitting of file across a HDFS cluster.*
+*Splitting of a file across a HDFS cluster.*
 
-![](Figures/Chapter 18/splitting-cluster.png)
+![](Figures/Chapter%2018/splitting-cluster.png)
 
 On each node, blocks are stored sequentially to minimize disk head
 movement. Blocks are grouped into files, and all files for a dataset are
@@ -347,15 +356,16 @@ data in a single folder.
 
 ## Spark {.unnumbered}
 
-Spark is an Apache project[^clustercomputing-4] for cluster computing that was initiated
-at the University of California Berkeley and later transferred to Apache
-as an open source project. Spark's distributed file system, resilient
-distributed dataset (RDD), has similar characteristics to HDFS. Spark
-can also interface with HDFS and other distributed file systems. For
-testing and development, Spark has a local mode, that can work with a
-local file system.
+Spark is an Apache project[\^clustercomputing-4] for cluster computing
+that was initiated at the University of California Berkeley and later
+transferred to Apache as an open source project. Spark's distributed
+file system, resilient distributed dataset (RDD), has similar
+characteristics to HDFS. Spark can also interface with HDFS and other
+distributed file systems. For testing and development, Spark has a local
+mode, that can work with a local file system.
 
-[^clustercomputing-4] : [[https://spark.apache.org]{.underline}](https://spark.apache.org)
+[\^clustercomputing-4] :
+[[https://spark.apache.org]{.ul}](https://spark.apache.org)
 
 Spark includes several component, including Spark SQL for SQL-type
 queries, Spark streaming for real-time analysis of event data as it is
@@ -367,28 +377,30 @@ implemented using GraphX.
 ### Computation with Spark {.unnumbered}
 
 Spark applications can be written in Java, Scala, Python, and R. In our
-case, we will use the sparklyr,[^clustercomputing-5] an R interface to Spark. This
-package provides a simple, easy to use set of commands for exposing the
-distributed processing power of Spark to those familiar with R. In
-particular, it supports dplyr for data manipulation of Spark datasets
-and access to Sparks ML library.
+case, we will use the sparklyr,[\^clustercomputing-5] an R interface to
+Spark. This package provides a simple, easy to use set of commands for
+exposing the distributed processing power of Spark to those familiar
+with R. In particular, it supports dplyr for data manipulation of Spark
+datasets and access to Sparks ML library.
 
-[^clustercomputing-5] : [[http://spark.rstudio.com]{.underline}](http://spark.rstudio.com)
+[\^clustercomputing-5] :
+[[http://spark.rstudio.com]{.ul}](http://spark.rstudio.com)
 
 Before starting with sparklyr, you need to check that you have latest
-version of Java on your machine.[^clustercomputing-6] Use RStudio to install sparklyr.
-For developing and testing on your computer, install a local version of
-Spark.
+version of Java on your machine.[\^clustercomputing-6] Use RStudio to
+install sparklyr. For developing and testing on your computer, install a
+local version of Spark.
 
-[^clustercomputing-6] : [[https://www.java.com/en/download/help/version\_manual.xml]{.underline}](https://www.java.com/en/download/help/version_manual.xml)
+[\^clustercomputing-6] :
+[[https://www.java.com/en/download/help/version_manual.xml]{.ul}](https://www.java.com/en/download/help/version_manual.xml)
 
 ```{r eval = T}
 library(sparklyr)
 spark_install(version='2.4')
 ```
 
-Use the `spark_connect` function to connect to Spark either locally or on
-a remote Spark cluster. The following code shows how to specify local
+Use the `spark_connect` function to connect to Spark either locally or
+on a remote Spark cluster. The following code shows how to specify local
 Spark connection (sc).
 
 ```{r eval = T}
@@ -399,10 +411,11 @@ sc <- spark_connect(master = "local")
 ### Tabulation {.unnumbered}
 
 In this example, we have a list of average monthly temperatures for New
-York's Central Park[^clustercomputing-7] and we want to determine how often each
-particular temperature occurred. R
+York's Central Park[\^clustercomputing-7] and we want to determine how
+often each particular temperature occurred. R
 
-[^clustercomputing-7] : [[http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html]{.underline}](http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html)
+[\^clustercomputing-7] :
+[[http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html]{.ul}](http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html)
 
 Average monthly temperatures since 1869 are read, and the temperature
 rounded to an integer for the convenience of tabulation.
@@ -444,15 +457,18 @@ t_tbl %>%
 
 It you observe the two sets of output carefully, you will note that the
 results are not identical. It is because rounding can vary across
-systems. The IEEE Standard for Floating-Point Arithmetic (IEEE 754)[^clustercomputing-8]
-states on rounding, "if the number falls midway it is rounded to the
-nearest value with an even (zero) least significant bit." Compare the
-results for round(12.5,0) and round(13.5,0). R follows the IEEE
-standard, but Spark apparently does not.
+systems. The IEEE Standard for Floating-Point Arithmetic (IEEE
+754)[\^clustercomputing-8] states on rounding, "if the number falls
+midway it is rounded to the nearest value with an even (zero) least
+significant bit." Compare the results for round(12.5,0) and
+round(13.5,0). R follows the IEEE standard, but Spark apparently does
+not.
 
-[^clustercomputing-8] : [[https://en.wikipedia.org/wiki/IEEE\_floating\_point]{.underline}](https://en.wikipedia.org/wiki/IEEE_floating_point)
+[\^clustercomputing-8] :
+[[https://en.wikipedia.org/wiki/IEEE_floating_point]{.ul}](https://en.wikipedia.org/wiki/IEEE_floating_point)
 
-> ❓*Skill builder* Aedo the tabulation example with temperatures in Celsius.
+> ❓*Skill builder* Redo the tabulation example with temperatures in
+> Celsius.
 
 ### Basic statistics with Spark {.unnumbered}
 
@@ -479,9 +495,10 @@ t %>%
 
 Again, the use of dplyr makes the conversion to Spark simple.
 
-```{r eval = T}
+```{r eval = F}
 library(sparklyr)
 library(tidyverse)
+library(readr)
 spark_install(version='2.4')
 sc <- spark_connect(master = "local", spark_home=spark_home_dir(version = '2.4'))
 url <-  "http://www.richardtwatson.com/data/centralparktemps.txt"
@@ -497,9 +514,12 @@ t_tbl %>%
   arrange(year)
 ```
 
-> ❓*Skill builder* A file[^clustercomputing-9] of electricity costs for a major city contains a timestamp and cost separated by a comma. Compute the minimum, mean, and maximum costs.     
+> ❓*Skill builder* A file[\^clustercomputing-9] of electricity costs for
+> a major city contains a timestamp and cost separated by a comma.
+> Compute the minimum, mean, and maximum costs.
 
-[^clustercomputing-9] : [^[http://www.richardtwatson.com/data/electricityprices.csv]{.underline}^](http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv)
+[\^clustercomputing-9] :
+[\^[http://www.richardtwatson.com/data/electricityprices.csv]{.ul}\^](http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv)
 
 ## Summary {.unnumbered}
 
@@ -535,14 +555,14 @@ computation.
 
 ### Key terms and concepts {.unnumbered}
 
-|                       |                        |
-|:----------------------|:-----------------------|
-| Batch layer           | Lambda Architecture    |
-| Bottleneck            | Parallelism            |
-| Cluster computing     | Serving layer          |
-| Hadoop                | Spark                  |
-| HDFS                  | Speed layer            |
-| Immutable data        |                        |
+|                   |                     |
+|:------------------|:--------------------|
+| Batch layer       | Lambda Architecture |
+| Bottleneck        | Parallelism         |
+| Cluster computing | Serving layer       |
+| Hadoop            | Spark               |
+| HDFS              | Speed layer         |
+| Immutable data    |                     |
 
 #### References and additional readings {.unnumbered}
 
@@ -554,22 +574,23 @@ Marz, N., & Warren, J. (2012). *Big Data*: Manning Publications.
 
 1.  Write Spark code for the following situations.
 
-    a. Compute the square and cube of the numbers in the range 1 to 25.
+    a.  Compute the square and cube of the numbers in the range 1 to 25.
         Display the results in a data frame.
 
-    b. Using the average monthly temperatures for New York's Central
+    b.  Using the average monthly temperatures for New York's Central
         Park, compute the maximum, mean, and average temperature in
         Celsius for each month.
 
-    c. Using the average monthly temperatures for New York's Central
+    c.  Using the average monthly temperatures for New York's Central
         Park, compute the max, mean, and min for August. You will need
         to use subsetting, as discussed in this chapter.
 
-    d. Using the electricity price data, compute the average hourly
+    d.  Using the electricity price data, compute the average hourly
         cost.
 
-    e. Read the national GDP file,[^clustercomputing-10] which records GDP in millions,
-        and count how many countries have a GDP greater than or less
-        than 10,000 million.
+    e.  Read the national GDP file,[\^clustercomputing-10] which records
+        GDP in millions, and count how many countries have a GDP greater
+        than or less than 10,000 million.
 
-[^clustercomputing-10] : [[http://www.richardtwatson.com/data/GDP.csv]{.underline}](http://people.terry.uga.edu/rwatson/data/GDP.csv) 
+[\^clustercomputing-10] :
+[[http://www.richardtwatson.com/data/GDP.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/GDP.csv)
