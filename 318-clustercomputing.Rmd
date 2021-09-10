@@ -301,7 +301,7 @@ are fed to Lambda Architecture based business analytics.
 
 ## Hadoop {.unnumbered}
 
-Hadoop, an Apache project,[\^clustercomputing-2] supports distributed
+Hadoop, an Apache project,[^clustercomputing-2] supports distributed
 processing of large data sets across a cluster of computers. A Hadoop
 cluster consists of many standard processors, nodes, with associated
 main memory and disks. They are connected by Ethernet or switches so
@@ -311,8 +311,7 @@ architecture. Hadoop is a foundation for data analytics, machine
 learning, search ranking, email anti-spam, ad optimization, and other
 areas of applications which are constantly emerging.
 
-[\^clustercomputing-2] :
-[[http://hadoop.apache.org]{.ul}](http://hadoop.apache.org)
+[^clustercomputing-2]: [[http://hadoop.apache.org]{.ul}](http://hadoop.apache.org)
 
 A market analysis projects that the Hadoop market is growing at 58% per
 year.[\^clustercomputing-3] It also asserts that, "Hadoop is the only
@@ -520,7 +519,7 @@ t_tbl %>%
 > Compute the minimum, mean, and maximum costs.
 
 [\^clustercomputing-9] :
-[\^[http://www.richardtwatson.com/data/electricityprices.csv]{.underline}\^](<http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv>)
+[\^[http://www.richardtwatson.com/data/electricityprices.csv]{.ul}\^](http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv)
 
 ## Summary {.unnumbered}
 
