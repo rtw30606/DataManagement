@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Cluster computing | DataManagement.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Cluster computing | DataManagement.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Cluster computing | DataManagement.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="318-clustercomputing.html"><a href="#cluster-computing"><i class="fa fa-check"></i><b>1</b> Cluster computing</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#a-paradigm-shift"><i class="fa fa-check"></i>A paradigm shift</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#the-drivers"><i class="fa fa-check"></i>The drivers</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#the-bottleneck-and-its-solution"><i class="fa fa-check"></i>The bottleneck and its solution</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#lambda-architecture"><i class="fa fa-check"></i>Lambda Architecture</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#the-batch-layer"><i class="fa fa-check"></i>The batch layer</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#the-serving-layer"><i class="fa fa-check"></i>The serving layer</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#speed-layer"><i class="fa fa-check"></i>Speed layer</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#putting-the-layers-together"><i class="fa fa-check"></i>Putting the layers together</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#benefits-of-the-lambda-architecture"><i class="fa fa-check"></i>Benefits of the Lambda Architecture</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#relational-and-lambda-architectures"><i class="fa fa-check"></i>Relational and Lambda Architectures</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#hadoop"><i class="fa fa-check"></i>Hadoop</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#hadoop-distributed-file-system-hdfs"><i class="fa fa-check"></i>Hadoop distributed file system (HDFS)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#spark"><i class="fa fa-check"></i>Spark</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#computation-with-spark"><i class="fa fa-check"></i>Computation with Spark</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#tabulation"><i class="fa fa-check"></i>Tabulation</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#basic-statistics-with-spark"><i class="fa fa-check"></i>Basic statistics with Spark</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#summary"><i class="fa fa-check"></i>Summary</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="cluster-computing" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Cluster computing</h1>
+<blockquote>
+<p><em>Let us change our traditional attitude to the construction of
+programs: Instead of imagining that our main task is to instruct a
+computer what to do, let us concentrate rather on explaining to humans
+what we want the computer to do</em></p>
+<p>Donald E. Knuth, <em>Literate Programming</em>, 1984</p>
+</blockquote>
+<div id="learning-objectives" class="section level3 unnumbered">
+<h3>Learning objectives</h3>
+<p>Students completing this chapter will:</p>
+<ul>
+<li><p>Understand the paradigm shift in decision-oriented data processing;</p></li>
+<li><p>Understand the principles of cluster computing</p></li>
+</ul>
+</div>
+<div id="a-paradigm-shift" class="section level2 unnumbered">
+<h2>A paradigm shift</h2>
+<p>There is much talk of big data, and much of it is not very informative.
+Rather a lot of big talk but not much smart talk. Big data is not just
+about greater variety and volumes of data at higher velocity, which is
+certainly occurring. The more important issue is the paradigm shift in
+data processing so that large volumes of data can be handled in a timely
+manner to support decision making. The foundations of this new model is
+the shift to cluster computing, which means using large numbers of
+commodity processors for massively parallel computing.</p>
+<p>We start by considering what is different between the old and new
+paradigms for decision data analysis. Note that we are not considering
+transaction processing, for which the relational model is a sound
+solution. Rather, we are interested in the processing of very large
+volumes of data at a time, and the relational model was not designed for
+this purpose. It is suited for handling transactions, which typically
+involve only a few records. The multidimensional database (MDDB) is the
+“old” approach for large datasets and cluster compute is the “new.”</p>
+<p>Another difference is the way data are handled. The old approach is to
+store data on a high speed disk drive and load it into computer memory
+for processing. To speed up processing, the data might be moved to
+multiple computers to enable parallel processing and the results merged
+into a single file. Because data files are typically much larger than
+programs, moving data from disks to computers is time consuming. Also,
+high performance disk storage devices are expensive. The new method is
+to spread a large data file across multiple commodity computers,
+possibly using HDFS, and then send each computer a copy of the program
+to run in parallel. The results from the individual jobs are then
+merged. While data still need to be moved to be processed, they are
+moved across a high speed data channel within a computer rather than the
+lower speed cables of a storage network.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Old</th>
+<th align="left">New</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Data to the program</td>
+<td align="left">Program to the data</td>
+</tr>
+<tr class="even">
+<td align="left">Mutable data</td>
+<td align="left">Immutable data</td>
+</tr>
+<tr class="odd">
+<td align="left">Special purpose hardware</td>
+<td align="left">Commodity hardware</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-drivers" class="section level2 unnumbered">
+<h2>The drivers</h2>
+<p>Exploring the drivers promoting the paradigm shift is a good starting
+point for understanding this important change in data management. First,
+you will recall that you learned in Chapter 1 that decision making is
+the central organizational activity. Furthermore, because data-driven
+decision making increases organizational performance, many executives
+are now demanding data analytics to support their decision making.</p>
+<p>Second, as we also explained in Chapter 1, there is a societal shift in
+dominant logic as we collectively recognize that we need to focus on
+reducing environmental degradation and carbon emissions. Service and
+sustainability dominant logics are both data intensive. Customer service
+decisions are increasingly based on the analysis of large volumes of
+operational and social data. Sustainability oriented decisions also
+require large volumes of operational data, which are combined with
+environmental data collected by massive sensor networks to support
+decision making that reduces an organization’s environmental impact.</p>
+<p>Third, the world is in the midst of a massive data generating digital
+transformation. Large volumes of data are collected about the operation
+on an aircraft’s jet engines, how gamers play massively online games,
+how people interact in social media space, and the operation of cell
+phone networks, for example. The digital transformation of life and work
+is creating a bits and bytes tsunami.</p>
+</div>
+<div id="the-bottleneck-and-its-solution" class="section level2 unnumbered">
+<h2>The bottleneck and its solution</h2>
+<p>In a highly connected and competitive world, speedy high quality
+decisions can be a competitive advantage. However, large data sets can
+take some time and expense to process, and so as more data are
+collected, there is a the danger that decision making will gradually
+slow down and its quality lowered. Data analytics becomes a bottleneck
+when the conversion of data to information is too slow. Second, decision
+quality is lowered when there is a dearth of skills for determining what
+data should be converted to information and interpreting the resulting
+conversion. We capture these problems in the elaboration of a diagram
+that was introduced in Chapter 1, which now illustrates the causes of
+the conversion, request, and interpretation bottlenecks.</p>
+<p><em>Data analytics bottleneck</em></p>
+<p><img src="Figures/Chapter%2018/bottleneck.png" /></p>
+<p>The people skills problem is being addressed by the many universities
+that have added graduate courses in data analytics. The <strong>Lambda
+Architecture</strong><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> is a proposed general solution to
+the speed and cost problem.</p>
+</div>
+<div id="lambda-architecture" class="section level2 unnumbered">
+<h2>Lambda Architecture</h2>
+<p>We will now consider the three layers of the Lambda Architecture: batch,
+speed, and serving.</p>
+<div id="the-batch-layer" class="section level3 unnumbered">
+<h3>The batch layer</h3>
+<p>Batch computing describes the situation where a computer works on one or
+more large tasks with minimal interruption. Because early computers were
+highly expensive and businesses operated at a different tempo, batch
+computing was common in the early days of information systems. The
+efficiency gains of batch computing mainly come from uninterrupted
+sequential file processing. The computer spends less time waiting for
+data to be retrieved from disks, particularly with HDFS where files are
+in 64Mb chunks. Batch computing is very efficient, though not timely,
+and the Lambda Architecture takes advantage of this efficiency.</p>
+<p>The batch layer is used to precompute queries by running them with the
+most recent version of the dataset. The precomputed results are saved
+and can then be used as required. For example, a supermarket chain might
+want to know how often each pair of products appears in each shopper’s
+basket for each day for each store. These data might help it to set
+cross-promotional activities within a store (e.g., a joint special on
+steak and mashed potatoes). The batch program could precompute the count
+of joint sales for each pair of items for each day for each store in a
+given date range. This highly summarized data could then be used for
+queries about customers’ baskets (e.g., how many customers purchased
+both shrimp and grits in the last week in all Georgia stores?). The
+batch layer works with a dataset essentially consisting of every
+supermarket receipt because this is the record of a customer’s basket.
+This dataset is also stored by the batch layer. Hadoop is well-suited
+for handling the batch layer, as you will see later, but it is not the
+only option.</p>
+<p>New data are appended to the master dataset to preserve is immutability,
+so that it remains a complete record of transactions for a particular
+domain (e.g., all receipts). These incremental data are processed the
+next time the batch process is restarted.</p>
+<p>The batch layer can be processing several batches simultaneously. It
+typically keeps recomputing batch views using the latest dataset every
+few hours or maybe overnight.</p>
+</div>
+<div id="the-serving-layer" class="section level3 unnumbered">
+<h3>The serving layer</h3>
+<p>The serving layer processes views computed by the batch layer so they
+can be queried. Because the batch layer produces a flat file, the
+serving layer indexes it for random access. The serving layer also
+replaces the old batch output with the latest indexed batch view when it
+is received from the batch layer. In a typical Lambda Architecture
+system, there might be several or more hours between batch updates.</p>
+<p>The combination of the batch and serving layers provides for efficient
+reporting, but it means that any queries on the files generated by the
+batch layer might be several or more hours old. We have efficiency but
+not timeliness, for which we need the speed layer.</p>
+</div>
+<div id="speed-layer" class="section level3 unnumbered">
+<h3>Speed layer</h3>
+<p>Once a batch recompute has started running, all newly collected data
+cannot be part of the resulting batch report. The purpose of the speed
+layer is to process incremental data as they arrive so they can be
+merged with the latest batch data report to give current results.
+Because the speed layer modifies the results as each chunk of data
+(e.g., a transaction) is received, the merge of the batch and speed
+layer computations can be used to create real-time reports.</p>
+<p><em>Merging speed and serving layer results to create a report (source:
+(Marz and Warren 2012))</em></p>
+<p><img src="Figures/Chapter%2018/merge-speed-serving.png" /></p>
+</div>
+<div id="putting-the-layers-together" class="section level3 unnumbered">
+<h3>Putting the layers together</h3>
+<p>We now examine the process in detail.</p>
+<p>Assume batch<sub>n-1</sub> has just been processed.</p>
+<ol style="list-style-type: decimal">
+<li><p>During the processing of batch<sub>n-1</sub>, increment<sub>n-1</sub> was created from
+the records received. The combination of these two data sets creates
+batch<sub>n</sub>.</p></li>
+<li><p>As the data for increment<sub>n-1</sub> were received, speed layer
+(Sresults<sub>n-1</sub>) were dynamically recomputed.</p></li>
+<li><p>A current report can be created by combining speed layer and batch
+layer results (i.e., Sresults<sub>n-1</sub> and Bresults<sub>n-1</sub>).</p></li>
+</ol>
+<p>Now, assume batch computation resumes with batch<sub>n</sub>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Sresults<sub>n</sub> are computed from the data collected (increment<sub>n</sub>)
+while batch<sub>n</sub> is being processing.</p></li>
+<li><p>Current reports are based on Bresults<sub>n-1</sub>, Sresults<sub>n-1</sub>, and
+Sresults<sub>n</sub>.</p></li>
+<li><p>At the end of processing batch<sub>n</sub>, Sresults<sub>n-1</sub> can be discarded
+because Bresults<sub>n</sub> includes all the data from batch<sub>n-1</sub> and
+increment<sub>n-1.</sub></p></li>
+</ol>
+<p><em>The preparation of a real-time report using batch and speed layer
+results when processing batch<sub>n</sub></em></p>
+<p><img src="Figures/Chapter%2018/batch-and-speed.png" /></p>
+<p>In summary, the batch layer pre-computes reports using all the currently
+available data. The serving layer indexes the results of the batch
+layers and creates views that are the foundation for rapid responses to
+queries. The speed layer does incremental updates as data are received.
+Queries are handled by merging data from the serving and speed layers.</p>
+<p><em>Lambda Architecture (source: (Marz and Warren 2012))</em></p>
+<p><img src="Figures/Chapter%2018/lambda.png" /></p>
+</div>
+<div id="benefits-of-the-lambda-architecture" class="section level3 unnumbered">
+<h3>Benefits of the Lambda Architecture</h3>
+<p>The Lambda Architecture provides some important advantages for
+processing large datasets, and these are now considered.</p>
+<div id="robust-and-fault-tolerant" class="section level4 unnumbered">
+<h4>Robust and fault-tolerant</h4>
+<p>Programming for batch processing is relatively simple and also it can
+easily be restarted if there is a problem. Replication of the batch
+layer dataset across computers increases fault tolerance. If a block is
+unreadable, the batch processor can shift to the identical block on
+another node in the cluster. Also, the redundancy intrinsic to a
+distributed file system and distributed processors provides
+fault-tolerance.</p>
+<p>The speed layer is the complex component of the Lambda Architecture.
+Because complexity is isolated to this layer, it does not impact other
+layers. In addition, since the speed layer produced temporary results,
+these can be discarded in the event of an error. Eventually the system
+will right itself when the batch layer produces a new set of results,
+though intermediate reports might be a little out of date.</p>
+</div>
+<div id="low-latency-reads-and-updates" class="section level4 unnumbered">
+<h4>Low latency reads and updates</h4>
+<p>The speed layer overcomes the long delays associated with batch
+processing. Real-time reporting is possible through the combination of
+batch and speed layer outputs.</p>
+</div>
+<div id="scalable" class="section level4 unnumbered">
+<h4>Scalable</h4>
+<p>Scalability is achieved using a distributed file system and distributed
+processors. To scale, new computers are added.</p>
+</div>
+<div id="support-a-wide-variety-of-applications" class="section level4 unnumbered">
+<h4>Support a wide variety of applications</h4>
+<p>The general architecture can support reporting for a wide variety of
+situations.</p>
+</div>
+<div id="extensible" class="section level4 unnumbered">
+<h4>Extensible</h4>
+<p>New data types can be added to the master dataset or new master datasets
+created. Furthermore, new computations can be added to the batch and
+speed layers to create new views.</p>
+</div>
+<div id="ad-hoc-queries" class="section level4 unnumbered">
+<h4>Ad hoc queries</h4>
+<p>On the fly queries can be run on the output of the batch layer provided
+the required data are available in a view.</p>
+</div>
+<div id="minimal-maintenance" class="section level4 unnumbered">
+<h4>Minimal maintenance</h4>
+<p>The batch and serving layers are relatively simple programs because they
+don’t deal with random updates or writes. Simple code requires less
+maintenance.</p>
+</div>
+<div id="debuggable" class="section level4 unnumbered">
+<h4>Debuggable</h4>
+<p>Batch programs are easier to debug because you can have a clear link
+between the input and output. Data immutability means that debugging is
+easier because no records have been overwritten during batch processing.</p>
+</div>
+</div>
+<div id="relational-and-lambda-architectures" class="section level3 unnumbered">
+<h3>Relational and Lambda Architectures</h3>
+<p>Relational technology supports both transaction processing and data
+analytics. As a result, it needs to be more complex than the Lambda
+Architecture. Separating out data analytics from transaction processing
+simplifies the supporting technology and makes it suitable for handling
+large volumes of data efficiently. Relational systems can continue to
+support transaction processing and, as a byproduct, produce data that
+are fed to Lambda Architecture based business analytics.</p>
+</div>
+</div>
+<div id="hadoop" class="section level2 unnumbered">
+<h2>Hadoop</h2>
+<p>Hadoop, an Apache project,<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> supports distributed
+processing of large data sets across a cluster of computers. A Hadoop
+cluster consists of many standard processors, nodes, with associated
+main memory and disks. They are connected by Ethernet or switches so
+they can pass data from node to node. Hadoop is highly scalable and
+reliable. It is a suitable technology for the batch layer of the Lambda
+architecture. Hadoop is a foundation for data analytics, machine
+learning, search ranking, email anti-spam, ad optimization, and other
+areas of applications which are constantly emerging.</p>
+<p>A market analysis projects that the Hadoop market is growing at 58% per
+year.[^clustercomputing-3] It also asserts that, “Hadoop is the only
+cost-sensible and scalable open source alternative to commercially
+available Big Data management packages. It also becomes an integral part
+of almost any commercially available Big Data solution and de-facto
+industry standard for business intelligence (BI).”</p>
+<p>[^clustercomputing-3] :
+<a href="https://www.marketanalysis.com/?p=279"><u>https://www.marketanalysis.com/?p=279</u></a>
+(Hadoop Market Forecast 2017-2022, May 2017)</p>
+<div id="hadoop-distributed-file-system-hdfs" class="section level3 unnumbered">
+<h3>Hadoop distributed file system (HDFS)</h3>
+<p>HDFS is a highly scalable, fault-toleration, distributed file system.
+When a file is uploaded to HDFS, it is split into fixed sized blocks of
+at least 64MB. Blocks are replicated across nodes to support parallel
+processing and provide fault tolerance. As the following diagram
+illustrates, an original file when written to HDFS is broken into
+multiple large blocks that are spread across multiple nodes. HDFS
+provides a set of functions for converting a file to and from HDFS
+format and handling HDFS.</p>
+<p><em>Splitting of a file across a HDFS cluster.</em></p>
+<p><img src="Figures/Chapter%2018/splitting-cluster.png" /></p>
+<p>On each node, blocks are stored sequentially to minimize disk head
+movement. Blocks are grouped into files, and all files for a dataset are
+grouped into a single folder. As part of the simplification to support
+batch processing, there is no random access to records and new data are
+added as a new file.</p>
+<p>Scalability is facilitated by the addition of new nodes, which means
+adding a few more pieces of inexpensive commodity hardware to the
+cluster. Appending new data as files on the cluster also supports
+scalability.</p>
+<p>HDFS also supports partitioning of data into folders for processing at
+the folder level. For example, you might want all employment related
+data in a single folder.</p>
+</div>
+</div>
+<div id="spark" class="section level2 unnumbered">
+<h2>Spark</h2>
+<p>Spark is an Apache project[^clustercomputing-4] for cluster computing
+that was initiated at the University of California Berkeley and later
+transferred to Apache as an open source project. Spark’s distributed
+file system, resilient distributed dataset (RDD), has similar
+characteristics to HDFS. Spark can also interface with HDFS and other
+distributed file systems. For testing and development, Spark has a local
+mode, that can work with a local file system.</p>
+<p>[^clustercomputing-4] :
+<a href="https://spark.apache.org"><u>https://spark.apache.org</u></a></p>
+<p>Spark includes several component, including Spark SQL for SQL-type
+queries, Spark streaming for real-time analysis of event data as it is
+received, and a machine learning (ML) library. This library is designed
+for in-memory processing and is approximately 10 times faster than
+disk-based equivalent approaches. Distributed graph processing is
+implemented using GraphX.</p>
+<div id="computation-with-spark" class="section level3 unnumbered">
+<h3>Computation with Spark</h3>
+<p>Spark applications can be written in Java, Scala, Python, and R. In our
+case, we will use the sparklyr,[^clustercomputing-5] an R interface to
+Spark. This package provides a simple, easy to use set of commands for
+exposing the distributed processing power of Spark to those familiar
+with R. In particular, it supports dplyr for data manipulation of Spark
+datasets and access to Sparks ML library.</p>
+<p>[^clustercomputing-5] :
+<a href="http://spark.rstudio.com"><u>http://spark.rstudio.com</u></a></p>
+<p>Before starting with sparklyr, you need to check that you have latest
+version of Java on your machine.[^clustercomputing-6] Use RStudio to
+install sparklyr. For developing and testing on your computer, install a
+local version of Spark.</p>
+<p>[^clustercomputing-6] :
+<a href="https://www.java.com/en/download/help/version_manual.xml"><u>https://www.java.com/en/download/help/version_manual.xml</u></a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;sparklyr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_install</span>(<span class="at">version=</span><span class="st">&#39;2.4&#39;</span>)</span></code></pre></div>
+<p>Use the <code>spark_connect</code> function to connect to Spark either locally or
+on a remote Spark cluster. The following code shows how to specify local
+Spark connection (sc).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">&quot;local&quot;</span>)</span></code></pre></div>
+</div>
+<div id="tabulation" class="section level3 unnumbered">
+<h3>Tabulation</h3>
+<p>In this example, we have a list of average monthly temperatures for New
+York’s Central Park[^clustercomputing-7] and we want to determine how
+often each particular temperature occurred. R</p>
+<p>[^clustercomputing-7] :
+<a href="http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html"><u>http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html</u></a></p>
+<p>Average monthly temperatures since 1869 are read, and the temperature
+rounded to an integer for the convenience of tabulation.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<pre><code>## Rows: 1794 Columns: 3</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (3): year, month, temperature</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulate frequencies for temperature</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fahrenheit =</span> <span class="fu">round</span>(temperature,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fahrenheit) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Frequency =</span> <span class="fu">n</span>())</span></code></pre></div>
+<pre><code>## # A tibble: 61 × 2
+##    Fahrenheit Frequency
+##         &lt;dbl&gt;     &lt;int&gt;
+##  1         20         1
+##  2         22         2
+##  3         23         3
+##  4         24         5
+##  5         25        15
+##  6         26        10
+##  7         27         8
+##  8         28        19
+##  9         29        24
+## 10         30        32
+## # … with 51 more rows</code></pre>
+<div id="spark-1" class="section level4 unnumbered">
+<h4>Spark</h4>
+<p>By using dplyr in the prior R code, we can copy and paste and add a few
+commands for the Spark implementation. The major differences are the
+creation of a Spark connection (sc) and copying the R tibble to Spark
+with copy-to. Also, note that you need to sort the resulting tibble,
+which is not required in regular R.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_install</span>(<span class="at">version=</span><span class="st">&#39;2.4&#39;</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">&quot;local&quot;</span>, <span class="at">spark_home=</span><span class="fu">spark_home_dir</span>(<span class="at">version =</span> <span class="st">&#39;2.4&#39;</span>))</span></code></pre></div>
+<pre><code>## Re-using existing Spark connection to local</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<pre><code>## Rows: 1794 Columns: 3</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (3): year, month, temperature</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="ot">&lt;-</span> <span class="fu">copy_to</span>(sc,t)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fahrenheit =</span> <span class="fu">round</span>(temperature,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fahrenheit) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Frequency =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Fahrenheit)</span></code></pre></div>
+<pre><code>## # Source:     spark&lt;?&gt; [?? x 2]
+## # Ordered by: Fahrenheit
+##    Fahrenheit Frequency
+##         &lt;dbl&gt;     &lt;dbl&gt;
+##  1         20         1
+##  2         22         2
+##  3         23         3
+##  4         24         5
+##  5         25        15
+##  6         26         9
+##  7         27         9
+##  8         28        17
+##  9         29        26
+## 10         30        30
+## # … with more rows</code></pre>
+<p>It you observe the two sets of output carefully, you will note that the
+results are not identical. It is because rounding can vary across
+systems. The IEEE Standard for Floating-Point Arithmetic (IEEE
+754)[^clustercomputing-8] states on rounding, “if the number falls
+midway it is rounded to the nearest value with an even (zero) least
+significant bit.” Compare the results for round(12.5,0) and
+round(13.5,0). R follows the IEEE standard, but Spark apparently does
+not.</p>
+<p>[^clustercomputing-8] :
+<a href="https://en.wikipedia.org/wiki/IEEE_floating_point"><u>https://en.wikipedia.org/wiki/IEEE_floating_point</u></a></p>
+<blockquote>
+<p>❓<em>Skill builder</em> Redo the tabulation example with temperatures in
+Celsius.</p>
+</blockquote>
+</div>
+</div>
+<div id="basic-statistics-with-spark" class="section level3 unnumbered">
+<h3>Basic statistics with Spark</h3>
+<p>We now take the same temperature dataset and calculate mean, min, and
+max monthly average temperatures for each year and put the results in a
+single file.</p>
+<div id="r" class="section level4 unnumbered">
+<h4>R</h4>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<pre><code>## Rows: 1794 Columns: 3</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (3): year, month, temperature</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># report minimum, mean, and maximum by year</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Min=</span><span class="fu">min</span>(temperature),</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(temperature),<span class="dv">1</span>), </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Max =</span> <span class="fu">max</span>(temperature))</span></code></pre></div>
+<pre><code>## # A tibble: 150 × 4
+##     year   Min  Mean   Max
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  1869  34.5  51.4  72.8
+##  2  1870  31.3  53.6  76.6
+##  3  1871  28.3  51.1  73.6
+##  4  1872  26.7  51    77.5
+##  5  1873  28.6  51    75.4
+##  6  1874  31.3  51.3  73.9
+##  7  1875  23.8  49.4  74  
+##  8  1876  24.9  51.9  79.4
+##  9  1877  27.7  52.8  75.4
+## 10  1878  30.3  53.5  77.8
+## # … with 140 more rows</code></pre>
+</div>
+<div id="spark-2" class="section level4 unnumbered">
+<h4>Spark</h4>
+<p>Again, the use of dplyr makes the conversion to Spark simple.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_install</span>(<span class="at">version=</span><span class="st">&#39;2.4&#39;</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">&quot;local&quot;</span>, <span class="at">spark_home=</span><span class="fu">spark_home_dir</span>(<span class="at">version =</span> <span class="st">&#39;2.4&#39;</span>))</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="ot">&lt;-</span> <span class="fu">copy_to</span>(sc,t)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co"># report minimum, mean, and maximum by year</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># note that sparkly gives a warning if you do not specify how to handle missing values</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Min=</span><span class="fu">min</span>(temperature, <span class="at">na.rm =</span> T), </span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(temperature, <span class="at">na.rm =</span> T),<span class="dv">1</span>), </span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">Max =</span> <span class="fu">max</span>(temperature, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year)</span></code></pre></div>
+<blockquote>
+<p>❓<em>Skill builder</em> A file[^clustercomputing-9] of electricity costs for
+a major city contains a timestamp and cost separated by a comma.
+Compute the minimum, mean, and maximum costs.</p>
+</blockquote>
+<p>[^clustercomputing-9] :
+<a href="http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv">^<u>http://www.richardtwatson.com/data/electricityprices.csv</u>^</a></p>
+</div>
+</div>
+</div>
+<div id="summary" class="section level2 unnumbered">
+<h2>Summary</h2>
+<p>Big data is a paradigm shift to new file structures, such as HDFS and
+RDD, and algorithms for the parallel processing of large volumes of
+data. The new file structure approach is to spread a large data file
+across multiple commodity computers and then send each computer a copy
+of the program to run in parallel. The drivers of the transformation are
+the need for high quality data-driven decisions, a societal shift in
+dominant logic, and digital transformation. The speed and cost of
+converting data to information is a critical bottleneck as is a dearth
+of skills for determining what data should be converted to information
+and interpreting the resulting conversion. The people skills problem is
+being addressed by universities’ graduate courses in data analytics. The
+Lambda Architecture, a solution for handling the speed and cost problem,
+consists of three layers: speed, serving, and batch. The batch layer is
+used to precompute queries by running them with the most recent version
+of the dataset. The serving layer processes views computed by the batch
+layer so they can be queried. The purpose of the speed layer is to
+process incremental data as they arrive so they can be merged with the
+latest batch data report to give current results. The Lambda
+Architecture provides some important advantages for processing large
+datasets. Relational systems can continue to support transaction
+processing and, as a byproduct, produce data that are fed to Lambda
+Architecture based business analytics.</p>
+<p>Hadoop supports distributed processing of large data sets across a
+cluster of computers. A Hadoop cluster consists of many standard
+processors, nodes, with associated main memory and disks. HDFS is a
+highly scalable, fault-toleration, distributed file system. Spark is a
+distributed computing method for scalable and fault-tolerant cluster
+computation.</p>
+<div id="key-terms-and-concepts" class="section level3 unnumbered">
+<h3>Key terms and concepts</h3>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Batch layer</td>
+<td align="left">Lambda Architecture</td>
+</tr>
+<tr class="even">
+<td align="left">Bottleneck</td>
+<td align="left">Parallelism</td>
+</tr>
+<tr class="odd">
+<td align="left">Cluster computing</td>
+<td align="left">Serving layer</td>
+</tr>
+<tr class="even">
+<td align="left">Hadoop</td>
+<td align="left">Spark</td>
+</tr>
+<tr class="odd">
+<td align="left">HDFS</td>
+<td align="left">Speed layer</td>
+</tr>
+<tr class="even">
+<td align="left">Immutable data</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<div id="references-and-additional-readings" class="section level4 unnumbered">
+<h4>References and additional readings</h4>
+<p>Lam, C. (2010). <em>Hadoop in action</em>: Manning Publications Co.</p>
+<p>Marz, N., &amp; Warren, J. (2012). <em>Big Data</em>: Manning Publications.</p>
+</div>
+</div>
+<div id="exercises" class="section level3 unnumbered">
+<h3>Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>Write Spark code for the following situations.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Compute the square and cube of the numbers in the range 1 to 25.
+Display the results in a data frame.</p></li>
+<li><p>Using the average monthly temperatures for New York’s Central
+Park, compute the maximum, mean, and average temperature in
+Celsius for each month.</p></li>
+<li><p>Using the average monthly temperatures for New York’s Central
+Park, compute the max, mean, and min for August. You will need
+to use subsetting, as discussed in this chapter.</p></li>
+<li><p>Using the electricity price data, compute the average hourly
+cost.</p></li>
+<li><p>Read the national GDP file,[^clustercomputing-10] which records
+GDP in millions, and count how many countries have a GDP greater
+than or less than 10,000 million.</p></li>
+</ol></li>
+</ol>
+<p>[^clustercomputing-10] :
+<a href="http://people.terry.uga.edu/rwatson/data/GDP.csv"><u>http://www.richardtwatson.com/data/GDP.csv</u></a></p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Marz, N., &amp; Warren, J. (2012). <em>Big Data</em>:
+Manning Publications.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="http://hadoop.apache.org"><u>http://hadoop.apache.org</u></a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/318-clustercomputing.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["DataManagement.pdf", "DataManagement.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
