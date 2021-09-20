@@ -4,7 +4,6 @@ language:
     chapter_name: "Chapter "
 delete_merged_file: true
 rmd_files: [
-
 # '001-frontmatter.Rmd','002-preface.RMD',
  # '100-section.Rmd', '101-data.Rmd', '102-information.Rmd',
  # '200-section.Rmd', 
@@ -14,6 +13,7 @@ rmd_files: [
  # '206-recursive.Rmd',
  # '207-datamodeling.Rmd',
  # '317-textmining.Rmd',
- '318-clustercomputing.Rmd'
+ # '318-clustercomputing.Rmd'
+  '319-dashboards.Rmd'
 ]
 
