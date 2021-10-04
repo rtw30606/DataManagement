@@ -4,16 +4,25 @@ language:
     chapter_name: "Chapter "
 delete_merged_file: true
 rmd_files: [
-# '001-frontmatter.Rmd','002-preface.RMD',
- # '100-section.Rmd', '101-data.Rmd', '102-information.Rmd',
- # '200-section.Rmd', 
- # '203-singleentity.Rmd'.
+ '001-frontmatter.Rmd',
+ '002-preface.Rmd',
+ # '100-section.Rmd', 
+ # '101-data.Rmd', 
+ # '102-information.Rmd',
+ '200-section.Rmd', 
+ # '203-singleentity.Rmd',
  # '204-onetomany.Rmd',
  # '205-manytomany.Rmd',
  # '206-recursive.Rmd',
  # '207-datamodeling.Rmd',
+ # '300-section.Rmd',
  # '317-textmining.Rmd',
- # '318-clustercomputing.Rmd'
-  '319-dashboards.Rmd'
+ # '318-clustercomputing.Rmd',
+ # '319-dashboards.Rmd',
+ '400-section.Rmd',
+ '420-datastrucandstor.Rmd',
+ # '421-architectures.Rmd',
+ '422-sqljava.Rmd',
+ '423-integrity.Rmd',
+ '424-administration.Rmd'
 ]
-
