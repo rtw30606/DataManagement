@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Data Processing Architectures | DataManagement.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Data Processing Architectures | DataManagement.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Data Processing Architectures | DataManagement.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Management: Databases and Organizations</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="421-architectures.html"><a href="#data-processing-architectures"><i class="fa fa-check"></i><b>1</b> Data Processing Architectures</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#cloud-capabilities"><i class="fa fa-check"></i>Cloud capabilities</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#strategic-risk"><i class="fa fa-check"></i>Strategic risk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#distributed-database"><i class="fa fa-check"></i>Distributed database</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#a-hybrid-distributed-architecture"><i class="fa fa-check"></i>A hybrid, distributed architecture</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#transparency"><i class="fa fa-check"></i>Transparency</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#no-reliance-on-a-central-site"><i class="fa fa-check"></i>No reliance on a central site</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#local-autonomy"><i class="fa fa-check"></i>Local autonomy</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#continuous-operation"><i class="fa fa-check"></i>Continuous operation</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distributed-query-processing"><i class="fa fa-check"></i>Distributed query processing</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distributed-transaction-processing"><i class="fa fa-check"></i>Distributed transaction processing</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#fragmentation-independence"><i class="fa fa-check"></i>Fragmentation independence</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#replication-independence"><i class="fa fa-check"></i>Replication independence</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#hardware-independence"><i class="fa fa-check"></i>Hardware independence</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#operating-system-independence"><i class="fa fa-check"></i>Operating system independence</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#network-independence"><i class="fa fa-check"></i>Network independence</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#dbms-independence"><i class="fa fa-check"></i>DBMS independence</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#conclusionparadise-postponed"><i class="fa fa-check"></i>Conclusion—paradise postponed</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#remote-request"><i class="fa fa-check"></i>Remote request</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#remote-transaction"><i class="fa fa-check"></i>Remote transaction</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distributed-transaction"><i class="fa fa-check"></i>Distributed transaction</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#distributed-request"><i class="fa fa-check"></i>Distributed request</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#horizontal-fragmentation"><i class="fa fa-check"></i>Horizontal fragmentation</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#vertical-fragmentation"><i class="fa fa-check"></i>Vertical fragmentation</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#hybrid-fragmentation"><i class="fa fa-check"></i>Hybrid fragmentation</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#replication"><i class="fa fa-check"></i>Replication</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#references-and-additional-readings"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="data-processing-architectures" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Data Processing Architectures</h1>
+<blockquote>
+<p><em>The difficulty in life is the choice</em>.</p>
+<p>George Moore, <em>The Bending of the Bough</em>, 1900</p>
+</blockquote>
+<div id="learning-objectives" class="section level3 unnumbered">
+<h3>Learning Objectives</h3>
+<p>Students completing this chapter will be able to</p>
+<ul>
+<li><p>recommend a data architecture for a given situation;</p></li>
+<li><p>understand multi-tier client/server architecture;</p></li>
+<li><p>discuss the fundamental principles that a hybrid architecture should
+satisfy;</p></li>
+<li><p>demonstrate the general principles of distributed database design.</p></li>
+</ul>
+<p><img src="Figures/Chapter%201/expeditioner.png" /></p>
+<p>On a recent transatlantic flight, Sophie, the Personnel and PR manager,
+had been seated next to a very charming young man who had tried to
+impress her with his knowledge of computing. He worked for a large
+systems consulting firm, and his speech was sprinkled with words like
+“clouding computing,” “XML,” “server,” “client,” and “software as a
+service.” In return, Sophie responded with some “ums,” “aahs,” and an
+occasional “that’s interesting.” Of course, this was before the third
+glass of champagne. After that, he was more intent on finding out how
+long Sophie would be in New York and what restaurants and shows piqued
+her curiosity.</p>
+<p>After an extremely pleasant week of wining, dining, and seeing the
+town—amid, of course, many hours of valuable work for The
+Expeditioner—Sophie returned to London. Now, she must ask Ned what all
+these weird terms meant. After all, it was difficult to carry on a
+conversation when she did not understand the language. That’s the
+problem with IS, she thought, new words and technologies were always
+being invented. It makes it very hard for the rest of us to make sense
+of what’s being said.</p>
+</div>
+<div id="architectural-choices" class="section level2 unnumbered">
+<h2>Architectural choices</h2>
+<p>In general terms, data can be stored and processed locally or remotely.
+Combinations of these two options provide the basic information systems
+architectures.</p>
+<p><em>Basic architectures</em></p>
+<p><img src="Figures/Chapter%2021/basic-architectures.png" /></p>
+</div>
+<div id="remote-job-entry" class="section level2 unnumbered">
+<h2>Remote job entry</h2>
+<p>In remote job entry, data are stored locally and processed remotely.
+Data are sent over a network to a remote computer for processing, and
+the output is returned the same way. This once fairly common form of
+data processing is still used today because remote job entry can
+overcome speed or memory shortcomings of a personal computer. Scientists
+and engineers typically need occasional access to a supercomputer for
+applications, such as simulating global climate change, that are data or
+computational intensive. Supercomputers typically have the main memory
+and processing power to handle such problems.</p>
+<p>Local storage is used for several reasons. <em>First</em>, it may be cheaper
+than storing on a supercomputer. <em>Second</em>, the analyst might be able to
+do some local processing and preparation of the data before sending them
+to the supercomputer. Supercomputing time can be expensive. Where
+possible, local processing is used for tasks such as data entry,
+validation, and reporting. <em>Third</em>, local data storage might be deemed
+more secure for particularly sensitive data.</p>
+</div>
+<div id="personal-database" class="section level2 unnumbered">
+<h2>Personal database</h2>
+<p>People can store and process their data locally when they have their own
+computers. Many personal computer database systems (e.g., MS Access and
+FileMaker) permit people to develop their own applications, and many
+common desktop applications require local database facilities (e.g., a
+calendar).</p>
+<p>Of course, there is a downside to personal databases. <em>First<strong>,</strong></em> there
+is a great danger of repetition and redundancy. The same application
+might be developed in a slightly different way by many users. The same
+data get stored on many different systems. (It is not always the same,
+however, because data entry errors or maintenance inconsistencies result
+in discrepancies between personal databases.) <em>Second</em>, data are not
+readily shared because various users are not aware of what is available
+or find it inconvenient to share data. Personal databases are exactly
+that; but much of the data may be of corporate value and should be
+shared. <em>Third</em>, data integrity procedures are often quite lax for
+personal databases. People might not make regular backups, databases are
+often not secured from unauthorized access, and data validation
+procedures are often ignored. <em>Fourth</em>, often when the employee leaves
+the organization or moves to another role, the application and data are
+lost because they are not documented and the organization is unaware of
+their existence. <em>Fifth</em>, most personal databases are poorly designed
+and, in many cases, people use a spreadsheet as a poor substitute for a
+database. Personal databases are clearly very important for many
+organizations—when used appropriately. Data that are shared require a
+different processing architecture.</p>
+</div>
+<div id="clientserver" class="section level2 unnumbered">
+<h2>Client/server</h2>
+<p>The client/server architecture, in which multiple computers interact in
+a superior and subordinate mode, is the dominant architecture these
+days. A client process initiates a request and a server responds. The
+client is the dominant partner because it initiates the request to which
+the server responds. Client and server processes can run on the same
+computer, but generally they run on separate, linked computers. In the
+three-tier client/server model, the application and database are on
+separate servers.</p>
+<p>A generic client/server architecture consists of several key components.
+It usually includes a mix of operating systems, data communications
+managers (usually abbreviated to DC manager), applications, clients
+(e.g., browser), and database management systems. The DC manager handles
+the transfer of data between clients and servers.</p>
+<p><em>Three-tier client/server computing</em></p>
+<p><img src="Figures/Chapter%2021/three-tier-computing.png" /></p>
+<p>The three-tier model consists of three types of systems:</p>
+<ul>
+<li><p><strong>Clients</strong> perform presentation functions, manage the graphical
+user interface (GUI), and execute communication software that
+provides network access. In most cases, the client is an Internet
+browser, though sometimes there might be a special program, a thin
+client, running on the client machine.</p></li>
+<li><p><strong>Application servers</strong> are where the majority of the business and
+data logic are processed. They process commands sent by clients.</p></li>
+<li><p><strong>Data servers</strong> run a DBMS. They respond to requests from an
+application, in which case the application is a client. They will
+also typically provide backup and recovery services and transaction
+management control.</p></li>
+</ul>
+<p>Under the three-tier model, the client requests a service from an
+application server, and the application server requests data from a data
+server. The computing environment is a complex array of clients,
+application servers, and data servers. An organization can spread its
+processing load across many servers. This enables it to scale up the
+data processing workload more easily. For example, if a server running
+several applications is overloaded, another server can be purchased and
+some of the workload moved to the new server.</p>
+<p>The client/server concept has evolved to describe a widely distributed,
+data-rich, cooperative environment. This is known as the n-tier
+client/server environment, which can consist of collections of servers
+dedicated to applications, data, transaction management, systems
+management, and other tasks. It extends the database side to incorporate
+nonrelational systems, such as multidimensional databases, multimedia
+databases, and legacy systems.</p>
+<p><em>Evolution of client/server computing</em></p>
+<table style="width:99%;">
+<colgroup>
+<col width="9%" />
+<col width="88%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Arch
+itec
+ture</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Two-
+tier</td>
+<td align="left">Processing is split between client and server, which also
+runs the DBMS.</td>
+</tr>
+<tr class="even">
+<td align="left">Th
+ree-
+tier</td>
+<td align="left">Client does presentation, processing is done by the server,
+and the DBMS is on a separate server.</td>
+</tr>
+<tr class="odd">
+<td align="left">N-
+tier</td>
+<td align="left">Client does presentation. Processing and DBMS can be spread
+across multiple servers. This is a distributed resources
+environment.</td>
+</tr>
+</tbody>
+</table>
+<p>The rise of n-tier client/server can be attributed to the benefits of
+adopting a component-based architecture. The goal is to build quickly
+scalable systems by plugging together existing components. On the client
+side, the Web browser is a readily available component that makes
+deployment of new systems very simple. When everyone in the corporation
+has a browser installed on their personal computer, rolling out a new
+application is just a case of e-mailing the URL to the people concerned.
+Furthermore, the flexibility of the client/server model means that
+smartphones and tablets can easily be incorporated into the system.
+Thus, the client can be an app on an iPad.</p>
+<p>On the data server side, many data management systems already exist,
+either in relational format or some other data model. Middle-tier server
+applications can make these data available to customers through a Web
+client. For example, UPS was able to make its parcel tracking system
+available via the Web, tablet, or smartphone because the database
+already existed. A middle-tier was written to connect customers using a
+range of devices to the database.</p>
+<blockquote>
+<p>❓<em>Skill builder</em> A European city plans to establish a fleet of
+two-person hybrid cars that can be rented for short periods (e.g.,
+less than a day) for one-way trips. Potential renters first register
+online and then receive via the postal system a smart card that is
+used to gain entry to the car and pay automatically for its rental.
+The city also plans to have an online reservation system that renters
+can use to find the nearest car and reserve it. Reservations can be
+held for up to 30 minutes, after which time the car is released for
+use by other renters. Discuss the data processing architecture that
+you would recommend to support this venture. What technology would you
+need to install in each car? What technology would renters need? What
+features would the smart card require? Are there alternatives to a
+smart card?</p>
+</blockquote>
+</div>
+<div id="cloud-computing" class="section level2 unnumbered">
+<h2>Cloud computing</h2>
+<p>With the development of client/server computing, many organizations
+created data centers to contain the host of servers they needed to meet
+their information processing requirements. These so-called server farms
+can run to tens of thousands of servers. Because of security concerns,
+many firms are unwilling to reveal the location and size of their server
+farms. Google is reputed to have hundreds of thousands of servers. Many
+corporations run much smaller, but still significantly costly, data
+centers. Do they really need to run these centers?</p>
+<p>The goal of the corporate IS unit should be to create and deploy systems
+that meet the operational needs of the business or give it a competitive
+advantage. It can gain little advantage from managing a data center. As
+a result, some organizations have turned to cloud computing, which is
+the use of shared hardware and software, to meet their processing needs.
+Instead of storing data and running applications on the corporate data
+center, applications and data are shifted to a third party data center,
+the cloud, which is accessed via the Internet. Companies can select from
+among several cloud providers. For example, it might run office
+applications (word processing, spreadsheet, etc.) on the Google cloud,
+and customer relationship management on Amazon’s cloud.</p>
+<p>There are usually economies of scale from switching from an in-house
+data center to the massive shared resources of a cloud provider, which
+lowers the cost of information processing. As well, the IS unit can turn
+its attention to the systems needs of the organization, without the
+distraction of managing a data center.</p>
+<p>Cloud computing vendors specialize in managing large-scale data centers.
+As a result, they can lower costs in some areas that might be infeasible
+for the typical corporation. For example, it is much cheaper to move
+photons through fiber optics than electrons across the electricity
+grid.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> This means that some cloud server farms are located where
+energy costs are low and minimal cooling is required. Iceland and parts
+of Canada are good locations for server farms because of inexpensive
+hydroelectric power and a cool climate. Information can be moved to and
+fro on a fiber optic network to be processed at a cloud site and then
+presented on the customer’s computer.</p>
+<p>Cloud computing can be more than a way to save some data center
+management costs. It has several features, or capabilities, that have
+strategic implications.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> We start by looking at the levels or layers
+of clouds.</p>
+<p><em>Cloud layers</em></p>
+<table style="width:99%;">
+<colgroup>
+<col width="15%" />
+<col width="59%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Layer</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Infras
+tructure</td>
+<td align="left">A virtual server over which the
+developer has complete control</td>
+<td align="left">Amazon Elastic
+Compute Cloud
+(EC2)</td>
+</tr>
+<tr class="even">
+<td align="left">Platform
+as a
+service</td>
+<td align="left">A developer can build a new application
+with the provided tools and programming
+language</td>
+<td align="left">Salesforce.com</td>
+</tr>
+<tr class="odd">
+<td align="left">App
+lication</td>
+<td align="left">Access to cloud applications</td>
+<td align="left">Google docs</td>
+</tr>
+<tr class="even">
+<td align="left">Colla
+boration</td>
+<td align="left">A special case of an application cloud</td>
+<td align="left">Facebook</td>
+</tr>
+<tr class="odd">
+<td align="left">Service</td>
+<td align="left">Consulting and integration services</td>
+<td align="left">Appirio</td>
+</tr>
+</tbody>
+</table>
+<p>As the preceding table illustrates, there a several options for the
+cloud customer. Someone looking to replace an office package installed
+on each personal computer could select an offering in the Application
+layer. A CIO looking to have complete control over a new application
+being developed from scratch could look to the infrastructure cloud,
+which also has the potential for high scalability.</p>
+<p>Ownership is another way of looking at cloud offerings.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p><em>Cloud ownership</em></p>
+<table>
+<colgroup>
+<col width="8%" />
+<col width="91%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Public</td>
+<td align="left">A cloud provided to the general public by its owner</td>
+</tr>
+<tr class="even">
+<td align="left">Private</td>
+<td align="left">A cloud restricted to an organization. It has many of the same capabilities as a public cloud but provides greater control.</td>
+</tr>
+<tr class="odd">
+<td align="left">Community</td>
+<td align="left">A cloud shared by several organizations to support a community project</td>
+</tr>
+<tr class="even">
+<td align="left">Hybrid</td>
+<td align="left">Multiple distinct clouds sharing a standardized or proprietary technology that enables data and application portability</td>
+</tr>
+</tbody>
+</table>
+<div id="cloud-capabilities" class="section level3 unnumbered">
+<h3>Cloud capabilities</h3>
+<p>Understanding the strategic implications of cloud computing is of more
+interest than the layers and types because a cloud’s seven capabilities
+offer opportunities to address the five strategic challenges facing all
+organizations.</p>
+<div id="interface-control" class="section level4 unnumbered">
+<h4>Interface control</h4>
+<p>Some cloud vendors provide their customers with an opportunity to shape
+the form of interaction with the cloud. Under <em>open co-innovation</em>, a
+cloud vendor has a very open and community-driven approach to services.
+Customers and the vendor work together to determine the roadmap for
+future services. Amazon follows this approach. The <em>qualified retail</em>
+model requires developers to acquire permission and be certified before
+releasing any new application on the vendor’s platform. This is the
+model Apple uses with its iTunes application store. <em>Qualified
+co-innovation</em> involves the community in the creation and maintenance of
+application programming interfaces (APIs). Third parties using the APIs,
+however, must be certified before they can be listed in the vendor’s
+application store. This is the model salesforce.com uses. Finally, we
+have the <em>open retail</em> model. Application developers have some influence
+on APIs and new features, and they are completely free to write any
+program on top of the system. This model is favored by Microsoft.</p>
+</div>
+<div id="location-independence" class="section level4 unnumbered">
+<h4>Location independence</h4>
+<p>This capability means that data and applications can be accessed, with
+appropriate permission, without needing to know the location of the
+resources. This capability is particularly useful for serving customers
+and employees across a wide variety of regions. There are some
+challenges to location independence. Some countries restrict where data
+about their citizens can be stored and who can access it.</p>
+</div>
+<div id="ubiquitous-access" class="section level4 unnumbered">
+<h4>Ubiquitous access</h4>
+<p>Ubiquity means that customers and employees can access any information
+service from any platform or device via a Web browser from anywhere.
+Some clouds are not accessible in all parts of the globe at this stage
+because of the lack of connectivity, sufficient bandwidth, or local
+restrictions on cloud computing services.</p>
+</div>
+<div id="sourcing-independence" class="section level4 unnumbered">
+<h4>Sourcing independence</h4>
+<p>One of the attractions of cloud computing is that computing processing
+power becomes a utility. As a result, a company could change cloud
+vendors easily at low cost. It is a goal rather than a reality at this
+stage of cloud development.</p>
+</div>
+<div id="virtual-business-environments" class="section level4 unnumbered">
+<h4>Virtual business environments</h4>
+<p>Under cloud computing, some special needs systems can be built quickly
+and later abandoned. For example, in 2009 the U.S. Government had a
+<em>Cash for Clunkers</em> program that ran for a few months to encourage
+people to trade-in their old car for a more fuel-efficient new car. This
+short-lived system whose processing needs are hard to estimate is well
+suited to a cloud environment. No resources need to be acquired, and
+processing power can be obtained as required.</p>
+</div>
+<div id="addressability-and-traceability" class="section level4 unnumbered">
+<h4>Addressability and traceability</h4>
+<p>Traceability enables a company to track customers and employees who use
+an information service. Depending on the device accessing an information
+service, a company might be able to precisely identify the person and
+the location of the request. This is particularly the case with
+smartphones or tablets that have a GPS capability.</p>
+</div>
+<div id="rapid-elasticity" class="section level4 unnumbered">
+<h4>Rapid elasticity</h4>
+<p>Organizations cannot always judge exactly their processing needs,
+especially for new systems, such as the previously mentioned <em>Cash for
+Clunkers</em> program. Ideally, an organization should be able to pull on a
+pool of computer processing resources that it can scale up and down as
+required. It is often easier to scale up than down, as this is in the
+interests of the cloud vendor.</p>
+</div>
+</div>
+<div id="strategic-risk" class="section level3 unnumbered">
+<h3>Strategic risk</h3>
+<p>Every firm faces five strategic risks: demand, innovation, inefficiency,
+scaling, and control risk.</p>
+<p><em>Strategic risks</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Risk</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Demand</td>
+<td align="left">Fluctuating demand or market collapse</td>
+</tr>
+<tr class="even">
+<td align="left">Inefficiency</td>
+<td align="left">Inability to match competitors’ unit costs</td>
+</tr>
+<tr class="odd">
+<td align="left">Innovation</td>
+<td align="left">Not innovating as well as competitors</td>
+</tr>
+<tr class="even">
+<td align="left">Scaling</td>
+<td align="left">Not scaling fast and efficiently enough to meet market growth</td>
+</tr>
+<tr class="odd">
+<td align="left">Control</td>
+<td align="left">Inadequate procedures for acquiring or managing resources</td>
+</tr>
+</tbody>
+</table>
+<p>We now consider how the various capabilities of cloud computing are
+related to these risks which are summarized in a table following the
+discussion of each risk.</p>
+<div id="demand-risk" class="section level4 unnumbered">
+<h4>Demand risk</h4>
+<p>Most companies are concerned about loss of demand, and make extensive
+use of marketing techniques (e.g., advertising) to maintain and grow
+demand. Cloud computing can boost demand by enabling customers to access
+a service wherever they might be. For example, Amazon combines
+ubiquitous access to its cloud and the Kindle, its book reader, to
+permit customers to download and start reading a book wherever they have
+access. Addressability and traceability enable a business to learn about
+customers and their needs. By mining the data collected by cloud
+applications, a firm can learn the connections between the when, where,
+and what of customers’ wants. In the case of excessive demand, the
+elasticity of cloud resources might help a company to serve higher than
+expected demand.</p>
+</div>
+<div id="inefficiency-risk" class="section level4 unnumbered">
+<h4>Inefficiency risk</h4>
+<p>If a firm’s cost structure is higher than its competitors, its profit
+margin will be less, and it will have less money to invest in new
+products and services. Cloud computing offers several opportunities to
+reduce cost. First, location independence means it can use a cloud to
+provide many services to customers across a large geographic region
+through a single electronic service facility. Second, sourcing
+independence should result in a competitive market for processing power.
+Cloud providers compete in a way that a corporate data center does not,
+and competition typically drives down costs. Third, the ability to
+quickly create and test new applications with minimal investment in
+resources avoids many of the costs of procurement, installation, and the
+danger of obsolete hardware and software. Finally, ubiquitous access
+means employees can work from a wide variety of locations. For example,
+ubiquity enables some to work conveniently and productively from home or
+on the road, and thus the organization needs smaller and fewer
+buildings.</p>
+</div>
+<div id="innovation-risk" class="section level4 unnumbered">
+<h4>Innovation risk</h4>
+<p>In most industries, enterprises need to continually introduce new
+products and services. Even in quite stable industries with simple
+products (e.g., coal mining), process innovation is often important for
+lowering costs and delivering high quality products. The ability to
+modify a cloud’s interface could be of relevance to innovation. Apple’s
+App store restrictions might push some to Android’s more open model. As
+mentioned in the previous section, the capability to put up and tear
+down a virtual business environment quickly favors innovation because
+the costs of experimenting are low. Ubiquitous access makes it easier to
+engage customers and employees in product improvement. Customers use a
+firm’s products every day, and some reinvent them or use them in ways
+the firm never anticipated. A firm that learns of these unintended uses
+might identify new markets and new features that will extend sales.
+Addressability and traceability also enhance a firm’s ability to learn
+about how, when, and where customers use electronic services and network
+connected devices. Learning is the first step of innovation.</p>
+</div>
+<div id="scaling-risk" class="section level4 unnumbered">
+<h4>Scaling risk</h4>
+<p>Sometimes a new product will takeoff, and a company will struggle to
+meet unexpectedly high demand. If it can’t satisfy the market,
+competitors will move in and capture the sales that the innovator was
+unable to satisfy. In this case of digital products, a firm can use the
+cloud’s elasticity to quickly acquire new storage and processing
+resources. It might also take advantage of sourcing independence to use
+multiple clouds, another form of elasticity, to meet burgeoning demand.</p>
+</div>
+<div id="control-risk" class="section level4 unnumbered">
+<h4>Control risk</h4>
+<p>The 2008 recession clearly demonstrated the risk of inadequate controls.
+In some cases, an organization acquired financial resources whose value
+was uncertain. In others, companies lost track of what they owned
+because of the complexity of financial instruments and the multiple
+transactions involving them. A system’s interface is a point of data
+capture, and a well-designed interface is a control mechanism. Although
+it is usually not effective at identifying falsified data, it can
+require that certain elements of data are entered. Addressability and
+traceability also means that the system can record who entered the data,
+from which device, and when.</p>
+<p><em>Cloud capabilities and strategic risks</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Risk/Capability</th>
+<th align="left">Demand</th>
+<th align="left">Inefficiency</th>
+<th align="left">Innovation</th>
+<th align="left">Scaling</th>
+<th align="left">Control</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Interface control</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">✔</td>
+<td align="left"></td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Location independence</td>
+<td align="left"></td>
+<td align="left">✔</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Sourcing independence</td>
+<td align="left"></td>
+<td align="left">✔</td>
+<td align="left"></td>
+<td align="left">✔</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Virtual business environment</td>
+<td align="left"></td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Ubiquitous access</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Addressability and traceability</td>
+<td align="left">✔</td>
+<td align="left"></td>
+<td align="left">✔</td>
+<td align="left"></td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Rapid elasticity</td>
+<td align="left">✔</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">✔</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Most people think of cloud computing as an opportunity to lower costs by
+shifting processing from the corporate data center to a third party.
+More imaginative thinkers will see cloud computing as an opportunity to
+gain a competitive advantage.</p>
+</div>
+</div>
+</div>
+<div id="distributed-database" class="section level2 unnumbered">
+<h2>Distributed database</h2>
+<p>The client/server architecture is concerned with minimizing processing
+costs by distributing processing between multiple clients and servers.
+Another factor in the total processing cost equation is communication.
+The cost of transmitting data usually increases with distance, and there
+can be substantial savings by locating a database close to those most
+likely to use it. The trade-off for a distributed database is lowered
+communication costs versus increased complexity. While the Internet and
+fiber optics have lowered the costs of communication, for a globally
+distributed organization data transmission costs can still be an issue
+because many countries still lack the bandwidth found in advanced
+economies.</p>
+<p>Distributed database architecture describes the situation where a
+database is in more than one location but still accessible as if it were
+centrally located. For example, a multinational organization might
+locate its Indonesian data in Jakarta, its Japanese data in Tokyo, and
+its Australian data in Sydney. If most queries deal with the local
+situation, communication costs are substantially lower than if the
+database were centrally located. Furthermore, since the database is
+still treated as one logical entity, queries that require access to
+different physical locations can be processed. For example, the query
+“Find total sales of red hats in Australia” is likely to originate in
+Australia and be processed using the Sydney part of the database. A
+query of the form “Find total sales of red hats” is more likely to come
+from a headquarters’ user and is resolved by accessing each of the local
+databases, though the user need not be aware of where the data are
+stored because the database appears as a single logical entity.</p>
+<p>A distributed database management system (DDBMS) is a federation of
+individual DBMSs. Each site has a local DBMS and DC manager. In many
+respects, each site acts semi-independently. Each site also contains
+additional software that enables it to be part of the federation and act
+as a single database. It is this additional software that creates the
+DDBMS and enables the multiple databases to appear as one.</p>
+<p>A DDBMS introduces a need for a data store containing details of the
+entire system. Information must be kept about the structure and location
+of every database, table, row, and column and their possible replicas.
+The system catalog is extended to include such information. The system
+catalog must also be distributed; otherwise, every request for
+information would have to be routed through some central point. For
+instance, if the systems catalog were stored in Tokyo, a query on Sydney
+data would first have to access the Tokyo-based catalog. This would
+create a bottleneck.</p>
+<div id="a-hybrid-distributed-architecture" class="section level3 unnumbered">
+<h3>A hybrid, distributed architecture</h3>
+<p>Any organization of a reasonable size is likely to have a mix of the
+data processing architectures. Databases will exist on stand-alone
+personal computers, multiple client/server networks, distributed
+mainframes, clouds, and so on. Architectures continue to evolve because
+information technology is dynamic. Today’s best solutions for data
+processing can become obsolete very quickly. Yet, organizations have
+invested large sums in existing systems that meet their current needs
+and do not warrant replacement. As a result, organizations evolve a
+hybrid architecture—a mix of the various forms. The concern of the IS
+unit is how to patch this hybrid together so that clients see it as a
+seamless system that readily provides needed information. In creating
+this ideal system, there are some underlying key concepts that should be
+observed. These fundamental principles were initially stated in terms of
+a distributed database. However, they can be considered to apply broadly
+to the evolving, hybrid architecture that organizations must continually
+fashion.</p>
+<p><em>The fundamental principles of a hybrid architecture</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Principle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Transparency</td>
+</tr>
+<tr class="even">
+<td align="left">No reliance on a central site</td>
+</tr>
+<tr class="odd">
+<td align="left">Local autonomy</td>
+</tr>
+<tr class="even">
+<td align="left">Continuous operation</td>
+</tr>
+<tr class="odd">
+<td align="left">Distributed query processing</td>
+</tr>
+<tr class="even">
+<td align="left">Distributed transaction processing</td>
+</tr>
+<tr class="odd">
+<td align="left">Fragmentation independence</td>
+</tr>
+<tr class="even">
+<td align="left">Replication independence</td>
+</tr>
+<tr class="odd">
+<td align="left">Hardware independence</td>
+</tr>
+<tr class="even">
+<td align="left">Operating system independence</td>
+</tr>
+<tr class="odd">
+<td align="left">Network independence</td>
+</tr>
+<tr class="even">
+<td align="left">DBMS independence</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="transparency" class="section level3 unnumbered">
+<h3>Transparency</h3>
+<p>The user should not have to know where data are stored nor how they are
+processed. The location of data, its storage format, and access method
+should be invisible to the client. The system should accept queries and
+resolve them expeditiously. Of course, the system should check that the
+person is authorized to access the requested data. Transparency is also
+known as <strong>location independence</strong>—the system can be used
+independently of the location of data.</p>
+</div>
+<div id="no-reliance-on-a-central-site" class="section level3 unnumbered">
+<h3>No reliance on a central site</h3>
+<p>Reliance on a central site for management of a hybrid architecture
+creates two major problems. <em>First</em>, because all requests are routed
+through the central site, bottlenecks develop during peak periods.
+<em>Second</em>, if the central site fails, the entire system fails. A
+controlling central site is too vulnerable, and control should be
+distributed throughout the system.</p>
+</div>
+<div id="local-autonomy" class="section level3 unnumbered">
+<h3>Local autonomy</h3>
+<p>A high degree of local autonomy avoids dependence on a central site.
+Data are locally owned and managed. The local site is responsible for
+the security, integrity, and storage of local data. There cannot be
+absolute local autonomy because the various sites must cooperate in
+order for transparency to be feasible. Cooperation always requires
+relinquishing some autonomy.</p>
+</div>
+<div id="continuous-operation" class="section level3 unnumbered">
+<h3>Continuous operation</h3>
+<p>The system must be accessible when required. Since business is
+increasingly global and clients are geographically dispersed, the system
+must be continuously available. Many data centers now describe their
+operations as “24/7” (24 hours a day and 7 days a week). Clouds must
+operate continuously.</p>
+</div>
+<div id="distributed-query-processing" class="section level3 unnumbered">
+<h3>Distributed query processing</h3>
+<p>The time taken to execute a query should be generally independent of the
+location from which it is submitted. Deciding the most efficient way to
+process the query is the system’s responsibility, not the client’s. For
+example, a Sydney analyst could submit the query, “Find sales of winter
+coats in Japan.” The system is responsible for deciding which messages
+and data to send between the various sites where tables are located.</p>
+</div>
+<div id="distributed-transaction-processing" class="section level3 unnumbered">
+<h3>Distributed transaction processing</h3>
+<p>In a hybrid system, a single transaction can require updating of
+multiple files at multiple sites. The system must ensure that a
+transaction is successfully executed for all sites. Partial updating of
+files will cause inconsistencies.</p>
+</div>
+<div id="fragmentation-independence" class="section level3 unnumbered">
+<h3>Fragmentation independence</h3>
+<p>Fragmentation independence means that any table can be broken into
+fragments and then stored in separate physical locations. For example,
+the sales table could be fragmented so that Indonesian data are stored
+in Jakarta, Japanese data in Tokyo, and so on. A fragment is any piece
+of a table that can be created by applying restriction and projection
+operations. Using join and union, fragments can be assembled to create
+the full table. Fragmentation is the key to a distributed database.
+Without fragmentation independence, data cannot be distributed.</p>
+</div>
+<div id="replication-independence" class="section level3 unnumbered">
+<h3>Replication independence</h3>
+<p>Fragmentation is good when local data are mainly processed locally, but
+there are some applications that also frequently process remote data.
+For example, the New York office of an international airline may need
+both American (local) and European (remote) data, and its London office
+may need American (remote) and European (local) data. In this case,
+fragmentation into American and European data may not substantially
+reduce communication costs.</p>
+<p>Replication means that a fragment of data can be copied and physically
+stored at multiple sites; thus the European fragment could be replicated
+and stored in New York, and the American fragment replicated and stored
+in London. As a result, applications in both New York and London will
+reduce their communication costs. Of course, the trade-off is that when
+a replicated fragment is updated, all copies also must be updated.
+Reduced communication costs are exchanged for increased update
+complexity.</p>
+<p>Replication independence implies that replication happens behind the
+scenes. The client is oblivious to replication and requires no knowledge
+of this activity.</p>
+<p>There are two major approaches to replication: synchronous or
+asynchronous updates. <strong>Synchronous replication</strong> means all databases
+are updated at the same time. Although this is ideal, it is not a simple
+task and is resource intensive. <strong>Asynchronous replication</strong> occurs when
+changes made to one database are relayed to other databases within a
+certain period established by the database administrator. It does not
+provide real-time updating, but it takes fewer IS resources.
+Asynchronous replication is a compromise strategy for distributed DBMS
+replication. When real-time updating is not absolutely necessary,
+asynchronous replication can save IS resources.</p>
+</div>
+<div id="hardware-independence" class="section level3 unnumbered">
+<h3>Hardware independence</h3>
+<p>A hybrid architecture should support hardware from multiple suppliers
+without affecting the users’ capacity to query files. Hardware
+independence is a long-term goal of many IS managers. With
+virtualization, under which a computer can run another operating system,
+hardware independence has become less of an issue. For example, a
+Macintosh can run OS X (the native system), a variety of Windows
+operating systems, and many variations of Linux.</p>
+</div>
+<div id="operating-system-independence" class="section level3 unnumbered">
+<h3>Operating system independence</h3>
+<p>Operating system independence is another goal much sought after by IS
+executives. Ideally, the various DBMSs and applications of the hybrid
+system should work on a range of operating systems on a variety of
+hardware. Browser-based systems are a way of providing operating system
+independence.</p>
+</div>
+<div id="network-independence" class="section level3 unnumbered">
+<h3>Network independence</h3>
+<p>Clearly, network independence is desired by organizations that wish to
+avoid the electronic shackles of being committed to any single hardware
+or software supplier.</p>
+</div>
+<div id="dbms-independence" class="section level3 unnumbered">
+<h3>DBMS independence</h3>
+<p>The drive for independence is contagious and has been caught by the DBMS
+as well. Since SQL is a standard for relational databases, organizations
+may well be able to achieve DBMS independence. By settling on the
+relational model as the organizational standard, ensuring that all DBMSs
+installed conform to this model, and using only standard SQL, an
+organization may approach DBMS independence. Nevertheless, do not forget
+all those old systems from the pre-relational days—a legacy that must
+be supported in a hybrid architecture.</p>
+<p>Organizations can gain considerable DBMS independence by using Open
+Database Connectivity (ODBC) technology, which was covered earlier in
+the chapter on SQL. An application that uses the ODBC interface can
+access any ODBC-compliant DBMS. In a distributed environment, such as an
+n-tier client/server, ODBC enables application servers to access a
+variety of vendors’ databases on different data servers.</p>
+</div>
+<div id="conclusionparadise-postponed" class="section level3 unnumbered">
+<h3>Conclusion—paradise postponed</h3>
+<p>For data managers, the 12 principles just outlined are ideal goals. In
+the hurly-burly of everyday business, incomplete information, and an
+uncertain future, data managers struggle valiantly to meet clients’
+needs with a hybrid architecture that is an imperfect interpretation of
+IS paradise. It is unlikely that these principles will ever be totally
+achieved. They are guidelines and something to reflect on when making
+the inevitable trade-offs that occur in data management.</p>
+<p>Now that you understand the general goals of a distributed database
+architecture, we will consider the major aspects of the enabling
+technology. First, we will look at distributed data access methods and
+then distributed database design. In keeping with our focus on the
+relational model, illustrative SQL examples are used.</p>
+</div>
+</div>
+<div id="distributed-data-access" class="section level2 unnumbered">
+<h2>Distributed data access</h2>
+<p>When data are distributed across multiple locations, the data management
+logic must be adapted to recognize multiple locations. The various types
+of distributed data access methods are considered, and an example is
+used to illustrate the differences between the methods.</p>
+<div id="remote-request" class="section level3 unnumbered">
+<h3>Remote request</h3>
+<p>A remote request occurs when an application issues a single data request
+to a single remote site. Consider the case of a branch bank requesting
+data for a specific customer from the bank’s central server located in
+Atlanta. The SQL command specifies the name of the server (<code>atlserver</code>),
+the database (<code>bankdb</code>), and the name of the table (<code>customer</code>).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> atlserver.bankdb.customer</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> custcode <span class="op">=</span> <span class="dv">12345</span>;</span></code></pre></div>
+<p>A remote request can extract a table from the database for processing on
+the local database. For example, the Athens branch may download balance
+details of customers at the beginning of each day and handle queries
+locally rather than issuing a remote request. The SQL is</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> custcode, custbalance <span class="kw">FROM</span> atlserver.bankdb.customer</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> custbranch <span class="op">=</span> <span class="st">&#39;Athens&#39;</span>;</span></code></pre></div>
+</div>
+<div id="remote-transaction" class="section level3 unnumbered">
+<h3>Remote transaction</h3>
+<p>Multiple data requests are often necessary to execute a complete
+business transaction. For example, to add a new customer account might
+require inserting a row in two tables: one row for the account and
+another row in the table relating a customer to the new account. A
+remote transaction contains multiple data requests for a single remote
+location. The following example illustrates how a branch bank creates a
+new customer account on the central server:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">BEGIN</span> <span class="kw">WORK</span>;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> atlserver.bankdb.<span class="kw">account</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    (accnum, acctype)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">VALUES</span> (<span class="dv">789</span>, <span class="st">&#39;C&#39;</span>);</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> atlserver.bankdb.cust_acct</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    (custnum, accnum)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">VALUES</span> (<span class="dv">123</span>, <span class="dv">789</span>);</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">COMMIT</span> <span class="kw">WORK</span>;</span></code></pre></div>
+<p>The commands BEGIN WORK and COMMIT WORK surround the SQL commands
+necessary to complete the transaction. The transaction is successful
+only if both SQL statements are successfully executed. If one of the SQL
+statements fails, the entire transaction fails.</p>
+</div>
+<div id="distributed-transaction" class="section level3 unnumbered">
+<h3>Distributed transaction</h3>
+<p>A distributed transaction supports multiple data requests for data at
+multiple locations. Each request is for data on a single server. Support
+for distributed transactions permits a client to access tables on
+different servers.</p>
+<p>Consider the case of a bank that operates in the United States and
+Norway and keeps details of employees on a server in the country in
+which they reside. The following example illustrates a revision of the
+database to record details of an employee who moves from the United
+States to Norway. The transaction copies the data for the employee from
+the Atlanta server to the Oslo server and then deletes the entry for
+that employee on the Atlanta server.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">BEGIN</span> <span class="kw">WORK</span>;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> osloserver.bankdb.employee</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    (empcode, emplname, …)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> empcode, emplname, …</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FROM</span> atlserver.bankdb.employee</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">WHERE</span> empcode <span class="op">=</span> <span class="dv">123</span>;</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> atlserver.bankdb.employee</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> empcode <span class="op">=</span> <span class="dv">123</span>;</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">COMMIT</span> <span class="kw">WORK</span>;</span></code></pre></div>
+<p>As in the case of the remote transaction, the transaction is successful
+only if both SQL statements are successfully executed.</p>
+</div>
+<div id="distributed-request" class="section level3 unnumbered">
+<h3>Distributed request</h3>
+<p>A distributed request is the most complicated form of distributed data
+access. It supports processing of multiple requests at multiple sites,
+and each request can access data on multiple sites. This means that a
+distributed request can handle data replicated or fragmented across
+multiple servers.</p>
+<p>Let’s assume the bank has had a good year and decided to give all
+employees a 15 percent bonus based on their annual salary and add USD
+1,000 or NOK 7,500 to their retirement account, depending on whether the
+employee is based in the United States or Norway.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">BEGIN</span> <span class="kw">WORK</span>;</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">VIEW</span> temp </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    (empcode, empfname, emplname, empsalary)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">AS</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> empcode, empfname, emplname, empsalary</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FROM</span> atlserver.bankdb.employee</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">UNION</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> empcode, empfname, emplname, empsalary</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FROM</span> osloserver.bankdb.employee;</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> empcode, empfname, emplname, empsalary<span class="op">*</span>.<span class="dv">15</span> <span class="kw">AS</span> bonus</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FROM</span> temp;</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="kw">UPDATE</span> atlserver.bankdb.employee</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SET</span> empusdretfund <span class="op">=</span> empusdretfund <span class="op">+</span> <span class="dv">1000</span>;</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="kw">UPDATE</span> osloserver.bankdb.employee</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SET</span> empkrnretfund <span class="op">=</span> empkrnretfund <span class="op">+</span> <span class="dv">7500</span>;</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">COMMIT</span> <span class="kw">WORK</span>;</span></code></pre></div>
+<p>The transaction first creates a view containing all employees by a union
+on the employee tables for both locations. This view is then used to
+calculate the bonus. Two SQL update commands then update the respective
+retirement fund records of the U.S. and Norwegian employees. Notice that
+retirement funds are recorded in U.S. dollars or Norwegian kroner.</p>
+<p>Ideally, a distributed request should not require the application to
+know where data are physically located. A DDBMS should not require the
+application to specify the name of the server. So, for example, it
+should be possible to write the following SQL:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> empcode, empfname, emplname, empsalary<span class="op">*</span>.<span class="dv">15</span> <span class="kw">AS</span> bonus</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">FROM</span> bankdb.employee;</span></code></pre></div>
+<p>It is the responsibility of the DDBMS to determine where data are
+stored. In other words, the DDBMS is responsible for ensuring data
+location and fragmentation transparency.</p>
+</div>
+</div>
+<div id="distributed-database-design" class="section level2 unnumbered">
+<h2>Distributed database design</h2>
+<p>Designing a distributed database is a two-stage process. <em>First<strong>,</strong></em>
+develop a data model using the principles discussed in Section 2.
+<em>Second</em>, decide how data and processing will be distributed by applying
+the concepts of partitioning and replication. <strong>Partitioning</strong> is the
+fragmentation of tables across servers. Tables can be fragmented
+horizontally, vertically, or by some combination of both.
+<strong>Replication</strong> is the duplication of tables across servers.</p>
+<div id="horizontal-fragmentation" class="section level3 unnumbered">
+<h3>Horizontal fragmentation</h3>
+<p>A table is split into groups of rows when horizontally fragmented. For
+example, a firm may fragment its employee table into three because it
+has employees in Tokyo, Sydney, and Jakarta and store the fragment on
+the appropriate DBMS server for each city.</p>
+<p><em>Horizontal fragmentation</em></p>
+<p><img src="Figures/Chapter%2021/frag-horizontal.png" /></p>
+<p>Three separate employee tables would be defined. Each would have a
+different name (e.g., emp-syd) but exactly the same columns. To insert a
+new employee, the SQL code is</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">TABLE</span> emp_syd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> new_emp</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> emp_nation <span class="op">=</span> <span class="st">&#39;Australia&#39;</span>;</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">table</span> emp_tky</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> new_emp</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> emp_nation <span class="op">=</span> <span class="st">&#39;Japan&#39;</span>;</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">table</span> emp_jak</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> new_emp</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> emp_nation <span class="op">=</span> <span class="st">&#39;Indonesia&#39;</span>;</span></code></pre></div>
+</div>
+<div id="vertical-fragmentation" class="section level3 unnumbered">
+<h3>Vertical fragmentation</h3>
+<p>When vertically fragmented, a table is split into columns. For example,
+a firm may fragment its employee table vertically to spread the
+processing load across servers. There could be one server to handle
+address lookups and another to process payroll. In this case, the
+columns containing address information would be stored on one server and
+payroll columns on the other server. Notice that the primary key column
+(c1) must be stored on both servers; otherwise, the entity integrity
+rule is violated.</p>
+<p><em>Vertical fragmentation</em></p>
+<p><img src="Figures/Chapter%2021/frag-vertical.png" /></p>
+</div>
+<div id="hybrid-fragmentation" class="section level3 unnumbered">
+<h3>Hybrid fragmentation</h3>
+<p>Hybrid fragmentation is a mixture of horizontal and vertical. For
+example, the employee table could be first horizontally fragmented to
+distribute the data to where employees are located. Then, some of the
+horizontal fragments could be vertically fragmented to split processing
+across servers. Thus, if Tokyo is the corporate headquarters with many
+employees, the Tokyo horizontal fragment of the employee database could
+be vertically fragmented so that separate servers could handle address
+and payroll processing.</p>
+<p>Horizontal fragmentation distributes data and thus can be used to reduce
+communication costs by storing data where they are most likely to be
+needed. Vertical fragmentation is used to distribute data across servers
+so that the processing load can be distributed. Hybrid fragmentation can
+be used to distribute both data and applications across servers.</p>
+</div>
+<div id="replication" class="section level3 unnumbered">
+<h3>Replication</h3>
+<p>Under replication, tables can be fully or partly replicated. <strong>Full
+replication</strong> means that tables are duplicated at each of the sites. The
+advantages of full replication are greater data integrity (because
+replication is essentially mirroring) and faster processing (because it
+can be done locally). However, replication is expensive because of the
+need to synchronize inserts, updates, and deletes across the replicated
+tables. When one table is altered, all the replicas must also be
+modified. A compromise is to use <strong>partial replication</strong> by duplicating
+the indexes only. This will increase the speed of query processing. The
+index can be processed locally, and then the required rows retrieved
+from the remote database.</p>
+<blockquote>
+<p>❓<em>Skill builder</em> A company supplies pharmaceuticals to sheep and
+cattle stations in outback Australia. Its agents often visit remote
+areas and are usually out of reach of a mobile phone network. To
+advise station owners, what data management strategy would you
+recommend for the company?</p>
+</blockquote>
+</div>
+<div id="conclusion" class="section level3 unnumbered">
+<h3>Conclusion</h3>
+<p>The two fundamental skills of data management, data modeling and data
+querying, are not changed by the development of a distributed data
+architecture such as client/server and the adoption of cloud computing.
+Data modeling remains unchanged. A high-fidelity data model is required
+regardless of where data are stored and whichever architecture is
+selected. SQL can be used to query local, remote, and distributed
+databases. Indeed, the adoption of client/server technology has seen a
+widespread increase in the demand for SQL skills.</p>
+</div>
+</div>
+<div id="summary" class="section level2 unnumbered">
+<h2>Summary</h2>
+<p>Data can be stored and processed locally or remotely. Combinations of
+these two options provide the basic architecture options: remote job
+entry, personal database, and client/server. Many organizations are
+looking to cloud computing to reduce the processing costs and to allow
+them to focus on building systems. Cloud computing can also provide
+organizations with a competitive advantage if they exploit its seven
+capabilities to reduce one or more of the strategic risks.</p>
+<p>Under distributed database architecture, a database is in more than one
+location but still accessible as if it were centrally located. The
+trade-off is lowered communication costs versus increased complexity. A
+hybrid architecture is a mix of data processing architectures. The
+concern of the IS department is to patch this hybrid together so that
+clients see a seamless system that readily provides needed information.
+The fundamental principles that a hybrid architecture should satisfy are
+transparency, no reliance on a central site, local autonomy, continuous
+operation, distributed query processing, distributed transaction
+processing, fragmentation independence, replication independence,
+hardware independence, operating system independence, network
+independence, and DBMS independence.</p>
+<p>There are four types of distributed data access. In order of complexity,
+these are remote request, remote transaction, distributed transaction,
+and distributed request.</p>
+<p>Distributed database design is based on the principles of fragmentation
+and replication. Horizontal fragmentation splits a table by rows and
+reduces communication costs by placing data where they are likely to be
+required. Vertical fragmentation splits a table by columns and spreads
+the processing load across servers. Hybrid fragmentation is a
+combination of horizontal and vertical fragmentation. Replication is the
+duplication of identical tables at different sites. Partial replication
+involves the replication of indexes. Replication speeds up local
+processing at the cost of maintaining the replicas.</p>
+</div>
+<div id="key-terms-and-concepts" class="section level2 unnumbered">
+<h2>Key terms and concepts</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Application server</td>
+<td align="left">Hybrid architecture</td>
+</tr>
+<tr class="even">
+<td align="left">Client/server</td>
+<td align="left">Hybrid fragmentation</td>
+</tr>
+<tr class="odd">
+<td align="left">Cloud computing</td>
+<td align="left">Local autonomy</td>
+</tr>
+<tr class="even">
+<td align="left">Continuous operation</td>
+<td align="left">Mainframe</td>
+</tr>
+<tr class="odd">
+<td align="left">Data communications manager (DC)</td>
+<td align="left">N-tier architecture</td>
+</tr>
+<tr class="even">
+<td align="left">Data processing</td>
+<td align="left">Network independence</td>
+</tr>
+<tr class="odd">
+<td align="left">Data server</td>
+<td align="left">Personal database</td>
+</tr>
+<tr class="even">
+<td align="left">Data storage</td>
+<td align="left">Remote job entry</td>
+</tr>
+<tr class="odd">
+<td align="left">Database architecture</td>
+<td align="left">Remote request</td>
+</tr>
+<tr class="even">
+<td align="left">Database management system (DBMS)</td>
+<td align="left">Remote transaction</td>
+</tr>
+<tr class="odd">
+<td align="left">DBMS independence</td>
+<td align="left">Replication</td>
+</tr>
+<tr class="even">
+<td align="left">DBMS server</td>
+<td align="left">Replication independence</td>
+</tr>
+<tr class="odd">
+<td align="left">Distributed data access</td>
+<td align="left">Server</td>
+</tr>
+<tr class="even">
+<td align="left">Distributed database</td>
+<td align="left">Software independence</td>
+</tr>
+<tr class="odd">
+<td align="left">Distributed query processing</td>
+<td align="left">Strategic risk</td>
+</tr>
+<tr class="even">
+<td align="left">Distributed request</td>
+<td align="left">Supercomputer</td>
+</tr>
+<tr class="odd">
+<td align="left">Distributed transaction</td>
+<td align="left">Three-tier architecture</td>
+</tr>
+<tr class="even">
+<td align="left">Distributed transaction processing</td>
+<td align="left">Transaction processing monitor</td>
+</tr>
+<tr class="odd">
+<td align="left">Fragmentation independence</td>
+<td align="left">Transparency</td>
+</tr>
+<tr class="even">
+<td align="left">Hardware independence</td>
+<td align="left">Two-tier architecture</td>
+</tr>
+<tr class="odd">
+<td align="left">Horizontal fragmentation</td>
+<td align="left">Vertical fragmentation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="references-and-additional-readings" class="section level2 unnumbered">
+<h2>References and additional readings</h2>
+<p>Child, J. (1987). Information technology, organizations, and the
+response to strategic challenges. <em>California Management Review, 30</em>(1),
+33-50.</p>
+<p>Iyer, B., &amp; Henderson, J. C. (2010). Preparing for the future:
+understanding the seven capabilities of cloud computing. <em>MIS Executive,
+9</em>(2), 117-131.</p>
+<p>Watson, R. T., Wynn, D., &amp; Boudreau, M.-C. (2005). JBoss: The evolution
+of professional open source software. <em>MISQ Executive, 4</em>(3), 329-341.</p>
+</div>
+<div id="exercises" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>How does client/server differ from cloud computing?</p></li>
+<li><p>In what situations are you likely to use remote job entry?</p></li>
+<li><p>What are the disadvantages of personal databases?</p></li>
+<li><p>What is a firm likely to gain when it moves from a centralized to a
+distributed database? What are the potential costs?</p></li>
+<li><p>In terms of a hybrid architecture, what does transparency mean?</p></li>
+<li><p>In terms of a hybrid architecture, what does fragmentation
+independence mean?</p></li>
+<li><p>In terms of a hybrid architecture, what does DBMS independence mean?</p></li>
+<li><p>How does ODBC support a hybrid architecture?</p></li>
+<li><p>A university professor is about to develop a large simulation model
+for describing the global economy. The model uses data from 65
+countries to simulate alternative economic policies and their
+possible outcomes. In terms of volume, the data requirements are
+quite modest, but the mathematical model is very complex, and there
+are many equations that must be solved for each quarter the model is
+run. What data processing/data storage architecture would you
+recommend?</p></li>
+<li><p>A multinational company has operated relatively independent
+organizations in 15 countries. The new CEO wants greater
+coordination and believes that marketing, production, and purchasing
+should be globally managed. As a result, the corporate IS department
+must work with the separate national IS departments to integrate the
+various national applications and databases. What are the
+implications for the corporate data processing and database
+architecture? What are the key facts you would like to know before
+developing an integration plan? What problems do you anticipate?
+What is your intuitive feeling about the key features of the new
+architecture?</p></li>
+<li><p>A university wants to teach a specialized data management topic to
+its students every semester. It will take about two weeks to cover
+the topic, and during this period students will need access to a
+small high performance computing cluster on which the necessary
+software is installed. The software is Linux-based. Investigate
+three cloud computing offerings and make a recommendation as to
+which one the university should use.</p></li>
+</ol>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>The further electrons are moved, the more energy is lost. As much
+as a third of the initial energy generated can be lost during
+transmission across the grid before it gets to the final customer.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>This section is based on Iyer, B., &amp; Henderson, J. C. (2010).
+Preparing for the future: understanding the seven capabilities of
+cloud computing *MIS Executive*, 9(2), 117-131.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Mell, P., &amp; Grance, T. (2009). The NIST definition of cloud
+computing: National Institute of Standards and Technology.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/421-architectures.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["DataManagement.pdf", "DataManagement.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
