@@ -23,10 +23,10 @@ rmd_files: [
  # '317-textmining.Rmd',
  # '318-clustercomputing.Rmd',
  # '319-dashboards.Rmd',
- '400-section.Rmd',
- '420-datastrucandstor.Rmd',
- '421-architectures.Rmd',
- '422-sqljava.Rmd',
- '423-integrity.Rmd',
- '424-administration.Rmd'
+ # '400-section.Rmd',
+ # '420-datastrucandstor.Rmd',
+ # '421-architectures.Rmd',
+ # '422-sqljava.Rmd',
+ # '423-integrity.Rmd',
+ # '424-administration.Rmd'
 ]
