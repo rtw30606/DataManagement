@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Page not found | DataManagement.knit</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Page not found | DataManagement.knit" />
   <meta property="og:type" content="book" />
@@ -33,6 +33,7 @@
 
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -40,7 +41,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -135,54 +135,193 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Data Management: Databases and Organizations</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path=""><a href="#data-processing-architectures"><i class="fa fa-check"></i><b>1</b> Data Processing Architectures</a>
+<li class="chapter" data-level="" data-path="section-4-managing-organizational-memory.html"><a href="section-4-managing-organizational-memory.html"><i class="fa fa-check"></i>Section 4 Managing Organizational Memory</a></li>
+<li class="chapter" data-level="1" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html"><i class="fa fa-check"></i><b>1</b> Data Structure and Storage</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-data-deluge"><i class="fa fa-check"></i>The data deluge</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-structures"><i class="fa fa-check"></i>Data structures</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#cloud-capabilities"><i class="fa fa-check"></i>Cloud capabilities</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#strategic-risk"><i class="fa fa-check"></i>Strategic risk</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#database-access"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-disk-manager"><i class="fa fa-check"></i>The disk manager</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-file-manager"><i class="fa fa-check"></i>The file manager</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#techniques-for-reducing-head-movement"><i class="fa fa-check"></i>Techniques for reducing head movement</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#techniques-for-reducing-disk-accesses"><i class="fa fa-check"></i>Techniques for reducing disk accesses</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#indexing"><i class="fa fa-check"></i>Indexing</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#b-trees"><i class="fa fa-check"></i>B-trees</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#hashing"><i class="fa fa-check"></i>Hashing</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#linked-lists"><i class="fa fa-check"></i>Linked lists</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#bitmap-index"><i class="fa fa-check"></i>Bitmap index</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#join-index"><i class="fa fa-check"></i>Join index</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#distributed-database"><i class="fa fa-check"></i>Distributed database</a>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-coding-standards"><i class="fa fa-check"></i>Data coding standards</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#a-hybrid-distributed-architecture"><i class="fa fa-check"></i>A hybrid, distributed architecture</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#transparency"><i class="fa fa-check"></i>Transparency</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#no-reliance-on-a-central-site"><i class="fa fa-check"></i>No reliance on a central site</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#local-autonomy"><i class="fa fa-check"></i>Local autonomy</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#continuous-operation"><i class="fa fa-check"></i>Continuous operation</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#distributed-query-processing"><i class="fa fa-check"></i>Distributed query processing</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#distributed-transaction-processing"><i class="fa fa-check"></i>Distributed transaction processing</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#fragmentation-independence"><i class="fa fa-check"></i>Fragmentation independence</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#replication-independence"><i class="fa fa-check"></i>Replication independence</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#hardware-independence"><i class="fa fa-check"></i>Hardware independence</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#operating-system-independence"><i class="fa fa-check"></i>Operating system independence</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#network-independence"><i class="fa fa-check"></i>Network independence</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#dbms-independence"><i class="fa fa-check"></i>DBMS independence</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#conclusionparadise-postponed"><i class="fa fa-check"></i>Conclusion—paradise postponed</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#ascii"><i class="fa fa-check"></i>ASCII</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#unicode"><i class="fa fa-check"></i>Unicode</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-storage-devices"><i class="fa fa-check"></i>Data storage devices</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#remote-request"><i class="fa fa-check"></i>Remote request</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#remote-transaction"><i class="fa fa-check"></i>Remote transaction</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#distributed-transaction"><i class="fa fa-check"></i>Distributed transaction</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#distributed-request"><i class="fa fa-check"></i>Distributed request</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#magnetic-technology"><i class="fa fa-check"></i>Magnetic technology</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#solid-state-memory"><i class="fa fa-check"></i>Solid-state memory</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#optical-technology"><i class="fa fa-check"></i>Optical technology</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#storage-area-networks"><i class="fa fa-check"></i>Storage-area networks</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#long-term-storage"><i class="fa fa-check"></i>Long-term storage</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-compression"><i class="fa fa-check"></i>Data compression</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#horizontal-fragmentation"><i class="fa fa-check"></i>Horizontal fragmentation</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#vertical-fragmentation"><i class="fa fa-check"></i>Vertical fragmentation</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#hybrid-fragmentation"><i class="fa fa-check"></i>Hybrid fragmentation</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#replication"><i class="fa fa-check"></i>Replication</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#lossless-compression"><i class="fa fa-check"></i>Lossless compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#lossy-compression"><i class="fa fa-check"></i>Lossy compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#summary"><i class="fa fa-check"></i>Summary</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#references-and-additional-readings"><i class="fa fa-check"></i>References and additional readings</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html"><i class="fa fa-check"></i><b>2</b> Data Processing Architectures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#learning-objectives-1"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-capabilities"><i class="fa fa-check"></i>Cloud capabilities</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#strategic-risk"><i class="fa fa-check"></i>Strategic risk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database"><i class="fa fa-check"></i>Distributed database</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#a-hybrid-distributed-architecture"><i class="fa fa-check"></i>A hybrid, distributed architecture</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#transparency"><i class="fa fa-check"></i>Transparency</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#no-reliance-on-a-central-site"><i class="fa fa-check"></i>No reliance on a central site</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#local-autonomy"><i class="fa fa-check"></i>Local autonomy</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#continuous-operation"><i class="fa fa-check"></i>Continuous operation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-query-processing"><i class="fa fa-check"></i>Distributed query processing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-transaction-processing"><i class="fa fa-check"></i>Distributed transaction processing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#fragmentation-independence"><i class="fa fa-check"></i>Fragmentation independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#replication-independence"><i class="fa fa-check"></i>Replication independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#hardware-independence"><i class="fa fa-check"></i>Hardware independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#operating-system-independence"><i class="fa fa-check"></i>Operating system independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#network-independence"><i class="fa fa-check"></i>Network independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#dbms-independence"><i class="fa fa-check"></i>DBMS independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#conclusionparadise-postponed"><i class="fa fa-check"></i>Conclusion—paradise postponed</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-request"><i class="fa fa-check"></i>Remote request</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-transaction"><i class="fa fa-check"></i>Remote transaction</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-transaction"><i class="fa fa-check"></i>Distributed transaction</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-request"><i class="fa fa-check"></i>Distributed request</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#horizontal-fragmentation"><i class="fa fa-check"></i>Horizontal fragmentation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#vertical-fragmentation"><i class="fa fa-check"></i>Vertical fragmentation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#hybrid-fragmentation"><i class="fa fa-check"></i>Hybrid fragmentation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#replication"><i class="fa fa-check"></i>Replication</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#conclusion-1"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#key-terms-and-concepts-1"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#references-and-additional-readings"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sql-and-java.html"><a href="sql-and-java.html"><i class="fa fa-check"></i><b>3</b> SQL and Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#learning-objectives-2"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#jdbc"><i class="fa fa-check"></i>JDBC</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#java-ee"><i class="fa fa-check"></i>Java EE</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#using-sql-within-java"><i class="fa fa-check"></i>Using SQL within Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#connect-to-the-database"><i class="fa fa-check"></i>Connect to the database</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#create-and-execute-an-sql-statement"><i class="fa fa-check"></i>Create and execute an SQL statement</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#report-a-select"><i class="fa fa-check"></i>Report a SELECT</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#inserting-a-row"><i class="fa fa-check"></i>Inserting a row</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#release-the-statement-object"><i class="fa fa-check"></i>Release the Statement object</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#loading-a-text-file-into-a-database"><i class="fa fa-check"></i>Loading a text file into a database</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#javaserver-pages-jsp"><i class="fa fa-check"></i>JavaServer Pages (JSP)</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#map-collection-case"><i class="fa fa-check"></i>Map collection case</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#key-terms-and-concepts-2"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#references-and-additional-readings-1"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-integrity.html"><a href="data-integrity.html"><i class="fa fa-check"></i><b>4</b> Data Integrity</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#learning-objectives-3"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-management"><i class="fa fa-check"></i>Transaction management</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#concurrent-update-control"><i class="fa fa-check"></i>Concurrent update control</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-failure-and-recovery"><i class="fa fa-check"></i>Transaction failure and recovery</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#protecting-existence"><i class="fa fa-check"></i>Protecting existence</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#backup-and-recovery"><i class="fa fa-check"></i>Backup and recovery</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#recovery-strategies"><i class="fa fa-check"></i>Recovery strategies</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#use-of-recovery-procedures"><i class="fa fa-check"></i>Use of recovery procedures</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#maintaining-data-quality"><i class="fa fa-check"></i>Maintaining data quality</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#dimensions"><i class="fa fa-check"></i>Dimensions</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#dbms-and-data-quality"><i class="fa fa-check"></i>DBMS and data quality</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#ensuring-confidentiality"><i class="fa fa-check"></i>Ensuring confidentiality</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#general-model-of-data-security"><i class="fa fa-check"></i>General model of data security</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#data-access-control"><i class="fa fa-check"></i>Data access control</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#encryption"><i class="fa fa-check"></i>Encryption</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#monitoring-activity"><i class="fa fa-check"></i>Monitoring activity</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#key-terms-and-concepts-3"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html"><i class="fa fa-check"></i>Data Administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#learning-objectives-4"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#introduction-2"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#why-manage-data"><i class="fa fa-check"></i>Why manage data?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#the-chief-data-officer"><i class="fa fa-check"></i>The Chief Data Officer</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#cdo-role-dimensions"><i class="fa fa-check"></i>CDO role dimensions</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#cdo-archetypes"><i class="fa fa-check"></i>CDO archetypes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#management-of-the-database-environment"><i class="fa fa-check"></i>Management of the database environment</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#databases"><i class="fa fa-check"></i>Databases</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#system-interface"><i class="fa fa-check"></i>System interface</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-dictionary"><i class="fa fa-check"></i>Data dictionary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#external-databases"><i class="fa fa-check"></i>External databases</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-1"><i class="fa fa-check"></i>Data administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-functions-and-roles"><i class="fa fa-check"></i>Data administration functions and roles</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-levels"><i class="fa fa-check"></i>Database levels</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#system-level-data-administration-functions"><i class="fa fa-check"></i>System-level data administration functions</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#project-level-data-administration"><i class="fa fa-check"></i>Project-level data administration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#systems-development-life-cycle-sdlc"><i class="fa fa-check"></i>Systems development life cycle (SDLC)</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-interfaces"><i class="fa fa-check"></i>Data administration interfaces</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-management-systems-dbmss"><i class="fa fa-check"></i>Database management systems (DBMSs)</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#performance-monitoring-tools"><i class="fa fa-check"></i>Performance monitoring tools</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#case-tools"><i class="fa fa-check"></i>CASE tools</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#groupware"><i class="fa fa-check"></i>Groupware</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-integration"><i class="fa fa-check"></i>Data integration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#conclusion-3"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#key-terms-and-concepts-4"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#references-and-additional-readings-2"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -220,7 +359,6 @@ the table of contents to find the page you are looking for.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -261,7 +399,7 @@ gitbook.start({
 },
 "download": ["DataManagement.pdf", "DataManagement.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {

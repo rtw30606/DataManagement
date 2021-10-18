@@ -1,1 +1,4 @@
+data-structure-and-storage
 data-processing-architectures
+sql-and-java
+data-integrity
