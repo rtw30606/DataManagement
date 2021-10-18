@@ -3,6 +3,15 @@ editor_options:
   markdown: 
     wrap: 72
 ---
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(DBI)
+library(RMySQL)
+db <- dbConnect(RMySQL::MySQL(),
+                  dbname = "Text",
+                  host = "www.richardtwatson.com",
+                  user="student",
+                  password = "student")
+```
 
 # Data Processing Architectures
 
@@ -22,28 +31,6 @@ Students completing this chapter will be able to
     satisfy;
 
 -   demonstrate the general principles of distributed database design.
-
-![](Figures/Chapter%201/expeditioner.png)
-
-On a recent transatlantic flight, Sophie, the Personnel and PR manager,
-had been seated next to a very charming young man who had tried to
-impress her with his knowledge of computing. He worked for a large
-systems consulting firm, and his speech was sprinkled with words like
-"clouding computing," "XML," "server," "client," and "software as a
-service." In return, Sophie responded with some "ums," "aahs," and an
-occasional "that's interesting." Of course, this was before the third
-glass of champagne. After that, he was more intent on finding out how
-long Sophie would be in New York and what restaurants and shows piqued
-her curiosity.
-
-After an extremely pleasant week of wining, dining, and seeing the
-town---amid, of course, many hours of valuable work for The
-Expeditioner---Sophie returned to London. Now, she must ask Ned what all
-these weird terms meant. After all, it was difficult to carry on a
-conversation when she did not understand the language. That's the
-problem with IS, she thought, new words and technologies were always
-being invented. It makes it very hard for the rest of us to make sense
-of what's being said.
 
 ## Architectural choices {.unnumbered}
 
@@ -747,7 +734,7 @@ data for a specific customer from the bank's central server located in
 Atlanta. The SQL command specifies the name of the server (`atlserver`),
 the database (`bankdb`), and the name of the table (`customer`).
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = F}
 SELECT * FROM atlserver.bankdb.customer
 	WHERE custcode = 12345;
 ```
@@ -757,7 +744,7 @@ the local database. For example, the Athens branch may download balance
 details of customers at the beginning of each day and handle queries
 locally rather than issuing a remote request. The SQL is
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = F}
 SELECT custcode, custbalance FROM atlserver.bankdb.customer
 	WHERE custbranch = 'Athens';
 ```
@@ -772,7 +759,7 @@ remote transaction contains multiple data requests for a single remote
 location. The following example illustrates how a branch bank creates a
 new customer account on the central server:
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = F}
 BEGIN WORK;
 INSERT INTO atlserver.bankdb.account
 	(accnum, acctype)
@@ -803,7 +790,7 @@ States to Norway. The transaction copies the data for the employee from
 the Atlanta server to the Oslo server and then deletes the entry for
 that employee on the Atlanta server.
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = F}
 BEGIN WORK;
 INSERT INTO osloserver.bankdb.employee
 	(empcode, emplname, …)
@@ -831,7 +818,7 @@ employees a 15 percent bonus based on their annual salary and add USD
 1,000 or NOK 7,500 to their retirement account, depending on whether the
 employee is based in the United States or Norway.
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = F}
 BEGIN WORK;
 CREATE VIEW temp 
 	(empcode, empfname, emplname, empsalary)
@@ -861,7 +848,7 @@ know where data are physically located. A DDBMS should not require the
 application to specify the name of the server. So, for example, it
 should be possible to write the following SQL:
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = F}
 SELECT empcode, empfname, emplname, empsalary*.15 AS bonus
 		FROM bankdb.employee;
 ```
@@ -895,7 +882,7 @@ Three separate employee tables would be defined. Each would have a
 different name (e.g., emp-syd) but exactly the same columns. To insert a
 new employee, the SQL code is
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = F}
 INSERT INTO TABLE emp_syd
 	SELECT * FROM new_emp
 		WHERE emp_nation = 'Australia';
