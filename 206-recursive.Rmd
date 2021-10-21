@@ -4,7 +4,7 @@ editor_options:
     wrap: 72
 ---
 
-# One-to-One and Recursive Relationships {.unnumbered}
+# One-to-One and Recursive Relationships
 
 > *Self-reflection is the school of wisdom.*
 >
@@ -233,7 +233,7 @@ FOREIGN KEY clause before applying it.
 > employees to a specialist group (e.g., database management). Each
 > specialist group has a team leader. When employees join the company,
 > they are assigned a mentor for the first year. One person might mentor
-> several employees, but an employee has at most one mentor. \|
+> several employees, but an employee has at most one mentor.
 
 ## Querying a one-to-one relationship {.unnumbered}
 
@@ -620,7 +620,7 @@ queries involving recursive relationships often requires a table to be
 joined with itself. Recursive many-to-many relationships occur in
 business in the form of a bill of materials.
 
-### Key terms and concepts {.unnumbered}
+## Key terms and concepts {.unnumbered}
 
 |                                |                              |
 |--------------------------------|------------------------------|

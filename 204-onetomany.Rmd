@@ -793,7 +793,7 @@ specified columns or rows.
 | HAVING                  | Virtual table                  |
 | Insert anomalies        |                                |
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Draw data models for the following situations. In each case, make
     certain that you show the attributes and feasible identifiers:

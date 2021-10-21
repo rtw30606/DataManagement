@@ -13,7 +13,7 @@ editor_options:
 >
 > Noam Chomsky, *Syntactic Structures*
 
-## Learning objectives
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will:
 
@@ -22,7 +22,7 @@ Students completing this chapter will:
 
 -   Be able to use R and associated packages for text mining and NLP.
 
-## The nature of language
+## The nature of language {.unnumbered}
 
 Language enables humans to cooperate through information exchange. We
 typically associate language with sound and writing, but gesturing,
@@ -84,11 +84,11 @@ the current state-of-the-art.
     can tune a guitar, but you can't tuna fish. Unless of course, you
     play bass," by Douglas Adams
 
-## Levels of processing
+## Levels of processing {.unnumbered}
 
 There are three levels to consider when processing language.
 
-### Semantics
+### Semantics {.unnumbered}
 
 Semantics focuses on the meaning of words and the interactions between
 words to form larger units of meaning (such as sentences). Words in
@@ -98,7 +98,7 @@ the meaning of a sentence (e.g., "Help needed versus Help not needed").
 It is typically an entire sentence that conveys meaning. Of course,
 elaborate ideas or commands can require many sentences.
 
-### Discourse
+### Discourse {.unnumbered}
 
 Building on semantic analysis, discourse analysis aims to determine the
 relationships between sentences in a communication, such as a
@@ -114,7 +114,7 @@ machines, than comprehending a single sentence. However, the braiding of
 question and answer in a discourse, can sometimes help to reduce
 ambiguity.
 
-### Pragmatics
+### Pragmatics {.unnumbered}
 
 Finally, pragmatics studies how context, world knowledge, language
 conventions, and other abstract properties contribute to the meaning of
@@ -126,7 +126,7 @@ communicate with those with whom we share a common culture, history, and
 socioeconomic status because the great collection of knowledge we
 jointly share assists in overcoming ambiguity.
 
-## Tokenization
+## Tokenization {.unnumbered}
 
 Tokenization is the process of breaking a document into chunks (e.g.,
 words), which are called tokens. Whitespaces (e.g., spaces and tabs) are
@@ -134,19 +134,19 @@ used to determine where a break occurs. Tokenization typically creates a
 *bag of words* for subsequent processing. Many text mining functions use
 words as the foundation for analysis.
 
-### Counting words
+### Counting words {.unnumbered}
 
 To count the number of words in a string, simply count the number of
 times there are one or more consecutive spaces using the pattern
 "[:space:]+" and then add one, because the last word is not followed by
 a space.
 
-```{r eval = T}
+```{r eval = TRUE}
 library(stringr)
 str_count("The dead batteries were given out free of charge", "[:space:]+") + 1
 ```
 
-## Sentiment analysis
+## Sentiment analysis {.unnumbered}
 
 Sentiment analysis is a popular and simple method of measuring aggregate
 feeling. In its simplest form, it is computed by giving a score of +1 to
@@ -228,7 +228,7 @@ are -1 (crazy) and 1 (love). There is a negator (not), two amplifiers
 amplifiers and so get weights based on the contraction (.9 in this case)
 and amplification (.8) in this case.
 
-```{r eval = F}
+```{r eval = T}
 library(sentimentr)
 sample = c("You're awesome and I love you", "I hate and hate and hate.
 So angry. Die!", "Impressed and amazed: you are peerless in your
@@ -249,7 +249,7 @@ sentiment(sample, n.before = 2, n.after = 2, amplifier.weight=.8, but.weight = .
 > Run the following R code and comment on how sensitive sentiment
 > analysis is to the n.before and n.after parameters.
 
-```{r eval = F}
+```{r eval = T}
 library(sentimentr) 
 sample = c("You're not crazy and I love you very much.")
 sentiment(sample, n.before = 4, n.after=3, amplifier.weight=1) 
@@ -266,7 +266,7 @@ explore some of the tools available in **tm**, a general purpose text
 mining package for R. We will also use a few other R packages which
 support text mining and displaying the results.
 
-## Corpus
+## Corpus {.unnumbered}
 
 A collection of text is called a corpus. It is common to use N for the
 *corpus size*, the number of tokens, and V for the *vocabulary*, the
@@ -289,7 +289,7 @@ The following R code sets up a loop to read each of the letters and add
 it to a data frame. When all the letters have been read, they are turned
 into a corpus.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 require(stringr)
 require(tm)
 #set up a data frame to hold up to 100 letters
@@ -313,7 +313,7 @@ colnames(df) <- c('doc_id', 'text')
 letters <-  Corpus(DataframeSource(df))
 ```
 
-## Readability
+## Readability {.unnumbered}
 
 There are several approaches to estimating the readability of a
 selection of text. They are usually based on counting the words in each
@@ -340,7 +340,7 @@ The R package koRpus has a number of methods for calculating readability
 scores. You first need to tokenize the text using the package's tokenize
 function. Then complete the calculation.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 library(koRpus)
 library(koRpus.lang.en)
 #tokenize the first letter in the corpus after converting to character vector
@@ -350,43 +350,43 @@ tagged.text <- tokenize(as.character(txt),format="obj",lang="en")
 readability(tagged.text, hyphen=NULL,index="FORCAST")
 ```
 
-## Preprocessing
+## Preprocessing {.unnumbered}
 
 Before commencing analysis, a text file typically needs to be prepared
 for processing. Several steps are usually taken.
 
-### Case conversion
+### Case conversion {.unnumbered}
 
 For comparison purposes, all text should be of the same case.
 Conventionally, the choice is to convert to all lower case.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 clean.letters <- tm_map(letters,tolower)
 ```
 
-### Punctuation removal
+### Punctuation removal {.unnumbered}
 
 Punctuation is usually removed when the focus is just on the words in a
 text and not on higher level elements such as sentences and paragraphs.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,removePunctuation)
 ```
 
-### Number removal
+### Number removal {.unnumbered}
 
 You might also want to remove all numbers.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,removeNumbers)
 ```
 
-### Stripping extra white spaces
+### Stripping extra white spaces {.unnumbered}
 
 Removing extra spaces, tabs, and such is another common preprocessing
 action.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,stripWhitespace)
 ```
 
@@ -395,7 +395,7 @@ clean.letters <- tm_map(clean.letters,stripWhitespace)
 > Redo the readability calculation after executing the preprocessing
 > steps described in the previous section. What do you observe?
 
-### Stop word filtering
+### Stop word filtering {.unnumbered}
 
 Stop words are short common words that can be removed from a text
 without affecting the results of an analysis. Though there is no
@@ -407,35 +407,35 @@ code, we use the SMART list of English stop words.[^textmining-4]
 
 [^textmining-4]: <http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop>
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,removeWords,stopwords("SMART"))
 ```
 
-### Specific word removal
+### Specific word removal {.unnumbered}
 
 There can also specify particular words to be removed via a character
 vector. For instance, you might not be interested in tracking references
 to *Berkshire Hathaway* in Buffett's letters. You can set up a
 dictionary with words to be removed from the corpus.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 dictionary <- c("berkshire","hathaway", "million", "billion", "dollar")
 clean.letters <- tm_map(clean.letters,removeWords,dictionary)
 ```
 
-### Word length filtering
+### Word length filtering {.unnumbered}
 
 You can also apply a filter to remove all words less than or greater
 than a specified lengths. The tm package provides this option when
 generating a term frequency matrix, something you will read about
 shortly.
 
-### Parts of speech (POS) filtering
+### Parts of speech (POS) filtering {.unnumbered}
 
 Another option is to remove particular types of words. For example, you
 might scrub all adverbs and adjectives.
 
-### Stemming
+### Stemming {.unnumbered}
 
 Stemming reduces inflected or derived words to their stem or root form.
 For example, *cats* and *catty* stem to *cat*. *Fishlike* and *fishy*
@@ -444,7 +444,7 @@ stem to *fish*. As a stemmer generally works by suffix stripping, so
 available for different languages, and thus the language must be
 specified.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 # stem the document -- might take a while to run
 stem.letters <- tm_map(clean.letters,stemDocument, language =
 "english")
@@ -459,19 +459,19 @@ for the most frequent match, "first" for the first found completion, and
 "longest" and "shortest" for the longest and shortest, respectively,
 completion in terms of characters
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 # stem completion -- might take a while to run
 stem.letters <- tm_map(stem.letters,stemCompletion,
 dictionary=clean.letters, type=c("prevalent"))
 ```
 
-### Regex filtering
+### Regex filtering {.unnumbered}
 
 The power of regex (regular expressions) can also be used for filtering
 text or searching and replacing text. You might recall that we covered
 regex when learning SQL.
 
-## Word frequency analysis
+## Word frequency analysis {.unnumbered}
 
 Word frequency analysis is a simple technique that can also be the
 foundation for other analyses. The method is based on creating a matrix
@@ -480,7 +480,7 @@ in one of two forms.
 A **term-document matrix** contains one row for each term and one column
 for each document.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 tdm <-  TermDocumentMatrix(stem.letters,control = list(minWordLength=3))
 dim(tdm)
 # report those words occurring more than 100 times
@@ -490,7 +490,7 @@ findFreqTerms(tdm, lowfreq = 100, highfreq = Inf)
 A **document-term matrix** contains one row for each document and one
 column for each term.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 dtm <- DocumentTermMatrix(stem.letters,control = list(minWordLength=3))
 dim(dtm)
 ```
@@ -498,7 +498,7 @@ dim(dtm)
 The function dtm() reports the number of distinct terms, the vocabulary,
 and the number of documents in the corpus.
 
-### Term frequency
+### Term frequency {.unnumbered}
 
 Words that occur frequently within a document are usually a good
 indicator of the document's content. Term frequency (tf) measures word
@@ -508,7 +508,7 @@ tf~td~ = number of times term t occurs in document d.
 
 Here is the R code for determining the frequency of words in a corpus.
 
-```{r eval = F, message = FALSE}
+```{r eval = T, message = FALSE}
 tdm <-  TermDocumentMatrix(stem.letters,control = list(minWordLength=3))
 # convert term document matrix to a regular matrix to get frequencies of words
 m <-  as.matrix(tdm)
@@ -551,7 +551,7 @@ wordcloud(d$word, d$freq, min.freq=d$freq[30],colors=pal)
 > and identify the 20 most common words and create a word cloud for
 > these words.
 
-## Co-occurrence and association
+## Co-occurrence and association {.unnumbered}
 
 Co-occurrence measures the frequency with which two words appear
 together. In the case of document level association, if the two words
@@ -600,7 +600,7 @@ tdm <- TermDocumentMatrix(stem.letters[1:10])
 findAssocs(tdm, "invest",0.80)
 ```
 
-## Cluster analysis
+## Cluster analysis {.unnumbered}
 
 Cluster analysis is a statistical technique for grouping together sets
 of observations that share common characteristics. Objects assigned to
@@ -651,7 +651,7 @@ The cluster analysis is shown in the following figure as a dendrogram, a
 tree diagram, with a leaf for each year. Clusters seem to from around
 consecutive years. Can you think of an explanation?
 
-## Topic modeling
+## Topic modeling {.unnumbered}
 
 Topic modeling is a set of statistical techniques for identifying the
 themes that occur in a document set. The key assumption is that a
@@ -686,7 +686,7 @@ document frequency (tf-idf) is a measure designed for determining which
 terms discriminate among documents. It is based on the term frequency
 (tf), defined earlier, and the inverse document frequency.
 
-### Inverse document frequency
+### Inverse document frequency {.unnumbered}
 
 The inverse document frequency (idf) measures the frequency of a term
 across documents.
@@ -726,7 +726,7 @@ document (i.e., the idf = 3.91) and less than 500 terms occur in every
 document. The terms with an idf in the range 1 to 2 are likely to be the
 most useful in determining the topic of each document.
 
-### Term frequency inverse document frequency (tf-idf)
+### Term frequency inverse document frequency (tf-idf) {.unnumbered}
 
 The weighted term frequency inverse document frequency (tf-idf or ω~td~)
 is calculated by multiplying a term's frequency (tf) by its inverse
@@ -743,7 +743,7 @@ Where
 
 tf~td~ = frequency of term *t* in document *d.*
 
-### Topic modeling with R
+### Topic modeling with R {.unnumbered}
 
 Prior to topic modeling, pre-process a text file in the usual fashion
 (e.g., convert to lower case, remove punctuation, and so forth). Then,
@@ -824,7 +824,7 @@ report.
 > text mining to remove selected words from the corpus to develop a
 > meaningful distinction between topics.
 
-## Named-entity recognition (NER)
+## Named-entity recognition (NER) {.unnumbered}
 
 Named-entity recognition (NER) places terms in a corpus into predefined
 categories such as the names of persons, organizations, locations,
@@ -871,7 +871,7 @@ accommodate new organizations, place, people and so forth. A
 well-trained statistical classifier applied appropriately is usually
 capable of correctly recognizing entities with 90 percent accuracy.
 
-### NER software
+### NER software {.unnumbered}
 
 OpenNLP[^textmining-7] is an Apache Java-based machine learning based
 toolkit for the processing of natural language in text format. It is a
@@ -884,7 +884,7 @@ openNLP, provides an interface to OpenNLP.
 
 [^textmining-7]: <http://opennlp.apache.org>
 
-## Future developments
+## Future developments {.unnumbered}
 
 Text mining and natural language processing are developing areas and you
 can expect new tools to emerge. Document summarization, relationship
@@ -896,7 +896,7 @@ software with possible R versions. If you work in this area, you will
 need to continually scan for new software that extends the power of
 existing methods and adds new text mining capabilities.
 
-## Summary
+## Summary {.unnumbered}
 
 Language enables cooperation through information exchange. Natural
 language processing (NLP) focuses on developing and implementing
@@ -937,7 +937,7 @@ natural language in text format. Document summarization, relationship
 extraction, advanced sentiment analysis, and cross-language information
 retrieval are all areas of research.
 
-## Key terms and concepts
+## Key terms and concepts {.unnumbered}
 
 |                                   |                                           |
 |-----------------------------------|-------------------------------------------|
@@ -958,7 +958,7 @@ retrieval are all areas of research.
 | Preprocessing                     | Word frequency analysis                   |
 | Punctuation removal               | Word length filtering                     |
 
-## References
+## References {.unnumbered}
 
 Feinerer, I. (2008). An introduction to text mining in R. *R News*,
 8(2), 19-22.
@@ -972,7 +972,7 @@ topic models. *Journal of Statistical Software*, 40(13), 1-30.
 Ingersoll, G., Morton, T., & Farris, L. (2012). *Taming Text: How to
 find, organize and manipulate it*. Greenwich, CT: Manning Publications.
 
-## Exercises
+## Exercises {.unnumbered}
 
 1.  Take the recent annual reports for UPS[^textmining-8] and convert
     them to text using an online service, such as
