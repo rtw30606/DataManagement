@@ -4,7 +4,7 @@
 >
 > Anacharsis (c. 600 BCE)
 
-## **The power of SQL**
+## **The power of SQL** {.unnumbered}
 
 SQL is a very powerful retrieval language, and most novices underestimate its capability. Furthermore, mastery of SQL takes considerable practice and exposure to a wide variety of problems. This reference serves the dual purpose of revealing the full power of SQL and providing an extensive set of diverse queries. To make this reference easier to use, we have named each of the queries to make them easy to remember.
 

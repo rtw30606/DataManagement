@@ -4,14 +4,14 @@ editor_options:
     wrap: 72
 ---
 
-# Data Modeling {.unnumbered}
+# Data Modeling
 
 > *Man is a knot, a web, a mesh into which relationships are tied. Only
 > those relationships matter.*
 >
 > Antoine de Saint-Exupéry in *Flight to Arras*
 
-\#\#\#\#å Learning objectives {-}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to create a well-formed,
 high-fidelity data model.
@@ -221,7 +221,7 @@ relationship as firm's boss.
 
 ![](Figures/Chapter%207/relationship%20labeling.png)
 
-### Identifier
+### Identifier {.unnumbered}
 
 An identifier uniquely distinguishes an instance of an entity. An
 identifier can be one or more attributes and may include the identifier
@@ -348,7 +348,7 @@ extra cost.
 
 ![](Figures/Chapter%207/revised%20NATION-STOCK.png)
 
-### A lesson in pure geography
+### A lesson in pure geography {.unnumbered}
 
 A data model must be an accurate representation of the world you want to
 model. The data model must account for all the exceptions---there should
@@ -381,12 +381,8 @@ model of low fidelity. By additional thinking about relationships and
 consideration of exceptions, you gradually create a high-fidelity data
 model.
 
-+----------------------------------------------------------------------+
-| *Skill Builder*                                                      |
-|                                                                      |
-| Write SQL to determine which administrative units have two capitals  |
-| and which have a shared capital.                                     |
-+----------------------------------------------------------------------+
+> ❓**Skill builder** Write SQL to determine which administrative units have two capitals
+> and which have a shared capital.
 
 ### Family matters {.unnumbered}
 
@@ -506,14 +502,9 @@ You might want to consider how the model would change to handle
 single-parent families, adopted children, and other aspects of human
 relationships.
 
-+----------------------------------------------------------------------+
-| *Skill builder*                                                      |
-|                                                                      |
-| The International Commission for Border Resolution Disputes requires |
-| a database to record details of which countries have common borders. |
-| Design the database. Incidentally, which country borders the most    |
-| other countries?                                                     |
-+----------------------------------------------------------------------+
+> ❓**Skill builder** The International Commission for Border Resolution Disputes requires 
+> a database to record details of which countries have common borders. 
+> Design the database. Incidentally, which country borders the most other countries?
 
 ### When's a book not a book? {.unnumbered}
 
@@ -605,7 +596,7 @@ PSLTEXT, for the code and its text.
 
 ![](Figures/Chapter%207/history-4.png)
 
-### A ménage à trois for entities
+### A ménage à trois for entities {.unnumbered}
 
 Consider aircraft leasing. A plane is leased to an airline for a
 specific period. When a lease expires, the plane can be leased to
@@ -633,19 +624,15 @@ three entities in an m:m relationship.
 
 ![](Figures/Chapter%207/airline%20revised.png)
 
-+----------------------------------------------------------------------+
-| *Skill builder*                                                      |
-|                                                                      |
-| Horse racing is a popular sport in some parts of the world. A horse  |
-| competes in at most one race on a course at a particular date. Over  |
-| time, a horse can compete in many races on many courses. A horse's   |
-| rider is called a jockey, and a jockey can ride many horses and a    |
-| horse can have many jockeys. Of course, there is only ever one       |
-| jockey riding a horse at a particular time. Courses vary in their    |
-| features, such as the length of the course and the type of surface   |
-| (e.g., dirt or grass). Design a database to keep track of the        |
-| results of horse races.                                              |
-+----------------------------------------------------------------------+
+> ❓**Skill builder** Horse racing is a popular sport in some parts of the world. A horse  
+> competes in at most one race on a course at a particular date. Over 
+> time, a horse can compete in many races on many courses. A horse's
+> rider is called a jockey, and a jockey can ride many horses and a 
+> horse can have many jockeys. Of course, there is only ever one
+> jockey riding a horse at a particular time. Courses vary in their 
+> features, such as the length of the course and the type of surface
+> (e.g., dirt or grass). Design a database to keep track of the 
+> results of horse races.
 
 ### Project management---planning and doing {.unnumbered}
 
@@ -827,7 +814,7 @@ every assembly must have associated products.
 
 ![](Figures/Chapter%207/rec-m-and-m-modality.png)
 
-#### Summary
+#### Summary {.unnumbered}
 
 Modality adds additional information to a data model, and once you have
 grasped the fundamental ideas of entities and relationships, it is quite
@@ -862,7 +849,7 @@ shows two independent entities linked in a 1:m relationship.
 
 ![](Figures/Chapter%204/nation-stock.png)
 
-#### Weak or dependent entity
+#### Weak or dependent entity {.unnumbered}
 
 A weak entity (also known as a dependent entity) relies on another
 entity for its existence and identification. It is recognized by a plus
@@ -876,7 +863,7 @@ independent one.
 
 ![](Figures/Chapter%207/region-city.png)
 
-#### Associative entity
+#### Associative entity {.unnumbered}
 
 Associative entities are by-products of m:m relationships. They are
 typically found between independent entities. Associative entities
@@ -973,7 +960,7 @@ entities.
 
 ![](Figures/Chapter%207/generalizationanimal.png)
 
-### Aggregation
+### Aggregation {.unnumbered}
 
 Aggregation is a part-whole relationship between two entities. Common
 phrases used to describe an aggregation are "consists of," "contains,"
@@ -1008,7 +995,7 @@ shown in the following figure.
 
 ![](Figures/Chapter%207/compaggregate.png)
 
-### Data modeling hints
+### Data modeling hints {.unnumbered}
 
 A high-fidelity data model takes time to develop. The client must
 explain the problem fully so that the database designer can understand
@@ -1096,7 +1083,7 @@ predecessor of any instance), then use a 1:1 recursive relationship.
 
 ![](Figures/Chapter%206/recursive-1-and-1.png)
 
-### Attributes and consistency
+### Attributes and consistency {.unnumbered}
 
 Attributes must be consistent, retaining the same meaning for every
 instance. An example of an inconsistent attribute would be an attribute
@@ -1577,7 +1564,9 @@ different meanings. Identifiers should generally have no meaning. Highly
 effective data modelers immerse, challenge, generalize, test, limit,
 integrate, and complete.
 
-| Key terms and concepts |                         |
+## Key terms and concepts {.unnumbered}
+
+|                        |                         |
 |:-----------------------|-------------------------|
 | Aggregate entity       | Homonym                 |
 | Aggregation            | Identifier              |
@@ -1594,7 +1583,7 @@ integrate, and complete.
 | Generalization         | Synonym                 |
 | High-fidelity image    |                         |
 
-### References and additional readings {.unnumbered}
+## References and additional readings {.unnumbered}
 
 Carlis, J. V. 1991. *Logical data structures*. Minneapolis, MN:
 University of Minnesota.
@@ -1602,9 +1591,9 @@ University of Minnesota.
 Hammer, M. 1990. Reengineering work: Don't automate, obliterate.
 *Harvard Business Review* 68 (4):104--112.
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
-#### Short answers {.unnumbered}
+### Short answers {.unnumbered}
 
 1.  What is data modeling?
 
@@ -1627,7 +1616,7 @@ Hammer, M. 1990. Reengineering work: Don't automate, obliterate.
 
 10. What is the difference between a synonym and a homonym?
 
-#### Data modeling {.unnumbered}
+### Data modeling {.unnumbered}
 
 Create a data model from the following narratives, which are sometimes
 intentionally incomplete. You will have to make some assumptions. Make
@@ -1775,46 +1764,3 @@ identifier(s) and attributes of each entity.
 +--------------------+------------------+--------------------+--------------------+
 | \$125.01+          | \$9.95           | \$15.95            | \$25.45            |
 +--------------------+------------------+--------------------+--------------------+
-
-^1]: Officially pronounced as "S-Q-L," but often also pronounced as
-    "sequel."
-
-[^2]: Attributes are shown in italics.
-
-[^3]: Now would be a good time to install the MySQL Community server \<
-    [[www.mysql.com/downloads/mysql/]{.underline}](http://www.mysql.com/downloads/mysql/)
-    \>on your computer, unless your instructor has set up a class
-    server.
-
-[^4]: SQL keywords are shown in uppercase
-
-[^5]: Table and column names are shown in red.
-
-[^6]: [[wb.mysql.com]{.underline}](http://wb.mysql.com)/
-
-[^7]: [[dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-creating-a-model.html]{.underline}](http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-creating-a-model.html)
-
-[^8]: Preferences \> Diagram \> Show Column Types
-
-[^9]: [[dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-adding-data.html]{.underline}](http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-adding-data.html)
-
-[^10]: I acknowledge the problem is a bit dated, but the data modeling
-    issues are still relevant.
-
-[^11]: Database \> Forward Engineer...
-
-[^12]: [[http://regexlib.com]{.underline}](http://regexlib.com)
-
-[^13]: "Two women share a name, birthday, and S.S. number!" *Athens
-    \[Georgia\] Daily News,* January 29 1990, 7A. Also, see
-    [[wnyt.com/article/stories/S1589778.shtml?cat=10114]{.underline}](http://wnyt.com/article/stories/S1589778.shtml?cat=10114)
-
-[^14]: MySQL does not support INTERSECT. Use another AND in the WHERE
-    statement.
-
-[^15]: Roberto Franzosi, "On Quantitative Narrative Analysis," in
-    Varieties of Narrative Analysis, ed. James A. Holstein and Jaber F.
-    Gubrium (SAGE Publications, Inc., 2012), 75--96.
-
-[^16]: The international system of units of measurement. SI is the from
-    French *Système International*.

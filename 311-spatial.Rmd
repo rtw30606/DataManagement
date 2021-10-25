@@ -1,0 +1,751 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Spatial and Temporal Data Management
+
+> *Nothing puzzles me more than time and space; and yet nothing troubles
+> me less, as I never think about them.*
+>
+> Charles Lamb, 1810.
+
+## Learning objectives {.unnumbered}
+
+Students completing this chapter will
+
+-   be able to define and use a spatial database;
+
+-   be familiar with the issues surrounding the management of temporal
+    data.
+
+## Introduction {.unnumbered}
+
+The introduction of ubiquitous networks and smartphones has led to the
+advent of location-based services. Customers expect information
+delivered based on, among other things, where they are. For example, a
+person touring the historic German city of Regensburg could receive
+information about its buildings and parks via her mobile phone in the
+language of her choice. Her smartphone will determine her location and
+then select from a database details of her immediate environment. Data
+managers need to know how to manage the **spatial** data necessary to
+support location-based services.
+
+Some aspect of time is an important fact to remember for many
+applications. Banks, for example, want to remember what dates customers
+made payments on their loans. Airlines need to recall for the current
+and future days who will occupy seats on each flight. Thus, the
+management of time-varying, or **temporal,** data would be assisted if a
+database management system had built-in temporal support. As a result,
+there has been extensive research on temporal data models and DBMSs for
+more than a decade. The management of temporal data is another skill
+required of today's data management specialist.
+
+The Open Geospatial Consortium, Inc. (OGC) is a nonprofit international
+organization developing standards for geospatial and location-based
+services. Its goal is to create open and extensible software application
+programming interfaces for geographic information systems (GIS) and
+other geospatial technologies. DBMS vendors (e.g., MySQL) have
+implemented some of OGC's recommendations for adding spatial features to
+SQL. MySQL is gradually adding further GIS features as it develops its
+DBMS.
+
+## Managing spatial data {.unnumbered}
+
+A spatial database is a data management system for the collection,
+storage, manipulation, and output of spatially referenced information.
+Also known as a geographic information system (GIS), it is an extended
+form of DBMS. Geospatial modeling is based on three key concepts: theme,
+geographic object, and map.
+
+A **theme** refers to data describing a particular topic (e.g., scenic
+lookouts, rivers, cities) and is the spatial counterpart of an entity.
+When a theme is presented on a screen or paper, it is commonly seen in
+conjunction with a **map**. Color may be used to indicate different
+themes (e.g., blue for rivers and black for roads). A map will usually
+have a scale, legend, and possibly some explanatory text.
+
+A **geographic object** is an instance of a theme (e.g., a river). Like
+an instance of an entity, it has a set of attributes. In addition, it
+has spatial components that can describe both geometry and topology.
+Geometry refers to the location-based data, such as shape and length,
+and topology refers to spatial relationships among objects, such as
+adjacency. Management of spatial data requires some additional data
+types to represent a point, line, and region.
+
+*Generic spatial data types*
+
+| Data type | Dimensions | Example        |
+|:----------|:-----------|:---------------|
+| Point     | 0          | Scenic lookout |
+| Line      | 1          | River          |
+| Region    | 2          | County         |
+
+Consider the case where we want to create a database to store some
+details of political units. A political unit can have many boundaries.
+The United States, for example, has a boundary for the continental
+portion, one for Alaska, one for Hawaii, and many more to include places
+such as American Samoa. In its computer form, a boundary is represented
+by an ordered set of line segments (a path).
+
+*Data model for political units*
+
+![](Figures/Chapter%2014/political%20unit.png)
+
+### SQL/MM Spatial {.unnumbered}
+
+SQL/MM, also known as ISO 13249, is an extension of SQL to handle
+spatial data. It uses the prefix ST\_ for tables, views, data types, and
+function names. Originally, this prefix meant *Spatial* and *Temporal*,
+because the intention was to develop a standard that combined spatial
+and temporal extensions to SQL. However, it was realized that temporal
+required a broader perspective and should be separate standard. Thus,
+think of ST\_ as meaning *Spatial Type*.
+
+MySQL has data types for storing geometric data, which are:
+
+| Type       | Representation                                | Description                                                                                                           |
+|:-----------|:----------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|
+| Point      | POINT(x y)                                    | A point in space (e.g., a city's center)                                                                              |
+| LineString | LINESTRING(x1 y1,x2 y2,...)                   | A sequence of points with linear interpolation between points (e.g., a road)                                          |
+| Polygon    | POLYGON((x1 y1,x2 y2,...), (x1 y1,x2 y2,...)) | A polygon (e.g., a boundary) which has a single exterior boundary and zero or more interior boundaries ( i.e., holes) |
+
+### Spatial Reference Support System (SRS) {.unnumbered}
+
+A spatial reference system (SRS) is facilitates the location of
+geometric objects using coordinates. A specific SRS is identified by an
+SRID, which is an integer
+
+There are three types of reference systems:
+
+#### Projected {.unnumbered}
+
+A projected SRS is a projection of a globe on a flat surface. Map makers
+have developed a variety of approaches, such as Mecator, to represent a
+portion of the earth on a page or screen. Each point on the flat surface
+is a place on the globe. A projected SRS typically shows a length
+legend, such as the distance in miles or kilometers.
+
+#### Geographic {.unnumbered}
+
+For a geographic SRS, the coordinates are latitude and longitude. The
+SRID is 4326.^2^
+
+#### Cartesian {.unnumbered}
+
+A Cartesian SRS, is an infinite flat plane with no specified units. The
+SRID is O, and this is the default if you don't specify an SRS.
+
+### Data model mapping {.unnumbered}
+
+The data model in the preceding figure is mapped to MySQL. By specifying
+a SRID of 0, Ireland is represented using a Cartesian SRS. Since Ireland
+is small relative the size of the earth, this is a reasonable
+approximation.
+
+In the following definition of the database's tables, note two things.
+The boundpath column of boundary is defined with a data type of POLYGON
+and SRID of 0. The cityloc column of city is defined as a POINT.
+Otherwise, there is little new in the set of statements to create the
+tables.
+
+*Political unit database definition*
+
+```{sql, connection = db, eval = FALSE}
+CREATE TABLE political_unit (
+	Unitname	VARCHAR(30) NOT NULL,
+	Unitcode	CHAR(2),
+	Unitpop	DECIMAL(6,2),
+	PRIMARY KEY(unitcode));
+```
+
+```{sql, connection = db, eval = FALSE}
+CREATE TABLE boundary (
+	Boundid	INTEGER,
+	Boundpath	POLYGON NOT NULL SRID 0,
+	Unitcode	CHAR(2),
+	PRIMARY KEY(boundid),
+	CONSTRAINT fk_boundary_polunit FOREIGN KEY(unitcode)
+		REFERENCES political_unit(unitcode));
+```
+
+```{sql, connection = db, eval = FALSE}
+CREATE TABLE city (
+	Cityname	VARCHAR(30),
+	Cityloc	POINT NOT NULL SRID 0,
+	Unitcode	CHAR(2),
+	PRIMARY KEY(unitcode,cityname),
+	CONSTRAINT fk_city_polunit FOREIGN KEY(unitcode) 
+		REFERENCES political_unit(unitcode)); 
+```
+
+We now use the geographic entity of Ireland to demonstrate the
+application of spatial concepts. The island has two political units. The
+Republic of Ireland (Eire) governs the south, while Northern Ireland, a
+part of the United Kingdom, is in the north.
+
+*Map of Ireland*
+
+![](Figures/Chapter%2013/Ireland%20grid.png)
+
+To represent these two political units within a spatial database, we
+need to define their boundaries. Typically, this is done by
+approximating the boundary by a single exterior polygon. In the
+preceding figure, you see a very coarse representation based on
+connecting intersection points of the overlay grid. The SRID needs to be
+specified for each geometric object, as for example where it is set to 0
+when specifying Dublin's coordinates,
+`ST_GeomFROMText('POINT(9 6)', 0)`.
+
+*Insert statements for populating database*
+
+```{sql, connection = db, eval = FALSE}
+INSERT INTO political_unit VALUES ('Republic of Ireland','ie', 3.9);
+INSERT INTO political_unit VALUES ('Northern Ireland','ni', 1.7);
+INSERT INTO boundary VALUES
+	(1,ST_GeomFROMText('POLYGON((9 8, 9 3, 4 1, 2 2, 1 3, 3 5, 3 6, 2 6,
+	 2 9, 5 9, 5 10, 6 11, 7 11, 7 10, 6 9, 7 8, 7 9, 8 9, 8 8, 9 8))', 0),'ie');
+INSERT INTO boundary VALUES
+	(2,ST_GeomFROMText('POLYGON((7 11, 9 11, 10 9, 10 8, 8 8, 8 9, 7 9,
+	 7 8, 6 9, 7 10, 7 11))', 0),'ni');
+INSERT INTO city VALUES ('Dublin',ST_GeomFROMText('POINT(9 6)', 0),'ie');
+INSERT INTO city VALUES ('Cork',ST_GeomFROMText('POINT(5 2)', 0),'ie');
+INSERT INTO city VALUES ('Limerick',ST_GeomFROMText('POINT(4 4)', 0),'ie');
+INSERT INTO city VALUES ('Galway',ST_GeomFROMText('POINT(4 6)', 0),'ie');
+INSERT INTO city VALUES ('Sligo',ST_GeomFROMText('POINT(5 8)', 0),'ie');
+INSERT INTO city VALUES ('Tipperary',ST_GeomFROMText('POINT(5 3)', 0),'ie');
+INSERT INTO city VALUES ('Belfast',ST_GeomFROMText('POINT(9 9)', 0),'ni');
+INSERT INTO city VALUES ('Londonderry',ST_GeomFROMText('POINT(7 10)', 0),'ni');
+```
+
+The two sets of values for the column `boundary` define the boundaries
+of the Republic of Ireland and Northern Ireland. Because of the
+coarseness of this sample mapping, the Republic of Ireland has only one
+boundary. A finer-grained mapping would have multiple boundaries, such
+as one to include the Arran Islands off the west coast near Galway. Each
+city's location is defined by a point or pair of coordinates.
+`ST_GeomFromText` is an MySQL function to convert text into a geometry
+data form.
+
+Workbench can show you the boundaries for you spatial database. See the
+following screenshot.
+
+*Boundary path as displayed by Workbench*
+
+![](Figures/Chapter%2011/boundary.png)
+
+> ❓**Skill builder** Create the three tables for the example and insert
+> the rows listed in the preceding SQL code.
+
+MySQL includes a number of geometry functions and operators for
+processing spatial data that simplify the writing of queries. A column's
+SRID value determines the method of calculating area or distance.
+Euclidean geometry is use for a flat plane (SRID = 0), and spherical
+geometry for latitude and longitude measures (SRID = 4326). For
+illustrative purposes, just a few of the geometric functions are
+described.
+
+*Some MySQL geometric functions*
+
+| Function                  | Description                          |
+|:--------------------------|:-------------------------------------|
+| ST_X(Point)               | The x-coordinate of a point          |
+| ST_Y(Point)               | The y-coordinate of a point          |
+| ST_Distance(Point, Point) | The distance between two points      |
+| ST_NumPoints(LineString)  | The number of points in a linestring |
+| ST_Area(Polygon)          | The area of a polygon                |
+
+Once the database is established, we can do some queries to gain an
+understanding of the additional capability provided by the spatial
+additions. Before starting, examine the scale on the map and note that
+one grid unit is about 37.5 kilometers (23 miles). This also means that
+the area of one grid unit is 1406 km[^1] (526 square miles).
+
+[^1]: epsg.io/4326
+
+*What is the area of the Republic of Ireland?*
+
+Because we approximate the border by a polygon, we use the area function
+and multiply the result by 1406 to convert to square kilometers.
+
+```{sql, connection = db, eval = FALSE}
+SELECT ST_AREA(boundpath)*1406 
+	AS 'Area (km^2)' FROM political_unit JOIN boundary
+   ON political_unit.unitcode = boundary.unitcode
+   WHERE unitname = 'Republic of Ireland';
+```
+
+| Area(km\^2) |
+|:------------|
+| 71706       |
+
+*How far, as the crow flies, is it from Sligo to Dublin?*
+
+You can measure the distance between two points using ST_Distance. You
+will need to multiply the result by 37.5 or 23 to convert to kilometers
+or miles, respectively.
+
+```{sql, connection = db, eval = FALSE}
+SELECT ST_Distance(orig.cityloc,dest.cityloc)*37.5 
+AS 'Distance (kms)'
+	FROM city orig, city dest
+ 		WHERE orig.cityname = 'Sligo'
+		AND dest.cityname = 'Dublin';
+```
+
+| Distance (kms) |
+|:---------------|
+| 167.71         |
+
+*What is the closest city to Limerick?*
+
+This query has a familiar structure. The inner query determines the
+minimum distance between Limerick and other cities. Notice that there is
+a need to exclude comparing the distance from Limerick to itself, which
+is zero.
+
+```{sql, connection = db, eval = FALSE}
+SELECT dest.cityname FROM city orig, city dest
+WHERE orig.cityname = 'Limerick'
+AND ST_Distance(orig.cityloc,dest.cityloc)=
+	(SELECT MIN(ST_Distance(orig.cityloc,dest.cityloc)) 
+	FROM city orig, city dest
+	WHERE orig.cityname = 'Limerick' AND dest.cityname <> 'Limerick');
+```
+
+| cityname  |
+|:----------|
+| Tipperary |
+
+*What is the westernmost city in Ireland?*
+
+The first thing to recognize is that by convention the west is shown on
+the left side of the map, which means the westernmost city will have the
+smallest x-coordinate.
+
+```{sql, connection = db, eval = FALSE}
+SELECT west.cityname FROM city west
+WHERE NOT EXISTS
+	(SELECT * FROM city other WHERE ST_X(other.cityloc) < ST_X(west.cityloc));
+```
+
+| cityname |
+|:---------|
+| Limerick |
+| Galway   |
+
+> ❓**Skill builder**
+>
+> 1.  What is the area of Northern Ireland? Because Northern Ireland is
+>     part of the United Kingdom and miles are still often used to
+>     measure distances, report the area in square miles.
+>
+> 2.  What is the direct distance from Belfast to Londonderry in miles?
+>
+> 3.  What is the northernmost city of the Republic of Ireland?
+
+### Geometry collections {.unnumbered}
+
+A geometry collection is a data type for describing one or more
+geometries. It covers multiple points, strings, polygons, as well as
+their possible combinations.
+
+#### MultiPoint {.unnumbered}
+
+The multipoint data type records information about a set of points, such
+as the bus stops on campus. For example:
+
+```{sql, connection = db, eval = FALSE}
+MULTIPOINT(9.0 6.1, 8.9 6.0)
+```
+
+#### MultiLineString {.unnumbered}
+
+The MultiLineString data type records information about a set of line
+strings, such as the bus routes on campus. For example:
+
+```{sql, connection = db, eval = FALSE}
+MULTILINESTRING((9 6, 4 6), (9 6, 5 2))
+```
+
+#### MULTIPOLYGON {.unnumbered}
+
+The MultiPOLYGON data type records information about a set of polygons,
+such as the shapes of the buildings on campus. For example:
+
+```{sql, connection = db, eval = FALSE}
+MULTIPOLYGON(((0 0,10 0,10 10,0 10,0 0)),((5 5,7 5,7 7,5 7, 5 5)))
+```
+
+#### GEOMETRYCOLLECTION {.unnumbered}
+
+The GEOMETRYCOLLECTION data type records information about a collection
+of geometries, such as the bus routes and stops on campus. For example:
+
+```{sql, connection = db, eval = FALSE}
+GEOMETRYCOLLECTION(LINESTRING(15 15, 20 20), POINT(10 10), POINT(30 30))
+```
+
+You can insert data using `ST_GeomCollFromText`, as the following
+example illustrates:
+
+```{sql, connection = db, eval = FALSE}
+INSERT INTO table VALUES
+ST_GeomCollFromText('GEOMETRYCOLLECTION(POINT(1 1),LINESTRING(0 0,1 1,2 2,3 3,4 4))');
+```
+
+> ❓**Skill builder** Modify the example database design to include:
+>
+> 1.  Historic buildings in a city
+>
+> 2.  Walking paths in a city
+>
+> 3.  Use of the MULTIPOLYGON data type to indicate a political region's
+>     boundary
+
+### Geocoding using Google Maps {.unnumbered}
+
+To get the latitude and longitude of a location, you can use Google Maps
+by following this procedure.
+
+1.  Go to maps.google.com.
+
+2.  Enter your address, zip code, airport code, or whatever you wish to
+    geocode.
+
+3.  Click on the link that says 'link to this page.' It is on the right
+    side, just above the upper right corner of the map.
+
+4.  The address bar (URL) will change. Copy the full link. For example:
+    [[http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=ahn&aq=&sll=37.0625,-95.677068&sspn=48.822589,67.763672&ie=UTF8&hq=&hnear=Athens+Ben+Epps+Airport-Ahn,+1010+Ben+Epps+Dr,+Athens,+Georgia+30605&ll=33.953791,-83.323746&spn=0.025168,0.033088&z=15&iwloc=A]{.ul}](http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=ahn&aq=&sll=37.0625,-95.677068&sspn=48.822589,67.763672&ie=UTF8&hq=&hnear=Athens+Ben+Epps+Airport-Ahn,+1010+Ben+Epps+Dr,+Athens,+Georgia+30605&ll=33.953791,-83.323746&spn=0.025168,0.033088&z=15&iwloc=A).
+
+5.  The latitude and longitude are contained in the URL following &ll.
+    In this case, latitude is: 33.953791 and longitude: -83.323746.
+
+### R-tree {.unnumbered}
+
+Conventional DBMSs were developed to handle one-dimensional data
+(numbers and text strings). In a spatial database, points, lines, and
+rectangles may be used to represent the location of retail outlets,
+roads, utilities, and land parcels. Such data objects are represented by
+sets of *x, y* or *x, y, z* coordinates. Other applications requiring
+the storage of spatial data include computer-aided design (CAD),
+robotics, and computer vision.
+
+The B-tree, often used to store data in one-dimensional databases, can
+be extended to *n* dimensions, where *n* ≥ 2. This extension of the
+B-tree is called an **R-tree**. As well as storing pointers to records
+in the sequence set, an R-tree also stores boundary data for each
+object. For a two-dimensional application, the boundary data are the
+**x** and **y** coordinates of the lower left and upper-right corners of
+the *minimum bounding* rectangle, the smallest possible rectangle
+enclosing the object. The index set, which contains pointers to
+lower-level nodes as in a B-tree, also contains data for the minimum
+bounding rectangle enclosing the objects referenced in the node. The
+data in an R-tree permit answers to such problems as *Find all pizza
+stores within 5 miles of the dorm.*
+
+How an R-tree stores data is illustrated in the following figure, which
+depicts five two-dimensional objects labeled A, B, C, D, and E. Each
+object is represented by its minimum bounding rectangle (the objects
+could be some other form, such as a circle). Data about these objects
+are stored in the sequence set. The index set contains details of two
+intermediate rectangles: X and Y. X fully encloses A, B, and C. Y fully
+encloses D and E.
+
+*An R-tree with sample spatial data*
+
+![](Figures/Chapter%2011/r-tree.png)
+
+An example demonstrates how these data are used to accelerate searching.
+Using a mouse, a person could outline a region on a map displayed on a
+screen. The minimum bounding rectangle for this region would then be
+determined and the coordinates used to locate geographic objects falling
+within the minimum boundary. Because an R-tree is an index, geographic
+objects falling within a region can be found rapidly. In the following
+figure, the drawn region (it has a bold border) completely covers object
+E. The R-tree software would determine that the required object falls
+within intermediate region Y, and thus takes the middle node at the next
+level of the R-tree. Then, by examining coordinates in this node, it
+would determine that E is the required object.
+
+*Searching an R-tree*
+
+![](Figures/Chapter%2011/searching-r-tree.png)
+
+As the preceding example illustrates, an R-tree has the same index
+structure as a B-tree. An R-tree stores data about *n*-dimensional
+objects in each node, whereas a B-tree stores data about a
+one-dimensional data type in each node. Both also store pointers to the
+next node in the tree (the index set) or the record (the sequence set).
+
+This short introduction to spatial data has given you some idea of how
+the relational model can be extended to support geometric information.
+Most of the major DBMS vendors support management of spatial data.
+
+## Managing temporal data {.unnumbered}
+
+With a temporal database, stored data have an associated time period
+indicating when the item was valid or stored in the database. By
+attaching a timestamp to data, it becomes possible to store and identify
+different database states and support queries comparing these states.
+Thus, you might be able to determine the number of seats booked on a
+flight by 3 p.m. on January 21, 2011, and compare that to the number
+booked by 3 p.m. on January 22, 2011.
+
+To appreciate the value of a temporal database, you need to know the
+difference between transaction and valid time and that bitemporal data
+combines both valid and transaction time.
+
+-   **Transaction time** is the timestamp applied by the system when
+    data are entered and cannot be changed by an application. It can be
+    applied to a particular item or row. For example, when changing the
+    price of a product, the usual approach would be to update the
+    existing product row with the new price. The old price would be lost
+    unless it was stored explicitly. In contrast, with a temporal
+    database, the old and new prices would automatically have separate
+    timestamps. In effect, an additional row is inserted to store the
+    new price and the time when the insert occurred.
+
+-   **Valid time** is the actual time at which an item was or will be a
+    valid or true value. Consider the case where a firm plans to
+    increase its prices on a specified date. It might post new prices
+    some time before their effective date. Valid time can be changed by
+    an application.
+
+-   **Bitemporal data** records both the [valid
+    time](http://en.wikipedia.org/wiki/Valid_time) and [transaction
+    time](http://en.wikipedia.org/wiki/Transaction_time) for a fact. It
+    usually requires four extra columns to record the upper and lower
+    bounds for valid time and transaction time.
+
+Valid time records when the change takes effect, and transaction time
+records when the change was entered. Storing transaction time is
+essential for database recovery because the DMBS can roll back the
+database to a previous state. Valid time provides a historical record of
+the state of the database. Both forms of time are necessary for a
+temporal database.
+
+As you might expect, a temporal database will be somewhat larger than a
+traditional database because data are never discarded and new
+timestamped values are inserted so that there is a complete history of
+the values of an instance (e.g., the price of a product since it was
+first entered in the database). Thus, you can think of most of the
+databases we have dealt with previously as snapshots of a particular
+state of the database, whereas a temporal database is a record of all
+states of the database. As disk storage becomes increasingly cheaper and
+firms recognize the value of business intelligence, we are likely to see
+more attention paid to temporal database technology.
+
+### Times remembered {.unnumbered}
+
+SQL supports several different data types for storing numeric values
+(e.g., integer and float), and a temporal database also needs a variety
+of data types for storing time values. The first level of distinction is
+to determine whether the time value is anchored or unanchored.
+**Anchored time** has a defined starting point (e.g., October 15, 1582),
+and **unanchored time** is a block of time with no specified start
+(e.g., 45 minutes).
+
+*Types of temporal data*[^2]
+
+[^2]: Adapted from: Goralwalla, I. A., M. T. Özsu, and D. Szafron. 1998.
+    *An object-oriented framework for temporal data models. In Temporal
+    databases: research and practice*, edited by O. Etzion, S. Jajoda,
+    and S. Sripada. Berlin: Springer-Verlag
+
+![](Figures/Chapter%2013/temporal%20data.png)
+
+Anchored time is further split into an instant or interval. An
+**instant** is a moment in time (e.g., a date and time). In SQL, an
+instant can be represented by a date, time, or timestamp data type. An
+**interval** is the time between two specified instants, and can be
+defined as a value or a range with an upper and lower bound instant. For
+example, [2011-01-01, 2011-01-23] defines an interval in 2011 beginning
+January 1 and ending January 23.
+
+#### Interval {.unnumbered}
+
+SQL-99 introduced the INTERVAL data type, which has not yet been
+implemented in MySQL. INTERVAL is a single value expressed in some unit
+or units of time (e.g., 6 years, 5 days, 7 hours). A small example
+illustrates the use of INTERVAL for time values. Consider the rotational
+and orbital periods of the planets . The CREATE statement for this table
+is
+
+```{sql, connection = db, eval = FALSE}
+CREATE TABLE planet (
+	pltname 		VARCHAR(7),
+	pltday 		INTERVAL,
+	pltyear 		INTERVAL,
+	PRIMARY KEY(pltname));
+```
+
+*Planetary data*
+
++----------+--------------------+-----------------+
+| Planet   | Rotational period\ | Orbital period\ |
+|          | (hours)            | (years)         |
++:=========+:===================+:================+
+| Mercury  | 1407.51            | 0.24            |
++----------+--------------------+-----------------+
+| Venus    | --5832.44^a^       | 0.62            |
++----------+--------------------+-----------------+
+| Earth    | 23.93              | 1               |
++----------+--------------------+-----------------+
+| Mars     | 24.62              | 1.88            |
++----------+--------------------+-----------------+
+| Jupiter  | 9.92               | 11.86           |
++----------+--------------------+-----------------+
+| Saturn   | 10.66              | 29.45           |
++----------+--------------------+-----------------+
+| Uranus   | 17.24              | 84.02           |
++----------+--------------------+-----------------+
+| Neptune  | 16.11              | 164.79          |
++----------+--------------------+-----------------+
+| Pluto    | 153.28             | 247.92          |
++----------+--------------------+-----------------+
+
+a\. Rotates in the opposite direction to the other planets
+
+To insert the values for Mercury, you would use
+
+```{sql, connection = db, eval = FALSE}
+INSERT INTO planet VALUES ('Mercury','1407.51 hours','0.24 years');
+```
+
+#### Modeling temporal data {.unnumbered}
+
+You already have the tools for modeling temporal values. For example,
+the project management data model discussed in Chapter 7 and reproduced
+in the following figure contains temporal data.
+
+*A project management data model*
+
+![](Figures/Chapter%207/planning%20revised.png)
+
+If we take the SHARE entity introduced very early in your data modeling
+experience, we can add temporal information to record the history of all
+values that are time-varying (i.e., price, quantity, dividend, and
+earnings). The data model to record temporal data is displayed. Firms
+pay dividends and report earnings only a few times per year, so we can
+associate a date with each value of dividend and earnings. Recording the
+history of trading transactions requires a timestamp, because a person
+can make multiple trades in a day. Every time a share is bought or sold,
+a new row is inserted containing both the transaction quantity and
+price. The number owned can be derived by using SUM.
+
+*A temporal model of SHARE*
+
+![](Figures/Chapter%2013/nation-stock%20temporal.png)
+
+Recording the share's price requires further consideration. If the
+intention is to record every change in price, then a time stamp is
+required as there will be multiple price changes in a day, and even in
+an hour, in busy trading. If there is less interest in the volatility of
+the stock and only the closing price for each day is of interest, then a
+date would be recorded.
+
+You can add additional attributes to tables in a relational database to
+handle temporal data, but doing so does not make it a temporal database.
+The problem is that current relational implementations do not have
+built-in functions for querying time-varying data. Such queries can also
+be difficult to specify in SQL.
+
+A temporal database has additional features for temporal data
+definition, constraint specification, data manipulation, and querying. A
+step in this direction is the development of TSQL (Temporal Structured
+Query Language). Based on SQL, TSQL supports querying of temporal
+databases without specifying time-varying criteria. SQL:2011, the
+seventh revision of the SQL standard, has improved support for temporal
+data.
+
+## Summary {.unnumbered}
+
+Spatial database technology stores details about items that have
+geometric features. It supports additional data types to describe these
+features, and has functions and operators to support querying. The new
+data types support point, line, and region values. Spatial technology is
+likely to develop over the next few years to support organizations
+offering localized information services.
+
+Temporal database technology provides data types and functions for
+managing time-varying data. Transaction time and valid time are two
+characteristics of temporal data. Times can be anchored or unanchored
+and measured as an instant or as an interval.
+
+## Key terms and concepts {.unnumbered}
+
+|                                     |                  |
+|:------------------------------------|:-----------------|
+| Anchored time                       | Spatial data     |
+| Geographic object                   | Temporal data    |
+| Geographic information system (GIS) | Theme            |
+| Interval                            | Transaction time |
+| Map                                 | Valid time       |
+| R-tree                              |                  |
+
+## References and additional readings {.unnumbered}
+
+Gibson, Rich, and Schuyler Erle. 2006. *Google maps hacks*. Sebastopol,
+CA: O'Reilly.
+
+Rigaux, P., M. O. Scholl, and A. Voisard. 2002. *Spatial databases: with
+application to GIS*, The Morgan Kaufmann series in data management
+systems. San Francisco: Morgan Kaufmann Publishers.
+
+## Exercises {.unnumbered}
+
+1.  What circumstances will lead to increased use of spatial data?
+
+2.  A national tourist bureau has asked you to design a database to
+    record details of items of interest along a scenic road. What are
+    some of the entities you might include? How would you model a road?
+    Draw the data model.
+
+3.  Using the map of the Iberian peninsula in the following figure,
+    populate the spatial database with details of Andorra, Portugal, and
+    Spain. Answer the following questions.
+
+    a.  What is the direct distance, or bee line, from Lisbon to Madrid?
+
+    b.  What is the farthest Spanish city from Barcelona?
+
+    c.  Imagine you get lost in Portugal and your geographic positioning
+        system (GPS) indicates that your coordinates are (3,9). What is
+        the nearest city?
+
+    d.  Are there any Spanish cities west of Braga?
+
+    e.  What is the area of Portugal?
+
+    f.  What is the southernmost city of Portugal?
+
+4.  Redesign the data model for political units assuming that your
+    relational database does not support point and polygon data types.
+
+5.  For more precision and to meet universal standards, it would be
+    better to use latitude and longitude to specify points and paths.
+    You should also recognize that Earth is a globe and not flat. How
+    would you enter latitude and longitude in MySQL?
+
+6.  When might you use transaction time and when might you use valid
+    time?
+
+7.  Design a database to report basketball scores. How would you record
+    time?
+
+8.  A supermarket chain has asked you to record what goods customers buy
+    during each visit. In other words, you want details of each shopping
+    basket. It also wants to know when each purchase was made. Design
+    the database.
+
+9.  An online auction site wants to keep track of the bids for each item
+    that a supplier sells. Design the database.
+
+10. Complete the Google maps lab exercise listed on the book's Web site.
+
+*Iberian Peninsula*
+
+![](Figures/Chapter%2013/Iberia-grid.png)
