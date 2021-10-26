@@ -4,11 +4,11 @@
 >
 > Sir Thomas Malory, *Le Morte D'Arthur*, 1470
 
-## Learning objectives {-}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will have a detailed knowledge of SQL.
 
-## Introduction {-}
+## Introduction {.unnumbered}
 
 **Structured query language** (SQL) is widely used as a relational
 database language, and SQL skills are essential for data management in a
@@ -44,7 +44,7 @@ You were introduced to SQL in Chapters 3 through 6. This chapter
 provides an integrated coverage of the language, pulling together the
 various pieces presented previously.
 
-## Data definition {-}
+## Data definition {.unnumbered}
 
 The DDL part of SQL encompasses statements to operate on tables, views,
 and indexes. Before we proceed, however, the term "base table" must be
@@ -57,7 +57,7 @@ referenced. This name is chosen when the base table is generated using
 the CREATE statement. Short-lived temporary tables, such as those formed
 as the result of a query, are not named.
 
-## Keys {-}
+## Keys {.unnumbered}
 
 The concept of a **key** occurs several times within SQL. In general, a
 key is one or more columns identified as such in the description of a
@@ -80,7 +80,7 @@ given column are equal. This constraint is enforced by the DBMS during
 the execution of INSERT and UPDATE statements. A unique key is part of
 the index mechanism.
 
-## Indexes {-}
+## Indexes {.unnumbered}
 
 Indexes are used to accelerate data access and ensure uniqueness. An
 **index** is an ordered set of pointers to rows of a base table. Think
@@ -98,7 +98,7 @@ identical index keys.
 
 ![](Figures/Chapter 11/index.png)
 
-## Notation {-}
+## Notation {.unnumbered}
 
 A short primer on notation is required before we examine SQL commands.
 
@@ -113,7 +113,7 @@ A short primer on notation is required before we examine SQL commands.
 5. An ellipsis (...) indicates that the immediate syntactic unit may be
     repeated optionally more than once.
 
-## Creating a table {-}
+## Creating a table {.unnumbered}
 
 CREATE TABLE is used to define a new base table, either interactively or
 by embedding the statement in a host language. The statement specifies a
@@ -128,7 +128,7 @@ CREATE TABLE base-table
 	[unique-block];
 ```
 
-### Column definition {-}
+### Column definition {.unnumbered}
 
 The column definition block defines the columns in a table. Each column
 definition consists of a column name, data type, and optionally the
@@ -148,7 +148,7 @@ column-name data-type [NOT NULL]
 The NOT NULL clause specifies that the particular column must have a
 value whenever a new row is inserted.
 
-## Constraints {-}
+## Constraints {.unnumbered}
 
 A constraint is a rule defined as part of CREATE TABLE that defines
 valid sets of values for a base table by placing limits on INSERT,
@@ -157,7 +157,7 @@ UPDATE, and DELETE operations. Constraints can be named (e.g.,
 The four constraint variations apply to primary key, foreign key, unique
 values, and range checks.
 
-### Primary key constraint {-}
+### Primary key constraint {.unnumbered}
 
 The primary key constraint block specifies a set of columns that
 constitute the primary key. Once a primary key is defined, the system
@@ -177,10 +177,10 @@ key are arranged in ascending or descending order, respectively.
 For example:
 
 ```{sql, connection = db, eval = FALSE}
-pk\_stock PRIMARY KEY(stkcode)
+pk_stock PRIMARY KEY(stkcode)
 ```
 
-### Foreign key constraint  {-}
+### Foreign key constraint  {.unnumbered}
 
 The referential constraint block defines a foreign key, which consists
 of one or more columns in the table that together must match a primary
@@ -226,7 +226,7 @@ CONSTRAINT fk_stock_nation FOREIGN KEY(natcode)
 	REFERENCES nation(natcode)
 ```
 
-### Unique constraint {-}
+### Unique constraint {.unnumbered}
 
 A unique constraint creates a unique index for the specified column or
 columns. A unique key is constrained so that no two of its values are
@@ -246,7 +246,7 @@ An example follows:
 CONSTRAINT unq_stock_stkname UNIQUE(stkname)
 ```
 
-### Check constraint {-}
+### Check constraint {.unnumbered}
 
 A check constraint defines a set of valid values and comes in three
 forms: table, column, or domain constraint.
@@ -293,16 +293,16 @@ CREATE table item (
 	itemcolor valid_color);
 ```
 
-## Data types {-}
+## Data types {.unnumbered}
 
 Some of the variety of data types that can be used are depicted in the
 following figure and described in more detail in the following pages.
 
-### BOOLEAN {-}
+### BOOLEAN {.unnumbered}
 
 Boolean data types can have the values true, false, or unknown.
 
-### SMALLINT and INTEGER {-}
+### SMALLINT and INTEGER {.unnumbered}
 
 Most commercial computers have a 32-bit word, where a word is a unit of
 storage. An integer can be stored in a full word or half a word. If it
@@ -315,7 +315,7 @@ as SMALLINT can store a number in the range --2^15^ to 2^15^-1 or
 --32,768 to 32,767. Just remember that INTEGER is good for ±2 billion
 and SMALLINT for ±32,000.
 
-### FLOAT {-}
+### FLOAT {.unnumbered}
 
 Scientists often deal with numbers that are very large (e.g., Avogadro's
 number is 6.02252 ×10^23^) or very small (e.g., Planck's constant is
@@ -333,7 +333,7 @@ single-precision floating-point is selected. If *n* is between 22 and 53
 inclusive, the storage format is double-precision floating-point. If *n*
 is not specified, double-precision floating-point is assumed.
 
-### DECIMAL {-}
+### DECIMAL {.unnumbered}
 
 Binary is the most convenient form of storing data from a computer's
 perspective. People, however, work with a decimal number system. The
@@ -349,7 +349,7 @@ column, and q is the number of digits to the right of the decimal point.
 
 ![](Figures/Chapter 10/data types.png)
 
-### CHAR and VARCHAR {-}
+### CHAR and VARCHAR {.unnumbered}
 
 Nonnumeric columns are stored as character strings. A person's family
 name is an example of a column that is stored as a character string.
@@ -387,7 +387,7 @@ space at the cost of time, and save time at the cost of space. When
 dealing with character fields, the database designer has to decide
 whether time or space is more important.
 
-### Times and dates {-}
+### Times and dates {.unnumbered}
 
 Columns that have a data type of DATE are stored as *yyyymmdd* (e.g.,
 2012-11-04 for November 4, 2012). There are two reasons for this format.
@@ -420,46 +420,44 @@ SQL-99 introduced the INTERVAL data type, which is a single value
 expressed in some unit or units of time (e.g., 6 years, 5 days, 7
 hours).
 
-### BLOB (binary large object) {-}
+### BLOB (binary large object) {.unnumbered}
 
 BLOB is a large-object data type that stores any kind of binary data.
 Binary data typically consists of a saved spreadsheet, graph, audio
 file, satellite image, voice pattern, or any digitized data. The BLOB
 data type has no maximum size.
 
-### CLOB (character large object) {-}
+### CLOB (character large object) {.unnumbered}
 
 CLOB is a large-object data type that stores any kind of character data.
 Text data typically consists of reports, correspondence, chapters of a
 manual, or contracts. The CLOB data type has no maximum size.
 
-+----------------------------------------------------------+
-| *Skill Builder*                                          |
-|                                                          |
-| What data types would you recommend for the following?   |
-|                                                          |
-| 1.  A book's ISBN                                        |
-|                                                          |
-| 2. A photo of a product                                  |
-|                                                          |
-| 3. The speed of light (2.9979 × 10^8^ meters per second) |
-|                                                          |
-| 4. A short description of an animal's habitat            |
-|                                                          |
-| 5. The title of a Japanese book                          |
-|                                                          |
-| 6. A legal contract                                      |
-|                                                          |
-| 7. The status of an electrical switch                    |
-|                                                          |
-| 8. The date and time a reservation was made              |
-|                                                          |
-| 9. An item's value in euros                              |
-|                                                          |
-| 10. The number of children in a family                   |
-+----------------------------------------------------------+
+> ❓*Skill builder*
+>
+> What data types would you recommend for the following?
+>
+> 1.  A book's ISBN 
+>
+> 2. A photo of a product 
+>
+> 3. The speed of light (2.9979 × 10^8^ meters per second) 
+> 
+> 4. A short description of an animal's habitat
+> 
+> 5. The title of a Japanese book
+> 
+> 6. A legal contract 
+> 
+> 7. The status of an electrical switch 
+> 
+> 8. The date and time a reservation was made 
+> 
+> 9. An item's value in euros
+> 
+> 10. The number of children in a family
 
-## Collation sequence {-}
+## Collation sequence {.unnumbered}
 
 A DBMS will typically support many character sets. so it can handle text
 in different languages. While many European languages are based on an
@@ -487,7 +485,7 @@ sensitive**. In other words, a query will see the two strings 'abc' and
 strings are considered identical. Case sensitivity is usually the right
 choice to ensure precision of querying.
 
-## Scalar functions {-}
+## Scalar functions {.unnumbered}
 
 Most implementations of SQL include functions that can be used in
 arithmetic expressions, and for data conversion or data extraction. The
@@ -510,7 +508,7 @@ Some examples:
 SELECT extract(day FROM CURRENT_DATE());
 ```
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT SUBSTRING(`person first`, 1,1), `person last` FROM person;
 ```
 
@@ -524,7 +522,7 @@ know that there is a function, DATEDIFF, to determine the number of days
 between any two dates. Consult your DBMS manual to learn about other
 functions for dealing with dates and times.
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 WITH
 late AS (SELECT * FROM sale), 
 early AS (SELECT * FROM sale) 
@@ -536,17 +534,13 @@ SELECT DISTINCT DATEDIFF(late.saledate,early.saledate) AS Difference
 			(SELECT MIN(saledate) FROM sale);
 ```
 
-  Difference
-  ------------
-  1
-
 The preceding query is based on the idea of joining `sale` with a copy of
 itself. The matching column from `late` is the latest sale's date (or
 MAX), and the matching column from `early` is the earliest sale's date (or
 MIN). As a result of the join, each row of the new table has both the
 earliest and latest dates.
 
-## Formatting {-}
+## Formatting {.unnumbered}
 
 You will likely have noticed that some queries report numeric values
 with a varying number of decimal places. The FORMAT function gives you
@@ -574,7 +568,7 @@ SELECT shrfirm, shrprice, shrqty, FORMAT(shrdiv/shrprice*100,2) AS yield FROM SH
 	ORDER BY yield DESC
 ```
 
-## Altering a table {-}
+## Altering a table {.unnumbered}
 
 The ALTER TABLE statement has two purposes. *First,* it can add a single
 column to an existing table. *Second*, it can add, drop, activate, or
@@ -606,7 +600,7 @@ constraints must be reactivated before they can be automatically
 enforced again. Activating the constraints enables the DBMS to validate
 the references in the data.
 
-## Dropping a table {-}
+## Dropping a table {.unnumbered}
 
 A base table can be deleted at any time by using the DROP statement. The
 format is
@@ -618,7 +612,7 @@ DROP TABLE base-table;
 The table is deleted, and any views or indexes defined on the table are
 also deleted.
 
-## Creating a view {-}
+## Creating a view {.unnumbered}
 
 A view is a virtual table. It has no physical counterpart but appears to
 the client as if it really exists. A view is defined in terms of other
@@ -689,11 +683,11 @@ definition, is executed only when the view is referenced in an SQL
 command. For example, the following command would enable the subquery to
 be executed and the view created:
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT * FROM stkvalue WHERE price > 10;
 ```
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT natname, stkfirm, stkprice*exchrate, stkqty, stkprice*exchrate*stkqty
 	FROM stock JOIN nation
 		ON stock.natcode = nation.natcode
@@ -704,7 +698,7 @@ Any table that can be defined with a SELECT statement is a potential
 view. Thus, it is possible to have a view that is defined by another
 view.
 
-## Dropping a view {-}
+## Dropping a view {.unnumbered}
 
 DROP VIEW is used to delete a view from the system catalog. A view might
 be dropped because it needs to be redefined or is no longer used. It
@@ -718,7 +712,7 @@ DROP VIEW view;
 Remember, if a base table is dropped, all views based on that table are
 also dropped.
 
-## Creating an index {-}
+## Creating an index {.unnumbered}
 
 An index helps speed up retrieval (a more detailed discussion of
 indexing is covered later in this book). A column that is frequently
@@ -754,7 +748,7 @@ the creation of a composite index.
 CREATE INDEX lineitemindx ON lineitem (lineno, saleno);
 ```
 
-## Dropping an index {-}
+## Dropping an index {.unnumbered}
 
 Indexes can be dropped at any time by using the DROP INDEX statement.
 The general form of this statement is
@@ -763,14 +757,14 @@ The general form of this statement is
 DROP INDEX index;
 ```
 
-## Data manipulation {-}
+## Data manipulation {.unnumbered}
 
 SQL supports four DML statements---SELECT, INSERT, UPDATE, and DELETE.
 Each of these will be discussed in turn, with most attention focusing on
 SELECT because of the variety of ways in which it can be used. First, we
 need to understand why we must qualify column names and temporary names.
 
-## Qualifying column names {-}
+## Qualifying column names {.unnumbered}
 
 Ambiguous references to column names are avoided by qualifying a column
 name with its table name, especially when the same column name is used
@@ -778,18 +772,18 @@ in several tables. Clarity is maintained by prefixing the column name
 with the table name. The following example demonstrates qualification of
 the `natcode`, which appears in both `stock` and `nation`.
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT stkfirm, stkprice FROM stock JOIN nation
 	ON stock.natcode = nation.natcode;
 ```
 
-## Temporary names {-}
+## Temporary names {.unnumbered}
 
 Using the WITH clause, a table or view can be given a temporary name, or
 alias, that remains current for a query. Temporary names are used in a
 self-join to distinguish the copies of the table.
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 WITH
 wrk AS (SELECT * FROM emp), 
 boss AS (SELECT * FROM emp) 
@@ -804,7 +798,7 @@ name. For example, l might be used merely to avoid having to enter
 view, any qualified reference to a column of the table or view must also
 use that temporary name.
 
-## SELECT {-}
+## SELECT {.unnumbered}
 
 The SELECT statement is by far the most interesting and challenging of
 the four DML statements. It reveals a major benefit of the relational
@@ -829,7 +823,7 @@ Alternatively, we can diagram the structure of SELECT.
 
 ![]() *MISSING*
 
-### Product {-}
+### Product {.unnumbered}
 
 Product, or more strictly Cartesian product, is a fundamental operation
 of relational algebra. It is rarely used by itself in a query; however,
@@ -974,19 +968,19 @@ SELECT auscount/totalcount*100 as Percentage
 The preceding example was used to show when you might find product
 useful. You can also write the query as
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT (SELECT COUNT(*) FROM stock WHERE natcode = 'AUS')*100/
 	(SELECT COUNT(*) FROM stock) as Percentage;
 ```
 
-### Inner join {-}
+### Inner join {.unnumbered}
 
 Inner join, often referred to as join, is a powerful and frequently used
 operation. It creates a new table from two existing tables by matching
 on a column common to both tables. An **equijoin** is the simplest form
 of join; in this case, columns are matched on equality.
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT * FROM stock JOIN nation
 	ON stock.natcode = nation.natcode;
 ```
@@ -994,7 +988,7 @@ SELECT * FROM stock JOIN nation
 There are other ways of expressing join that are more concise. For
 example, we can write
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT * FROM stock INNER JOIN nation USING (natcode);
 ```
 
@@ -1004,7 +998,7 @@ column name for matching primary and foreign keys.
 A further simplification is to rely on the primary and foreign key
 definitions to determine the join condition, so we can write
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT * FROM stock NATURAL JOIN nation;
 ```
 
@@ -1025,14 +1019,14 @@ each of these copies a unique name.
 
 *Find the names of employees who earn more than their boss.*
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT wrk.empfname
 	FROM emp wrk JOIN emp boss
 		ON wrk.bossno = boss.empno
 		WHERE wrk.empsalary > boss.empsalary;
 ```
 
-### Outer join {-}
+### Outer join {.unnumbered}
 
 An inner join reports those rows where the primary and foreign keys
 match. There are also situations where you might want an **outer join**,
@@ -1070,23 +1064,12 @@ Here is an example to illustrate the use of a left join.
 
 *For all brown items, report each sale. Include in the report those brown items that have appeared in no sales.*
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT itemname, saleno, lineqty FROM item
 	LEFT JOIN lineitem USING (itemno)
 		WHERE itemcolor = 'Brown'
 		ORDER BY itemname;
 ```
-
-  itemname              saleno   lineqty
-  --------------------- -------- ---------
-  Map case              null     null
-  Pocket knife - Avon   1        1
-  Pocket knife - Avon   3        1
-  Pocket knife - Avon   2        1
-  Pocket knife - Avon   5        1
-  Pocket knife - Avon   4        1
-  Pocket knife - Nile   null     null
-  Stetson               null     null
 
 A **right outer join** is an inner join plus those rows from t2 not
 included in the inner join.
@@ -1124,21 +1107,21 @@ UNION
 SELECT id, col1, col2 FROM t1 RIGHT JOIN t2 USING (id);
 ```
 
-### Simple subquery {-}
+### Simple subquery {.unnumbered}
 
 A subquery is a query within a query. There is a SELECT statement nested
 inside another SELECT statement. Simple subqueries were used extensively
 in earlier chapters. For reference, here is a simple subquery used
 earlier:
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT stkfirm FROM stock
 	WHERE natcode IN
 		(SELECT natcode FROM nation
 			WHERE natname = 'Australia');
 ```
 
-### Correlated subquery {-}
+### Correlated subquery {.unnumbered}
 
 A correlated subquery differs from a simple subquery in that the inner
 query must be evaluated more than once. Consider the following example
@@ -1146,7 +1129,7 @@ described previously:
 
 *Find those stocks where the quantity is greater than the average for that country.*
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT natname, stkfirm, stkqty FROM stock JOIN nation
 ON stock.natcode = nation.natcode
 WHERE stkqty > 
@@ -1160,7 +1143,7 @@ need to write a correlated subquery. In the preceding example, the stock
 quantity for each row is compared with the average stock quantity for
 that row's country.
 
-### Aggregate functions {-}
+### Aggregate functions {.unnumbered}
 
 SQL's aggregate functions increase its retrieval power. These functions
 were covered earlier and are only mentioned briefly here for
@@ -1179,7 +1162,7 @@ a column. Use COUNT(columnname) to exclude a null value in columnname.
   MAX        Determines the largest value in a column
   MIN        Determines the smallest value in a column
 
-### GROUP BY and HAVING {-}
+### GROUP BY and HAVING {.unnumbered}
 
 The GROUP BY clause is an elementary form of control break reporting and
 supports grouping of rows that have the same value for a specified
@@ -1188,38 +1171,29 @@ column. For example,
 
 *Report by nation the total value of stockholdings.*
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT natname, SUM(stkprice*stkqty*exchrate) AS total
 	FROM stock JOIN nation ON stock.natcode = nation.natcode
 		GROUP BY natname;
 ```
-
-gives the following results:
-
-  natname          total
-  ---------------- -------------
-  Australia        946430.65
-  India            97506.71
-  United Kingdom   48908364.25
-  United States    30066065.54
 
 The HAVING clause is often associated with GROUP BY. It can be thought
 of as the WHERE clause of GROUP BY because it is used to eliminate rows
 for a GROUP BY condition. Both GROUP BY and HAVING are dealt with
 in-depth in Chapter 4.
 
-### REGEXP {-}
+### REGEXP {.unnumbered}
 
 The REGEXP clause supports pattern matching to find a defined set of
 strings in a character column (CHAR or VARCHAR). Refer to Chapters 3 and
 4 for more details.
 
-## INSERT {-}
+## INSERT {.unnumbered}
 
 There are two formats for INSERT. The first format is used to insert one
 row into a table.
 
-### Inserting a single record {-}
+### Inserting a single record {.unnumbered}
 
 The general form is
 
@@ -1260,7 +1234,7 @@ INSERT INTO stock
 	VALUES ('EE','Elysian Emeralds',5);
 ```
 
-### Inserting multiple records using a query {-}
+### Inserting multiple records using a query {.unnumbered}
 
 The second form of INSERT operates in conjunction with a subquery. The
 resulting rows are then inserted into a table. Imagine the situation
@@ -1281,7 +1255,7 @@ Think of INSERT with a subquery as a way of copying a table. You can
 select the rows and columns of a particular table that you want to copy
 into an existing or new table.
 
-## UPDATE {-}
+## UPDATE {.unnumbered}
 
 The UPDATE command is used to modify values in a table. The general
 format is
@@ -1297,7 +1271,7 @@ Permissible scalar expressions involve columns, scalar functions (see
 the section on scalar functions in this chapter), or constants. No
 aggregate functions are allowable.
 
-### Updating a single row {-}
+### Updating a single row {.unnumbered}
 
 UPDATE can be used to modify a single row in a table. Suppose you need
 to revise your data after 200,000 shares of Minnesota Gold are sold. You
@@ -1309,7 +1283,7 @@ UPDATE stock
 	WHERE stkcode = 'MG';
 ```
 
-### Updating multiple rows {-}
+### Updating multiple rows {.unnumbered}
 
 Multiple rows in a table can be updated as well. Imagine the situation
 where several stocks change their dividend to £2.50. Then the following
@@ -1321,7 +1295,7 @@ UPDATE stock
 	WHERE stkcode IN ('FC','BS','NG');
 ```
 
-### Updating all rows {-}
+### Updating all rows {.unnumbered}
 
 All rows in a table can be updated by simply omitting the WHERE clause.
 To give everyone at The Expeditioner a 5 percent raise, use
@@ -1331,7 +1305,7 @@ UPDATE emp
 	SET empsalary = empsalary*1.05;
 ```
 
-### Updating with a subquery {-}
+### Updating with a subquery {.unnumbered}
 
 A subquery can also be used to specify which rows should be changed.
 Consider the following example. The employees in the departments on the
@@ -1346,7 +1320,7 @@ UPDATE emp
 		(SELECT deptname FROM dept WHERE deptfloor = 4);
 ```
 
-## DELETE {-}
+## DELETE {.unnumbered}
 
 The DELETE statement erases one or more rows in a table. The general
 format is
@@ -1356,7 +1330,7 @@ DELETE FROM table
 	[WHERE condition];
 ```
 
-### Delete a single record {-}
+### Delete a single record {.unnumbered}
 
 If all stocks with stkcode equal to "BE" were sold, then this row can be
 deleted using
@@ -1365,7 +1339,7 @@ deleted using
 DELETE FROM stock WHERE stkcode = 'BE';
 ```
 
-### Delete multiple records {-}
+### Delete multiple records {.unnumbered}
 
 If all Australian stocks were liquidated, then the following command
 would delete all the relevant rows:
@@ -1376,7 +1350,7 @@ DELETE FROM stock
 	(SELECT natcode FROM nation WHERE natname = 'Australia');
 ```
 
-### Delete all records {-}
+### Delete all records {.unnumbered}
 
 All records in a table can be deleted by omitting the WHERE clause. The
 following statement would delete all rows if the entire portfolio were
@@ -1389,7 +1363,7 @@ DELETE FROM stock;
 This command is not the same as DROP TABLE because, although the table
 is empty, it still exists.
 
-### Delete with a subquery {-}
+### Delete with a subquery {.unnumbered}
 
 Despite their sterling efforts in the recent productivity drive, all the
 employees on the fourth floor of The Expeditioner have been fired (the
@@ -1402,7 +1376,7 @@ DELETE FROM emp
 		(SELECT deptname FROM dept WHERE deptfloor = 4);
 ```
 
-## SQL routines {-}
+## SQL routines {.unnumbered}
 
 SQL provides two types of routines---functions and procedures---that are
 created, altered, and dropped using standard SQL. Routines add
@@ -1410,7 +1384,7 @@ flexibility, improve programmer productivity, and facilitate the
 enforcement of business rules and standard operating procedures across
 applications.
 
-## SQL function {-}
+## SQL function {.unnumbered}
 
 A function is SQL code that returns a value when invoked within an SQL
 statement. It is used in a similar fashion to SQL's built-in functions.
@@ -1433,20 +1407,18 @@ conversion. For example:
 SELECT km_to_miles(100);
 ```
 
-+------------------------------------------------------------------------------------------------+
-| *Skill builder*                                                                                |
-|                                                                                                |
-| Create a table containing the average daily temperature in Tromsø,                             |
-| Norway, then write a function to convert Celsius to Fahrenheit (F =                            |
-| C\*1.8 + 32), and test the function by reporting temperatures in C and                         |
-| F.                                                                                             |
-|                                                                                                |
-| Month   Jan    Feb    Mar    Apr   May   Jun    Jul    Aug    Sep   Oct   Nov    Dec           |
-| ------- ------ ------ ------ ----- ----- ------ ------ ------ ----- ----- ------ ------        |
-| ºC      -4.7   -4.1   -1.9   1.1   5.6   10.1   12.7   11.8   7.7   2.9   -1.5   -3.7          |
-+------------------------------------------------------------------------------------------------+
+> ❓*Skill builder*
+>
+> Create a table containing the average daily temperature in Tromsø,
+> Norway, then write a function to convert Celsius to Fahrenheit (F = 
+> C\*1.8 + 32), and test the function by reporting temperatures in C and
+> F.
+>
+> Month   Jan    Feb    Mar    Apr   May   Jun    Jul    Aug    Sep   Oct   Nov    Dec
+> ------- ------ ------ ------ ----- ----- ------ ------ ------ ----- ----- ------ ------ 
+> ºC      -4.7   -4.1   -1.9   1.1   5.6   10.1   12.7   11.8   7.7   2.9   -1.5   -3.7 
 
-## SQL procedure {-}
+## SQL procedure {.unnumbered}
 
 A procedure is SQL code that is dynamically loaded and executed by a
 CALL statement, usually within a database application. We use an
@@ -1525,20 +1497,18 @@ under the Stored Procedures header.
 
 ![]() *MISSING*
 
-+-------------------------------------------------------------------------+
-| *Skill builder*                                                         |
-|                                                                         |
-| 1.  After verifying that the system you use for learning SQL supports   |
-|     stored procedures, create the tables for the preceding data model   |
-|     and enter the code for the stored procedure. Now, test the stored   |
-|     procedure and query the tables to verify that the procedure has     |
-|     worked.                                                             |
-|                                                                         |
-| 2. Write a stored procedure to add details of a gift to the donation    |
-|     database (see exercises in Chapter 5).                              |
-+-------------------------------------------------------------------------+
+> ❓*Skill builder*
+>
+> 1.  After verifying that the system you use for learning SQL supports
+>     stored procedures, create the tables for the preceding data model
+>     and enter the code for the stored procedure. Now, test the stored
+>     procedure and query the tables to verify that the procedure has 
+>     worked.
+>
+> 2. Write a stored procedure to add details of a gift to the donation
+>     database (see exercises in Chapter 5).
 
-## Trigger {-}
+## Trigger {.unnumbered}
 
 A trigger is a form of stored procedure that executes automatically when
 a table's rows are modified. Triggers can be defined to execute either
@@ -1580,13 +1550,9 @@ INSERT INTO stock_log VALUES
 END
 ```
 
-+-------------------------------------------------------------------------+
-| *Skill builder*                                                         |
-|                                                                         |
-| Why is the primary key of `stock_log` not the same as that of stock?     |
-+-------------------------------------------------------------------------+
+> ❓*Skill builder* Why is the primary key of `stock_log` not the same as that of stock?
 
-## Nulls---much ado about missing information {-}
+## Nulls---much ado about missing information {.unnumbered}
 
 Nulls are overworked in SQL because they can represent several
 situations. Null can represent unknown information. For example, you
@@ -1609,7 +1575,7 @@ should be explicitly avoided by specifying NOT NULL for all columns and
 by using codes to make the meaning of a value clear (e.g., "U" means
 "unknown," "I" means "inapplicable," "N" means "not supplied").
 
-## Security {-}
+## Security {.unnumbered}
 
 Data are a valuable resource for nearly every organization. Just as an
 organization takes measures to protect its physical assets, it also
@@ -1633,7 +1599,7 @@ Those with privileges can then use GRANT and REVOKE, commands included
 in SQL's data control language (DCL) to extend privileges to or rescind
 them from other users.
 
-## GRANT {-}
+## GRANT {.unnumbered}
 
 The GRANT command defines a client's privileges. The general format of
 the statement is
@@ -1679,7 +1645,7 @@ GRANT SELECT ON item TO PUBLIC;
 GRANT SELECT, UPDATE, DELETE, INSERT ON stk TO alice;
 ```
 
-### The WITH GRANT OPTION clause {-}
+### The WITH GRANT OPTION clause {.unnumbered}
 
 The WITH GRANT OPTION command allows a client to transfer his privileges
 to another client, as this next example illustrates:
@@ -1698,7 +1664,7 @@ example, Ned would enter
 GRANT SELECT, INSERT ON item TO andrew;
 ```
 
-## REVOKE {-}
+## REVOKE {.unnumbered}
 
 What GRANT granteth, REVOKE revoketh. Privileges are removed using the
 REVOKE statement. The general format of this statement is
@@ -1721,7 +1687,7 @@ REVOKE SELECT ON item FROM sophie;
 REVOKE UPDATE ON stock FROM nancy;
 ```
 
-### Cascading revoke {-}
+### Cascading revoke {.unnumbered}
 
 When a REVOKE statement removes a privilege, it can result in more than
 one revocation. An earlier example illustrated how Ned used his WITH
@@ -1734,7 +1700,7 @@ REVOKE INSERT ON item FROM ned;
 
 automatically revokes Andrew's insert privilege.
 
-## The system catalog {-}
+## The system catalog {.unnumbered}
 
 The system catalog describes a relational database. It contains the
 definitions of base tables, views, indexes, and so on. The catalog
@@ -1775,7 +1741,7 @@ As you can see, querying the catalog is the same as querying a database.
 This is a useful feature because you can use SQL queries on the catalog
 to find out more about a database.
 
-## Natural language processing {-}
+## Natural language processing {.unnumbered}
 
 Infrequent inquirers of a relational database may be reluctant to use
 SQL because they don't use it often enough to remain familiar with the
@@ -1793,7 +1759,7 @@ clarification where necessary.
   --------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   Which movies have won best foreign film sorted by year?   SELECT DISTINCT \[Year\], \[Title\] FROM \[Awards\] INNER JOIN \[Movies\] ON \[Movies\].\[Movie ID\] = \[Awards\].\[Movie ID\] WHERE \[Category\]=\'Best Foreign Film\' and \[Status\]=\'Winner\' ORDER BY \[Year\] ASC;
 
-## Connectivity and ODBC {-}
+## Connectivity and ODBC {.unnumbered}
 
 Over time and because of differing needs, an organization is likely to
 purchase DBMS software from a variety of vendors. Also, in some
@@ -1810,7 +1776,7 @@ connects. CLI is not a query language but a way of wrapping SQL so it
 can be understood by a DBMS. In 1996, CLI was adopted as an
 international standard and renamed X/Open CLI.
 
-## Open database connectivity (ODBC) {-}
+## Open database connectivity (ODBC) {.unnumbered}
 
 The de facto standard for database connectivity is **Open Database
 Connectivity** (ODBC), an extended implementation of CLI developed by
@@ -1852,7 +1818,7 @@ ODBC driver. As a result, ODBC APIs can never be as fast as native APIs.
   Driver for DBMS server
   DBMS server
 
-## Embedded SQL {-}
+## Embedded SQL {.unnumbered}
 
 SQL can be used in two modes. *First,* SQL is an interactive query
 language and database programming language. SELECT defines queries;
@@ -1873,7 +1839,7 @@ embedded SQL. If you are need to write application programs using
 embedded SQL, you will need training in both the application language
 and the details of how it communicates with SQL.
 
-## User-defined types {-}
+## User-defined types {.unnumbered}
 
 Versions of SQL prior to the SQL-99 specification had predefined data
 types, and programmers were limited to selecting the data type and
@@ -1883,7 +1849,7 @@ normal built-in data types defined by SQL, **user-defined data types**
 (UDTs) are available. A UDT is used like a predefined type, but it must
 be set up before it can be used.
 
-## The future of SQL {-}
+## The future of SQL {.unnumbered}
 
 Since 1986, developers of database applications have benefited from an
 SQL standard, one of the most successful standardization stories in the
@@ -1893,7 +1859,7 @@ consistent, and SQL code is highly portable. Standardization was
 relatively easy when focused on the storage and retrieval of numbers and
 characters. Objects have made standardization more difficult.
 
-## Summary {-}
+## Summary {.unnumbered}
 
 Structured Query Language (SQL), a widely used relational database
 language, has been adopted as a standard by ANSI and ISO. It is a data
@@ -1942,42 +1908,44 @@ programming language. Natural language processing (NLP) and open
 database connectivity (ODBC) are extensions to relational technology
 that enhance its usefulness.
 
-  Key terms and concepts
-  ------------------------------------ --------------------------------------------------
-  Aggregate functions                  GROUP BY
-  ALTER TABLE                          Index
-  ANSI                                 INSERT
-  Base table                           ISO
-  Complete database language           Join
-  Complete programming language        Key
-  Composite key                        Natural language processing (NLP)
-  Connectivity                         Null
-  Correlated subquery                  Open database connectivity (ODBC)
-  CREATE FUNCTION                      Primary key
-  CREATE INDEX                         Product
-  CREATE PROCEDURE                     Qualified name
-  CREATE TABLE                         Referential integrity rule
-  CREATE TRIGGER                       REVOKE
-  CREATE VIEW                          Routine
-  Cursor                               Scalar functions
-  Data control language (DCL)          Security
-  Data definition language (DDL)       SELECT
-  Data manipulation language (DML)     Special registers
-  Data types                           SQL
-  DELETE                               Subquery
-  DROP INDEX                           Synonym
-  DROP TABLE                           System catalog
-  DROP VIEW                            Temporary names
-  Embedded SQL                         Unique key
-  Foreign key                          UPDATE
-  GRANT                                View
+## Key terms and concepts {.unnumbered}
 
-## References and additional readings {-}
+|                                      |                                     |
+|: ------------------------------------|:------------------------------------|
+| Aggregate functions                  | GROUP BY                            |
+| ALTER TABLE                          | Index                               |
+| ANSI                                 | INSERT                              |
+| Base table                           | ISO                                 |
+| Complete database language           | Join                                |
+| Complete programming language        | Key                                 |
+| Composite key                        | Natural language processing (NLP)   |
+| Connectivity                         | Null                                |
+| Correlated subquery                  | Open database connectivity (ODBC)   |
+| CREATE FUNCTION                      | Primary key                         |
+| CREATE INDEX                         | Product                             |
+| CREATE PROCEDURE                     | Qualified name                      |
+| CREATE TABLE                         | Referential integrity rule          |
+| CREATE TRIGGER                       | REVOKE                              |
+| CREATE VIEW                          | Routine                             |
+| Cursor                               | Scalar functions                    |
+| Data control language (DCL)          | Security                            |
+| Data definition language (DDL)       | SELECT                              |
+| Data manipulation language (DML)     | Special registers                   |
+| Data types                           | SQL                                 |
+| DELETE                               | Subquery                            |
+| DROP INDEX                           | Synonym                             |
+| DROP TABLE                           | System catalog                      |
+| DROP VIEW                            | Temporary names                     |
+| Embedded SQL                         | Unique key                          |
+| Foreign key                          | UPDATE                              |
+| GRANT                                | View                                |
+
+## References and additional readings {.unnumbered}
 
 Date, C. J. 2003. *An introduction to database systems*. 8th ed.
 Reading, MA: Addison-Wesley.
 
-## Exercises {-}
+## Exercises {.unnumbered}
 
 1.  Why is it important that SQL was adopted as a standard by ANSI and
     ISO?

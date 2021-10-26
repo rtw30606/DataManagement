@@ -3,6 +3,7 @@ editor_options:
   markdown: 
     wrap: 72
 ---
+
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 library(DBI)
 library(RMySQL)
@@ -147,22 +148,20 @@ databases, and legacy systems.
 
 *Evolution of client/server computing*
 
-+------+---------------------------------------------------------------+
-| Arch | Description                                                   |
-| itec |                                                               |
-| ture |                                                               |
-+:=====+:==============================================================+
-| Two- | Processing is split between client and server, which also     |
-| tier | runs the DBMS.                                                |
-+------+---------------------------------------------------------------+
-| Th   | Client does presentation, processing is done by the server,   |
-| ree- | and the DBMS is on a separate server.                         |
-| tier |                                                               |
-+------+---------------------------------------------------------------+
-| N-   | Client does presentation. Processing and DBMS can be spread   |
-| tier | across multiple servers. This is a distributed resources      |
-|      | environment.                                                  |
-+------+---------------------------------------------------------------+
++-----------+---------------------------------------------------------+
+| Arch itec | Description                                             |
+| ture      |                                                         |
++:==========+:========================================================+
+| Two- tier | Processing is split between client and server, which    |
+|           | also runs the DBMS.                                     |
++-----------+---------------------------------------------------------+
+| Th ree-   | Client does presentation, processing is done by the     |
+| tier      | server, and the DBMS is on a separate server.           |
++-----------+---------------------------------------------------------+
+| N- tier   | Client does presentation. Processing and DBMS can be    |
+|           | spread across multiple servers. This is a distributed   |
+|           | resources environment.                                  |
++-----------+---------------------------------------------------------+
 
 The rise of n-tier client/server can be attributed to the benefits of
 adopting a component-based architecture. The goal is to build quickly
@@ -230,47 +229,48 @@ Cloud computing vendors specialize in managing large-scale data centers.
 As a result, they can lower costs in some areas that might be infeasible
 for the typical corporation. For example, it is much cheaper to move
 photons through fiber optics than electrons across the electricity
-grid.[^1] This means that some cloud server farms are located where
-energy costs are low and minimal cooling is required. Iceland and parts
-of Canada are good locations for server farms because of inexpensive
-hydroelectric power and a cool climate. Information can be moved to and
-fro on a fiber optic network to be processed at a cloud site and then
-presented on the customer's computer.
+grid.[^architectures-1] This means that some cloud server farms are
+located where energy costs are low and minimal cooling is required.
+Iceland and parts of Canada are good locations for server farms because
+of inexpensive hydroelectric power and a cool climate. Information can
+be moved to and fro on a fiber optic network to be processed at a cloud
+site and then presented on the customer's computer.
 
-[^1]: The further electrons are moved, the more energy is lost. As much
-    as a third of the initial energy generated can be lost during
-    transmission across the grid before it gets to the final customer.
+[^architectures-1]: The further electrons are moved, the more energy is
+    lost. As much as a third of the initial energy generated can be lost
+    during transmission across the grid before it gets to the final
+    customer.
 
 Cloud computing can be more than a way to save some data center
 management costs. It has several features, or capabilities, that have
-strategic implications.[^2] We start by looking at the levels or layers
-of clouds.
+strategic implications.[^architectures-2] We start by looking at the
+levels or layers of clouds.
 
-[^2]: This section is based on Iyer, B., & Henderson, J. C. (2010).
-    Preparing for the future: understanding the seven capabilities of
-    cloud computing \*MIS Executive\*, 9(2), 117-131.
+[^architectures-2]: This section is based on Iyer, B., & Henderson, J.
+    C. (2010). Preparing for the future: understanding the seven
+    capabilities of cloud computing \*MIS Executive\*, 9(2), 117-131.
 
 *Cloud layers*
 
-+----------+------------------------------------------+----------------+
-| Layer    | Description                              | Example        |
-+:=========+:=========================================+:===============+
-| Infras   | A virtual server over which the          | Amazon Elastic |
-| tructure | developer has complete control           | Compute Cloud  |
-|          |                                          | (EC2)          |
-+----------+------------------------------------------+----------------+
-| Platform | A developer can build a new application  | Salesforce.com |
-| as a     | with the provided tools and programming  |                |
-| service  | language                                 |                |
-+----------+------------------------------------------+----------------+
-| App      | Access to cloud applications             | Google docs    |
-| lication |                                          |                |
-+----------+------------------------------------------+----------------+
-| Colla    | A special case of an application cloud   | Facebook       |
-| boration |                                          |                |
-+----------+------------------------------------------+----------------+
-| Service  | Consulting and integration services      | Appirio        |
-+----------+------------------------------------------+----------------+
++--------------+---------------------------------------+--------------+
+| Layer        | Description                           | Example      |
++:=============+:======================================+:=============+
+| Infras       | A virtual server over which the       | Amazon       |
+| tructure     | developer has complete control        | Elastic      |
+|              |                                       | Compute      |
+|              |                                       | Cloud (EC2)  |
++--------------+---------------------------------------+--------------+
+| Platform as  | A developer can build a new           | Sa           |
+| a service    | application with the provided tools   | lesforce.com |
+|              | and programming language              |              |
++--------------+---------------------------------------+--------------+
+| App lication | Access to cloud applications          | Google docs  |
++--------------+---------------------------------------+--------------+
+| Colla        | A special case of an application      | Facebook     |
+| boration     | cloud                                 |              |
++--------------+---------------------------------------+--------------+
+| Service      | Consulting and integration services   | Appirio      |
++--------------+---------------------------------------+--------------+
 
 As the preceding table illustrates, there a several options for the
 cloud customer. Someone looking to replace an office package installed
@@ -279,19 +279,30 @@ layer. A CIO looking to have complete control over a new application
 being developed from scratch could look to the infrastructure cloud,
 which also has the potential for high scalability.
 
-Ownership is another way of looking at cloud offerings.[^3]
+Ownership is another way of looking at cloud
+offerings.[^architectures-3]
 
-[^3]: Mell, P., & Grance, T. (2009). The NIST definition of cloud
-    computing: National Institute of Standards and Technology.
+[^architectures-3]: Mell, P., & Grance, T. (2009). The NIST definition
+    of cloud computing: National Institute of Standards and Technology.
 
 *Cloud ownership*
 
-| Type      | Description                                                                                                                 |
-|:----------|:----------------------------------------------------------------------------------------------------------------------------|
-| Public    | A cloud provided to the general public by its owner                                                                         |
-| Private   | A cloud restricted to an organization. It has many of the same capabilities as a public cloud but provides greater control. |
-| Community | A cloud shared by several organizations to support a community project                                                      |
-| Hybrid    | Multiple distinct clouds sharing a standardized or proprietary technology that enables data and application portability     |
++----------+-----------------------------------------------------------+
+| Type     | Description                                               |
++:=========+:==========================================================+
+| Public   | A cloud provided to the general public by its owner       |
++----------+-----------------------------------------------------------+
+| Private  | A cloud restricted to an organization. It has many of the |
+|          | same capabilities as a public cloud but provides greater  |
+|          | control.                                                  |
++----------+-----------------------------------------------------------+
+| C        | A cloud shared by several organizations to support a      |
+| ommunity | community project                                         |
++----------+-----------------------------------------------------------+
+| Hybrid   | Multiple distinct clouds sharing a standardized or        |
+|          | proprietary technology that enables data and application  |
+|          | portability                                               |
++----------+-----------------------------------------------------------+
 
 ### Cloud capabilities {.unnumbered}
 

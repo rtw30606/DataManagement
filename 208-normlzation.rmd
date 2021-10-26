@@ -4,18 +4,18 @@
 > 
 > Chinese Proverb
 
-#### Learning objectives {-}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
-* understand the process of normalization;
+- understand the process of normalization;
 
-* be able to distinguish between different normal forms;
+- be able to distinguish between different normal forms;
 
-* recognize that different data modeling approaches, while they differ in
+- recognize that different data modeling approaches, while they differ in
 representation methods, are essentially identical.
 
-#### Introduction {-}
+### Introduction {.unnumbered}
 
 There are often many ways to solve a problem, and different methods
 frequently produce essentially the same solution. When this is the case,
@@ -34,16 +34,16 @@ Data modeling first emerged as entity-relationship (E-R) modeling in a
 paper by Peter Pin-Shan Chen. He introduced two key database design
 concepts:
 
-* Identify entities and the relationships between them.
+- Identify entities and the relationships between them.
 
-* A graphical representation improves design communication.
+- A graphical representation improves design communication.
 
 Chen's core concepts spawned many species of data modeling. To give you
 an appreciation of the variation in data modeling approaches, we briefly
 review, later in this chapter, Chen's E-R approach and IDEF1X, an
 approach used by the Department of Defense.
 
-### Normalization {-}
+## Normalization {.unnumbered}
 
 Normalization is a method for increasing the quality of database design.
 It is also a theoretical base for defining the properties of relations.
@@ -70,7 +70,7 @@ successive application of rules to move the design from first to fifth
 normal form. Before we look at these steps, it is useful to learn about
 functional dependency.
 
-#### Functional dependency {-}
+### Functional dependency {.unnumbered}
 
 A functional dependency is a relationship between attributes in an
 entity. It simply means that one or more attributes determine the value
@@ -130,7 +130,7 @@ B, then three relations are possible, as shown in the following table.
   One determines the other           A → B                         1:m
   They do not determine each other   A not→ B and B not→A          m:m
 
-##### One-to-one attribute relationship {-}
+#### One-to-one attribute relationship {.unnumbered}
 
 Consider two attributes that determine each other (A → B and B → A), for
 instance a country's code and its name. Using the example of
@@ -139,7 +139,7 @@ Switzerland: CH → Switzerland and Switzerland → CH. When two attributes
 have a 1:1 relationship, they must occur together in at least one table
 in a database so that their equivalence is a recorded fact.
 
-##### One-to-many attribute relationship {-}
+#### One-to-many attribute relationship {.unnumbered}
 
 Examine the situation where one attribute determines another (i.e., A→
 B), but the reverse is not true (i.e., A not→ B), as is the case with
@@ -150,7 +150,7 @@ Portugal use the euro). As a result, if A and B occur in the same table,
 then A must be the key. In our example, country name would be the key,
 and currency unit would be a nonkey column.
 
-##### Many-to-many attribute relationship {-}
+#### Many-to-many attribute relationship {.unnumbered}
 
 The final case to investigate is when neither attribute determines the
 other (i.e., A not→ B and B not→A). The relationship between country
@@ -167,7 +167,7 @@ gained implicitly in earlier chapters on data modeling. The next step is
 to delve into another theoretical concept underlying the relational
 model: normal forms.
 
-#### Normal forms {-}
+### Normal forms {.unnumbered}
 
 Normal forms describe a classification of relations. Initial work by
 Codd identified first (1NF), second (2NF), and third (3NF) normal forms.
@@ -182,7 +182,7 @@ When a relation is in DK/NF, there are no modification anomalies.
 Conversely, any relation that is free of anomalies must be in DK/NF. The
 difficult part is discovering how to convert a relation to DK/NF.
 
-#### First normal form {-}
+### First normal form {.unnumbered}
 
 *A relation is in first normal form if and only if all columns are single-valued.* 
 In other words, 1NF states that all occurrences of a row
@@ -192,7 +192,7 @@ multiple values must be represented as a one-to-many (1:m) relationship.
 At a minimum, a data model will be in 1NF, because all attributes of an
 entity are required to be single-valued.
 
-#### Second normal form {-}
+### Second normal form {.unnumbered}
 
 Second normal form is violated when a nonkey column is dependent on only
 a component of the primary key. This can also be stated as *a relation is in second normal form if and only if it is in first normal form, and all nonkey columns are dependent on the key*.
@@ -224,7 +224,7 @@ attribute of `customer`, and you get the correct relational mapping.
 
 ![](Figures/Chapter 8/2NF.png)
 
-#### Third normal form {-}
+### Third normal form {.unnumbered}
 
 Third normal form is violated when a nonkey column is a fact about
 another nonkey column. Alternatively, *a relation is in third normal form if and only if it is in second normal form and has no transitive dependencies.*
@@ -258,32 +258,28 @@ model and relational map can be created readily .
 
 ![](Figures/Chapter 4/nation-stock.png)
 
-+------------------------------------------------------------------------------+
-| *Skill builder*                                                              |
-|                                                                              |
-| You have been given a spreadsheet that contains details of invoices. The     |
-| column headers for the spreadsheet are *date*, *invoice number*,             |
-| *invoice amount*, *invoice tax*, *invoice total*, *cust number*, *custname*, |
-| *cust street*, *cust city*, *cust state*, *cust postal code*,                |
-| *cust nation*, *product code*, *product price*, *product quantity*,          |
-| *salesrep number*, *salesrep first name*, *salesrep last name*,              |
-| *salesrep district*, *district name*, and *district size*. Normalize         |
-| this spreadsheet so that it can be converted to a high-fidelity              |
-| relational database.                                                         |
-+------------------------------------------------------------------------------+
+> ❓*Skill builder* You have been given a spreadsheet that contains details of invoices. The   
+> column headers for the spreadsheet are *date*, *invoice number*,
+> *invoice amount*, *invoice tax*, *invoice total*, *cust number*, *custname*,
+> *cust street*, *cust city*, *cust state*, *cust postal code*,
+> *cust nation*, *product code*, *product price*, *product quantity*, 
+> *salesrep number*, *salesrep first name*, *salesrep last name*, 
+> *salesrep district*, *district name*, and *district size*. Normalize
+> this spreadsheet so that it can be converted to a high-fidelity 
+> relational database.
 
-#### Boyce-Codd normal form {-}
+### Boyce-Codd normal form {.unnumbered}
 
 The original definition of 3NF did not cover a situation that, although
 rare, can occur. So Boyce-Codd normal form, a stronger version of 3NF,
 was developed. BCNF is necessary because 3NF does not cover the cases
 when
 
-* A relation has multiple candidate keys.
+- A relation has multiple candidate keys.
 
-* Those candidate keys are composite.
+- Those candidate keys are composite.
 
-* The candidate keys overlap because they have at least one column in
+- The candidate keys overlap because they have at least one column in
 common.
 
 Before considering an example, **candidate key** needs to be defined.
@@ -332,7 +328,7 @@ mapping to a relational model.
 
 ![](Figures/Chapter 8/BCNF.png)
 
-#### Fourth normal form {-}
+### Fourth normal form {.unnumbered}
 
 Fourth normal form requires that a row should not contain two or more
 independent multivalued facts about an entity. This requirement is more
@@ -373,7 +369,7 @@ problem, and note that the correct relational mapping requires five tables.
 
 ![](Figures/Chapter 8/4NF.png)
 
-#### Fifth normal form {-}
+### Fifth normal form {.unnumbered}
 
 Fifth normal form deals with the case where a table can be reconstructed
 from other tables. The reconstruction approach is preferred, because it
@@ -522,7 +518,7 @@ the possibility of three two-way associative entities. Question the
 client carefully whenever you find a ménage-à-trois. Check to see that
 there are no rules or special conditions.
 
-#### Domain-key normal form {-}
+### Domain-key normal form {.unnumbered}
 
 The definition of DK/NF builds on three terms: key, constraint, and
 domain. You already know a key is a unique identifier. A **constraint**
@@ -540,7 +536,7 @@ that while it is conceptually simple, no algorithm has been developed
 for converting relations to DK/NF. Hence, database designers must rely
 on their skills to create relations that are in DK/NF.
 
-#### Conclusion {-}
+### Conclusion {.unnumbered}
 
 Normalization provides designers with a theoretical basis for
 understanding what they are doing when modeling data. It also alerts
@@ -549,12 +545,12 @@ modeling. For example, 5NF cautions designers to investigate situations
 carefully (i.e., look for special rules), when their data model contains
 a ménage-à-trois.
 
-### Other data modeling methods {-}
+## Other data modeling methods {.unnumbered}
 
 As mentioned previously, there are many species of data modeling. Here
 we consider two methods.
 
-#### The E-R model {-}
+### The E-R model {.unnumbered}
 
 One of the most widely known data modeling methods is the E-R model
 developed by Chen. There is no standard for the E-R model, and it has
@@ -583,7 +579,7 @@ attributes consumes space, particularly for large data models. It is
 more efficient to record attributes within an entity rectangle, as in
 the data modeling method you have learned.
 
-#### IDEF1X {-}
+### IDEF1X {.unnumbered}
 
 IDEF1X (Integrated DEFinition 1X) was conceived in the late 1970s and
 refined in the early 1980s. It is based on the work of Codd and Chen. A
@@ -612,24 +608,22 @@ are not readily inferred.
 
 ![](Figures/Chapter 8/nation-stock-idefx.png)
 
-+--------------------------------------------------------------------------+
-| *Skill builder*                                                          |
-|                                                                          |
-| Ken is a tour guide for trips that can last several weeks. He has        |
-| requested a database that will enable him to keep track of the people    |
-| who have been on the various tours he has led. He wants to be able to    |
-| record his comments about some of his clients to remind him of extra     |
-| attention he might need to pay to them on a future trip (e.g., Bill      |
-| tends to get lost, Daisy has problems getting along with others). Some   |
-| times people travel with a partner, and Ken wants to record this in his  |
-| database.                                                                |
-|                                                                          |
-| Design a database using MySQL Workbench. Experiment with Object Notation |
-| and Relationship Notation (options of the Model tab) to get a feel for   |
-| different forms of representing data models.                             |
-+--------------------------------------------------------------------------+
+> ❓*Skill builder*
+>
+> Ken is a tour guide for trips that can last several weeks. He has 
+> requested a database that will enable him to keep track of the people 
+> who have been on the various tours he has led. He wants to be able to 
+> record his comments about some of his clients to remind him of extra
+> attention he might need to pay to them on a future trip (e.g., Bill
+> tends to get lost, Daisy has problems getting along with others). Some
+> times people travel with a partner, and Ken wants to record this in his 
+> database. 
+>
+> Design a database using MySQL Workbench. Experiment with Object Notation 
+> and Relationship Notation (options of the Model tab) to get a feel for
+> different forms of representing data models.
 
-#### Conclusion {-}
+### Conclusion {.unnumbered}
 
 The underlying concepts of different data modeling methods are very
 similar. They all have the same goal: improving the quality of database
@@ -640,7 +634,7 @@ models, and it is similar to the representation style of MySQL
 Workbench. Also, if you have learned one data modeling method, you can
 quickly adapt to the nuances of other methods.
 
-### Summary {-}
+## Summary {.unnumbered}
 
 Normalization gradually converts a file design into normal form by
 successive application of rules to move the design from first to fifth
@@ -662,23 +656,25 @@ One of the most widely known methods of data modeling is the E-R model.
 The basic concepts of most data modeling methods are very similar. All
 aim to improve database design.
 
-  Key terms and concepts
-  ------------------------------------ --------------------------------------------------
-  Alternate key                        Functional dependency
-  Boyce-Codd normal form (BCNF)        Generalization hierarchy
-  Constraint                           IDEF1X
-  Data model                           Inversion entry
-  Determinant                          Many-to-many attribute relationship
-  Domain                               Multidetermination
-  Domain-key normal form (DK/NF)       Multivalued dependency
-  Entity                               Normalization
-  Entity-relationship (E-R) model      One-to-many attribute relationship
-  Fifth normal form (5NF)              One-to-one attribute relationship
-  First normal form (1NF)              Relationship
-  Fourth normal form (1NF)             Second normal form (2NF)
-  Full functional dependency           Third normal form (3NF)
+## Key terms and concepts {.unnumbered}
 
-#### References and additional readings {-}
+|                                      |                                      |
+|:-------------------------------------|:-------------------------------------|
+| Alternate key                        | Functional dependency                |
+| Boyce-Codd normal form (BCNF)        | Generalization hierarchy             |
+| Constraint                           | IDEF1X                               |
+| Data model                           | Inversion entry                      |
+| Determinant                          | Many-to-many attribute relationship  |
+| Domain                               | Multidetermination                   |
+| Domain-key normal form (DK/NF)       | Multivalued dependency               |
+| Entity                               | Normalization                        |
+| Entity-relationship (E-R) model      | One-to-many attribute relationship   |
+| Fifth normal form (5NF)              | One-to-one attribute relationship    |
+| First normal form (1NF)              | Relationship                         |
+| Fourth normal form (1NF)             | Second normal form (2NF)             |
+| Full functional dependency           | Third normal form (3NF)              |
+
+## References and additional readings {.unnumbered}
 
 Chen, P. 1976. The entity-relationship model---toward a unified view of
 data. *ACM Transactions on Database Systems* 1 (1):9--36.
@@ -686,9 +682,9 @@ data. *ACM Transactions on Database Systems* 1 (1):9--36.
 Kent, W. 1983. A simple guide to five normal forms in relational
 database theory. *Communications of the ACM 26 (2): 120-125.*
 
-#### Exercises {-}
+## Exercises {.unnumbered}
 
-##### Short answers {-}
+### Short answers {.unnumbered}
 
 1.  What is normalization, and what is its goal?
 
@@ -697,7 +693,7 @@ database theory. *Communications of the ACM 26 (2): 120-125.*
 3. How do E-R and IDEF1X differ from the data modeling method of this
     text?
 
-### Normalization and data modeling 
+### Normalization and data modeling {.unnumbered}
 
 Using normalization, E-R, or IDEF1X, create data models from the
 following narratives, which are sometimes intentionally incomplete. You

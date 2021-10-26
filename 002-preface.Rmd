@@ -29,7 +29,7 @@ a unique pedagogical feature. Classroom testing indicates it is a
 superior method of teaching compared to handling data modeling and SQL
 separately. Students quickly understand the reason for data modeling and
 appreciate why it is a valuable skill. Also, rapid exposure to SQL means
-students gain hands-on experience that more quickly.
+students gain hands-on experience more quickly.
 
 *Third*, the book is broader than most database books. Databases are one
 component of an expansive organizational memory. Information systems
@@ -72,7 +72,7 @@ chapters on XML and organizational intelligence technologies.
 The decision to start the book with a managerial perspective arises from
 the belief that successful information systems practice is based on
 matching managerial needs, social system constraints, and technical
-opportunities in an ecological sound way. I want readers to appreciate
+opportunities in an ecologically sound way. I want readers to appreciate
 the big picture before they become immersed in the intricacies of data
 modeling and SQL.
 
@@ -97,9 +97,9 @@ that will serve students well during the course and in their careers.
 The third section has chapters on R, a statistics and graphics package,
 which provides the foundation necessary for the new chapters on data
 visualization, text mining, cluster computing, and dashboards. These
-chapter provide today's students with the skills they need to work in
+chapters provide today's students with the skills they need to work in
 topical areas such as social media analytics and big data. These
-chapters are included in the third section, Advanced Data Management,
+chapters are included in this third section, Advanced Data Management,
 which also covers spatial and temporal data, XML, and organizational
 intelligence.
 
@@ -107,18 +107,31 @@ The fourth and final section examines the management of organizational
 data stores. It covers data structures and storage, data processing
 architectures, SQL and Java, data integrity, and data administration.
 
-A student completing this text will - have a broad, managerial
-perspective of an organization's need for a memory; - be able to design
-and create a relational database; - be able to formulate complex SQL
-queries; - be able to use R to create data visualizations, mine text
-data, write an R script for big data problems, and create dashboards; -
-understand the purpose of XML and be able to design an XML schema,
-prepare an XML document, and write an XML stylesheet; - have a sound
-understanding of database architectures and their managerial
-implications; - be familiar with the full range of technologies
-available for organizational memory; - be able to write a Java program
-to create a table from a CSV file and process a transaction; -
-understand the fundamentals of data administration;
+A student completing this text will
+
+-   have a broad, managerial perspective of an organization's need for a
+    memory;
+
+-   be able to design and create a relational database;
+
+-   be able to formulate complex SQL queries;
+
+-   be able to use R to create data visualizations, mine text data,
+    write an R script for big data problems, and create dashboards;
+
+-   understand the purpose of XML and be able to design an XML schema,
+    prepare an XML document, and write an XML stylesheet;
+
+-   have a sound understanding of database architectures and their
+    managerial implications;
+
+-   be familiar with the full range of technologies available for
+    organizational memory;
+
+-   be able to write a Java program to create a table from a CSV file
+    and process a transaction;
+
+-   understand the fundamentals of data administration;
 
 My goal is to give the reader a data management text that is innovative,
 relevant, and lively. I trust that you will enjoy learning about
@@ -127,10 +140,12 @@ managing data in today's organization.
 ## Supplements {.unnumbered}
 
 Accompanying this book are an instructor's manual and an extensive [Web
-site](https://www.richardtwatson.com/dm6e/) that provides - overhead
-slides in PowerPoint format; - all relational tables in the book in
-electronic format; - code for examples in the book; - answers to many of
-the exercises; - additional exercises.
+site](https://www.richardtwatson.com/dm6e/) that provides 
+-   slides in PowerPoint format; 
+-   all relational tables in the book in electronic format; 
+-   code for examples in the book; 
+-   answers to many of the exercises;
+-   additional exercises.
 
 ## Acknowledgments {.unnumbered}
 
