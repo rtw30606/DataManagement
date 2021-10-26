@@ -347,7 +347,7 @@ library(koRpus.lang.en)
 txt <-  letters[[1]][1] # first element in the list
 tagged.text <- tokenize(as.character(txt),format="obj",lang="en")
 # score
-readability(tagged.text, hyphen=NULL,index="FORCAST")
+readability(tagged.text, hyphen=NULL,index="FORCAST", quiet = TRUE)
 ```
 
 ## Preprocessing {.unnumbered}
