@@ -358,9 +358,11 @@ for processing. Several steps are usually taken.
 ### Case conversion {.unnumbered}
 
 For comparison purposes, all text should be of the same case.
-Conventionally, the choice is to convert to all lower case.
+Conventionally, the choice is to convert to all lower case. First convert to UTF-8.
 
 ```{r eval = T, message = FALSE}
+content_transformer <- function(x) iconv(x, to='UTF-8-MAC', sub='byte')
+clean.letters <- tm_map(letters, content_transformer)
 clean.letters <- tm_map(letters,tolower)
 ```
 
@@ -461,8 +463,7 @@ completion in terms of characters
 
 ```{r eval = T, message = FALSE}
 # stem completion -- might take a while to run
-stem.letters <- tm_map(stem.letters,stemCompletion,
-dictionary=clean.letters, type=c("prevalent"))
+stem.letters <-  tm_map(clean.letters,stemDocument, language = "english")
 ```
 
 ### Regex filtering {.unnumbered}
