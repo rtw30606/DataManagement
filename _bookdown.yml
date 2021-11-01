@@ -27,7 +27,7 @@ rmd_files: [
   '314-orgintel.Rmd',
   '315-IntroR.Rmd',
   '316-dataviz.Rmd',
- '317-textmining.Rmd',
+  '317-textmining.Rmd',
   '318-clustercomputing.Rmd',
   '319-dashboards.Rmd',
   '400-section.Rmd',
