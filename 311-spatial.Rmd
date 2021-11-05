@@ -260,9 +260,9 @@ Once the database is established, we can do some queries to gain an
 understanding of the additional capability provided by the spatial
 additions. Before starting, examine the scale on the map and note that
 one grid unit is about 37.5 kilometers (23 miles). This also means that
-the area of one grid unit is 1406 km[^1] (526 square miles).
+the area of one grid unit is 1406 km[^spatial-1] (526 square miles).
 
-[^1]: epsg.io/4326
+[^spatial-1]: epsg.io/4326
 
 *What is the area of the Republic of Ireland?*
 
@@ -548,9 +548,9 @@ to determine whether the time value is anchored or unanchored.
 and **unanchored time** is a block of time with no specified start
 (e.g., 45 minutes).
 
-*Types of temporal data*[^2]
+*Types of temporal data*[^spatial-2]
 
-[^2]: Adapted from: Goralwalla, I. A., M. T. Özsu, and D. Szafron. 1998.
+[^spatial-2]: Adapted from: Goralwalla, I. A., M. T. Özsu, and D. Szafron. 1998.
     *An object-oriented framework for temporal data models. In Temporal
     databases: research and practice*, edited by O. Etzion, S. Jajoda,
     and S. Sripada. Berlin: Springer-Verlag

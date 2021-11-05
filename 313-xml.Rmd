@@ -42,9 +42,9 @@ The Standard Generalized Markup Language (SGML) was designed to reduce
 the cost and increase the efficiency of document management. Its child,
 XML, has essentially replaced SGML. For example, the second edition of
 the *Oxford English Dictionary* was specified in SGML, and the third
-edition is stored in XML format.[^1]
+edition is stored in XML format.[^xml-1]
 
-[^1]: Cowlishaw, M. F. (1987). Lexx---a programmable structured editor.
+[^xml-1]: Cowlishaw, M. F. (1987). Lexx---a programmable structured editor.
     *IBM Journal of Research and Development*, 31(1), 73-80.
 
 A markup language embeds information about a document in the text. In
@@ -215,10 +215,10 @@ Consider the credit card company that wants to send you your latest
 statement via the Internet so that you can load it into your financial
 management program. Since this is a common problem for credit card
 companies and financial software authors, these industry groups have
-combined to create Open Financial Exchange (OFX),[^2] a language for the
+combined to create Open Financial Exchange (OFX),[^xml-2] a language for the
 exchange of financial data across the Internet.
 
-[^2]: <http://www.ofx.net>
+[^xml-2]: <http://www.ofx.net>
 
 XML has a small number of rules. Tags always come in pairs, as in HTML.
 A pair of tags surrounds each piece of data (e.g.,
@@ -407,9 +407,9 @@ A model is then mapped into a schema using the following procedure.
 
 The schema for the CD library follows. For convenience of exposition,
 the source code lines have been numbered, but these numbers are not part
-of a schema.[^3]
+of a schema.[^xml-3]
 
-[^3]: You should use an XML editor for creating XML files. I have not
+[^xml-3]: You should use an XML editor for creating XML files. I have not
     found a good open source product. Among the commercial products, my
     preference is for [Oxygen,](http://www.oxygenxml.com/) which you can
     get for a 30 days trial.
@@ -452,11 +452,11 @@ of a schema.[^3]
 
 There are several things to observe about the schema.
 
--   All XML documents begin with an XML declaration {1}.[^4] The
+-   All XML documents begin with an XML declaration {1}.[^xml-4] The
     encoding attribute (i.e., encoding="UTF-8") specifies what form of
     Unicode is used (in this case the 8-bit form).
 
--   The XSD Schema namespace[^5] is declared {2}.
+-   The XSD Schema namespace[^xml-5] is declared {2}.
 
 -   Comments are placed inside the tag pair \<!-- and --\> {3}.
 
@@ -496,10 +496,10 @@ There are several things to observe about the schema.
     and thus the type of data they store must be defined. Thus, cdid is
     a text string and cdyear is an integer.
 
-[^4]: In this chapter, numbers in {} refer to line numbers in the
+[^xml-4]: In this chapter, numbers in {} refer to line numbers in the
     corresponding XML code.
 
-[^5]: A namespace is a collection of valid names of attributes, types,
+[^xml-5]: A namespace is a collection of valid names of attributes, types,
     and elements for a schema. Think of a namespace as a dictionary.
 
 The purpose of a schema is to define the contents and structure of an
@@ -604,7 +604,7 @@ relieve this tedium.
 
 > ❓**Skill builder**
 >
-> 1.  Use the Firefox browser[^6] to access this book's Web site, link
+> 1.  Use the Firefox browser[^xml-6] to access this book's Web site, link
 >     to the Support \> XML section, and click on customerpayments.xml.
 >     You\
 >     will see how this browser displays XML. Investigate what happens
@@ -617,7 +617,7 @@ relieve this tedium.
 >     following table to the beginning of the XML file. Open the saved
 >     file with Firefox, and verify your work.
 
-[^6]: Overall, Firefox seems to do the best job of displaying xml files.
+[^xml-6]: Overall, Firefox seems to do the best job of displaying xml files.
 
 *Customer and payment data*
 
@@ -949,10 +949,10 @@ the price for a product) can be retrieved and updated.
 
 ### XML database {.unnumbered}
 
-A second approach is to build a special-purpose XML database. Tamino[^7]
+A second approach is to build a special-purpose XML database. Tamino[^xml-7]
 is an example of such an approach.
 
-[^7]: www.softwareag.com/Corporate/products/wm/tamino/default.asp
+[^xml-7]: www.softwareag.com/Corporate/products/wm/tamino/default.asp
 
 ## MySQL and XML {.unnumbered}
 
@@ -1031,12 +1031,12 @@ verify the update.
 
 ### Generating XML {.unnumbered}
 
-A set of user defined functions (UDF)[^8] has been developed to convert
+A set of user defined functions (UDF)[^xml-8] has been developed to convert
 the results of an SQL query into XML. The xql_element function is used
 to define the name and value of the XML element to be reported. Here is
 an example.
 
-[^8]: The lib\\mysqludf\\xql library is housed at
+[^xml-8]: The lib\\mysqludf\\xql library is housed at
     [http://www.mysqludf.org.](http://www.mysqludf.org).) It might not
     be installed for the version of MySQL you are using.
 
@@ -1142,7 +1142,7 @@ Watson, R. T., and others. 2004. *XML: managing data exchange*:\
 4.  Create a schema for a bus timetable.
 
 5.  Using the portion of ClassicModels that has been converted to
-    XML,[^9] answer the following questions using XPath.
+    XML,[^xml-9] answer the following questions using XPath.
 
     a.  List all customers.
 
@@ -1187,4 +1187,4 @@ Watson, R. T., and others. 2004. *XML: managing data exchange*:\
 
     j.  List the numbers of all checks from customers in Denmark.
 
-[^9]: <http://www.richardtwatson.com/xml/customerpayments.xml>
+[^xml-9]: <http://www.richardtwatson.com/xml/customerpayments.xml>

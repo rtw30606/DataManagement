@@ -56,9 +56,9 @@ form. As illustrated in following figure, availability concerns the
 creation, interrogation, and update of data stores. Although most of the
 book, thus far, has dealt with making data available, a database is of
 little use to anyone unless it has integrity. Maintaining data integrity
-implies three goals:[^1]
+implies three goals:[^integrity-1]
 
-[^1]: To the author's knowledge, Gordon C. Everest was the first to
+[^integrity-1]: To the author's knowledge, Gordon C. Everest was the first to
     define data integrity in terms of these three goals. See Everest, G.
     (1986). Database management: objectives, systems functions, and
     administration. New York, NY: McGraw-Hill.
@@ -442,9 +442,9 @@ A study of 429 disaster declarations reported to a major international
 provider of disaster recovery services provides some insights as to the
 frequency and effects of different IT disasters. These data cover the
 period 1981--2000 and identify the most frequent disasters and
-statistics on the length of the disruption.[^2]
+statistics on the length of the disruption.[^integrity-2]
 
-[^2]: Source: Lewis Jr, W., Watson, R. T., & Pickren, A. (2003). An
+[^integrity-2]: Source: Lewis Jr, W., Watson, R. T., & Pickren, A. (2003). An
     empirical assessment of IT disaster probabilities. Communications of
     the ACM, 46(9), 201-206.
 
@@ -787,7 +787,7 @@ The second integrity goal is to maintain data quality, which typically
 means keeping data accurate, complete, and current. *Data are
 high-quality if they fit their intended uses in operations, decision
 making, and planning. They are fit for use if they are free of defects
-and possess desired features*.[^3] The preceding definition implicitly
+and possess desired features*.[^integrity-3] The preceding definition implicitly
 recognizes that data quality is determined by the customer. It also
 implies that data quality is relative to a task. Data could be
 high-quality for one task and low-quality for another. The data provided
@@ -798,7 +798,7 @@ complete, and consistent with other sources. Desirable features include
 relevance, comprehensiveness, appropriate level of detail,
 easy-to-navigate source, high readability, and absence of ambiguity.
 
-[^3]: Redman, T. C. (2001). *Data quality : the field guide*. Boston:
+[^integrity-3]: Redman, T. C. (2001). *Data quality : the field guide*. Boston:
     Digital Press.
 
 Poor-quality data have several detrimental effects. Customer service
@@ -838,13 +838,13 @@ vary little over time because the characteristics of a mutual fund
 **Tracking**: Some firms operate in environments where they don't have a
 lot of control over all the factors that affect performance. Handling
 more than 2,200 take-offs and landings and over 250,000 passengers per
-day,[^4] Atlanta's Hartsfield Airport becomes congested when bad
+day,[^integrity-4] Atlanta's Hartsfield Airport becomes congested when bad
 weather, such as a summer thunderstorm, slows down operations.
 Passengers clearly know what they want---data on flight delays and their
 consequences. They assess data quality in terms of how well data tracks
 delays and notifies them of alternative travel arrangements.
 
-[^4]: November 2012.
+[^integrity-4]: November 2012.
     [http://www.atlanta-airport.com/docs/Traffic/201211.pdf](http://www.atlanta-airport.com/docs/Traffic/201211.pdf]{.underline}](http://www.atlanta-airport.com/docs/Traffic/201211.pdf))
 
 **Knowledge management**: When customers are uncertain about their needs
@@ -1400,9 +1400,9 @@ to circumvent this restriction.
 
 Assume we know that a professor in the IS department is aged 40 to 50,
 is single, and attended the University of Minnesota. Consider the
-results of the following set of queries.[^5]
+results of the following set of queries.[^integrity-5]
 
-[^5]: Adapted from Helman, P. (1994). The science of database
+[^integrity-5]: Adapted from Helman, P. (1994). The science of database
     management. Burr Ridge, IL: Richard D. Irwin, Inc. p. 434
 
 ```{sql, eval = FALSE}

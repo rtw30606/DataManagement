@@ -99,10 +99,10 @@ variety, is needed to process JSP.
 ## Using SQL within Java {.unnumbered}
 
 In this section, you will need a Java integrated development environment
-to execute the sample code. A good option is Eclipse,[^1] a widely used
+to execute the sample code. A good option is Eclipse,[^sqljava-1] a widely used
 open source IDE.
 
-[^1]: Install [Eclipse IDE for Java EE Developers]{.underline}.
+[^sqljava-1]: Install [Eclipse IDE for Java EE Developers]{.underline}.
 
 We now examine each of the major steps in processing an SQL query and,
 in the process, create Java methods to query a database.
@@ -265,9 +265,9 @@ tables.
 
 We will illustrate loading data from a text file into the ArtCollection
 database with the following design. Notice that there different tables
-for different types of art, paintings, and sculptures in this case.[^2]
+for different types of art, paintings, and sculptures in this case.[^sqljava-2]
 
-[^2]: The code for creating the database is online at
+[^sqljava-2]: The code for creating the database is online at
     [<http://richardtwatson.com/dm6e/Reader/java.html>](http://www.richardtwatson.com/dm6e/Reader/java.html]{.underline}](http://richardtwatson.com/dm6e/Reader/java.html).)
     [.](http://www.richardtwatson.com/dm6e/Reader/java.html]{.underline}](http://richardtwatson.com/dm6e/Reader/java.html).)
 
@@ -277,7 +277,7 @@ for different types of art, paintings, and sculptures in this case.[^2]
 
 #### CSV file {.unnumbered}
 
-A comma-separated values (CSV) file[^3] is a common form of text file
+A comma-separated values (CSV) file[^sqljava-3] is a common form of text file
 because most spreadsheet programs offer it as an export option. There
 are a variety of options available in terms of the separator for fields
 (usually a comma or tab) and the use of quotation marks to denote text
@@ -287,7 +287,7 @@ example file that follows that a record contains details of an artist
 and one piece of that person's art. As the data model specifies, these
 two sets of data go into separate tables.
 
-[^3]: <http://en.wikipedia.org/wiki/Comma-separated_values>
+[^sqljava-3]: <http://en.wikipedia.org/wiki/Comma-separated_values>
 
 *A CSV file*
 
@@ -322,11 +322,11 @@ Paul,Gauguin,1848,1903,French,Spirit of the Dead
 Watching,28,36,1892,Surreal,Watercolor
 
 Because CSV files are so widely used, there are Java libraries for
-processing them. We have opted for CsvReader.[^4] Here is some code for
+processing them. We have opted for CsvReader.[^sqljava-4] Here is some code for
 connecting to a CSV file defined by its URL. You can also connect to
 text files on your personal computer.
 
-[^4]: Get the Java archive from
+[^sqljava-4]: Get the Java archive from
     <http://sourceforge.net/projects/javacsv/>
 
 *Connecting to a CSV file*
@@ -420,9 +420,9 @@ addArt(conn, title, length, breadth, year,artistPK);
 ```
 
 The Java code for the complete application is available on the book's
-web site.[^5]
+web site.[^sqljava-5]
 
-[^5]: <http://richardtwatson.com/dm6e/Reader/java.html>
+[^sqljava-5]: <http://richardtwatson.com/dm6e/Reader/java.html>
 
 > ❓*Skill builder*
 >
@@ -521,7 +521,7 @@ associated code follow.
 The data entry form captures a map's identifier, scale, type, and the
 number of countries covered by the map. A map identifier is of the form
 M001 to M999, and a regular expression is used to validate the
-input.[^6] A map scale must be numeric with a minimum of 1000 and
+input.[^sqljava-6] A map scale must be numeric with a minimum of 1000 and
 maximum of 100000 in increments of 1000. The type of map is selected
 from the list, which is defined so that only one type can be selected.
 Multiple countries can be selected by holding down an appropriate key
@@ -529,7 +529,7 @@ combination when selected from the displayed list of countries. When the
 "Add map" button is clicked, the page mapinsert.jsp is called, which is
 specified in the first line of the HTML body code.
 
-[^6]: This is a feature of HTML5 and is not supported by older browsers.
+[^sqljava-6]: This is a feature of HTML5 and is not supported by older browsers.
 
 #### Passing data from a form to a JSP {.unnumbered}
 
@@ -618,9 +618,9 @@ conn.close(); // close database
 
 You have now seen some of the key pieces for the event handler that
 processes a transaction to add a map and the countries on that map. The
-code can be downloaded from the book's Web site.[^7]
+code can be downloaded from the book's Web site.[^sqljava-7]
 
-[^7]: <http://richardtwatson.com/dm6e/Reader/java.html>
+[^sqljava-7]: <http://richardtwatson.com/dm6e/Reader/java.html>
 
 *mapinsert.jsp*
 

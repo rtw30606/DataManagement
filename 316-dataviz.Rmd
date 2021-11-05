@@ -61,7 +61,7 @@ data modeling also has a grammar, and each of these grammars is quite
 similar in that they all have the same foundational elements: entities,
 attributes, identifiers, and relationships.
 
-A grammar has been designed by Wilkinson[^1] for creating graphics to
+A grammar has been designed by Wilkinson[^dataviz-1] for creating graphics to
 enhance their expressiveness and comprehensiveness. From a mathematical
 perspective, a graph is a set of points. A graphic is a physical
 representation of a graph. Thus, a graph can have many physical
@@ -81,7 +81,7 @@ shows the size of the army, its location, and the direction of its
 movement. The temperature during the retreat is drawn at the bottom of
 graphic.
 
-[^1]: Wilkinson, L. (2005). \*The grammar of graphics\* (2nd ed.). New
+[^dataviz-1]: Wilkinson, L. (2005). \*The grammar of graphics\* (2nd ed.). New
     York: Springer.
 
 *Charles Joseph Minard's graphic of Napoleon's Russian expedition in
@@ -106,14 +106,14 @@ Wilkinson's grammar is based on six elements:
 
 Interest in the grammar of data visualization has increased in recent
 years because of the growth in data. There is ongoing search to find
-ways to reveal clearly the information in large data sets. Vega[^2] is a
+ways to reveal clearly the information in large data sets. Vega[^dataviz-2] is a
 recent formulation building on Wilkinson's work. In Vega, a
 visualization consists of basic properties of a graph (such as the width
 and height) and definitions of the data to visualize, scales for mapping
 to data to a visual form, axes for representing scales, and graphic
 marks (such as rectangles, circles, and arcs) for displaying the data.
 
-[^2]: <http://trifacta.github.io/vega/>
+[^dataviz-2]: <http://trifacta.github.io/vega/>
 
 ## ggvis {.unnumbered}
 
@@ -307,9 +307,9 @@ data. Notice that the Celsius conversion is rounded to an integer for
 plotting. Width specifies the size of the bin, which is two in this
 case. This means that the bin above the tick mark 10 contains all values
 in the range 9 to 11. There is online a list of names of colors you can
-use in ggvis.[^3]
+use in ggvis.[^dataviz-3]
 
-[^3]: <http://www.w3schools.com/cssref/css_colornames.asp>
+[^dataviz-3]: <http://www.w3schools.com/cssref/css_colornames.asp>
 
 ```{r, message = TRUE}
 library(ggvis)
@@ -720,12 +720,12 @@ Springer.
 ## Exercises {.unnumbered}
 
 1.  Given the following data on the world's cargo carrying capacity in
-    millions of dead weight tons (dwt)[^4] for the given years, graph
+    millions of dead weight tons (dwt)[^dataviz-4] for the given years, graph
     the relationship as a point plot. Add a linear prediction model to
     the graph. What is the approximate increase in the world capacity
     each year?
 
-[^4]: Dead weight tonnage is a measure of how much weight, in tonnes, a
+[^dataviz-4]: Dead weight tonnage is a measure of how much weight, in tonnes, a
     ship can safely carry.
 
 ```{r, eval = FALSE}
@@ -775,14 +775,14 @@ item <-  c('TV set', 'DVD player', 'Vacuum cleaner', 'Scotch whisky', 'Coffee', 
 
 10. Use the 'Import Dataset' feature of RStudio to read
     [[http://www.richardtwatson.com/data/electricityprices.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/electricityprices.csv),
-    which contains details of electricity prices for a major city.[^5]
+    which contains details of electricity prices for a major city.[^dataviz-5]
     Do a Box plot of cost. What do you conclude about cost?
 
 11. Read the table
     [[http://www.richardtwatson.com/data/wealth.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/wealth.csv)
     containing details of the wealth of various countries. Create
     histograms for each of the wealth measures. Consult the ggvis color
-    chart[^6] for a choice of colors.
+    chart[^dataviz-6] for a choice of colors.
 
 12. Merge the data for weather
     \<[[http://www.richardtwatson.com/data/weather.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/weather.csv)\>
@@ -794,10 +794,10 @@ item <-  c('TV set', 'DVD player', 'Vacuum cleaner', 'Scotch whisky', 'Coffee', 
     does not currently handle date and time stamps, use the following
     code to read the files.
 
-[^5]: Note these prices have been transformed from the original values,
+[^dataviz-5]: Note these prices have been transformed from the original values,
     but are still representative of the changes over time.
 
-[^6]: <http://www.w3schools.com/cssref/css_colornames.asp>
+[^dataviz-6]: <http://www.w3schools.com/cssref/css_colornames.asp>
 
 ```{r, eval = FALSE}
 wurl <-  'http://www.richardtwatson.com/data/weather.csv'
