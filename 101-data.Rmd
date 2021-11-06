@@ -10,9 +10,9 @@ editor_options:
 > all our plants, and we just kept our people and our information files,
 > we should soon be as strong as ever.*
 >
-> Thomas Watson, Jr., former chairman of IBM[^data-1]
+> Thomas Watson, Jr., former chairman of IBM[^1]
 
-[^data-1]: Quinn, J. B. (1994). Appraising intellectual assets. \*The
+[^1]: Quinn, J. B. (1994). Appraising intellectual assets. \*The
     McKinsey Quarterly\*(2), 90-96.
 
 ## Learning objectives {.unnumbered}
@@ -100,7 +100,7 @@ identify incomplete tasks.
 
 *A to-do or reminder list*
 
-![](Figures/Chapter%201/todo%20list%20new.png)
+![](Figures/Chapter%201/todo%20list%20new.png){width="320"}
 
 Many people use some form of the individual memory systems just
 described. They are typically included in the suite of standard
@@ -125,15 +125,13 @@ features common to all data management systems:
     scrolling. For example, you will notice the address book screen is
     truncated and will need to be scrolled to see full address details.
 
-+-----------------------------------------------------------------------+
-| *Skill builder*                                                       |
-|                                                                       |
-| Smart phones have dramatically changed individual data management in  |
-| the last few years. We now have calendars, address books, to-do       |
-| lists, and many more apps literally in our hands. What individual     |
-| data are still difficult to manage? What might be the characteristics |
-| of an app for these data?                                             |
-+-----------------------------------------------------------------------+
+> ❓*Skill builder*
+>
+> Smart phones have dramatically changed individual data management in
+> the last few years. We now have calendars, address books, to-do lists,
+> and many more apps literally in our hands. What individual data are
+> still difficult to manage? What might be the characteristics of an app
+> for these data?
 
 There are differences between internal and external memories. Our
 internal memory is small, fast, and convenient (our brain is always with
@@ -1125,5 +1123,5 @@ system. *Harvard Business Review*, 76(4), 121-131.
     to indicate which organizational memory systems they use. Ask which
     system is most important and why. Write up your findings and your
     conclusion.
-    
+
 \newpage

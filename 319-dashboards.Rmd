@@ -11,9 +11,9 @@ editor_options:
 > don't know how any of it works, I don't want to know, but it's
 > inspirational.*
 >
-> Paloma Picasso, designer, 2013[^1]
+> Paloma Picasso, designer, 2013[^dashboards-1]
 
-[^1]: <http://articles.latimes.com/2013/apr/18/news/la-paloma-picasso-discusses-new-olive-leaf-collection-for-tiffany-co-20130418>
+[^dashboards-1]: <http://articles.latimes.com/2013/apr/18/news/la-paloma-picasso-discusses-new-olive-leaf-collection-for-tiffany-co-20130418>
 
 ### Learning objectives {.unnumbered}
 
@@ -197,13 +197,13 @@ left to terminate a dashboard and close its web page.
 
 We now add some content to a basic dashboard by giving it a header and a
 body. This page reports the share price of Apple, which has the stock
-exchange symbol of AAPL. The getQuote function[^2] of the
+exchange symbol of AAPL. The getQuote function[^dashboards-2] of the
 [[quantmod]{.ul}](https://cran.r-project.org/web/packages/quantmod/index.html)
 package returns the latest price, with about a two hour delay, every
 time the page is opened or refreshed. Notice the use of paste to
 concatenate a title and value.
 
-[^2]: ^getQuote\ returns\ a\ dataframe,\ containing\ eight\ values\ :Trade\ Time,\ Last,\ Change,\ %\ Change,\ Open,\ High,\ Low,\ Volume.\ For\ example,\ getQuote('AAPL')\$\`%\ Change\`\ returns\ the\ percentage\ change\ in\ price\ since\ the\ daily\ opening\ price.^
+[^dashboards-2]: ^getQuote\ returns\ a\ dataframe,\ containing\ eight\ values\ :Trade\ Time,\ Last,\ Change,\ %\ Change,\ Open,\ High,\ Low,\ Volume.\ For\ example,\ getQuote('AAPL')\$\`%\ Change\`\ returns\ the\ percentage\ change\ in\ price\ since\ the\ daily\ opening\ price.^
 
 ```{r, eval = FALSE}
 library(shiny)
@@ -367,9 +367,9 @@ following code block.
 
 - The text parameter of `dynagraphOutput()` in the UI function must match the text following `output$` in the server function.
 
-- The data to be graphed are retrieved with the Cl function of the quantmod package.[^3]
+- The data to be graphed are retrieved with the Cl function of the quantmod package.[^dashboards-3]
 
-[^3]: ^The\ quantmod\ function\ getSymbols(\'X\')\ returns\ an\ time\ series\ object\ named\ X.\ The\ get\ function\ retrieves\ the\ name\ of\ the\ object\ and\ passes\ it\ to\ the\ Cl\ function\ and\ then\ the\ time\ series\ is\ graphed\ by\ dygraph.\ The\ code\ is\ a\ bit\ complicated,\ but\ necessary\ to\ generalize\ it\ for\ use\ with\ an\ interactive\ dashboard.^
+[^dashboards-3]: ^The\ quantmod\ function\ getSymbols(\'X\')\ returns\ an\ time\ series\ object\ named\ X.\ The\ get\ function\ retrieves\ the\ name\ of\ the\ object\ and\ passes\ it\ to\ the\ Cl\ function\ and\ then\ the\ time\ series\ is\ graphed\ by\ dygraph.\ The\ code\ is\ a\ bit\ complicated,\ but\ necessary\ to\ generalize\ it\ for\ use\ with\ an\ interactive\ dashboard.^
 
 ```{r, eval = FALSE}
 library(shiny)

@@ -23,6 +23,40 @@ recommend
 
 -   a storage device.
 
+![](Figures/Chapter%201/expeditioner.png)
+
+Every quarter, The Expeditioner's IS group measures the quality of its
+service. It asks its clients to assess whether their hardware and
+software are adequate for their jobs, whether IS service is reliable and
+responsive, and whether they thought the IS staff was helpful and
+knowledgeable. The most recent survey revealed that some were
+experiencing unreasonably long delays for what were relatively simple
+queries. How could the IS group *tune* the database to reduce response
+time?
+
+As though some grumpy clients were not enough, Alice dumped another
+problem on Ned's desk. The Marketing department had complained to her
+that the product database had been down for 30 minutes during a peak
+selling period. What was Ned going to do to prevent such an occurrence
+in the future?
+
+Ned had just finished reading Alice's memo about the database problem
+when the Chief Accountant poked his head in the door. Somewhat agitated,
+he was waving an article from his favorite accounting journal that
+claimed that data stored on magnetic tape decayed with time. So what was
+he to do with all those financial records on magnetic tapes stored in
+the fireproof safe in his office? Were the magnetic bits likely to
+disappear tonight, tomorrow, or next week? "This business had lasted for
+centuries with paper ledgers. Why, you can still read the financial
+transactions for 1527," which he did whenever he had a few moments to
+spare. "But, if what I read is true, I soon won't be able to read the
+balance sheet from last year!"
+
+It was just after 10 a.m. on a Monday, and Ned was faced with finding a
+way to improve response time, ensure that databases were continually
+available during business hours, and protect the long-term existence of
+financial records. It was going to be a long week.
+
 ## The data deluge {.unnumbered}
 
 With petabytes of new data being created daily, and the volume
@@ -679,19 +713,19 @@ of the traditional index requires 9 bytes, or 72 bits, for each record.
 
 *An index*
 
-+----------+----------+----------+----------+
-| itemcode | color    | code     | Disk     |
-|          |          |          | address  |
-|          | char(8)  | char(1)  |          |
-+==========+==========+==========+==========+
-| 1001     | Blue     | N        | d1       |
-+----------+----------+----------+----------+
-| 1002     | Red      | A        | d2       |
-+----------+----------+----------+----------+
-| 1003     | Red      | A        | d3       |
-+----------+----------+----------+----------+
-| 1004     | Green    | A        | d4       |
-+----------+----------+----------+----------+
++----------+---------+---------+--------------+
+| itemcode | color   | code    | Disk address |
+|          |         |         |              |
+|          | char(8) | char(1) |              |
++==========+=========+=========+==============+
+| 1001     | Blue    | N       | d1           |
++----------+---------+---------+--------------+
+| 1002     | Red     | A       | d2           |
++----------+---------+---------+--------------+
+| 1003     | Red     | A       | d3           |
++----------+---------+---------+--------------+
+| 1004     | Green   | A       | d4           |
++----------+---------+---------+--------------+
 
 Bitmaps can accelerate query time for complex queries.
 
@@ -813,16 +847,16 @@ variables just identified. First, we review some of the options.
 
 ### Magnetic technology {.unnumbered}
 
-Over USD 20 billion is spent annually on magnetic storage
-devices.[^datastrucandstor-1] A significant proportion of many units IS
-hardware budgets is consumed by magnetic storage. Magnetic technology,
-the backbone of data storage for five decades, is based on magnetization
-and demagnetization of spots on a magnetic recording surface. The same
-spot can be magnetized and demagnetized repeatedly. Magnetic recording
-materials may be coated on rigid platters (hard disks), thin ribbons of
-material (magnetic tapes), or rectangular sheets (magnetic cards).
+Over USD 20 billion is spent annually on magnetic storage devices.[^datastrucandstor-1] A
+significant proportion of many units IS hardware budgets is consumed by
+magnetic storage. Magnetic technology, the backbone of data storage for
+five decades, is based on magnetization and demagnetization of spots on
+a magnetic recording surface. The same spot can be magnetized and
+demagnetized repeatedly. Magnetic recording materials may be coated on
+rigid platters (hard disks), thin ribbons of material (magnetic tapes),
+or rectangular sheets (magnetic cards).
 
-[^datastrucandstor-1]: [\[[http://www.gartner.com/it/page.jsp?id=2149415]{.ul}\](http://www.terry.uga.edu/people/rwatson/)](http://www.gartner.com/it/page.jsp?id=2149415%5D%7B.underline%7D%5D(http://www.terry.uga.edu/people/rwatson/))
+[^datastrucandstor-1]: [[[http://www.gartner.com/it/page.jsp?id=2149415]{.ul}](http://www.terry.uga.edu/people/rwatson/)](http://www.gartner.com/it/page.jsp?id=2149415%5D%7B.underline%7D%5D(http://www.terry.uga.edu/people/rwatson/))
 
 The main advantages of magnetic technology are its relative maturity,
 widespread use, and declining costs. A major disadvantage is
@@ -1050,8 +1084,8 @@ chips. SSDs require lower power consumption (longer battery life) and
 come in smaller sizes (smaller and lighter devices). As well, SSDs have
 faster access times. However, they cost around six times as much as
 equivalent size HDDs, but they declining in prices rapidly, and might be
-as little as twice as costly by 2021.[^datastrucandstor-2] SSD is
-rapidly becoming the standard for laptops.
+as little as twice as costly by 2021.[^datastrucandstor-2] SSD is rapidly becoming the
+standard for laptops.
 
 [^datastrucandstor-2]: [https://www.theregister.co.uk/2017/05/22/ssd\\\_price\\\_premium\\\_over\\\_disk\\\_falling/](https://www.theregister.co.uk/2017/05/22/ssd_price_premium_over_disk_falling/)
 
@@ -1063,8 +1097,8 @@ capacity drives is about about USD 1-2 per Gbytes.
 
 While price is a factor, the current major drawback holding back the
 adoption of SSD is the lack of manufacturing capacity for the NAND chips
-used in SSDs.[^datastrucandstor-3] The introduction of tablets, such as
-the iPad, and smartphones is exacerbating this problem.
+used in SSDs.[^datastrucandstor-3] The introduction of tablets, such as the iPad, and
+smartphones is exacerbating this problem.
 
 [^datastrucandstor-3]: <http://www.pcworld.com/businesscenter/article/217883/seagate_solidstate_disks_are_doomed_at_least_for_now.html>
 
@@ -1215,59 +1249,58 @@ it simply means that it is not as reliable as some other media.
 
 *Relative merits of data storage devices*
 
-+--------+--------+--------+--------+--------+--------+--------+
-| Device | Access | Vo lu  | Volat  | Cost   | Relia  | Legal  |
-|        | speed  | me     | ility  | per    | bility | st     |
-|        |        |        |        | me     |        | anding |
-|        |        |        |        | gabyte |        |        |
-+:=======+:=======+:=======+:=======+:=======+:=======+:=======+
-| Solid  | \*\*\* | \*     | \      | \*     | \*\*\* | \*     |
-| state  |        |        | \      |        |        |        |
-|        |        |        | \*\*\* |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| Fixed  | \*\*\* | \* \*  | \      | \*\*\* | \*\*   | \*     |
-| disk   |        | \*     | \      |        |        |        |
-|        |        |        | \*\*\* |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| RAID   | \*\*\* | \* \*  | \      | \*\*\* | \*\*\* | \*     |
-|        |        | \*     | \      |        |        |        |
-|        |        |        | \*\*\* |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| R      | \*\*   | \* \*  | \      | \*\*   | \*\*   | \*     |
-| em     |        |        | \      |        |        |        |
-| ovable |        |        | \*\*\* |        |        |        |
-| disk   |        |        |        |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| Flash  | \*\*   | \*     | \      | \*     | \*\*\* | \*     |
-| memory |        |        | \      |        |        |        |
-|        |        |        | \*\*\* |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| Tape   | \*     | \* \*  | \*     | \*\*\* | \*\*   | \*     |
-+--------+--------+--------+--------+--------+--------+--------+
-| C      | \*\*   | \* \*  | \*     | \*\*\* | \*\*   | \*     |
-| ar     |        | \*     |        |        |        |        |
-| tridge |        |        |        |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| Mass   | \*\*   | \* \*  | \*     | \*\*\* | \*\*   | \*     |
-| S      |        | \*     |        |        |        |        |
-| torage |        |        |        |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| SAN    | \*\*\* | \* \*  | \      | \*\*\* | \*\*\* | \*     |
-|        |        | \*     | \      |        |        |        |
-|        |        |        | \*\*\* |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| Opt    | \*     | \* \*  | \*     | \*\*\* | \*\*\* | \*\*\* |
-| ic     |        | \*     |        |        |        |        |
-| al-ROM |        |        |        |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| O      | \*     | \* \*  | \*     | \*\*\* | \*\*\* | \*\*   |
-| pt     |        | \*     |        |        |        |        |
-| ical-R |        |        |        |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
-| Op     | \*     | \* \*  | \*\*   | \*\*\* | \*\*\* | \*     |
-| ti     |        | \*     |        |        |        |        |
-| cal-RW |        |        |        |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+
++----------+---------+----+-------+------------+--------+----------+
+| Device   | Access  | Vo | Volat | Cost per   | Relia  | Legal    |
+|          | speed   | lu | ility | megabyte   | bility | standing |
+|          |         | me |       |            |        |          |
++:=========+:========+:===+:======+:===========+:=======+:=========+
+| Solid    | \*\*\*  | \* | \     | \*         | \*\*\* | \*       |
+| state    |         |    | \     |            |        |          |
+|          |         |    | *\*\* |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| Fixed    | \*\*\*  | \* | \     | \*\*\*     | \*\*   | \*       |
+| disk     |         | \* | \     |            |        |          |
+|          |         | \* | *\*\* |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| RAID     | \*\*\*  | \* | \     | \*\*\*     | \*\*\* | \*       |
+|          |         | \* | \     |            |        |          |
+|          |         | \* | *\*\* |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| R        | \*\*    | \* | \     | \*\*       | \*\*   | \*       |
+| emovable |         | \* | \     |            |        |          |
+| disk     |         |    | *\*\* |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| Flash    | \*\*    | \* | \     | \*         | \*\*\* | \*       |
+| memory   |         |    | \     |            |        |          |
+|          |         |    | *\*\* |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| Tape     | \*      | \* | \*    | \*\*\*     | \*\*   | \*       |
+|          |         | \* |       |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| C        | \*\*    | \* | \*    | \*\*\*     | \*\*   | \*       |
+| artridge |         | \* |       |            |        |          |
+|          |         | \* |       |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| Mass     | \*\*    | \* | \*    | \*\*\*     | \*\*   | \*       |
+| Storage  |         | \* |       |            |        |          |
+|          |         | \* |       |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| SAN      | \*\*\*  | \* | \     | \*\*\*     | \*\*\* | \*       |
+|          |         | \* | \     |            |        |          |
+|          |         | \* | *\*\* |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| Opt      | \*      | \* | \*    | \*\*\*     | \*\*\* | \*\*\*   |
+| ical-ROM |         | \* |       |            |        |          |
+|          |         | \* |       |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| O        | \*      | \* | \*    | \*\*\*     | \*\*\* | \*\*     |
+| ptical-R |         | \* |       |            |        |          |
+|          |         | \* |       |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
+| Op       | \*      | \* | \*\*  | \*\*\*     | \*\*\* | \*       |
+| tical-RW |         | \* |       |            |        |          |
+|          |         | \* |       |            |        |          |
++----------+---------+----+-------+------------+--------+----------+
 
 *Legend*
 
@@ -1352,57 +1385,57 @@ techniques, some data are lost during compression.
 
 ## Key terms and concepts {.unnumbered}
 
-+:--------------------+:---------------------------------------------+
-| Access time         | Index set                                    |
-+---------------------+----------------------------------------------+
-| Archival file       | Interfile clustering                         |
-+---------------------+----------------------------------------------+
-| ASCII               | Internal schema                              |
-+---------------------+----------------------------------------------+
-| B-tree              | Intrafile clustering                         |
-+---------------------+----------------------------------------------+
-| Backup file         | Join index                                   |
-+---------------------+----------------------------------------------+
-| Bitmap index        | Linked list                                  |
-+---------------------+----------------------------------------------+
-| Blue-ray disc (BD)  | Lossless compression                         |
-+---------------------+----------------------------------------------+
-| Compact disc (CD)   | Lossy compression                            |
-+---------------------+----------------------------------------------+
-| Clustering          | Magnetic disk                                |
-+---------------------+----------------------------------------------+
-| Conceptual schema   | Magnetic tape                                |
-+---------------------+----------------------------------------------+
-| Cylinder            | Mass storage                                 |
-+---------------------+----------------------------------------------+
-| Data compression    | Mirroring                                    |
-+---------------------+----------------------------------------------+
-| Data deluge         | Page                                         |
-+---------------------+----------------------------------------------+
-| Data storage device | Parity                                       |
-+---------------------+----------------------------------------------+
-| Database            | Pointer                                      |
-| architecture        |                                              |
-+---------------------+----------------------------------------------+
-| Digital versatile   | Redundant arrays of inexpensive or           |
-| disc (DVD)          | independent drives (RAID)                    |
-+---------------------+----------------------------------------------+
-| Disk manager        | Sequence set                                 |
-+---------------------+----------------------------------------------+
-| External schema     | Solid-state disk (SSD)                       |
-+---------------------+----------------------------------------------+
-| File manager        | Sparse index                                 |
-+---------------------+----------------------------------------------+
-| Hash address        | Storage-area network (SAN)                   |
-+---------------------+----------------------------------------------+
-| Hash field          | Striping                                     |
-+---------------------+----------------------------------------------+
-| Hash function       | Track                                        |
-+---------------------+----------------------------------------------+
-| Hashing             | Unicode                                      |
-+---------------------+----------------------------------------------+
-| Index               | VSAM                                         |
-+---------------------+----------------------------------------------+
++:---------------------+:----------------------------------------------+
+| Access time          | Index set                                     |
++----------------------+-----------------------------------------------+
+| Archival file        | Interfile clustering                          |
++----------------------+-----------------------------------------------+
+| ASCII                | Internal schema                               |
++----------------------+-----------------------------------------------+
+| B-tree               | Intrafile clustering                          |
++----------------------+-----------------------------------------------+
+| Backup file          | Join index                                    |
++----------------------+-----------------------------------------------+
+| Bitmap index         | Linked list                                   |
++----------------------+-----------------------------------------------+
+| Blue-ray disc (BD)   | Lossless compression                          |
++----------------------+-----------------------------------------------+
+| Compact disc (CD)    | Lossy compression                             |
++----------------------+-----------------------------------------------+
+| Clustering           | Magnetic disk                                 |
++----------------------+-----------------------------------------------+
+| Conceptual schema    | Magnetic tape                                 |
++----------------------+-----------------------------------------------+
+| Cylinder             | Mass storage                                  |
++----------------------+-----------------------------------------------+
+| Data compression     | Mirroring                                     |
++----------------------+-----------------------------------------------+
+| Data deluge          | Page                                          |
++----------------------+-----------------------------------------------+
+| Data storage device  | Parity                                        |
++----------------------+-----------------------------------------------+
+| Database             | Pointer                                       |
+| architecture         |                                               |
++----------------------+-----------------------------------------------+
+| Digital versatile    | Redundant arrays of inexpensive or            |
+| disc (DVD)           | independent drives (RAID)                     |
++----------------------+-----------------------------------------------+
+| Disk manager         | Sequence set                                  |
++----------------------+-----------------------------------------------+
+| External schema      | Solid-state disk (SSD)                        |
++----------------------+-----------------------------------------------+
+| File manager         | Sparse index                                  |
++----------------------+-----------------------------------------------+
+| Hash address         | Storage-area network (SAN)                    |
++----------------------+-----------------------------------------------+
+| Hash field           | Striping                                      |
++----------------------+-----------------------------------------------+
+| Hash function        | Track                                         |
++----------------------+-----------------------------------------------+
+| Hashing              | Unicode                                       |
++----------------------+-----------------------------------------------+
+| Index                | VSAM                                          |
++----------------------+-----------------------------------------------+
 
 ## Exercises {.unnumbered}
 
@@ -1482,7 +1515,7 @@ techniques, some data are lost during compression.
     management?
 
 16. According to Wikipedia, Apple has more than 28 million songs in the
-    iTunes store.[^datastrucandstor-4] What storage technology might be
-    a good choice for this library?
+    iTunes store.[^datastrucandstor-4] What storage technology might be a good choice for
+    this library?
 
 [^datastrucandstor-4]: <http://en.wikipedia.org/wiki/ITunes_Store>

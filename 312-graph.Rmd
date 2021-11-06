@@ -127,16 +127,16 @@ In summary, the key features of a labelled property graph database are:
 **Cypher** is a combined graph description language (GDL) and graph
 query languages (GQL) for graph databases. Originally designed for the
 Neo4j graph database, it is now, in the form of Cypher 9, governed by
-the openCypher Implementation Group.[^1] Cypher is used in open source
+the openCypher Implementation Group.[^graph-1] Cypher is used in open source
 projects (e.g., Apache Spark) and commercial products (e.g., SAP HANA).
 These actions indicate that Cypher will likely emerge as the industry
 standard language for labelled property graphs. In parallel, ISO has
 launched a project to create a new query language for graph databases
-based on openCypher and other GQLs.[^2]
+based on openCypher and other GQLs.[^graph-2]
 
-[^1]: <https://www.opencypher.org>
+[^graph-1]: <https://www.opencypher.org>
 
-[^2]: <https://www.gqlstandards.org>
+[^graph-2]: <https://www.gqlstandards.org>
 
 ## Neo4j -- a graph database implementation {.unnumbered}
 
@@ -144,14 +144,14 @@ Neo4j is a popular labeled property graph database that supports Cypher
 and has a free community version. These features make it suitable for
 learning how to create and use a graph database. To get started:
 
--   Watch the video titled *Neo4j in Two Minutes;*[^3]
+-   Watch the video titled *Neo4j in Two Minutes;*[^graph-3]
 
--   Download Neo4j Desktop[^4] and follow the installation and launch
+-   Download Neo4j Desktop[^graph-4] and follow the installation and launch
     guide to create a project and open your browser.
 
-[^3]: <https://neo4j.com/neo4j-graph-database/>
+[^graph-3]: <https://neo4j.com/neo4j-graph-database/>
 
-[^4]: <https://neo4j.com/download/>
+[^graph-4]: <https://neo4j.com/download/>
 
 ## A single node {.unnumbered}
 
@@ -350,9 +350,9 @@ Cypher includes functions for string handling and supports regular
 expressions. The string functions are typical of those in other
 programming languages, such as toLower(), toUpper(), toString(), left(),
 right(), substring(), and replace(). For a complete list, see the Cypher
-manual.[^5]
+manual.[^graph-5]
 
-[^5]: <https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf>
+[^graph-5]: <https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf>
 
 Cypher supports regular expression using the syntax of Java regular
 expressions.
@@ -823,9 +823,9 @@ Graph databases are suitable for a wide range of common business
 problems. Graph analytics, in general, is useful for addressing three
 types of questions: How do things spread? What are the capacities,
 costs, and control points? How do things interact, and will that
-change?[^6]
+change?[^graph-6]
 
-[^6]: Needham, M., & Hodler, A. E. (2019). *Graph Algorithms: Practical
+[^graph-6]: Needham, M., & Hodler, A. E. (2019). *Graph Algorithms: Practical
     Examples in Apache Spark and Neo4j:* O\\'Reilly Media. ISBN:
     1492047651
 
@@ -864,10 +864,10 @@ Problem showcases: [[gist.neo4j.org/]{.ul}](http://gist.neo4j.org/) and
 [[neo4j.com/use-cases/]{.ul}](http://neo4j.com/use-cases/)
 
 The following exercises are based on the NorthWinds graph database,
-which you can create on your desktop by running the supplied code.[^7]
+which you can create on your desktop by running the supplied code.[^graph-7]
 The graph model for NorthWinds follows the questions.
 
-[^7]: <https://www.richardtwatson.com/dm6e/reader/northwind.cypher>
+[^graph-7]: <https://www.richardtwatson.com/dm6e/reader/northwind.cypher>
 
 ## Exercises {.unnumbered}
 

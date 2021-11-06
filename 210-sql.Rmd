@@ -1,3 +1,9 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # SQL
 
 > *The questing beast*.
@@ -70,8 +76,8 @@ changed.
 
 Comparing composite keys actually means that corresponding components of
 the keys are compared. Thus, application of the referential integrity
-rule---*the value of a foreign key must be equal to a value of the primary key*
----means that each component of the foreign key must be
+rule---*the value of a foreign key must be equal to a value of the
+primary key* ---means that each component of the foreign key must be
 equal to the corresponding component of the composite primary key.
 
 So far, you have met primary and foreign keys. A **unique key** is
@@ -96,7 +102,7 @@ identical index keys.
 
 *An example of an index*
 
-![](Figures/Chapter 11/index.png)
+![](Figures/Chapter%2011/index.png)
 
 ## Notation {.unnumbered}
 
@@ -104,13 +110,13 @@ A short primer on notation is required before we examine SQL commands.
 
 1.  Text in uppercase is required as is.
 
-2. Text in lowercase denotes values to be selected by the query writer.
+2.  Text in lowercase denotes values to be selected by the query writer.
 
-3. Statements enclosed within square brackets are optional.
+3.  Statements enclosed within square brackets are optional.
 
-4. \| indicates a choice.
+4.  \| indicates a choice.
 
-5. An ellipsis (...) indicates that the immediate syntactic unit may be
+5.  An ellipsis (...) indicates that the immediate syntactic unit may be
     repeated optionally more than once.
 
 ## Creating a table {.unnumbered}
@@ -180,7 +186,7 @@ For example:
 pk_stock PRIMARY KEY(stkcode)
 ```
 
-### Foreign key constraint  {.unnumbered}
+### Foreign key constraint {.unnumbered}
 
 The referential constraint block defines a foreign key, which consists
 of one or more columns in the table that together must match a primary
@@ -213,10 +219,10 @@ the table containing the primary key. There are three options:
     foreign key, have been deleted. RESTRICT is the default and the
     cautious approach for preserving data integrity.
 
-2. CASCADE causes all the corresponding rows in the related table also
+2.  CASCADE causes all the corresponding rows in the related table also
     to be deleted.
 
-3. SET NULLS sets the foreign key to null for all corresponding rows in
+3.  SET NULLS sets the foreign key to null for all corresponding rows in
     the related table.
 
 For example:
@@ -285,7 +291,7 @@ CONSTRAINT chk_qitem_color check(
 
 In a CREATE TABLE statement, instead of defining a column's data type,
 you specify the domain on which the column is defined. The following
-example shows that itemcolor is defined on the domain valid\_color.
+example shows that itemcolor is defined on the domain valid_color.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE table item (
@@ -347,7 +353,7 @@ column, and q is the number of digits to the right of the decimal point.
 
 *Data types*
 
-![](Figures/Chapter 10/data types.png)
+![](Figures/Chapter%2010/data%20types.png)
 
 ### CHAR and VARCHAR {.unnumbered}
 
@@ -437,24 +443,24 @@ manual, or contracts. The CLOB data type has no maximum size.
 >
 > What data types would you recommend for the following?
 >
-> 1.  A book's ISBN 
+> 1.  A book's ISBN
 >
-> 2. A photo of a product 
+> 2.  A photo of a product
 >
-> 3. The speed of light (2.9979 × 10^8^ meters per second) 
-> 
-> 4. A short description of an animal's habitat
-> 
-> 5. The title of a Japanese book
-> 
-> 6. A legal contract 
-> 
-> 7. The status of an electrical switch 
-> 
-> 8. The date and time a reservation was made 
-> 
-> 9. An item's value in euros
-> 
+> 3.  The speed of light (2.9979 × 10^8^ meters per second)
+>
+> 4.  A short description of an animal's habitat
+>
+> 5.  The title of a Japanese book
+>
+> 6.  A legal contract
+>
+> 7.  The status of an electrical switch
+>
+> 8.  The date and time a reservation was made
+>
+> 9.  An item's value in euros
+>
 > 10. The number of children in a family
 
 ## Collation sequence {.unnumbered}
@@ -478,7 +484,7 @@ practice is to specify at the database level.
 CREATE DATABASE ClassicModels COLLATE latin1_general_cs;
 ```
 
-The latin1\_general character set is suitable for Western European
+The latin1_general character set is suitable for Western European
 languages. The cs suffix indicates that comparisons are **case
 sensitive**. In other words, a query will see the two strings 'abc' and
 'Abc' as different, whereas if case sensitivity is turned off, the
@@ -496,11 +502,11 @@ SQL Server has more than 100 additional functions.
 
 *Some examples of SQL's built-in scalar functions*
 
-  Function                                    Description
-  ------------------------------------------- ------------------------------------------------------------------------------------
-  CURRENT\_DATE()                             Retrieves the current date
-  EXTRACT(date\_time\_part FROM expression)   Retrieves part of a time or date (e.g., YEAR, MONTH, DAY, HOUR, MINUTE, or SECOND)
-  SUBSTRING(str, pos, len)                    Retrieves a string of length *len* starting at position pos from string *str*
+| Function                                | Description                                                                        |
+|:----------------------------------------|:-----------------------------------------------------------------------------------|
+| CURRENT_DATE()                          | Retrieves the current date                                                         |
+| EXTRACT(date_time_part FROM expression) | Retrieves part of a time or date (e.g., YEAR, MONTH, DAY, HOUR, MINUTE, or SECOND) |
+| SUBSTRING(str, pos, len)                | Retrieves a string of length *len* starting at position pos from string *str*      |
 
 Some examples:
 
@@ -534,11 +540,11 @@ SELECT DISTINCT DATEDIFF(late.saledate,early.saledate) AS Difference
 			(SELECT MIN(saledate) FROM sale);
 ```
 
-The preceding query is based on the idea of joining `sale` with a copy of
-itself. The matching column from `late` is the latest sale's date (or
-MAX), and the matching column from `early` is the earliest sale's date (or
-MIN). As a result of the join, each row of the new table has both the
-earliest and latest dates.
+The preceding query is based on the idea of joining `sale` with a copy
+of itself. The matching column from `late` is the latest sale's date (or
+MAX), and the matching column from `early` is the earliest sale's date
+(or MIN). As a result of the join, each row of the new table has both
+the earliest and latest dates.
 
 ## Formatting {.unnumbered}
 
@@ -623,7 +629,7 @@ CREATE VIEW view [column [,column] …)]
 	AS subquery;
 ```
 
-There are several reasons for creating a view. *First**, ***a view can
+There are several reasons for creating a view. *First**,*** a view can
 be used to restrict access to certain rows or columns. This is
 particularly important for sensitive data. An organization's person
 table can contain both private data (e.g., annual salary) and public
@@ -665,9 +671,9 @@ CREATE VIEW stkvalue
 
 The preceding example demonstrates how CREATE VIEW can be used to rename
 columns, create new columns, and involve more than one table. The column
-`nation` corresponds to `natname`, `firm` to `stkfirm`, and so forth. A new
-column, `price`, is created that converts all share prices from the local
-currency to British pounds.
+`nation` corresponds to `natname`, `firm` to `stkfirm`, and so forth. A
+new column, `price`, is created that converts all share prices from the
+local currency to British pounds.
 
 Data conversion is a *fourth* useful reason for a view. The United
 States is one of the few countries that does not use the metric system,
@@ -717,9 +723,9 @@ also dropped.
 An index helps speed up retrieval (a more detailed discussion of
 indexing is covered later in this book). A column that is frequently
 referred to in a WHERE clause is a possible candidate for indexing. For
-example, if data on stocks were frequently retrieved using `stkfirm`, then
-this column should be considered for an index. The format for CREATE
-INDEX is
+example, if data on stocks were frequently retrieved using `stkfirm`,
+then this column should be considered for an index. The format for
+CREATE INDEX is
 
 ```{sql, connection = db, eval = FALSE}
 CREATE [UNIQUE] INDEX indexname
@@ -733,12 +739,13 @@ This next example illustrates use of CREATE INDEX.
 CREATE UNIQUE INDEX stkfirmindx ON stock(stkfirm);
 ```
 
-In the preceding example, an index called `stkfirmindx` is created for the
-table `stock`. Index entries are ordered by ascending (the default order)
-values of `stkfirm`. The optional clause UNIQUE specifies that no two rows
-in the base table can have the same value for `stkfirm`, the indexed
-column. Specifying UNIQUE means that the DBMS will reject any insert or
-update operation that would create a duplicate value for `stkfirm`.
+In the preceding example, an index called `stkfirmindx` is created for
+the table `stock`. Index entries are ordered by ascending (the default
+order) values of `stkfirm`. The optional clause UNIQUE specifies that no
+two rows in the base table can have the same value for `stkfirm`, the
+indexed column. Specifying UNIQUE means that the DBMS will reject any
+insert or update operation that would create a duplicate value for
+`stkfirm`.
 
 A composite index can be created from several columns, which is often
 necessary for an associative entity. The following example illustrates
@@ -794,9 +801,9 @@ SELECT wrk.empfname
 
 A temporary name also can be used as a shortened form of a long table
 name. For example, l might be used merely to avoid having to enter
-`lineitem` more than once. If a temporary name is specified for a table or
-view, any qualified reference to a column of the table or view must also
-use that temporary name.
+`lineitem` more than once. If a temporary name is specified for a table
+or view, any qualified reference to a column of the table or view must
+also use that temporary name.
 
 ## SELECT {.unnumbered}
 
@@ -838,80 +845,79 @@ SELECT * FROM stock, nation;
 ```
 
 The new table contains 64 rows (16\*4), where `stock` has 16 rows and
-`nation` has 4 rows. It has 10 columns (7 + 3), where `stock` has 7 columns
-and `nation` has 3 columns. The result of the operation is shown in the
-following table. Note that each row in `stock` is concatenated with each
-row in `nation`.
+`nation` has 4 rows. It has 10 columns (7 + 3), where `stock` has 7
+columns and `nation` has 3 columns. The result of the operation is shown
+in the following table. Note that each row in `stock` is concatenated
+with each row in `nation`.
 
 *Product of stock and nation*
 
-
-  stkcode   stkfirm               stkprice   stkqty    stkdiv   stkpe   natcode   natcode   natname          exchrate
-  --------- --------------------- ---------- --------- -------- ------- --------- --------- ---------------- ----------
-  FC        Freedonia Copper      27.5       10529     1.84     16      UK        UK        United Kingdom   1.0000
-  FC        Freedonia Copper      27.5       10529     1.84     16      UK        US        United States    0.6700
-  FC        Freedonia Copper      27.5       10529     1.84     16      UK        AUS       Australia        0.4600
-  FC        Freedonia Copper      27.5       10529     1.84     16      UK        IND       India            0.0228
-  PT        Patagonian Tea        55.25      12635     2.5      10      UK        UK        United Kingdom   1.0000
-  PT        Patagonian Tea        55.25      12635     2.5      10      UK        US        United States    0.6700
-  PT        Patagonian Tea        55.25      12635     2.5      10      UK        AUS       Australia        0.4600
-  PT        Patagonian Tea        55.25      12635     2.5      10      UK        IND       India            0.0228
-  AR        Abyssinian Ruby       31.82      22010     1.32     13      UK        UK        United Kingdom   1.0000
-  AR        Abyssinian Ruby       31.82      22010     1.32     13      UK        US        United States    0.6700
-  AR        Abyssinian Ruby       31.82      22010     1.32     13      UK        AUS       Australia        0.4600
-  AR        Abyssinian Ruby       31.82      22010     1.32     13      UK        IND       India            0.0228
-  SLG       Sri Lankan Gold       50.37      32868     2.68     16      UK        UK        United Kingdom   1.0000
-  SLG       Sri Lankan Gold       50.37      32868     2.68     16      UK        US        United States    0.6700
-  SLG       Sri Lankan Gold       50.37      32868     2.68     16      UK        AUS       Australia        0.4600
-  SLG       Sri Lankan Gold       50.37      32868     2.68     16      UK        IND       India            0.0228
-  ILZ       Indian Lead & Zinc    37.75      6390      3        12      UK        UK        United Kingdom   1.0000
-  ILZ       Indian Lead & Zinc    37.75      6390      3        12      UK        US        United States    0.6700
-  ILZ       Indian Lead & Zinc    37.75      6390      3        12      UK        AUS       Australia        0.4600
-  ILZ       Indian Lead & Zinc    37.75      6390      3        12      UK        IND       India            0.0228
-  BE        Burmese Elephant      0.07       154713    0.01     3       UK        UK        United Kingdom   1.0000
-  BE        Burmese Elephant      0.07       154713    0.01     3       UK        US        United States    0.6700
-  BE        Burmese Elephant      0.07       154713    0.01     3       UK        AUS       Australia        0.4600
-  BE        Burmese Elephant      0.07       154713    0.01     3       UK        IND       India            0.0228
-  BS        Bolivian Sheep        12.75      231678    1.78     11      UK        UK        United Kingdom   1.0000
-  BS        Bolivian Sheep        12.75      231678    1.78     11      UK        US        United States    0.6700
-  BS        Bolivian Sheep        12.75      231678    1.78     11      UK        AUS       Australia        0.4600
-  BS        Bolivian Sheep        12.75      231678    1.78     11      UK        IND       India            0.0228
-  NG        Nigerian Geese        35         12323     1.68     10      UK        UK        United Kingdom   1.0000
-  NG        Nigerian Geese        35         12323     1.68     10      UK        US        United States    0.6700
-  NG        Nigerian Geese        35         12323     1.68     10      UK        AUS       Australia        0.4600
-  NG        Nigerian Geese        35         12323     1.68     10      UK        IND       India            0.0228
-  CS        Canadian Sugar        52.78      4716      2.5      15      UK        UK        United Kingdom   1.0000
-  CS        Canadian Sugar        52.78      4716      2.5      15      UK        US        United States    0.6700
-  CS        Canadian Sugar        52.78      4716      2.5      15      UK        AUS       Australia        0.4600
-  CS        Canadian Sugar        52.78      4716      2.5      15      UK        IND       India            0.0228
-  ROF       Royal Ostrich Farms   33.75      1234923   3        6       UK        UK        United Kingdom   1.0000
-  ROF       Royal Ostrich Farms   33.75      1234923   3        6       UK        US        United States    0.6700
-  ROF       Royal Ostrich Farms   33.75      1234923   3        6       UK        AUS       Australia        0.4600
-  ROF       Royal Ostrich Farms   33.75      1234923   3        6       UK        IND       India            0.0228
-  MG        Minnesota Gold        53.87      816122    1        25      US        UK        United Kingdom   1.0000
-  MG        Minnesota Gold        53.87      816122    1        25      US        US        United States    0.6700
-  MG        Minnesota Gold        53.87      816122    1        25      US        AUS       Australia        0.4600
-  MG        Minnesota Gold        53.87      816122    1        25      US        IND       India            0.0228
-  GP        Georgia Peach         2.35       387333    0.2      5       US        UK        United Kingdom   1.0000
-  GP        Georgia Peach         2.35       387333    0.2      5       US        US        United States    0.6700
-  GP        Georgia Peach         2.35       387333    0.2      5       US        AUS       Australia        0.4600
-  GP        Georgia Peach         2.35       387333    0.2      5       US        IND       India            0.0228
-  NE        Narembeen Emu         12.34      45619     1        8       AUS       UK        United Kingdom   1.0000
-  NE        Narembeen Emu         12.34      45619     1        8       AUS       US        United States    0.6700
-  NE        Narembeen Emu         12.34      45619     1        8       AUS       AUS       Australia        0.4600
-  NE        Narembeen Emu         12.34      45619     1        8       AUS       IND       India            0.0228
-  QD        Queensland Diamond    6.73       89251     0.5      7       AUS       UK        United Kingdom   1.0000
-  QD        Queensland Diamond    6.73       89251     0.5      7       AUS       US        United States    0.6700
-  QD        Queensland Diamond    6.73       89251     0.5      7       AUS       AUS       Australia        0.4600
-  QD        Queensland Diamond    6.73       89251     0.5      7       AUS       IND       India            0.0228
-  IR        Indooroopilly Ruby    15.92      56147     0.5      20      AUS       UK        United Kingdom   1.0000
-  IR        Indooroopilly Ruby    15.92      56147     0.5      20      AUS       US        United States    0.6700
-  IR        Indooroopilly Ruby    15.92      56147     0.5      20      AUS       AUS       Australia        0.4600
-  IR        Indooroopilly Ruby    15.92      56147     0.5      20      AUS       IND       India            0.0228
-  BD        Bombay Duck           25.55      167382    1        12      IND       UK        United Kingdom   1.0000
-  BD        Bombay Duck           25.55      167382    1        12      IND       US        United States    0.6700
-  BD        Bombay Duck           25.55      167382    1        12      IND       AUS       Australia        0.4600
-  BD        Bombay Duck           25.55      167382    1        12      IND       IND       India            0.0228
+| stkcode | stkfirm             | stkprice | stkqty  | stkdiv | stkpe | natcode | natcode | natname        | exchrate |
+|:--------|:--------------------|:---------|:--------|:-------|:------|:--------|:--------|:---------------|:---------|
+| FC      | Freedonia Copper    | 27.5     | 10529   | 1.84   | 16    | UK      | UK      | United Kingdom | 1.0000   |
+| FC      | Freedonia Copper    | 27.5     | 10529   | 1.84   | 16    | UK      | US      | United States  | 0.6700   |
+| FC      | Freedonia Copper    | 27.5     | 10529   | 1.84   | 16    | UK      | AUS     | Australia      | 0.4600   |
+| FC      | Freedonia Copper    | 27.5     | 10529   | 1.84   | 16    | UK      | IND     | India          | 0.0228   |
+| PT      | Patagonian Tea      | 55.25    | 12635   | 2.5    | 10    | UK      | UK      | United Kingdom | 1.0000   |
+| PT      | Patagonian Tea      | 55.25    | 12635   | 2.5    | 10    | UK      | US      | United States  | 0.6700   |
+| PT      | Patagonian Tea      | 55.25    | 12635   | 2.5    | 10    | UK      | AUS     | Australia      | 0.4600   |
+| PT      | Patagonian Tea      | 55.25    | 12635   | 2.5    | 10    | UK      | IND     | India          | 0.0228   |
+| AR      | Abyssinian Ruby     | 31.82    | 22010   | 1.32   | 13    | UK      | UK      | United Kingdom | 1.0000   |
+| AR      | Abyssinian Ruby     | 31.82    | 22010   | 1.32   | 13    | UK      | US      | United States  | 0.6700   |
+| AR      | Abyssinian Ruby     | 31.82    | 22010   | 1.32   | 13    | UK      | AUS     | Australia      | 0.4600   |
+| AR      | Abyssinian Ruby     | 31.82    | 22010   | 1.32   | 13    | UK      | IND     | India          | 0.0228   |
+| SLG     | Sri Lankan Gold     | 50.37    | 32868   | 2.68   | 16    | UK      | UK      | United Kingdom | 1.0000   |
+| SLG     | Sri Lankan Gold     | 50.37    | 32868   | 2.68   | 16    | UK      | US      | United States  | 0.6700   |
+| SLG     | Sri Lankan Gold     | 50.37    | 32868   | 2.68   | 16    | UK      | AUS     | Australia      | 0.4600   |
+| SLG     | Sri Lankan Gold     | 50.37    | 32868   | 2.68   | 16    | UK      | IND     | India          | 0.0228   |
+| ILZ     | Indian Lead & Zinc  | 37.75    | 6390    | 3      | 12    | UK      | UK      | United Kingdom | 1.0000   |
+| ILZ     | Indian Lead & Zinc  | 37.75    | 6390    | 3      | 12    | UK      | US      | United States  | 0.6700   |
+| ILZ     | Indian Lead & Zinc  | 37.75    | 6390    | 3      | 12    | UK      | AUS     | Australia      | 0.4600   |
+| ILZ     | Indian Lead & Zinc  | 37.75    | 6390    | 3      | 12    | UK      | IND     | India          | 0.0228   |
+| BE      | Burmese Elephant    | 0.07     | 154713  | 0.01   | 3     | UK      | UK      | United Kingdom | 1.0000   |
+| BE      | Burmese Elephant    | 0.07     | 154713  | 0.01   | 3     | UK      | US      | United States  | 0.6700   |
+| BE      | Burmese Elephant    | 0.07     | 154713  | 0.01   | 3     | UK      | AUS     | Australia      | 0.4600   |
+| BE      | Burmese Elephant    | 0.07     | 154713  | 0.01   | 3     | UK      | IND     | India          | 0.0228   |
+| BS      | Bolivian Sheep      | 12.75    | 231678  | 1.78   | 11    | UK      | UK      | United Kingdom | 1.0000   |
+| BS      | Bolivian Sheep      | 12.75    | 231678  | 1.78   | 11    | UK      | US      | United States  | 0.6700   |
+| BS      | Bolivian Sheep      | 12.75    | 231678  | 1.78   | 11    | UK      | AUS     | Australia      | 0.4600   |
+| BS      | Bolivian Sheep      | 12.75    | 231678  | 1.78   | 11    | UK      | IND     | India          | 0.0228   |
+| NG      | Nigerian Geese      | 35       | 12323   | 1.68   | 10    | UK      | UK      | United Kingdom | 1.0000   |
+| NG      | Nigerian Geese      | 35       | 12323   | 1.68   | 10    | UK      | US      | United States  | 0.6700   |
+| NG      | Nigerian Geese      | 35       | 12323   | 1.68   | 10    | UK      | AUS     | Australia      | 0.4600   |
+| NG      | Nigerian Geese      | 35       | 12323   | 1.68   | 10    | UK      | IND     | India          | 0.0228   |
+| CS      | Canadian Sugar      | 52.78    | 4716    | 2.5    | 15    | UK      | UK      | United Kingdom | 1.0000   |
+| CS      | Canadian Sugar      | 52.78    | 4716    | 2.5    | 15    | UK      | US      | United States  | 0.6700   |
+| CS      | Canadian Sugar      | 52.78    | 4716    | 2.5    | 15    | UK      | AUS     | Australia      | 0.4600   |
+| CS      | Canadian Sugar      | 52.78    | 4716    | 2.5    | 15    | UK      | IND     | India          | 0.0228   |
+| ROF     | Royal Ostrich Farms | 33.75    | 1234923 | 3      | 6     | UK      | UK      | United Kingdom | 1.0000   |
+| ROF     | Royal Ostrich Farms | 33.75    | 1234923 | 3      | 6     | UK      | US      | United States  | 0.6700   |
+| ROF     | Royal Ostrich Farms | 33.75    | 1234923 | 3      | 6     | UK      | AUS     | Australia      | 0.4600   |
+| ROF     | Royal Ostrich Farms | 33.75    | 1234923 | 3      | 6     | UK      | IND     | India          | 0.0228   |
+| MG      | Minnesota Gold      | 53.87    | 816122  | 1      | 25    | US      | UK      | United Kingdom | 1.0000   |
+| MG      | Minnesota Gold      | 53.87    | 816122  | 1      | 25    | US      | US      | United States  | 0.6700   |
+| MG      | Minnesota Gold      | 53.87    | 816122  | 1      | 25    | US      | AUS     | Australia      | 0.4600   |
+| MG      | Minnesota Gold      | 53.87    | 816122  | 1      | 25    | US      | IND     | India          | 0.0228   |
+| GP      | Georgia Peach       | 2.35     | 387333  | 0.2    | 5     | US      | UK      | United Kingdom | 1.0000   |
+| GP      | Georgia Peach       | 2.35     | 387333  | 0.2    | 5     | US      | US      | United States  | 0.6700   |
+| GP      | Georgia Peach       | 2.35     | 387333  | 0.2    | 5     | US      | AUS     | Australia      | 0.4600   |
+| GP      | Georgia Peach       | 2.35     | 387333  | 0.2    | 5     | US      | IND     | India          | 0.0228   |
+| NE      | Narembeen Emu       | 12.34    | 45619   | 1      | 8     | AUS     | UK      | United Kingdom | 1.0000   |
+| NE      | Narembeen Emu       | 12.34    | 45619   | 1      | 8     | AUS     | US      | United States  | 0.6700   |
+| NE      | Narembeen Emu       | 12.34    | 45619   | 1      | 8     | AUS     | AUS     | Australia      | 0.4600   |
+| NE      | Narembeen Emu       | 12.34    | 45619   | 1      | 8     | AUS     | IND     | India          | 0.0228   |
+| QD      | Queensland Diamond  | 6.73     | 89251   | 0.5    | 7     | AUS     | UK      | United Kingdom | 1.0000   |
+| QD      | Queensland Diamond  | 6.73     | 89251   | 0.5    | 7     | AUS     | US      | United States  | 0.6700   |
+| QD      | Queensland Diamond  | 6.73     | 89251   | 0.5    | 7     | AUS     | AUS     | Australia      | 0.4600   |
+| QD      | Queensland Diamond  | 6.73     | 89251   | 0.5    | 7     | AUS     | IND     | India          | 0.0228   |
+| IR      | Indooroopilly Ruby  | 15.92    | 56147   | 0.5    | 20    | AUS     | UK      | United Kingdom | 1.0000   |
+| IR      | Indooroopilly Ruby  | 15.92    | 56147   | 0.5    | 20    | AUS     | US      | United States  | 0.6700   |
+| IR      | Indooroopilly Ruby  | 15.92    | 56147   | 0.5    | 20    | AUS     | AUS     | Australia      | 0.4600   |
+| IR      | Indooroopilly Ruby  | 15.92    | 56147   | 0.5    | 20    | AUS     | IND     | India          | 0.0228   |
+| BD      | Bombay Duck         | 25.55    | 167382  | 1      | 12    | IND     | UK      | United Kingdom | 1.0000   |
+| BD      | Bombay Duck         | 25.55    | 167382  | 1      | 12    | IND     | US      | United States  | 0.6700   |
+| BD      | Bombay Duck         | 25.55    | 167382  | 1      | 12    | IND     | AUS     | Australia      | 0.4600   |
+| BD      | Bombay Duck         | 25.55    | 167382  | 1      | 12    | IND     | IND     | India          | 0.0228   |
 
 *Find the percentage of Australian stocks in the portfolio.*
 
@@ -1010,8 +1016,8 @@ As you now realize, join can be thought of as a product with a condition
 clause. There is no reason why this condition needs to be restricted to
 equality. There could easily be another comparison operator between the
 two columns. This general version is called a theta-join because theta
-is a variable that can take any value from the set \[=, \<\>, \>, \>=,
-\<, \<=\].
+is a variable that can take any value from the set $$=, \<\>, \>, \>=,
+\<, \<=$$.
 
 As you discovered earlier, there are occasions when you need to join a
 table to itself. To do this, make two copies of the table first and give
@@ -1040,12 +1046,12 @@ An outer join reports these matching rows and others depending on which
 form is used, as the following examples illustrate for a sample pair of
 tables.
 
-  t1             t2   
-  ---- ------ -- ---- ------
-  id   col1      id   col2
-  1    a         1    x
-  2    b         3    y
-  3    c         5    z
+| t1  |      |     | t2  |      |
+|:----|------|-----|:----|------|
+| id  | col1 |     | id  | col2 |
+| 1   | a    |     | 1   | x    |
+| 2   | b    |     | 3   | y    |
+| 3   | c    |     | 5   | z    |
 
 A **left outer join** is an inner join plus those rows from t1 not
 included in the inner join.
@@ -1054,15 +1060,16 @@ included in the inner join.
 SELECT id, col1, col2 FROM t1 LEFT JOIN t2 USING (id)
 ```
 
-  id   col1   col2
-  ---- ------ ------
-  1    a      x
-  2    b      null
-  3    c      y
+| id  | col1 | col2 |
+|:----|:-----|:-----|
+| 1   | a    | x    |
+| 2   | b    | null |
+| 3   | c    | y    |
 
 Here is an example to illustrate the use of a left join.
 
-*For all brown items, report each sale. Include in the report those brown items that have appeared in no sales.*
+*For all brown items, report each sale. Include in the report those
+brown items that have appeared in no sales.*
 
 ```{sql, connection = db, eval = TRUE}
 SELECT itemname, saleno, lineqty FROM item
@@ -1078,11 +1085,11 @@ included in the inner join.
 SELECT id, col1, col2 FROM t1 RIGHT JOIN t2 USING (id);
 ```
 
-  Id   col1   col2
-  ---- ------ ------
-  1    a      x
-  3    c      y
-  5    null   z
+| Id  | col1 | col2 |
+|:----|:-----|:-----|
+| 1   | a    | x    |
+| 3   | c    | y    |
+| 5   | null | z    |
 
 A **full outer join** is an inner join plus those rows from t1 and t2
 not included in the inner join.
@@ -1091,12 +1098,12 @@ not included in the inner join.
 SELECT id, col1, col2 FROM t1 FULL JOIN t2 USING (id);
 ```
 
-  id   col1   col2
-  ---- ------ ------
-  1    a      x
-  2    b      null
-  3    c      y
-  5    null   z
+| id  | col1 | col2 |
+|:----|:-----|:-----|
+| 1   | a    | x    |
+| 2   | b    | null |
+| 3   | c    | y    |
+| 5   | null | z    |
 
 MySQL does not support a full outer join, rather you must use a union of
 a left and right outer joins.
@@ -1127,7 +1134,8 @@ A correlated subquery differs from a simple subquery in that the inner
 query must be evaluated more than once. Consider the following example
 described previously:
 
-*Find those stocks where the quantity is greater than the average for that country.*
+*Find those stocks where the quantity is greater than the average for
+that country.*
 
 ```{sql, connection = db, eval = TRUE}
 SELECT natname, stkfirm, stkqty FROM stock JOIN nation
@@ -1154,13 +1162,13 @@ a column. Use COUNT(columnname) to exclude a null value in columnname.
 
 *Aggregate functions*
 
-  Function   Description
-  ---------- --------------------------------------------------
-  COUNT      Counts the number of values in a column
-  SUM        Sums the values in a column
-  AVG        Determines the average of the values in a column
-  MAX        Determines the largest value in a column
-  MIN        Determines the smallest value in a column
+| Function | Description                                      |
+|:---------|:-------------------------------------------------|
+| COUNT    | Counts the number of values in a column          |
+| SUM      | Sums the values in a column                      |
+| AVG      | Determines the average of the values in a column |
+| MAX      | Determines the largest value in a column         |
+| MIN      | Determines the smallest value in a column        |
 
 ### GROUP BY and HAVING {.unnumbered}
 
@@ -1210,9 +1218,9 @@ INSERT INTO stock
 	VALUES ('FC','Freedonia Copper',27.5,10529,1.84,16);
 ```
 
-In this example, `stkcode` is given the value "FC," `stkfirm` is "Freedonia
-Copper," and so on. In general, the *n*th column in the table is the
-*n*th value in the list.
+In this example, `stkcode` is given the value "FC," `stkfirm` is
+"Freedonia Copper," and so on. In general, the *n*th column in the table
+is the *n*th value in the list.
 
 When the value list refers to all field names in the left-to-right order
 in which they appear in the table, then the columns list can be omitted.
@@ -1390,9 +1398,12 @@ A function is SQL code that returns a value when invoked within an SQL
 statement. It is used in a similar fashion to SQL's built-in functions.
 Consider the case of an Austrian firm with a database in which all
 measurements are in SI units (e.g., meters). Because its U.S. staff is
-not familiar with SI,[^16] it decides to implement a series of
+not familiar with SI,[^sql-1] it decides to implement a series of
 user-defined functions to handle the conversion. Here is the function
 for converting from kilometers to miles.
+
+[^sql-1]: The international system of units of measurement. SI is the from
+    French *Système International*.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE FUNCTION km_to_miles(km REAL)
@@ -1410,13 +1421,13 @@ SELECT km_to_miles(100);
 > ❓*Skill builder*
 >
 > Create a table containing the average daily temperature in Tromsø,
-> Norway, then write a function to convert Celsius to Fahrenheit (F = 
+> Norway, then write a function to convert Celsius to Fahrenheit (F =
 > C\*1.8 + 32), and test the function by reporting temperatures in C and
 > F.
 >
-> Month   Jan    Feb    Mar    Apr   May   Jun    Jul    Aug    Sep   Oct   Nov    Dec
-> ------- ------ ------ ------ ----- ----- ------ ------ ------ ----- ----- ------ ------ 
-> ºC      -4.7   -4.1   -1.9   1.1   5.6   10.1   12.7   11.8   7.7   2.9   -1.5   -3.7 
+> | Month | Jan  | Feb  | Mar  | Apr | May | Jun  | Jul  | Aug  | Sep | Oct | Nov  | Dec  |
+> |:------|:-----|:-----|:-----|:----|:----|:-----|:-----|:-----|:----|:----|:-----|:-----|
+> | ºC    | -4.7 | -4.1 | -1.9 | 1.1 | 5.6 | 10.1 | 12.7 | 11.8 | 7.7 | 2.9 | -1.5 | -3.7 |
 
 ## SQL procedure {.unnumbered}
 
@@ -1431,7 +1442,7 @@ Considering this situation results in the following data model.
 
 *A simple accounting system*
 
-![](Figures/Chapter 10/accounting.png)
+![](Figures/Chapter%2010/accounting.png)
 
 The following are a set of steps for processing a transaction (e.g.,
 transferring money from a checking account to a money market account):
@@ -1439,15 +1450,15 @@ transferring money from a checking account to a money market account):
 1.  Write the transaction to the transaction table so you have a record
     of the transaction.
 
-2. Update the account to be credited by incrementing its balance in the
+2.  Update the account to be credited by incrementing its balance in the
     account table.
 
-3. Insert a row in the entry table to record the credit.
+3.  Insert a row in the entry table to record the credit.
 
-4. Update the account to be debited by decrementing its balance in the
+4.  Update the account to be debited by decrementing its balance in the
     account table.
 
-5. Insert a row in the entry table to record the debit.
+5.  Insert a row in the entry table to record the debit.
 
 Here is the code for a stored procedure to execute these steps. Note
 that the first line sets the delimiter to // because the default
@@ -1502,10 +1513,10 @@ under the Stored Procedures header.
 > 1.  After verifying that the system you use for learning SQL supports
 >     stored procedures, create the tables for the preceding data model
 >     and enter the code for the stored procedure. Now, test the stored
->     procedure and query the tables to verify that the procedure has 
+>     procedure and query the tables to verify that the procedure has
 >     worked.
 >
-> 2. Write a stored procedure to add details of a gift to the donation
+> 2.  Write a stored procedure to add details of a gift to the donation
 >     database (see exercises in Chapter 5).
 
 ## Trigger {.unnumbered}
@@ -1535,11 +1546,11 @@ update_stktime	TIMESTAMP NOT NULL,
 ```
 
 The trigger writes a record to `stock_log` every time an update is made
-to `stock`. Use is made of two virtual tables (`old` and `new`) to access the
-prior and current values of stock price (`old.stkprice` and `new.stkprice`)
-and stock quantity (`old.stkprice` and `new.stkprice`). The INSERT statement
-also writes the stock's identifying code and the time of the
-transaction.
+to `stock`. Use is made of two virtual tables (`old` and `new`) to
+access the prior and current values of stock price (`old.stkprice` and
+`new.stkprice`) and stock quantity (`old.stkprice` and `new.stkprice`).
+The INSERT statement also writes the stock's identifying code and the
+time of the transaction.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TRIGGER stock_update
@@ -1550,7 +1561,8 @@ INSERT INTO stock_log VALUES
 END
 ```
 
-> ❓*Skill builder* Why is the primary key of `stock_log` not the same as that of stock?
+> ❓*Skill builder* Why is the primary key of `stock_log` not the same as
+> that of stock?
 
 ## Nulls---much ado about missing information {.unnumbered}
 
@@ -1627,7 +1639,8 @@ The following examples illustrate the use of GRANT:
 GRANT ALL PRIVILEGES ON stock TO alice;
 ```
 
-*Permit the accounting staff, Todd and Nancy, to update the price of a stock.*
+*Permit the accounting staff, Todd and Nancy, to update the price of a
+stock.*
 
 ```{sql, connection = db, eval = FALSE}
 GRANT UPDATE (stkprice) ON stock TO todd, nancy;
@@ -1650,7 +1663,8 @@ GRANT SELECT, UPDATE, DELETE, INSERT ON stk TO alice;
 The WITH GRANT OPTION command allows a client to transfer his privileges
 to another client, as this next example illustrates:
 
-*Give Ned all privileges for the item table and permit him to grant any of these to other staff members who may need to work with item.*
+*Give Ned all privileges for the item table and permit him to grant any
+of these to other staff members who may need to work with item.*
 
 ```{sql, connection = db, eval = FALSE}
 GRANT ALL PRIVILEGES ON item TO ned WITH GRANT OPTION;
@@ -1707,7 +1721,7 @@ definitions of base tables, views, indexes, and so on. The catalog
 itself is a relational database and can be interrogated using SQL.
 Tables in the catalog are called *system tables* to distinguish them
 from base tables, though conceptually these tables are the same. In
-MySQL, the system catalog is called information\_schema. Some important
+MySQL, the system catalog is called information_schema. Some important
 system tables in this schema are tables, and columns, and these are used
 in the following examples. Note that the names of the system catalog
 tables vary with DBMS implementations, so while the following examples
@@ -1755,9 +1769,9 @@ clarification where necessary.
 
 *An example of natural language processing*
 
-  English                                                   SQL generated for MS Access
-  --------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Which movies have won best foreign film sorted by year?   SELECT DISTINCT \[Year\], \[Title\] FROM \[Awards\] INNER JOIN \[Movies\] ON \[Movies\].\[Movie ID\] = \[Awards\].\[Movie ID\] WHERE \[Category\]=\'Best Foreign Film\' and \[Status\]=\'Winner\' ORDER BY \[Year\] ASC;
+| English                                                 | SQL generated for MS Access                                                                                                                                                                    |
+|:--------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Which movies have won best foreign film sorted by year? | SELECT DISTINCT [Year], [Title] FROM [Awards] INNER JOIN [Movies] ON [Movies].[Movie ID] = [Awards].[Movie ID] WHERE [Category]='Best Foreign Film' and [Status]='Winner' ORDER BY [Year] ASC; |
 
 ## Connectivity and ODBC {.unnumbered}
 
@@ -1810,13 +1824,13 @@ ODBC driver. As a result, ODBC APIs can never be as fast as native APIs.
 
 *ODBC layers*
 
-  Application
-  ------------------------
-  ODBC API
-  ODBC driver manager
-  Service provider API
-  Driver for DBMS server
-  DBMS server
+| Application            |
+|:-----------------------|
+| ODBC API               |
+| ODBC driver manager    |
+| Service provider API   |
+| Driver for DBMS server |
+| DBMS server            |
 
 ## Embedded SQL {.unnumbered}
 
@@ -1910,35 +1924,35 @@ that enhance its usefulness.
 
 ## Key terms and concepts {.unnumbered}
 
-|                                      |                                     |
-|: ------------------------------------|:------------------------------------|
-| Aggregate functions                  | GROUP BY                            |
-| ALTER TABLE                          | Index                               |
-| ANSI                                 | INSERT                              |
-| Base table                           | ISO                                 |
-| Complete database language           | Join                                |
-| Complete programming language        | Key                                 |
-| Composite key                        | Natural language processing (NLP)   |
-| Connectivity                         | Null                                |
-| Correlated subquery                  | Open database connectivity (ODBC)   |
-| CREATE FUNCTION                      | Primary key                         |
-| CREATE INDEX                         | Product                             |
-| CREATE PROCEDURE                     | Qualified name                      |
-| CREATE TABLE                         | Referential integrity rule          |
-| CREATE TRIGGER                       | REVOKE                              |
-| CREATE VIEW                          | Routine                             |
-| Cursor                               | Scalar functions                    |
-| Data control language (DCL)          | Security                            |
-| Data definition language (DDL)       | SELECT                              |
-| Data manipulation language (DML)     | Special registers                   |
-| Data types                           | SQL                                 |
-| DELETE                               | Subquery                            |
-| DROP INDEX                           | Synonym                             |
-| DROP TABLE                           | System catalog                      |
-| DROP VIEW                            | Temporary names                     |
-| Embedded SQL                         | Unique key                          |
-| Foreign key                          | UPDATE                              |
-| GRANT                                | View                                |
+|                                  |                                   |
+|:---------------------------------|:----------------------------------|
+| Aggregate functions              | GROUP BY                          |
+| ALTER TABLE                      | Index                             |
+| ANSI                             | INSERT                            |
+| Base table                       | ISO                               |
+| Complete database language       | Join                              |
+| Complete programming language    | Key                               |
+| Composite key                    | Natural language processing (NLP) |
+| Connectivity                     | Null                              |
+| Correlated subquery              | Open database connectivity (ODBC) |
+| CREATE FUNCTION                  | Primary key                       |
+| CREATE INDEX                     | Product                           |
+| CREATE PROCEDURE                 | Qualified name                    |
+| CREATE TABLE                     | Referential integrity rule        |
+| CREATE TRIGGER                   | REVOKE                            |
+| CREATE VIEW                      | Routine                           |
+| Cursor                           | Scalar functions                  |
+| Data control language (DCL)      | Security                          |
+| Data definition language (DDL)   | SELECT                            |
+| Data manipulation language (DML) | Special registers                 |
+| Data types                       | SQL                               |
+| DELETE                           | Subquery                          |
+| DROP INDEX                       | Synonym                           |
+| DROP TABLE                       | System catalog                    |
+| DROP VIEW                        | Temporary names                   |
+| Embedded SQL                     | Unique key                        |
+| Foreign key                      | UPDATE                            |
+| GRANT                            | View                              |
 
 ## References and additional readings {.unnumbered}
 
@@ -1950,66 +1964,66 @@ Reading, MA: Addison-Wesley.
 1.  Why is it important that SQL was adopted as a standard by ANSI and
     ISO?
 
-2. What does it mean to say "SQL is a complete database language"?
+2.  What does it mean to say "SQL is a complete database language"?
 
-3. Is SQL a complete programming language? What are the implications of
+3.  Is SQL a complete programming language? What are the implications of
     your answer?
 
-4. List some operational advantages of a DBMS.
+4.  List some operational advantages of a DBMS.
 
-5. What is the difference between a base table and a view?
+5.  What is the difference between a base table and a view?
 
-6. What is the difference between a primary key and a unique key?
+6.  What is the difference between a primary key and a unique key?
 
-7. What is the purpose of an index?
+7.  What is the purpose of an index?
 
-8. Consider the three choices for the ON DELETE clause associated with
+8.  Consider the three choices for the ON DELETE clause associated with
     the foreign key constraint. What are the pros and cons of each
     option?
 
-9. Specify the data type (e.g., DECIMAL(6,2)) you would use for the
+9.  Specify the data type (e.g., DECIMAL(6,2)) you would use for the
     following columns:
 
-    a. The selling price of a house
+    a.  The selling price of a house
 
-    b. A telephone number with area code
+    b.  A telephone number with area code
 
-    c. Hourly temperatures in Antarctica
+    c.  Hourly temperatures in Antarctica
 
-    d. A numeric customer code
+    d.  A numeric customer code
 
-    e. A credit card number
+    e.  A credit card number
 
-    f. The distance between two cities
+    f.  The distance between two cities
 
-    g. A sentence using Chinese characters
+    g.  A sentence using Chinese characters
 
-    h. The number of kilometers from the Earth to a given star
+    h.  The number of kilometers from the Earth to a given star
 
-    i. The text of an advertisement in the classified section of a
+    i.  The text of an advertisement in the classified section of a
         newspaper
 
-    j. A basketball score
+    j.  A basketball score
 
-    k. The title of a CD
+    k.  The title of a CD
 
-    l. The X-ray of a patient
+    l.  The X-ray of a patient
 
-    m. A U.S. zip code
+    m.  A U.S. zip code
 
-    n. A British or Canadian postal code
+    n.  A British or Canadian postal code
 
-    o. The photo of a customer
+    o.  The photo of a customer
 
-    p. The date a person purchased a car
+    p.  The date a person purchased a car
 
-    q. The time of arrival of an e-mail message
+    q.  The time of arrival of an e-mail message
 
-    r. The number of full-time employees in a small business
+    r.  The number of full-time employees in a small business
 
-    s. The text of a speech
+    s.  The text of a speech
 
-    t. The thickness of a layer on a silicon chip
+    t.  The thickness of a layer on a silicon chip
 
 10. What is the difference between DROP TABLE and deleting all the rows
     in a table?
@@ -2032,42 +2046,42 @@ Reading, MA: Addison-Wesley.
 
 17. What function would you use for the following situations?
 
-    a. Computing the total value of a column
+    a.  Computing the total value of a column
 
-    b. Finding the minimum value of a column
+    b.  Finding the minimum value of a column
 
-    c. Counting the number of customers in the customer table
+    c.  Counting the number of customers in the customer table
 
-    d. Displaying a number with specified precision
+    d.  Displaying a number with specified precision
 
-    e. Reporting the month part of a date
+    e.  Reporting the month part of a date
 
-    f. Displaying the second part of a time
+    f.  Displaying the second part of a time
 
-    g. Retrieving the first five characters of a city's name
+    g.  Retrieving the first five characters of a city's name
 
-    h. Reporting the distance to the sun in feet
+    h.  Reporting the distance to the sun in feet
 
 18. Write SQL statements for the following:
 
-    a. Let Hui-Tze query and add to the nation table.
+    a.  Let Hui-Tze query and add to the nation table.
 
-    b. Give Lana permission to update the phone number column in the
+    b.  Give Lana permission to update the phone number column in the
         customer table.
 
-    c. Remove all of William's privileges.
+    c.  Remove all of William's privileges.
 
-    d. Give Chris permission to grant other users authority to select
+    d.  Give Chris permission to grant other users authority to select
         from the address table.
 
-    e. Find the name of all tables that include the word sale.
+    e.  Find the name of all tables that include the word sale.
 
-    f. List all the tables created last year.
+    f.  List all the tables created last year.
 
-    g. What is the maximum length of the column city in the
+    g.  What is the maximum length of the column city in the
         ClassicModels database? Why do you get two rows in the response?
 
-    h. Find all columns that have a data type of SMALLINT.
+    h.  Find all columns that have a data type of SMALLINT.
 
 19. What are the two modes in which you can use SQL?
 
@@ -2084,4 +2098,3 @@ Reading, MA: Addison-Wesley.
     the MSRP of all products in a product line by a specified
     percentage. Provide before and after queries to show your procedure
     works.
-

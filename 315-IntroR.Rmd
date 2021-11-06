@@ -93,10 +93,10 @@ The previous script
 
 +-----------------------------------------------------------------------+
 | Note the use of \<- for assigning values to an object and that c is   |
-| short for combine in the expression:[^1]                              |
+| short for combine in the expression:[^IntroR-1]                       |
 +-----------------------------------------------------------------------+
 
-[^1]: RStudio provides a keyboard command, which is Alt+- (Windows &
+[^IntroR-1]: RStudio provides a keyboard command, which is Alt+- (Windows &
     Linux) or Option+- (Mac)
 
 +-----------------------------------------------------------------------+
@@ -320,11 +320,11 @@ df2 <-  na.omit(df)
 A major advantage of R is that the basic software can be easily extended
 by installing additional packages, of which more than 6,000 exist. You
 can consult the R package directory to help find a package that has the
-functions you need.[^2] RStudio has an interface for finding and
+functions you need.[^IntroR-2] RStudio has an interface for finding and
 installing packages. See the Packages tab on RStudio's lower-right
 window.
 
-[^2]: <http://cran.r-project.org/web/packages/>
+[^IntroR-2]: <http://cran.r-project.org/web/packages/>
 
 Before running a script, you need to indicate which packages it needs,
 beyond the default packages that are automatically loaded. The library
@@ -505,15 +505,15 @@ write_csv(t,"centralparktempsCF.txt")
 
 ### Data manipulation with dplyr {.unnumbered}
 
-The dplyr package[^3] provides functions for efficiently manipulating
+The dplyr package[^IntroR-3] provides functions for efficiently manipulating
 data sets. By providing a series of basic data handling functions and
-use of the pipe function ( %\>% ),[^4] dplyr implements a grammar for
+use of the pipe function ( %\>% ),[^IntroR-4] dplyr implements a grammar for
 data manipulation. The pipe function is used to pass data from one
 operation to the next.
 
-[^3]: <http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html>
+[^IntroR-3]: <http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html>
 
-[^4]: Short cuts is Ctrl+Shift+M (Windows & Linux) and Cmd+Shift+M (Mac)
+[^IntroR-4]: Short cuts is Ctrl+Shift+M (Windows & Linux) and Cmd+Shift+M (Mac)
 
 *Some dplyr functions*
 
@@ -604,12 +604,12 @@ summarize(t, mean(CTemp))
 ### Merging files {.unnumbered}
 
 If there is a common column in two files, then they can be merged using
-dplyr.::inner_join().[^5] This is the same as joining two tables using a
+dplyr.::inner_join().[^IntroR-5] This is the same as joining two tables using a
 primary key and foreign key match. In the following code, a file is
 created with the mean temperature for each year, and it is merged with
 CO~2~ readings for the same set of years.
 
-[^5]: This is the R notation for indicating the package (dplyr) to which
+[^IntroR-5]: This is the R notation for indicating the package (dplyr) to which
     a method (inner_join) belongs.
 
 ```{r, eval = TRUE}
@@ -654,9 +654,9 @@ analysis with dplyr.
 A correlation coefficient is a measure of the covariation between two
 sets of observations. In this case, we are interested in whether there
 is a statistically significant covariation between temperature and the
-level of atmospheric CO~2~.[^6]
+level of atmospheric CO~2~.[^IntroR-6]
 
-[^6]: As I continually revise data files to include the latest
+[^IntroR-6]: As I continually revise data files to include the latest
     observations, your answer might differ for this and other analyses.
 
 ```{r, eval = TRUE}
@@ -757,9 +757,9 @@ results into a R data frame.
 
 The dbConnect() function makes the connection. You specify the type of
 relational database, url, database name, userid, and password, as shown
-in the following code.[^7]
+in the following code.[^IntroR-7]
 
-[^7]: You will likely get a warning message of the form "unrecognized
+[^IntroR-7]: You will likely get a warning message of the form "unrecognized
     MySQL field type 7 in column 0 imported as character," because R
     does does recognize the first column as a timestamp. You can ignore
     it, but later you might need to convert the column to R's timestamp
@@ -854,7 +854,7 @@ certain you save the script, with some embedded comments, so you can
 reuse the code for a future problem. There are books that you might find
 useful to have in electronic format on your computer or tablet, and one
 of these is listed at the end of the chapter. There are, however, many
-more books,[^8] both of a general and specialized nature. The [[*R
+more books,[^IntroR-8] both of a general and specialized nature. The [[*R
 Reference
 Card*]{.ul}](http://cran.r-project.org/doc/contrib/Short-refcard.pdf) is
 handy to keep nearby when you are writing scripts. I printed and
@@ -864,7 +864,7 @@ online reference for common tasks, such as those covered in this
 chapter. For a quick tutorial, you can [[Try
 R]{.ul}](http://tryr.codeschool.com).
 
-[^8]: <http://www.r-project.org/doc/bib/R-books.html>
+[^IntroR-8]: <http://www.r-project.org/doc/bib/R-books.html>
 
 ## R and data analytics {.unnumbered}
 
@@ -889,9 +889,9 @@ cluster computing, and text mining. [[Energy
 Informatics]{.ul}](http://energyinformatics.info) is concerned with
 optimizing energy flows, and R is an appropriate tool for analysis and
 optimization of energy systems. R is being used extensively to analyze
-climate change data.[^9]
+climate change data.[^IntroR-9]
 
-[^9]: <http://chartsgraphs.wordpress.com/category/r-climate-data-analysis-tool/>
+[^IntroR-9]: <http://chartsgraphs.wordpress.com/category/r-climate-data-analysis-tool/>
 
 R is also a programming language. You might find that in some
 situations, R provides a quick method for reshaping files and performing
@@ -957,7 +957,7 @@ Wickham, H., & Grolemund, G. (2017). R for data science: O'Reilly.
 
 2.  Use the 'Import Dataset' feature of RStudio to read
     <http://www.richardtwatson.com/data/electricityprices.csv>, which
-    contains details of electricity prices for a major city.[^10]
+    contains details of electricity prices for a major city.[^IntroR-10]
 
     a.  What is the maximum cost?
 
@@ -989,7 +989,7 @@ Wickham, H., & Grolemund, G. (2017). R for data science: O'Reilly.
     compute the correlation between temperature and electricity price.
     **Hint**: MySQL might return a timestamp with decimal seconds (e.g.,
     2010-01-01 01:00:00.0), and you can remove the rightmost two
-    characters using substr(),[^11] so that the two timestamp columns
+    characters using substr(),[^IntroR-11] so that the two timestamp columns
     are of the same format and length. Also, you need to ensure that the
     timestamps from the two data frames are of the same data type (e.g.,
     both character).
@@ -1023,7 +1023,7 @@ Wickham, H., & Grolemund, G. (2017). R for data science: O'Reilly.
 
     d.  Save the reshaped file.
 
-[^10]: Note these prices have been transformed from the original values,
+[^IntroR-10]: Note these prices have been transformed from the original values,
     but are still representative of the changes over time.
 
-[^11]: <http://www.statmethods.net/management/functions.html>
+[^IntroR-11]: <http://www.statmethods.net/management/functions.html>

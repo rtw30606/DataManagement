@@ -4,7 +4,7 @@ editor_options:
     wrap: 72
 ---
 
-# Data Administration {.unnumbered}
+# Data Administration
 
 > *Bad administration, to be sure, can destroy good policy; but good
 > administration can never save bad policy.*
@@ -164,7 +164,7 @@ C-level position of Chief Data Officer (CDO), who is responsible for the
 strategic management of data systems and ensuring that the organization
 fully seizes data-driven opportunities to create new business, reduce
 costs, and increase revenues. The CDO assists the top management team in
-gaining full value from data, a key strategic asset.[^1] In 2003,
+gaining full value from data, a key strategic asset.[^administration-1] In 2003,
 Capital One was perhaps to first firm to appoint a CDO. Other early
 creators of this new executive role were Yahoo! and Microsoft Germany.
 The US Federal Communications Commission (FCC) has appointed a CDO for
@@ -173,7 +173,7 @@ stewards and CDOs. Given the strategic nature of data for business, it
 is not surprising that one study reports that 30 percent of CDOs report
 to the CEO, with another 20% reporting to the COO.
 
-[^1]: This section is based on Lee, Y., Madnick, S., Wang, R., Forea,
+[^administration-1]: This section is based on Lee, Y., Madnick, S., Wang, R., Forea,
     W., & Zhang, H. (2014). A cubic framework for the Chief Data Officer
     (CDO): Succeeding in a world of Big Data emergence of Chief Data
     Officers. *MISQ Executive*.
@@ -395,9 +395,9 @@ address books have existed for a long time. The availability of laptops,
 tablets, and smartphones have made it convenient to maintain
 synchronized electronic personal databases across multiple devices.
 Behind the interface of many of these apps is a lightweight relational
-database, such as SQLite.[^2]
+database, such as SQLite.[^administration-2]
 
-[^2]: <http://www.sqlite.org>
+[^administration-2]: <http://www.sqlite.org>
 
 Workgroup databases cannot be as idiosyncratic because they are shared
 by many people. Managing them requires more planning and coordination to
@@ -459,9 +459,9 @@ information architecture also may address issues such as how data will
 be transmitted and where they will be stored. Since an information
 architecture is an organization's overall strategy for data and
 applications, it should dovetail with the organization's long-term plans
-and objectives.[^3]
+and objectives.[^administration-3]
 
-[^3]: For more on information architecture, see Smith, H. A., Watson, R.
+[^administration-3]: For more on information architecture, see Smith, H. A., Watson, R.
     T., & Sullivan, P. (2012). Delivering Effective Enterprise
     Architecture at Chubb Insurance. *MISQ Executive*. 11(2)
 
@@ -614,11 +614,11 @@ Benchmarking, the comparison of alternative hardware and software
 combinations, is an important step in the selection phase. Because
 benchmarking is an activity performed by many IS units, the IS community
 gains if there is one group that specializes in rigorous benchmarking of
-a wide range of systems. The Transaction Processing Council (TPC)[^4] is
+a wide range of systems. The Transaction Processing Council (TPC)[^administration-4] is
 the IS profession's Consumer Union. TPC has established benchmarks for a
 variety of business situations.
 
-[^4]: <http://www.tpc.org>
+[^administration-4]: <http://www.tpc.org>
 
 #### Managing external databases {.unnumbered}
 

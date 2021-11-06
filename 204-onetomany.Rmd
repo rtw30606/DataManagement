@@ -866,7 +866,7 @@ specified columns or rows.
     musicians in its three orchestras. All the musicians are specialists
     and play only one instrument for one orchestra.
 
-![](Figures/Chapter%204/person-car.png){width="152"}
+![](Figures/Chapter%204/person-car.png){width="335"}
 
 8.  Answer the following queries based on the following database for a
     car dealer:

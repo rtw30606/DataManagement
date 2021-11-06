@@ -1,4 +1,4 @@
-# Section 2 Data Modeling and SQL {-}
+# Section 2 Data Modeling and SQL {.unnumbered}
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 library(DBI)

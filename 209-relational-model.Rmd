@@ -641,11 +641,11 @@ Divide reports the item numbers of items appearing in all sales, and
 this result is then joined with `item` to report these items.
 
 +---------------------------------+-----------------------------------+
-| ((lineitem\[itemno, saleno\]    | SELECT itemno, itemname FROM item |
+| ((lineitem[itemno, saleno  ]    | SELECT itemno, itemname FROM item |
 |                                 |                                   |
-| DIVIDEBY sale\[saleno\])        | WHERE NOT EXISTS                  |
+| DIVIDEBY sale[saleno])          | WHERE NOT EXISTS                  |
 |                                 |                                   |
-| JOIN item) \[itemno, itemname\] | (SELECT \* FROM sale              |
+| JOIN item) [itemno, itemname]   | (SELECT \* FROM sale              |
 |                                 |                                   |
 |                                 | WHERE NOT EXISTS                  |
 |                                 |                                   |
@@ -868,7 +868,7 @@ either totally relational or it is not relational.
 ## Key terms and concepts {.unnumbered}
 
 |                                      |                              |
-|:-------------------------------------|: ----------------------------|
+|:-------------------------------------|:-----------------------------|
 | Alternate key                        | Join                         |
 | Candidate key                        | Logical data independence    |
 | Cardinality                          | Nonsubversion rule           |

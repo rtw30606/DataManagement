@@ -660,17 +660,15 @@ nearly 80 percent of the GNP and most of the new jobs. Many companies
 now compete for customers by offering superior customer service.
 Information is frequently a key to this improved service.
 
-+----------------------------------------------------------------------+
-| *Skill builder*                                                      |
-|                                                                      |
-| For many businesses, information is the key to high-quality customer |
-| service. Thus, some firms use information, and thus customer         |
-| service, as a key differentiating factor, while others might compete |
-| on price. Compare the electronics component of Web sites Amazon and  |
-| TigerDirect. How do they use price and information to compete? What  |
-| are the implications for data management if a firm uses information  |
-| to compete?                                                          |
-+----------------------------------------------------------------------+
+> ❓*Skill builder*
+>
+> For many businesses, information is the key to high-quality customer
+> service. Thus, some firms use information, and thus customer
+> service, as a key differentiating factor, while others might compete
+> on price. Compare the electronics component of Web sites Amazon and
+> TigerDirect. How do they use price and information to compete? What
+> are the implications for data management if a firm uses information
+> to compete?
 
 ## Empowerment {.unnumbered}
 
