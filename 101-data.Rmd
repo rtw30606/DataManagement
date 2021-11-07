@@ -127,11 +127,10 @@ features common to all data management systems:
 
 > ❓*Skill builder*
 >
-> Smart phones have dramatically changed individual data management in
-> the last few years. We now have calendars, address books, to-do lists,
-> and many more apps literally in our hands. What individual data are
-> still difficult to manage? What might be the characteristics of an app
-> for these data?
+> Smart phones have dramatically changed individual data management. We
+> now have calendars, address books, to-do lists, and many more apps
+> literally in our hands. What individual data are still difficult to
+> manage? What might be the characteristics of an app for these data?
 
 There are differences between internal and external memories. Our
 internal memory is small, fast, and convenient (our brain is always with
@@ -155,8 +154,8 @@ to an organization's data management systems.
 
 There is a storage medium. In the case of computers, the storage medium
 varies. Small files might be stored on a USB drive and large, archival
-files on a magnetic disk. In Chapter 11, we discuss electronic storage
-media in more detail.
+files on a magnetic disk. The chapter *Data Structure and Storage*
+discusses electronic storage media in more detail.
 
 A table is a common structure for storing data. For example, if we want
 to store details of customers, we can set up a table with each row
@@ -197,38 +196,44 @@ cycle.
 
 *Types of information systems*
 
-+---+--------------+----------------------------------------------------+
-|   | Type of      | System's purpose                                   |
-|   | information  |                                                    |
-|   | system       |                                                    |
-+===+:=============+:===================================================+
-| T | Transaction  | Collect and store data from routine transactions   |
-| P | processing   |                                                    |
-| S | system       |                                                    |
-+---+--------------+----------------------------------------------------+
-| M | Management   | Convert data from a TPS into information for       |
-| I | information  | planning, controlling, and managing an             |
-| S | system       | organization                                       |
-+---+--------------+----------------------------------------------------+
-| D | Decision     | Support managerial decision making by providing    |
-| S | support      | models for processing and analyzing data           |
-| S | system       |                                                    |
-+---+--------------+----------------------------------------------------+
-| B | Business     | Gather, store, and analyze data to improve         |
-| I | intelligence | decision making                                    |
-+---+--------------+----------------------------------------------------+
-| O | Online       | Provide a multidimensional view of data            |
-| L | analytical   |                                                    |
-| A | processing   |                                                    |
-| P |              |                                                    |
-+---+--------------+----------------------------------------------------+
-|   | Data mining  | Use of statistical analysis and artificial         |
-|   |              | intelligence techniques to identify hidden         |
-|   |              | relationships in data                              |
-+---+--------------+----------------------------------------------------+
-|   | Machine      | Using software to make decisions or                |
-|   | learning     | recommendations traditionally made by humans.      |
-+---+--------------+----------------------------------------------------+
++------------+------------+-----------------------------------------+
+|            | Type of in | System's purpose                        |
+|            | formation  |                                         |
+|            | system     |                                         |
++============+:===========+:========================================+
+| TPS        | Tr         | Collect and store data from routine     |
+|            | ansaction  | transactions                            |
+|            | p          |                                         |
+|            | rocessing  |                                         |
+|            | system     |                                         |
++------------+------------+-----------------------------------------+
+| MIS        | M          | Convert data from a TPS into            |
+|            | anagement  | information for planning, controlling,  |
+|            | in         | and managing an organization            |
+|            | formation  |                                         |
+|            | system     |                                         |
++------------+------------+-----------------------------------------+
+| DSS        | Decision   | Support managerial decision making by   |
+|            | support    | providing models for processing and     |
+|            | system     | analyzing data                          |
++------------+------------+-----------------------------------------+
+| BI         | Business   | Gather, store, and analyze data to      |
+|            | int        | improve decision making                 |
+|            | elligence  |                                         |
++------------+------------+-----------------------------------------+
+| OLAP       | Online a   | Provide a multidimensional view of data |
+|            | nalytical  |                                         |
+|            | p          |                                         |
+|            | rocessing  |                                         |
++------------+------------+-----------------------------------------+
+|            | Data       | Use of statistical analysis and         |
+|            | mining     | artificial intelligence techniques to   |
+|            |            | identify hidden relationships in data   |
++------------+------------+-----------------------------------------+
+|            | Machine    | Using software to make decisions or     |
+|            | learning   | recommendations traditionally made by   |
+|            |            | humans.                                 |
++------------+------------+-----------------------------------------+
 
 ### The information systems cycle {.unnumbered}
 
@@ -531,9 +536,9 @@ structure is readily understood. People learn to read and build tables
 in the early years of their schooling. Also, a great deal of the data
 that organizations want to remember can be stored in tabular form.
 
-#### Documets {.unnumbered}
+#### Documents {.unnumbered}
 
-The **document**---of which reports, manuals, brochures, and memos are
+A **document**---of which reports, manuals, brochures, and memos are
 examples---is a common medium for storing organizational data. Although
 documents may be subdivided into chapters, sections, paragraphs, and
 sentences, they lack the regularity and discipline of a table. Each row
@@ -691,23 +696,23 @@ firms.
 
 *Problems with organizational data management systems*
 
-+-----------------+----------------------------------------------------+
-| Redundancy      | Same data are stored in different systems          |
-+:================+:===================================================+
-| Lack of data    | Data are poorly managed                            |
-| control         |                                                    |
-+-----------------+----------------------------------------------------+
-| Poor interface  | Data are difficult to access                       |
-+-----------------+----------------------------------------------------+
-| Delays          | There are frequently delays following requests for |
-|                 | reports                                            |
-+-----------------+----------------------------------------------------+
-| Lack of reality | Data management systems do not reflect the         |
-|                 | complexity of the real world                       |
-+-----------------+----------------------------------------------------+
-| Lack of data    | Data are dispersed across different systems        |
-| integration     |                                                    |
-+-----------------+----------------------------------------------------+
++----------------+--------------------------------------------------+
+| Redundancy     | Same data are stored in different systems        |
++:===============+:=================================================+
+| Lack of data   | Data are poorly managed                          |
+| control        |                                                  |
++----------------+--------------------------------------------------+
+| Poor interface | Data are difficult to access                     |
++----------------+--------------------------------------------------+
+| Delays         | There are frequently delays following requests   |
+|                | for reports                                      |
++----------------+--------------------------------------------------+
+| Lack of        | Data management systems do not reflect the       |
+| reality        | complexity of the real world                     |
++----------------+--------------------------------------------------+
+| Lack of data   | Data are dispersed across different systems      |
+| integration    |                                                  |
++----------------+--------------------------------------------------+
 
 ### Redundancy {.unnumbered}
 
@@ -835,10 +840,9 @@ programming, emerged as a solution to situations not handled well by the
 relational DBMS. Also around this time, the idea of modeling a database
 as a graph was introduced. Towards the end of the 20th century, XML was
 developed for exchanging data between computers, and it can also be used
-as a data store as you will learn in section 3. More recently, the
-Hadoop distributed files system (HDFS) has emerged as a popular
-alternative model for data management, and it will be covered in the
-latter part of this book. Other recent data management systems include
+as a data store as you will learn in section 3. More recently,
+tdistributed files system, such as Hadoop, have emerged as alternative
+models for data management. Other recent data management systems include
 graph and NoSQL databases. While these are beyond the scope of an
 introductory data management text, if you decided to pursue a career in
 data management you should learn about their advantages and the
@@ -916,88 +920,6 @@ relationship between information and managerial decision making. Data
 management is not a new problem. It has existed since the early days of
 civilization and will be an enduring problem for organizations and
 societies.
-
-![](Figures/Chapter%201/expeditioner.png)
-
-Alice Lindsay was enjoying the luxuries of first-class travel. It was
-quite a change from being an undergraduate student of business. She was
-enjoying her filet mignon and glass of shiraz. Good riddance to pizzas,
-hamburgers, and subs! Hello to fine food and gourmet restaurants! With
-her newly found wealth, she could travel in style and enjoy the very
-best restaurants. Alice, or Lady Alice to be more precise, had recently
-inherited a title, a valuable portfolio of stocks, and The Expeditioner.
-Her good fortune had coincided with the completion of her business
-degree. Now, instead of looking for a job, the job had found her: She
-was chair and managing director of The Expeditioner.
-
-The Expeditioner is in a nineteenth-century building in Explorers Lane,
-opposite Kensington Gardens and just a stone's throw from the Royal
-Geographical Society. Founded in the Middle Ages, The Expeditioner has a
-long history of equipping explorers, adventurers, and travelers. Its
-initial success was due to its development of a light, flexible chain
-mail armor. It did very well during the Middle Ages, when highway
-robbery was a growth business and travelers sought protection from the
-arrows and slings aimed at their fortunes. The branch office at the
-entrance to Sherwood Forest had done exceptionally well, thanks to its
-passing wealthy clientele. The resident company wit, one Ned Thomas,
-often claims that "The Expeditioner was the first mail order company."
-
-The Expeditioner's customers included the famous and the legendary.
-Orders from Marco Polo, Columbus, Magellan, Cook, and Livingston can be
-found in the ledgers. The most long-lived customer is a Mr. Walker,[\^3]
-who for several hundred years has had a standing yearly order of one
-roll of purple, premium-quality, non-rip, jungle twill. The
-Expeditioner's hats are very popular with a Mr. I. Jones, an American.
-
-The nineteenth century was one long boom for The Expeditioner, the
-supplier de rigueur for the guardians of the European colonies. Branch
-offices were opened in Bombay, Sydney, Cape Town, and Singapore. For a
-generous fee, cad and renowned adventurer Harry Flashman[\^4]
-assiduously promoted The Expeditioner's wares on his many trips. As a
-result, orders poured in from the four corners of the globe. The
-Expeditioner's catalog was found in polite society and clubs throughout
-the British Empire.
-
-The founder of The Expeditioner was a venturesome Scot who sought his
-fortune in London. Carefully guarding the family business, The
-Expeditioner's proprietors were inclined to be closefisted and invested
-their massive profits wisely. Because of their close contacts with many
-explorers, they made some very canny investments in mining ventures in
-distant lands. As a result, when business contracted during the
-twentieth century, the investment portfolio kept the company solvent.
-Traditionally, ownership of the firm was inherited by the eldest child.
-When the most recent owner, a bachelor, died, the firm's lawyers spent
-months on genealogical research to identify the legal heir.
-
-Alice had vivid memories of the day when Mr. Mainwaring phoned her to
-request an appointment. As she did not recognize the caller, she let the
-message go to voicemail. She remembered listening to it several times
-because she was intrigued by both the unusual accent and the message. It
-sounded something like, "Good afternoon, Lady Alice, I am Nigel
-Mannering of Chumli, Crepiny, Marchbanks, and Sinjun. If you would like
-to hear news to your advantage, please contact me."
-
-Two days later, Alice met with Nigel. This also had been most memorable.
-The opening conversation had been confusing. He started with the very
-same formal introduction, "Good afternoon, Lady Alice, I am Nigel
-Mannering of Chumli, Crepiny, Marchbanks, and Sinjun. I am pleased to
-meet you," and handed Alice his card. Alice quickly inspected the card,
-which read, "Nigel Mainwaring, LL. B., Cholmondeley, Crespigny,
-Majoribanks, and St. John," but he had said nothing like that. She
-thought, "What planet is this guy from?"[\^5]
-
-It took fifteen minutes for Alice to discover that British English was
-not quite the same as American English. She quickly learned---or should
-that be "learnt?"---that many proper English names have a traditional
-pronunciation not easily inferred from the spelling. Once this names'
-problem had been sorted out, Nigel told Alice of her good fortune. She
-was the new owner of The Expeditioner. She also inherited the title that
-had been conferred on a previous owner by a grateful monarch who had
-been equipped by The Expeditioner for traveling in the Australian
-outback. She was now entitled to be called "Lady Alice of Bullamakanka."
-Nigel was in a bit of a rush. He left Alice with a first-class ticket to
-London and an attaché case of folders, and with an effusive "Jolly good
-show," disappeared.
 
 ## Summary {.unnumbered}
 
@@ -1091,22 +1013,7 @@ system. *Harvard Business Review*, 76(4), 121-131.
 
 21. What is the relationship between data, information, and knowledge?
 
-22. Consider the following questions about The Expeditioner:
-
-    a.  What sort of data management systems would you expect to find at
-        The Expeditioner?
-
-    b.  For each type of data management system that you identify,
-        discuss it using the themes of data being shareable,
-        transportable, secure, accurate, timely, and relevant.
-
-    c.  An organization's culture is the set of key values, beliefs,
-        understandings, and norms that its members share. Discuss your
-        ideas of the likely organizational culture of The Expeditioner.
-
-    d.  How difficult will it be to change the organizational culture of
-        The Expeditioner? Do you anticipate that Alice will have
-        problems making changes to the firm? If so, why?
+22. Estimate how much data Netflix requires to store its many movies.
 
 23. Using the Web, find some stories about firms using data management
     systems. You might enter keywords such as "database" and "business

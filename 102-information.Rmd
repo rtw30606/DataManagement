@@ -35,28 +35,28 @@ Students completing this chapter will
 
 There are three characteristics of the early decades of the twenty-first
 century: global warming, high-velocity global change, and the emerging
-power of information organizations.[^information-1] he need to create a
-sustainable civilization, the globalization of business, and the rise of
-China as a major economic power are major forces contributing to mass
-change. Organizations are undergoing large-scale restructuring as they
-attempt to reposition themselves to survive the threats and exploit the
+power of information organizations.[^1] The need to create a sustainable
+civilization, the globalization of business, and the rise of China as a
+major economic power are major forces contributing to mass change.
+Organizations are undergoing large-scale restructuring as they attempt
+to reposition themselves to survive the threats and exploit the
 opportunities presented by these changes.
 
-[^information-1]: In mid 2017, the five most valuable public companies
-    were Apple, Google, Amazon, Microsoft, and Facebook. Furthermore,
-    they are concentrated on the west coast of the U.S. in either
-    Silicon Valley or Seattle.
+[^1]: In mid 2017, the five most valuable public companies were Apple,
+    Google, Amazon, Microsoft, and Facebook. Furthermore, they are
+    concentrated on the west coast of the U.S. in either Silicon Valley
+    or Seattle.
 
 In the last few years, some very powerful and highly profitable
-information-based organizations have emerged. Apple is the world's
-largest company in terms of market value. Leveraging the iPhone and IOS,
-it has shown the power of information services to change an industry.
-Google has become a well-known global brand as it fulfills its mission
-"to organize the world's information and make it universally accessible
-and useful." Amazon is disrupting traditional retail. Facebook has
-digitized our social world, and Microsoft has dominated the office
-environment for decades. We gain further insights into the value of
-information by considering its role in civilization.
+information-based organizations have emerged. Apple and MS vie to be the
+world's largest company in terms of market value. Leveraging the iPhone
+and IOS, Apple has shown the power of information services to change an
+industry. Google has become a well-known global brand as it fulfills its
+mission "to organize the world's information and make it universally
+accessible and useful." Amazon is disrupting traditional retail.
+Facebook has digitized our social world, and Microsoft has dominated the
+office environment for decades. We gain further insights into the value
+of information by considering its role in civilization.
 
 ## A historical perspective {.unnumbered}
 
@@ -98,21 +98,21 @@ centuries of industrialization, atmospheric CO~2~ levels have become
 alarmingly high. We are also reaching the limits of the planet's
 resources as its population now exceeds seven billion people. As a
 result, a new class of application is emerging, such as environmental
-management systems and UPS's telematics project.[^information-2] These
-new systems will also include, for example, support for understanding
-environmental impact through simulation of energy consuming and
-production systems, optimization of energy systems, and design of low
-impact production and customer service systems. Notice that dominant
-issues don't disappear but rather aggregate in layers, so tomorrow's
-business will be concerned with survival, production, customer service,
-and sustainability. As a result, a firm's need for data never
-diminishes, and each new layer creates another set of data needs. The
-flood will not subside and for most firms the data flow will need to
-grow significantly to meet the new challenge of sustainability.
+management systems and UPS's telematics project.[^2] These new systems
+will also include, for example, support for understanding environmental
+impact through simulation of energy consuming and production systems,
+optimization of energy systems, and design of low impact production and
+customer service systems. Notice that dominant issues don't disappear
+but rather aggregate in layers, so tomorrow's business will be concerned
+with survival, production, customer service, and sustainability. As a
+result, a firm's need for data never diminishes, and each new layer
+creates another set of data needs. The flood will not subside and for
+most firms the data flow will need to grow significantly to meet the new
+challenge of sustainability.
 
-[^information-2]: Watson, R. T., Boudreau, M.-C., Li, S., & Levis, J.
-    (2010). Telematics at UPS: En route to Energy Informatics. MISQ
-    Executive, 9(1), 1-11.
+[^2]: Watson, R. T., Boudreau, M.-C., Li, S., & Levis, J. (2010).
+    Telematics at UPS: En route to Energy Informatics. MISQ Executive,
+    9(1), 1-11.
 
 A constant across all of these economies is organizational memory, or in
 its larger form, social memory. Writing and paper manufacturing
@@ -172,26 +172,34 @@ worker as a printout.
 
 *Information systems eras*
 
-+-----+---------------+---------------+---------------+---------------+
-| Era | Focus         | Period        | Technology    | Networks      |
-+=====+===============+===============+===============+===============+
-| 1   | Take          | 1950s ---     | Batch         | Few data      |
-|     | information   | mid-1970s     |               | networks      |
-|     | work to the   |               |               |               |
-|     | computer      |               |               |               |
-+-----+---------------+---------------+---------------+---------------+
-| 2   | Take          | Mid-1970s --- | Host/termin   | Spread of     |
-|     | information   | mid-1990s     | al            | private       |
-|     | work to the   |               |               | networks      |
-|     | employee      |               | Client/server |               |
-+-----+---------------+---------------+---------------+---------------+
-| 3   | Take          | Mid-1990s --- | B             | Public        |
-|     | information   | present       | rowser/server | networks\     |
-|     | work to the   |               |               | (Internet)    |
-|     | customer and  |               |               |               |
-|     | other         |               |               |               |
-|     | stakeholders  |               |               |               |
-+-----+---------------+---------------+---------------+---------------+
++----+------------+------------+------------+------------+
+| E  | Focus      | Period     | Technology | Networks   |
+| ra |            |            |            |            |
++====+============+============+============+============+
+| 1  | Take       | 1950s ---  | Batch      | Few data   |
+|    | i          | mid-1970s  |            | networks   |
+|    | nformation |            |            |            |
+|    | work to    |            |            |            |
+|    | the        |            |            |            |
+|    | computer   |            |            |            |
++----+------------+------------+------------+------------+
+| 2  | Take       | Mid-1970s  | H          | Spread of  |
+|    | i          | ---        | ost/termin | private    |
+|    | nformation | mid-1990s  | al         | networks   |
+|    | work to    |            |            |            |
+|    | the        |            | Cli        |            |
+|    | employee   |            | ent/server |            |
++----+------------+------------+------------+------------+
+| 3  | Take       | Mid-1990s  | Brow       | Public     |
+|    | i          | ---        | ser/server | networks\  |
+|    | nformation | present    |            | (Internet) |
+|    | work to    |            |            |            |
+|    | the        |            |            |            |
+|    | customer   |            |            |            |
+|    | and other  |            |            |            |
+|    | st         |            |            |            |
+|    | akeholders |            |            |            |
++----+------------+------------+------------+------------+
 
 In the second era, private networks were used to take information work
 to the employee. Initially, these were time-sharing and host/terminal
@@ -275,42 +283,40 @@ which comes from unidentified sources, is rife with uncertainty.
 
 *An information hardness scale*
 
-+-------+---+---------------------------------------------------------+
-| Mi    | S | Data                                                    |
-| neral | c |                                                         |
-|       | a |                                                         |
-|       | l |                                                         |
-|       | e |                                                         |
-+:======+:==+:========================================================+
-| Talc  | 1 | Unidentified source---rumors, gossip, and hearsay       |
-+-------+---+---------------------------------------------------------+
-| G     | 2 | Identified non-expert source---opinions, feelings, and  |
-| ypsum |   | ideas                                                   |
-+-------+---+---------------------------------------------------------+
-| Ca    | 3 | Identified expert source---predictions, speculations,   |
-| lcite |   | forecasts, and estimates                                |
-+-------+---+---------------------------------------------------------+
-| Flu   | 4 | Unsworn testimony---explanations, justifications,       |
-| orite |   | assessments, and interpretations                        |
-+-------+---+---------------------------------------------------------+
-| Ap    | 5 | Sworn testimony---explanations, justifications,         |
-| atite |   | assessments, and interpretations                        |
-+-------+---+---------------------------------------------------------+
-| Ortho | 6 | Budgets, formal plans                                   |
-| clase |   |                                                         |
-+-------+---+---------------------------------------------------------+
-| Q     | 7 | News reports, non-financial data, industry statistics,  |
-| uartz |   | and surveys                                             |
-+-------+---+---------------------------------------------------------+
-| Topaz | 8 | Unaudited financial statements, and government          |
-|       |   | statistics                                              |
-+-------+---+---------------------------------------------------------+
-| Cor   | 9 | Audited financial statements                            |
-| undum |   |                                                         |
-+-------+---+---------------------------------------------------------+
-| Di    | 1 | Stock exchange and commodity market data                |
-| amond | 0 |                                                         |
-+-------+---+---------------------------------------------------------+
++----------+------+------------------------------------------------+
+| Mineral  | S    | Data                                           |
+|          | cale |                                                |
++:=========+:====:+:===============================================+
+| Talc     | 1    | Unidentified source---rumors, gossip, and      |
+|          |      | hearsay                                        |
++----------+------+------------------------------------------------+
+| Gypsum   | 2    | Identified non-expert source---opinions,       |
+|          |      | feelings, and ideas                            |
++----------+------+------------------------------------------------+
+| Calcite  | 3    | Identified expert source---predictions,        |
+|          |      | speculations, forecasts, and estimates         |
++----------+------+------------------------------------------------+
+| Fluorite | 4    | Unsworn testimony---explanations,              |
+|          |      | justifications, assessments, and               |
+|          |      | interpretations                                |
++----------+------+------------------------------------------------+
+| Apatite  | 5    | Sworn testimony---explanations,                |
+|          |      | justifications, assessments, and               |
+|          |      | interpretations                                |
++----------+------+------------------------------------------------+
+| Or       | 6    | Budgets, formal plans                          |
+| thoclase |      |                                                |
++----------+------+------------------------------------------------+
+| Quartz   | 7    | News reports, non-financial data, industry     |
+|          |      | statistics, and surveys                        |
++----------+------+------------------------------------------------+
+| Topaz    | 8    | Unaudited financial statements, and government |
+|          |      | statistics                                     |
++----------+------+------------------------------------------------+
+| Corundum | 9    | Audited financial statements                   |
++----------+------+------------------------------------------------+
+| Diamond  | 1 0  | Stock exchange and commodity market data       |
++----------+------+------------------------------------------------+
 
 Audited financial statements are in the corundum zone. They are measured
 according to standard rules (known as "generally accepted accounting
@@ -355,18 +361,19 @@ There is no opportunity for questions, no additional information from
 body movements and vocal tone. The information richness of some
 communication media is shown in the following table.
 
-*Information richness and communication media*[^information-3]
+*Information richness and communication media*[^3]
 
-[^information-3]: *Daft, R. L., & Lengel, R. H. (1986). Organizational
-    information requirements, media richness, and structural design.
-    Management Science*, 32(5), 554-571.
+[^3]: *Daft, R. L., & Lengel, R. H. (1986). Organizational information
+    requirements, media richness, and structural design. Management
+    Science*, 32(5), 554-571.
 
-+---------+-------+--------------+---------------------+-------------+
-| Richest |       |              |                     | Leanest     |
-+:========+=======+==============+=====================+:============+
-| Face-   | Tele  | Personal     | Impersonal written  | Numeric     |
-| to-face | phone | documents    | documents           | documents   |
-+---------+-------+--------------+---------------------+-------------+
++-----------+-----------+-----------+---------------+-----------+
+| Richest   |           |           |               | Leanest   |
++:==========+===========+===========+===============+:==========+
+| Fac       | Telephone | Personal  | Impersonal    | Numeric   |
+| e-to-face |           | documents | written       | documents |
+|           |           |           | documents     |           |
++-----------+-----------+-----------+---------------+-----------+
 
 Managers seek rich information when they are trying to resolve
 equivocality or ambiguity. It means that managers cannot make sense of a
@@ -402,12 +409,17 @@ the first category.
 
 *Information classes*
 
-| Class    | Description                                  |
-|:---------|:---------------------------------------------|
-| Content  | Quantity, location, and types of items       |
-| Form     | Shape and composition of an object           |
-| Behavior | Simulation of a physical object              |
-| Action   | Creation of action (e.g., industrial robots) |
++----------+-----------------------------------------------------------+
+| Class    | Description                                               |
++:=========+:==========================================================+
+| Content  | Quantity, location, and types of items                    |
++----------+-----------------------------------------------------------+
+| Form     | Shape and composition of an object                        |
++----------+-----------------------------------------------------------+
+| Behavior | Simulation of a physical object                           |
++----------+-----------------------------------------------------------+
+| Action   | Creation of action (e.g., industrial robots)              |
++----------+-----------------------------------------------------------+
 
 Content information records details about quantity, location, and types
 of items. It tends to be historical in nature and is traditionally the
@@ -435,18 +447,6 @@ Action information enables the instantaneous creation of sophisticated
 action. Industrial robots take action information and manufacture parts,
 weld car bodies, or transport items. Antilock brakes are an example of
 action information in use.
-
-+----------------------------------------------------------------------+
-| **A lifetime of information---every day**                            |
-|                                                                      |
-| It is estimated that a single weekday issue of the *New York Times*  |
-| contains more information than the average person in                 |
-| seventeenth-century England came across in a lifetime. Information,  |
-| once rare, is now abundant and overflowing.                          |
-|                                                                      |
-| Roszak, T. 1986. The cult of information: The folklore of computers  |
-| and the true art of thinking. New York, NY: Pantheon. p. 32.         |
-+----------------------------------------------------------------------+
 
 ## Information and organizational change {.unnumbered}
 
@@ -560,36 +560,55 @@ input information (e.g., number of service calls) can also be measured,
 and there is qualitative information to be considered. Because of time
 constraints, most managers are forced to limit their attention to 10 or
 fewer key variables singled out by the critical success factors (CSF)
-method.[^information-4] Scorekeeping information is usually fairly
-stable.
+method.[^4] Scorekeeping information is usually fairly stable.
 
-[^information-4]: Rockart, J.F. (1982). The changing role of the
-    information systems executive: a critical success factors
-    perspective. *Sloan Management Review*, 24(1), 3-13.
+[^4]: Rockart, J.F. (1982). The changing role of the information systems
+    executive: a critical success factors perspective. *Sloan Management
+    Review*, 24(1), 3-13.
 
 *Sales output tracking information*
 
-| Category     | Example                           |
-|:-------------|:----------------------------------|
-| Orders       | Number of current customers       |
-|              | Average order size                |
-|              | Batting average (orders to calls) |
-| Sales volume | Dollar sales volume               |
-|              | Unit sales volume                 |
-|              | By customer type                  |
-|              | By product category               |
-|              | Translated to market share        |
-|              | Quota achieved                    |
-| Margins      | Gross margin                      |
-|              | Net profit                        |
-|              | By customer type                  |
-|              | By product                        |
-| Customers    | Number of new accounts            |
-|              | Number of lost accounts           |
-|              | Percentage of accounts sold       |
-|              | Number of accounts overdue        |
-|              | Dollar value of receivables       |
-|              | Collections of receivables        |
++--------------+-------------------------------------------------------+
+| Category     | Example                                               |
++:=============+:======================================================+
+| Orders       | Number of current customers                           |
++--------------+-------------------------------------------------------+
+|              | Average order size                                    |
++--------------+-------------------------------------------------------+
+|              | Batting average (orders to calls)                     |
++--------------+-------------------------------------------------------+
+| Sales volume | Dollar sales volume                                   |
++--------------+-------------------------------------------------------+
+|              | Unit sales volume                                     |
++--------------+-------------------------------------------------------+
+|              | By customer type                                      |
++--------------+-------------------------------------------------------+
+|              | By product category                                   |
++--------------+-------------------------------------------------------+
+|              | Translated to market share                            |
++--------------+-------------------------------------------------------+
+|              | Quota achieved                                        |
++--------------+-------------------------------------------------------+
+| Margins      | Gross margin                                          |
++--------------+-------------------------------------------------------+
+|              | Net profit                                            |
++--------------+-------------------------------------------------------+
+|              | By customer type                                      |
++--------------+-------------------------------------------------------+
+|              | By product                                            |
++--------------+-------------------------------------------------------+
+| Customers    | Number of new accounts                                |
++--------------+-------------------------------------------------------+
+|              | Number of lost accounts                               |
++--------------+-------------------------------------------------------+
+|              | Percentage of accounts sold                           |
++--------------+-------------------------------------------------------+
+|              | Number of accounts overdue                            |
++--------------+-------------------------------------------------------+
+|              | Dollar value of receivables                           |
++--------------+-------------------------------------------------------+
+|              | Collections of receivables                            |
++--------------+-------------------------------------------------------+
 
 ## Change information {.unnumbered}
 
@@ -612,7 +631,7 @@ economic recession, the manager might use a decision support system
 (DSS) to analyze the effect of a price decrease or a range of
 promotional activities.
 
-## Infromation as a means of change {.unnumbered}
+## Information as a means of change {.unnumbered}
 
 The emergence of an information society means that information can be
 used as a means of changing an organization's performance. Corporations
@@ -663,12 +682,12 @@ Information is frequently a key to this improved service.
 > ❓*Skill builder*
 >
 > For many businesses, information is the key to high-quality customer
-> service. Thus, some firms use information, and thus customer
-> service, as a key differentiating factor, while others might compete
-> on price. Compare the electronics component of Web sites Amazon and
-> TigerDirect. How do they use price and information to compete? What
-> are the implications for data management if a firm uses information
-> to compete?
+> service. Thus, some firms use information, and thus customer service,
+> as a key differentiating factor, while others might compete on price.
+> Compare the electronics component of Web sites Amazon and Walmart. How
+> do they use price and information to compete? What are the
+> implications for data management if a firm uses information to
+> compete?
 
 ## Empowerment {.unnumbered}
 
@@ -754,7 +773,7 @@ manager gains confidence in the information's accuracy.
 *Relationship of perceived information hardness to volume of information
 requested*
 
-![](Figures/Chapter%202/hardness-volume%20tradeoff.png)
+![](Figures/Chapter%202/hardness-volume%20tradeoff.png){width="304"}
 
 It is not unusual, therefore, to have a manager seek information from a
 database, a conversation with a subordinate, and a contact in another
@@ -818,28 +837,47 @@ to the manager.
 
 *Information delivery systems software*
 
-| Organizational memory | Delivery systems                    |
-|:----------------------|:------------------------------------|
-| People                | Conversation                        |
-|                       | E-mail                              |
-|                       | Meeting                             |
-|                       | Report                              |
-|                       | Groupware                           |
-| Files                 | Management information system (MIS) |
-| Documents             | Web browser                         |
-|                       | E-mail attachment                   |
-| Images                | Image processing system (IPS)       |
-| Graphics              | Computer aided design (CAD)         |
-|                       | Geographic information system (GIS) |
-| Voice                 | Voice mail                          |
-|                       | Voice recording system              |
-| Mathematical model    | Decision support system (DSS)       |
-| Knowledge             | Expert system (ES)                  |
-| Decisions             | Conversation                        |
-|                       | E-mail                              |
-|                       | Meeting                             |
-|                       | Report                              |
-|                       | Groupware                           |
++-----------------------+----------------------------------------------+
+| Organizational memory | Delivery systems                             |
++:======================+:=============================================+
+| People                | Conversation                                 |
++-----------------------+----------------------------------------------+
+|                       | E-mail                                       |
++-----------------------+----------------------------------------------+
+|                       | Meeting                                      |
++-----------------------+----------------------------------------------+
+|                       | Report                                       |
++-----------------------+----------------------------------------------+
+|                       | Groupware                                    |
++-----------------------+----------------------------------------------+
+| Files                 | Management information system (MIS)          |
++-----------------------+----------------------------------------------+
+| Documents             | Web browser                                  |
++-----------------------+----------------------------------------------+
+|                       | E-mail attachment                            |
++-----------------------+----------------------------------------------+
+| Images                | Image processing system (IPS)                |
++-----------------------+----------------------------------------------+
+| Graphics              | Computer aided design (CAD)                  |
++-----------------------+----------------------------------------------+
+|                       | Geographic information system (GIS)          |
++-----------------------+----------------------------------------------+
+| Voice                 | Voice mail                                   |
++-----------------------+----------------------------------------------+
+|                       | Voice recording system                       |
++-----------------------+----------------------------------------------+
+| Mathematical model    | Decision support system (DSS)                |
++-----------------------+----------------------------------------------+
+| Decisions             | Conversation                                 |
++-----------------------+----------------------------------------------+
+|                       | E-mail                                       |
++-----------------------+----------------------------------------------+
+|                       | Meeting                                      |
++-----------------------+----------------------------------------------+
+|                       | Report                                       |
++-----------------------+----------------------------------------------+
+|                       | Groupware                                    |
++-----------------------+----------------------------------------------+
 
 Software is used to move data to and from organizational memory. There
 is usually tight coupling between software and the format of an
@@ -879,16 +917,16 @@ Email is an important system of information delivery. It too supports
 asynchronous messaging, and it is less costly than voice mail for
 communication. Many documents are exchanged as attachments to email.
 
-### Written report {.unnumbered}
+### Formal report {.unnumbered}
 
-Formal, written reports have a long history in organizations. Before
-electronic communication, they were the main form of information
-delivery. They still have a role in organizations because they are an
-effective method of integrating information of varying hardness and from
-a variety of organizational memories. For example, a report can contain
-text, tables, graphics, and images.
+Formal reports have a long history in organizations. Before electronic
+communication, they were the main form of information delivery. They
+still have a role in organizations because they are an effective method
+of integrating information of varying hardness and from a variety of
+organizational memories. For example, a report can contain text, tables,
+graphics, and images.
 
-Written reports are often supplemented by a verbal presentation of the
+Formal reports are often supplemented by a verbal presentation of the
 key points in the report. Such a presentation enhances the information
 delivered, because the audience has an opportunity to ask questions and
 get an immediate response.
@@ -952,14 +990,6 @@ A decision support system (DSS) is frequently a computer-based
 mathematical model of a problem. DSS software, available in a range of
 packages, permits the model and data to be retrieved and executed. Model
 parameters can be varied to investigate alternatives.
-
-#### Expert system {.unnumbered}
-
-An expert system (ES) has captured the knowledge of someone who is
-particularly skillful at solving a certain type of problem. It is
-convenient to think of an ES as a set of rules. An ES is typically used
-interactively, as it asks the decision-maker questions and uses the
-responses to make a recommendation.
 
 ## Information integration {.unnumbered}
 
@@ -1167,20 +1197,5 @@ intellect. *Academy of Management Executive* 10 (3):7-27.
 26. What type of knowledge should you gain in a university class?
 
 27. What type of knowledge is likely to make you most valuable?
-
-## Case questions {-}
-
-Imagine you are the new owner of The Expeditioner.
-
-1.  What information would you request to determine the present
-    performance of the organization?
-
-2.  What information would help you to establish goals for The
-    Expeditioner? What goals would you set?
-
-3.  What information would you want to help you assist you in changing
-    The Expeditioner?
-
-4.  How could you use information to achieve your goals.
 
 \newpage

@@ -5,9 +5,12 @@ site: "bookdown::bookdown_site"
 output:
   bookdown::gitbook: default
 documentclass: book
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-# Section 1: The Managerial Perspective {-}
+# Section 1: The Managerial Perspective {.unnumbered}
 
 > *People only see what they are prepared to see*.
 >
@@ -44,7 +47,10 @@ process it, and produce output. The processing is done by a processor,
 which is linked to a memory that stores both data and processes. The
 processor component retrieves both data and processes from memory.
 
-![](Figures/Section 1/Simon-Newell.png)
+[^1]: Newell, A., & Simon, H. A. (1972). Human problem solving.
+    Englewood Cliffs, NJ: Prentice-Hall.
+
+![](Figures/Section%201/Simon-Newell.png)
 
 To understand this model, consider a person arriving on a flight who has
 agreed to meet a fellow traveler in the terminal. She receives a text
@@ -82,7 +88,7 @@ analyst also requests a marketing consultant (an external processor) to
 analyze (process) some demographic reports (data) before deciding to
 launch a new sales campaign (output).
 
-![](Figures/Section 1/org info processing.png)
+![](Figures/Section%201/org%20info%20processing.png)
 
 An organization's memory comes in a variety of forms, as you will see in
 Chapter 1. This memory also can be divided into data and processes. The
@@ -102,26 +108,32 @@ also coverage of data in external memory. The process side of
 organizational memory is typically covered in a systems analysis and
 design or a business process management course.
 
-## Chapter 1: Managing Data  {-}
+## Chapter 1: Managing Data {.unnumbered}
 
-> *All the value of this company is in its people. If you burned down all our plants, and we just kept our people and our information files, we should soon be as strong as ever.*
+> *All the value of this company is in its people. If you burned down
+> all our plants, and we just kept our people and our information files,
+> we should soon be as strong as ever.*
 >
 > Thomas Watson, Jr., former chairman of IBM[^2]
 
-### Learning objectives {-}
+[^2]: Quinn, J. B. (1994). Appraising intellectual assets. *The McKinsey
+    Quarterly*(2), 90-96.
+
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
-* understand the key concepts of data management;
+-   understand the key concepts of data management;
 
-* recognize that there are many components of an organization's memory;
+-   recognize that there are many components of an organization's
+    memory;
 
-* understand the problems with existing data management systems;
+-   understand the problems with existing data management systems;
 
-* realize that successful data management requires an integrated
-understanding of organizational behavior and information technology.
+-   realize that successful data management requires an integrated
+    understanding of organizational behavior and information technology.
 
-### Introduction {-}
+### Introduction {.unnumbered}
 
 Imagine what would happen to a bank that forgot who owed it money or a
 magazine that lost the names and addresses of its subscribers. Both
@@ -146,7 +158,7 @@ Individuals also need to manage data. You undoubtedly are more familiar
 with individual memory management systems. They provide a convenient way
 of introducing some of the key concepts of data management.
 
-### Individual data management {-}
+### Individual data management {.unnumbered}
 
 As humans, we are well aware of our limited capacity to remember many
 things. The brain, our internal memory, can get overloaded with too much
@@ -172,7 +184,7 @@ to select today's data.
 
 *A calendar*
 
-![](Figures/Chapter 1/calendar.png)
+![](Figures/Chapter%201/calendar.png)
 
 Address books also have a standard format. They typically contain
 predefined spaces for storing address details (e.g., name, company,
@@ -181,7 +193,7 @@ each letter of the alphabet and a search engine.
 
 *An address book*
 
-![](Figures/Chapter 1/address book.png)
+![](Figures/Chapter%201/address%20book.png)
 
 The structure of to-do lists tends to be fairly standard. They are often
 set up in list format with a small left-hand margin. The idea is to
@@ -192,7 +204,7 @@ side to identify incomplete tasks.
 
 *A to-do or reminder list*
 
-![](Figures/Chapter 1/todo list new.png)
+![](Figures/Chapter%201/todo%20list%20new.png)
 
 Many people use some form of the individual memory systems just
 described. They are typically included in the suite of standard
@@ -201,30 +213,31 @@ applications for a smart phone.
 These three examples of individual memory systems illustrate some
 features common to all data management systems:
 
-* There is a storage medium. Data are stored electronically in each case.
+-   There is a storage medium. Data are stored electronically in each
+    case.
 
-* There is a structure for storing data. For instance, the address book
-has labeled spaces for entering pertinent data.
+-   There is a structure for storing data. For instance, the address
+    book has labeled spaces for entering pertinent data.
 
-* The interface organized for rapid data entry and retrieval. A calendar
-is stored in date and time sequence so that the data space for any
-appointment for a particular day can be found quickly.
+-   The interface organized for rapid data entry and retrieval. A
+    calendar is stored in date and time sequence so that the data space
+    for any appointment for a particular day can be found quickly.
 
-* The selection of a data management system frequently requires a
-trade-off decision. In these examples, the trade-off is screen
-dimensions versus the amount of data that can be seen without scrolling.
-For example, you will notice the address book screen is truncated and
-will need to be scrolled to see full address details.
+-   The selection of a data management system frequently requires a
+    trade-off decision. In these examples, the trade-off is screen
+    dimensions versus the amount of data that can be seen without
+    scrolling. For example, you will notice the address book screen is
+    truncated and will need to be scrolled to see full address details.
 
-+--------------------------------------------------------------------------+
-| *Skill builder*                                                          |
-|                                                                          |
-| Smart phones have dramatically changed individual data management in the |
-| last few years. We now have calendars, address books, to-do lists, and   |
-| many more apps literally in our hands. What individual data are still    |
-| difficult to manage? What might be the characteristics of an app for     |
-| these data?                                                              |
-+--------------------------------------------------------------------------+
++-----------------------------------------------------------------------+
+| *Skill builder*                                                       |
+|                                                                       |
+| Smart phones have dramatically changed individual data management in  |
+| the last few years. We now have calendars, address books, to-do       |
+| lists, and many more apps literally in our hands. What individual     |
+| data are still difficult to manage? What might be the characteristics |
+| of an app for these data?                                             |
++-----------------------------------------------------------------------+
 
 There are differences between internal and external memories. Our
 internal memory is small, fast, and convenient (our brain is always with
@@ -238,7 +251,7 @@ trade-offs. Ideally, we would like to store everything in our fast and
 convenient internal memory, but its limited capacity means that we are
 forced to use external memory for many items.
 
-### Organizational data management {-}
+### Organizational data management {.unnumbered}
 
 Organizations, like people, need to remember many things. If you look
 around any office, you will see examples of the apparatus of
@@ -290,18 +303,17 @@ cycle.
 
 *Types of information systems*
 
+|      | Type of information system    | System's purpose                                                                                            |
+|------|:------------------------------|:------------------------------------------------------------------------------------------------------------|
+| TPS  | Transaction processing system | Collect and store data from routine transactions                                                            |
+| MIS  | Management information system | Convert data from a TPS into information for planning, controlling, and managing an organization            |
+| DSS  | Decision support system       | Support managerial decision making by providing models for processing and analyzing data                    |
+| BI   | Business intelligence         | Gather, store, and analyze data to improve decision making                                                  |
+| OLAP | Online analytical processing  | Provide a multidimensional view of data                                                                     |
+|      | Data mining                   | Use of statistical analysis and artificial intelligence techniques to identify hidden relationships in data |
+|      | Machine learning              | Using software to make decisions or recommendations traditionally made by humans.                           |
 
-         Type of information system      System's purpose
-  ------ ------------------------------- -------------------------------------------------------------------------------------------------------------
-  TPS    Transaction processing system   Collect and store data from routine transactions
-  MIS    Management information system   Convert data from a TPS into information for planning, controlling, and managing an organization
-  DSS    Decision support system         Support managerial decision making by providing models for processing and analyzing data
-  BI     Business intelligence           Gather, store, and analyze data to improve decision making
-  OLAP   Online analytical processing    Provide a multidimensional view of data
-         Data mining                     Use of statistical analysis and artificial intelligence techniques to identify hidden relationships in data
-         Machine learning                Using software to make decisions or recommendations traditionally made by humans.
-
-#### The information systems cycle {-}
+#### The information systems cycle {.unnumbered}
 
 The various systems and technologies found in an organization are linked
 in a cycle. The routine ongoing business of the organization is
@@ -320,7 +332,7 @@ browser).
 
 *The information systems cycle*
 
-![](Figures/Chapter 1/IS cycle.png)
+![](Figures/Chapter%201/IS%20cycle.png)
 
 Decision making, or preparing for the future, is the central activity of
 modern organizations. Today's organizations are busy turning out goods,
@@ -352,22 +364,22 @@ pay, and how to deliver a high-quality experience with a minimum of
 fuss. Companies are very dependent on information systems to create
 value for their customers.
 
-#### Desirable attributes of data {-}
+#### Desirable attributes of data {.unnumbered}
 
 Once we realize the critical importance of data to organizations, we can
 recognize some desirable attributes of data.
 
 *Desirable attributes of data*
 
-  Shareable       Readily accessed by more than one person at a time
-  --------------- ----------------------------------------------------
-  Transportable   Easily moved to a decision maker
-  Secure          Protected from destruction and unauthorized use
-  Accurate        Reliable, precise records
-  Timely          Current and up-to-date
-  Relevant        Appropriate to the decision
+| Shareable     | Readily accessed by more than one person at a time |
+|:--------------|:---------------------------------------------------|
+| Transportable | Easily moved to a decision maker                   |
+| Secure        | Protected from destruction and unauthorized use    |
+| Accurate      | Reliable, precise records                          |
+| Timely        | Current and up-to-date                             |
+| Relevant      | Appropriate to the decision                        |
 
-##### Shareable {-}
+##### Shareable {.unnumbered}
 
 Organizations contain many decision makers. There are occasions when
 more than one person will require access to the same data at the same
@@ -378,7 +390,7 @@ shareability becomes more of a problem. Consider a restaurant. The
 permanent menu is printed, today's special might be displayed on a
 blackboard, and the waiter tells you what is no longer available.
 
-##### Transportable {-}
+##### Transportable {.unnumbered}
 
 Data should be transportable from their storage location to the decision
 maker. Technologies that transport data have a long history. Homing
@@ -396,7 +408,7 @@ notion is that decision makers should have access to relevant data
 whenever and wherever required, although many organizations are still
 some way from reaching this target.
 
-##### Secure {-}
+##### Secure {.unnumbered}
 
 In an information society, organizations value data as a resource. As
 you have already learned, data support day-to-day business transactions
@@ -414,7 +426,7 @@ programmers from working for a competitor for two years after they
 leave, hoping to prevent the transfer of valuable data, in the form of
 the programmer's knowledge of software, to competitors.
 
-##### Accurate {-}
+##### Accurate {.unnumbered}
 
 You probably recall friends who excel in exams because of their good
 memories. Similarly, organizations with an accurate memory will do
@@ -431,7 +443,7 @@ cost overruns, delivery delays, and product recalls. Because data
 accuracy is so critical, organizations need to be watchful when
 capturing data---the point at which data accuracy is most vulnerable.
 
-##### Timely {-}
+##### Timely {.unnumbered}
 
 The value of a collection of data is often determined by its age. You
 can fantasize about how rich you would be if you knew tomorrow's stock
@@ -443,7 +455,7 @@ quality slippages. In contrast, strategic planners might be content with
 data that are months old because they are more concerned with detecting
 long-term trends.
 
-##### Relevant {-}
+##### Relevant {.unnumbered}
 
 Organizations must maintain data that are relevant to transaction
 processing and decision making. In processing a credit card application,
@@ -479,7 +491,7 @@ meet these criteria. Unfortunately, many existing systems fail in this
 regard, though we can understand some of the reasons why by reviewing
 the components of existing organizational memory systems.
 
-#### Components of organizational memory {-}
+#### Components of organizational memory {.unnumbered}
 
 An organization's memory resides on a variety of media in a variety of
 ways. It is in people, standard operating procedures, roles,
@@ -496,9 +508,9 @@ a number of the components.
 
 *Components of organizational memory*
 
-![](Figures/Chapter 1/org memory components.jpg)
+![](Figures/Chapter%201/org%20memory%20components.jpg)
 
-##### People {-}
+##### People {.unnumbered}
 
 People are the linchpin of an organization's memory. They recall prior
 decisions and business actions. They create, maintain, evolve, and use
@@ -562,7 +574,7 @@ deal of time building their metamemory so that they can use
 organizational memory effectively. Without this knowledge,
 organizational memory has little value.
 
-##### Tables {-}
+##### Tables {.unnumbered}
 
 A table is a common form of storing organizational data. The following
 table shows a price list in tabular form. Often, the first row defines
@@ -570,12 +582,12 @@ the meaning of data in subsequent rows.
 
 *A price list*
 
-  Product                 Price
-  ----------------------- -------
-  Pocket knife--Nile      4.5
-  Compass                 10
-  Geopositioning system   500
-  Map measure             4.9
+| Product               | Price |
+|:----------------------|:------|
+| Pocket knife--Nile    | 4.5   |
+| Compass               | 10    |
+| Geopositioning system | 500   |
+| Map measure           | 4.9   |
 
 A table is a general form that describes a variety of other structures
 used to store data. Computer-based files are tables or can be
@@ -586,11 +598,12 @@ central structure of the relational database model.
 
 Data stored in tables typically have certain characteristics:
 
-* Data in one column are of the same type. For example, each cell of the
-column headed "Price" contains a number. (Of course, the exception is
-the first row of each column, which contains the title of the column.)
+-   Data in one column are of the same type. For example, each cell of
+    the column headed "Price" contains a number. (Of course, the
+    exception is the first row of each column, which contains the title
+    of the column.)
 
-* Data are limited by the width of the available space.
+-   Data are limited by the width of the available space.
 
 Rapid searching is one of the prime advantages of a table. For example,
 if the price list is sorted by product name, you can quickly find the
@@ -601,7 +614,7 @@ structure is readily understood. People learn to read and build tables
 in the early years of their schooling. Also, a great deal of the data
 that organizations want to remember can be stored in tabular form.
 
-##### Documets {-}
+##### Documets {.unnumbered}
 
 The **document**---of which reports, manuals, brochures, and memos are
 examples---is a common medium for storing organizational data. Although
@@ -631,7 +644,7 @@ establish these links. While it takes the author more time to prepare a
 document this way, the payoff is the speed at which readers of the
 document can find what they want.
 
-##### Multimedia {-}
+##### Multimedia {.unnumbered}
 
 Many Web sites display multimedia objects, such as sound and video
 clips. Automotive company Web sites have video clips of cars, music
@@ -643,10 +656,10 @@ organizations. Consider the different types of data that a news outfit
 such as the British Broadcasting Corporation (BBC) has to store to
 provide a timely, informative, and engaging Web site.
 
-##### Images {-}
+##### Images {.unnumbered}
 
 Images are visual data: photographs and sketches. Image banks are
-maintained for several reasons. *First**, ***images are widely used for
+maintained for several reasons. *First**,*** images are widely used for
 identification and security. Police departments keep fingerprints and
 mug shots. *Second*, images are used as evidence. Highly valuable items
 such as paintings and jewelry often are photographed for insurance
@@ -657,7 +670,7 @@ mail-order companies, which often produce several photo-laden catalogs
 every year. *Fourth*, some organizations specialize in selling images
 and maintain extensive libraries of clip art and photographs.
 
-##### Graphics {-}
+##### Graphics {.unnumbered}
 
 Maps and engineering drawings are examples of electronically stored
 graphics. An organization might maintain a map of sales territories and
@@ -686,7 +699,7 @@ data about the transformer (e.g., type, capacity, installation date, and
 repair history). GISs have found widespread use in governments and
 organizations that have geographically dispersed resources.
 
-##### Audio {-}
+##### Audio {.unnumbered}
 
 News organizations, such as National Public Radio (NPR), provide audio
 versions of their new stories for replay. Some firms conduct a great
@@ -699,7 +712,7 @@ specialized voice recorder, which records the time of the call and other
 data necessary for rapid retrieval. In the case of a customer dispute,
 an operator can play back the original conversation.
 
-##### Video {-}
+##### Video {.unnumbered}
 
 A video clip can give a potential customer additional detail that cannot
 be readily conveyed by text or a still image. Consequently, some auto
@@ -707,7 +720,7 @@ companies use video and virtual reality to promote their cars. On a
 visit to Toyota's Web site, you can view video clips of the latest
 models or rotate an image to view a car from multiple angles.
 
-##### Models {-}
+##### Models {.unnumbered}
 
 Organizations build mathematical models to describe their business.
 These models, usually placed in the broader category of DSS, are then
@@ -715,14 +728,14 @@ used to analyze existing problems and forecast future business
 conditions. A mathematical model can often produce substantial benefits
 to the organization.
 
-##### Knowledge {-}
+##### Knowledge {.unnumbered}
 
 Organizations build systems to capture the knowledge of their
 experienced decision makers and problem solvers. This expertise is
 typically represented as a set of rules, semantic nets, and frames in a
 knowledge base, another form of organizational memory.
 
-##### Decisions {-}
+##### Decisions {.unnumbered}
 
 Decision making is the central activity of modern organizations. Very
 few organizations, however, have a formal system for recording
@@ -733,14 +746,14 @@ that were considered prior to making a decision, there is no formal
 audit trail for decision making. As a result, most organizations rely on
 humans to remember the circumstances and details of prior decisions.
 
-##### Specialized memories {-}
+##### Specialized memories {.unnumbered}
 
 Because of the particular nature of their business, some organizations
 maintain memories rarely found elsewhere. Perfume companies, for
 instance, maintain a library of scents, and paint manufacturers and dye
 makers catalog colors.
 
-#### Components of organizational memory {-}
+#### Components of organizational memory {.unnumbered}
 
 Organizations are not limited to their own memory stores. There are
 firms whose business is to store data for resale to other organizations.
@@ -752,7 +765,7 @@ data services exist in many other nations. There is a range of other
 services that provide news, financial, business, scientific, and medical
 data.
 
-### Problems with data management systems {-}
+### Problems with data management systems {.unnumbered}
 
 Successful management of data is a critical skill for nearly every
 organization. Yet few have gained complete mastery, and there are a
@@ -761,15 +774,15 @@ firms.
 
 *Problems with organizational data management systems*
 
-  Redundancy                 Same data are stored in different systems
-  -------------------------- -------------------------------------------------------------------------
-  Lack of data control       Data are poorly managed
-  Poor interface             Data are difficult to access
-  Delays                     There are frequently delays following requests for reports
-  Lack of reality            Data management systems do not reflect the complexity of the real world
-  Lack of data integration   Data are dispersed across different systems
+| Redundancy               | Same data are stored in different systems                               |
+|:-------------------------|:------------------------------------------------------------------------|
+| Lack of data control     | Data are poorly managed                                                 |
+| Poor interface           | Data are difficult to access                                            |
+| Delays                   | There are frequently delays following requests for reports              |
+| Lack of reality          | Data management systems do not reflect the complexity of the real world |
+| Lack of data integration | Data are dispersed across different systems                             |
 
-#### Redundancy {-}
+#### Redundancy {.unnumbered}
 
 In many cases, data management systems have grown haphazardly. As a
 result, it is often the situation that the same data are stored in
@@ -781,7 +794,7 @@ Data redundancy causes additional work because the same item must be
 entered several times. Redundancy causes confusion when what is
 supposedly the same item has different values.
 
-#### Lack of data control {-}
+#### Lack of data control {.unnumbered}
 
 Allied with the redundancy problem is poor data control. Although data
 are an important organizational resource, they frequently do not receive
@@ -795,7 +808,7 @@ around the organization. Data are stored everywhere in the organization
 general lack of data management. This lack is particularly surprising,
 since many pundits claim that data are a key competitive resource.
 
-#### Poor interface {-}
+#### Poor interface {.unnumbered}
 
 Too frequently, the potential clients of data management systems have
 been deterred by an unfriendly interface. The computer interface for
@@ -803,7 +816,7 @@ accessing a data store is sometimes difficult to remember for the
 occasional inquirer. People become frustrated and give up because their
 queries are rejected and error messages are unintelligible.
 
-#### Delays {-}
+#### Delays {.unnumbered}
 
 Globalization and technology have accelerated the pace of business in
 recent years. Managers must make more decisions more rapidly. They
@@ -813,7 +826,7 @@ answered rapidly, often within an hour and sometimes more quickly.
 Managers, or their support personnel, need query languages that provide
 rapid access to the data they need, in a format that they want.
 
-#### Lack of reality {-}
+#### Lack of reality {.unnumbered}
 
 Organizational data stores must reflect the reality and complexity of
 the real world. Consider a typical bank customer who might have a
@@ -841,7 +854,7 @@ complexity of the real world. If it does not store required
 organizational data or record a real-world relationship between data
 elements, then some managerial queries might not be answerable quickly.
 
-#### Lack of data integration {-}
+#### Lack of data integration {.unnumbered}
 
 There is a general lack of data integration in most organizations. Not
 only are data dispersed in different forms of organizational memory
@@ -864,7 +877,7 @@ Many data management problems can be solved with present technology.
 Data modeling and relational database technology, topics covered in
 Section 2, help overcome many of the current problems.
 
-### A brief history of data management systems {-}
+### A brief history of data management systems {.unnumbered}
 
 Data management is not a new organizational concern. It is an old
 problem that has become more significant, important, and critical
@@ -876,7 +889,7 @@ data management systems is depicted in the following figure.
 
 *Data management systems timeline*
 
-![](Figures/Chapter 1/timeline2.png)
+![](Figures/Chapter%201/timeline2.png)
 
 File systems were the earliest form of data management. Limited by the
 sequential nature of magnetic tape technology, it was very difficult to
@@ -910,7 +923,7 @@ widely used data management system. As mentioned, Section 2 is devoted
 to the development of the necessary skills for designing and using a
 relational database.
 
-### Data, information, and knowledge {-}
+### Data, information, and knowledge {.unnumbered}
 
 Often the terms ***data*** and ***information*** are used
 interchangeably, but they are distinctly different. Data are raw,
@@ -961,9 +974,9 @@ of the required decision.
 
 *The relationship between data, information, and knowledge*
 
-![](Figures/Chapter 1/data-info-know.jpg)
+![](Figures/Chapter%201/data-info-know.jpg)
 
-### The challenge {-}
+### The challenge {.unnumbered}
 
 A major challenge facing organizations is to make effective use of the
 data currently stored in their diverse data management systems. This
@@ -977,19 +990,18 @@ management is not a new problem. It has existed since the early days of
 civilization and will be an enduring problem for organizations and
 societies.
 
-![](Figures/Chapter 1/expeditioner.png) 
+![](Figures/Chapter%201/expeditioner.png)
 
-Alice Lindsay was enjoying the 
-luxuries of first-class travel. It was quite a change from being an 
-undergraduate student of business. She was enjoying her filet mignon 
-and glass of shiraz. Good riddance to pizzas, hamburgers, and subs! 
-Hello to fine food and gourmet restaurants! With her newly found wealth, 
-she could travel in style and enjoy the very best restaurants. Alice, or 
-Lady Alice to be more precise, had recently inherited a title, a valuable 
-portfolio of stocks, and The Expeditioner. Her good fortune had coincided 
-with the completion of her business degree. Now, instead of looking for a 
-job, the job had found her: She was chair and managing director of The 
-Expeditioner.
+Alice Lindsay was enjoying the luxuries of first-class travel. It was
+quite a change from being an undergraduate student of business. She was
+enjoying her filet mignon and glass of shiraz. Good riddance to pizzas,
+hamburgers, and subs! Hello to fine food and gourmet restaurants! With
+her newly found wealth, she could travel in style and enjoy the very
+best restaurants. Alice, or Lady Alice to be more precise, had recently
+inherited a title, a valuable portfolio of stocks, and The Expeditioner.
+Her good fortune had coincided with the completion of her business
+degree. Now, instead of looking for a job, the job had found her: She
+was chair and managing director of The Expeditioner.
 
 The Expeditioner is in a nineteenth-century building in Explorers Lane,
 opposite Kensington Gardens and just a stone's throw from the Royal
@@ -1010,6 +1022,8 @@ who for several hundred years has had a standing yearly order of one
 roll of purple, premium-quality, non-rip, jungle twill. The
 Expeditioner's hats are very popular with a Mr. I. Jones, an American.
 
+[^3]: [https://en.wikipedia.org/wiki/The\\\_Phantom](https://en.wikipedia.org/wiki/The\_Phantom){.uri}
+
 The nineteenth century was one long boom for The Expeditioner, the
 supplier de rigueur for the guardians of the European colonies. Branch
 offices were opened in Bombay, Sydney, Cape Town, and Singapore. For a
@@ -1017,6 +1031,8 @@ generous fee, cad and renowned adventurer Harry Flashman[^4] assiduously
 promoted The Expeditioner's wares on his many trips. As a result, orders
 poured in from the four corners of the globe. The Expeditioner's catalog
 was found in polite society and clubs throughout the British Empire.
+
+[^4]: [https://en.wikipedia.org/wiki/Harry\\\_Flashman](https://en.wikipedia.org/wiki/Harry\_Flashman){.uri}
 
 The founder of The Expeditioner was a venturesome Scot who sought his
 fortune in London. Carefully guarding the family business, The
@@ -1046,6 +1062,8 @@ which read, "Nigel Mainwaring, LL. B., Cholmondeley, Crespigny,
 Majoribanks, and St. John," but he had said nothing like that. She
 thought, "What planet is this guy from?"[^5]
 
+[^5]: [https://en.wikipedia.org/wiki/List\\\_of\\\_names\\\_in\\\_English\\\_with\\\_counterintuitive\\\_pronunciations](https://en.wikipedia.org/wiki/List\_of\_names\_in\_English\_with\_counterintuitive\_pronunciations){.uri}
+
 It took fifteen minutes for Alice to discover that British English was
 not quite the same as American English. She quickly learned---or should
 that be "learnt?"---that many proper English names have a traditional
@@ -1059,7 +1077,7 @@ Nigel was in a bit of a rush. He left Alice with a first-class ticket to
 London and an attaché case of folders, and with an effusive "Jolly good
 show," disappeared.
 
-### Summary {-}
+### Summary {.unnumbered}
 
 Organizations must maintain a memory to process transactions and make
 decisions. Organizational data should be shareable, transportable,
@@ -1074,26 +1092,26 @@ posed by managers, and poor data integration. Data are raw facts;
 information is data processed into a meaningful form. Knowledge is the
 capacity to use information.
 
-Key terms and concepts
------------------------------------- --------------------------------------------------
-Data                                 Internal memory
-Database management system (DBMS)    Knowledge
-Data management                      Machine learning
-Data mining                          Management information system (MIS)
-Data security                        Metamemory
-Decision making                      Online analytical processing (OLAP)
-Decision quality                     Organizational culture
-Decision support system (DSS)        Organizational memory
-External memory                      Standard operating procedures
-Geographic information system (GIS)  Tables
-Information                          Transaction processing system (TPS)
+| Key terms and concepts              |                                     |
+|:------------------------------------|-------------------------------------|
+| Data                                | Internal memory                     |
+| Database management system (DBMS)   | Knowledge                           |
+| Data management                     | Machine learning                    |
+| Data mining                         | Management information system (MIS) |
+| Data security                       | Metamemory                          |
+| Decision making                     | Online analytical processing (OLAP) |
+| Decision quality                    | Organizational culture              |
+| Decision support system (DSS)       | Organizational memory               |
+| External memory                     | Standard operating procedures       |
+| Geographic information system (GIS) | Tables                              |
+| Information                         | Transaction processing system (TPS) |
 
-#### References and additional readings {-}
+#### References and additional readings {.unnumbered}
 
 Davenport, T. H. (1998). Putting the enterprise into the enterprise
 system. *Harvard Business Review*, 76(4), 121-131.
 
-#### Exercises {-}
+#### Exercises {.unnumbered}
 
 1.  What are the major differences between internal and external memory?
 
@@ -1171,12 +1189,12 @@ system. *Harvard Business Review*, 76(4), 121-131.
 23. Using the Web, find some stories about firms using data management
     systems. You might enter keywords such as "database" and "business
     analytics" and access the sites of publications such as
-    [[Computerworld]{.underline}](http://www.computerworld.com/).
-    Identify the purpose of each system. How does the system improve
-    organizational performance? What are the attributes of the
-    technology that make it useful? Describe any trade-offs the
-    organization might have made. Identify other organizations in which
-    the same technology might be applied.
+    [[Computerworld]{.ul}](http://www.computerworld.com/). Identify the
+    purpose of each system. How does the system improve organizational
+    performance? What are the attributes of the technology that make it
+    useful? Describe any trade-offs the organization might have made.
+    Identify other organizations in which the same technology might be
+    applied.
 
 24. Make a list of the organizational memory systems identified in this
     chapter. Interview several people working in organizations. Ask them
@@ -1184,32 +1202,34 @@ system. *Harvard Business Review*, 76(4), 121-131.
     system is most important and why. Write up your findings and your
     conclusion.
 
-## Information {-}
+## Information {.unnumbered}
 
-> *Effective information management must begin by thinking about how people use information---not with how people use machines.*
+> *Effective information management must begin by thinking about how
+> people use information---not with how people use machines.*
 >
 > Davenport, T. H. (1994). Saving IT's soul: human-centered information
 > management. *Harvard Business Review,* 72(2), 119-131.
 
-### Learning objectives {-}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
-* understand the importance of information to society and organizations;
+-   understand the importance of information to society and
+    organizations;
 
-* be able to describe the various roles of information in organizational
-change;
+-   be able to describe the various roles of information in
+    organizational change;
 
-* be able to distinguish between soft and hard information;
+-   be able to distinguish between soft and hard information;
 
-* know how managers use information;
+-   know how managers use information;
 
-* be able to describe the characteristics of common information delivery
-systems;
+-   be able to describe the characteristics of common information
+    delivery systems;
 
-* distinguish the different types of knowledge.
+-   distinguish the different types of knowledge.
 
-### Introduction {-}
+### Introduction {.unnumbered}
 
 There are three characteristics of the early decades of the twenty-first
 century: global warming, high-velocity global change, and the emerging
@@ -1219,6 +1239,11 @@ major economic power are major forces contributing to mass change.
 Organizations are undergoing large-scale restructuring as they attempt
 to reposition themselves to survive the threats and exploit the
 opportunities presented by these changes.
+
+[^6]: In mid 2017, the five most valuable public companies were Apple,
+    Google, Amazon, Microsoft, and Facebook. Furthermore, they are
+    concentrated on the west coast of the U.S. in either Silicon Valley
+    or Seattle.
 
 In the last few years, some very powerful and highly profitable
 information-based organizations have emerged. Apple is the world's
@@ -1231,11 +1256,11 @@ digitized our social world, and Microsoft has dominated the office
 environment for decades. We gain further insights into the value of
 information by considering its role in civilization.
 
-### A historical perspective {-}
+### A historical perspective {.unnumbered}
 
 Humans have been collecting data to manage their affairs for several
 thousand years. In 3000 BCE, Mesopotamians recorded inventory details in
-cuneiform, an early script. Today\'s society transmits Exabytes of data
+cuneiform, an early script. Today's society transmits Exabytes of data
 every day as billions of people and millions of organizations manage
 their affairs. The dominant issue facing each type of economy has
 changed over time, and the collection and use of data has changed to
@@ -1243,7 +1268,7 @@ reflect these concerns, as shown in the following table.
 
 *Societal focus*
 
-![](Figures/Chapter 2/societal focus.png) 
+![](Figures/Chapter%202/societal%20focus.png)
 
 Agrarian society was concerned with productive farming, and an important
 issue was when to plant crops. Ancient Egypt, for example, based its
@@ -1271,7 +1296,7 @@ centuries of industrialization, atmospheric CO~2~ levels have become
 alarmingly high. We are also reaching the limits of the planet's
 resources as its population now exceeds seven billion people. As a
 result, a new class of application is emerging, such as environmental
-management systems and UPS\'s telematics project.[^7] These new systems
+management systems and UPS's telematics project.[^7] These new systems
 will also include, for example, support for understanding environmental
 impact through simulation of energy consuming and production systems,
 optimization of energy systems, and design of low impact production and
@@ -1282,6 +1307,10 @@ result, a firm's need for data never diminishes, and each new layer
 creates another set of data needs. The flood will not subside and for
 most firms the data flow will need to grow significantly to meet the new
 challenge of sustainability.
+
+[^7]: Watson, R. T., Boudreau, M.-C., Li, S., & Levis, J. (2010).
+    Telematics at UPS: En route to Energy Informatics. MISQ Executive,
+    9(1), 1-11.
 
 A constant across all of these economies is organizational memory, or in
 its larger form, social memory. Writing and paper manufacturing
@@ -1319,19 +1348,19 @@ knowledge has become a prerequisite to corporate and national wealth.
 
 *Wealth creation*
 
-  The old             The new
-  ------------------- --------------
-  Military power      Intelligence
-  Natural resources   Marketing
-  Population          Global reach
-  Industry            Education
+| The old           | The new      |
+|:------------------|:-------------|
+| Military power    | Intelligence |
+| Natural resources | Marketing    |
+| Population        | Global reach |
+| Industry          | Education    |
 
 This brief history shows the increasing importance of information.
 Civilization was facilitated by the discovery of means for recording and
 disseminating information. In our current society, organizations are the
 predominant keepers and transmitters of information.
 
-### A brief history of information systems {-}
+### A brief history of information systems {.unnumbered}
 
 Information systems has three significant eras. In the first era,
 information work was transported to the computer. For instance, a
@@ -1341,28 +1370,35 @@ worker as a printout.
 
 *Information systems eras*
 
-+-------------+-------------+-------------+-------------+-------------+
-| Era         | Focus       | Period      | Technology  | Networks    |
-+=============+=============+=============+=============+=============+
-| 1           | Take        | 1950s --    | Batch       | Few data    |
-|             | information | mid-1970s   |             | networks    |
-|             | work to the |             |             |             |
-|             | computer    |             |             |             |
-+-------------+-------------+-------------+-------------+-------------+
-| 2           | Take        | Mid-1970s   | Host/termin | Spread of   |
-|             | information | --          | al          | private     |
-|             | work to the | mid-1990s   |             | networks    |
-|             | employee    |             | Client/serv |             |
-|             |             |             | er          |             |
-+-------------+-------------+-------------+-------------+-------------+
-| 3           | Take        | Mid-1990s   | Browser/ser | Public      |
-|             | information | -- present  | ver         | networks\   |
-|             | work to the |             |             | (Internet)  |
-|             | customer    |             |             |             |
-|             | and other   |             |             |             |
-|             | stakeholder |             |             |             |
-|             | s           |             |             |             |
-+-------------+-------------+-------------+-------------+-------------+
++------------+------------+------------+------------+------------+
+| Era        | Focus      | Period     | Technology | Networks   |
++============+============+============+============+============+
+| 1          | Take       | 1950s --   | Batch      | Few data   |
+|            | i          | mid-1970s  |            | networks   |
+|            | nformation |            |            |            |
+|            | work to    |            |            |            |
+|            | the        |            |            |            |
+|            | computer   |            |            |            |
++------------+------------+------------+------------+------------+
+| 2          | Take       | ##         | H          | Spread of  |
+|            | i          |  Mid-1970s | ost/termin | private    |
+|            | nformation |            | al         | networks   |
+|            | work to    | mid-1990s  |            |            |
+|            | the        |            | C          |            |
+|            | employee   |            | lient/serv |            |
+|            |            |            | er         |            |
++------------+------------+------------+------------+------------+
+| 3          | Take       | Mid-1990s  | B          | Public     |
+|            | i          | -- present | rowser/ser | networks\  |
+|            | nformation |            | ver        | (Internet) |
+|            | work to    |            |            |            |
+|            | the        |            |            |            |
+|            | customer   |            |            |            |
+|            | and other  |            |            |            |
+|            | s          |            |            |            |
+|            | takeholder |            |            |            |
+|            | s          |            |            |            |
++------------+------------+------------+------------+------------+
 
 In the second era, private networks were used to take information work
 to the employee. Initially, these were time-sharing and host/terminal
@@ -1401,28 +1437,28 @@ This brief history leads to the conclusion that the value IS creates is
 determined by whom an organization can reach, how it can reach them, and
 where and when it can reach them.
 
-* **Whom**. Whom an organization can contact determines whom it can
-influence, inform, or transfer work to. For example, if a hotel can be
-contacted electronically by its customers, it can promote online
-reservations (transfer work to customers), and reduce its costs.
+-   **Whom**. Whom an organization can contact determines whom it can
+    influence, inform, or transfer work to. For example, if a hotel can
+    be contacted electronically by its customers, it can promote online
+    reservations (transfer work to customers), and reduce its costs.
 
-* **How**. How an organization reaches a stakeholder determines the
-potential success of the interaction. The higher the bandwidth of the
-connection, the richer the message (e.g., using video instead of text),
-the greater the amount of information that can be conveyed, and the more
-information work that can be transferred.
+-   **How**. How an organization reaches a stakeholder determines the
+    potential success of the interaction. The higher the bandwidth of
+    the connection, the richer the message (e.g., using video instead of
+    text), the greater the amount of information that can be conveyed,
+    and the more information work that can be transferred.
 
-* **Where**. Value is created when customers get information directly
-related to their current location (e.g., a navigation system) and what
-local services they want to consume (e.g., the nearest Italian
-restaurant).
+-   **Where**. Value is created when customers get information directly
+    related to their current location (e.g., a navigation system) and
+    what local services they want to consume (e.g., the nearest Italian
+    restaurant).
 
-* **When**. When a firm delivers a service to a client can greatly
-determine its value. Stockbrokers, for instance, who can inform clients
-immediately of critical corporate news or stock market movements are
-likely to get more business.
+-   **When**. When a firm delivers a service to a client can greatly
+    determine its value. Stockbrokers, for instance, who can inform
+    clients immediately of critical corporate news or stock market
+    movements are likely to get more business.
 
-### Information characteristics {-}
+### Information characteristics {.unnumbered}
 
 Three useful concepts for describing information are hardness, richness,
 and class. Information hardness is a subjective measure of the accuracy
@@ -1431,7 +1467,7 @@ describes the concept that information can be rich or lean depending on
 the information delivery medium. Information class groups types of
 information by their key features.
 
-#### Information hardness {-}
+#### Information hardness {.unnumbered}
 
 In 1812, the Austrian mineralogist Friedrich Mohs proposed a scale of
 hardness, in order of increasing relative hardness, based on 10 common
@@ -1446,18 +1482,18 @@ which comes from unidentified sources, is rife with uncertainty.
 
 *An information hardness scale*
 
-  Mineral      Scale   Data
-  ------------ ------- ------------------------------------------------------------------------------------
-  Talc         1       Unidentified source---rumors, gossip, and hearsay
-  Gypsum       2       Identified non-expert source---opinions, feelings, and ideas
-  Calcite      3       Identified expert source---predictions, speculations, forecasts, and estimates
-  Fluorite     4       Unsworn testimony---explanations, justifications, assessments, and interpretations
-  Apatite      5       Sworn testimony---explanations, justifications, assessments, and interpretations
-  Orthoclase   6       Budgets, formal plans
-  Quartz       7       News reports, non-financial data, industry statistics, and surveys
-  Topaz        8       Unaudited financial statements, and government statistics
-  Corundum     9       Audited financial statements
-  Diamond      10      Stock exchange and commodity market data
+| Mineral    | Scale | Data                                                                               |
+|:-----------|:------|:-----------------------------------------------------------------------------------|
+| Talc       | 1     | Unidentified source---rumors, gossip, and hearsay                                  |
+| Gypsum     | 2     | Identified non-expert source---opinions, feelings, and ideas                       |
+| Calcite    | 3     | Identified expert source---predictions, speculations, forecasts, and estimates     |
+| Fluorite   | 4     | Unsworn testimony---explanations, justifications, assessments, and interpretations |
+| Apatite    | 5     | Sworn testimony---explanations, justifications, assessments, and interpretations   |
+| Orthoclase | 6     | Budgets, formal plans                                                              |
+| Quartz     | 7     | News reports, non-financial data, industry statistics, and surveys                 |
+| Topaz      | 8     | Unaudited financial statements, and government statistics                          |
+| Corundum   | 9     | Audited financial statements                                                       |
+| Diamond    | 10    | Stock exchange and commodity market data                                           |
 
 Audited financial statements are in the corundum zone. They are measured
 according to standard rules (known as "generally accepted accounting
@@ -1490,7 +1526,7 @@ different sources. Although this approach introduces redundancy, this is
 precisely what the manager seeks. Relatively consistent information from
 different sources is reassuring.
 
-#### Information richness {-}
+#### Information richness {.unnumbered}
 
 Information can be described as rich or lean. It is richest when
 delivered face-to-face. Conversation permits immediate feedback for
@@ -1502,11 +1538,15 @@ There is no opportunity for questions, no additional information from
 body movements and vocal tone. The information richness of some
 communication media is shown in the following table.
 
-*Information richness and communication media[^8]*
+*Information richness and communication media*[^8]
 
-  Richest                                                                        Leanest
-  -------------- ----------- -------------------- ------------------------------ -------------------
-  Face-to-face   Telephone   Personal documents   Impersonal written documents   Numeric documents
+[^8]: *Daft, R. L., & Lengel, R. H. (1986). Organizational information
+    requirements, media richness, and structural design. Management
+    Science*, 32(5), 554-571.
+
+| Richest      |           |                    |                              | Leanest           |
+|:-------------|-----------|--------------------|------------------------------|:------------------|
+| Face-to-face | Telephone | Personal documents | Impersonal written documents | Numeric documents |
 
 Managers seek rich information when they are trying to resolve
 equivocality or ambiguity. It means that managers cannot make sense of a
@@ -1534,7 +1574,7 @@ formal information systems that deliver lean information. Although this
 is their proper role, data managers must realize that they can deliver
 only a portion of the data required by decision makers.
 
-#### Information classes {-}
+#### Information classes {.unnumbered}
 
 Information can be grouped into four classes: content, form, behavior,
 and action. Until recently, most organizational information fell into
@@ -1542,12 +1582,12 @@ the first category.
 
 *Information classes*
 
-  Class      Description
-  ---------- ----------------------------------------------
-  Content    Quantity, location, and types of items
-  Form       Shape and composition of an object
-  Behavior   Simulation of a physical object
-  Action     Creation of action (e.g., industrial robots)
+| Class    | Description                                  |
+|:---------|:---------------------------------------------|
+| Content  | Quantity, location, and types of items       |
+| Form     | Shape and composition of an object           |
+| Behavior | Simulation of a physical object              |
+| Action   | Creation of action (e.g., industrial robots) |
 
 Content information records details about quantity, location, and types
 of items. It tends to be historical in nature and is traditionally the
@@ -1576,19 +1616,19 @@ action. Industrial robots take action information and manufacture parts,
 weld car bodies, or transport items. Antilock brakes are an example of
 action information in use.
 
-+--------------------------------------------------------------------------+
-| **A lifetime of information---every day**                                |
-|                                                                          |
-| It is estimated that a single weekday issue of the *New York Times*      |
-| contains more information than the average person in seventeenth-century |
-| England came across in a lifetime. Information, once rare, is now        |
-| abundant and overflowing.                                                |
-|                                                                          |
-| Roszak, T. 1986. The cult of information: The folklore of computers and  |
-| the true art of thinking. New York, NY: Pantheon. p. 32.                 |
-+--------------------------------------------------------------------------+
++-----------------------------------------------------------------------+
+| **A lifetime of information---every day**                             |
+|                                                                       |
+| It is estimated that a single weekday issue of the *New York Times*   |
+| contains more information than the average person in                  |
+| seventeenth-century England came across in a lifetime. Information,   |
+| once rare, is now abundant and overflowing.                           |
+|                                                                       |
+| Roszak, T. 1986. The cult of information: The folklore of computers   |
+| and the true art of thinking. New York, NY: Pantheon. p. 32.          |
++-----------------------------------------------------------------------+
 
-### Information and organizational change {-}
+### Information and organizational change {.unnumbered}
 
 Organizations are goal-directed. They undergo continual change as they
 use their resources, people, technology, and financial assets to reach
@@ -1601,13 +1641,13 @@ three categories: goal setting, gap, and change.
 
 *Organizational information categories*
 
-![](Figures/Chapter 2/gap model.jpg) 
+![](Figures/Chapter%202/gap%20model.jpg)
 
 The emergence of an information society also means that information
 provides dual possibilities for change. Information is used to plan
 change, and information is a medium for change.
 
-#### Goal-setting information {-}
+#### Goal-setting information {.unnumbered}
 
 Organizations set goals or levels of desired performance. Managers need
 information to establish goals that are challenging but realistic. A
@@ -1621,7 +1661,7 @@ radical change because internal information is used to set performance
 standards. Some organizations have turned to external information and
 are using benchmarking as a source of information for goal setting.
 
-##### Planning {-}
+##### Planning {.unnumbered}
 
 Planning is an important task for senior managers. To set the direction
 for the company, they need information about consumers' potential
@@ -1639,7 +1679,7 @@ revenues. Major planning decisions, such as building a new plant, will
 be based on an analysis of internal data (use of existing capacity) and
 external data (projected customer demand).
 
-##### Benchmarking {-}
+##### Benchmarking {.unnumbered}
 
 Benchmarking establishes goals based on best industry practices. It is
 founded on the Japanese concept of *dantotsu*, striving to be the best
@@ -1658,14 +1698,14 @@ Organizations need information to identify feasible, motivating, and
 challenging goals. Once these goals have been established, they need
 information on the extent to which these goals have been attained.
 
-#### Gap information {-}
+#### Gap information {.unnumbered}
 
 Because goals are meant to be challenging, there is often a gap between
 actual and desired performance. Organizations use a number of mechanisms
 to detect a gap and gain some idea of its size. Problem identification
 and scorekeeping are two principal methods of providing gap information.
 
-##### Problem identification {-}
+##### Problem identification {.unnumbered}
 
 Business conditions are continually changing because of competitors'
 actions, trends in consumer demand, and government actions. Often these
@@ -1681,7 +1721,7 @@ shift into high gear. Managers will request rapid delivery of ad hoc
 reports from a variety of sources. The ideal organizational memory
 system can adapt smoothly to deliver appropriate information quickly.
 
-##### Scorekeeping {-}
+##### Scorekeeping {.unnumbered}
 
 Keeping track of the score provides gap information. Managers ask many
 questions: How many items did we make yesterday? What were the sales
@@ -1702,31 +1742,35 @@ constraints, most managers are forced to limit their attention to 10 or
 fewer key variables singled out by the critical success factors (CSF)
 method.[^9] Scorekeeping information is usually fairly stable.
 
+[^9]: Rockart, J.F. (1982). The changing role of the information systems
+    executive: a critical success factors perspective. *Sloan Management
+    Review*, 24(1), 3-13.
+
 *Sales output tracking information*
 
-  Category       Example
-  -------------- -----------------------------------
-  Orders         Number of current customers
-                 Average order size
-                 Batting average (orders to calls)
-  Sales volume   Dollar sales volume
-                 Unit sales volume
-                 By customer type
-                 By product category
-                 Translated to market share
-                 Quota achieved
-  Margins        Gross margin
-                 Net profit
-                 By customer type
-                 By product
-  Customers      Number of new accounts
-                 Number of lost accounts
-                 Percentage of accounts sold
-                 Number of accounts overdue
-                 Dollar value of receivables
-                 Collections of receivables
+| Category     | Example                           |
+|:-------------|:----------------------------------|
+| Orders       | Number of current customers       |
+|              | Average order size                |
+|              | Batting average (orders to calls) |
+| Sales volume | Dollar sales volume               |
+|              | Unit sales volume                 |
+|              | By customer type                  |
+|              | By product category               |
+|              | Translated to market share        |
+|              | Quota achieved                    |
+| Margins      | Gross margin                      |
+|              | Net profit                        |
+|              | By customer type                  |
+|              | By product                        |
+| Customers    | Number of new accounts            |
+|              | Number of lost accounts           |
+|              | Percentage of accounts sold       |
+|              | Number of accounts overdue        |
+|              | Dollar value of receivables       |
+|              | Collections of receivables        |
 
-### Change information {-}
+### Change information {.unnumbered}
 
 Accurate change information is very valuable because it enables managers
 to predict the outcome of various actions to close a gap with some
@@ -1735,7 +1779,7 @@ precise, and there are many variables that can influence the effect of
 any planned change. Nevertheless, organizations spend a great deal of
 time collecting information to support problem solving and planning.
 
-#### Problem solution {-}
+#### Problem solution {.unnumbered}
 
 Once a concern has been identified, a manager seeks to find its cause. A
 decrease in sales could be the result of competitors introducing a new
@@ -1747,7 +1791,7 @@ economic recession, the manager might use a decision support system
 (DSS) to analyze the effect of a price decrease or a range of
 promotional activities.
 
-#### Infromation as a means of change {-}
+#### Infromation as a means of change {.unnumbered}
 
 The emergence of an information society means that information can be
 used as a means of changing an organization's performance. Corporations
@@ -1757,7 +1801,7 @@ gain a competitive advantage. Further insights into the use of
 information as a change agent are gained by examining marketing,
 customer service, and empowerment.
 
-#### Marketing {-}
+#### Marketing {.unnumbered}
 
 Marketing is a key strategy for changing organizational performance by
 increasing sales. Information has become an important component in
@@ -1786,7 +1830,7 @@ The Web has significantly enhanced the value of database technology.
 Many firms now use a combination of a Web site and a DBMS to market
 products and service customers.
 
-#### Customer Service {-}
+#### Customer Service {.unnumbered}
 
 Many American business leaders rank customer service as their most
 important goal for organizational success. Many of the developed
@@ -1795,31 +1839,32 @@ nearly 80 percent of the GNP and most of the new jobs. Many companies
 now compete for customers by offering superior customer service.
 Information is frequently a key to this improved service.
 
-+--------------------------------------------------------------------------+
-| *Skill builder*                                                          |
-|                                                                          |
-| For many businesses, information is the key to high-quality customer     |
-| service. Thus, some firms use information, and thus customer service, as |
-| a key differentiating factor, while others might compete on price.       |
-| Compare the electronics component of Web sites Amazon and TigerDirect.   |
-| How do they use price and information to compete? What are the           |
-| implications for data management if a firm uses information to compete?  |
-+--------------------------------------------------------------------------+
++-----------------------------------------------------------------------+
+| *Skill builder*                                                       |
+|                                                                       |
+| For many businesses, information is the key to high-quality customer  |
+| service. Thus, some firms use information, and thus customer service, |
+| as a key differentiating factor, while others might compete on price. |
+| Compare the electronics component of Web sites Amazon and             |
+| TigerDirect. How do they use price and information to compete? What   |
+| are the implications for data management if a firm uses information   |
+| to compete?                                                           |
++-----------------------------------------------------------------------+
 
-#### Empowerment {-}
+#### Empowerment {.unnumbered}
 
 Empowerment means giving employees greater freedom to make decisions.
 More precisely, it is sharing with frontline employees
 
-* information about the organization's performance;
+-   information about the organization's performance;
 
-* rewards based on the organization's performance;
+-   rewards based on the organization's performance;
 
-* knowledge and information that enable employees to understand and
-contribute to organizational performance;
+-   knowledge and information that enable employees to understand and
+    contribute to organizational performance;
 
-* power to make decisions that influence organizational direction and
-performance.
+-   power to make decisions that influence organizational direction and
+    performance.
 
 Notice that information features prominently in the process. A critical
 component is giving employees access to the information they need to
@@ -1830,7 +1875,7 @@ Empowerment can contribute to organizational performance by increasing
 the quality of products and services. Together, empowerment and
 information are mechanisms of planned change.
 
-### Information and managerial work {-}
+### Information and managerial work {.unnumbered}
 
 Because managers frequently use data management systems in their normal
 activities as a source of information about change and as a means of
@@ -1863,7 +1908,7 @@ system, their behavior changes very little. They may access a few
 screens during the day, but oral communication is still their preferred
 method of data gathering and dissemination.
 
-#### Managers' information requirements {-}
+#### Managers' information requirements {.unnumbered}
 
 Managers have certain requirements of the information they receive.
 These expectations should shape a data management system's content and
@@ -1887,9 +1932,10 @@ source is questionable, managers seek confirmation from other sources.
 If a number of different sources provide consistent information, a
 manager gains confidence in the information's accuracy.
 
-*Relationship of perceived information hardness to volume of information requested*
+*Relationship of perceived information hardness to volume of information
+requested*
 
-![](Figures/Chapter 2/hardness-volume tradeoff.png)
+![](Figures/Chapter%202/hardness-volume%20tradeoff.png)
 
 It is not unusual, therefore, to have a manager seek information from a
 database, a conversation with a subordinate, and a contact in another
@@ -1899,7 +1945,7 @@ management system should be designed to minimize redundancy, but
 different components of organizational memory can supply overlapping
 information.
 
-#### Managers' needs for information vary accordingly with responsibilities {-}
+#### Managers' needs for information vary accordingly with responsibilities {.unnumbered}
 
 Operational managers need detailed, short-term information to deal with
 well-defined problems in areas such as sales, service, and production.
@@ -1921,9 +1967,9 @@ illustrated in the following figure.
 
 *Management level and information need*
 
-![](Figures/Chapter 2/onion model.jpg)
+![](Figures/Chapter%202/onion%20model.jpg)
 
-#### Information satisficing {-}
+#### Information satisficing {.unnumbered}
 
 Because managers face making many decisions in a short period, most do
 not have the time or resources to collect and interpret all the
@@ -1938,7 +1984,7 @@ processing of the right information, then managers should be able to
 move beyond selecting the first satisfactory decision to selecting the
 best of several satisfactory decisions.
 
-### Information delivery systems {-}
+### Information delivery systems {.unnumbered}
 
 Most organizations have a variety of delivery systems to provide
 information to managers. Developed over many years, these systems are
@@ -1953,28 +1999,28 @@ to the manager.
 
 *Information delivery systems software*
 
-  Organizational memory   Delivery systems
-  ----------------------- -------------------------------------
-  People                  Conversation
-                          E-mail
-                          Meeting
-                          Report
-                          Groupware
-  Files                   Management information system (MIS)
-  Documents               Web browser
-                          E-mail attachment
-  Images                  Image processing system (IPS)
-  Graphics                Computer aided design (CAD)
-                          Geographic information system (GIS)
-  Voice                   Voice mail
-                          Voice recording system
-  Mathematical model      Decision support system (DSS)
-  Knowledge               Expert system (ES)
-  Decisions               Conversation
-                          E-mail
-                          Meeting
-                          Report
-                          Groupware
+| Organizational memory | Delivery systems                    |
+|:----------------------|:------------------------------------|
+| People                | Conversation                        |
+|                       | E-mail                              |
+|                       | Meeting                             |
+|                       | Report                              |
+|                       | Groupware                           |
+| Files                 | Management information system (MIS) |
+| Documents             | Web browser                         |
+|                       | E-mail attachment                   |
+| Images                | Image processing system (IPS)       |
+| Graphics              | Computer aided design (CAD)         |
+|                       | Geographic information system (GIS) |
+| Voice                 | Voice mail                          |
+|                       | Voice recording system              |
+| Mathematical model    | Decision support system (DSS)       |
+| Knowledge             | Expert system (ES)                  |
+| Decisions             | Conversation                        |
+|                       | E-mail                              |
+|                       | Meeting                             |
+|                       | Report                              |
+|                       | Groupware                           |
 
 Software is used to move data to and from organizational memory. There
 is usually tight coupling between software and the format of an
@@ -1989,7 +2035,7 @@ quick glance at the preceding table shows that there are many different
 information delivery systems. We will discuss each of these briefly to
 illustrate the lack of integration of organizational memories.
 
-##### Verbal exchange {-}
+##### Verbal exchange {.unnumbered}
 
 Conversations, meetings, and oral reporting are commonly used methods of
 information delivery. Indeed, managers show a strong preference for
@@ -1999,7 +2045,7 @@ way we learned for thousands of years as a preliterate culture. Only
 recently have we learned to make decisions using spreadsheets and
 computer reports.
 
-##### Voice mail {-}
+##### Voice mail {.unnumbered}
 
 Voice mail is useful for people who do not want to be interrupted. It
 supports asynchronous communication; that is, the two parties to the
@@ -2008,13 +2054,13 @@ can store many prerecorded messages that can be selectively replayed
 using a phone's keypad. Organizations use this feature to support
 standard customer queries.
 
-##### Electronic mail {-}
+##### Electronic mail {.unnumbered}
 
 Email is an important system of information delivery. It too supports
 asynchronous messaging, and it is less costly than voice mail for
 communication. Many documents are exchanged as attachments to email.
 
-##### Written report {-}
+##### Written report {.unnumbered}
 
 Formal, written reports have a long history in organizations. Before
 electronic communication, they were the main form of information
@@ -2028,12 +2074,12 @@ key points in the report. Such a presentation enhances the information
 delivered, because the audience has an opportunity to ask questions and
 get an immediate response.
 
-##### Meetings {-}
+##### Meetings {.unnumbered}
 
 Because managers spend 30-80 percent of their time in meetings, these
 are a key source of information.
 
-##### Groupware {-}
+##### Groupware {.unnumbered}
 
 Since meetings occupy so much managerial time and in many cases are
 poorly planned and managed, organizations are looking for improvements.
@@ -2041,7 +2087,7 @@ Groupware is a general term applied to a range of software systems
 designed to improve some aspect of group work. It is excellent for
 tapping soft information and the informal side of organizational memory.
 
-##### Management information system {-}
+##### Management information system {.unnumbered}
 
 Management information systems are a common method of delivering
 information from data management systems. A preplanned query is often
@@ -2054,13 +2100,13 @@ Customized reports do not have these shortcomings, but they are often
 more expensive and time consuming because they need to be prepared by an
 analyst.
 
-##### Web {-}
+##### Web {.unnumbered}
 
 Word processing, desktop publishing, or HTML editors are used for
 preparing documents that are disseminated by placing them on a Web
 server for convenient access and sharing.
 
-##### Image processing system {-}
+##### Image processing system {.unnumbered}
 
 An image processing system (IPS) captures data using a scanner to
 digitize an image. Images in the form of letters, reports,
@@ -2068,27 +2114,27 @@ illustrations, and graphics have always been an important type of
 organizational memory. An IPS permits these forms of information to be
 captured electronically and disseminated.
 
-##### Computer-aided design {-}
+##### Computer-aided design {.unnumbered}
 
 Computer-aided design (CAD) is used extensively to create graphics. For
 example, engineers use CAD in product design, and architects use it for
 building design. These plans are a part of organizational memory for
 designers and manufacturers.
 
-##### Geographic information system {-}
+##### Geographic information system {.unnumbered}
 
 Many cities uses a geographic information system (GIS) to store
 graphical data about roads, utilities, and services. This information is
 another form of organizational memory.
 
-##### Decision support system {-}
+##### Decision support system {.unnumbered}
 
 A decision support system (DSS) is frequently a computer-based
 mathematical model of a problem. DSS software, available in a range of
 packages, permits the model and data to be retrieved and executed. Model
 parameters can be varied to investigate alternatives.
 
-##### Expert system {-}
+##### Expert system {.unnumbered}
 
 An expert system (ES) has captured the knowledge of someone who is
 particularly skillful at solving a certain type of problem. It is
@@ -2096,7 +2142,7 @@ convenient to think of an ES as a set of rules. An ES is typically used
 interactively, as it asks the decision-maker questions and uses the
 responses to make a recommendation.
 
-### Information integration {-}
+### Information integration {.unnumbered}
 
 A fundamental problem for most organizations is that their memory is
 fragmented across a wide variety of formats and technologies. Too
@@ -2117,13 +2163,13 @@ organized repositories of organizational data.
 
 *Information integration - the present situation*
 
-![](Figures/Chapter 2/fragmented memory.png)
+![](Figures/Chapter%202/fragmented%20memory.png)
 
 *The ideal organizational memory and information delivery system*
 
-![](Figures/Chapter 2/integrated memory.png)
+![](Figures/Chapter%202/integrated%20memory.png)
 
-### Knowledge {-}
+### Knowledge {.unnumbered}
 
 The performance of many organizations is determined more by their
 cognitive capabilities and knowledge than their physical assets. A
@@ -2134,13 +2180,13 @@ those in Europe are knowledge-based.
 
 An organization's knowledge, in order of increasing importance, is
 
-* cognitive knowledge (know what);
+-   cognitive knowledge (know what);
 
-* advanced skills (know how);
+-   advanced skills (know how);
 
-* system understanding and trained intuition (know why);
+-   system understanding and trained intuition (know why);
 
-* self-motivated creativity (care why).
+-   self-motivated creativity (care why).
 
 This text illustrates the different types of knowledge. You will develop
 cognitive knowledge in Section 4, when you learn about data
@@ -2172,7 +2218,7 @@ partner.
 
 *Skills values vs. training expenditures (Quinn et al., 1996)*
 
-![](Figures/Chapter 2/knowledge and training.png)
+![](Figures/Chapter%202/knowledge%20and%20training.png)
 
 There are two types of knowledge: explicit and tacit. Explicit knowledge
 is codified and transferable. This textbook is an example of explicit
@@ -2189,7 +2235,7 @@ comes with practice. Ideally, you should develop several models under
 the guidance of an experienced modeler, such as your instructor, who can
 pass on his or her tacit knowledge.
 
-### Summary {-}
+### Summary {.unnumbered}
 
 Information has become a key foundation for organizational growth. The
 information society is founded on computer and communications
@@ -2209,28 +2255,28 @@ time constraints, they collect only enough information to make a
 satisfactory decision. Organizational memory should be integrated to
 provide one interface to an organization's information stores.
 
-Key terms and concepts
------------------------------------- --------------------------------------------------
-Advanced skills (know how)           Information organization
-Benchmarking                         Information requirements
-Change information                   Information richness
-Cognitive knowledge (know what)      Information satisficing
-Empowerment                          Information society
-Explicit knowledge                   Knowledge
-Gap information                      Managerial work
-Global change                        Organizational change
-Goal-setting information             Phases of civilization
-Information as a means of change     Self-motivated creativity (care why)
-Information delivery systems         Social memory
-Information hardness                 System understanding (know why)
-Information integration              Tacit knowledge
+| Key terms and concepts           |                                      |
+|:---------------------------------|--------------------------------------|
+| Advanced skills (know how)       | Information organization             |
+| Benchmarking                     | Information requirements             |
+| Change information               | Information richness                 |
+| Cognitive knowledge (know what)  | Information satisficing              |
+| Empowerment                      | Information society                  |
+| Explicit knowledge               | Knowledge                            |
+| Gap information                  | Managerial work                      |
+| Global change                    | Organizational change                |
+| Goal-setting information         | Phases of civilization               |
+| Information as a means of change | Self-motivated creativity (care why) |
+| Information delivery systems     | Social memory                        |
+| Information hardness             | System understanding (know why)      |
+| Information integration          | Tacit knowledge                      |
 
-#### References and additional readings {-}
+#### References and additional readings {.unnumbered}
 
 Quinn, J. B., P. Anderson, and S. Finkelstein. 1996. Leveraging
 intellect. *Academy of Management Executive* 10 (3):7-27.
 
-#### Exercises {-}
+#### Exercises {.unnumbered}
 
 1.  From an information perspective, what is likely to be different
     about the customer service era compared to the forthcoming
@@ -2310,42 +2356,10 @@ Imagine you are the new owner of The Expeditioner.
 1.  What information would you request to determine the present
     performance of the organization?
 
-2. What information would help you to establish goals for The
+2.  What information would help you to establish goals for The
     Expeditioner? What goals would you set?
 
-3. What information would you want to help you assist you in changing
+3.  What information would you want to help you assist you in changing
     The Expeditioner?
 
-4. How could you use information to achieve your goals.
-
-
-
-
-[^1]: Newell, A., & Simon, H. A. (1972). Human problem solving.
-    Englewood Cliffs, NJ: Prentice-Hall.
-
-[^2]: Quinn, J. B. (1994). Appraising intellectual assets. *The McKinsey
-    Quarterly*(2), 90-96.
-
-[^3]: https://en.wikipedia.org/wiki/The\_Phantom
-
-[^4]: https://en.wikipedia.org/wiki/Harry\_Flashman
-
-[^5]: https://en.wikipedia.org/wiki/List\_of\_names\_in\_English\_with\_counterintuitive\_pronunciations
-
-[^6]: In mid 2017, the five most valuable public companies were Apple,
-    Google, Amazon, Microsoft, and Facebook. Furthermore, they are
-    concentrated on the west coast of the U.S. in either Silicon Valley
-    or Seattle.
-
-[^7]: Watson, R. T., Boudreau, M.-C., Li, S., & Levis, J. (2010).
-    Telematics at UPS: En route to Energy Informatics. MISQ Executive,
-    9(1), 1-11.
-
-[^8]: Daft, R. L., & Lengel, R. H. (1986). Organizational information
-    requirements, media richness, and structural design. *Management
-    Science*, 32(5), 554-571.
-
-[^9]: Rockart, J.F. (1982). The changing role of the information systems
-    executive: a critical success factors perspective. *Sloan Management
-    Review*, 24(1), 3-13.
+4.  How could you use information to achieve your goals.
