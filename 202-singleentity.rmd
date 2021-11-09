@@ -1,20 +1,26 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # Chapter The Single Entity
 
 > *I want to be alone.*
 >
 > Attributed to Greta Garbo
 
-### Learning Objectives {-}
+### Learning Objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
-* model a single entity;
+-   model a single entity;
 
-* define a single database;
+-   define a single database;
 
-* write queries for a single-table database.
+-   write queries for a single-table database.
 
-## The relational model {-}
+## The relational model {.unnumbered}
 
 The relational model introduced by Codd in 1970 is the most popular
 technology for managing large collections of data. In this chapter, the
@@ -25,18 +31,17 @@ usefulness, value, and elegance.
 
 A **relation**, similar to the mathematical concept of a set, is a
 two-dimensional table arranged in rows and columns. This is a very
-familiar idea. You have been using tables for many years. A
-**relational database** is a collection of relations, where
-**relation** is a mathematical term for a table. One row of a table
-stores details of one observation, instance, or case of an item about
-which facts are retained---for example, one row for details of a
-particular student. All the rows in a table store data about the same
-type of item. Thus, a database might have one table for student data and
-another table for class data. Similarly, each column in the table
-contains the same type of data. For example, the first column might
-record a student's identification number. A key database design question
-is to decide what to store in each table. What should the rows and
-columns contain?
+familiar idea. You have been using tables for many years. A **relational
+database** is a collection of relations, where **relation** is a
+mathematical term for a table. One row of a table stores details of one
+observation, instance, or case of an item about which facts are
+retained---for example, one row for details of a particular student. All
+the rows in a table store data about the same type of item. Thus, a
+database might have one table for student data and another table for
+class data. Similarly, each column in the table contains the same type
+of data. For example, the first column might record a student's
+identification number. A key database design question is to decide what
+to store in each table. What should the rows and columns contain?
 
 In a relational database, each row must be uniquely identified. There
 must be a **primary key**, such as student identifier, so that a
@@ -45,26 +50,29 @@ common. Telephone numbers and e-mail addresses are examples of unique
 identifiers. Selection of the primary key, or unique identifier, is
 another key issue of database design.
 
-**Global legal entity identifier (LEI)**
-
-There is no global standard for identifying legal entities across
-markets and jurisdictions. The need for such a standard was amplified by
-Lehman Brothers collapse in 2008. Lehman had 209 registered
-subsidiaries, legal entities, in 21 countries, and it was party to more
-than 900,000 derivatives contracts upon its collapse. Key stakeholders,
-such as financial regulators and Lehman's creditors, were unable to
-assess their exposure. Furthermore, others were unable to assess the
-possible ripple on them of the effects of the collapse because of the
-transitive nature of many investments (i.e., A owes B, B owes C, and C
-owes D).
-
-The adoption of a global legal entity identifier (LEI), should improve
-financial system regulation and corporate risk management. Regulators
-will find it easier to monitor and analyze threats to financial
-stability and risk managers will be more able evaluate their companies'
-risks.
-
-Source: www.ny.frb.org/research/epr/2014/1403flem.pdf
++-------------------------------------------------------------------+
+| **Global legal entity identifier (LEI)**                          |
++===================================================================+
+| There is no global standard for identifying legal entities across |
+| markets and jurisdictions. The need for such a standard was       |
+| amplified by Lehman Brothers collapse in 2008. Lehman had 209     |
+| registered subsidiaries, legal entities, in 21 countries, and it  |
+| was party to more than 900,000 derivatives contracts upon its     |
+| collapse. Key stakeholders, such as financial regulators and      |
+| Lehman's creditors, were unable to assess their exposure.         |
+| Furthermore, others were unable to assess the possible ripple on  |
+| them of the effects of the collapse because of the transitive     |
+| nature of many investments (i.e., A owes B, B owes C, and C owes  |
+| D).                                                               |
+|                                                                   |
+| The adoption of a global legal entity identifier (LEI), should    |
+| improve financial system regulation and corporate risk            |
+| management. Regulators will find it easier to monitor and analyze |
+| threats to financial stability and risk managers will be more     |
+| able evaluate their companies' risks.                             |
+|                                                                   |
+| Source: www.ny.frb.org/research/epr/2014/1403flem.pdf             |
++-------------------------------------------------------------------+
 
 The tables in a relational database are **connected** or **related** by
 means of the data in the tables. You will learn, in the next chapter,
@@ -78,18 +86,18 @@ airline serving Atlanta.
 *International airlines serving Atlanta*
 
 | Airline |
-|-----|
-|  AM |
-|   JL |
-|   KX |
-|   LM |
-|   MA |
-|   OS |
-|   RG |
-|   SN |
-|   SR |
-|   LH |
-|   LY  |
+|---------|
+| AM      |
+| JL      |
+| KX      |
+| LM      |
+| MA      |
+| OS      |
+| RG      |
+| SN      |
+| SR      |
+| LH      |
+| LY      |
 
 If you don't know which airline has the abbreviation AM, then you need
 to look at the following table of airline codes to discover that
@@ -99,17 +107,17 @@ which is the foreign key.
 
 *A partial list of airline codes*
 
-| Code  | Airline |
-|  ------|:--|
-|  AA | American Airlines |
-| AC |  Air Canada |
-| AD | Lone Star Airlines |
-|  AE | Mandarin Airlines |
-|  AF | Air France |
-|  AG | Interprovincial Airlines |
-|  AI | Air India |
-|  AM | AeroMexico |
-|  AQ | Aloha Airlines |
+| Code | Airline                  |
+|------|:-------------------------|
+| AA   | American Airlines        |
+| AC   | Air Canada               |
+| AD   | Lone Star Airlines       |
+| AE   | Mandarin Airlines        |
+| AF   | Air France               |
+| AG   | Interprovincial Airlines |
+| AI   | Air India                |
+| AM   | AeroMexico               |
+| AQ   | Aloha Airlines           |
 
 When designing the relational model, Codd provided commands for
 processing multiple records at a time. His intention was to increase the
@@ -119,13 +127,16 @@ the relational model supports set processing (multiple
 records-at-a-time), which is most frequently implemented as **Structured
 Query Language (SQL).**[^1]
 
+[^1]: Officially pronounced as "S-Q-L," but often also pronounced as
+    "sequel."
+
 The relational model separates the logical design of a database from its
 physical storage. This notion of **data independence** simplifies data
 modeling and database programming. In this section, we focus on logical
 database design, and now that you have had a brief introduction to the
 relational model, you are ready to learn data modeling.
 
-## Getting started {-}
+## Getting started {.unnumbered}
 
 As with most construction projects, building a relational database must
 be preceded by a design phase. Data modeling, our design technique, is a
@@ -141,20 +152,20 @@ studying sentence formation; you just started by learning and using
 simple words. We start with the simplest data model, a single entity,
 and the simplest database, a single table, as follows.
 
-| Firm code | Firm’s name | Price | Quantity  | Dividend | PE ratio |
-| --------- |:--- |--:|--:| --:| --:|
-| FC        | Freedonia Copper    | 27.5  | 10,529    | 1.84     | 16       |
-| PT        | Patagonian Tea      | 55.25 | 12,635    | 2.50      | 10       |
-| AR        | Abyssinian Ruby     | 31.82 | 22,010    | 1.32     | 13       |
-| SLG       | Sri Lankan Gold     | 50.37 | 32,868    | 2.68     | 16       |
-| ILZ       | Indian Lead & Zinc  | 37.75 | 6,390     | 3.00        | 12       |
-| BE        | Burmese Elephant    | 0.07  | 154,713   | 0.01     | 3        |
-| BS        | Bolivian Sheep      | 12.75 | 231,678   | 1.78     | 11       |
-| NG        | Nigerian Geese      | 35.00    | 12,323    | 1.68     | 10       |
-| CS        | Canadian Sugar      | 52.78 | 4,716     | 2.50      | 15       |
-| ROF       | Royal Ostrich Farms | 33.75 | 1,234,923 | 3.00        | 6        |
+| Firm code | Firm's name         | Price |  Quantity | Dividend | PE ratio |
+|-----------|:--------------------|------:|----------:|---------:|---------:|
+| FC        | Freedonia Copper    |  27.5 |    10,529 |     1.84 |       16 |
+| PT        | Patagonian Tea      | 55.25 |    12,635 |     2.50 |       10 |
+| AR        | Abyssinian Ruby     | 31.82 |    22,010 |     1.32 |       13 |
+| SLG       | Sri Lankan Gold     | 50.37 |    32,868 |     2.68 |       16 |
+| ILZ       | Indian Lead & Zinc  | 37.75 |     6,390 |     3.00 |       12 |
+| BE        | Burmese Elephant    |  0.07 |   154,713 |     0.01 |        3 |
+| BS        | Bolivian Sheep      | 12.75 |   231,678 |     1.78 |       11 |
+| NG        | Nigerian Geese      | 35.00 |    12,323 |     1.68 |       10 |
+| CS        | Canadian Sugar      | 52.78 |     4,716 |     2.50 |       15 |
+| ROF       | Royal Ostrich Farms | 33.75 | 1,234,923 |     3.00 |        6 |
 
-## Modeling a single-entity database {-}
+## Modeling a single-entity database {.unnumbered}
 
 The simplest database contains information about one entity, which is
 some real-world thing. Some entities are physical---CUSTOMER, ORDER, and
@@ -165,7 +176,7 @@ singular form in uppercase in the top part of the rectangle.
 
 *The entity SHARE*
 
-![](Figures/Chapter 3/share.png)
+![](Figures/Chapter%203/share.png){width="152"}
 
 An entity has characteristics or attributes. An **attribute** is a
 discrete element of data; it is not usually broken down into smaller
@@ -181,7 +192,7 @@ entity SHARE.
 
 *The entity SHARE and its attributes*
 
-![](Figures/Chapter 3/share with attributes.png)
+![](Figures/Chapter%203/share%20with%20attributes.png){width="152"}
 
 An **instance** is a particular occurrence of an entity (e.g., facts
 about Freedonia Copper). To avoid confusion, each instance of an entity
@@ -204,7 +215,7 @@ identifier.
 
 *The entity SHARE, its attributes, and identifier*
 
-![](Figures/Chapter 3/share with identifier.png)
+![](Figures/Chapter%203/share%20with%20identifier.png){width="152"}
 
 Briefly, entities are things in the environment about which we wish to
 store information. Attributes describe an entity. An entity must have a
@@ -231,22 +242,23 @@ the emphasis needs to be on learning to think like a data modeler rather
 than on learning a modeling language. This text's goal is to get you off
 to a fast start.
 
-*Skill builder*  
-A ship has a name, registration code, gross tonnage, and a year of construction. Ships are classified as cargo or passenger. Draw a data model for a ship.
+*Skill builder*\
+A ship has a name, registration code, gross tonnage, and a year of
+construction. Ships are classified as cargo or passenger. Draw a data
+model for a ship.
 
-
-## Creating a single-table database {-}
+## Creating a single-table database {.unnumbered}
 
 The next stage is to translate the data model into a relational
 database. The translation rules are very direct:
 
-* Each entity becomes a table.
+-   Each entity becomes a table.
 
-* The entity name becomes the table name.
+-   The entity name becomes the table name.
 
-* Each attribute becomes a column.
+-   Each attribute becomes a column.
 
-* The identifier becomes the primary key.
+-   The identifier becomes the primary key.
 
 The American National Standards Institute's (ANSI) recommended language
 for relational database definition and manipulation is SQL, which is
@@ -274,7 +286,7 @@ a standard SQL command.
 It is common practice to abbreviate attribute names, as is done in the
 following example.
 
-#### Defining a table {-}
+#### Defining a table {.unnumbered}
 
 The CREATE command to establish a table called `share`^5^ is as follows:
 
@@ -291,17 +303,18 @@ CREATE TABLE share (
 
 The first line of the command names the table; subsequent lines describe
 each of its columns. The first component is the name of the column
-(e.g., `shrcode`). The second component is the data type (e.g., CHAR), and
-its length is shown in parentheses. `shrfirm` is a variable-length
+(e.g., `shrcode`). The second component is the data type (e.g., CHAR),
+and its length is shown in parentheses. `shrfirm` is a variable-length
 character field of length 20, which means it can store up to 20
-characters, including spaces. The column `shrdiv` stores a decimal number
-that can be as large as 999.99 because its total length is 5 digits and
-there are 2 digits to the right of the decimal point. Some examples of
-allowable data types are shown in the following table. The third
-component (e.g., NOT NULL), which is optional, indicates any instance
-that cannot have null values. A column might have a null value when it
-is either unknown or not applicable. In the case of the share table, we
-specify that `shrfirm` must be defined for each instance in the database.
+characters, including spaces. The column `shrdiv` stores a decimal
+number that can be as large as 999.99 because its total length is 5
+digits and there are 2 digits to the right of the decimal point. Some
+examples of allowable data types are shown in the following table. The
+third component (e.g., NOT NULL), which is optional, indicates any
+instance that cannot have null values. A column might have a null value
+when it is either unknown or not applicable. In the case of the share
+table, we specify that `shrfirm` must be defined for each instance in
+the database.
 
 The final line of the CREATE statement defines `shrcode` as the primary
 key, the unique identifier for SHARE When a primary key is defined, the
@@ -321,9 +334,9 @@ SQL statements can be written in any mix of valid upper and lowercase
 characters. To make it easier for you to learn the syntax, this book
 adopts the following conventions:
 
-* SQL keywords are in uppercase.
+-   SQL keywords are in uppercase.
 
-* Table and column names are in lowercase.
+-   Table and column names are in lowercase.
 
 There are more elaborate layout styles, but we will bypass those because
 it is more important at this stage to learn SQL. You should lay out your
@@ -336,23 +349,48 @@ to review the available data types in your RDBMS before defining your
 first table.
 
 *Some allowable data types*
-| Category                 | Data type                                                                                                             | Description                                    |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| Numeric                  | SMALLINT                                                                                                              | A 15-bit signed binary value                   |
-| INTEGER                  | A 31-bit signed binary value                                                                                          |
-| FLOAT(p)                 | A scientific format number of p binary digits precision                                                               |
-| DECIMAL(p,q)             | A packed decimal number of p digits total length; q decimal spaces to the right of the decimal point may be specified |
-| String                   | CHAR(n)                                                                                                               | A fixed-length string of n characters          |
-| VARCHAR(n)               | A variable-length string of up to n characters                                                                        |
-| text                     | A variable-length string of up to 65,535 characters                                                                   |
-| Date/time                | DATE                                                                                                                  | Date in the form yyyymmdd                      |
-| TIME                     | Time in the form hhmmss                                                                                               |
-| timesTAMP                | A combination of date and time to the nearest microsecond                                                             |
-| time with time zone      | Same as time, with the addition of an offset from universal time coordinated (UTC) of the specified time              |
-| timestamp with time zone | Same as timestamp, with the addition of an offset from UTC of the specified time                                      |
-| Logical                  | Boolean                                                                                                               | A set of truth values: TRUE, FALSE, or UNKNOWN |
-  
-  Logical     Boolean                    A set of truth values: TRUE, FALSE, or UNKNOWN
+
++------------+------------+------------------------------------------+
+| Category   | Data type  | Description                              |
++============+============+==========================================+
+| Numeric    | SMALLINT   | A 15-bit signed binary value             |
++------------+------------+------------------------------------------+
+|            | INTEGER    | A 31-bit signed binary value             |
++------------+------------+------------------------------------------+
+|            | FLOAT(p)   | A scientific format number of p binary   |
+|            |            | digits precision                         |
++------------+------------+------------------------------------------+
+|            | DE         | A packed decimal number of p digits      |
+|            | CIMAL(p,q) | total length; q decimal spaces to the    |
+|            |            | right of the decimal point may be        |
+|            |            | specified                                |
++------------+------------+------------------------------------------+
+| String     | CHAR(n)    | A fixed-length string of n characters    |
++------------+------------+------------------------------------------+
+|            | VARCHAR(n) | A variable-length string of up to n      |
+|            |            | characters                               |
++------------+------------+------------------------------------------+
+|            | TEXT       | A variable-length string of up to 65,535 |
+|            |            | characters                               |
++------------+------------+------------------------------------------+
+| D ate/time | DATE       | Date in the form yyyymmdd                |
++------------+------------+------------------------------------------+
+|            | TIME       | Time in the form hhmmss                  |
++------------+------------+------------------------------------------+
+|            | TIMESTAMP  | A combination of date and time to the    |
+|            |            | nearest microsecond                      |
++------------+------------+------------------------------------------+
+|            | TIME WITH  | Same as time, with the addition of an    |
+|            | TIME ZONE  | offset from universal time coordinated   |
+|            |            | (UTC) of the specified time              |
++------------+------------+------------------------------------------+
+|            | TIMESTAMP  | Same as timestamp, with the addition of  |
+|            | WITH TIME  | an offset from UTC of the specified time |
+|            | ZONE       |                                          |
++------------+------------+------------------------------------------+
+| Logical    | BOOLEAN    | A set of truth values: TRUE, FALSE, or   |
+|            |            | UNKNOWN                                  |
++------------+------------+------------------------------------------+
 
 The CHAR and VARCHAR data types are similar but differ in the way
 character strings are stored and retrieved. Both can be up to 255
@@ -365,7 +403,7 @@ padded; instead, trailing spaces are removed. In this book, we use
 VARCHAR to define most character strings, unless they are short (less
 than five characters is a good rule-of-thumb).
 
-### Data modeling with MySQL Workbench {-}
+### Data modeling with MySQL Workbench {.unnumbered}
 
 MySQL Workbench is a professional quality, open source, cross-platform
 tool for data modeling and SQL querying.^6^ In this text, you will also
@@ -376,7 +414,7 @@ will assume you have such proficiency.
 
 *The entity share created with MySQL Workbench*
 
-![](Figures/Chapter 3/share-wb.png)
+![](Figures/Chapter%203/share-wb.png)
 
 You will notice some differences from the data model we have created
 previously. Workbench automatically generates the SQL code to create the
@@ -396,7 +434,7 @@ Engineer ...) and execute the code to create the database. The Workbench
 tutorial will have shown you how to do this, and you should try this out
 for yourself by creating a database with the single `share` table.
 
-#### Inserting rows into a table {-}
+#### Inserting rows into a table {.unnumbered}
 
 The rows of a table store instances of an entity. A particular
 shareholding (e.g., Freedonia Copper) is an example of an instance of
@@ -415,9 +453,9 @@ INSERT INTO share
 
 There is a one-to-one correspondence between a column name in the first
 set of parentheses and a value in the second set of parentheses. That
-is, `shrcode` has the value "FC," `shrfirm` the value "Freedonia Copper,"
-and so on. Notice that the value of a column that stores a character
-string (e.g., `shrfirm`) is contained within straight quotes.
+is, `shrcode` has the value "FC," `shrfirm` the value "Freedonia
+Copper," and so on. Notice that the value of a column that stores a
+character string (e.g., `shrfirm`) is contained within straight quotes.
 
 The list of field names can be omitted when values are inserted in all
 columns of the table in the same order as that specified in the CREATE
@@ -428,25 +466,25 @@ INSERT INTO share
   VALUES ('FC','Freedonia Copper',27.5,10529,1.84,16);
 ```
 
-The data for the `share` table will be used in subsequent examples. If you
-have ready access to a relational database, it is a good idea to now
+The data for the `share` table will be used in subsequent examples. If
+you have ready access to a relational database, it is a good idea to now
 create a table and enter the data. Then you will be able to use these
 data to practice querying the table.
 
 *Data for share*
 
-  [shrcode]{.underline}   shrfirm               shrprice   shrqty      shrdiv   shrpe
-  ----------------------- --------------------- ---------- ----------- -------- -------
-  FC                      Freedonia Copper      27.5       10,529      1.84     16
-  PT                      Patagonian Tea        55.25      12,635      2.5      10
-  AR                      Abyssinian Ruby       31.82      22,010      1.32     13
-  SLG                     Sri Lankan Gold       50.37      32,868      2.68     16
-  ILZ                     Indian Lead & Zinc    37.75      6,390       3        12
-  BE                      Burmese Elephant      0.07       154,713     0.01     3
-  BS                      Bolivian Sheep        12.75      231,678     1.78     11
-  NG                      Nigerian Geese        35         12,323      1.68     10
-  CS                      Canadian Sugar        52.78      4,716       2.5      15
-  ROF                     Royal Ostrich Farms   33.75      1,234,923   3        6
+| [shrcode]{.ul} | shrfirm             | shrprice |    shrqty | shrdiv | shrpe |
+|:---------------|:--------------------|---------:|----------:|-------:|------:|
+| FC             | Freedonia Copper    |     27.5 |    10,529 |   1.84 |    16 |
+| PT             | Patagonian Tea      |    55.25 |    12,635 |    2.5 |    10 |
+| AR             | Abyssinian Ruby     |    31.82 |    22,010 |   1.32 |    13 |
+| SLG            | Sri Lankan Gold     |    50.37 |    32,868 |   2.68 |    16 |
+| ILZ            | Indian Lead & Zinc  |    37.75 |     6,390 |      3 |    12 |
+| BE             | Burmese Elephant    |     0.07 |   154,713 |   0.01 |     3 |
+| BS             | Bolivian Sheep      |    12.75 |   231,678 |   1.78 |    11 |
+| NG             | Nigerian Geese      |       35 |    12,323 |   1.68 |    10 |
+| CS             | Canadian Sugar      |    52.78 |     4,716 |    2.5 |    15 |
+| ROF            | Royal Ostrich Farms |    33.75 | 1,234,923 |      3 |     6 |
 
 Notice that `shrcode`,the primary key, is underlined in the preceding
 table. This is a convention we will use for denoting the primary key. In
@@ -458,16 +496,16 @@ explained in the tutorial on adding data to a database.^9^
 
 *Inserting rows with MySQL Workbench*
 
-![](Figures/Chapter 3/wb-input.png)
+![](Figures/Chapter%203/wb-input.png)
 
-+--------------------------------------------------------------------------+
-| *Skill builder*                                                          |
-|                                                                          |
-| Create a relational database for the ship entity you modeled previously. |
-| Insert some rows.                                                        |
-+--------------------------------------------------------------------------+
++-----------------------------------------------------------------------+
+| *Skill builder*                                                       |
+|                                                                       |
+| Create a relational database for the ship entity you modeled          |
+| previously. Insert some rows.                                         |
++-----------------------------------------------------------------------+
 
-### Querying a database {-}
+### Querying a database {.unnumbered}
 
 The objective of developing a database is to make it easier to use the
 stored data to solve problems. Typically, a manager raises a question
@@ -494,7 +532,7 @@ Generally we use a four-phase format for describing queries:
 
 4.  The results of the query.
 
-#### Displaying an entire table {-}
+#### Displaying an entire table {.unnumbered}
 
 All the data in a table can be displayed using the SELECT statement. In
 SQL, the all part is indicated by an asterisk (\*).
@@ -505,40 +543,40 @@ List all data in the share table.
 SELECT * FROM share;
 ```
 
-  shrcode   shrfirm              shrprice   shrqty   shrdiv   shrpe
-  --------- -------------------- ---------- -------- -------- -------
-  FC        Freedonia Copper     27.5       10529    1.84     16
-  PT        Patagonian Tea       55.25      12635    2.5      10
-  AR        Abyssinian Ruby      31.82      22010    1.32     13
-  SLG       Sri Lankan Gold      50.37      32868    2.68     16
-  ILZ       Indian Lead & Zinc   37.75      6390     3        12
-  BE        Burmese Elephant     0.07       154713   0.01     3
-  BS        Bolivian Sheep       12.75      231678   1.78     11
-  NG        Nigerian Geese       35         12323    1.68     10
-  CS        Canadian Sugar       52.78      4716     2.5      15
+| shrcode | shrfirm            | shrprice | shrqty | shrdiv | shrpe |
+|:--------|:-------------------|:---------|:-------|:-------|:------|
+| FC      | Freedonia Copper   | 27.5     | 10529  | 1.84   | 16    |
+| PT      | Patagonian Tea     | 55.25    | 12635  | 2.5    | 10    |
+| AR      | Abyssinian Ruby    | 31.82    | 22010  | 1.32   | 13    |
+| SLG     | Sri Lankan Gold    | 50.37    | 32868  | 2.68   | 16    |
+| ILZ     | Indian Lead & Zinc | 37.75    | 6390   | 3      | 12    |
+| BE      | Burmese Elephant   | 0.07     | 154713 | 0.01   | 3     |
+| BS      | Bolivian Sheep     | 12.75    | 231678 | 1.78   | 11    |
+| NG      | Nigerian Geese     | 35       | 12323  | 1.68   | 10    |
+| CS      | Canadian Sugar     | 52.78    | 4716   | 2.5    | 15    |
 
-#### Project---choosing columns {-}
+#### Project---choosing columns {.unnumbered}
 
 The relational algebra operation **project** creates a new table from
 the columns of an existing table. Project takes a vertical slice through
 a table by selecting all the values in specified columns. The projection
-of `share` on columns `shrfirm` and `shrpe` produces a new table with 10 rows
-and 2 columns. These columns are shaded in the table.
+of `share` on columns `shrfirm` and `shrpe` produces a new table with 10
+rows and 2 columns. These columns are shaded in the table.
 
 *Projection of shrfirm and shrpe*
 
-  [shrcode]{.underline}   shrfirm               shrprice   shrqty      shrdiv   shrpe
-  ----------------------- --------------------- ---------- ----------- -------- -------
-  FC                      Freedonia Copper      27.5       10,529      1.84     16
-  PT                      Patagonian Tea        55.25      12,635      2.5      10
-  AR                      Abyssinian Ruby       31.82      22,010      1.32     13
-  SLG                     Sri Lankan Gold       50.37      32,868      2.68     16
-  ILZ                     Indian Lead & Zinc    37.75      6,390       3        12
-  BE                      Burmese Elephant      0.07       154,713     0.01     3
-  BS                      Bolivian Sheep        12.75      231,678     1.78     11
-  NG                      Nigerian Geese        35         12,323      1.68     10
-  CS                      Canadian Sugar        52.78      4,716       2.5      15
-  ROF                     Royal Ostrich Farms   33.75      1,234,923   3        6
+| [shrcode]{.ul} | shrfirm             | shrprice | shrqty    | shrdiv | shrpe |
+|:---------------|:--------------------|:---------|:----------|:-------|:------|
+| FC             | Freedonia Copper    | 27.5     | 10,529    | 1.84   | 16    |
+| PT             | Patagonian Tea      | 55.25    | 12,635    | 2.5    | 10    |
+| AR             | Abyssinian Ruby     | 31.82    | 22,010    | 1.32   | 13    |
+| SLG            | Sri Lankan Gold     | 50.37    | 32,868    | 2.68   | 16    |
+| ILZ            | Indian Lead & Zinc  | 37.75    | 6,390     | 3      | 12    |
+| BE             | Burmese Elephant    | 0.07     | 154,713   | 0.01   | 3     |
+| BS             | Bolivian Sheep      | 12.75    | 231,678   | 1.78   | 11    |
+| NG             | Nigerian Geese      | 35       | 12,323    | 1.68   | 10    |
+| CS             | Canadian Sugar      | 52.78    | 4,716     | 2.5    | 15    |
+| ROF            | Royal Ostrich Farms | 33.75    | 1,234,923 | 3      | 6     |
 
 The SQL syntax for the project operation simply lists the columns to be
 displayed.
@@ -549,122 +587,125 @@ displayed.
 SELECT shrfirm, shrpe FROM share;
 ```
 
-  shrfirm               shrpe
-  --------------------- -------
-  Freedonia Copper      16
-  Patagonian Tea        10
-  Abyssinian Ruby       13
-  Sri Lankan Gold       16
-  Indian Lead & Zinc    12
-  Burmese Elephant      3
-  Bolivian Sheep        11
-  Nigerian Geese        10
-  Canadian Sugar        15
-  Royal Ostrich Farms   6
+| shrfirm             | shrpe |
+|:--------------------|:------|
+| Freedonia Copper    | 16    |
+| Patagonian Tea      | 10    |
+| Abyssinian Ruby     | 13    |
+| Sri Lankan Gold     | 16    |
+| Indian Lead & Zinc  | 12    |
+| Burmese Elephant    | 3     |
+| Bolivian Sheep      | 11    |
+| Nigerian Geese      | 10    |
+| Canadian Sugar      | 15    |
+| Royal Ostrich Farms | 6     |
 
-#### Restrict---choosing rows {-}
+#### Restrict---choosing rows {.unnumbered}
 
 The relational algebra operation **restrict** creates a new table from
 the rows of an existing table. The operation restricts the new table to
 those rows that satisfy a specified condition. Restrict takes all
 columns of an existing table but only those rows that meet the specified
-condition. The restriction of `share` to those rows where the PE ratio is
-less than 12 will give a new table with five rows and six columns. These
-rows are shaded.
+condition. The restriction of `share` to those rows where the PE ratio
+is less than 12 will give a new table with five rows and six columns.
+These rows are shaded.
 
 *Restriction of share*
 
-  [shrcode]{.underline}   shrfirm               shrprice   shrqty      shrdiv   shrpe
-  ----------------------- --------------------- ---------- ----------- -------- -------
-  FC                      Freedonia Copper      27.5       10,529      1.84     16
-  PT                      Patagonian Tea        55.25      12,635      2.5      10
-  AR                      Abyssinian Ruby       31.82      22,010      1.32     13
-  SLG                     Sri Lankan Gold       50.37      32,868      2.68     16
-  ILZ                     Indian Lead & Zinc    37.75      6,390       3        12
-  BE                      Burmese Elephant      0.07       154,713     0.01     3
-  BS                      Bolivian Sheep        12.75      231,678     1.78     11
-  NG                      Nigerian Geese        35         12,323      1.68     10
-  CS                      Canadian Sugar        52.78      4,716       2.5      15
-  ROF                     Royal Ostrich Farms   33.75      1,234,923   3        6
+| [shrcode]{.ul} | shrfirm             | shrprice | shrqty    | shrdiv | shrpe |
+|:---------------|:--------------------|:---------|:----------|:-------|:------|
+| FC             | Freedonia Copper    | 27.5     | 10,529    | 1.84   | 16    |
+| PT             | Patagonian Tea      | 55.25    | 12,635    | 2.5    | 10    |
+| AR             | Abyssinian Ruby     | 31.82    | 22,010    | 1.32   | 13    |
+| SLG            | Sri Lankan Gold     | 50.37    | 32,868    | 2.68   | 16    |
+| ILZ            | Indian Lead & Zinc  | 37.75    | 6,390     | 3      | 12    |
+| BE             | Burmese Elephant    | 0.07     | 154,713   | 0.01   | 3     |
+| BS             | Bolivian Sheep      | 12.75    | 231,678   | 1.78   | 11    |
+| NG             | Nigerian Geese      | 35       | 12,323    | 1.68   | 10    |
+| CS             | Canadian Sugar      | 52.78    | 4,716     | 2.5    | 15    |
+| ROF            | Royal Ostrich Farms | 33.75    | 1,234,923 | 3      | 6     |
 
 Restrict is implemented in SQL using the WHERE clause to specify the
 condition on which rows are restricted.
 
 *Get all firms with a price-earnings ratio less than 12.*
+
 ```{sql, connection = db, eval = FALSE}
 SELECT * FROM share WHERE shrpe < 12;
 ```
 
-  shrcode   shrfirm               shrprice   shrqty    shrdiv   shrpe
-  --------- --------------------- ---------- --------- -------- -------
-  PT        Patagonian Tea        55.25      12635     2.5      10
-  BE        Burmese Elephant      0.07       154713    0.01     3
-  BS        Bolivian Sheep        12.75      231678    1.78     11
-  NG        Nigerian Geese        35         12323     1.68     10
-  ROF       Royal Ostrich Farms   33.75      1234923   3        6
+| shrcode | shrfirm             | shrprice | shrqty  | shrdiv | shrpe |
+|:--------|:--------------------|:---------|:--------|:-------|:------|
+| PT      | Patagonian Tea      | 55.25    | 12635   | 2.5    | 10    |
+| BE      | Burmese Elephant    | 0.07     | 154713  | 0.01   | 3     |
+| BS      | Bolivian Sheep      | 12.75    | 231678  | 1.78   | 11    |
+| NG      | Nigerian Geese      | 35       | 12323   | 1.68   | 10    |
+| ROF     | Royal Ostrich Farms | 33.75    | 1234923 | 3      | 6     |
 
 In this example, we have a less than condition for the WHERE clause. All
 permissible comparison operators are listed below.
 
-  Comparison operator   Meaning
-  --------------------- --------------------------
-  =                     Equal to
-  \<                    Less than
-  \<=                   Less than or equal to
-  \>                    Greater than
-  \>=                   Greater than or equal to
-  \<\>                  Not equal to
+| Comparison operator | Meaning                  |
+|:--------------------|:-------------------------|
+| =                   | Equal to                 |
+| \<                  | Less than                |
+| \<=                 | Less than or equal to    |
+| \>                  | Greater than             |
+| \>=                 | Greater than or equal to |
+| \<\>                | Not equal to             |
 
 In addition to the comparison operators, the BETWEEN construct is
 available.
 
 a BETWEEN x AND y is equivalent to a \>= x AND a \<= y
 
-#### Combining project and restrict---choosing rows and columns {-}
+#### Combining project and restrict---choosing rows and columns {.unnumbered}
 
 SQL permits project and restrict to be combined. A single SQL SELECT
 statement can specify which columns to project and which rows to
 restrict.
 
-*List the name, price, quantity, and dividend of each firm where the share holding is at least 100,000.*
+*List the name, price, quantity, and dividend of each firm where the
+share holding is at least 100,000.*
 
 ```{sql, connection = db, eval = FALSE}
 SELECT shrfirm, shrprice, shrqty, shrdiv FROM share
   WHERE shrqty \>= 100000;
 ```
 
-  shrfirm               shrprice   shrqty    shrdiv
-  --------------------- ---------- --------- --------
-  Burmese Elephant      0.07       154713    0.01
-  Bolivian Sheep        12.75      231678    1.78
-  Royal Ostrich Farms   33.75      1234923   3
+| shrfirm             | shrprice | shrqty  | shrdiv |
+|:--------------------|:---------|:--------|:-------|
+| Burmese Elephant    | 0.07     | 154713  | 0.01   |
+| Bolivian Sheep      | 12.75    | 231678  | 1.78   |
+| Royal Ostrich Farms | 33.75    | 1234923 | 3      |
 
-#### More about WHERE {-}
+#### More about WHERE {.unnumbered}
 
 The WHERE clause can contain several conditions linked by AND or OR. A
 clause containing AND means all specified conditions must be true for a
 row to be selected. In the case of OR, at least one of the conditions
 must be true for a row to be selected.
 
-*Find all firms where the PE is 12 or higher and the share holding is less than 10,000.*
+*Find all firms where the PE is 12 or higher and the share holding is
+less than 10,000.*
 
 ```{sql, connection = db, eval = FALSE}
 SELECT \* FROM share
   WHERE shrpe \>= 12 AND shrqty \< 10000;
 ```
 
-  shrcode   shrfirm              shrprice   shrqty   shrdiv   shrpe
-  --------- -------------------- ---------- -------- -------- -------
-  ILZ       Indian Lead & Zinc   37.75      6390     3        12
-  CS        Canadian Sugar       52.78      4716     2.5      15
+| shrcode | shrfirm            | shrprice | shrqty | shrdiv | shrpe |
+|:--------|:-------------------|:---------|:-------|:-------|:------|
+| ILZ     | Indian Lead & Zinc | 37.75    | 6390   | 3      | 12    |
+| CS      | Canadian Sugar     | 52.78    | 4716   | 2.5    | 15    |
 
-#### The power of the primary key {-}
+#### The power of the primary key {.unnumbered}
 
 The purpose the primary key is to guarantee that any row in a table can
 be uniquely addressed. In this example, we use `shrcode` to return a
 single row because `shrcode` is unique for each instance of `share`. The
-sought code (AR) must be specified in quotes because `shrcode` was defined
-as a character string when the table was created.
+sought code (AR) must be specified in quotes because `shrcode` was
+defined as a character string when the table was created.
 
 *Report firms whose code is AR.*
 
@@ -672,9 +713,9 @@ as a character string when the table was created.
 SELECT * FROM share WHERE shrcode = 'AR';
 ```
 
-  shrcode   shrfirm           shrprice   shrqty   shrdiv   shrpe
-  --------- ----------------- ---------- -------- -------- -------
-  AR        Abyssinian Ruby   31.82      22010    1.32     13
+| shrcode | shrfirm         | shrprice | shrqty | shrdiv | shrpe |
+|:--------|:----------------|:---------|:-------|:-------|:------|
+| AR      | Abyssinian Ruby | 31.82    | 22010  | 1.32   | 13    |
 
 A query based on a non-primary-key column cannot guarantee that a single
 row is accessed, as the following illustrates.
@@ -685,12 +726,12 @@ row is accessed, as the following illustrates.
 SELECT * FROM share WHERE shrdiv = 2.5;
 ```
 
-  shrcode   shrfirm          shrprice   shrqty   shrdiv   shrpe
-  --------- ---------------- ---------- -------- -------- -------
-  PT        Patagonian Tea   55.25      12635    2.5      10
-  CS        Canadian Sugar   52.78      4716     2.5      15
+| shrcode | shrfirm        | shrprice | shrqty | shrdiv | shrpe |
+|:--------|:---------------|:---------|:-------|:-------|:------|
+| PT      | Patagonian Tea | 55.25    | 12635  | 2.5    | 10    |
+| CS      | Canadian Sugar | 52.78    | 4716   | 2.5    | 15    |
 
-#### The IN crowd {-}
+#### The IN crowd {.unnumbered}
 
 The keyword IN is used with a list to specify a set of values. IN is
 always paired with a column name. All rows for which a value in the
@@ -710,13 +751,13 @@ SELECT \* FROM share
   WHERE shrcode = \'FC\' or shrcode = \'AR\' or shrcode = \'SLG\';
 ```
 
-  shrcode   shrfirm            shrprice   shrqty   shrdiv   shrpe
-  --------- ------------------ ---------- -------- -------- -------
-  FC        Freedonia Copper   27.5       10529    1.84     16
-  AR        Abyssinian Ruby    31.82      22010    1.32     13
-  SLG       Sri Lankan Gold    50.37      32868    2.68     16
+| shrcode | shrfirm          | shrprice | shrqty | shrdiv | shrpe |
+|:--------|:-----------------|:---------|:-------|:-------|:------|
+| FC      | Freedonia Copper | 27.5     | 10529  | 1.84   | 16    |
+| AR      | Abyssinian Ruby  | 31.82    | 22010  | 1.32   | 13    |
+| SLG     | Sri Lankan Gold  | 50.37    | 32868  | 2.68   | 16    |
 
-#### The NOT IN crowd {-}
+#### The NOT IN crowd {.unnumbered}
 
 A NOT IN list is used to report instances that do not match any of the
 values.
@@ -733,24 +774,24 @@ is equivalent to
 SELECT * FROM share WHERE shrcode <> 'CS' AND shrcode <> 'PT';
 ```
 
-  shrcode   shrfirm               shrprice   shrqty    shrdiv   shrpe
-  --------- --------------------- ---------- --------- -------- -------
-  FC        Freedonia Copper      27.5       10529     1.84     16
-  AR        Abyssinian Ruby       31.82      22010     1.32     13
-  SLG       Sri Lankan Gold       50.37      32868     2.68     16
-  ILZ       Indian Lead & Zinc    37.75      6390      3        12
-  BE        Burmese Elephant      0.07       154713    0.01     3
-  BS        Bolivian Sheep        12.75      231678    1.78     11
-  NG        Nigerian Geese        35         12323     1.68     10
-  ROF       Royal Ostrich Farms   33.75      1234923   3        6
+| shrcode | shrfirm             | shrprice | shrqty  | shrdiv | shrpe |
+|:--------|:--------------------|:---------|:--------|:-------|:------|
+| FC      | Freedonia Copper    | 27.5     | 10529   | 1.84   | 16    |
+| AR      | Abyssinian Ruby     | 31.82    | 22010   | 1.32   | 13    |
+| SLG     | Sri Lankan Gold     | 50.37    | 32868   | 2.68   | 16    |
+| ILZ     | Indian Lead & Zinc  | 37.75    | 6390    | 3      | 12    |
+| BE      | Burmese Elephant    | 0.07     | 154713  | 0.01   | 3     |
+| BS      | Bolivian Sheep      | 12.75    | 231678  | 1.78   | 11    |
+| NG      | Nigerian Geese      | 35       | 12323   | 1.68   | 10    |
+| ROF     | Royal Ostrich Farms | 33.75    | 1234923 | 3      | 6     |
 
-+------------------------------------------------------------------------+
-| *Skill Builder*                                                        |
-|                                                                        |
-| List those shares where the value of the holding exceeds one million.  |
-+------------------------------------------------------------------------+
++-----------------------------------------------------------------------+
+| *Skill Builder*                                                       |
+|                                                                       |
+| List those shares where the value of the holding exceeds one million. |
++-----------------------------------------------------------------------+
 
-#### Ordering columns {-}
+#### Ordering columns {.unnumbered}
 
 The order of reporting columns is identical to their order in the SQL
 command. For instance, compare the output of the following queries.
@@ -759,21 +800,21 @@ command. For instance, compare the output of the following queries.
 SELECT shrcode, shrfirm FROM share WHERE shrpe = 10;
 ```
 
-  shrcode   shrfirm
-  --------- ----------------
-  PT        Patagonian Tea
-  NG        Nigerian Geese
+| shrcode | shrfirm        |
+|:--------|:---------------|
+| PT      | Patagonian Tea |
+| NG      | Nigerian Geese |
 
 ```{sql, connection = db, eval = FALSE}
 SELECT shrfirm, shrcode FROM share WHERE shrpe = 10;
 ```
 
-  shrfirm          shrcode
-  ---------------- ---------
-  Patagonian Tea   PT
-  Nigerian Geese   NG
+| shrfirm        | shrcode |
+|:---------------|:--------|
+| Patagonian Tea | PT      |
+| Nigerian Geese | NG      |
 
-#### Ordering rows {-}
+#### Ordering rows {.unnumbered}
 
 People can generally process an ordered (e.g., sorted alphabetically)
 report faster than an unordered one. In SQL, the ORDER BY clause
@@ -781,33 +822,35 @@ specifies the row order in a report. The default ordering sequence is
 ascending (A before B, 1 before 2). Descending is specified by adding
 DESC after the column name.
 
-*List all firms where PE is at least 10, and order the report in descending PE. Where PE ratios are identical, list firms in alphabetical order.*
+*List all firms where PE is at least 10, and order the report in
+descending PE. Where PE ratios are identical, list firms in alphabetical
+order.*
 
 ```{sql, connection = db, eval = FALSE}
 SELECT * FROM share WHERE shrpe >= 10
   ORDER BY shrpe DESC, shrfirm;
 ```
 
-  shrcode   shrfirm              shrprice   shrqty   shrdiv   shrpe
-  --------- -------------------- ---------- -------- -------- -------
-  FC        Freedonia Copper     27.5       10529    1.84     16
-  SLG       Sri Lankan Gold      50.37      32868    2.68     16
-  CS        Canadian Sugar       52.78      4716     2.5      15
-  AR        Abyssinian Ruby      31.82      22010    1.32     13
-  ILZ       Indian Lead & Zinc   37.75      6390     3        12
-  BS        Bolivian Sheep       12.75      231678   1.78     11
-  NG        Nigerian Geese       35         12323    1.68     10
-  PT        Patagonian Tea       55.25      12635    2.5      10
+| shrcode | shrfirm            | shrprice | shrqty | shrdiv | shrpe |
+|:--------|:-------------------|:---------|:-------|:-------|:------|
+| FC      | Freedonia Copper   | 27.5     | 10529  | 1.84   | 16    |
+| SLG     | Sri Lankan Gold    | 50.37    | 32868  | 2.68   | 16    |
+| CS      | Canadian Sugar     | 52.78    | 4716   | 2.5    | 15    |
+| AR      | Abyssinian Ruby    | 31.82    | 22010  | 1.32   | 13    |
+| ILZ     | Indian Lead & Zinc | 37.75    | 6390   | 3      | 12    |
+| BS      | Bolivian Sheep     | 12.75    | 231678 | 1.78   | 11    |
+| NG      | Nigerian Geese     | 35       | 12323  | 1.68   | 10    |
+| PT      | Patagonian Tea     | 55.25    | 12635  | 2.5    | 10    |
 
-#### Numeric versus character sorting {-}
+#### Numeric versus character sorting {.unnumbered}
 
 Numeric data in character fields (e.g., a product code) do not always
 sort the way you initially expect. The difference arises from the way
 data are stored:
 
-* Numeric fields are right justified and have leading zeros.
+-   Numeric fields are right justified and have leading zeros.
 
-* Character fields are left justified and have trailing spaces.
+-   Character fields are left justified and have trailing spaces.
 
 For example, the value 1066 stored as CHAR(4) would be stored as '1066'
 and the value 45 would be stored as '45 '. If the column containing
@@ -819,7 +862,7 @@ stored as character data. Alternatively, start numbering at 1,000 so
 that all values are four digits, though the best solution is to store
 numeric data as numbers rather than characters.
 
-#### Derived data {-}
+#### Derived data {.unnumbered}
 
 One of the important principles of database design is to avoid
 redundancy. One form of redundancy is including a column in a table when
@@ -835,18 +878,18 @@ the value is required.
 SELECT shrfirm, shrprice, shrqty, shrdiv/shrprice*100 AS yield FROM share;
 ```
 
-  shrfirm               shrprice   shrqty    yield
-  --------------------- ---------- --------- -------
-  Freedonia Copper      27.5       10529     6.69
-  Patagonian Tea        55.25      12635     4.52
-  Abyssinian Ruby       31.82      22010     4.15
-  Sri Lankan Gold       50.37      32868     5.32
-  Indian Lead & Zinc    37.75      6390      7.95
-  Burmese Elephant      0.07       154713    14.29
-  Bolivian Sheep        12.75      231678    13.96
-  Nigerian Geese        35         12323     4.8
-  Canadian Sugar        52.78      4716      4.74
-  Royal Ostrich Farms   33.75      1234923   8.89
+| shrfirm             | shrprice | shrqty  | yield |
+|:--------------------|:---------|:--------|:------|
+| Freedonia Copper    | 27.5     | 10529   | 6.69  |
+| Patagonian Tea      | 55.25    | 12635   | 4.52  |
+| Abyssinian Ruby     | 31.82    | 22010   | 4.15  |
+| Sri Lankan Gold     | 50.37    | 32868   | 5.32  |
+| Indian Lead & Zinc  | 37.75    | 6390    | 7.95  |
+| Burmese Elephant    | 0.07     | 154713  | 14.29 |
+| Bolivian Sheep      | 12.75    | 231678  | 13.96 |
+| Nigerian Geese      | 35       | 12323   | 4.8   |
+| Canadian Sugar      | 52.78    | 4716    | 4.74  |
+| Royal Ostrich Farms | 33.75    | 1234923 | 8.89  |
 
 You can give the results of the calculation a column name. In this case,
 a good choice is `yield`. Note the use of AS to indicate the name of the
@@ -858,14 +901,14 @@ calculation is to be reported under the column heading yield. You can
 rename any column or specify a name for the results of an expression
 using an alias.
 
-#### Aggregate functions {-}
+#### Aggregate functions {.unnumbered}
 
 SQL has built-in functions to enhance its retrieval power and handle
 many common aggregation queries, such as computing the total value of a
 column. Four of these functions (AVG, SUM, MIN, and MAX) work very
 similarly. COUNT is a little different.
 
-##### COUNT {-}
+##### COUNT {.unnumbered}
 
 COUNT computes the number of rows in a table. Use COUNT(\*) to count all
 rows irrespective of their content (i.e., null or not null), and use
@@ -878,9 +921,9 @@ Count can be used with a WHERE clause to specify a condition.
 SELECT COUNT(shrcode) AS investments FROM share;
 ```
 
-  investments
-  -------------
-  10
+| investments |
+|:------------|
+| 10          |
 
 *How many firms have a holding greater than 50,000?*
 
@@ -888,11 +931,11 @@ SELECT COUNT(shrcode) AS investments FROM share;
 SELECT COUNT(shrfirm) AS bigholdings FROM share WHERE shrqty > 50000;
 ```
 
-  bigholdings
-  -------------
-  3
+| bigholdings |
+|:------------|
+| 3           |
 
-#####  AVG---averaging {-}
+##### AVG---averaging {.unnumbered}
 
 AVG computes the average of the values in a column of numeric data. Null
 values in the column are not included in the calculation.
@@ -903,9 +946,9 @@ values in the column are not included in the calculation.
 SELECT AVG(shrdiv) AS avgdiv FROM share;
 ```
 
-  avgdiv
-  --------
-  2.03
+| avgdiv |
+|:-------|
+| 2.03   |
 
 *What is the average yield for the portfolio?*
 
@@ -913,18 +956,18 @@ SELECT AVG(shrdiv) AS avgdiv FROM share;
 SELECT AVG(shrdiv/shrprice*100) AS avgyield FROM share;
 ```
 
-  avgyield
-  ----------
-  7.53
+| avgyield |
+|:---------|
+| 7.53     |
 
-##### SUM, MIN, and MAX {-}
+##### SUM, MIN, and MAX {.unnumbered}
 
 SUM, MIN, and MAX differ in the statistic they calculate but are used
 similarly to AVG. As with AVG, null values in a column are not included
 in the calculation. SUM computes the sum of a column of values. MIN
 finds the smallest value in a column; MAX finds the largest.
 
-#### Subqueries {-}
+#### Subqueries {.unnumbered}
 
 Sometimes we need the answer to another query before we can write the
 query of ultimate interest. For example, to list all shares with a PE
@@ -953,37 +996,39 @@ by the inner or nested subquery, the one in parentheses, is used in the
 outer query. In the following example, the nested query returns 11.20,
 which is then automatically substituted in the outer query.
 
-*Report all firms with a PE ratio greater than the average for the portfolio.*
+*Report all firms with a PE ratio greater than the average for the
+portfolio.*
 
 ```{sql, connection = db, eval = FALSE}
 SELECT shrfirm, shrpe FROM share
   WHERE shrpe \> (SELECT AVG(shrpe) FROM share);
 ```
 
-  shrfirm              shrpe
-  -------------------- -------
-  Freedonia Copper     16
-  Abyssinian Ruby      13
-  Sri Lankan Gold      16
-  Indian Lead & Zinc   12
-  Canadian Sugar       15
+| shrfirm            | shrpe |
+|:-------------------|:------|
+| Freedonia Copper   | 16    |
+| Abyssinian Ruby    | 13    |
+| Sri Lankan Gold    | 16    |
+| Indian Lead & Zinc | 12    |
+| Canadian Sugar     | 15    |
+
++---------------------------------------------------------+
+| Warning: The preceding query is often mistakenly        |
+| written as                                              |
+|                                                         |
+| > SELECT shrfirm, shrpe from share                      |
+| >                                                       |
+| > WHERE shrpe \> avg(shrpe);                            |
++---------------------------------------------------------+
 
 +-------------------------------------------------------------+
-| Warning: The preceding query is often mistakenly written as |
+| *Skill builder*                                             |
 |                                                             |
-| > SELECT shrfirm, shrpe from share                          |
-| >                                                           |
-| > WHERE shrpe \> avg(shrpe);                                |
+| Find the name of the firm for which the value of the        |
+| holding is greatest.                                        |
 +-------------------------------------------------------------+
 
-+-----------------------------------------------------------------+
-| *Skill builder*                                                 |
-|                                                                 |
-| Find the name of the firm for which the value of the holding is |
-| greatest.                                                       |
-+-----------------------------------------------------------------+
-
-#### Regular expression---pattern matching {-}
+#### Regular expression---pattern matching {.unnumbered}
 
 Regular expression is a concise and powerful method for searching for a
 specified pattern in a nominated column. Regular expression processing
@@ -991,36 +1036,37 @@ is supported by languages such as Java, R, and PHP. In this chapter, we
 introduce a few typical regular expressions and will continue developing
 your knowledge of this feature in the next chapter.
 
-##### Search for a string {-}
+##### Search for a string {.unnumbered}
 
-*List all firms containing \'Ruby\' in their name.*
+*List all firms containing 'Ruby' in their name.*
 
 ```{sql, connection = db, eval = FALSE}
 SELECT shrfirm FROM share WHERE shrfirm REGEXP 'Ruby';
 ```
 
-  shrfirm
-  -----------------
-  Abyssinian Ruby
+| shrfirm         |
+|:----------------|
+| Abyssinian Ruby |
 
-##### Search for alternative strings {-}
+##### Search for alternative strings {.unnumbered}
 
 In some situations you want to find columns that contain more than one
 string. In this case, we use the alternation symbol '\|' to indicate the
 alternatives being sought. For example, a\|b finds 'a' or 'b'.
 
-*List the firms containing gold or zinc in their name, irrespective of case.*
+*List the firms containing gold or zinc in their name, irrespective of
+case.*
 
 ```{sql, connection = db, eval = FALSE}
 SELECT shrfirm FROM share WHERE shrfirm REGEXP 'gold|zinc|Gold|Zinc';
 ```
 
-  shrfirm
-  --------------------
-  Sri Lankan Gold
-  Indian Lead & Zinc
+| shrfirm            |
+|:-------------------|
+| Sri Lankan Gold    |
+| Indian Lead & Zinc |
 
-##### Search for a beginning string {-}
+##### Search for a beginning string {.unnumbered}
 
 If you are interested in finding a value in a column that starts with a
 particular character string, then use \^ to indicate this option.
@@ -1031,11 +1077,11 @@ particular character string, then use \^ to indicate this option.
 SELECT shrfirm FROM share WHERE shrfirm REGEXP '^Sri';
 ```
 
-  shrfirm
-  -----------------
-  Sri Lankan Gold
+| shrfirm         |
+|:----------------|
+| Sri Lankan Gold |
 
-##### Search for an ending string {-}
+##### Search for an ending string {.unnumbered}
 
 If you are interested in finding if a value in a column ends with a
 particular character string, then use \$ to indicate this option.
@@ -1046,17 +1092,17 @@ particular character string, then use \$ to indicate this option.
 SELECT shrfirm FROM share WHERE shrfirm REGEXP 'Geese$';
 ```
 
-  shrfirm
-  ----------------
-  Nigerian Geese
+| shrfirm        |
+|:---------------|
+| Nigerian Geese |
 
-+-----------------------------------------------------------------+
-| *Skill builder*                                                 |
-|                                                                 |
-| List the firms containing "ian" in their name.                  |
-+-----------------------------------------------------------------+
++-------------------------------------------------------------+
+| *Skill builder*                                             |
+|                                                             |
+| List the firms containing "ian" in their name.              |
++-------------------------------------------------------------+
 
-#### DISTINCT---eliminating duplicate rows {-}
+#### DISTINCT---eliminating duplicate rows {.unnumbered}
 
 The DISTINCT clause is used to eliminate duplicate rows. It can be used
 with column functions or before a column name. When used with a column
@@ -1068,15 +1114,15 @@ function, it ignores duplicate values.
 SELECT DISTINCT shrpe FROM share;
 ```
 
-  shrpe
-  -------
-  3
-  10
-  11
-  12
-  13
-  15
-  16
+| shrpe |
+|:------|
+| 3     |
+| 10    |
+| 11    |
+| 12    |
+| 13    |
+| 15    |
+| 16    |
 
 *Find the number of different PE ratios.*
 
@@ -1084,16 +1130,16 @@ SELECT DISTINCT shrpe FROM share;
 SELECT COUNT(DISTINCT shrpe) as 'Different PEs' FROM share;
 ```
 
-  Different PEs
-  ---------------
-  8
+| Different PEs |
+|:--------------|
+| 8             |
 
 When used before a column name, DISTINCT prevents the selection of
 duplicate rows. Notice a slightly different use of the keyword AS. In
 this case, because the alias includes a space, the entire alias is
 enclosed in straight quotes.
 
-#### DELETE {-}
+#### DELETE {.unnumbered}
 
 Rows in a table can be deleted using the DELETE clause in an SQL
 statement. DELETE is typically used with a WHERE clause to specify the
@@ -1108,7 +1154,7 @@ DELETE FROM share WHERE shrfirm = 'Burmese Elephant';
 In the preceding statement, `shrfirm` is used to indicate the row to be
 deleted.
 
-#### UPDATE {-}
+#### UPDATE {.unnumbered}
 
 Rows can be modified using SQL's UPDATE clause, which is used with a
 WHERE clause to specify the rows to be updated.
@@ -1119,33 +1165,35 @@ WHERE clause to specify the rows to be updated.
 UPDATE share SET shrprice = 31.50 WHERE shrcode = 'FC';
 ```
 
-*Increase the total number of shares for Nigerian Geese by 10% because of the recent bonus issue.*
+*Increase the total number of shares for Nigerian Geese by 10% because
+of the recent bonus issue.*
 
 ```{sql, connection = db, eval = FALSE}
 UPDATE share SET shrqty = shrqty*1.1 WHERE shrfirm = 'Nigerian Geese';
 ```
 
-#### Quotes {-}
+#### Quotes {.unnumbered}
 
 There are three types of quotes that you can typically use with SQL.
 Double and single quotes are equivalent and can be used interchangeably.
 Note that single and double quotes must be straight rather than curly,
 and the back quote is to the left of the 1 key.
 
-  Type of quote   Representation
-  --------------- ----------------
-  Single          **\'**
-  Double          **\"**
-  Back            **\`**
+| Type of quote | Representation |
+|:--------------|:---------------|
+| Single        | **'**          |
+| Double        | **"**          |
+| Back          | **\`**         |
 
 The following SQL illustrates the use of three types of quotes to find a
-person with a last name of O'Hara and where the column names are `person first` and `person last`.
+person with a last name of O'Hara and where the column names are
+`person first` and `person last`.
 
 ```{sql, connection = db, eval = FALSE}
 SELECT `person first` FROM person WHERE `person last` = "O'Hara";
 ```
 
-#### Debreifing {-}
+#### Debreifing {.unnumbered}
 
 Now that you have learned how to model a single entity, create a table,
 and specify queries, you are on the way to mastering the fundamental
@@ -1153,7 +1201,7 @@ skills of database design, implementation, and use. Remember, planning
 occurs before action. A data model is a plan for a database. The action
 side of a database is inserting rows and running queries.
 
-### Summary {-}
+### Summary {.unnumbered}
 
 The relational database model is an effective means of representing
 real-world relationships. Data modeling is used to determine what data
@@ -1175,27 +1223,27 @@ are used to find string patterns within character strings. Duplicate
 rows are eliminated with the DISTINCT clause. Rows can be erased using
 DELETE or modified with UPDATE.
 
-  Key terms and concepts
-  ------------------------------------ --------------------------------------------------
-  Alias                                 Instance
-  AS                                    MAX
-  Attribute                             MIN
-  AVG                                   NOT IN
-  Column                                ORDER BY
-  COUNT                                 Primary key
-  CREATE                                Project
-  Data modeling                         Relational database
-  Data type                             Restrict
-  Database                              Row
-  DELETE                                SELECT
-  DISTINCT                              SQL
-  Entity                                Subquery
-  Entity integrity rule                 SUM
-  Identifier                            Table
-  IN                                    UPDATE
-  INSERT                                WHERE
+| Key terms and concepts |                     |
+|:-----------------------|---------------------|
+| Alias                  | Instance            |
+| AS                     | MAX                 |
+| Attribute              | MIN                 |
+| AVG                    | NOT IN              |
+| Column                 | ORDER BY            |
+| COUNT                  | Primary key         |
+| CREATE                 | Project             |
+| Data modeling          | Relational database |
+| Data type              | Restrict            |
+| Database               | Row                 |
+| DELETE                 | SELECT              |
+| DISTINCT               | SQL                 |
+| Entity                 | Subquery            |
+| Entity integrity rule  | SUM                 |
+| Identifier             | Table               |
+| IN                     | UPDATE              |
+| INSERT                 | WHERE               |
 
-#### Exercises {-}
+#### Exercises {.unnumbered}
 
 1.  Draw data models for the following entities. In each case, make
     certain that you show the attributes and identifiers. Also, create a
@@ -1231,65 +1279,66 @@ DELETE or modified with UPDATE.
 
     e.  List the names of all shares with a yield exceeding 5 percent.
 
-    f. Report the total dividend payment of Patagonian Tea. (The total
+    f.  Report the total dividend payment of Patagonian Tea. (The total
         dividend payment is dividend times quantity.)
 
-    g. Find all shares where the price is less than 20 times the
+    g.  Find all shares where the price is less than 20 times the
         dividend.
 
-    h. Find the share(s) with the minimum yield.
+    h.  Find the share(s) with the minimum yield.
 
-    i. Find the total value of all shares with a PE ratio \> 10.
+    i.  Find the total value of all shares with a PE ratio > 10.
 
-    j. Find the share(s) with the maximum total dividend payment.
+    j.  Find the share(s) with the maximum total dividend payment.
 
-    k. Find the value of the holdings in Abyssinian Ruby and Sri Lankan
+    k.  Find the value of the holdings in Abyssinian Ruby and Sri Lankan
         Gold.
 
-    l. Find the yield of all firms except Bolivian Sheep and Canadian
+    l.  Find the yield of all firms except Bolivian Sheep and Canadian
         Sugar.
 
-    m. Find the total value of the portfolio.
+    m.  Find the total value of the portfolio.
 
-    n. List firm name and value in descending order of value.
+    n.  List firm name and value in descending order of value.
 
-    o. List shares with a firm name containing "Gold."
+    o.  List shares with a firm name containing "Gold."
 
-    p. Find shares with a code starting with "B."
+    p.  Find shares with a code starting with "B."
 
 3.  Run the following queries and explain the differences in output.
     Write each query as a manager might state it.
 
-    a. SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP \'s\';
+    a.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's';
 
-    b. SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP \'S\';
+    b.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 'S';
 
-    c. SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP \'s\|S\';
+    c.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's\|S';
 
-    d. SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP \'\^S\';
+    d.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP '\^S';
 
-    e. SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP \'s\$\';
+    e.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's\$';
 
 4.  A weekly newspaper, sold at supermarket checkouts, frequently
     reports stories of aliens visiting Earth and taking humans on short
     trips. Sometimes a captured human sees Elvis commanding the
     spaceship. To keep track of all these reports, the newspaper has
     created the following data model.
-    
-    ![](Figures/Chapter 3/alien entity.png)
-    
-    The paper has also supplied some data for the last few sightings and asked you to create the database, 
-    add details of these aliens, and answer the following queries:
-    
+
+    ![](Figures/Chapter%203/alien%20entity.png)
+
+    The paper has also supplied some data for the last few sightings and
+    asked you to create the database, add details of these aliens, and
+    answer the following queries:
+
     What's the average number of heads of an alien?
 
-    a. Which alien has the most heads?
+    a.  Which alien has the most heads?
 
-    b. Are there any aliens with a double o in their names?
+    b.  Are there any aliens with a double o in their names?
 
-    c. How many aliens are chartreuse?
+    c.  How many aliens are chartreuse?
 
-    d. Report details of all aliens sorted by smell and color.
+    d.  Report details of all aliens sorted by smell and color.
 
 5.  Eduardo, a bibliophile, has a collection of several hundred books.
     Being a little disorganized, he has his books scattered around his
@@ -1316,7 +1365,7 @@ DELETE or modified with UPDATE.
 
 8.  What is the entity integrity rule?
 
-#### CD library case^10^ {-}
+#### CD library case^10^ {.unnumbered}
 
 Ajay, a DJ in the student-operated radio station at his university, is
 impressed by the station's large collection of CDs but is frustrated by
@@ -1335,7 +1384,7 @@ CD.
 
 *CD library V1.0*
 
-![](Figures/Chapter 3/cd-1.png)
+![](Figures/Chapter%203/cd-1.png){width="152"}
 
 Ajay pondered using track number as the identifier since each track on a
 CD is uniquely numbered, but he quickly realized that track number was
@@ -1350,20 +1399,20 @@ designed to store time of day rather than the length of time of an
 event. Thus, he concluded that he should store the length of a track in
 minutes as a decimal (i.e., 4:43 is stored as 4.72).
 
-  trkid   trknum   trktitle              trklength
-  ------- -------- --------------------- -----------
-  1       1        Giant Steps           4.72
-  2       2        Cousin Mary           5.75
-  3       3        Countdown             2.35
-  4       4        Spiral                5.93
-  5       5        Syeeda's Song Flute   7
-  6       6        Naima                 4.35
-  7       7        Mr. P.C.              6.95
-  8       8        Giant Steps           3.67
-  9       9        Naima                 4.45
-  10      10       Cousin Mary           5.9
-  11      11       Countdown             4.55
-  12      12       Syeeda's Song Flute   7.03
+| trkid | trknum | trktitle            | trklength |
+|:------|:-------|:--------------------|:----------|
+| 1     | 1      | Giant Steps         | 4.72      |
+| 2     | 2      | Cousin Mary         | 5.75      |
+| 3     | 3      | Countdown           | 2.35      |
+| 4     | 4      | Spiral              | 5.93      |
+| 5     | 5      | Syeeda's Song Flute | 7         |
+| 6     | 6      | Naima               | 4.35      |
+| 7     | 7      | Mr. P.C.            | 6.95      |
+| 8     | 8      | Giant Steps         | 3.67      |
+| 9     | 9      | Naima               | 4.45      |
+| 10    | 10     | Cousin Mary         | 5.9       |
+| 11    | 11     | Countdown           | 4.55      |
+| 12    | 12     | Syeeda's Song Flute | 7.03      |
 
 +-----------------------------------------------------------------------+
 | *Skill builder*                                                       |
@@ -1391,14 +1440,14 @@ SELECT trknum, trktitle, trklength FROM track
   WHERE trklength > 5;
 ```
 
-  trknum   trktitle               trklength
-  -------- ---------------------- -----------
-  2        Cousin Mary            5.75
-  4        Spiral                 5.93
-  5        Syeeda\'s Song Flute   7
-  7        Mr. P.C.               6.95
-  10       Cousin Mary            5.9
-  12       Syeeda\'s song Flute   7.03
+| trknum | trktitle            | trklength |
+|:-------|:--------------------|:----------|
+| 2      | Cousin Mary         | 5.75      |
+| 4      | Spiral              | 5.93      |
+| 5      | Syeeda's Song Flute | 7         |
+| 7      | Mr. P.C.            | 6.95      |
+| 10     | Cousin Mary         | 5.9       |
+| 12     | Syeeda's song Flute | 7.03      |
 
 *What is the total length of recordings on the CD?*
 
@@ -1409,9 +1458,9 @@ on the CD.
 SELECT SUM(trklength) AS sumtrklen FROM track;
 ```
 
-  sumtrklen
-  -----------
-  62.65
+| sumtrklen |
+|:----------|
+| 62.65     |
 
 When you run the preceding query, the value reported may not be exactly
 62.65. Why?
@@ -1427,9 +1476,9 @@ This query follows the model described previously in this chapter. First
 determine the longest track (i.e., 7.03 minutes) and then find the
 track, or tracks, that are this length.
 
-  trknum   trktitle              trklength
-  -------- --------------------- -----------
-  12       Syeeda's Song Flute   7.03
+| trknum | trktitle            | trklength |
+|:-------|:--------------------|:----------|
+| 12     | Syeeda's Song Flute | 7.03      |
 
 *How many tracks are there on the CD?*
 
@@ -1437,9 +1486,9 @@ track, or tracks, that are this length.
 SELECT COUNT(\*) AS tracks FROM track;
 ```
 
-  tracks
-  --------
-  12
+| tracks |
+|:-------|
+| 12     |
 
 *Sort the different titles on the CD by their name.*
 
@@ -1448,15 +1497,15 @@ SELECT DISTINCT(trktitle) FROM track
   ORDER BY trktitle;
 ```
 
-  trktitle
-  ---------------------
-  Countdown
-  Cousin Mary
-  Giant Steps
-  Mr. P.C.
-  Naima
-  Spiral
-  Syeeda's Song Flute
+| trktitle            |
+|:--------------------|
+| Countdown           |
+| Cousin Mary         |
+| Giant Steps         |
+| Mr. P.C.            |
+| Naima               |
+| Spiral              |
+| Syeeda's Song Flute |
 
 *List the shortest track containing "song" in its title.*
 
@@ -1472,9 +1521,9 @@ its title. Then any track with a length equal to the minimum and also
 containing "song" in its title (just in case there is another without
 "song" in its title that is the same length) is reported.
 
-  trknum   trktitle              trklength
-  -------- --------------------- -----------
-  5        Syeeda's Song Flute   7
+| trknum | trktitle            | trklength |
+|:-------|:--------------------|:----------|
+| 5      | Syeeda's Song Flute | 7         |
 
 *Report details of tracks 1 and 5.*
 
@@ -1483,53 +1532,53 @@ SELECT trknum, trktitle, trklength FROM track
   WHERE trknum IN (1,5);
 ```
 
-  trknum   trktitle              trklength
-  -------- --------------------- -----------
-  1        Giant Steps           4.72
-  5        Syeeda's Song Flute   7
+| trknum | trktitle            | trklength |
+|:-------|:--------------------|:----------|
+| 1      | Giant Steps         | 4.72      |
+| 5      | Syeeda's Song Flute | 7         |
 
-+-------------------------------------------------------------------------+
-| *Skill builder*                                                         |
-|                                                                         |
-| 1.  Write SQL commands for the following queries:                       |
-|                                                                         |
-|     a. Report all tracks between 4 and 5 minutes long.                  |
-|                                                                         |
-|     b. On what track is "Naima"?                                        |
-|                                                                         |
-|     c. Sort the tracks by descending length.                            |
-|                                                                         |
-|     d. What tracks are longer than the average length of tracks on the  |
-|         CD?                                                             |
-|                                                                         |
-|     e. How many tracks are less than 5 minutes?                         |
-|                                                                         |
-|     f. What tracks start with "Cou"?                                    |
-|                                                                         |
-| 2.  Add the 13 tracks from The Manhattan Transfer's Swing CD in the     |
-|     following table to the track table:                                 |
-|                                                                         |
-|   Track   Title                      Length                             |
-|   ------- -------------------------- --------                           |
-|   1       Stomp of King Porter       3.2                                |
-|   2       Sing a Study in Brown      2.85                               |
-|   3       Sing Moten's Swing         3.6                                |
-|   4       A-tisket, A-tasket         2.95                               |
-|   5       I Know Why                 3.57                               |
-|   6       Sing You Sinners           2.75                               |
-|   7       Java Jive                  2.85                               |
-|   8       Down South Camp Meetin'    3.25                               |
-|   9       Topsy                      3.23                               |
-|   10      Clouds                     7.2                                |
-|   11      Skyliner                   3.18                               |
-|   12      It's Good Enough to Keep   3.18                               |
-|   13      Choo Choo Ch' Boogie       3                                  |
-|                                                                         |
-| 3.  Write SQL to answer the following queries:                          |
-|                                                                         |
-|     a. What is the longest track on Swing?                              |
-|                                                                         |
-|     b. What tracks on Swing include the word Java?                      |
-|                                                                         |
-| 4.  What is the data model missing?                                     |
-+-------------------------------------------------------------------------+
++-----------------------------------------------------------------------+
+| *Skill builder*                                                       |
+|                                                                       |
+| 1.  Write SQL commands for the following queries:                     |
+|                                                                       |
+|     a.  Report all tracks between 4 and 5 minutes long.               |
+|                                                                       |
+|     b.  On what track is "Naima"?                                     |
+|                                                                       |
+|     c.  Sort the tracks by descending length.                         |
+|                                                                       |
+|     d.  What tracks are longer than the average length of tracks on   |
+|         the CD?                                                       |
+|                                                                       |
+|     e.  How many tracks are less than 5 minutes?                      |
+|                                                                       |
+|     f.  What tracks start with "Cou"?                                 |
+|                                                                       |
+| 2.  Add the 13 tracks from The Manhattan Transfer's Swing CD in the   |
+|     following table to the track table:                               |
+|                                                                       |
+| | Track | Title                    | Length |                         |
+| |:------|:-------------------------|:-------|                         |
+| | 1     | Stomp of King Porter     | 3.2    |                         |
+| | 2     | Sing a Study in Brown    | 2.85   |                         |
+| | 3     | Sing Moten's Swing       | 3.6    |                         |
+| | 4     | A-tisket, A-tasket       | 2.95   |                         |
+| | 5     | I Know Why               | 3.57   |                         |
+| | 6     | Sing You Sinners         | 2.75   |                         |
+| | 7     | Java Jive                | 2.85   |                         |
+| | 8     | Down South Camp Meetin'  | 3.25   |                         |
+| | 9     | Topsy                    | 3.23   |                         |
+| | 10    | Clouds                   | 7.2    |                         |
+| | 11    | Skyliner                 | 3.18   |                         |
+| | 12    | It's Good Enough to Keep | 3.18   |                         |
+| | 13    | Choo Choo Ch' Boogie     | 3      |                         |
+|                                                                       |
+| 3.  Write SQL to answer the following queries:                        |
+|                                                                       |
+|     a.  What is the longest track on Swing?                           |
+|                                                                       |
+|     b.  What tracks on Swing include the word Java?                   |
+|                                                                       |
+| 4.  What is the data model missing?                                   |
++-----------------------------------------------------------------------+
