@@ -1193,7 +1193,7 @@ person with a last name of O'Hara and where the column names are
 SELECT `person first` FROM person WHERE `person last` = "O'Hara";
 ```
 
-#### Debreifing {.unnumbered}
+#### Debriefing {.unnumbered}
 
 Now that you have learned how to model a single entity, create a table,
 and specify queries, you are on the way to mastering the fundamental
@@ -1324,7 +1324,7 @@ DELETE or modified with UPDATE.
     spaceship. To keep track of all these reports, the newspaper has
     created the following data model.
 
-    ![](Figures/Chapter%203/alien%20entity.png)
+    ![](Figures/Chapter%203/alien%20entity.png){width="152"}
 
     The paper has also supplied some data for the last few sightings and
     asked you to create the database, add details of these aliens, and
