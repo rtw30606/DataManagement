@@ -1,8 +1,9 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
+
 # The Single Entity
 
 > *I want to be alone.*
@@ -69,9 +70,9 @@ If you don't know which airline has the abbreviation AM, then you need to look a
 | AM   | AeroMexico               |
 | AQ   | Aloha Airlines           |
 
-When designing the relational model, Codd provided commands for processing multiple records at a time. His intention was to increase the productivity of programmers by moving beyond the record-at-a-time processing that is found in most programming languages. Consequently, the relational model supports set processing (multiple records-at-a-time), which is most frequently implemented as **Structured Query Language (SQL).**[^singleentity-1]
+When designing the relational model, Codd provided commands for processing multiple records at a time. His intention was to increase the productivity of programmers by moving beyond the record-at-a-time processing that is found in most programming languages. Consequently, the relational model supports set processing (multiple records-at-a-time), which is most frequently implemented as **Structured Query Language (SQL).**[^1]
 
-[^singleentity-1]: Officially pronounced as "S-Q-L," but often also pronounced as "sequel".
+[^1]: Officially pronounced as "S-Q-L," but often also pronounced as "sequel".
 
 The relational model separates the logical design of a database from its physical storage. This notion of **data independence** simplifies data modeling and database programming. In this section, we focus on logical database design, and now that you have had a brief introduction to the relational model, you are ready to learn data modeling.
 
@@ -102,9 +103,9 @@ The simplest database contains information about one entity, which is some real-
 
 ![](Figures/Chapter%203/share.png){width="152"}
 
-An entity has characteristics or attributes. An **attribute** is a discrete element of data; it is not usually broken down into smaller components. Attributes identify data we want to store. Some attributes of the entity SHARE are *identification code*, *firm name*, *price*, *quantity owned*, *dividend*, and *price-to-earnings ratio*.[^singleentity-2] Attributes are shown below the entity's name. Notice that we refer to *share price*, rather than *price*, to avoid confusion if there should be another entity with an attribute called *price*. Attribute names must be carefully selected so that they are self-explanatory and unique. For example, *share dividend* is easily recognized as belonging to the entity SHARE.
+An entity has characteristics or attributes. An **attribute** is a discrete element of data; it is not usually broken down into smaller components. Attributes identify data we want to store. Some attributes of the entity SHARE are *identification code*, *firm name*, *price*, *quantity owned*, *dividend*, and *price-to-earnings ratio*.[^2] Attributes are shown below the entity's name. Notice that we refer to *share price*, rather than *price*, to avoid confusion if there should be another entity with an attribute called *price*. Attribute names must be carefully selected so that they are self-explanatory and unique. For example, *share dividend* is easily recognized as belonging to the entity SHARE.
 
-[^singleentity-2]: Attributes are shown in italics.
+[^2]: Attributes are shown in italics.
 
 *The entity SHARE and its attributes*
 
@@ -142,11 +143,11 @@ The next stage is to translate the data model into a relational database. The tr
 
 The American National Standards Institute's (ANSI) recommended language for relational database definition and manipulation is SQL, which is both a data definition language (DDL) (to define a database), a data manipulation language (DML) (to query and maintain a database), and a data control language (DCL) (to control access). SQL is a common standard for describing and querying databases and is available with many commercial relational database products, including DB2, Oracle, and Microsoft SQL Server, and open source products such as MySQL and PostgreSQL.
 
-In this book, MySQL is the relational database for teaching SQL. Because SQL is a standard, it does not matter which implementation of the relational model you use as the SQL language is common across both the proprietary and open variants.[^singleentity-3] SQL uses the CREATE[^singleentity-4] statement to define a table. It is not a particularly friendly command, and most products have friendlier interfaces for defining tables. However, it is important to learn the standard, because this is the command that SQL understands. Also, a table definition interface will generate a CREATE statement for execution by SQL. Your interface interactions ultimately translate into a standard SQL command.
+In this book, MySQL is the relational database for teaching SQL. Because SQL is a standard, it does not matter which implementation of the relational model you use as the SQL language is common across both the proprietary and open variants.[^3] SQL uses the CREATE[^4] statement to define a table. It is not a particularly friendly command, and most products have friendlier interfaces for defining tables. However, it is important to learn the standard, because this is the command that SQL understands. Also, a table definition interface will generate a CREATE statement for execution by SQL. Your interface interactions ultimately translate into a standard SQL command.
 
-[^singleentity-3]: Now would be a good time to install the MySQL Community server <http:www.mysql.com/downloads/mysql/> on your computer, unless your instructor has set up a class server.
+[^3]: Now would be a good time to install the MySQL Community server <http:www.mysql.com/downloads/mysql/> on your computer, unless your instructor has set up a class server.
 
-[^singleentity-4]: SQL keywords are shown in uppercase.
+[^4]: SQL keywords are shown in uppercase.
 
 It is common practice to abbreviate attribute names, as is done in the following example.
 
@@ -181,45 +182,31 @@ The following table shows some of the data types supported by most relational da
 
 *Some allowable data types*
 
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Category  | Data type                | Description                                                                                                           |
-+:==========+:=========================+:======================================================================================================================+
+|:----------|:-------------------------|:----------------------------------------------------------------------------------------------------------------------|
 | Numeric   | SMALLINT                 | A 15-bit signed binary value                                                                                          |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | INTEGER                  | A 31-bit signed binary value                                                                                          |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | FLOAT(p)                 | A scientific format number of p binary digits precision                                                               |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | DECIMAL(p,q)             | A packed decimal number of p digits total length; q decimal spaces to the right of the decimal point may be specified |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | String    | CHAR(n)                  | A fixed-length string of n characters                                                                                 |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | VARCHAR(n)               | A variable-length string of up to n characters                                                                        |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | TEXT                     | A variable-length string of up to 65,535 characters                                                                   |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Date/time | DATE                     | Date in the form yyyymmdd                                                                                             |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | TIME                     | Time in the form hhmmss                                                                                               |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | DATETIME                 | A combination of date and time in the form yyyymmdd hhmmss                                                            |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | TIMESTAMP                | A combination of date and time to the nearest microsecond                                                             |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | TIMESTAMP WITH TIME ZONE | Same as timestamp, with the addition of an offset from universal time coordinated (UTC) of the specified time         |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Logical   | BOOLEAN                  | A set of truth values: TRUE, FALSE, or UNKNOWN                                                                        |
-+-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
 The CHAR and VARCHAR data types are similar but differ in the way character strings are stored and retrieved. Both can be up to 255 characters long. The length of a CHAR column is fixed to the declared length. When values are stored, they are right-padded with spaces to the specified length. When CHAR values are retrieved, trailing spaces are removed. VARCHAR columns store variable-length strings and use only as many characters as are needed to store the string. Values are not padded; instead, trailing spaces are removed. In this book, we use VARCHAR to define most character strings, unless they are short (less than five characters is a good rule-of-thumb).
 
 ### Data modeling with MySQL Workbench {.unnumbered}
 
-MySQL Workbench is a professional quality, open source, cross-platform tool for data modeling and SQL querying.[^singleentity-5] In this text, you will also learn some of the features of Workbench that support data modeling and using SQL. You will find it helpful to complete the MySQL Workbench tutorial on creating a data model[^singleentity-6] prior to further reading, as we will assume you have such proficiency.
+MySQL Workbench is a professional quality, open source, cross-platform tool for data modeling and SQL querying.[^5] In this text, you will also learn some of the features of Workbench that support data modeling and using SQL. You will find it helpful to complete the MySQL Workbench tutorial on creating a data model[^6] prior to further reading, as we will assume you have such proficiency.
 
-[^singleentity-5]: <http://wb.mysql.com/>
+[^5]: <http://wb.mysql.com/>
 
-[^singleentity-6]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-creating-a-model.html>
+[^6]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-creating-a-model.html>
 
 *The entity share created with MySQL Workbench*
 
@@ -227,9 +214,9 @@ MySQL Workbench is a professional quality, open source, cross-platform tool for 
 
 You will notice some differences from the data model we have created previously. Workbench automatically generates the SQL code to create the table, so when modeling you establish the names you want for tables and columns. A gold key symbol is used to indicate the identifier, which becomes the primary key. An open diamond indicates that a column can be null, whereas a closed blue diamond indicate the column must have a value, as with `shrfirm` in this case.
 
-When specifying columns in Workbench you must also indicate the datatype. We opt to turn off the display of a column's datatype[^singleentity-7] in a model to maintain focus on the entity.
+When specifying columns in Workbench you must also indicate the datatype. We opt to turn off the display of a column's datatype[^7] in a model to maintain focus on the entity.
 
-[^singleentity-7]: Preferences \> Diagram \> Show Column Types
+[^7]: Preferences \> Diagram \> Show Column Types
 
 A major advantage of using a tool such as Workbench is that it will automatically generate the CREATE statement code (Database \> Forward Engineer ...) and execute the code to create the database. The Workbench tutorial will have shown you how to do this, and you should try this out for yourself by creating a database with the single `share` table.
 
@@ -273,9 +260,9 @@ The data for the `share` table will be used in subsequent examples. If you have 
 
 Notice that `shrcode`,the primary key, is underlined in the preceding table. This is a convention we will use for denoting the primary key. In the relational model, an identifier becomes a primary key, a column that guarantees that each row of the table can be uniquely addressed.
 
-MySQL Workbench offers a spreadsheet interface for entering data, as explained in the tutorial on adding data to a database.[^singleentity-8]
+MySQL Workbench offers a spreadsheet interface for entering data, as explained in the tutorial on adding data to a database.[^8]
 
-[^singleentity-8]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-adding-data.html>
+[^8]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-adding-data.html>
 
 *Inserting rows with MySQL Workbench*
 
@@ -684,71 +671,59 @@ The relational database model is an effective means of representing real-world r
 
 1.  Draw data models for the following entities. In each case, make certain that you show the attributes and identifiers. Also, create a relational database and insert some rows for each of the models.
 
-<!-- -->
+    a.  Aircraft: An aircraft has a manufacturer, model number, call sign (e.g., N123D), payload, and a year of construction. Aircraft are classified as civilian or military.
 
-a.  Aircraft: An aircraft has a manufacturer, model number, call sign (e.g., N123D), payload, and a year of construction. Aircraft are classified as civilian or military.
+    b.  Car: A car has a manufacturer, range name, and style code (e.g., a Honda Accord DX, where Honda is the manufacturer, Accord is the range, and DX is the style). A car also has a vehicle identification code, registration code, and color.
 
-b.  Car: A car has a manufacturer, range name, and style code (e.g., a Honda Accord DX, where Honda is the manufacturer, Accord is the range, and DX is the style). A car also has a vehicle identification code, registration code, and color.
+    c.  Restaurant: A restaurant has an address, seating capacity, phone number, and style of food (e.g., French, Russian, Chinese).
 
-c.  Restaurant: A restaurant has an address, seating capacity, phone number, and style of food (e.g., French, Russian, Chinese).
-
-d.  Cow: A dairy cow has a name, date of birth, breed (e.g., Holstein), and a numbered plastic ear tag.
-
-<!-- -->
+    d.  Cow: A dairy cow has a name, date of birth, breed (e.g., Holstein), and a numbered plastic ear tag.
 
 2.  Do the following queries using SQL:
 
-<!-- -->
+    a.  List a share's name and its code.
 
-a.  List a share's name and its code.
+    b.  List full details for all shares with a price less than \$1.
 
-b.  List full details for all shares with a price less than \$1.
+    c.  List the names and prices of all shares with a price of at least \$10.
 
-c.  List the names and prices of all shares with a price of at least \$10.
+    d.  Create a report showing firm name, share price, share holding, and total value of shares held. (Value of shares held is price times quantity.)
 
-d.  Create a report showing firm name, share price, share holding, and total value of shares held. (Value of shares held is price times quantity.)
+    e.  List the names of all shares with a yield exceeding 5 percent.
 
-e.  List the names of all shares with a yield exceeding 5 percent.
+    f.  Report the total dividend payment of Patagonian Tea. (The total dividend payment is dividend times quantity.)
 
-f.  Report the total dividend payment of Patagonian Tea. (The total dividend payment is dividend times quantity.)
+    g.  Find all shares where the price is less than 20 times the dividend.
 
-g.  Find all shares where the price is less than 20 times the dividend.
+    h.  Find the share(s) with the minimum yield.
 
-h.  Find the share(s) with the minimum yield.
+    i.  Find the total value of all shares with a PE ratio > 10.
 
-i.  Find the total value of all shares with a PE ratio \> 10.
+    j.  Find the share(s) with the maximum total dividend payment.
 
-j.  Find the share(s) with the maximum total dividend payment.
+    k.  Find the value of the holdings in Abyssinian Ruby and Sri Lankan Gold.
 
-k.  Find the value of the holdings in Abyssinian Ruby and Sri Lankan Gold.
+    l.  Find the yield of all firms except Bolivian Sheep and Canadian Sugar.
 
-l.  Find the yield of all firms except Bolivian Sheep and Canadian Sugar.
+    m.  Find the total value of the portfolio.
 
-m.  Find the total value of the portfolio.
+    n.  List firm name and value in descending order of value.
 
-n.  List firm name and value in descending order of value.
+    o.  List shares with a firm name containing "Gold."
 
-o.  List shares with a firm name containing "Gold."
-
-p.  Find shares with a code starting with "B."
-
-<!-- -->
+    p.  Find shares with a code starting with "B."
 
 3.  Run the following queries and explain the differences in output. Write each query as a manager might state it.
 
-<!-- -->
+    a.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's';
 
-a.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's';
+    b.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 'S';
 
-b.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 'S';
+    c.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's\|S';
 
-c.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's\|S';
+    d.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP '\^S';
 
-d.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP '\^S';
-
-e.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's\$';
-
-<!-- -->
+    e.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's\$';
 
 4.  A weekly newspaper, sold at supermarket checkouts, frequently reports stories of aliens visiting Earth and taking humans on short trips. Sometimes a captured human sees Elvis commanding the spaceship. To keep track of all these reports, the newspaper has created the following data model.
 
@@ -756,29 +731,23 @@ e.  SELECT shrfirm FROM share WHERE shrfirm NOT REGEXP 's\$';
 
 The paper has also supplied some data for the last few sightings and asked you to create the database, add details of these aliens, and answer the following queries:
 
-What's the average number of heads of an alien?
+    a.  What's the average number of heads of an alien?
 
-a.  Which alien has the most heads?
+    a.  Which alien has the most heads?
 
-b.  Are there any aliens with a double o in their names?
+    b.  Are there any aliens with a double o in their names?
 
-c.  How many aliens are chartreuse?
+    c.  How many aliens are chartreuse?
 
-d.  Report details of all aliens sorted by smell and color.
-
-<!-- -->
+    d.  Report details of all aliens sorted by smell and color.
 
 5.  Eduardo, a bibliophile, has a collection of several hundred books. Being a little disorganized, he has his books scattered around his den. They are piled on the floor, some are in bookcases, and others sit on top of his desk. Because he has so many books, he finds it difficult to remember what he has, and sometimes he cannot find the book he wants. Eduardo has a simple personal computer file system that is fine for a single entity or file. He has decided that he would like to list each book by author(s)' name and type of book (e.g., literature, travel, reference). Draw a data model for this problem, create a single entity table, and write some SQL queries.
 
-<!-- -->
+    a.  How do you identify each instance of a book? (It might help to look at a few books.)
 
-a.  How do you identify each instance of a book? (It might help to look at a few books.)
+    b.  How should Eduardo physically organize his books to permit fast retrieval of a particular one?
 
-b.  How should Eduardo physically organize his books to permit fast retrieval of a particular one?
-
-c.  Are there any shortcomings with the data model you have created?
-
-<!-- -->
+    c.  Are there any shortcomings with the data model you have created?
 
 6.  What is an identifier? Why does a data model have an identifier?
 
