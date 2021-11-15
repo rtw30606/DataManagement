@@ -10,9 +10,9 @@ editor_options:
 > all our plants, and we just kept our people and our information files,
 > we should soon be as strong as ever.*
 >
-> Thomas Watson, Jr., former chairman of IBM[^1]
+> Thomas Watson, Jr., former chairman of IBM[^data-1]
 
-[^1]: Quinn, J. B. (1994). Appraising intellectual assets. \*The
+[^data-1]: Quinn, J. B. (1994). Appraising intellectual assets. \*The
     McKinsey Quarterly\*(2), 90-96.
 
 ## Learning objectives {.unnumbered}

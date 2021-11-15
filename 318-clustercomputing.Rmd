@@ -511,7 +511,7 @@ t_tbl %>%
 > a major city contains a timestamp and cost separated by a comma.
 > Compute the minimum, mean, and maximum costs.
 
-[^clustercomputing-9]: [\[[http://www.richardtwatson.com/data/electricityprices.csv]{.ul}\](http://www.richardtwatson.com/data/electricityprices.csv)](http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv)
+[^clustercomputing-9]: [http://www.richardtwatson.com/data/electricityprices.csv](http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv)
 
 ## Summary {.unnumbered}
 
@@ -584,4 +584,4 @@ Marz, N., & Warren, J. (2012). *Big Data*: Manning Publications.
         GDP in millions, and count how many countries have a GDP greater
         than or less than 10,000 million.
 
-[^clustercomputing-10]: [\[[http://www.richardtwatson.com/data/GDP.csv]{.ul}\](http://www.richardtwatson.com/data/GDP.csv)](http://people.terry.uga.edu/rwatson/data/GDP.csv)
+[^clustercomputing-10]: http://www.richardtwatson.com/data/GDP.csv

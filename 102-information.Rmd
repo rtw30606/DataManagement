@@ -35,14 +35,14 @@ Students completing this chapter will
 
 There are three characteristics of the early decades of the twenty-first
 century: global warming, high-velocity global change, and the emerging
-power of information organizations.[^1] The need to create a sustainable
+power of information organizations.[^information-1] The need to create a sustainable
 civilization, the globalization of business, and the rise of China as a
 major economic power are major forces contributing to mass change.
 Organizations are undergoing large-scale restructuring as they attempt
 to reposition themselves to survive the threats and exploit the
 opportunities presented by these changes.
 
-[^1]: In mid 2017, the five most valuable public companies were Apple,
+[^information-1]: In mid 2017, the five most valuable public companies were Apple,
     Google, Amazon, Microsoft, and Facebook. Furthermore, they are
     concentrated on the west coast of the U.S. in either Silicon Valley
     or Seattle.
@@ -98,7 +98,7 @@ centuries of industrialization, atmospheric CO~2~ levels have become
 alarmingly high. We are also reaching the limits of the planet's
 resources as its population now exceeds seven billion people. As a
 result, a new class of application is emerging, such as environmental
-management systems and UPS's telematics project.[^2] These new systems
+management systems and UPS's telematics project.[^information-2] These new systems
 will also include, for example, support for understanding environmental
 impact through simulation of energy consuming and production systems,
 optimization of energy systems, and design of low impact production and
@@ -110,7 +110,7 @@ creates another set of data needs. The flood will not subside and for
 most firms the data flow will need to grow significantly to meet the new
 challenge of sustainability.
 
-[^2]: Watson, R. T., Boudreau, M.-C., Li, S., & Levis, J. (2010).
+[^information-2]: Watson, R. T., Boudreau, M.-C., Li, S., & Levis, J. (2010).
     Telematics at UPS: En route to Energy Informatics. MISQ Executive,
     9(1), 1-11.
 
@@ -361,9 +361,9 @@ There is no opportunity for questions, no additional information from
 body movements and vocal tone. The information richness of some
 communication media is shown in the following table.
 
-*Information richness and communication media*[^3]
+*Information richness and communication media*[^information-3]
 
-[^3]: *Daft, R. L., & Lengel, R. H. (1986). Organizational information
+[^information-3]: *Daft, R. L., & Lengel, R. H. (1986). Organizational information
     requirements, media richness, and structural design. Management
     Science*, 32(5), 554-571.
 
@@ -560,9 +560,9 @@ input information (e.g., number of service calls) can also be measured,
 and there is qualitative information to be considered. Because of time
 constraints, most managers are forced to limit their attention to 10 or
 fewer key variables singled out by the critical success factors (CSF)
-method.[^4] Scorekeeping information is usually fairly stable.
+method.[^information-4] Scorekeeping information is usually fairly stable.
 
-[^4]: Rockart, J.F. (1982). The changing role of the information systems
+[^information-4]: Rockart, J.F. (1982). The changing role of the information systems
     executive: a critical success factors perspective. *Sloan Management
     Review*, 24(1), 3-13.
 
