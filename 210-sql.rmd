@@ -510,7 +510,7 @@ SQL Server has more than 100 additional functions.
 
 Some examples:
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = TRUE}
 SELECT extract(day FROM CURRENT_DATE());
 ```
 
@@ -1016,8 +1016,8 @@ As you now realize, join can be thought of as a product with a condition
 clause. There is no reason why this condition needs to be restricted to
 equality. There could easily be another comparison operator between the
 two columns. This general version is called a theta-join because theta
-is a variable that can take any value from the set $$=, \<\>, \>, \>=,
-\<, \<=$$.
+is a variable that can take any value from the set '=', '<',  '<=', '>', and 
+ '>='.
 
 As you discovered earlier, there are occasions when you need to join a
 table to itself. To do this, make two copies of the table first and give
