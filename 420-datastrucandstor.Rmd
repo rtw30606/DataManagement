@@ -813,7 +813,7 @@ variables just identified. First, we review some of the options.
 
 ### Magnetic technology {.unnumbered}
 
-Over USD 20 billion is spent annually on magnetic storage devices.[^1] A
+Over USD 20 billion is spent annually on magnetic storage devices.[^datastruc-1] A
 significant proportion of many units IS hardware budgets is consumed by
 magnetic storage. Magnetic technology, the backbone of data storage for
 five decades, is based on magnetization and demagnetization of spots on
@@ -822,7 +822,7 @@ demagnetized repeatedly. Magnetic recording materials may be coated on
 rigid platters (hard disks), thin ribbons of material (magnetic tapes),
 or rectangular sheets (magnetic cards).
 
-[^1]: [\[[http://www.gartner.com/it/page.jsp?id=2149415]{.ul}\](http://www.terry.uga.edu/people/rwatson/)](http://www.gartner.com/it/page.jsp?id=2149415%5D%7B.underline%7D%5D(http://www.terry.uga.edu/people/rwatson/))
+[^datastruc-1]: [\[[http://www.gartner.com/it/page.jsp?id=2149415]{.ul}\](http://www.terry.uga.edu/people/rwatson/)](http://www.gartner.com/it/page.jsp?id=2149415%5D%7B.underline%7D%5D(http://www.terry.uga.edu/people/rwatson/))
 
 The main advantages of magnetic technology are its relative maturity,
 widespread use, and declining costs. A major disadvantage is
@@ -1050,10 +1050,10 @@ chips. SSDs require lower power consumption (longer battery life) and
 come in smaller sizes (smaller and lighter devices). As well, SSDs have
 faster access times. However, they cost around six times as much as
 equivalent size HDDs, but they declining in prices rapidly, and might be
-as little as twice as costly by 2021.[^2] SSD is rapidly becoming the
+as little as twice as costly by 2021.[^datastruc-2] SSD is rapidly becoming the
 standard for laptops.
 
-[^2]: [https://www.theregister.co.uk/2017/05/22/ssd\\\_price\\\_premium\\\_over\\\_disk\\\_falling/](https://www.theregister.co.uk/2017/05/22/ssd_price_premium_over_disk_falling/)
+[^datastruc-2]: [https://www.theregister.co.uk/2017/05/22/ssd\\\_price\\\_premium\\\_over\\\_disk\\\_falling/](https://www.theregister.co.uk/2017/05/22/ssd_price_premium_over_disk_falling/)
 
 A **flash drive**, also known as a keydrive or jump drive, is a small,
 removable storage device with a Universal Serial Bus (USB) connector. It
@@ -1063,10 +1063,10 @@ capacity drives is about about USD 1-2 per Gbytes.
 
 While price is a factor, the current major drawback holding back the
 adoption of SSD is the lack of manufacturing capacity for the NAND chips
-used in SSDs.[^3] The introduction of tablets, such as the iPad, and
+used in SSDs.[^datastruc-3] The introduction of tablets, such as the iPad, and
 smartphones is exacerbating this problem.
 
-[^3]: <http://www.pcworld.com/businesscenter/article/217883/seagate_solidstate_disks_are_doomed_at_least_for_now.html>
+[^datastruc-3]: <http://www.pcworld.com/businesscenter/article/217883/seagate_solidstate_disks_are_doomed_at_least_for_now.html>
 
 ### Optical technology {.unnumbered}
 
@@ -1457,7 +1457,7 @@ techniques, some data are lost during compression.
     management?
 
 16. According to Wikipedia, Apple has more than 28 million songs in the
-    iTunes store.[^4] What storage technology might be a good choice for
+    iTunes store.[^datastruc-4] What storage technology might be a good choice for
     this library?
 
-[^4]: <http://en.wikipedia.org/wiki/ITunes_Store>
+[^datastruc-4]: <http://en.wikipedia.org/wiki/ITunes_Store>

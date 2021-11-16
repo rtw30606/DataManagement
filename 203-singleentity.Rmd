@@ -70,9 +70,9 @@ If you don't know which airline has the abbreviation AM, then you need to look a
 | AM   | AeroMexico               |
 | AQ   | Aloha Airlines           |
 
-When designing the relational model, Codd provided commands for processing multiple records at a time. His intention was to increase the productivity of programmers by moving beyond the record-at-a-time processing that is found in most programming languages. Consequently, the relational model supports set processing (multiple records-at-a-time), which is most frequently implemented as **Structured Query Language (SQL).**[^1]
+When designing the relational model, Codd provided commands for processing multiple records at a time. His intention was to increase the productivity of programmers by moving beyond the record-at-a-time processing that is found in most programming languages. Consequently, the relational model supports set processing (multiple records-at-a-time), which is most frequently implemented as **Structured Query Language (SQL).**[^single-1]
 
-[^1]: Officially pronounced as "S-Q-L," but often also pronounced as "sequel".
+[^single-1]: Officially pronounced as "S-Q-L," but often also pronounced as "sequel".
 
 The relational model separates the logical design of a database from its physical storage. This notion of **data independence** simplifies data modeling and database programming. In this section, we focus on logical database design, and now that you have had a brief introduction to the relational model, you are ready to learn data modeling.
 
@@ -103,9 +103,9 @@ The simplest database contains information about one entity, which is some real-
 
 ![](Figures/Chapter%203/share.png){width="152"}
 
-An entity has characteristics or attributes. An **attribute** is a discrete element of data; it is not usually broken down into smaller components. Attributes identify data we want to store. Some attributes of the entity SHARE are *identification code*, *firm name*, *price*, *quantity owned*, *dividend*, and *price-to-earnings ratio*.[^2] Attributes are shown below the entity's name. Notice that we refer to *share price*, rather than *price*, to avoid confusion if there should be another entity with an attribute called *price*. Attribute names must be carefully selected so that they are self-explanatory and unique. For example, *share dividend* is easily recognized as belonging to the entity SHARE.
+An entity has characteristics or attributes. An **attribute** is a discrete element of data; it is not usually broken down into smaller components. Attributes identify data we want to store. Some attributes of the entity SHARE are *identification code*, *firm name*, *price*, *quantity owned*, *dividend*, and *price-to-earnings ratio*.[^single-2] Attributes are shown below the entity's name. Notice that we refer to *share price*, rather than *price*, to avoid confusion if there should be another entity with an attribute called *price*. Attribute names must be carefully selected so that they are self-explanatory and unique. For example, *share dividend* is easily recognized as belonging to the entity SHARE.
 
-[^2]: Attributes are shown in italics.
+[^single-2]: Attributes are shown in italics.
 
 *The entity SHARE and its attributes*
 
@@ -143,11 +143,11 @@ The next stage is to translate the data model into a relational database. The tr
 
 The American National Standards Institute's (ANSI) recommended language for relational database definition and manipulation is SQL, which is both a data definition language (DDL) (to define a database), a data manipulation language (DML) (to query and maintain a database), and a data control language (DCL) (to control access). SQL is a common standard for describing and querying databases and is available with many commercial relational database products, including DB2, Oracle, and Microsoft SQL Server, and open source products such as MySQL and PostgreSQL.
 
-In this book, MySQL is the relational database for teaching SQL. Because SQL is a standard, it does not matter which implementation of the relational model you use as the SQL language is common across both the proprietary and open variants.[^3] SQL uses the CREATE[^4] statement to define a table. It is not a particularly friendly command, and most products have friendlier interfaces for defining tables. However, it is important to learn the standard, because this is the command that SQL understands. Also, a table definition interface will generate a CREATE statement for execution by SQL. Your interface interactions ultimately translate into a standard SQL command.
+In this book, MySQL is the relational database for teaching SQL. Because SQL is a standard, it does not matter which implementation of the relational model you use as the SQL language is common across both the proprietary and open variants.[^single-3] SQL uses the CREATE[^single-4] statement to define a table. It is not a particularly friendly command, and most products have friendlier interfaces for defining tables. However, it is important to learn the standard, because this is the command that SQL understands. Also, a table definition interface will generate a CREATE statement for execution by SQL. Your interface interactions ultimately translate into a standard SQL command.
 
-[^3]: Now would be a good time to install the MySQL Community server <http:www.mysql.com/downloads/mysql/> on your computer, unless your instructor has set up a class server.
+[^single-3]: Now would be a good time to install the MySQL Community server <http:www.mysql.com/downloads/mysql/> on your computer, unless your instructor has set up a class server.
 
-[^4]: SQL keywords are shown in uppercase.
+[^single-4]: SQL keywords are shown in uppercase.
 
 It is common practice to abbreviate attribute names, as is done in the following example.
 
@@ -202,11 +202,11 @@ The CHAR and VARCHAR data types are similar but differ in the way character stri
 
 ### Data modeling with MySQL Workbench {.unnumbered}
 
-MySQL Workbench is a professional quality, open source, cross-platform tool for data modeling and SQL querying.[^5] In this text, you will also learn some of the features of Workbench that support data modeling and using SQL. You will find it helpful to complete the MySQL Workbench tutorial on creating a data model[^6] prior to further reading, as we will assume you have such proficiency.
+MySQL Workbench is a professional quality, open source, cross-platform tool for data modeling and SQL querying.[^single-5] In this text, you will also learn some of the features of Workbench that support data modeling and using SQL. You will find it helpful to complete the MySQL Workbench tutorial on creating a data model[^single-6] prior to further reading, as we will assume you have such proficiency.
 
-[^5]: <http://wb.mysql.com/>
+[^single-5]: <http://wb.mysql.com/>
 
-[^6]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-creating-a-model.html>
+[^single-6]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-creating-a-model.html>
 
 *The entity share created with MySQL Workbench*
 
@@ -214,9 +214,9 @@ MySQL Workbench is a professional quality, open source, cross-platform tool for 
 
 You will notice some differences from the data model we have created previously. Workbench automatically generates the SQL code to create the table, so when modeling you establish the names you want for tables and columns. A gold key symbol is used to indicate the identifier, which becomes the primary key. An open diamond indicates that a column can be null, whereas a closed blue diamond indicate the column must have a value, as with `shrfirm` in this case.
 
-When specifying columns in Workbench you must also indicate the datatype. We opt to turn off the display of a column's datatype[^7] in a model to maintain focus on the entity.
+When specifying columns in Workbench you must also indicate the datatype. We opt to turn off the display of a column's datatype[^single-7] in a model to maintain focus on the entity.
 
-[^7]: Preferences \> Diagram \> Show Column Types
+[^single-7]: Preferences \> Diagram \> Show Column Types
 
 A major advantage of using a tool such as Workbench is that it will automatically generate the CREATE statement code (Database \> Forward Engineer ...) and execute the code to create the database. The Workbench tutorial will have shown you how to do this, and you should try this out for yourself by creating a database with the single `share` table.
 
@@ -260,9 +260,9 @@ The data for the `share` table will be used in subsequent examples. If you have 
 
 Notice that `shrcode`,the primary key, is underlined in the preceding table. This is a convention we will use for denoting the primary key. In the relational model, an identifier becomes a primary key, a column that guarantees that each row of the table can be uniquely addressed.
 
-MySQL Workbench offers a spreadsheet interface for entering data, as explained in the tutorial on adding data to a database.[^8]
+MySQL Workbench offers a spreadsheet interface for entering data, as explained in the tutorial on adding data to a database.[^single-8]
 
-[^8]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-adding-data.html>
+[^single-8]: <http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-adding-data.html>
 
 *Inserting rows with MySQL Workbench*
 
