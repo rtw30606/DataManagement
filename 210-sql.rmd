@@ -510,11 +510,11 @@ SQL Server has more than 100 additional functions.
 
 Some examples:
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT extract(day FROM CURRENT_DATE());
 ```
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT SUBSTRING(`person first`, 1,1), `person last` FROM person;
 ```
 
@@ -528,7 +528,7 @@ know that there is a function, DATEDIFF, to determine the number of days
 between any two dates. Consult your DBMS manual to learn about other
 functions for dealing with dates and times.
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 WITH
 late AS (SELECT * FROM sale), 
 early AS (SELECT * FROM sale) 
@@ -689,11 +689,11 @@ definition, is executed only when the view is referenced in an SQL
 command. For example, the following command would enable the subquery to
 be executed and the view created:
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT * FROM stkvalue WHERE price > 10;
 ```
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT natname, stkfirm, stkprice*exchrate, stkqty, stkprice*exchrate*stkqty
 	FROM stock JOIN nation
 		ON stock.natcode = nation.natcode
@@ -779,7 +779,7 @@ in several tables. Clarity is maintained by prefixing the column name
 with the table name. The following example demonstrates qualification of
 the `natcode`, which appears in both `stock` and `nation`.
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT stkfirm, stkprice FROM stock JOIN nation
 	ON stock.natcode = nation.natcode;
 ```
@@ -790,7 +790,7 @@ Using the WITH clause, a table or view can be given a temporary name, or
 alias, that remains current for a query. Temporary names are used in a
 self-join to distinguish the copies of the table.
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 WITH
 wrk AS (SELECT * FROM emp), 
 boss AS (SELECT * FROM emp) 
@@ -974,7 +974,7 @@ SELECT auscount/totalcount*100 as Percentage
 The preceding example was used to show when you might find product
 useful. You can also write the query as
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT (SELECT COUNT(*) FROM stock WHERE natcode = 'AUS')*100/
 	(SELECT COUNT(*) FROM stock) as Percentage;
 ```
@@ -986,7 +986,7 @@ operation. It creates a new table from two existing tables by matching
 on a column common to both tables. An **equijoin** is the simplest form
 of join; in this case, columns are matched on equality.
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT * FROM stock JOIN nation
 	ON stock.natcode = nation.natcode;
 ```
@@ -994,7 +994,7 @@ SELECT * FROM stock JOIN nation
 There are other ways of expressing join that are more concise. For
 example, we can write
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT * FROM stock INNER JOIN nation USING (natcode);
 ```
 
@@ -1004,7 +1004,7 @@ column name for matching primary and foreign keys.
 A further simplification is to rely on the primary and foreign key
 definitions to determine the join condition, so we can write
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT * FROM stock NATURAL JOIN nation;
 ```
 
@@ -1025,7 +1025,7 @@ each of these copies a unique name.
 
 *Find the names of employees who earn more than their boss.*
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT wrk.empfname
 	FROM emp wrk JOIN emp boss
 		ON wrk.bossno = boss.empno
@@ -1071,7 +1071,7 @@ Here is an example to illustrate the use of a left join.
 *For all brown items, report each sale. Include in the report those
 brown items that have appeared in no sales.*
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT itemname, saleno, lineqty FROM item
 	LEFT JOIN lineitem USING (itemno)
 		WHERE itemcolor = 'Brown'
@@ -1121,7 +1121,7 @@ inside another SELECT statement. Simple subqueries were used extensively
 in earlier chapters. For reference, here is a simple subquery used
 earlier:
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT stkfirm FROM stock
 	WHERE natcode IN
 		(SELECT natcode FROM nation
@@ -1137,7 +1137,7 @@ described previously:
 *Find those stocks where the quantity is greater than the average for
 that country.*
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT natname, stkfirm, stkqty FROM stock JOIN nation
 ON stock.natcode = nation.natcode
 WHERE stkqty > 
@@ -1179,7 +1179,7 @@ column. For example,
 
 *Report by nation the total value of stockholdings.*
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT natname, SUM(stkprice*stkqty*exchrate) AS total
 	FROM stock JOIN nation ON stock.natcode = nation.natcode
 		GROUP BY natname;

@@ -21,29 +21,12 @@ Students completing this chapter will be able to
 -   write queries for a database with one-to-one and recursive
     relationships.
 
-![](Figures/Chapter%201/expeditioner.png){width="190"}
+An organizational chart, as shown in the following diagram, can be
+modeled with several relationships.
 
-Alice was convinced that a database of business facts would speed up
-decision making. Her initial experience with the sales database had
-reinforced this conviction. She decided that employee data should be
-computerized next. When she arrived at The Expeditioner, she found the
-company lacked an organization chart and job descriptions for employees.
-One of her first tasks had been to draw an organization chart.
-
-*The Expeditioner's organization chart*
+*The Expeditioner's organizational chart*
 
 ![](Figures/Chapter%206/org%20chart.png){width="476"}
-
-She divided the firm into four departments and appointed a boss for each
-department. The first person listed in each department was its boss; of
-course, Alice was paramount.
-
-Ned had finished the sales database, so the time was right to create an
-employee database. Ned seemed to be enjoying his new role, though his
-dress standard had slipped. Maybe Alice would have to move him out of
-Marketing. In fact, he sometimes reminded her of fellows who used to
-hang around the computer lab all day playing weird games. She wasn't
-quite ready to sound a "nerd alert," but it was getting close.
 
 ## Modeling a one-to-one relationship {.unnumbered}
 
@@ -561,7 +544,7 @@ CREATE TABLE assembly (
 > regiment contains two or more battalions), and a unit can be part of a
 > larger unit (e.g., a squad is a member of a platoon). Draw a data
 > model for this situation.\
-> \#\# Querying a recursive many-to-many relationship {-}
+> ## Querying a recursive many-to-many relationship {-}
 
 *List the product identifier of each component of the animal photography
 kit.*
@@ -637,10 +620,12 @@ business in the form of a bill of materials.
 
 1.  Draw data models for the following two problems:
 
-    a.  (i) A dairy farmer, who is also a part-time cartoonist, has
-        several herds of cows. He has assigned each cow to a particular
-        herd. In each herd, the farmer has one cow that is his
-        favorite---often that cow is featured in a cartoon.\
+    a.  
+
+        (i) A dairy farmer, who is also a part-time cartoonist, has
+            several herds of cows. He has assigned each cow to a
+            particular herd. In each herd, the farmer has one cow that
+            is his favorite---often that cow is featured in a cartoon.\
 
         (ii) A few malcontents in each herd, mainly those who feel they
              should have appeared in the cartoon, disagree with the

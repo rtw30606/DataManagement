@@ -20,35 +20,17 @@ Students completing this chapter will be able to
 
 -   write queries for a database with a one-to-many relationship.
 
-![](Figures/Chapter%201/expeditioner.png){width="152"}
-
-Alice sat with a self-satisfied smirk on her face. Her previous foray
-into her attaché case had revealed the extent of her considerable stock
-holdings. She was wealthy beyond her dreams. What else was there in this
-marvelous, magic attaché case? She rummaged further into the case and
-retrieved a folder labeled "Stocks---foreign." More shares!
-
-On the inside cover of the folder was a note stating that the stocks in
-this folder were not listed in the United Kingdom. The folder contained
-three sheets of paper. Each was headed by the name of a country and
-followed by a list of stocks and the number of shares. The smirk became
-the cattiest of Cheshire grins. Alice ordered another bottle of
-champagne and turned to her iPad to check the latest prices on the
-Google Finance page. She wanted to calculate the current value of each
-stock and then use current exchange rates to convert the values into
-British pounds.
-
 ## Relationships {.unnumbered}
 
 Entities are not isolated; they are related to other entities. When we
 move beyond the single entity, we need to identify the relationships
-between entities to accurately represent the real world. Once we
-recognize that all stocks in our case study are not listed in the United
-Kingdom, we need to introduce an entity called NATION. We now have two
-entities, STOCK and NATION. Consider the relationship between them. A
-NATION can have many listed stocks. A stock, in this case, is listed in
-only one nation. There is a 1:m (one-to-many) relationship between
-NATION and STOCK.
+between entities to accurately represent the real world. Consider the
+case where a person's stocks are listed in different countries. We now
+need to introduce an entity called NATION. We now have two entities,
+STOCK and NATION. Consider the relationship between them. A NATION can
+have many listed stocks. A stock, in this case, is listed in only one
+nation. There is a 1:m (one-to-many) relationship between NATION and
+STOCK.
 
 A 1:m relationship between two entities is depicted by a line connecting
 the two with a crow's foot at the many end of the relationship. The
@@ -510,8 +492,8 @@ now continue to learn some more of its features.
 
 The \^ (carat) is the symbol for NOT. It is used when we want to find a
 string not containing a character in one or more specified strings. For
-example, [\^a-f] means any character not in the set containing a, b, c,
-d, e, or f.
+example, \[\^a-f\] means any character not in the set containing a, b,
+c, d, e, or f.
 
 *List the names of nations with non-alphabetic characters in their
 names*
@@ -549,7 +531,7 @@ SELECT stkfirm FROM stock WHERE stkfirm REGEXP '[s]{2}|[n]{2}';
 
 If you are interested in find a string containing several specified
 string, you can use the square brackets to indicate the sought strings.
-For example, [ea] means any character from the set containing e and a.
+For example, \[ea\] means any character from the set containing e and a.
 
 *List the names of firms with names that include 'inia' or 'onia'.*
 
@@ -611,15 +593,18 @@ When discussing subqueries, sometimes a subquery is also called an
 preceding the inner query. In this case, the outer and inner queries
 are:
 
-+-------------+-------------------------------+
-| Outer query | SELECT stkfirm FROM stock     |
-|             |                               |
-|             | WHERE natcode IN              |
-+-------------+-------------------------------+
-| Inner query | (SELECT natcode FROM nation   |
-|             |                               |
-|             | WHERE natname = 'Australia'); |
-+-------------+-------------------------------+
++---------------+--------------------------+
+| Outer query   | SELECT stkfirm FROM      |
+|               | stock                    |
+|               |                          |
+|               | WHERE natcode IN         |
++---------------+--------------------------+
+| Inner query   | (SELECT natcode FROM     |
+|               | nation                   |
+|               |                          |
+|               | WHERE natname =          |
+|               | 'Australia');            |
++---------------+--------------------------+
 
 Note that in this case we do not have to qualify `natcode`. There is no
 identity crisis, because `natcode` in the inner query is implicitly

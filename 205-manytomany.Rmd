@@ -14,14 +14,6 @@ Students completing this chapter will be able to
 
 -   write queries for a database with a many-to-many relationship.
 
-![](Figures/Chapter%201/expeditioner.png){width="190"}
-
-Alice was deeply involved in uncovering the workings of her firm. She spent hours talking to the staff, wanting to know everything about the products sold. She engaged many a customer in conversation to find out why they shopped at The Expeditioner, what they were looking for, and how they thought the business could be improved. She examined all the products herself and pestered the staff to tell her who bought them, how they were used, how many were sold, who supplied them, and a host of other questions. She plowed (or should that be "ploughed") through accounting journals, sales reports, and market forecasts. She was more than a new broom; she was a giant vacuum cleaner sucking up data about the firm so that she would be prepared to manage it successfully.
-
-Ned, the marketing manager, was a Jekyll and Hyde character. By day he was a charming, savvy, marketing executive. Walking to work in his three-piece suit, bowler hat, and furled umbrella, he was the epitome of the conservative English businessman. By night he became a computer nerd with ragged jeans, a T-shirt, black-framed glasses, and unruly hair. Ned had been desperate to introduce computers to The Expeditioner for years, but he knew that he could never reveal his second nature. The other staff at The Expeditioner just would not accept such a radical change in technology. Why, they had not even switched to fountain pens until their personal stock of quill pens was finally depleted. Ned was just not prepared to face the indignant silence and contempt that would greet his mere mention of computers. It was better to continue a secret double life than admit to being a cyber punk.
-
-But times were changing, and Ned saw the opportunity. He furtively suggested to Lady Alice that perhaps she needed a database of sales facts. Her response was instantaneous: "Yes, and do it as soon as possible." Ned was ecstatic. This was truly a wonderful woman.
-
 ## The many-to-many relationship {.unnumbered}
 
 Consider the case when items are sold. We can immediately identify two entities: SALE and ITEM. A sale can contain many items, and an item can appear in many sales. We are not saying the same item can be sold many times, but the particular type of item (e.g., a compass) can be sold many times; thus we have a many-to-many (m:m) relationship between SALE and ITEM. When we have an m:m relationship, we create a third entity to link the entities through two 1:m relationships. Usually, it is fairly easy to name this third entity. In this case, this third entity, typically known as an **associative entity**, is called LINE ITEM. A typical old style sales form lists the items purchased by a customer. Each of the lines appearing on the order form is generally known in retailing as a line item, which links an item and a sale.
@@ -70,7 +62,7 @@ You might find it useful to think of the m:m relationship as two 1:m relationshi
 >
 > In late 1989, the Social Security Administration notified Mrs. Boles that her original number was given to her in error and she had to provide evidence of her age, identity, and citizenship to get a new number. When Mrs. Boles got her new SSN, it is likely she had to also get a new driver's license and establish a new credit history.
 
-[^manytomany-1]: "Two women share a name, birthday, and S.S. number!" \> Athens [Georgia] Daily News, January 29 1990, 7A. Also, see \> <https://www.computerworld.com/article/3004659/a-tale-of-two-women-same-birthday-same-social-security-number-same-big-data-mess.html>
+[^manytomany-1]: "Two women share a name, birthday, and S.S. number!" Athens Daily News, January 29 1990, 7A. Also, see \> <https://www.computerworld.com/article/3004659/a-tale-of-two-women-same-birthday-same-social-security-number-same-big-data-mess.html>
 
 ## Creating a relational database with an m:m relationship {.unnumbered}
 
@@ -427,68 +419,68 @@ There can be a many-to-many (m:m) relationship between entities, which is repres
 
 8.  The following table records data found on the side of a breakfast cereal carton. Use these data as a guide to develop a data model to record nutrition facts for a meal. In this case, a meal is a cup of cereal and 1/2 cup of skim milk.
 
-+---------------------------------+--------+---------------------------+
-| **Nutrition facts**             |        |                           |
-|                                 |        |                           |
-| Serving size 1 cup (30g)        |        |                           |
-|                                 |        |                           |
-| Servings per container about 17 |        |                           |
-+=================================+========+===========================+
-| Amount per serving              | Cereal | with 1/2 cup of skim milk |
-+---------------------------------+--------+---------------------------+
-| Calories                        | 110    | 150                       |
-+---------------------------------+--------+---------------------------+
-| Calories from Fat               | 10     | 10                        |
-+---------------------------------+--------+---------------------------+
-|                                 |        | \% Daily Value            |
-+---------------------------------+--------+---------------------------+
-| Total Fat 1g                    | 1%     | 2%                        |
-+---------------------------------+--------+---------------------------+
-| Saturated Fat 0g                | 0%     | 0%                        |
-+---------------------------------+--------+---------------------------+
-| Polyunsaturated Fat 0g          |        |                           |
-+---------------------------------+--------+---------------------------+
-| Monounsaturated Fat 0g          |        |                           |
-+---------------------------------+--------+---------------------------+
-| Cholesterol 0mg                 | 0%     | 1%                        |
-+---------------------------------+--------+---------------------------+
-| Sodium 220mg                    | 9%     | 12%                       |
-+---------------------------------+--------+---------------------------+
-| Potassium 105 mg                | 3%     | 9%                        |
-+---------------------------------+--------+---------------------------+
-| Total Carbohydrate 24g          | 8%     | 10%                       |
-+---------------------------------+--------+---------------------------+
-| Dietary Fiber 3g                | 13%    | 13%                       |
-+---------------------------------+--------+---------------------------+
-| Sugars 4g                       |        |                           |
-+---------------------------------+--------+---------------------------+
-| Other Carbohydrate 17g          |        |                           |
-+---------------------------------+--------+---------------------------+
-| Protein 3g                      |        |                           |
-+---------------------------------+--------+---------------------------+
-| Vitamin A                       | 10%    | 15%                       |
-+---------------------------------+--------+---------------------------+
-| Vitamin C                       | 10%    | 10%                       |
-+---------------------------------+--------+---------------------------+
-| Calcium                         | 2%     | 15%                       |
-+---------------------------------+--------+---------------------------+
-| Iron                            | 45%    | 45%                       |
-+---------------------------------+--------+---------------------------+
-| Vitamin D                       | 10%    | 25%                       |
-+---------------------------------+--------+---------------------------+
-| Thiamin                         | 50%    | 50%                       |
-+---------------------------------+--------+---------------------------+
-| Riboflavin                      | 50%    | 50%                       |
-+---------------------------------+--------+---------------------------+
-| Niacin                          | 50%    | 50%                       |
-+---------------------------------+--------+---------------------------+
-| Vitamin B12                     | 50%    | 60%                       |
-+---------------------------------+--------+---------------------------+
-| Phosphorus                      | 10%    | 20%                       |
-+---------------------------------+--------+---------------------------+
-| Magnesium                       | 8%     | 10%                       |
-+---------------------------------+--------+---------------------------+
-| Zinc                            | 50%    | 50%                       |
-+---------------------------------+--------+---------------------------+
-| Copper                          | 4%     | 4%                        |
-+---------------------------------+--------+---------------------------+
++---------------------------------+-------------+---------------------------+
+| **Nutrition facts**             |             |                           |
+|                                 |             |                           |
+| Serving size 1 cup (30g)        |             |                           |
+|                                 |             |                           |
+| Servings per container about 17 |             |                           |
++=================================+=============+===========================+
+| Amount per serving              | Cereal      | with 1/2 cup of skim milk |
++---------------------------------+-------------+---------------------------+
+| Calories                        | 110         | 150                       |
++---------------------------------+-------------+---------------------------+
+| Calories from Fat               | 10          | 10                        |
++---------------------------------+-------------+---------------------------+
+|                                 |             | \% Daily Value            |
++---------------------------------+-------------+---------------------------+
+| Total Fat 1g                    | 1%          | 2%                        |
++---------------------------------+-------------+---------------------------+
+| Saturated Fat 0g                | 0%          | 0%                        |
++---------------------------------+-------------+---------------------------+
+| Polyunsaturated Fat 0g          |             |                           |
++---------------------------------+-------------+---------------------------+
+| Monounsaturated Fat 0g          |             |                           |
++---------------------------------+-------------+---------------------------+
+| Cholesterol 0mg                 | 0%          | 1%                        |
++---------------------------------+-------------+---------------------------+
+| Sodium 220mg                    | 9%          | 12%                       |
++---------------------------------+-------------+---------------------------+
+| Potassium 105 mg                | 3%          | 9%                        |
++---------------------------------+-------------+---------------------------+
+| Total Carbohydrate 24g          | 8%          | 10%                       |
++---------------------------------+-------------+---------------------------+
+| Dietary Fiber 3g                | 13%         | 13%                       |
++---------------------------------+-------------+---------------------------+
+| Sugars 4g                       |             |                           |
++---------------------------------+-------------+---------------------------+
+| Other Carbohydrate 17g          |             |                           |
++---------------------------------+-------------+---------------------------+
+| Protein 3g                      |             |                           |
++---------------------------------+-------------+---------------------------+
+| Vitamin A                       | 10%         | 15%                       |
++---------------------------------+-------------+---------------------------+
+| Vitamin C                       | 10%         | 10%                       |
++---------------------------------+-------------+---------------------------+
+| Calcium                         | 2%          | 15%                       |
++---------------------------------+-------------+---------------------------+
+| Iron                            | 45%         | 45%                       |
++---------------------------------+-------------+---------------------------+
+| Vitamin D                       | 10%         | 25%                       |
++---------------------------------+-------------+---------------------------+
+| Thiamin                         | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Riboflavin                      | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Niacin                          | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Vitamin B12                     | 50%         | 60%                       |
++---------------------------------+-------------+---------------------------+
+| Phosphorus                      | 10%         | 20%                       |
++---------------------------------+-------------+---------------------------+
+| Magnesium                       | 8%          | 10%                       |
++---------------------------------+-------------+---------------------------+
+| Zinc                            | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Copper                          | 4%          | 4%                        |
++---------------------------------+-------------+---------------------------+

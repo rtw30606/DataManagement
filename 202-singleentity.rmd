@@ -1,6 +1,6 @@
 ---
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 72
 ---
 
@@ -50,28 +50,29 @@ common. Telephone numbers and e-mail addresses are examples of unique
 identifiers. Selection of the primary key, or unique identifier, is
 another key issue of database design.
 
-+----------------------------------------------------------------------+
-| **Global legal entity identifier (LEI)**                             |
-+======================================================================+
-| There is no global standard for identifying legal entities across    |
-| markets and jurisdictions. The need for such a standard was          |
-| amplified by Lehman Brothers collapse in 2008. Lehman had 209        |
-| registered subsidiaries, legal entities, in 21 countries, and it was |
-| party to more than 900,000 derivatives contracts upon its collapse.  |
-| Key stakeholders, such as financial regulators and Lehman's          |
-| creditors, were unable to assess their exposure. Furthermore, others |
-| were unable to assess the possible ripple on them of the effects of  |
-| the collapse because of the transitive nature of many investments    |
-| (i.e., A owes B, B owes C, and C owes D).                            |
-|                                                                      |
-| The adoption of a global legal entity identifier (LEI), should       |
-| improve financial system regulation and corporate risk management.   |
-| Regulators will find it easier to monitor and analyze threats to     |
-| financial stability and risk managers will be more able evaluate     |
-| their companies' risks.                                              |
-|                                                                      |
-| Source: www.ny.frb.org/research/epr/2014/1403flem.pdf                |
-+----------------------------------------------------------------------+
++--------------------------------------------------------------------+
+| **Global legal entity identifier (LEI)**                           |
++====================================================================+
+| There is no global standard for identifying legal entities across  |
+| markets and jurisdictions. The need for such a standard was        |
+| amplified by Lehman Brothers collapse in 2008. Lehman had 209      |
+| registered subsidiaries, legal entities, in 21 countries, and it   |
+| was party to more than 900,000 derivatives contracts upon its      |
+| collapse. Key stakeholders, such as financial regulators and       |
+| Lehman's creditors, were unable to assess their exposure.          |
+| Furthermore, others were unable to assess the possible ripple on   |
+| them of the effects of the collapse because of the transitive      |
+| nature of many investments (i.e., A owes B, B owes C, and C owes   |
+| D).                                                                |
+|                                                                    |
+| The adoption of a global legal entity identifier (LEI), should     |
+| improve financial system regulation and corporate risk management. |
+| Regulators will find it easier to monitor and analyze threats to   |
+| financial stability and risk managers will be more able evaluate   |
+| their companies' risks.                                            |
+|                                                                    |
+| Source: www.ny.frb.org/research/epr/2014/1403flem.pdf              |
++--------------------------------------------------------------------+
 
 The tables in a relational database are **connected** or **related** by
 means of the data in the tables. You will learn, in the next chapter,
@@ -349,21 +350,47 @@ first table.
 
 *Some allowable data types*
 
-| Category   | Data type                | Description                                                                                                           |
-|------------|--------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| Numeric    | SMALLINT                 | A 15-bit signed binary value                                                                                          |
-|            | INTEGER                  | A 31-bit signed binary value                                                                                          |
-|            | FLOAT(p)                 | A scientific format number of p binary digits precision                                                               |
-|            | DE CIMAL(p,q)            | A packed decimal number of p digits total length; q decimal spaces to the right of the decimal point may be specified |
-| String     | CHAR(n)                  | A fixed-length string of n characters                                                                                 |
-|            | VARCHAR(n)               | A variable-length string of up to n characters                                                                        |
-|            | TEXT                     | A variable-length string of up to 65,535 characters                                                                   |
-| D ate/time | DATE                     | Date in the form yyyymmdd                                                                                             |
-|            | TIME                     | Time in the form hhmmss                                                                                               |
-|            | TIMESTAMP                | A combination of date and time to the nearest microsecond                                                             |
-|            | TIME WITH TIME ZONE      | Same as time, with the addition of an offset from universal time coordinated (UTC) of the specified time              |
-|            | TIMESTAMP WITH TIME ZONE | Same as timestamp, with the addition of an offset from UTC of the specified time                                      |
-| Logical    | BOOLEAN                  | A set of truth values: TRUE, FALSE, or UNKNOWN                                                                        |
++------------+------------+------------------------------------------+
+| Category   | Data type  | Description                              |
++============+============+==========================================+
+| Numeric    | SMALLINT   | A 15-bit signed binary value             |
++------------+------------+------------------------------------------+
+|            | INTEGER    | A 31-bit signed binary value             |
++------------+------------+------------------------------------------+
+|            | FLOAT(p)   | A scientific format number of p binary   |
+|            |            | digits precision                         |
++------------+------------+------------------------------------------+
+|            | DE CI      | A packed decimal number of p digits      |
+|            | MAL(p,q)   | total length; q decimal spaces to the    |
+|            |            | right of the decimal point may be        |
+|            |            | specified                                |
++------------+------------+------------------------------------------+
+| String     | CHAR(n)    | A fixed-length string of n characters    |
++------------+------------+------------------------------------------+
+|            | VA         | A variable-length string of up to n      |
+|            | RCHAR(n)   | characters                               |
++------------+------------+------------------------------------------+
+|            | TEXT       | A variable-length string of up to 65,535 |
+|            |            | characters                               |
++------------+------------+------------------------------------------+
+| D ate/time | DATE       | Date in the form yyyymmdd                |
++------------+------------+------------------------------------------+
+|            | TIME       | Time in the form hhmmss                  |
++------------+------------+------------------------------------------+
+|            | T IMESTAMP | A combination of date and time to the    |
+|            |            | nearest microsecond                      |
++------------+------------+------------------------------------------+
+|            | TIME WITH  | Same as time, with the addition of an    |
+|            | TIME ZONE  | offset from universal time coordinated   |
+|            |            | (UTC) of the specified time              |
++------------+------------+------------------------------------------+
+|            | T IMESTAMP | Same as timestamp, with the addition of  |
+|            | WITH TIME  | an offset from UTC of the specified time |
+|            | ZONE       |                                          |
++------------+------------+------------------------------------------+
+| Logical    | BOOLEAN    | A set of truth values: TRUE, FALSE, or   |
+|            |            | UNKNOWN                                  |
++------------+------------+------------------------------------------+
 
 The CHAR and VARCHAR data types are similar but differ in the way
 character strings are stored and retrieved. Both can be up to 255
@@ -471,12 +498,12 @@ explained in the tutorial on adding data to a database.^9^
 
 ![](Figures/Chapter%203/wb-input.png)
 
-+----------------------------------------------------------------------+
-| *Skill builder*                                                      |
-|                                                                      |
-| Create a relational database for the ship entity you modeled         |
-| previously. Insert some rows.                                        |
-+----------------------------------------------------------------------+
++--------------------------------------------------------------------+
+| *Skill builder*                                                    |
+|                                                                    |
+| Create a relational database for the ship entity you modeled       |
+| previously. Insert some rows.                                      |
++--------------------------------------------------------------------+
 
 ### Querying a database {.unnumbered}
 
@@ -985,20 +1012,21 @@ SELECT shrfirm, shrpe FROM share
 | Indian Lead & Zinc | 12    |
 | Canadian Sugar     | 15    |
 
-+-------------------------------------------------------------+
-| Warning: The preceding query is often mistakenly written as |
-|                                                             |
-| > SELECT shrfirm, shrpe from share                          |
-| >                                                           |
-| > WHERE shrpe \> avg(shrpe);                                |
-+-------------------------------------------------------------+
++-----------------------------------------------------------+
+| Warning: The preceding query is often mistakenly written  |
+| as                                                        |
+|                                                           |
+| > SELECT shrfirm, shrpe from share                        |
+| >                                                         |
+| > WHERE shrpe \> avg(shrpe);                              |
++-----------------------------------------------------------+
 
-+----------------------------------------------------------------------+
-| *Skill builder*                                                      |
-|                                                                      |
-| Find the name of the firm for which the value of the holding is      |
-| greatest.                                                            |
-+----------------------------------------------------------------------+
++--------------------------------------------------------------------+
+| *Skill builder*                                                    |
+|                                                                    |
+| Find the name of the firm for which the value of the holding is    |
+| greatest.                                                          |
++--------------------------------------------------------------------+
 
 #### Regular expression---pattern matching {.unnumbered}
 
@@ -1068,11 +1096,12 @@ SELECT shrfirm FROM share WHERE shrfirm REGEXP 'Geese$';
 |:---------------|
 | Nigerian Geese |
 
-+------------------------------------------------+
-| *Skill builder*                                |
-|                                                |
-| List the firms containing "ian" in their name. |
-+------------------------------------------------+
++----------------------------------------------+
+| *Skill builder*                              |
+|                                              |
+| List the firms containing "ian" in their     |
+| name.                                        |
++----------------------------------------------+
 
 #### DISTINCT---eliminating duplicate rows {.unnumbered}
 
@@ -1302,7 +1331,7 @@ DELETE or modified with UPDATE.
     asked you to create the database, add details of these aliens, and
     answer the following queries:
 
-    a, What's the average number of heads of an alien?
+    a.  What's the average number of heads of an alien?
 
     b.  Which alien has the most heads?
 
@@ -1509,48 +1538,48 @@ SELECT trknum, trktitle, trklength FROM track
 | 1      | Giant Steps         | 4.72      |
 | 5      | Syeeda's Song Flute | 7         |
 
-+----------------------------------------------------------------------+
-| *Skill builder*                                                      |
-|                                                                      |
-| 1.  Write SQL commands for the following queries:                    |
-|                                                                      |
-|     a.  Report all tracks between 4 and 5 minutes long.              |
-|                                                                      |
-|     b.  On what track is "Naima"?                                    |
-|                                                                      |
-|     c.  Sort the tracks by descending length.                        |
-|                                                                      |
-|     d.  What tracks are longer than the average length of tracks on  |
-|         the CD?                                                      |
-|                                                                      |
-|     e.  How many tracks are less than 5 minutes?                     |
-|                                                                      |
-|     f.  What tracks start with "Cou"?                                |
-|                                                                      |
-| 2.  Add the 13 tracks from The Manhattan Transfer's Swing CD in the  |
-|     following table to the track table:                              |
-|                                                                      |
-| | Track | Title                    | Length |                        |
-| |:------|:-------------------------|:-------|                        |
-| | 1     | Stomp of King Porter     | 3.2    |                        |
-| | 2     | Sing a Study in Brown    | 2.85   |                        |
-| | 3     | Sing Moten's Swing       | 3.6    |                        |
-| | 4     | A-tisket, A-tasket       | 2.95   |                        |
-| | 5     | I Know Why               | 3.57   |                        |
-| | 6     | Sing You Sinners         | 2.75   |                        |
-| | 7     | Java Jive                | 2.85   |                        |
-| | 8     | Down South Camp Meetin'  | 3.25   |                        |
-| | 9     | Topsy                    | 3.23   |                        |
-| | 10    | Clouds                   | 7.2    |                        |
-| | 11    | Skyliner                 | 3.18   |                        |
-| | 12    | It's Good Enough to Keep | 3.18   |                        |
-| | 13    | Choo Choo Ch' Boogie     | 3      |                        |
-|                                                                      |
-| 3.  Write SQL to answer the following queries:                       |
-|                                                                      |
-|     a.  What is the longest track on Swing?                          |
-|                                                                      |
-|     b.  What tracks on Swing include the word Java?                  |
-|                                                                      |
-| 4.  What is the data model missing?                                  |
-+----------------------------------------------------------------------+
++--------------------------------------------------------------------+
+| *Skill builder*                                                    |
+|                                                                    |
+| 1.  Write SQL commands for the following queries:                  |
+|                                                                    |
+|     a.  Report all tracks between 4 and 5 minutes long.            |
+|                                                                    |
+|     b.  On what track is "Naima"?                                  |
+|                                                                    |
+|     c.  Sort the tracks by descending length.                      |
+|                                                                    |
+|     d.  What tracks are longer than the average length of tracks   |
+|         on the CD?                                                 |
+|                                                                    |
+|     e.  How many tracks are less than 5 minutes?                   |
+|                                                                    |
+|     f.  What tracks start with "Cou"?                              |
+|                                                                    |
+| 2.  Add the 13 tracks from The Manhattan Transfer's Swing CD in    |
+|     the following table to the track table:                        |
+|                                                                    |
+| | Track | Title                    | Length |                      |
+| |:------|:-------------------------|:-------|                      |
+| | 1     | Stomp of King Porter     | 3.2    |                      |
+| | 2     | Sing a Study in Brown    | 2.85   |                      |
+| | 3     | Sing Moten's Swing       | 3.6    |                      |
+| | 4     | A-tisket, A-tasket       | 2.95   |                      |
+| | 5     | I Know Why               | 3.57   |                      |
+| | 6     | Sing You Sinners         | 2.75   |                      |
+| | 7     | Java Jive                | 2.85   |                      |
+| | 8     | Down South Camp Meetin'  | 3.25   |                      |
+| | 9     | Topsy                    | 3.23   |                      |
+| | 10    | Clouds                   | 7.2    |                      |
+| | 11    | Skyliner                 | 3.18   |                      |
+| | 12    | It's Good Enough to Keep | 3.18   |                      |
+| | 13    | Choo Choo Ch' Boogie     | 3      |                      |
+|                                                                    |
+| 3.  Write SQL to answer the following queries:                     |
+|                                                                    |
+|     a.  What is the longest track on Swing?                        |
+|                                                                    |
+|     b.  What tracks on Swing include the word Java?                |
+|                                                                    |
+| 4.  What is the data model missing?                                |
++--------------------------------------------------------------------+
