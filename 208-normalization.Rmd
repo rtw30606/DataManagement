@@ -1,19 +1,26 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # Normalization and Other Data Modeling Methods
 
-> *There are many paths to the top of the mountain, but the view is always the same.*
-> 
+> *There are many paths to the top of the mountain, but the view is
+> always the same.*
+>
 > Chinese Proverb
 
 ### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
-- understand the process of normalization;
+-   understand the process of normalization;
 
-- be able to distinguish between different normal forms;
+-   be able to distinguish between different normal forms;
 
-- recognize that different data modeling approaches, while they differ in
-representation methods, are essentially identical.
+-   recognize that different data modeling approaches, while they differ
+    in representation methods, are essentially identical.
 
 ### Introduction {.unnumbered}
 
@@ -34,9 +41,9 @@ Data modeling first emerged as entity-relationship (E-R) modeling in a
 paper by Peter Pin-Shan Chen. He introduced two key database design
 concepts:
 
-- Identify entities and the relationships between them.
+-   Identify entities and the relationships between them.
 
-- A graphical representation improves design communication.
+-   A graphical representation improves design communication.
 
 Chen's core concepts spawned many species of data modeling. To give you
 an appreciation of the variation in data modeling approaches, we briefly
@@ -124,11 +131,11 @@ B, then three relations are possible, as shown in the following table.
 
 *Functional dependencies of two attributes*
 
-  ***Relationship***                 ***Functional dependency***   ***Relationship***
-  ---------------------------------- ----------------------------- --------------------
-  They determine each other          A → B and B → A               1:1
-  One determines the other           A → B                         1:m
-  They do not determine each other   A not→ B and B not→A          m:m
+| ***Relationship***               | ***Functional dependency*** | ***Relationship*** |
+|:---------------------------------|:----------------------------|:-------------------|
+| They determine each other        | A → B and B → A             | 1:1                |
+| One determines the other         | A → B                       | 1:m                |
+| They do not determine each other | A not→ B and B not→A        | m:m                |
 
 #### One-to-one attribute relationship {.unnumbered}
 
@@ -184,8 +191,8 @@ difficult part is discovering how to convert a relation to DK/NF.
 
 ### First normal form {.unnumbered}
 
-*A relation is in first normal form if and only if all columns are single-valued.* 
-In other words, 1NF states that all occurrences of a row
+*A relation is in first normal form if and only if all columns are
+single-valued.* In other words, 1NF states that all occurrences of a row
 must have the same number of columns. In data modeling terms, this means
 that an attribute must have a single value. An attribute that can have
 multiple values must be represented as a one-to-many (1:m) relationship.
@@ -195,18 +202,20 @@ entity are required to be single-valued.
 ### Second normal form {.unnumbered}
 
 Second normal form is violated when a nonkey column is dependent on only
-a component of the primary key. This can also be stated as *a relation is in second normal form if and only if it is in first normal form, and all nonkey columns are dependent on the key*.
+a component of the primary key. This can also be stated as *a relation
+is in second normal form if and only if it is in first normal form, and
+all nonkey columns are dependent on the key*.
 
-Consider the following table. The primary key of `order` is a composite of
-`itemno` and `customerid`. The problem is that `customer-credit` is a fact
-about `customerid` (part of the composite key) rather than the full key
-(`itemno+customerid`), or in other words, it is not fully functionally
-dependent on the primary key. An insert anomaly arises when you try to
-add a new customer to order. You cannot add a customer until that person
-places an order, because until then you have no value for item number,
-and part of the primary key will be null. Clearly, this is neither an
-acceptable business practice nor an acceptable data management
-procedure.
+Consider the following table. The primary key of `order` is a composite
+of `itemno` and `customerid`. The problem is that `customer-credit` is a
+fact about `customerid` (part of the composite key) rather than the full
+key (`itemno+customerid`), or in other words, it is not fully
+functionally dependent on the primary key. An insert anomaly arises when
+you try to add a new customer to order. You cannot add a customer until
+that person places an order, because until then you have no value for
+item number, and part of the primary key will be null. Clearly, this is
+neither an acceptable business practice nor an acceptable data
+management procedure.
 
 Analyzing this problem, you realize an item can be in many orders, and a
 customer can order many items---an m:m relationship. By drawing the data
@@ -215,33 +224,36 @@ attribute of `customer`, and you get the correct relational mapping.
 
 *Second normal form violation*
 
-  [itemno]{.underline}   [customerid]{.underline}   quantity   customer-credit
-  ---------------------- -------------------------- ---------- -----------------
-  12                     57                         25         OK
-  34                     679                        3          POOR
+| [itemno]{.ul} | [customerid]{.ul} | quantity | customer-credit |
+|:--------------|:------------------|:---------|:----------------|
+| 12            | 57                | 25       | OK              |
+| 34            | 679               | 3        | POOR            |
 
 *Resolving second normal form violation*
 
-![](Figures/Chapter 8/2NF.png)
+![](Figures/Chapter%208/2NF.png){width="601"}
 
 ### Third normal form {.unnumbered}
 
 Third normal form is violated when a nonkey column is a fact about
-another nonkey column. Alternatively, *a relation is in third normal form if and only if it is in second normal form and has no transitive dependencies.*
+another nonkey column. Alternatively, *a relation is in third normal
+form if and only if it is in second normal form and has no transitive
+dependencies.*
 
-The problem in the following table is that `exchange rate` is a fact about
-`nation`, a nonkey field. In the language of functional dependency,
-`exchange rate` is not fully functionally dependent on `stockcode`, the
-primary key.
+The problem in the following table is that `exchange rate` is a fact
+about `nation`, a nonkey field. In the language of functional
+dependency, `exchange rate` is not fully functionally dependent on
+`stockcode`, the primary key.
 
-The functional dependencies are `stockcode` → `nation` → `exchange rate`. In
-other words, `exchange rate` is transitively dependent on STOCK, since
-`exchange rate` is dependent on `nation`, and `nation` is dependent on
-`stockcode`. The fundamental problem becomes very apparent when you try to
-add a new nation to the `stock` table. Until you buy at least one stock
-for that nation, you cannot insert the nation, because you do not have a
-primary key. Similarly, if you delete MG from the `stock` table, details
-of the USA exchange rate are lost. There are modification anomalies.
+The functional dependencies are `stockcode` → `nation` →
+`exchange rate`. In other words, `exchange rate` is transitively
+dependent on STOCK, since `exchange rate` is dependent on `nation`, and
+`nation` is dependent on `stockcode`. The fundamental problem becomes
+very apparent when you try to add a new nation to the `stock` table.
+Until you buy at least one stock for that nation, you cannot insert the
+nation, because you do not have a primary key. Similarly, if you delete
+MG from the `stock` table, details of the USA exchange rate are lost.
+There are modification anomalies.
 
 When you think about the data relationships, you realize that a nation
 has many stocks and a stock belongs to only one nation. Now the data
@@ -249,24 +261,25 @@ model and relational map can be created readily .
 
 *Third normal form violation*
 
-  [stockcode]{.underline}   nation   exchange rate
-  ------------------------- -------- ---------------
-  MG                        USA      0.67
-  IR                        AUS      0.46
+| [stockcode]{.ul} | nation | exchange rate |
+|:-----------------|:-------|:--------------|
+| MG               | USA    | 0.67          |
+| IR               | AUS    | 0.46          |
 
 *Resolving third normal form violation*
 
-![](Figures/Chapter 4/nation-stock.png)
+![](Figures/Chapter%204/nation-stock.png){width="370"}
 
-> ❓*Skill builder* You have been given a spreadsheet that contains details of invoices. The   
+> ❓*Skill builder* You have been given a spreadsheet that contains
+> details of invoices. The\
 > column headers for the spreadsheet are *date*, *invoice number*,
-> *invoice amount*, *invoice tax*, *invoice total*, *cust number*, *custname*,
-> *cust street*, *cust city*, *cust state*, *cust postal code*,
-> *cust nation*, *product code*, *product price*, *product quantity*, 
-> *salesrep number*, *salesrep first name*, *salesrep last name*, 
-> *salesrep district*, *district name*, and *district size*. Normalize
-> this spreadsheet so that it can be converted to a high-fidelity 
-> relational database.
+> *invoice amount*, *invoice tax*, *invoice total*, *cust number*,
+> *custname*, *cust street*, *cust city*, *cust state*, *cust postal
+> code*, *cust nation*, *product code*, *product price*, *product
+> quantity*, *salesrep number*, *salesrep first name*, *salesrep last
+> name*, *salesrep district*, *district name*, and *district size*.
+> Normalize this spreadsheet so that it can be converted to a
+> high-fidelity relational database.
 
 ### Boyce-Codd normal form {.unnumbered}
 
@@ -275,12 +288,12 @@ rare, can occur. So Boyce-Codd normal form, a stronger version of 3NF,
 was developed. BCNF is necessary because 3NF does not cover the cases
 when
 
-- A relation has multiple candidate keys.
+-   A relation has multiple candidate keys.
 
-- Those candidate keys are composite.
+-   Those candidate keys are composite.
 
-- The candidate keys overlap because they have at least one column in
-common.
+-   The candidate keys overlap because they have at least one column in
+    common.
 
 Before considering an example, **candidate key** needs to be defined.
 Earlier we introduced the idea that an entity could have more than one
@@ -299,10 +312,10 @@ table.
 
 *Boyce-Codd normal form violation*
 
-  [client]{.underline}   [probtype]{.underline}   consultant
-  ---------------------- ------------------------ ------------
-  Alpha                  Marketing                Gomez
-  Alpha                  Production               Raginiski
+| [client]{.ul} | [probtype]{.ul} | consultant |
+|:--------------|:----------------|:-----------|
+| Alpha         | Marketing       | Gomez      |
+| Alpha         | Production      | Raginiski  |
 
 The column `client` cannot be the primary key because a client can have
 several problem types; however, a client is advised by only one
@@ -317,16 +330,18 @@ that overlap. This means the table is 3NF, but not BCNF. This can be
 easily verified by considering what happens if the firm adds a new
 consultant. A new consultant cannot be added until there is a
 client---an insertion anomaly. The problem is that `consultant` is a
-determinant, `consultant`→`probtype`, but is not a candidate key. In terms
-of the phrasing used earlier, the problem is that part of the key column
-is a fact about a nonkey column. The precise definition is *a relation is in Boyce-Codd normal form if and only if every determinant is a candidate key*.
+determinant, `consultant`→`probtype`, but is not a candidate key. In
+terms of the phrasing used earlier, the problem is that part of the key
+column is a fact about a nonkey column. The precise definition is *a
+relation is in Boyce-Codd normal form if and only if every determinant
+is a candidate key*.
 
 This problem is avoided by creating the correct data model and then
 mapping to a relational model.
 
 *Resolving Boyce-Codd normal form violation*
 
-![](Figures/Chapter 8/BCNF.png)
+![](Figures/Chapter%208/BCNF.png){width="600"}
 
 ### Fourth normal form {.unnumbered}
 
@@ -344,12 +359,12 @@ and her subject. Modification anomalies are very apparent.
 
 *Fourth normal form violation*
 
-  [studentid]{.underline}   [sport]{.underline}   [subject]{.underline}   \...
-  ------------------------- --------------------- ----------------------- ------
-  50                        Football              English                 \...
-  50                        Football              Music                   \...
-  50                        Tennis                Botany                  \...
-  50                        Karate                Botany                  \...
+| [studentid]{.ul} | [sport]{.ul} | [subject]{.ul} | ... |
+|:-----------------|:-------------|:---------------|:----|
+| 50               | Football     | English        | ... |
+| 50               | Football     | Music          | ... |
+| 50               | Tennis       | Botany         | ... |
+| 50               | Karate       | Botany         | ... |
 
 This table is not in 4NF because sport and subject are independent
 multivalued facts about a student. There is no relationship between
@@ -361,13 +376,16 @@ there is an m:m relationship between student and subject. It makes no
 sense to store information about a student's sports and subjects in the
 same table because sport and subject are not related. The problem arises
 because sport and subject are multivalued dependencies of student. The
-solution is to convert multivalued dependencies to functional dependencies. 
-More formally, *a relation is in fourth normal form if it is in Boyce-Codd normal form and all multivalued dependencies on the relation are functional dependencies.* A data model sorts out this
-problem, and note that the correct relational mapping requires five tables.
+solution is to convert multivalued dependencies to functional
+dependencies. More formally, *a relation is in fourth normal form if it
+is in Boyce-Codd normal form and all multivalued dependencies on the
+relation are functional dependencies.* A data model sorts out this
+problem, and note that the correct relational mapping requires five
+tables.
 
 *Resolving fourth normal form violation*
 
-![](Figures/Chapter 8/4NF.png)
+![](Figures/Chapter%208/4NF.png){width="600"}
 
 ### Fifth normal form {.unnumbered}
 
@@ -385,7 +403,7 @@ introduced in Chapter 7.
 
 *The CONSULTANT-FIRM-SKILL data model without a rule*
 
-![](Figures/Chapter 8/5NF-1.png)
+![](Figures/Chapter%208/5NF-1.png){width="600"}
 
 The relational mapping of the three-way relationships results in four
 tables, with the associative entity ASSIGNMENT mapping shown in the
@@ -393,10 +411,10 @@ following table.
 
 *Relation table assignment*
 
-  [consultid]{.underline}   [firmid]{.underline}   [skilldesc]{.underline}
-  ------------------------- ---------------------- -------------------------
-  Tan                       IBM                    Database
-  Tan                       Apple                  Data comm
+| [consultid]{.ul} | [firmid]{.ul} | [skilldesc]{.ul} |
+|:-----------------|:--------------|:-----------------|
+| Tan              | IBM           | Database         |
+| Tan              | Apple         | Data comm        |
 
 The table is in 5NF because the combination of all three columns is
 required to identify which consultants supply which firms with which
@@ -404,8 +422,8 @@ skills. For example, we see that Tan advises IBM on database and Apple
 on data communications. The data in this table cannot be reconstructed
 from other tables.
 
-The preceding table is not in 5NF *if there is a rule of the following form*: 
-If a consultant has a certain skill (e.g., database) and has a
+The preceding table is not in 5NF *if there is a rule of the following
+form*: If a consultant has a certain skill (e.g., database) and has a
 contract with a firm that requires that skill (e.g., IBM), then the
 consultant advises that firm on that skill (i.e., he advises IBM on
 database). Notice that this rule means we can infer a relationship, and
@@ -413,101 +431,103 @@ we no longer need the combination of the three columns. As a result, we
 break the single three-entity m:m relationship into three two-entity m:m
 relationships. Revised data model after the introduction of the rule
 
-![](Figures/Chapter 8/5NF-2.png)
+![](Figures/Chapter%208/5NF-2.png){width="600"}
 
 Further understanding of 5NF is gained by examining the relational
 tables resulting from these three associative entities. Notice the names
 given to each of the associative entities. The table `contract` records
-data about the firms a consultant advises; `advise` describes the skills a
-consultant has; and `require` stores data about the types of skills each
-firm requires. To help understand this problem, examine the three tables
-below.
+data about the firms a consultant advises; `advise` describes the skills
+a consultant has; and `require` stores data about the types of skills
+each firm requires. To help understand this problem, examine the three
+tables below.
 
 *Relational table contract*
 
-  [consultid]{.underline}   [firmid]{.underline}
-  ------------------------- ----------------------
-  Gonzales                  Apple
-  Gonzales                  IBM
-  Gonzales                  NEC
-  Tan                       IBM
-  Tan                       NEC
-  Wood                      Apple
+| [consultid]{.ul} | [firmid]{.ul} |
+|:-----------------|:--------------|
+| Gonzales         | Apple         |
+| Gonzales         | IBM           |
+| Gonzales         | NEC           |
+| Tan              | IBM           |
+| Tan              | NEC           |
+| Wood             | Apple         |
 
 *Relational table advise*
 
-  [consultid]{.underline}   [skilldesc]{.underline}
-  ------------------------- -------------------------
-  Gonzales                  Database
-  Gonzales                  Data comm
-  Gonzales                  Groupware
-  Tan                       Database
-  Tan                       Data comm
-  Wood                      Data comm
+| [consultid]{.ul} | [skilldesc]{.ul} |
+|:-----------------|:-----------------|
+| Gonzales         | Database         |
+| Gonzales         | Data comm        |
+| Gonzales         | Groupware        |
+| Tan              | Database         |
+| Tan              | Data comm        |
+| Wood             | Data comm        |
 
 *Relational table require*
 
-  [firmid]{.underline}   [skilldesc]{.underline}
-  ---------------------- -------------------------
-  IBM                    Data comm
-  IBM                    Groupware
-  NEC                    Data comm
-  NEC                    Database
-  NEC                    Groupware
-  Apple                  Data comm
+| [firmid]{.ul} | [skilldesc]{.ul} |
+|:--------------|:-----------------|
+| IBM           | Data comm        |
+| IBM           | Groupware        |
+| NEC           | Data comm        |
+| NEC           | Database         |
+| NEC           | Groupware        |
+| Apple         | Data comm        |
 
-Consider joining `contract` and `advise`, the result of which we call `could advise` 
-because it lists skills the consultant could provide if the firm
-required them. For example, Tan has skills in database and data
+Consider joining `contract` and `advise`, the result of which we call
+`could advise` because it lists skills the consultant could provide if
+the firm required them. For example, Tan has skills in database and data
 communications, and Tan has a contract with IBM. If IBM requires
 database skills, Tan can handle it. We need to look at require to
 determine whether IBM requires advice on database; it does not.
 
 *Relational table could advise*
 
-  [consultid]{.underline}   [firmid]{.underline}   [skilldesc]{.underline}
-  ------------------------- ---------------------- -------------------------
-  Gonzales                  Apple                  Database
-  Gonzales                  Apple                  Data comm
-  Gonzales                  Apple                  Groupware
-  Gonzales                  IBM                    Database
-  Gonzales                  IBM                    Data comm
-  Gonzales                  IBM                    Groupware
-  Gonzales                  NEC                    Database
-  Gonzales                  NEC                    Data comm
-  Gonzales                  NEC                    Groupware
-  Tan                       IBM                    Database
-  Tan                       IBM                    Data comm
-  Tan                       NEC                    Database
-  Tan                       NEC                    Data comm
-  Wood                      Apple                  Data comm
+| [consultid]{.ul} | [firmid]{.ul} | [skilldesc]{.ul} |
+|:-----------------|:--------------|:-----------------|
+| Gonzales         | Apple         | Database         |
+| Gonzales         | Apple         | Data comm        |
+| Gonzales         | Apple         | Groupware        |
+| Gonzales         | IBM           | Database         |
+| Gonzales         | IBM           | Data comm        |
+| Gonzales         | IBM           | Groupware        |
+| Gonzales         | NEC           | Database         |
+| Gonzales         | NEC           | Data comm        |
+| Gonzales         | NEC           | Groupware        |
+| Tan              | IBM           | Database         |
+| Tan              | IBM           | Data comm        |
+| Tan              | NEC           | Database         |
+| Tan              | NEC           | Data comm        |
+| Wood             | Apple         | Data comm        |
 
 *Relational table can advise*
 
-The join of `could advise` with `require` gives details of a firm's skill
-needs that a consultant can provide. The table `can advise` is constructed
-by directly joining `contract`, `advise`, and `require`. Because we can
-construct `can advise` from three other tables, the data are in 5NF.
+The join of `could advise` with `require` gives details of a firm's
+skill needs that a consultant can provide. The table `can advise` is
+constructed by directly joining `contract`, `advise`, and `require`.
+Because we can construct `can advise` from three other tables, the data
+are in 5NF.
 
-  [consultid]{.underline}   [firmid]{.underline}   [skilldesc]{.underline}
-  ------------------------- ---------------------- -------------------------
-  Gonzales                  IBM                    Data comm
-  Gonzales                  IBM                    Groupware
-  Gonzales                  NEC                    Database
-  Gonzales                  NEC                    Data comm
-  Gonzales                  NEC                    Groupware
-  Tan                       IBM                    Data comm
-  Tan                       NEC                    Database
-  Tan                       NEC                    Data comm
-  Wood                      Apple                  Data comm
+| [consultid]{.ul} | [firmid]{.ul} | [skilldesc]{.ul} |
+|:-----------------|:--------------|:-----------------|
+| Gonzales         | IBM           | Data comm        |
+| Gonzales         | IBM           | Groupware        |
+| Gonzales         | NEC           | Database         |
+| Gonzales         | NEC           | Data comm        |
+| Gonzales         | NEC           | Groupware        |
+| Tan              | IBM           | Data comm        |
+| Tan              | NEC           | Database         |
+| Tan              | NEC           | Data comm        |
+| Wood             | Apple         | Data comm        |
 
 Since data are stored in three separate tables, updating is easier.
 Consider the case where IBM requires database skills. We only need to
 add one row to require to record this fact. In the case of can advise,
 we would have to add two rows, one for Gonzales and one for Tan.
 
-Now we can give 5NF a more precise definition: 
-*A relation is in fifth normal form if and only if every join dependency of the relation is a consequence of the candidate keys of the relation.*
+Now we can give 5NF a more precise definition: *A relation is in fifth
+normal form if and only if every join dependency of the relation is a
+consequence of the candidate keys of the relation.*
 
 Up to this point, data modeling has enabled you to easily avoid
 normalization problems. Fifth normal form introduces a complication,
@@ -527,8 +547,9 @@ well-defined so that its truth can be readily evaluated. Referential
 integrity constraints, functional dependencies, and data validation
 rules are examples of constraints. A **domain** is a set of all values
 of the same data type. With the help of these terms, the concept of
-DK/NF is easily stated. 
-*A relation is in domain-key normal form if and only if every constraint on the relation is a logical consequence of the domain constraints and the key constraints that apply to the relation*.
+DK/NF is easily stated. *A relation is in domain-key normal form if and
+only if every constraint on the relation is a logical consequence of the
+domain constraints and the key constraints that apply to the relation*.
 
 Note that DK/NF does not involve ideas of dependency; it just relies on
 the concepts of key, constraint, and domain. The problem with DK/NF is
@@ -568,7 +589,7 @@ database designer must convert this relationship to a table.
 
 *An E-R diagram*
 
-![](Figures/Chapter 8/E-R.png)
+![](Figures/Chapter%208/E-R.png)
 
 Attributes are shown as ellipses connected to the entity or relationship
 to which they belong (e.g., *stock name* is an attribute of STOCK).
@@ -579,49 +600,20 @@ attributes consumes space, particularly for large data models. It is
 more efficient to record attributes within an entity rectangle, as in
 the data modeling method you have learned.
 
-### IDEF1X {.unnumbered}
-
-IDEF1X (Integrated DEFinition 1X) was conceived in the late 1970s and
-refined in the early 1980s. It is based on the work of Codd and Chen. A
-quick look at some of the fundamental ideas of IDEF1X will show you how
-similar it is to the method you have learned. Entities are represented
-in a similar manner, as the following figure shows. The representation
-is a little different (e.g., the name of the entity is in a separate box
-within a rectangle), but the information is the same.
-
-IDEF1X adds additional notation to an attribute to indicate whether it
-is an alternate key or inversion entry. An **alternate key** is a
-possible primary key (identifier) that was not selected as the primary
-key. *Stock name*, assuming it is unique, is an alternate key. An
-**inversion entry** indicates a likely frequent way of accessing the
-entity, so it should become an index. For instance, the entity may be
-accessed frequently via *stock name*. Alternate keys are shown as AK1,
-AK2,\... and inversion entries as IE1, IE2, \.... Thus, *stock name* is
-both an alternate key and an inversion entry.
-
-The representation of relationships is also similar. A dot is used
-rather than a crow's foot. Also, notice that relationships are
-described, whereas you learned to describe only relationships when they
-are not readily inferred.
-
-*An IDEF1X relationship*
-
-![](Figures/Chapter 8/nation-stock-idefx.png)
-
 > ❓*Skill builder*
 >
-> Ken is a tour guide for trips that can last several weeks. He has 
-> requested a database that will enable him to keep track of the people 
-> who have been on the various tours he has led. He wants to be able to 
+> Ken is a tour guide for trips that can last several weeks. He has
+> requested a database that will enable him to keep track of the people
+> who have been on the various tours he has led. He wants to be able to
 > record his comments about some of his clients to remind him of extra
 > attention he might need to pay to them on a future trip (e.g., Bill
 > tends to get lost, Daisy has problems getting along with others). Some
-> times people travel with a partner, and Ken wants to record this in his 
-> database. 
+> times people travel with a partner, and Ken wants to record this in
+> his database.
 >
-> Design a database using MySQL Workbench. Experiment with Object Notation 
-> and Relationship Notation (options of the Model tab) to get a feel for
-> different forms of representing data models.
+> Design a database using MySQL Workbench. Experiment with Object
+> Notation and Relationship Notation (options of the Model tab) to get a
+> feel for different forms of representing data models.
 
 ### Conclusion {.unnumbered}
 
@@ -658,21 +650,21 @@ aim to improve database design.
 
 ## Key terms and concepts {.unnumbered}
 
-|                                      |                                      |
-|:-------------------------------------|:-------------------------------------|
-| Alternate key                        | Functional dependency                |
-| Boyce-Codd normal form (BCNF)        | Generalization hierarchy             |
-| Constraint                           | IDEF1X                               |
-| Data model                           | Inversion entry                      |
-| Determinant                          | Many-to-many attribute relationship  |
-| Domain                               | Multidetermination                   |
-| Domain-key normal form (DK/NF)       | Multivalued dependency               |
-| Entity                               | Normalization                        |
-| Entity-relationship (E-R) model      | One-to-many attribute relationship   |
-| Fifth normal form (5NF)              | One-to-one attribute relationship    |
-| First normal form (1NF)              | Relationship                         |
-| Fourth normal form (1NF)             | Second normal form (2NF)             |
-| Full functional dependency           | Third normal form (3NF)              |
+|                                 |                                     |
+|:--------------------------------|:------------------------------------|
+| Alternate key                   | Functional dependency               |
+| Boyce-Codd normal form (BCNF)   | Generalization hierarchy            |
+| Constraint                      | Inversion entry                     |
+| Data model                      | Many-to-many attribute relationship |
+| Determinant                     | Multidetermination                  |
+| Domain                          | Multivalued dependency              |
+| Domain-key normal form (DK/NF)  | Normalization                       |
+| Entity                          | One-to-many attribute relationship  |
+| Entity-relationship (E-R) model | One-to-one attribute relationship   |
+| Fifth normal form (5NF)         | Relationship                        |
+| First normal form (1NF)         | Second normal form (2NF)            |
+| Fourth normal form (1NF)        | Third normal form (3NF)             |
+| Full functional dependency      |                                     |
 
 ## References and additional readings {.unnumbered}
 
@@ -688,30 +680,29 @@ database theory. *Communications of the ACM 26 (2): 120-125.*
 
 1.  What is normalization, and what is its goal?
 
-2. How does DK/NF differ from earlier normal forms?
+2.  How does DK/NF differ from earlier normal forms?
 
-3. How do E-R and IDEF1X differ from the data modeling method of this
-    text?
+3.  How does E-R differ from the data modeling method of this text?
 
 ### Normalization and data modeling {.unnumbered}
 
-Using normalization, E-R, or IDEF1X, create data models from the
-following narratives, which are sometimes intentionally incomplete. You
-will have to make some assumptions. Make certain you state these
-assumptions alongside your data model. Define the identifier(s) and
-attributes of each entity.
+Using normalization or E-R create data models from the following
+narratives, which are sometimes intentionally incomplete. You will have
+to make some assumptions. Make certain you state these assumptions
+alongside your data model. Define the identifier(s) and attributes of
+each entity.
 
 1.  The president of a book wholesaler has told you that she wants
     information about publishers, authors, and books.
 
-2. A university has many subject areas (e.g., MIS, Romance languages).
+2.  A university has many subject areas (e.g., MIS, Romance languages).
     Professors teach in only one subject area, but the same subject area
     can have many professors. Professors can teach many different
     courses in their subject area. An offering of a course (e.g., Data
     Management 457, French 101) is taught by only one professor at a
     particular time.
 
-3. Kids'n'Vans retails minivans for a number of manufacturers. Each
+3.  Kids'n'Vans retails minivans for a number of manufacturers. Each
     manufacturer offers several models of its minivan (e.g., SE, LE,
     GT). Each model comes with a standard set of equipment (e.g., the
     Acme SE comes with wheels, seats, and an engine). Minivans can have
@@ -723,7 +714,7 @@ attributes of each entity.
     include stereo, six speakers, cocktail bar, and twin overhead
     foxtails).
 
-4. Steve operates a cinema chain and has given you the following
+4.  Steve operates a cinema chain and has given you the following
     information:\
     "I have many cinemas. Each cinema can have multiple theaters. Movies
     are shown throughout the day starting at 11 a.m. and finishing at 1
@@ -735,7 +726,7 @@ attributes of each entity.
     instance, *Lassie Get Lost* is 50 cents for everyone at 11 a.m. but
     is 75 cents at 11 p.m."
 
-5. A telephone company offers a 10 percent discount to any customer who
+5.  A telephone company offers a 10 percent discount to any customer who
     phones another person who is also a customer of the company. To be
     eligible for the discount, the pairing of the two phone numbers must
     be registered with the telephone company. Furthermore, for billing

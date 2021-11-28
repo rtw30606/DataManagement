@@ -1,18 +1,24 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # The Relational Model and Relational Algebra
 
 > *Nothing is so practical as a good theory*.
-> 
+>
 > K. Lewin, 1945
 
 ### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
-- know the structures of the relational model;
+-   know the structures of the relational model;
 
-- understand relational algebra commands;
+-   understand relational algebra commands;
 
-- be able to determine whether a DBMS is completely relational.
+-   be able to determine whether a DBMS is completely relational.
 
 ### Background {.unnumbered}
 
@@ -23,7 +29,7 @@ solve most practical problems that could potentially arise.
 
 In another article, Codd expounds the case for adopting the relational
 over earlier database models. There is a threefold thrust to his
-argument. *First**, ***earlier models force the programmer to code at a
+argument. *First**,*** earlier models force the programmer to code at a
 low level of structural detail. As a result, application programs are
 more complex and take longer to write and debug. *Second*, no commands
 are provided for processing multiple records at one time. Earlier models
@@ -54,11 +60,11 @@ client-analyst communication.
 
 The relational model has three major components:
 
-- Data structures
+-   Data structures
 
-- Integrity rules
+-   Integrity rules
 
-- Operators used to retrieve, derive, or modify data
+-   Operators used to retrieve, derive, or modify data
 
 ## Data structures {.unnumbered}
 
@@ -75,13 +81,13 @@ the range \$0 to \$10,000,000. You can think of a domain as all the
 legal values of an attribute.
 
 In specifying a domain, you need to think about the smallest unit of
-data for an attribute defined on that domain. In Chapter 8, we
-discussed how a candidate attribute should be examined to see whether it
-should be segmented (e.g., we divide name into first name, other name,
-and last name, and maybe more). While it is unlikely that name will be a
-domain, it is likely that there will be a domain for first name, last
-name, and so on. Thus, a domain contains values that are in their
-*atomic* state; they cannot be decomposed further.
+data for an attribute defined on that domain. In Chapter 8, we discussed
+how a candidate attribute should be examined to see whether it should be
+segmented (e.g., we divide name into first name, other name, and last
+name, and maybe more). While it is unlikely that name will be a domain,
+it is likely that there will be a domain for first name, last name, and
+so on. Thus, a domain contains values that are in their *atomic* state;
+they cannot be decomposed further.
 
 The practical value of a domain is to define what comparisons are
 permissible. Only attributes drawn from the same domain should be
@@ -109,31 +115,31 @@ cardinality changes.
 
 A relational database with tables nation and stock
 
-  [natcode]{.underline}   natname          exchrate   
-  ----------------------- ---------------- ---------- ---
-  AUS                     Australia        0.46       
-  IND                     India            0.0228     
-  UK                      United Kingdom   1          
-  USA                     United States    0.67       →
+| [natcode]{.ul} | natname        | exchrate |     |
+|:---------------|:---------------|:---------|-----|
+| AUS            | Australia      | 0.46     |     |
+| IND            | India          | 0.0228   |     |
+| UK             | United Kingdom | 1        |     |
+| USA            | United States  | 0.67     | →   |
 
-  [stkcode]{.underline}   stkfirm               stkprice   stkqty      stkdiv   stkpe   natcode   
-  ----------------------- --------------------- ---------- ----------- -------- ------- --------- ---
-  FC                      Freedonia Copper      27.5       10,529      1.84     16      UK        
-  PT                      Patagonian Tea        55.25      12,635      2.5      10      UK        
-  AR                      Abyssinian Ruby       31.82      22,010      1.32     13      UK        
-  SLG                     Sri Lankan Gold       50.37      32,868      2.68     16      UK        
-  ILZ                     Indian Lead & Zinc    37.75      6,390       3        12      UK        
-  BE                      Burmese Elephant      0.07       154,713     0.01     3       UK        
-  BS                      Bolivian Sheep        12.75      231,678     1.78     11      UK        
-  NG                      Nigerian Geese        35         12,323      1.68     10      UK        
-  CS                      Canadian Sugar        52.78      4,716       2.5      15      UK        
-  ROF                     Royal Ostrich Farms   33.75      1,234,923   3        6       UK        
-  MG                      Minnesota Gold        53.87      816,122     1        25      USA       ←
-  GP                      Georgia Peach         2.35       387,333     0.2      5       USA       ←
-  NE                      Narembeen Emu         12.34      45,619      1        8       AUS       
-  QD                      Queensland Diamond    6.73       89,251      0.5      7       AUS       
-  IR                      Indooroopilly Ruby    15.92      56,147      0.5      20      AUS       
-  BD                      Bombay Duck           25.55      167,382     1        12      IN        
+| [stkcode]{.ul} | stkfirm             | stkprice | stkqty    | stkdiv | stkpe | natcode |     |
+|:---------------|:--------------------|:---------|:----------|:-------|:------|:--------|-----|
+| FC             | Freedonia Copper    | 27.5     | 10,529    | 1.84   | 16    | UK      |     |
+| PT             | Patagonian Tea      | 55.25    | 12,635    | 2.5    | 10    | UK      |     |
+| AR             | Abyssinian Ruby     | 31.82    | 22,010    | 1.32   | 13    | UK      |     |
+| SLG            | Sri Lankan Gold     | 50.37    | 32,868    | 2.68   | 16    | UK      |     |
+| ILZ            | Indian Lead & Zinc  | 37.75    | 6,390     | 3      | 12    | UK      |     |
+| BE             | Burmese Elephant    | 0.07     | 154,713   | 0.01   | 3     | UK      |     |
+| BS             | Bolivian Sheep      | 12.75    | 231,678   | 1.78   | 11    | UK      |     |
+| NG             | Nigerian Geese      | 35       | 12,323    | 1.68   | 10    | UK      |     |
+| CS             | Canadian Sugar      | 52.78    | 4,716     | 2.5    | 15    | UK      |     |
+| ROF            | Royal Ostrich Farms | 33.75    | 1,234,923 | 3      | 6     | UK      |     |
+| MG             | Minnesota Gold      | 53.87    | 816,122   | 1      | 25    | USA     | ←   |
+| GP             | Georgia Peach       | 2.35     | 387,333   | 0.2    | 5     | USA     | ←   |
+| NE             | Narembeen Emu       | 12.34    | 45,619    | 1      | 8     | AUS     |     |
+| QD             | Queensland Diamond  | 6.73     | 89,251    | 0.5    | 7     | AUS     |     |
+| IR             | Indooroopilly Ruby  | 15.92    | 56,147    | 0.5    | 20    | AUS     |     |
+| BD             | Bombay Duck         | 25.55    | 167,382   | 1      | 12    | IN      |     |
 
 ### Relational database {.unnumbered}
 
@@ -142,20 +148,20 @@ distinguishing feature of the relational model, when compared to the
 hierarchical and network models, is that there are no explicit linkages
 between tables. Tables are linked by common columns drawn on the same
 domain; thus, the portfolio database (see the preceding tables) consists
-of tables `stock` and `nation`. The 1:m relationship between the two tables
-is represented by the column `natcode` that is common to both tables. Note
-that the two columns need not have the same name, but they must be drawn
-on the same domain so that comparison is possible. In the case of an m:m
-relationship, while a new table must be created to represent the
-relationship, the principle of linking tables through common columns on
-the same domain remains in force.
+of tables `stock` and `nation`. The 1:m relationship between the two
+tables is represented by the column `natcode` that is common to both
+tables. Note that the two columns need not have the same name, but they
+must be drawn on the same domain so that comparison is possible. In the
+case of an m:m relationship, while a new table must be created to
+represent the relationship, the principle of linking tables through
+common columns on the same domain remains in force.
 
 ### Primary key {.unnumbered}
 
 A relation's primary key is its unique identifier; for example, the
-primary key of `nation` is `natcode`. As you already know, a primary key can
-be a composite of several columns. The primary key guarantees that each
-row of a relation can be uniquely addressed.
+primary key of `nation` is `natcode`. As you already know, a primary key
+can be a composite of several columns. The primary key guarantees that
+each row of a relation can be uniquely addressed.
 
 ### Candidate key {.unnumbered}
 
@@ -169,7 +175,8 @@ candidate keys: `natcode` and `natname`.
 
 When there are multiple candidate keys, one is chosen as the primary
 key, and the remainder are known as alternate keys. In this case, we
-selected `natcode` as the primary key, and `natname` is an alternate key.
+selected `natcode` as the primary key, and `natname` is an alternate
+key.
 
 ### Foreign key {.unnumbered}
 
@@ -241,7 +248,7 @@ complex query and then edit the generated code to fine-tune the query.
 
 *Query-by-example with LibreOffice*
 
-![](Figures/Chapter 9/query-by-example.png)
+![](Figures/Chapter%209/query-by-example.png)
 
 **Relational algebra** has a set of operations similar to traditional
 algebra (e.g., add and multiply) for manipulating tables. Although
@@ -261,7 +268,7 @@ Unfortunately, relational calculus can be difficult to learn, and as a
 result, language designers developed **SQL** and **QBE**, which are
 nonprocedural and more readily mastered. You have already gained some
 skills in SQL. Although QBE is generally easier to use than SQL, IS
-professionals need to master SQL for two reasons. *First**, ***SQL is
+professionals need to master SQL for two reasons. *First**,*** SQL is
 frequently embedded in other programming languages, a feature not
 available with QBE. *Second*, it is very difficult, or impossible, to
 express some queries in QBE (e.g., divide). Because SQL is important, it
@@ -277,16 +284,35 @@ said to be **relationally complete**.
 
 *Relational algebra operators*
 
-  Operator     Description
-  ------------ ------------------------------------------------------------------------------------------------------------------------------------------
-  Restrict     Creates a new table from specified rows of an existing table
-  Project      Creates a new table from specified columns of an existing table
-  Product      Creates a new table from all the possible combinations of rows of two existing tables
-  Union        Creates a new table containing rows appearing in one or both tables of two existing tables
-  Intersect    Creates a new table containing rows appearing in both tables of two existing tables
-  Difference   Creates a new table containing rows appearing in one table but not in the other of two existing tables
-  Join         Creates a new table containing all possible combinations of rows of two existing tables satisfying the join condition
-  Divide       Creates a new table containing *x~i~* such that the pair (*x*~i~, *y*~i~) exists in the first table for every *y~i~* in the second table
++----------+-----------------------------------------------------------+
+| Operator | Description                                               |
++:=========+:==========================================================+
+| Restrict | Creates a new table from specified rows of an existing    |
+|          | table                                                     |
++----------+-----------------------------------------------------------+
+| Project  | Creates a new table from specified columns of an existing |
+|          | table                                                     |
++----------+-----------------------------------------------------------+
+| Product  | Creates a new table from all the possible combinations of |
+|          | rows of two existing tables                               |
++----------+-----------------------------------------------------------+
+| Union    | Creates a new table containing rows appearing in one or   |
+|          | both tables of two existing tables                        |
++----------+-----------------------------------------------------------+
+| I        | Creates a new table containing rows appearing in both     |
+| ntersect | tables of two existing tables                             |
++----------+-----------------------------------------------------------+
+| Di       | Creates a new table containing rows appearing in one      |
+| fference | table but not in the other of two existing tables         |
++----------+-----------------------------------------------------------+
+| Join     | Creates a new table containing all possible combinations  |
+|          | of rows of two existing tables satisfying the join        |
+|          | condition                                                 |
++----------+-----------------------------------------------------------+
+| Divide   | Creates a new table containing *x~i~* such that the pair  |
+|          | (*x*~i~, *y*~i~) exists in the first table for every      |
+|          | *y~i~* in the second table                                |
++----------+-----------------------------------------------------------+
 
 There are eight relational algebra operations that can be used with
 either one or two relations to create a new relation. The assignment
@@ -308,7 +334,7 @@ through a relation.
 
 *Relational operation restrict---a horizontal slice*
 
-![](Figures/Chapter 9/shadowed-rows.png)
+![](Figures/Chapter%209/shadowed-rows.png)
 
 The relational algebra command to create the new relation using restrict
 is
@@ -326,7 +352,7 @@ tablename WHERE column1 theta literal
 where theta can be =, \<\>, \>, \>=, \<, or \<=.
 
 For example, the following relational algebra command creates a new
-table from stock containing all rows with a nation code of \'US\':
+table from stock containing all rows with a nation code of 'US':
 
 ```{sql, connection = db, eval = FALSE}
 usstock := stock WHERE natcode = 'US'
@@ -339,7 +365,7 @@ shows, project takes a vertical slice through a table.
 
 *Relational operator project---a vertical slice*
 
-![](Figures/Chapter 9/shadowed-columns.png)
+![](Figures/Chapter%209/shadowed-columns.png)
 
 The relational algebra command to create the new relation using project
 is
@@ -371,21 +397,23 @@ shows the result of A TIMES B.
 
 *Relational operator product*
 
-  A                         B             
-  ----------- ------ ------ ------ ------ ------
-  V           W             X      Y      Z
-  v~1~        w~1~          x~1~   y~1~   z~1~
-  v~2~        w~2~          x~2~   y~2~   z~2~
-  v~3~        w~3~                        
-                                          
-  A TIMES B                               
-  V           W      X      Y      Z      
-  v~1~        w~1~   x~1~   y~1~   z~1~   
-  v~1~        w~1~   x~2~   y~2~   z~2~   
-  v~2~        w~2~   x~1~   y~1~   z~1~   
-  v~2~        w~2~   x~2~   y~2~   z~2~   
-  v~3~        w~3~   x~1~   y~1~   z~1~   
-  v~3~        w~3~   x~2~   y~2~   z~2~   
+| A    |      |     | B    |      |      |
+|:-----|------|-----|:-----|------|------|
+| V    | W    |     | X    | Y    | Z    |
+| v~1~ | w~1~ |     | x~1~ | y~1~ | z~1~ |
+| v~2~ | w~2~ |     | x~2~ | y~2~ | z~2~ |
+| v~3~ | w~3~ |     |      |      |      |
+
+A TIMES B
+
+| V    | W    | X    | Y    | Z    |
+|:-----|:-----|:-----|:-----|:-----|
+| v~1~ | w~1~ | x~1~ | y~1~ | z~1~ |
+| v~1~ | w~1~ | x~2~ | y~2~ | z~2~ |
+| v~2~ | w~2~ | x~1~ | y~1~ | z~1~ |
+| v~2~ | w~2~ | x~2~ | y~2~ | z~2~ |
+| v~3~ | w~3~ | x~1~ | y~1~ | z~1~ |
+| v~3~ | w~3~ | x~2~ | y~2~ | z~2~ |
 
 ### Union {.unnumbered}
 
@@ -407,19 +435,21 @@ rows, because one row (x~2~, y~2~ ) is common to both relations.
 
 *Relational operator union*
 
-  A                     B      
-  ----------- ------ -- ------ ------
-  X           Y         X      Y
-  x~1~        y~1~      x~2~   y~2~
-  x~2~        y~2~      x~4~   y~4~
-  x~3~        y~3~             
-                               
-  A UNION B                    
-  X           Y                
-  x~1~        y~1~             
-  x~2~        y~2~             
-  x~3~        y~3~             
-  x~4~        y~4~             
+| A    |      |     | B    |      |
+|:-----|------|-----|:-----|------|
+| X    | Y    |     | X    | Y    |
+| x~1~ | y~1~ |     | x~2~ | y~2~ |
+| x~2~ | y~2~ |     | x~4~ | y~4~ |
+| x~3~ | y~3~ |     |      |      |
+
+A UNION B
+
+| X    | Y    |
+|:-----|:-----|
+| x~1~ | y~1~ |
+| x~2~ | y~2~ |
+| x~3~ | y~3~ |
+| x~4~ | y~4~ |
 
 ### Intersect {.unnumbered}
 
@@ -436,17 +466,18 @@ The result of A INTERSECT B is one row, because only one row (x~2~,
 
 *Relational operator intersect*
 
-  A                B      
-  ------ ------ -- ------ ------
-  X      Y         X      Y
-  x~1~   y~1~      x~2~   y~2~
-  x~2~   y~2~      x~4~   y~4~
-  x~3~   y~3~             
+| A    |      |     | B    |      |
+|:-----|------|-----|:-----|------|
+| X    | Y    |     | X    | Y    |
+| x~1~ | y~1~ |     | x~2~ | y~2~ |
+| x~2~ | y~2~ |     | x~4~ | y~4~ |
+| x~3~ | y~3~ |     |      |      |
 
-  A INTERSECT B   
-  --------------- ------
-  X               Y
-  x~2~            y~2~
+A INTERSECT B
+
+| X    | Y    |
+|:-----|:-----|
+| x~2~ | y~2~ |
 
 ### Difference {.unnumbered}
 
@@ -465,17 +496,19 @@ these rows are in relation A but not in relation B. The row containing
 
 *Relational operator difference*
 
-  A                     B      
-  ----------- ------ -- ------ ------
-  X           Y         X      Y
-  x~1~        y~1~      x~2~   y~2~
-  x~2~        y~2~      x~4~   y~4~
-  x~3~        y~3~             
-                               
-  A MINUS B                    
-  X           Y                
-  x~1~        y~1~             
-  x~3~        y~3~             
+| A    |      |     | B    |      |
+|:-----|------|-----|:-----|------|
+| X    | Y    |     | X    | Y    |
+| x~1~ | y~1~ |     | x~2~ | y~2~ |
+| x~2~ | y~2~ |     | x~4~ | y~4~ |
+| x~3~ | y~3~ |     |      |      |
+
+A MINUS B
+
+| X    | Y    |
+|:-----|:-----|
+| x~1~ | y~1~ |
+| x~3~ | y~3~ |
 
 ### Join {.unnumbered}
 
@@ -502,18 +535,19 @@ can be written
 
 *Relational operator join*
 
-  A                 B             
-  ------ ------- -- ------ ------ -------
-  V      W          X      Y      Z
-  v~1~   wz~1~      x~1~   y~1~   wz~1~
-  v~2~   wz~2~      x~2~   y~2~   wz~2~
-  v~3~   wz~3~                    
+| A    |       |     | B    |      |       |
+|:-----|-------|-----|:-----|------|-------|
+| V    | W     |     | X    | Y    | Z     |
+| v~1~ | wz~1~ |     | x~1~ | y~1~ | wz~1~ |
+| v~2~ | wz~2~ |     | x~2~ | y~2~ | wz~2~ |
+| v~3~ | wz~3~ |     |      |      |       |
 
-  A EQUIJOIN B                         
-  -------------- ------- ------ ------ -------
-  V              W       X      Y      Z
-  v~1~           wz~1~   x~1~   y~1~   wz~1~
-  v~3~           wz~3~   x~2~   y~2~   wz~3~
+A EQUIJOIN B
+
+| V    | W     | X    | Y    | Z     |
+|:-----|:------|:-----|:-----|:------|
+| v~1~ | wz~1~ | x~1~ | y~1~ | wz~1~ |
+| v~3~ | wz~3~ | x~2~ | y~2~ | wz~3~ |
 
 ### Divide {.unnumbered}
 
@@ -530,18 +564,20 @@ with a single row and column containing the value x~1~.
 
 *Relational operator divide*
 
-  A                      B
-  ------------ ------ -- ------
-  X            Y         Y
-  x~1~         y~1~      y~1~
-  x~1~         y~3~      y~2~
-  x~1~         y~2~      
-  x~2~         y~1~      
-  x~3~         y~3~      
-                         
-  A DIVIDE B             
-  X                      
-  x~1~                   
+| A    |      |     | B    |
+|:-----|------|-----|:-----|
+| X    | Y    |     | Y    |
+| x~1~ | y~1~ |     | y~1~ |
+| x~1~ | y~3~ |     | y~2~ |
+| x~1~ | y~2~ |     |      |
+| x~2~ | y~1~ |     |      |
+| x~3~ | y~3~ |     |      |
+
+A DIVIDE B
+
+| X    |
+|:-----|
+| x~1~ |
 
 ### Querying with relational algebra {.unnumbered}
 
@@ -554,116 +590,57 @@ SQL (on the right).
 
 A very simple report of all columns in the table share.
 
-  ------- ----------------------
-  share   SELECT \* FROM share
-  ------- ----------------------
+| Relational    |   SQL        |
+|:------|:---------------------|
+| share | SELECT * FROM share |
 
 *Report a firm's name and price-earnings ratio.*
 
 A projection of two columns from `share`.
 
-  -------------------------- ----------------------------------
-  share \[shrfirm, shrpe\]   SELECT shrfirm, shrpe FROM share
-  -------------------------- ----------------------------------
+| Relational    |   SQL        |
+|:-------------------------|:---------------------------------|
+| share [shrfirm, shrpe] | SELECT shrfirm, shrpe FROM share |
 
 *Get all shares with a price-earnings ratio less than 12.*
 
 A restriction of `share` on column `shrpe`.
 
-+-------------------------+----------------------+
-| share WHERE shrpe \< 12 | SELECT \* FROM share |
-|                         |                      |
-|                         | WHERE shrpe \< 12    |
-+-------------------------+----------------------+
+| Relational    |   SQL        |
+|:-------------------------|:---------------------------------|
+| share WHERE shrpe < 12 | SELECT * FROM  share   |
+|          |  WHERE shrpe < 12 |
+
 
 *List details of firms where the share holding is at least 100,000.*
 
 A restriction and projection combined. Notice that the restriction is
 expressed within parentheses.
 
-+---------------------------------------+---------------------------+
-| (share WHERE shrqty \>= 100000)       | SELECT shrfirm, shrprice, |
-|                                       |                           |
-| \[shrfirm, shrprice, shrqty, shrdiv\] | shrqty, shrdiv FROM share |
-|                                       |                           |
-|                                       | WHERE shrqty \>= 100000   |
-+---------------------------------------+---------------------------+
+| Relational    |   SQL        |
+|:-------------------------|:---------------------------------|
+| (share WHERE shrqty >= 100000)    | SELECT shrfirm, shrprice, shrqty, shrdiv         |
+| [shrfirm, shrprice, shrqty, shrdiv]         | FROM share       |
+|                      |                                    
 
-*Find all shares where the PE is 12 or higher and the share holding is less than 10,000.*
+*Find all shares where the PE is 12 or higher and the share holding is
+less than 10,000.*
 
 Intersect is used with two restrictions to identify shares satisfying
 both conditions.
 
-+-------------------------------+----------------------+
-| (share WHERE shrpe \>= 12)    | SELECT \* FROM share |
-|                               |                      |
-| INTERSECT                     | WHERE shrpe \>= 12   |
-|                               |                      |
-| (share WHERE shrqty \< 10000) | AND shrqty \< 10000  |
-+-------------------------------+----------------------+
+| Relational    |   SQL        |
+|:-------------------------|:---------------------------------|
+| (share WHERE shrpe >= 12)  | SELECT * FROM share  WHERE shrpe  >= 12   |
+| INTERSECT                 |  AND |
+| (share WHERE shrqty < 10000)            |  shrqty < 10000  |
 
-*Report all shares other than those with the code CS or PT.*
 
-Difference is used to subtract those shares with the specified codes.
-Notice the use of union to identify shares satisfying either condition.
-
-+-----------------------------------+-----------------------------------+
-| share MINUS                       | SELECT \* FROM share WHERE        |
-|                                   | shrcode NOT IN (\'CS\', \'PT\')   |
-| ((share WHERE shrcode = \'CS\')   |                                   |
-|                                   |                                   |
-| UNION                             |                                   |
-|                                   |                                   |
-| (share WHERE shrcode = \'PT\'))   |                                   |
-+-----------------------------------+-----------------------------------+
-
-*Report the value of each stock holding in UK pounds.*
-
-A join of `stock` and `nation` and projection of specified attributes.
-
-+------------------------------+-----------------------------+
-| (stock JOIN nation           | SELECT natname, stkfirm,    |
-|                              |                             |
-| WHERE stock.natcode =        | stkprice, stkqty, exchrate, |
-|                              |                             |
-| nation.natcode )             | stkprice\*stkqty\*exchrate  |
-|                              |                             |
-| \[natname, stkfirm,          | FROM stock JOIN nation      |
-|                              |                             |
-| stkprice, stkqty, exchrate,  | ON stock.natcode =          |
-|                              |                             |
-| stkprice\*stkqty\*exchrate\] | nation.natcode              |
-+------------------------------+-----------------------------+
-
-*Find the items that have appeared in all sales.*
-
-Divide reports the item numbers of items appearing in all sales, and
-this result is then joined with `item` to report these items.
-
-+---------------------------------+-----------------------------------+
-| ((lineitem[itemno, saleno  ]    | SELECT itemno, itemname FROM item |
-|                                 |                                   |
-| DIVIDEBY sale[saleno])          | WHERE NOT EXISTS                  |
-|                                 |                                   |
-| JOIN item) [itemno, itemname]   | (SELECT \* FROM sale              |
-|                                 |                                   |
-|                                 | WHERE NOT EXISTS                  |
-|                                 |                                   |
-|                                 | (SELECT \* FROM lineitem          |
-|                                 |                                   |
-|                                 | WHERE lineitem.itemno =           |
-|                                 |                                   |
-|                                 | item.itemno                       |
-|                                 |                                   |
-|                                 | AND lineitem.saleno =             |
-|                                 |                                   |
-|                                 | sale.saleno))                     |
-+---------------------------------+-----------------------------------+
-
-> ❓*Skill builder* Write relational algebra statements for the following queries: 
+> ❓*Skill builder* Write relational algebra statements for the following
+> queries:
 >
 > Report a firm's name and dividend.
-> 
+>
 > Find the names of firms where the holding is greater than 10,000.
 
 ## A primitive set of relational operators {.unnumbered}
@@ -680,43 +657,36 @@ which implies that SQL is relationally complete.
 
 *Comparison of relational algebra primitive operators and SQL*
 
-+-----------------------+-----------------------+-----------------------+
-| ***Operator***        | ***Relational         | ***SQL***             |
-|                       | algebra***            |                       |
-+=======================+=======================+=======================+
-| Restrict              | A WHERE condition     | SELECT \* FROM A      |
-|                       |                       | WHERE condition       |
-+-----------------------+-----------------------+-----------------------+
-| Project               | A \[X\]               | SELECT X FROM A       |
-+-----------------------+-----------------------+-----------------------+
-| Product               | A TIMES B             | SELECT \* from A, B   |
-+-----------------------+-----------------------+-----------------------+
-| Union                 | A UNION B             | SELECT \* FROM A      |
-|                       |                       | UNION SELECT \* FROM  |
-|                       |                       | B                     |
-+-----------------------+-----------------------+-----------------------+
-| Difference            | A MINUS B             | SELECT \* FROM A      |
-|                       |                       |                       |
-|                       |                       | WHERE NOT EXISTS      |
-|                       |                       |                       |
-|                       |                       | (SELECT \* FROM B     |
-|                       |                       | WHERE                 |
-|                       |                       |                       |
-|                       |                       | A.X = B.X AND A.Y =   |
-|                       |                       | B.Y AND ...\*         |
-+-----------------------+-----------------------+-----------------------+
-| \* Essentially where  |                       |                       |
-| all columns of A are  |                       |                       |
-| equal to all columns  |                       |                       |
-| of B                  |                       |                       |
-+-----------------------+-----------------------+-----------------------+
++---------------------+---------------------+---------------------+
+| **Operator**     | **Relational       | **SQL***           |
+|                     | algebra**         |                     |
++:====================+:====================+:====================+
+| Restrict            | A WHERE condition   | SELECT * FROM A    |
+|                     |                     | WHERE condition     |
++---------------------+---------------------+---------------------+
+| Project             | A [X]               | SELECT X FROM A     |
++---------------------+---------------------+---------------------+
+| Product             | A TIMES B           | SELECT * from A, B |
++---------------------+---------------------+---------------------+
+| Union               | A UNION B           | SELECT * FROM A    |
+|                     |                     | UNION SELECT *     |
+|                     |                     | FROM B              |
++---------------------+---------------------+---------------------+
+| Difference          | A MINUS B           | SELECT * FROM A    |
+|                     |                     | WHERE NOT EXISTS    |
+|                     |                     | (SELECT * FROM B   |
+|                     |                     | WHERE               |
+|                     |                     | A.X = B.X AND A.Y = |
+|                     |                     | B.Y AND ...*       |
++---------------------+---------------------+---------------------+
+* Essentially where all columns of A are equal to all columns of B
 
 ## A fully relational database {.unnumbered}
 
 The three components of a relational database system are structures
 (domains and relations), integrity rules (primary and foreign keys), and
-a manipulation language (relational algebra). A **fully relational database** 
-system provides complete support for each of these
+a manipulation language (relational algebra). A **fully relational
+database** system provides complete support for each of these
 components. Many commercial systems support SQL but do not provide
 support for domains. Such systems are not fully relational but are
 relationally complete.
@@ -732,20 +702,20 @@ short summary of the major features of the relational DBMS.
 
 *Codd's rules for a relational DBMS*
 
-  Rules
-  -----------------------------------------------
-  The information rule
-  The guaranteed access rule
-  Systematic treatment of null values
-  Active online catalog of the relational model
-  The comprehensive data sublanguage rule
-  The view updating rule
-  High-level insert, update, and delete
-  Physical data independence
-  Logical data independence
-  Integrity independence
-  Distribution independence
-  The nonsubversion rule
+| Rules                                         |
+|:----------------------------------------------|
+| The information rule                          |
+| The guaranteed access rule                    |
+| Systematic treatment of null values           |
+| Active online catalog of the relational model |
+| The comprehensive data sublanguage rule       |
+| The view updating rule                        |
+| High-level insert, update, and delete         |
+| Physical data independence                    |
+| Logical data independence                     |
+| Integrity independence                        |
+| Distribution independence                     |
+| The nonsubversion rule                        |
 
 #### The information rule {.unnumbered}
 
@@ -867,29 +837,29 @@ either totally relational or it is not relational.
 
 ## Key terms and concepts {.unnumbered}
 
-|                                      |                              |
-|:-------------------------------------|:-----------------------------|
-| Alternate key                        | Join                         |
-| Candidate key                        | Logical data independence    |
-| Cardinality                          | Nonsubversion rule           |
-| Catalog                              | Null                         |
-| Communicability objective            | Operators                    |
-| Data independence                    | Physical data independence   |
-| Data structures                      | Primary key                  |
-| Data sublanguage rule                | Product                      |
-| Degree                               | Project                      |
-| Difference                           | Query-by-example (QBE)       |
-| Distribution independence            | Referential integrity        |
-| Divide                               | Relational algebra           |
-| Domain                               | Relational calculus          |
-| Entity integrity                     | Set processing objective     |
-| Foreign key                          | Relational database          |
-| Fully relational database            | Relational model             |
-| Guaranteed access rule               | Relationally complete        |
-| Information rule                     | Relations                    |
-| Integrity independence               | Restrict                     |
-| Integrity rules                      | Union                        |
-| Intersect                            | View updating rule           |
+|                           |                            |
+|:--------------------------|:---------------------------|
+| Alternate key             | Join                       |
+| Candidate key             | Logical data independence  |
+| Cardinality               | Nonsubversion rule         |
+| Catalog                   | Null                       |
+| Communicability objective | Operators                  |
+| Data independence         | Physical data independence |
+| Data structures           | Primary key                |
+| Data sublanguage rule     | Product                    |
+| Degree                    | Project                    |
+| Difference                | Query-by-example (QBE)     |
+| Distribution independence | Referential integrity      |
+| Divide                    | Relational algebra         |
+| Domain                    | Relational calculus        |
+| Entity integrity          | Set processing objective   |
+| Foreign key               | Relational database        |
+| Fully relational database | Relational model           |
+| Guaranteed access rule    | Relationally complete      |
+| Information rule          | Relations                  |
+| Integrity independence    | Restrict                   |
+| Integrity rules           | Union                      |
+| Intersect                 | View updating rule         |
 
 ## References and additional readings {.unnumbered}
 
@@ -900,23 +870,23 @@ productivity. *Communications of the ACM* 25 (2):109--117.
 
 1.  What reasons does Codd give for adopting the relational model?
 
-2. What are the major components of the relational model?
+2.  What are the major components of the relational model?
 
-3. What is a domain? Why is it useful?
+3.  What is a domain? Why is it useful?
 
-4. What are the meanings of cardinality and degree?
+4.  What are the meanings of cardinality and degree?
 
-5. What is a simple relational database?
+5.  What is a simple relational database?
 
-6. What is the difference between a primary key and an alternate key?
+6.  What is the difference between a primary key and an alternate key?
 
-7. Why do we need an entity integrity rule and a referential integrity
+7.  Why do we need an entity integrity rule and a referential integrity
     rule?
 
-8. What is the meaning of "union compatible"? Which relational
+8.  What is the meaning of "union compatible"? Which relational
     operations require union compatibility?
 
-9. What is meant by the term "a primitive set of operations"?
+9.  What is meant by the term "a primitive set of operations"?
 
 10. What is a fully relational database?
 
@@ -924,20 +894,20 @@ productivity. *Communications of the ACM* 25 (2):109--117.
 
 12. Use relational algebra with the given data model to solve the
     following queries:
-    
-    ![](Figures/Chapter 5/gift.png)
+
+    ![](Figures/Chapter%205/gift.png)
 
     a.  List all donors.
 
     b.  List the first and last names of all donors.
 
-    c. List the phone numbers of donors Hays and Jefts.
+    c.  List the phone numbers of donors Hays and Jefts.
 
-    d. List the amount given by each donor for each year.
+    d.  List the amount given by each donor for each year.
 
-    e. List the donors who have made a donation every year.
+    e.  List the donors who have made a donation every year.
 
-    f. List the names of donors who live in Georgia or North Carolina.
+    f.  List the names of donors who live in Georgia or North Carolina.
 
-    g. List the names of donors whose last name is Watson and who live in
-    Athens, GA.
+    g.  List the names of donors whose last name is Watson and who live
+        in Athens, GA.
