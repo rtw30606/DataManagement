@@ -1,4 +1,7 @@
 ---
+title: "Data Management"
+author: "Richard T. Watson"
+
 bookdown::gitbook:
   css: style.css
   config:
