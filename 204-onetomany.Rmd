@@ -593,18 +593,15 @@ When discussing subqueries, sometimes a subquery is also called an
 preceding the inner query. In this case, the outer and inner queries
 are:
 
-+---------------+--------------------------+
-| Outer query   | SELECT stkfirm FROM      |
-|               | stock                    |
-|               |                          |
-|               | WHERE natcode IN         |
-+---------------+--------------------------+
-| Inner query   | (SELECT natcode FROM     |
-|               | nation                   |
-|               |                          |
-|               | WHERE natname =          |
-|               | 'Australia');            |
-+---------------+--------------------------+
++-------------+-------------------------------+
+| Outer query | SELECT stkfirm FROM stock     |
+|             |                               |
+|             | WHERE natcode IN              |
++-------------+-------------------------------+
+| Inner query | (SELECT natcode FROM nation   |
+|             |                               |
+|             | WHERE natname = 'Australia'); |
++-------------+-------------------------------+
 
 Note that in this case we do not have to qualify `natcode`. There is no
 identity crisis, because `natcode` in the inner query is implicitly

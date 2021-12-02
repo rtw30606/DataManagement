@@ -64,7 +64,7 @@ that folder.
 A script is a set of R commands. You can also think of it as a short
 program.
 
-```{r, eval = TRUE}
+```{r, sample-script,eval = TRUE}
 # CO2 parts per million (ppm) for 2000-2009
 co2 <- c(369.40,371.07,373.17,375.78,377.52,379.76,381.85,383.71,385.57,384.78)
 year <-  (2000:2009) # a range of values
@@ -159,7 +159,7 @@ A vector is a single row table where data are all of the same type
 (e.g., character, logical, numeric). In the following sample code, two
 numeric vectors are created.
 
-```{r, eval = TRUE}
+```{r, vector, eval = TRUE}
 co2 <-  c(369.40,371.07,373.17,375.78,377.52,379.76,381.85,383.71,385.57,384.78)
 year <-  (2000:2009)
 co2[2] # show the second value
@@ -172,7 +172,7 @@ table, a matrix has two dimensions, which need to be specified when
 defining the matrix. The sample code creates a matrix with 4 rows and 3
 columns, as the results of the executed code illustrate.
 
-```{r, eval = TRUE}
+```{r, matrix, eval = TRUE}
 m <- matrix(1:12, nrow=4,ncol=3)
 m[4,3] # show the value in row 4, column 3
 ```
@@ -198,7 +198,7 @@ An array is a multidimensional table. It extends a matrix beyond two
 dimensions. Review the results of running the following code by
 displaying the array created.
 
-```{r, eval = TRUE}
+```{r, array, eval = TRUE}
 a <-  array(letters[seq(1:24)], c(4,3,2))
 a[1,1,1] # show the first value in the array
 ```
@@ -210,7 +210,7 @@ restricted to data of the same type (e.g., numeric). A data frame, like
 a relational table, can have columns of different data types. The sample
 code creates a data frame with character and numeric data types.
 
-```{r, eval = TRUE}
+```{r, data-frame, eval = TRUE}
 gender <- c("m","f","f")
 age <- c(5,8,3)
 df <-  data.frame(gender,age)
@@ -229,7 +229,7 @@ contains other objects. Retrieve a list member with a *single square
 bracket* []. To reference a list member directly, use a *double square
 bracket* [[]].
 
-```{r, eval = TRUE}
+```{r, list, eval = TRUE}
 l <-  list(co2,m,df)
 # show a list member
 l[3] # retrieves list member
@@ -284,7 +284,7 @@ presented. By default, factor levels for character vectors are created
 in alphabetical order, which is often not what is desired. To be
 precise, specify using the levels option.
 
-```{r, eval = TRUE}
+```{r, factors, eval = TRUE}
 rating <-   c('high','medium','low')
 rating <-  factor(rating, order=T, levels = c('high','medium','low'))
 ```
@@ -308,7 +308,7 @@ Thus, `sum(c(1,NA,2),na.rm=T)` will return 3.
 You can remove rows with missing data by using `na.omit()`, which will
 delete those rows containing missing values.
 
-```{r, eval = TRUE}
+```{r, missing-values, eval = TRUE}
 gender <- c("m","f","f","f")
 age <- c(5,8,3,NA)
 df <-  data.frame(gender,age)
@@ -333,7 +333,7 @@ following example uses the measurements package to handle the conversion
 of Fahrenheit to Celsius. The package's documentation provides details
 of how to use its various conversion options.
 
-```{r, eval = TRUE}
+```{r, load-package, eval = TRUE}
 library(measurements) # previously installed
 # convert F to C
 conv_unit(100,'F','C')
@@ -355,7 +355,7 @@ Internet, as the following sample code illustrates. We will use the
 readr library for handling files, so you will need to install it before
 running the following code.
 
-```{r, eval = FALSE}
+```{r, read-file, eval = FALSE}
 library(readr)
 # read a local file (this will not work on your computer)
 t <- read_delim("Documents/R/Data/centralparktemps.txt", delim=",")
@@ -363,7 +363,7 @@ t <- read_delim("Documents/R/Data/centralparktemps.txt", delim=",")
 
 You can also read a remote file using a URL.
 
-```{r, eval = TRUE}
+```{r, read-remote, eval = TRUE}
 library(readr)
 # read using a URL
 url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
@@ -383,7 +383,7 @@ some R commands, as shown in the following code, to show the first few
 and last few rows. You can also report the dimensions of the file, its
 structure, and the type of object.
 
-```{r, eval = TRUE}
+```{r, file-information, eval = TRUE}
 library(readr)
 url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
 t <- read_delim(url, delim=',')
@@ -401,7 +401,7 @@ tablename\$columname. This is similar to the qualification method used
 in SQL. The following code shows a few examples. It also illustrates how
 to add a new column to an existing table.
 
-```{r, eval = TRUE}
+```{r, columns, eval = TRUE}
 library(measurements)
 library(readr) 
 url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
@@ -422,7 +422,7 @@ categories. Imagine you decide to classify all temperatures greater than
 or equal to 25ºC as 'hot' and the rest as 'other.' Here are the R
 command to create a new column in table t called Category.
 
-```{r, eval = TRUE}
+```{r, recoding, eval = TRUE}
 t$Category <- ifelse(t$Ctemp >= 30, 'Hot','Other')
 ```
 
@@ -430,7 +430,7 @@ t$Category <- ifelse(t$Ctemp >= 30, 'Hot','Other')
 
 You can delete a column by setting each of its values to NULL.
 
-```{r, eval = TRUE}
+```{r, deleting, eval = TRUE}
 t$Category <-  NULL
 ```
 
@@ -459,7 +459,7 @@ convert the column quarter from character to integer.
 
 ![](Chapter%2015/Figures/gather-spread.png)
 
-```{r, eval = TRUE}
+```{r, reshaping, eval = TRUE}
 library(readr)
 library(tidyr)
 url <-  'http://www.richardtwatson.com/data/gatherExample.csv'
@@ -492,7 +492,7 @@ new column containing the temperature in C and renaming an existing
 column. The revised table is then written as a csv text file to the
 project's folder.
 
-```{r, eval = TRUE}
+```{r, writing, eval = TRUE}
 library(measurements)
 library(readr)
 url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
@@ -529,7 +529,7 @@ operation to the next.
 
 Here are some examples using dplyr with data frame t.
 
-```{r, eval = TRUE}
+```{r, dplyr, eval = TRUE}
 library(dplyr)
 library(readr)
 url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
@@ -546,7 +546,7 @@ passed onto filter(). The final output is stored in trowcol, which
 contains year, month, and Celsius temperature for the years 1990 through
 1999.
 
-```{r, eval = TRUE}
+```{r, pipe, eval = TRUE}
 # a combo subset and use of the pipe function
 trowcol <-  t %>% select(year, month, temperature) %>% filter(year > 1989 & year < 2000)
 ```
@@ -555,7 +555,7 @@ trowcol <-  t %>% select(year, month, temperature) %>% filter(year > 1989 & year
 
 You can also use dplyr for sorting.
 
-```{r, eval = TRUE}
+```{r, eorting, eval = TRUE}
 t <-  arrange(t, desc(year),month)
 ```
 
@@ -580,7 +580,7 @@ containing the mean temperature for each year is created. Notice the use
 of the pipe function to first group the data by year and then compute
 the mean for each group.
 
-```{r, eval = TRUE}
+```{r, summarizing, eval = TRUE}
 library(dplyr)
 url <- 'http://www.richardtwatson.com/data/centralparktemps.txt'
 t <- read_delim(url, delim=',')
@@ -591,7 +591,7 @@ w <-  t  %>% group_by(year) %>% summarize(averageF = mean(temperature))
 
 The following example shows how to add a column and compute its average.
 
-```{r, eval = TRUE}
+```{r, adding-column, eval = TRUE}
 # add column
 t <-  mutate(t, CTemp = (temperature-32)*5/9)
 # summarize
@@ -612,7 +612,7 @@ CO~2~ readings for the same set of years.
 [^IntroR-5]: This is the R notation for indicating the package (dplyr) to which
     a method (inner_join) belongs.
 
-```{r, eval = TRUE}
+```{r, merging, eval = TRUE}
 library(dplyr)
 library(readr)
 url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
@@ -633,7 +633,7 @@ or columns from a data frame to meet the needs of a particular analysis.
 It provides essentially the same data manipulation capabilities as
 dplyr. The following example illustrates use of sqldf.
 
-```{r, eval = TRUE}
+```{r, sqldf, eval = TRUE}
 library(sqldf)
 library(readr)
 options(sqldf.driver = "SQLite") # to avoid a conflict with RMySQL
@@ -659,7 +659,7 @@ level of atmospheric CO~2~.[^IntroR-6]
 [^IntroR-6]: As I continually revise data files to include the latest
     observations, your answer might differ for this and other analyses.
 
-```{r, eval = TRUE}
+```{r, correlation, eval = TRUE}
 cor.test(m$mean, m$CO2)
 ```
 
@@ -705,7 +705,7 @@ following table.
 If we want to understand the nature of the relationship, we could fit a
 linear model.
 
-```{r, eval = TRUE}
+```{r, linear-model, eval = TRUE}
 mod <- lm(m$mean ~ m$CO2)
 summary(mod)
 ```
@@ -765,7 +765,7 @@ in the following code.[^IntroR-7]
     it, but later you might need to convert the column to R's timestamp
     format.
 
-```{r, eval = TRUE}
+```{r, database, eval = TRUE}
 library(DBI)
 conn <- dbConnect(RMySQL::MySQL(), "www.richardtwatson.com", dbname="Weather", user="student", password="student")
 # Query the database and create file t for use with R
@@ -788,7 +788,7 @@ in the newly created folder containing the following data:
 
 The R code will now be:
 
-```{r, eval = FALSE}
+```{r, database-weather, eval = FALSE}
 # Database access
 library(readr)
 library(DBI)
@@ -816,7 +816,7 @@ it, such as the year, month, day, hour, and so forth. The following
 example shows how to use lubridate to extract the month and year from a
 character string in standard timestamp format.
 
-```{r, eval = FALSE}
+```{r, time-stamp, eval = FALSE}
 library(lubridate)
 library(DBI)
 conn <- dbConnect(RMySQL::MySQL(), "www.richardtwatson.com", dbname="Weather", user="student", password="student")
@@ -835,7 +835,7 @@ files stored locally, which is the case with most of the packages
 examined. If the required Excel spreadsheet is stored remotely, then
 download it and store lit ocally.
 
-```{r, eval = TRUE}
+```{r, excel, eval = TRUE}
 library(readxl)
 library(httr)
 # read remote file and store on disk

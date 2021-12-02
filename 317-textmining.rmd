@@ -290,8 +290,8 @@ it to a data frame. When all the letters have been read, they are turned
 into a corpus.
 
 ```{r eval = T, message = FALSE}
-require(stringr)
-require(tm)
+library(stringr)
+library(tm)
 #set up a data frame to hold up to 100 letters
 df <-  data.frame(num=100)
 begin <-  1998 # date of first letter
