@@ -141,7 +141,7 @@ times there are one or more consecutive spaces using the pattern
 "[:space:]+" and then add one, because the last word is not followed by
 a space.
 
-```{r eval = TRUE}
+```{r counting, eval = TRUE}
 library(stringr)
 str_count("The dead batteries were given out free of charge", "[:space:]+") + 1
 ```
@@ -170,7 +170,7 @@ create a polarity table suitable for your context, and you are not
 restricted to 1 or -1 for a word's polarity score. Here are the first
 few rows of the default polarity table.
 
-```{r eval = T, message = F, warning = F}
+```{r sentiment-1, eval = T, message = F, warning = F}
 library(sentimentr)
 library(syuzhet)
 head(get_sentiment_dictionary())
@@ -190,7 +190,7 @@ after any polarizing word. We indicate this by setting n.before and
 n.after to 0. Our sample text consists of several sentences, as shown in
 the following code.
 
-```{r eval = T}
+```{r sentiment-2, eval = T}
 library(sentimentr)
 sample = c("You're awesome and I love you", "I hate and hate and hate.
 So angry. Die!", "Impressed and amazed: you are peerless in your
@@ -206,7 +206,7 @@ root of the number of words in the associated sentence.
 
 To get the overall sentiment for the sample text, use:
 
-```{r eval = T}
+```{r sentiment-3, eval = T}
 library(sentimentr)
 sample = c("You're awesome and I love you", "I hate and hate and hate.So angry. Die!", "Impressed and amazed: you are peerless in your achievement of unparalleled mediocrity.")
 y <- sentiment(sample,
@@ -228,7 +228,7 @@ are -1 (crazy) and 1 (love). There is a negator (not), two amplifiers
 amplifiers and so get weights based on the contraction (.9 in this case)
 and amplification (.8) in this case.
 
-```{r eval = T}
+```{r sentiment-4, eval = T}
 library(sentimentr)
 sample = c("You're awesome and I love you", "I hate and hate and hate.
 So angry. Die!", "Impressed and amazed: you are peerless in your
@@ -249,7 +249,7 @@ sentiment(sample, n.before = 2, n.after = 2, amplifier.weight=.8, but.weight = .
 > Run the following R code and comment on how sensitive sentiment
 > analysis is to the n.before and n.after parameters.
 
-```{r eval = T}
+```{r sentiment-4, eval = T}
 library(sentimentr) 
 sample = c("You're not crazy and I love you very much.")
 sentiment(sample, n.before = 4, n.after=3, amplifier.weight=1) 
@@ -289,7 +289,7 @@ The following R code sets up a loop to read each of the letters and add
 it to a data frame. When all the letters have been read, they are turned
 into a corpus.
 
-```{r eval = T, message = FALSE}
+```{r corpus-creation, eval = T, message = FALSE}
 library(stringr)
 library(tm)
 #set up a data frame to hold up to 100 letters
@@ -340,7 +340,7 @@ The R package koRpus has a number of methods for calculating readability
 scores. You first need to tokenize the text using the package's tokenize
 function. Then complete the calculation.
 
-```{r eval = T, message = FALSE}
+```{r readability, eval = T, message = FALSE}
 library(koRpus)
 library(koRpus.lang.en)
 #tokenize the first letter in the corpus after converting to character vector
@@ -360,7 +360,7 @@ for processing. Several steps are usually taken.
 For comparison purposes, all text should be of the same case.
 Conventionally, the choice is to convert to all lower case. First convert to UTF-8.
 
-```{r eval = T, message = FALSE}
+```{r case, eval = T, message = FALSE}
 content_transformer <- function(x) iconv(x, to='UTF-8-MAC', sub='byte')
 clean.letters <- tm_map(letters, content_transformer)
 clean.letters <- tm_map(letters,tolower)
@@ -371,7 +371,7 @@ clean.letters <- tm_map(letters,tolower)
 Punctuation is usually removed when the focus is just on the words in a
 text and not on higher level elements such as sentences and paragraphs.
 
-```{r eval = T, message = FALSE}
+```{r punctuation, eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,removePunctuation)
 ```
 
@@ -379,7 +379,7 @@ clean.letters <- tm_map(clean.letters,removePunctuation)
 
 You might also want to remove all numbers.
 
-```{r eval = T, message = FALSE}
+```{r numbers, eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,removeNumbers)
 ```
 
@@ -388,7 +388,7 @@ clean.letters <- tm_map(clean.letters,removeNumbers)
 Removing extra spaces, tabs, and such is another common preprocessing
 action.
 
-```{r eval = T, message = FALSE}
+```{r stripping, eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,stripWhitespace)
 ```
 
@@ -409,7 +409,7 @@ code, we use the SMART list of English stop words.[^textmining-4]
 
 [^textmining-4]: <http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop>
 
-```{r eval = T, message = FALSE}
+```{r filtering, eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,removeWords,stopwords("SMART"))
 ```
 
@@ -420,7 +420,7 @@ vector. For instance, you might not be interested in tracking references
 to *Berkshire Hathaway* in Buffett's letters. You can set up a
 dictionary with words to be removed from the corpus.
 
-```{r eval = T, message = FALSE}
+```{r dictonary, eval = T, message = FALSE}
 dictionary <- c("berkshire","hathaway", "million", "billion", "dollar")
 clean.letters <- tm_map(clean.letters,removeWords,dictionary)
 ```
@@ -446,7 +446,7 @@ stem to *fish*. As a stemmer generally works by suffix stripping, so
 available for different languages, and thus the language must be
 specified.
 
-```{r eval = T, message = FALSE}
+```{r stemming-1, eval = T, message = FALSE}
 # stem the document -- might take a while to run
 stem.letters <- tm_map(clean.letters,stemDocument, language =
 "english")
@@ -461,7 +461,7 @@ for the most frequent match, "first" for the first found completion, and
 "longest" and "shortest" for the longest and shortest, respectively,
 completion in terms of characters
 
-```{r eval = T, message = FALSE}
+```{r stemming-2, eval = T, message = FALSE}
 # stem completion -- might take a while to run
 stem.letters <-  tm_map(clean.letters,stemDocument, language = "english")
 ```
@@ -481,7 +481,7 @@ in one of two forms.
 A **term-document matrix** contains one row for each term and one column
 for each document.
 
-```{r eval = T, message = FALSE}
+```{r tdm,eval = T, message = FALSE}
 tdm <-  TermDocumentMatrix(stem.letters,control = list(minWordLength=3))
 dim(tdm)
 # report those words occurring more than 100 times
@@ -491,7 +491,7 @@ findFreqTerms(tdm, lowfreq = 100, highfreq = Inf)
 A **document-term matrix** contains one row for each document and one
 column for each term.
 
-```{r eval = T, message = FALSE}
+```{r dtm, eval = T, message = FALSE}
 dtm <- DocumentTermMatrix(stem.letters,control = list(minWordLength=3))
 dim(dtm)
 ```
@@ -509,7 +509,7 @@ tf~td~ = number of times term t occurs in document d.
 
 Here is the R code for determining the frequency of words in a corpus.
 
-```{r eval = T, message = FALSE}
+```{r frequency, eval = T, message = FALSE}
 tdm <-  TermDocumentMatrix(stem.letters,control = list(minWordLength=3))
 # convert term document matrix to a regular matrix to get frequencies of words
 m <-  as.matrix(tdm)
@@ -524,7 +524,7 @@ visually. As you can see, there is a very long and thin tail because a
 very small number of words occur frequently. Note that this plot shows
 the distribution of words after the removal of stop words.
 
-```{r eval = T, message = FALSE, fig.cap = 'Probability density plot of word frequency'}
+```{r density-plot, eval = T, message = FALSE, fig.cap = 'Probability density plot of word frequency'}
 library(ggplot2)
 # get the names corresponding to the words
 names <- names(v)
@@ -538,7 +538,7 @@ ggplot(d,aes(freq)) +
 
 A word cloud is way of visualizing the most frequent words.
 
-```{r eval = T, message = FALSE, fig.cap = 'A word cloud'}
+```{r cloud, eval = T, message = FALSE, fig.cap = 'A word cloud'}
 library(wordcloud)
 # select the color palette
 pal = brewer.pal(5,"Accent")
@@ -563,7 +563,7 @@ association is -1.
 A simple example illustrates the concept. The following code sets up a
 corpus of five elementary documents.
 
-```{r eval = T, message = FALSE}
+```{r co-occurence, eval = T, message = FALSE}
 library(tm)
 data <-  c("word1", "word1 word2","word1 word2 word3","word1 word2 word3 word4","word1 word2 word3 word4 word5")
 corpus <-  VCorpus(VectorSource(data))
@@ -574,7 +574,7 @@ as.matrix(tdm)
 We compute the correlation of rows to get a measure of association
 across documents.
 
-```{r eval = T, message = FALSE}
+```{r correlation, eval = T, message = FALSE}
 # Correlation between word2 and word3, word4, and word5
 cor(c(0,1,1,1,1),c(0,0,1,1,1))
 cor(c(0,1,1,1,1),c(0,0,0,1,1))
@@ -585,7 +585,7 @@ Alternatively, use the findAssocs function, which computes all
 correlations between a given term and all terms in the term-document
 matrix and reports those higher than the correlation threshold.
 
-```{r eval = T, message = FALSE}
+```{r association-1, eval = T, message = FALSE}
 library(tm)
 # find associations greater than 0.1
 findAssocs(tdm,"word2",0.1)
@@ -594,7 +594,7 @@ findAssocs(tdm,"word2",0.1)
 Now that you have an understanding of how association works across
 documents, here is an example for the corpus of Buffett letters.
 
-```{r eval = T, message = FALSE}
+```{r association-2, eval = T, message = FALSE}
 # Select the first ten letters
 tdm <- TermDocumentMatrix(stem.letters[1:10])
 # compute the associations
@@ -634,7 +634,7 @@ zero. In order to reduce the computations required, sparse terms are
 removed from the matrix. You can vary the sparse parameter to see how
 the clusters vary.
 
-```{r eval = T, message = FALSE, fig.cap = 'Dendrogram for Buffett letters from 1998-2012'}
+```{r cluster, eval = T, message = FALSE, fig.cap = 'Dendrogram for Buffett letters from 1998-2012'}
 # Cluster analysis
 # name the columns for the letter's year
 tdm <- TermDocumentMatrix(stem.letters[1:15])
@@ -712,7 +712,7 @@ occurs in only one document out of 15, its idf = 3.91.
 To calculate and display the idf for the letters corpus, we can use the
 following R script.
 
-```{r eval = T, message = FALSE, fig.cap = 'Inverse document frequency (corpus has 15 documents)'}
+```{r topic-1, eval = T, message = FALSE, fig.cap = 'Inverse document frequency (corpus has 15 documents)'}
 # calculate idf for each term
 library(slam)
 library(ggplot2)
@@ -754,7 +754,7 @@ The mean term frequency-inverse document frequency (tf-idf) is used to
 select the vocabulary for topic modeling. We use the median value of
 tf-idf for all terms as a threshold.
 
-```{r eval = T, message = FALSE}
+```{r topic-2, eval = T, message = FALSE}
 library(topicmodels)
 library(slam)
 # calculate tf-idf for each term
@@ -776,7 +776,7 @@ keeping only those terms above the threshold and eliminating rows that
 have zero terms. Because the median is a measure of central tendency,
 this approach reduces the number of columns by roughly half.
 
-```{r eval = T, message = FALSE}
+```{r topic-3, eval = T, message = FALSE}
 # select columns with tf-idf > median
 dtm <- dtm[,tfidf >= median(tfidf)]
 #select rows with rowsum > 0
@@ -794,7 +794,7 @@ typically review the output of several models and make a judgment on
 which model appears to provide a realistic set of distinct topics. Here
 is some code that starts with five topics.
 
-```{r eval = T, message = FALSE}
+```{r topic-4, eval = T, message = FALSE}
 # set number of topics to extract
 k <- 5 # number of topics 
 SEED <- 2010 # seed for initializing the model rather than the default random
