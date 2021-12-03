@@ -192,6 +192,7 @@ the following code.
 
 ```{r sentiment-2, eval = T}
 library(sentimentr)
+library(syuzhet)
 sample = c("You're awesome and I love you", "I hate and hate and hate.
 So angry. Die!", "Impressed and amazed: you are peerless in your
 achievement of unparalleled mediocrity.")
@@ -208,6 +209,7 @@ To get the overall sentiment for the sample text, use:
 
 ```{r sentiment-3, eval = T}
 library(sentimentr)
+library(syuzhet)
 sample = c("You're awesome and I love you", "I hate and hate and hate.So angry. Die!", "Impressed and amazed: you are peerless in your achievement of unparalleled mediocrity.")
 y <- sentiment(sample,
 n.before=0, n.after=0)
@@ -230,6 +232,7 @@ and amplification (.8) in this case.
 
 ```{r sentiment-4, eval = T}
 library(sentimentr)
+library(syuzhet)
 sample = c("You're awesome and I love you", "I hate and hate and hate.
 So angry. Die!", "Impressed and amazed: you are peerless in your
 achievement of unparalleled mediocrity.")
@@ -249,8 +252,9 @@ sentiment(sample, n.before = 2, n.after = 2, amplifier.weight=.8, but.weight = .
 > Run the following R code and comment on how sensitive sentiment
 > analysis is to the n.before and n.after parameters.
 
-```{r sentiment-4, eval = T}
+```{r sentiment-5, eval = T}
 library(sentimentr) 
+library(syuzhet)
 sample = c("You're not crazy and I love you very much.")
 sentiment(sample, n.before = 4, n.after=3, amplifier.weight=1) 
 sentiment(sample, n.before = Inf, n.after=Inf, amplifier.weight=1)
@@ -292,6 +296,7 @@ into a corpus.
 ```{r corpus-creation, eval = T, message = FALSE}
 library(stringr)
 library(tm)
+library(NLP)
 #set up a data frame to hold up to 100 letters
 df <-  data.frame(num=100)
 begin <-  1998 # date of first letter
@@ -343,6 +348,7 @@ function. Then complete the calculation.
 ```{r readability, eval = T, message = FALSE}
 library(koRpus)
 library(koRpus.lang.en)
+library(sylly)
 #tokenize the first letter in the corpus after converting to character vector
 txt <-  letters[[1]][1] # first element in the list
 tagged.text <- tokenize(as.character(txt),format="obj",lang="en")
@@ -540,6 +546,7 @@ A word cloud is way of visualizing the most frequent words.
 
 ```{r cloud, eval = T, message = FALSE, fig.cap = 'A word cloud'}
 library(wordcloud)
+library(RColorBrewer)
 # select the color palette
 pal = brewer.pal(5,"Accent")
 # generate the cloud based on the 30 most frequent words
