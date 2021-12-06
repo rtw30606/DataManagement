@@ -35,54 +35,6 @@ Students completing this chapter will
 -   understand the management issues involved in initiating, staffing,
     and locating data administration organizationally.
 
-![](Figures/Chapter%201/expeditioner.png)
-
-The Tahiti tourist resort had been an outstanding success for The
-Expeditioner. Located 40 minutes from Papeete, the capital city, on a
-stretch of tropical forest and golden sand, the resort had soon become
-the favorite meeting place for The Expeditioner's board. No one objected
-to the long flight to French Polynesia. The destination was well worth
-the journey, and The Expeditioner had historic ties to that part of the
-South Pacific. Early visitors to Tahiti, James Cook and William Bligh,
-had been famous customers of The Expeditioner in the eighteenth century.
-Before Paul Gauguin embarked on his journey to paint scenes of Tahiti,
-he had purchased supplies from L'Explorateur, now the French division of
-The Expeditioner.
-
-Although The Expeditioner is very successful, there are always problems
-for the board to address. A number of board members are very concerned
-by the seeming lack of control over the various database systems that
-are vital to the firm's profitability. Recently, there had been a number
-of incidents that had underscored the problem. Purchasing had made
-several poor decisions. For example, it had ordered too many parkas for
-the North American stores and had to discount them heavily to sell all
-the stock. The problem was traced to poor data standards and policies
-within Sales. In another case, Personnel and Marketing had been
-squabbling for some time over access to the personnel database.
-Personnel claimed ownership of the data and was reluctant to share data
-with Marketing, which wanted access to some of the data to support its
-new incentive program. In yet another incident, a new database project
-for the Travel Division had been seriously delayed when it was
-discovered that the Travel Division's development team was planning to
-implement a system incompatible with The Expeditioner's existing
-hardware and software.
-
-After the usual exchange of greetings and a presentation of the monthly
-financial report, Alice forthrightly raised the database problem. "We
-all know that we depend on information technology to manage The
-Expeditioner," she began as she glanced at her notes on her tablet. "The
-Information Systems department does a great job running the computers,
-building new systems, and providing us with excellent service, but," she
-stressed, "we seem to be focusing on managing the wrong things. We
-should be managing what really matters: the data we need to run the
-business. Data errors, internecine fighting over data, and project
-delays are costly. Our present system for managing data is fragmented.
-We don't have anyone or any group who manages data centrally. It is
-critical that we develop an action plan for the organizational
-management of data." Pointing to Bob, she continued, "I have invited Bob
-to brief us on data administration and present his proposal for solving
-our data management problem. It's all yours, Bob."
-
 ## Introduction {.unnumbered}
 
 In the information age, data are the lifeblood of every organization and
