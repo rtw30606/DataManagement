@@ -581,7 +581,7 @@ as.matrix(tdm)
 We compute the correlation of rows to get a measure of association
 across documents.
 
-```{r correlation, eval = T, message = FALSE}
+```{r correlation2, eval = T, message = FALSE}
 # Correlation between word2 and word3, word4, and word5
 cor(c(0,1,1,1,1),c(0,0,1,1,1))
 cor(c(0,1,1,1,1),c(0,0,0,1,1))
