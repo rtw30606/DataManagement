@@ -1,8 +1,8 @@
 # Data Management: Databases and Organizations {.unnumbered}
 
-## *Open Edition* {.unnumbered}
+### *Open Edition* {.unnumbered}
 
-## Richard T. Watson {.unnumbered}
+### Richard T. Watson {.unnumbered}
 
 > Department of MIS
 >

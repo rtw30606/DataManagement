@@ -659,7 +659,7 @@ level of atmospheric CO~2~.[^IntroR-6]
 [^IntroR-6]: As I continually revise data files to include the latest
     observations, your answer might differ for this and other analyses.
 
-```{r, correlation, eval = TRUE}
+```{r, correlation-1, eval = TRUE}
 cor.test(m$mean, m$CO2)
 ```
 
