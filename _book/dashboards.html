@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 19 Dashboards | DataManagement.utf8</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 19 Dashboards | DataManagement.utf8" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 19 Dashboards | DataManagement.utf8" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cluster-computing.html"/>
+<link rel="next" href="section-4-managing-organizational-memory.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-3.5.2/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.7/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.7/js/ggvis.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Management: Databases and Organizations</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="data-management-databases-and-organizations.html"><a href="data-management-databases-and-organizations.html"><i class="fa fa-check"></i>Data Management: Databases and Organizations</a>
+<ul>
+<li><a href="data-management-databases-and-organizations.html#open-edition"><em>Open Edition</em></a></li>
+<li class="chapter" data-level="" data-path="data-management-databases-and-organizations.html"><a href="data-management-databases-and-organizations.html#richard-t.-watson"><i class="fa fa-check"></i>Richard T. Watson</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#supplements"><i class="fa fa-check"></i>Supplements</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1-the-managerial-perspective.html"><a href="section-1-the-managerial-perspective.html"><i class="fa fa-check"></i>Section 1 The Managerial Perspective</a></li>
+<li class="chapter" data-level="1" data-path="managing-data.html"><a href="managing-data.html"><i class="fa fa-check"></i><b>1</b> Managing Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#individual-data-management"><i class="fa fa-check"></i>Individual data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#organizational-data-management"><i class="fa fa-check"></i>Organizational data management</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#the-information-systems-cycle"><i class="fa fa-check"></i>The information systems cycle</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#desirable-attributes-of-data"><i class="fa fa-check"></i>Desirable attributes of data</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#components-of-organizational-memory"><i class="fa fa-check"></i>Components of organizational memory</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#components-of-organizational-memory-1"><i class="fa fa-check"></i>Components of organizational memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#problems-with-data-management-systems"><i class="fa fa-check"></i>Problems with data management systems</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#redundancy"><i class="fa fa-check"></i>Redundancy</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#lack-of-data-control"><i class="fa fa-check"></i>Lack of data control</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#poor-interface"><i class="fa fa-check"></i>Poor interface</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#delays"><i class="fa fa-check"></i>Delays</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#lack-of-reality"><i class="fa fa-check"></i>Lack of reality</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#lack-of-data-integration"><i class="fa fa-check"></i>Lack of data integration</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#a-brief-history-of-data-management-systems"><i class="fa fa-check"></i>A brief history of data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#data-information-and-knowledge"><i class="fa fa-check"></i>Data, information, and knowledge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#the-challenge"><i class="fa fa-check"></i>The challenge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#summary"><i class="fa fa-check"></i>Summary</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#references-and-additional-readings"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="information.html"><a href="information.html"><i class="fa fa-check"></i><b>2</b> Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#learning-objectives-1"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-historical-perspective"><i class="fa fa-check"></i>A historical perspective</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-brief-history-of-information-systems"><i class="fa fa-check"></i>A brief history of information systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-characteristics"><i class="fa fa-check"></i>Information characteristics</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-hardness"><i class="fa fa-check"></i>Information hardness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-richness"><i class="fa fa-check"></i>Information richness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-classes"><i class="fa fa-check"></i>Information classes</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-organizational-change"><i class="fa fa-check"></i>Information and organizational change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#goal-setting-information"><i class="fa fa-check"></i>Goal-setting information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#planning"><i class="fa fa-check"></i>Planning</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#benchmarking"><i class="fa fa-check"></i>Benchmarking</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#gap-information"><i class="fa fa-check"></i>Gap information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#problem-identification"><i class="fa fa-check"></i>Problem identification</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#scorekeeping"><i class="fa fa-check"></i>Scorekeeping</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#change-information"><i class="fa fa-check"></i>Change information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#problem-solution"><i class="fa fa-check"></i>Problem solution</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-as-a-means-of-change"><i class="fa fa-check"></i>Information as a means of change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#marketing"><i class="fa fa-check"></i>Marketing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#customer-service"><i class="fa fa-check"></i>Customer Service</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#empowerment"><i class="fa fa-check"></i>Empowerment</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-managerial-work"><i class="fa fa-check"></i>Information and managerial work</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-information-requirements"><i class="fa fa-check"></i>Managers’ information requirements</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-needs-for-information-vary-accordingly-with-responsibilities"><i class="fa fa-check"></i>Managers’ needs for information vary accordingly with responsibilities</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-satisficing"><i class="fa fa-check"></i>Information satisficing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-delivery-systems"><i class="fa fa-check"></i>Information delivery systems</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#verbal-exchange"><i class="fa fa-check"></i>Verbal exchange</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#voice-mail"><i class="fa fa-check"></i>Voice mail</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#electronic-mail"><i class="fa fa-check"></i>Electronic mail</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#formal-report"><i class="fa fa-check"></i>Formal report</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#meetings"><i class="fa fa-check"></i>Meetings</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#groupware"><i class="fa fa-check"></i>Groupware</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-integration"><i class="fa fa-check"></i>Information integration</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#knowledge-1"><i class="fa fa-check"></i>Knowledge</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#references-and-additional-readings-1"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-2-data-modeling-and-sql.html"><a href="section-2-data-modeling-and-sql.html"><i class="fa fa-check"></i>Section 2 Data Modeling and SQL</a></li>
+<li class="chapter" data-level="3" data-path="the-single-entity.html"><a href="the-single-entity.html"><i class="fa fa-check"></i><b>3</b> The Single Entity</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#learning-objectives-2"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#the-relational-model"><i class="fa fa-check"></i>The relational model</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#modeling-a-single-entity-database"><i class="fa fa-check"></i>Modeling a single-entity database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#creating-a-single-table-database"><i class="fa fa-check"></i>Creating a single-table database</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#data-modeling-with-mysql-workbench"><i class="fa fa-check"></i>Data modeling with MySQL Workbench</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#querying-a-database"><i class="fa fa-check"></i>Querying a database</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html"><i class="fa fa-check"></i><b>4</b> The One-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#learning-objectives-3"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#relationships"><i class="fa fa-check"></i>Relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#why-did-we-create-an-additional-entity"><i class="fa fa-check"></i>Why did we create an additional entity?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#creating-a-database-with-a-1m-relationship"><i class="fa fa-check"></i>Creating a database with a 1:m relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#mysql-workbench"><i class="fa fa-check"></i>MySQL Workbench</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#querying-a-two-table-database"><i class="fa fa-check"></i>Querying a two-table database</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#join"><i class="fa fa-check"></i>Join</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#control-break-reporting"><i class="fa fa-check"></i>Control break reporting</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#regular-expressionpattern-matching-1"><i class="fa fa-check"></i>Regular expression—pattern matching</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#subqueries-1"><i class="fa fa-check"></i>Subqueries</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#viewsvirtual-tables"><i class="fa fa-check"></i>Views—virtual tables</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#key-terms-and-concepts-1"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html"><i class="fa fa-check"></i><b>5</b> The Many-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#learning-objectives-4"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#the-many-to-many-relationship-1"><i class="fa fa-check"></i>The many-to-many relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#mysql-workbench-1"><i class="fa fa-check"></i>MySQL Workbench</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#why-did-we-create-a-third-entity"><i class="fa fa-check"></i>Why did we create a third entity?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#creating-a-relational-database-with-an-mm-relationship"><i class="fa fa-check"></i>Creating a relational database with an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#querying-an-mm-relationship"><i class="fa fa-check"></i>Querying an m:m relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#a-three-table-join"><i class="fa fa-check"></i>A three-table join</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#existsdoes-a-value-exist"><i class="fa fa-check"></i>EXISTS—does a value exist</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#not-existsselect-a-value-if-it-does-not-exist"><i class="fa fa-check"></i>NOT EXISTS—select a value if it does not exist</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#divide-and-be-conquered"><i class="fa fa-check"></i>Divide (and be conquered)</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#beyond-the-great-divide"><i class="fa fa-check"></i>Beyond the great divide</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#set-operations"><i class="fa fa-check"></i>Set operations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#key-terms-and-concepts-2"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html"><i class="fa fa-check"></i><b>6</b> One-to-One and Recursive Relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#learning-objectives-5"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-one-to-one-relationship"><i class="fa fa-check"></i>Querying a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-1m-relationship"><i class="fa fa-check"></i>Querying a recursive 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Querying a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Modeling a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#key-terms-and-concepts-3"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-modeling.html"><a href="data-modeling.html"><i class="fa fa-check"></i><b>7</b> Data Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#learning-objectives-6"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#modeling"><i class="fa fa-check"></i>Modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-1"><i class="fa fa-check"></i>Data modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-building-blocks"><i class="fa fa-check"></i>The building blocks</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#entity"><i class="fa fa-check"></i>Entity</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#attribute"><i class="fa fa-check"></i>Attribute</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#relationship"><i class="fa fa-check"></i>Relationship</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#identifier"><i class="fa fa-check"></i>Identifier</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-model-quality"><i class="fa fa-check"></i>Data model quality</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-well-formed-data-model"><i class="fa fa-check"></i>A well-formed data model</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-high-fidelity-image"><i class="fa fa-check"></i>A high-fidelity image</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#quality-improvement"><i class="fa fa-check"></i>Quality improvement</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#detail-and-context"><i class="fa fa-check"></i>Detail and context</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-lesson-in-pure-geography"><i class="fa fa-check"></i>A lesson in pure geography</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#family-matters"><i class="fa fa-check"></i>Family matters</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#whens-a-book-not-a-book"><i class="fa fa-check"></i>When’s a book not a book?</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-history-lesson"><i class="fa fa-check"></i>A history lesson</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-ménage-à-trois-for-entities"><i class="fa fa-check"></i>A ménage à trois for entities</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#project-managementplanning-and-doing"><i class="fa fa-check"></i>Project management—planning and doing</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#cardinality"><i class="fa fa-check"></i>Cardinality</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#entity-types"><i class="fa fa-check"></i>Entity types</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#generalization-and-aggregation"><i class="fa fa-check"></i>Generalization and aggregation</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#aggregation"><i class="fa fa-check"></i>Aggregation</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-hints"><i class="fa fa-check"></i>Data modeling hints</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-rise-and-fall-of-a-data-model"><i class="fa fa-check"></i>The rise and fall of a data model</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#identifier-1"><i class="fa fa-check"></i>Identifier</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#position-and-order"><i class="fa fa-check"></i>Position and order</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#attributes-and-consistency"><i class="fa fa-check"></i>Attributes and consistency</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#names-and-addresses"><i class="fa fa-check"></i>Names and addresses</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#single-instance-entities"><i class="fa fa-check"></i>Single-instance entities</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#picking-words"><i class="fa fa-check"></i>Picking words</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#synonyms"><i class="fa fa-check"></i>Synonyms</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#homonyms"><i class="fa fa-check"></i>Homonyms</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#exception-hunting"><i class="fa fa-check"></i>Exception hunting</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#relationship-labeling"><i class="fa fa-check"></i>Relationship labeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#keeping-the-data-model-in-shape"><i class="fa fa-check"></i>Keeping the data model in shape</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#used-entities"><i class="fa fa-check"></i>Used entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#meaningful-identifiers"><i class="fa fa-check"></i>Meaningful identifiers</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#advantages-of-meaningful-identifiers"><i class="fa fa-check"></i>Advantages of meaningful identifiers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#disadvantages-of-meaningful-identifiers"><i class="fa fa-check"></i>Disadvantages of meaningful identifiers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-solutionnon-meaningful-identifiers"><i class="fa fa-check"></i>The solution—non-meaningful identifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-seven-habits-of-highly-effective-data-modelers"><i class="fa fa-check"></i>The seven habits of highly effective data modelers</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#immerse"><i class="fa fa-check"></i>Immerse</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#challenge"><i class="fa fa-check"></i>Challenge</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#generalize"><i class="fa fa-check"></i>Generalize</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#test"><i class="fa fa-check"></i>Test</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#limit"><i class="fa fa-check"></i>Limit</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#integrate"><i class="fa fa-check"></i>Integrate</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#complete"><i class="fa fa-check"></i>Complete</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#summary-7"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#key-terms-and-concepts-4"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#references-and-additional-readings-2"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#exercises-5"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#short-answers"><i class="fa fa-check"></i>Short answers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-2"><i class="fa fa-check"></i>Data modeling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html"><i class="fa fa-check"></i>Reference 1: Basic Structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#one-entity"><i class="fa fa-check"></i>One entity</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#no-relationships"><i class="fa fa-check"></i>No relationships</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-11-recursive-relationship"><i class="fa fa-check"></i>A 1:1 recursive relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-recursive-1m-relationship"><i class="fa fa-check"></i>A recursive 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-recursive-mm-relationship"><i class="fa fa-check"></i>A recursive m:m relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#two-entities"><i class="fa fa-check"></i>Two entities</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#no-relationship"><i class="fa fa-check"></i>No relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-11-relationship"><i class="fa fa-check"></i>A 1:1 relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-1m-relationship"><i class="fa fa-check"></i>A 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#an-mm-relationship"><i class="fa fa-check"></i>An m:m relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#another-entitys-identifier-as-part-of-the-identifier"><i class="fa fa-check"></i>Another entity’s identifier as part of the identifier</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-weak-or-dependent-entity"><i class="fa fa-check"></i>A weak or dependent entity</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#an-associative-entity"><i class="fa fa-check"></i>An associative entity</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-tree-structure"><i class="fa fa-check"></i>A tree structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html"><i class="fa fa-check"></i><b>8</b> Normalization and Other Data Modeling Methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#learning-objectives-7"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#introduction-2"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normalization"><i class="fa fa-check"></i>Normalization</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#functional-dependency"><i class="fa fa-check"></i>Functional dependency</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normal-forms"><i class="fa fa-check"></i>Normal forms</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#first-normal-form"><i class="fa fa-check"></i>First normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#second-normal-form"><i class="fa fa-check"></i>Second normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#third-normal-form"><i class="fa fa-check"></i>Third normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#boyce-codd-normal-form"><i class="fa fa-check"></i>Boyce-Codd normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#fourth-normal-form"><i class="fa fa-check"></i>Fourth normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#fifth-normal-form"><i class="fa fa-check"></i>Fifth normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#domain-key-normal-form"><i class="fa fa-check"></i>Domain-key normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#other-data-modeling-methods"><i class="fa fa-check"></i>Other data modeling methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#the-e-r-model"><i class="fa fa-check"></i>The E-R model</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#conclusion-1"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#summary-8"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#key-terms-and-concepts-5"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#references-and-additional-readings-3"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#exercises-7"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#short-answers-1"><i class="fa fa-check"></i>Short answers</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normalization-and-data-modeling"><i class="fa fa-check"></i>Normalization and data modeling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html"><i class="fa fa-check"></i><b>9</b> The Relational Model and Relational Algebra</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#learning-objectives-8"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#data-structures"><i class="fa fa-check"></i>Data structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#domain"><i class="fa fa-check"></i>Domain</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#relations"><i class="fa fa-check"></i>Relations</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#relational-database"><i class="fa fa-check"></i>Relational database</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#primary-key"><i class="fa fa-check"></i>Primary key</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#candidate-key"><i class="fa fa-check"></i>Candidate key</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#alternate-key"><i class="fa fa-check"></i>Alternate key</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#foreign-key"><i class="fa fa-check"></i>Foreign key</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#integrity-rules"><i class="fa fa-check"></i>Integrity rules</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#manipulation-languages"><i class="fa fa-check"></i>Manipulation languages</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#relational-algebra"><i class="fa fa-check"></i>Relational algebra</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#restrict"><i class="fa fa-check"></i>Restrict</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#project"><i class="fa fa-check"></i>Project</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#product"><i class="fa fa-check"></i>Product</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#union"><i class="fa fa-check"></i>Union</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#intersect"><i class="fa fa-check"></i>Intersect</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#difference"><i class="fa fa-check"></i>Difference</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#join-1"><i class="fa fa-check"></i>Join</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#divide"><i class="fa fa-check"></i>Divide</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#querying-with-relational-algebra"><i class="fa fa-check"></i>Querying with relational algebra</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-primitive-set-of-relational-operators"><i class="fa fa-check"></i>A primitive set of relational operators</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-fully-relational-database"><i class="fa fa-check"></i>A fully relational database</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#summary-9"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#key-terms-and-concepts-6"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#references-and-additional-readings-4"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>10</b> SQL</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#learning-objectives-9"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#introduction-3"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-definition"><i class="fa fa-check"></i>Data definition</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#keys"><i class="fa fa-check"></i>Keys</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#indexes"><i class="fa fa-check"></i>Indexes</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-table"><i class="fa fa-check"></i>Creating a table</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#column-definition"><i class="fa fa-check"></i>Column definition</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#constraints"><i class="fa fa-check"></i>Constraints</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#primary-key-constraint"><i class="fa fa-check"></i>Primary key constraint</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#foreign-key-constraint"><i class="fa fa-check"></i>Foreign key constraint</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#unique-constraint"><i class="fa fa-check"></i>Unique constraint</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#check-constraint"><i class="fa fa-check"></i>Check constraint</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-types"><i class="fa fa-check"></i>Data types</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#boolean"><i class="fa fa-check"></i>BOOLEAN</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#smallint-and-integer"><i class="fa fa-check"></i>SMALLINT and INTEGER</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#float"><i class="fa fa-check"></i>FLOAT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#decimal"><i class="fa fa-check"></i>DECIMAL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#char-and-varchar"><i class="fa fa-check"></i>CHAR and VARCHAR</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#times-and-dates"><i class="fa fa-check"></i>Times and dates</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#blob-binary-large-object"><i class="fa fa-check"></i>BLOB (binary large object)</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#clob-character-large-object"><i class="fa fa-check"></i>CLOB (character large object)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#collation-sequence"><i class="fa fa-check"></i>Collation sequence</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#scalar-functions"><i class="fa fa-check"></i>Scalar functions</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#formatting"><i class="fa fa-check"></i>Formatting</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#altering-a-table"><i class="fa fa-check"></i>Altering a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-table"><i class="fa fa-check"></i>Dropping a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-view"><i class="fa fa-check"></i>Creating a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-view"><i class="fa fa-check"></i>Dropping a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-an-index"><i class="fa fa-check"></i>Creating an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-an-index"><i class="fa fa-check"></i>Dropping an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-manipulation"><i class="fa fa-check"></i>Data manipulation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#qualifying-column-names"><i class="fa fa-check"></i>Qualifying column names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#temporary-names"><i class="fa fa-check"></i>Temporary names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#select"><i class="fa fa-check"></i>SELECT</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#product-1"><i class="fa fa-check"></i>Product</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#inner-join"><i class="fa fa-check"></i>Inner join</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#outer-join"><i class="fa fa-check"></i>Outer join</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#simple-subquery"><i class="fa fa-check"></i>Simple subquery</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#correlated-subquery-1"><i class="fa fa-check"></i>Correlated subquery</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#aggregate-functions-1"><i class="fa fa-check"></i>Aggregate functions</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#group-by-and-having"><i class="fa fa-check"></i>GROUP BY and HAVING</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#regexp"><i class="fa fa-check"></i>REGEXP</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#insert"><i class="fa fa-check"></i>INSERT</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#inserting-a-single-record"><i class="fa fa-check"></i>Inserting a single record</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#inserting-multiple-records-using-a-query"><i class="fa fa-check"></i>Inserting multiple records using a query</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#update-1"><i class="fa fa-check"></i>UPDATE</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#updating-a-single-row"><i class="fa fa-check"></i>Updating a single row</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#updating-multiple-rows"><i class="fa fa-check"></i>Updating multiple rows</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#updating-all-rows"><i class="fa fa-check"></i>Updating all rows</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#updating-with-a-subquery"><i class="fa fa-check"></i>Updating with a subquery</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-1"><i class="fa fa-check"></i>DELETE</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-a-single-record"><i class="fa fa-check"></i>Delete a single record</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-multiple-records"><i class="fa fa-check"></i>Delete multiple records</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-all-records"><i class="fa fa-check"></i>Delete all records</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-with-a-subquery"><i class="fa fa-check"></i>Delete with a subquery</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-routines"><i class="fa fa-check"></i>SQL routines</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-function"><i class="fa fa-check"></i>SQL function</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-procedure"><i class="fa fa-check"></i>SQL procedure</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#trigger"><i class="fa fa-check"></i>Trigger</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#nullsmuch-ado-about-missing-information"><i class="fa fa-check"></i>Nulls—much ado about missing information</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#security"><i class="fa fa-check"></i>Security</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#grant"><i class="fa fa-check"></i>GRANT</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-with-grant-option-clause"><i class="fa fa-check"></i>The WITH GRANT OPTION clause</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#revoke"><i class="fa fa-check"></i>REVOKE</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#cascading-revoke"><i class="fa fa-check"></i>Cascading revoke</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-system-catalog"><i class="fa fa-check"></i>The system catalog</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#natural-language-processing"><i class="fa fa-check"></i>Natural language processing</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#connectivity-and-odbc"><i class="fa fa-check"></i>Connectivity and ODBC</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#open-database-connectivity-odbc"><i class="fa fa-check"></i>Open database connectivity (ODBC)</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#embedded-sql"><i class="fa fa-check"></i>Embedded SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#user-defined-types"><i class="fa fa-check"></i>User-defined types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-future-of-sql"><i class="fa fa-check"></i>The future of SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#summary-10"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#key-terms-and-concepts-7"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#references-and-additional-readings-5"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#exercises-9"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html"><i class="fa fa-check"></i>Reference 2: SQL Playbook</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html#the-power-of-sql"><i class="fa fa-check"></i>The power of SQL</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3-advanced-data-management.html"><a href="section-3-advanced-data-management.html"><i class="fa fa-check"></i>Section 3 Advanced Data Management</a></li>
+<li class="chapter" data-level="11" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html"><i class="fa fa-check"></i><b>11</b> Spatial and Temporal Data Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#learning-objectives-10"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#introduction-4"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-spatial-data"><i class="fa fa-check"></i>Managing spatial data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#sqlmm-spatial"><i class="fa fa-check"></i>SQL/MM Spatial</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#spatial-reference-support-system-srs"><i class="fa fa-check"></i>Spatial Reference Support System (SRS)</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#data-model-mapping"><i class="fa fa-check"></i>Data model mapping</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#geometry-collections"><i class="fa fa-check"></i>Geometry collections</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#geocoding-using-google-maps"><i class="fa fa-check"></i>Geocoding using Google Maps</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#r-tree"><i class="fa fa-check"></i>R-tree</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-temporal-data"><i class="fa fa-check"></i>Managing temporal data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#times-remembered"><i class="fa fa-check"></i>Times remembered</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#summary-11"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#key-terms-and-concepts-8"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#references-and-additional-readings-6"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#exercises-10"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graph-databases.html"><a href="graph-databases.html"><i class="fa fa-check"></i><b>12</b> Graph Databases</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#learning-objectives-11"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#introduction-5"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-graph-database"><i class="fa fa-check"></i>A graph database</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#property-data-types"><i class="fa fa-check"></i>Property data types</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#neo4j-a-graph-database-implementation"><i class="fa fa-check"></i>Neo4j – a graph database implementation</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-single-node"><i class="fa fa-check"></i>A single node</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#inserting-nodes"><i class="fa fa-check"></i>Inserting nodes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-a-node"><i class="fa fa-check"></i>Querying a node</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#displaying-data-for-nodes-with-the-same-label"><i class="fa fa-check"></i>Displaying data for nodes with the same label</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#reporting-properties"><i class="fa fa-check"></i>Reporting properties</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#reporting-nodes"><i class="fa fa-check"></i>Reporting nodes</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#reporting-properties-and-nodes"><i class="fa fa-check"></i>Reporting properties and nodes</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#in-for-a-list-of-values"><i class="fa fa-check"></i>IN for a list of values</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#ordering-rows-1"><i class="fa fa-check"></i>Ordering rows</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#derived-data-1"><i class="fa fa-check"></i>Derived data</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#aggregate-functions-2"><i class="fa fa-check"></i>Aggregate functions</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#string-handling"><i class="fa fa-check"></i>String handling</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#subqueries-2"><i class="fa fa-check"></i>Subqueries</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-relationship-between-nodes"><i class="fa fa-check"></i>A relationship between nodes</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#specifying-relationships-in-cypher"><i class="fa fa-check"></i>Specifying relationships in Cypher</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-relationships"><i class="fa fa-check"></i>Querying relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-an-mm-relationship-1"><i class="fa fa-check"></i>Querying an m:m relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#does-a-relationship-exist"><i class="fa fa-check"></i>Does a relationship exist?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#recursive-relationships"><i class="fa fa-check"></i>Recursive relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-a-recursive-relationship"><i class="fa fa-check"></i>Querying a recursive relationship</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#indexes-and-constraints"><i class="fa fa-check"></i>Indexes and constraints</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#remove-duplicates"><i class="fa fa-check"></i>Remove duplicates</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#delete-all-nodes-and-relationships"><i class="fa fa-check"></i>Delete all nodes and relationships</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#summary-12"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#key-terms-and-concepts-9"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#references-and-additional-resources"><i class="fa fa-check"></i>References and additional resources</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#exercises-11"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html"><i class="fa fa-check"></i><b>13</b> XML: Managing Data Exchange</a>
+<ul>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#learning-objectives-12"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#introduction-6"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#sgml"><i class="fa fa-check"></i>SGML</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml"><i class="fa fa-check"></i>XML</a>
+<ul>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml-language-design"><i class="fa fa-check"></i>XML language design</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml-schema"><i class="fa fa-check"></i>XML schema</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#cd-library-case"><i class="fa fa-check"></i>CD library case</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html"><i class="fa fa-check"></i><b>14</b> Organizational Intelligence</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#learning-objectives-13"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#introduction-7"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#an-organizational-intelligence-system"><i class="fa fa-check"></i>An organizational intelligence system</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#the-data-warehouse"><i class="fa fa-check"></i>The data warehouse</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#creating-and-maintaining-the-data-warehouse"><i class="fa fa-check"></i>Creating and maintaining the data warehouse</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-warehouse-technology"><i class="fa fa-check"></i>Data warehouse technology</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exploiting-data-stores"><i class="fa fa-check"></i>Exploiting data stores</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#verification-and-discovery"><i class="fa fa-check"></i>Verification and discovery</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#olap"><i class="fa fa-check"></i>OLAP</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#mddb"><i class="fa fa-check"></i>MDDB</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#the-hypercube"><i class="fa fa-check"></i>The hypercube</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#designing-a-multidimensional-database"><i class="fa fa-check"></i>Designing a multidimensional database</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining"><i class="fa fa-check"></i>Data mining</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining-uses"><i class="fa fa-check"></i>Data mining uses</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining-functions"><i class="fa fa-check"></i>Data mining functions</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining-technologies"><i class="fa fa-check"></i>Data mining technologies</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#sql-99-and-olap"><i class="fa fa-check"></i>SQL-99 and OLAP</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#conclusion-4"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#summary-14"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#key-terms-and-concepts-11"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#references-and-additional-readings-8"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exercises-13"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>15</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#learning-objectives-14"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-r-project"><i class="fa fa-check"></i>The R project</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#creating-a-project"><i class="fa fa-check"></i>Creating a project</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#scripting"><i class="fa fa-check"></i>Scripting</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#datasets"><i class="fa fa-check"></i>Datasets</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#logical-operators"><i class="fa fa-check"></i>Logical operators</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#types-of-data"><i class="fa fa-check"></i>Types of data</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#reading-a-file"><i class="fa fa-check"></i>Reading a file</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#referencing-columns"><i class="fa fa-check"></i>Referencing columns</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#recoding"><i class="fa fa-check"></i>Recoding</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#deleting-a-column"><i class="fa fa-check"></i>Deleting a column</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#reshaping-data"><i class="fa fa-check"></i>Reshaping data</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#writing-files"><i class="fa fa-check"></i>Writing files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-manipulation-with-dplyr"><i class="fa fa-check"></i>Data manipulation with dplyr</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#sorting"><i class="fa fa-check"></i>Sorting</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#summarizing-data"><i class="fa fa-check"></i>Summarizing data</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#adding-a-column"><i class="fa fa-check"></i>Adding a column</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#merging-files"><i class="fa fa-check"></i>Merging files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-manipulation-with-sqldf"><i class="fa fa-check"></i>Data manipulation with sqldf</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#correlation-coefficient"><i class="fa fa-check"></i>Correlation coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#database-access"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#timestamps"><i class="fa fa-check"></i>Timestamps</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#excel-files"><i class="fa fa-check"></i>Excel files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-and-data-analytics"><i class="fa fa-check"></i>R and data analytics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#summary-15"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#key-terms-and-concepts-12"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#exercises-14"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="data-visualization-1.html"><a href="data-visualization-1.html"><i class="fa fa-check"></i><b>16</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#learning-objectives-15"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#visual-processing"><i class="fa fa-check"></i>Visual processing</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#ggvis"><i class="fa fa-check"></i>ggvis</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#data"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#transformation-1"><i class="fa fa-check"></i>Transformation</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#coord"><i class="fa fa-check"></i>Coord</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#element"><i class="fa fa-check"></i>Element</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#scale"><i class="fa fa-check"></i>Scale</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#axes-and-legends"><i class="fa fa-check"></i>Axes and legends</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#guides"><i class="fa fa-check"></i>Guides</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#some-recipes"><i class="fa fa-check"></i>Some recipes</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#bar-graph"><i class="fa fa-check"></i>Bar graph</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#scatterplot"><i class="fa fa-check"></i>Scatterplot</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#smoothing"><i class="fa fa-check"></i>Smoothing</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#box-plot"><i class="fa fa-check"></i>Box Plot</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#heat-map"><i class="fa fa-check"></i>Heat map</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#interactive-graphics"><i class="fa fa-check"></i>Interactive graphics</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#selecting-a-property-using-a-drop-down-list"><i class="fa fa-check"></i>Selecting a property using a drop-down list</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#selecting-a-numeric-value-with-a-slider"><i class="fa fa-check"></i>Selecting a numeric value with a slider</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#geographic-data"><i class="fa fa-check"></i>Geographic data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#r-resources-1"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#summary-16"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#references-1"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#exercises-15"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html"><i class="fa fa-check"></i><b>17</b> Text mining &amp; natural language processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#learning-objectives-16"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#the-nature-of-language"><i class="fa fa-check"></i>The nature of language</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#levels-of-processing"><i class="fa fa-check"></i>Levels of processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#semantics"><i class="fa fa-check"></i>Semantics</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#discourse"><i class="fa fa-check"></i>Discourse</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#pragmatics"><i class="fa fa-check"></i>Pragmatics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#tokenization"><i class="fa fa-check"></i>Tokenization</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#counting-words"><i class="fa fa-check"></i>Counting words</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#sentiment-analysis"><i class="fa fa-check"></i>Sentiment analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#corpus"><i class="fa fa-check"></i>Corpus</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#readability"><i class="fa fa-check"></i>Readability</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#preprocessing"><i class="fa fa-check"></i>Preprocessing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#case-conversion"><i class="fa fa-check"></i>Case conversion</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#punctuation-removal"><i class="fa fa-check"></i>Punctuation removal</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#number-removal"><i class="fa fa-check"></i>Number removal</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#stripping-extra-white-spaces"><i class="fa fa-check"></i>Stripping extra white spaces</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#stop-word-filtering"><i class="fa fa-check"></i>Stop word filtering</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#specific-word-removal"><i class="fa fa-check"></i>Specific word removal</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#word-length-filtering"><i class="fa fa-check"></i>Word length filtering</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#parts-of-speech-pos-filtering"><i class="fa fa-check"></i>Parts of speech (POS) filtering</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#stemming"><i class="fa fa-check"></i>Stemming</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#regex-filtering"><i class="fa fa-check"></i>Regex filtering</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#word-frequency-analysis"><i class="fa fa-check"></i>Word frequency analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#term-frequency"><i class="fa fa-check"></i>Term frequency</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#co-occurrence-and-association"><i class="fa fa-check"></i>Co-occurrence and association</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#cluster-analysis"><i class="fa fa-check"></i>Cluster analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#topic-modeling"><i class="fa fa-check"></i>Topic modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#inverse-document-frequency"><i class="fa fa-check"></i>Inverse document frequency</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#term-frequency-inverse-document-frequency-tf-idf"><i class="fa fa-check"></i>Term frequency inverse document frequency (tf-idf)</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#topic-modeling-with-r"><i class="fa fa-check"></i>Topic modeling with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#named-entity-recognition-ner"><i class="fa fa-check"></i>Named-entity recognition (NER)</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#ner-software"><i class="fa fa-check"></i>NER software</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#future-developments"><i class="fa fa-check"></i>Future developments</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#summary-17"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#key-terms-and-concepts-13"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#references-2"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#exercises-16"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="cluster-computing.html"><a href="cluster-computing.html"><i class="fa fa-check"></i><b>18</b> Cluster computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#learning-objectives-17"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#a-paradigm-shift"><i class="fa fa-check"></i>A paradigm shift</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-drivers"><i class="fa fa-check"></i>The drivers</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-bottleneck-and-its-solution"><i class="fa fa-check"></i>The bottleneck and its solution</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#lambda-architecture"><i class="fa fa-check"></i>Lambda Architecture</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-batch-layer"><i class="fa fa-check"></i>The batch layer</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-serving-layer"><i class="fa fa-check"></i>The serving layer</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#speed-layer"><i class="fa fa-check"></i>Speed layer</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#putting-the-layers-together"><i class="fa fa-check"></i>Putting the layers together</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#benefits-of-the-lambda-architecture"><i class="fa fa-check"></i>Benefits of the Lambda Architecture</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#relational-and-lambda-architectures"><i class="fa fa-check"></i>Relational and Lambda Architectures</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#hadoop"><i class="fa fa-check"></i>Hadoop</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#hadoop-distributed-file-system-hdfs"><i class="fa fa-check"></i>Hadoop distributed file system (HDFS)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#spark"><i class="fa fa-check"></i>Spark</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#computation-with-spark"><i class="fa fa-check"></i>Computation with Spark</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#tabulation"><i class="fa fa-check"></i>Tabulation</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#basic-statistics-with-spark"><i class="fa fa-check"></i>Basic statistics with Spark</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#summary-18"><i class="fa fa-check"></i>Summary</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#key-terms-and-concepts-14"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#exercises-17"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="dashboards.html"><a href="dashboards.html"><i class="fa fa-check"></i><b>19</b> Dashboards</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#learning-objectives-18"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#the-value-of-dashboards"><i class="fa fa-check"></i>The value of dashboards</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#header"><i class="fa fa-check"></i>Header</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#sidebar"><i class="fa fa-check"></i>Sidebar</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#body"><i class="fa fa-check"></i>Body</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#designing-a-dashboard"><i class="fa fa-check"></i>Designing a dashboard</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#dashboards-with-r"><i class="fa fa-check"></i>Dashboards with R</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#conclusion-5"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#summary-19"><i class="fa fa-check"></i>Summary</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#references-3"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#exercises-18"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-4-managing-organizational-memory.html"><a href="section-4-managing-organizational-memory.html"><i class="fa fa-check"></i>Section 4 Managing Organizational Memory</a></li>
+<li class="chapter" data-level="20" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html"><i class="fa fa-check"></i><b>20</b> Data Structure and Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#learning-objectives-19"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-data-deluge"><i class="fa fa-check"></i>The data deluge</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-structures-1"><i class="fa fa-check"></i>Data structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#database-access-1"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-disk-manager"><i class="fa fa-check"></i>The disk manager</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-file-manager"><i class="fa fa-check"></i>The file manager</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#techniques-for-reducing-head-movement"><i class="fa fa-check"></i>Techniques for reducing head movement</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#techniques-for-reducing-disk-accesses"><i class="fa fa-check"></i>Techniques for reducing disk accesses</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#indexing"><i class="fa fa-check"></i>Indexing</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#b-trees"><i class="fa fa-check"></i>B-trees</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#hashing"><i class="fa fa-check"></i>Hashing</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#linked-lists"><i class="fa fa-check"></i>Linked lists</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#bitmap-index"><i class="fa fa-check"></i>Bitmap index</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#join-index"><i class="fa fa-check"></i>Join index</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-coding-standards"><i class="fa fa-check"></i>Data coding standards</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#ascii"><i class="fa fa-check"></i>ASCII</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#unicode"><i class="fa fa-check"></i>Unicode</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-storage-devices"><i class="fa fa-check"></i>Data storage devices</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#magnetic-technology"><i class="fa fa-check"></i>Magnetic technology</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#solid-state-memory"><i class="fa fa-check"></i>Solid-state memory</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#optical-technology"><i class="fa fa-check"></i>Optical technology</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#storage-area-networks"><i class="fa fa-check"></i>Storage-area networks</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#long-term-storage"><i class="fa fa-check"></i>Long-term storage</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-compression"><i class="fa fa-check"></i>Data compression</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#lossless-compression"><i class="fa fa-check"></i>Lossless compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#lossy-compression"><i class="fa fa-check"></i>Lossy compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#conclusion-6"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#summary-20"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#key-terms-and-concepts-15"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#exercises-19"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html"><i class="fa fa-check"></i><b>21</b> Data Processing Architectures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#learning-objectives-20"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-capabilities"><i class="fa fa-check"></i>Cloud capabilities</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#strategic-risk"><i class="fa fa-check"></i>Strategic risk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database"><i class="fa fa-check"></i>Distributed database</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#a-hybrid-distributed-architecture"><i class="fa fa-check"></i>A hybrid, distributed architecture</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#transparency"><i class="fa fa-check"></i>Transparency</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#no-reliance-on-a-central-site"><i class="fa fa-check"></i>No reliance on a central site</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#local-autonomy"><i class="fa fa-check"></i>Local autonomy</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#continuous-operation"><i class="fa fa-check"></i>Continuous operation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-query-processing"><i class="fa fa-check"></i>Distributed query processing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-transaction-processing"><i class="fa fa-check"></i>Distributed transaction processing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#fragmentation-independence"><i class="fa fa-check"></i>Fragmentation independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#replication-independence"><i class="fa fa-check"></i>Replication independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#hardware-independence"><i class="fa fa-check"></i>Hardware independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#operating-system-independence"><i class="fa fa-check"></i>Operating system independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#network-independence"><i class="fa fa-check"></i>Network independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#dbms-independence"><i class="fa fa-check"></i>DBMS independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#conclusionparadise-postponed"><i class="fa fa-check"></i>Conclusion—paradise postponed</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-request"><i class="fa fa-check"></i>Remote request</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-transaction"><i class="fa fa-check"></i>Remote transaction</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-transaction"><i class="fa fa-check"></i>Distributed transaction</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-request"><i class="fa fa-check"></i>Distributed request</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#horizontal-fragmentation"><i class="fa fa-check"></i>Horizontal fragmentation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#vertical-fragmentation"><i class="fa fa-check"></i>Vertical fragmentation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#hybrid-fragmentation"><i class="fa fa-check"></i>Hybrid fragmentation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#replication"><i class="fa fa-check"></i>Replication</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#conclusion-7"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#summary-21"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#key-terms-and-concepts-16"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#references-and-additional-readings-10"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#exercises-20"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="sql-and-java.html"><a href="sql-and-java.html"><i class="fa fa-check"></i><b>22</b> SQL and Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#learning-objectives-21"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#introduction-8"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#jdbc"><i class="fa fa-check"></i>JDBC</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#java-ee"><i class="fa fa-check"></i>Java EE</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#using-sql-within-java"><i class="fa fa-check"></i>Using SQL within Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#connect-to-the-database"><i class="fa fa-check"></i>Connect to the database</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#create-and-execute-an-sql-statement"><i class="fa fa-check"></i>Create and execute an SQL statement</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#report-a-select"><i class="fa fa-check"></i>Report a SELECT</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#inserting-a-row"><i class="fa fa-check"></i>Inserting a row</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#release-the-statement-object"><i class="fa fa-check"></i>Release the Statement object</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#loading-a-text-file-into-a-database"><i class="fa fa-check"></i>Loading a text file into a database</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#javaserver-pages-jsp"><i class="fa fa-check"></i>JavaServer Pages (JSP)</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#map-collection-case"><i class="fa fa-check"></i>Map collection case</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#conclusion-8"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#summary-22"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#key-terms-and-concepts-17"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#references-and-additional-readings-11"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#exercises-21"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="data-integrity.html"><a href="data-integrity.html"><i class="fa fa-check"></i><b>23</b> Data Integrity</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#learning-objectives-22"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#introduction-9"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-management"><i class="fa fa-check"></i>Transaction management</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#concurrent-update-control"><i class="fa fa-check"></i>Concurrent update control</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-failure-and-recovery"><i class="fa fa-check"></i>Transaction failure and recovery</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#protecting-existence"><i class="fa fa-check"></i>Protecting existence</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#backup-and-recovery"><i class="fa fa-check"></i>Backup and recovery</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#recovery-strategies"><i class="fa fa-check"></i>Recovery strategies</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#use-of-recovery-procedures"><i class="fa fa-check"></i>Use of recovery procedures</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#maintaining-data-quality"><i class="fa fa-check"></i>Maintaining data quality</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#dimensions"><i class="fa fa-check"></i>Dimensions</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#dbms-and-data-quality"><i class="fa fa-check"></i>DBMS and data quality</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#ensuring-confidentiality"><i class="fa fa-check"></i>Ensuring confidentiality</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#general-model-of-data-security"><i class="fa fa-check"></i>General model of data security</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#data-access-control"><i class="fa fa-check"></i>Data access control</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#encryption"><i class="fa fa-check"></i>Encryption</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#monitoring-activity"><i class="fa fa-check"></i>Monitoring activity</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#summary-23"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#key-terms-and-concepts-18"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#exercises-22"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="data-administration.html"><a href="data-administration.html"><i class="fa fa-check"></i><b>24</b> Data Administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#learning-objectives-23"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#introduction-10"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#why-manage-data"><i class="fa fa-check"></i>Why manage data?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#the-chief-data-officer"><i class="fa fa-check"></i>The Chief Data Officer</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#cdo-role-dimensions"><i class="fa fa-check"></i>CDO role dimensions</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#cdo-archetypes"><i class="fa fa-check"></i>CDO archetypes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#management-of-the-database-environment"><i class="fa fa-check"></i>Management of the database environment</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#databases"><i class="fa fa-check"></i>Databases</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#system-interface"><i class="fa fa-check"></i>System interface</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-dictionary"><i class="fa fa-check"></i>Data dictionary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#external-databases"><i class="fa fa-check"></i>External databases</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-1"><i class="fa fa-check"></i>Data administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-functions-and-roles"><i class="fa fa-check"></i>Data administration functions and roles</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-levels"><i class="fa fa-check"></i>Database levels</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#system-level-data-administration-functions"><i class="fa fa-check"></i>System-level data administration functions</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#project-level-data-administration"><i class="fa fa-check"></i>Project-level data administration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#systems-development-life-cycle-sdlc"><i class="fa fa-check"></i>Systems development life cycle (SDLC)</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-interfaces"><i class="fa fa-check"></i>Data administration interfaces</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-management-systems-dbmss"><i class="fa fa-check"></i>Database management systems (DBMSs)</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#performance-monitoring-tools"><i class="fa fa-check"></i>Performance monitoring tools</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#case-tools"><i class="fa fa-check"></i>CASE tools</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#groupware-1"><i class="fa fa-check"></i>Groupware</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-integration"><i class="fa fa-check"></i>Data integration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#conclusion-9"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#summary-24"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#key-terms-and-concepts-19"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#references-and-additional-readings-12"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#exercises-23"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dashboards" class="section level1" number="19">
+<h1><span class="header-section-number">Chapter 19</span> Dashboards</h1>
+<blockquote>
+<p><em>I think, aesthetically, car design is so interesting - the
+dashboards, the steering wheels, and the beauty of the mechanics. I
+don’t know how any of it works, I don’t want to know, but it’s
+inspirational.</em></p>
+<p>Paloma Picasso, designer, 2013<a href="#fn73" class="footnote-ref" id="fnref73"><sup>73</sup></a></p>
+</blockquote>
+<div id="learning-objectives-18" class="section level3 unnumbered">
+<h3>Learning objectives</h3>
+<p>Students completing this chapter will:</p>
+<ul>
+<li><p>Understand the purpose of dashboards;</p></li>
+<li><p>Be able to use the R package shinydashboard to create a dashboard.</p></li>
+</ul>
+</div>
+<div id="the-value-of-dashboards" class="section level2 unnumbered">
+<h2>The value of dashboards</h2>
+<p>A dashboard is a web page or mobile app screen designed to present
+important information, primarily visual format, that can be quickly and
+easily comprehended. Dashboards are often used to show the current
+status, such as the weather app you have on your smart phone. Sometimes,
+a dashboard can also show historical data as a means of trying to
+identify long term trends. Key economic indicators for the last decade
+or so might be shown graphically to help strategic planners identify
+major shifts in economic activity. In a world overflowing with data,
+dashboards are an information system for summarizing and presenting key
+data. They can be very useful for maintaining situation awareness, by
+providing information about key environmental measures of the current
+situation and possible future developments.</p>
+<p>A dashboard typically has a header, sidebar and body</p>
+<div id="header" class="section level3 unnumbered">
+<h3>Header</h3>
+<p>There is a header across the top of a page indicating the purpose of the
+dashboard, and additional facts about the content, such as the creator.
+A search engine is a common element of a header. A header can also
+contain tabs to various sources of information or reports (e.g., social
+media or Fortune 1000 companies).</p>
+</div>
+<div id="sidebar" class="section level3 unnumbered">
+<h3>Sidebar</h3>
+<p>A sidebar usually contains features that enable the body of the report
+to be customized to the viewer’s needs. There might be filters to
+fine-tune what is displayed. Alternatively, there can be links to select
+information on a particular topic. In the following example, the sidebar
+contains some high level summary data, such as the number of documents
+in a category.</p>
+</div>
+<div id="body" class="section level3 unnumbered">
+<h3>Body</h3>
+<p>The body of a dashboard contains the information selected via a sidebar.
+It can contained multiple panes, as shown in the following example, that
+display information in a variety of ways. The body of the following
+dashboard contains four types of visuals (a multiple time series graph,
+a donut style pie chart, a map, and a relationship network). It also
+shows a list of documents satisfying the specified criteria and a word
+cloud of these documents.</p>
+<p>I encourage you to visit the ecoresearch.net dashboard. It is an
+exemplar and will give you some idea of the diversity of ways in which
+information can be presented and the power of a dashboard to inform.</p>
+<p><em>A dashboard
+&lt;<a href="http://www.ecoresearch.net/climate/"><u>http://www.ecoresearch.net/climate/</u></a>&gt;</em></p>
+<p><img src="Figures/Chapter%2019/climate-dashboard.png" /></p>
+</div>
+<div id="designing-a-dashboard" class="section level3 unnumbered">
+<h3>Designing a dashboard</h3>
+<p>The purpose of a dashboard is to communicate, so the first step is to
+work with the client to determine the key performance indicators (KPIs),
+visuals, or text that should be on the dashboard. Your client will have
+some ideas as to what is required, and by asking good questions and
+prototyping, you can clarify needs.</p>
+<p>You will need to establish that high quality data sources are available
+for conversion into the required information. If data are not available,
+you will have to work with other IS professionals to establish them, or
+you might conclude that it is infeasible to try to meet some
+requirements. You should keep the client informed as you work through
+the process of resolving data source issues. Importantly, you should
+make the client aware of any data quality problems. Sometimes your
+client might have to settle for less than desirable data quality in
+order to get some idea of directional swings.</p>
+<p>Try several ways of visualizing data to learn what suits the client. The
+ggvis package works well with shinydashboard, the dashboard package we
+will learn. Also, other R packages, such as dygraphs, can be deployed
+for graphing time series, a frequent dashboard element for showing
+trends and turning points. Where possible, use interactivity to enable
+the client to customize as required (e.g., let the client select the
+period of a time series).</p>
+<p>Design for ease of navigation and information retrieval. Simplicity
+should generally be preferred to complexity. Try to get chunks of
+information that should be viewed at the same time on the same page, and
+put other collections of cohesive information on separate tabs.</p>
+<p>Use colors consistently and in accord with general practice. For
+example, red is the standard color for danger, so a red information box
+should contain only data that indicate a key problem (e.g., a machine
+not working or a major drop in a KPI). Consistency in color usage can
+support rapid scanning of a dashboard to identify the attention
+demanding situations.</p>
+<p>Study dashboards that are considered as exhibiting leading business
+practices or are acknowledged as exemplars. Adopt or imitate the
+features that work well.</p>
+<p>Build a prototype as soon as you have a reasonable idea of what you
+think is required and release it to your client. This will enable the
+client to learn what is possible and for you to get a deeper
+understanding of the needs. Learn from the response to the prototype,
+redesign, and release version 2. Continue this process for a couple of
+iterations until the dashboard is accepted.</p>
+</div>
+<div id="dashboards-with-r" class="section level3 unnumbered">
+<h3>Dashboards with R</h3>
+<p>R requires two packages, shiny and shinydashboard, to create a
+dashboard. Also, you must use RStudio to run your R script. Shiny is a R
+package for building interactive web applications in R. It was
+contributed to the R project by RStudio. It does not require knowledge
+of traditional web development tools such as HTML, CSS, or JavaScript.
+Shinydashboard uses Shiny to create dashboards, but you you don’t need
+to learn Shiny. Some <a href="http://www.apple.com"><u>examples</u></a> of
+dashboards built with shinydashboard will give you an idea of what is
+feasible.</p>
+<div id="the-basics" class="section level4 unnumbered">
+<h4>The basics</h4>
+<p>In keeping with the style of this book, we will start by creating a
+minimalist dashboard without any content. There are three elements:
+header, sidebar, and body. It this case, they are all null. Together,
+these three elements create the UI (user interface) of a dashboard page.
+The dynamic side of the page, the server, is also null. A dashboard is a
+Shiny app, and the final line of code runs the application.</p>
+<p>A UI script defines the layout and appearance of dashboard’s web page.
+The server script contains commands to run the dashboard app and to make
+a page dynamic.</p>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="dashboards.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb544-2"><a href="dashboards.html#cb544-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb544-3"><a href="dashboards.html#cb544-3" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>()</span>
+<span id="cb544-4"><a href="dashboards.html#cb544-4" aria-hidden="true" tabindex="-1"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>()</span>
+<span id="cb544-5"><a href="dashboards.html#cb544-5" aria-hidden="true" tabindex="-1"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>()</span>
+<span id="cb544-6"><a href="dashboards.html#cb544-6" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(header,sidebar,body)</span>
+<span id="cb544-7"><a href="dashboards.html#cb544-7" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {}</span>
+<span id="cb544-8"><a href="dashboards.html#cb544-8" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p>When you select all the code and run it, a new browser window will open
+and display a blank dashboard.</p>
+<p><img src="Figures/Chapter%2019/dashboard-1.png" /></p>
+<p>When you inspect some shinydashboard code, you will sometimes see a
+different format in which commands are deeply embedded in other
+commands. The following code illustrates this approach. I suggest you
+avoid it because it is harder to debug such code, especially when you
+are a novice.</p>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="dashboards.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb545-2"><a href="dashboards.html#cb545-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb545-3"><a href="dashboards.html#cb545-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(</span>
+<span id="cb545-4"><a href="dashboards.html#cb545-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dashboardHeader</span>(),</span>
+<span id="cb545-5"><a href="dashboards.html#cb545-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dashboardSidebar</span>(),</span>
+<span id="cb545-6"><a href="dashboards.html#cb545-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dashboardBody</span>()</span>
+<span id="cb545-7"><a href="dashboards.html#cb545-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb545-8"><a href="dashboards.html#cb545-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {}</span>
+<span id="cb545-9"><a href="dashboards.html#cb545-9" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+</div>
+<div id="terminating-a-dashboard" class="section level4 unnumbered">
+<h4>Terminating a dashboard</h4>
+<p>A dashboard is meant to be a dynamic web page that is updated when
+refreshed or when some element of the page is clicked on. It remains
+active until terminated. This means that when you want to test a new
+version of a dashboard or run another one, you must first stop the
+current one. You will need to click the stop icon on the console’s top
+left to terminate a dashboard and close its web page.</p>
+</div>
+<div id="a-header-and-a-body" class="section level4 unnumbered">
+<h4>A header and a body</h4>
+<p>We now add some content to a basic dashboard by giving it a header and a
+body. This page reports the share price of Apple, which has the stock
+exchange symbol of AAPL. The getQuote function<a href="#fn74" class="footnote-ref" id="fnref74"><sup>74</sup></a> of the
+<a href="https://cran.r-project.org/web/packages/quantmod/index.html"><u>quantmod</u></a>
+package returns the latest price, with about a two hour delay, every
+time the page is opened or refreshed. Notice the use of paste to
+concatenate a title and value.</p>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="dashboards.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb546-2"><a href="dashboards.html#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb546-3"><a href="dashboards.html#cb546-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
+<span id="cb546-4"><a href="dashboards.html#cb546-4" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">&#39;Apple stock watch&#39;</span>)</span>
+<span id="cb546-5"><a href="dashboards.html#cb546-5" aria-hidden="true" tabindex="-1"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>()</span>
+<span id="cb546-6"><a href="dashboards.html#cb546-6" aria-hidden="true" tabindex="-1"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(<span class="fu">paste</span>(<span class="st">&#39;Latest price &#39;</span>,<span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>Last))</span>
+<span id="cb546-7"><a href="dashboards.html#cb546-7" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(header,sidebar,body)</span>
+<span id="cb546-8"><a href="dashboards.html#cb546-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {}</span>
+<span id="cb546-9"><a href="dashboards.html#cb546-9" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p><img src="Figures/Chapter%2019/dashboard-2.png" /></p>
+</div>
+<div id="boxes-and-rows" class="section level4 unnumbered">
+<h4>Boxes and rows</h4>
+<p>Boxes are the building blocks of a dashboard, and they can be assembled
+into rows or columns. The fluidRow function is used to place boxes into
+rows and columns. The following code illustrates the use of fluidRow.</p>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="dashboards.html#cb547-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb547-2"><a href="dashboards.html#cb547-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb547-3"><a href="dashboards.html#cb547-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
+<span id="cb547-4"><a href="dashboards.html#cb547-4" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">&#39;Apple stock watch&#39;</span>)</span>
+<span id="cb547-5"><a href="dashboards.html#cb547-5" aria-hidden="true" tabindex="-1"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>()</span>
+<span id="cb547-6"><a href="dashboards.html#cb547-6" aria-hidden="true" tabindex="-1"></a>boxLatest <span class="ot">&lt;-</span> <span class="fu">box</span>(<span class="at">title =</span> <span class="st">&#39;Latest price: &#39;</span>,<span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>Last, <span class="at">background =</span> <span class="st">&#39;blue&#39;</span> )</span>
+<span id="cb547-7"><a href="dashboards.html#cb547-7" aria-hidden="true" tabindex="-1"></a>boxChange <span class="ot">&lt;-</span>  <span class="fu">box</span>(<span class="at">title =</span> <span class="st">&#39;Change &#39;</span>,<span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>Change, <span class="at">background =</span> <span class="st">&#39;red&#39;</span> )</span>
+<span id="cb547-8"><a href="dashboards.html#cb547-8" aria-hidden="true" tabindex="-1"></a>row <span class="ot">&lt;-</span> <span class="fu">fluidRow</span>(boxLatest,boxChange)</span>
+<span id="cb547-9"><a href="dashboards.html#cb547-9" aria-hidden="true" tabindex="-1"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(row)</span>
+<span id="cb547-10"><a href="dashboards.html#cb547-10" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(header,sidebar,body)</span>
+<span id="cb547-11"><a href="dashboards.html#cb547-11" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {}</span>
+<span id="cb547-12"><a href="dashboards.html#cb547-12" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p><img src="Figures/Chapter%2019/dashboard-3.png" /></p>
+<blockquote>
+<p>❓<em>Skill builder</em> Add three more boxes (e.g., high price) to the dashboard just created.</p>
+</blockquote>
+</div>
+<div id="multicolumn-layout" class="section level4 unnumbered">
+<h4>Multicolumn layout</h4>
+<p>Shinydashboard is based on dividing up the breadth of a web page into 12
+units, assuming it is wide enough. Thus, a box with width = 6 will take
+up half a page. The tops of the boxes in each row will be aligned, but
+the bottoms may not be because of the volume of data they contain. The
+fluidRows function ensures that a row’s elements appear on the same
+line, if the browser has adequate width.</p>
+<p>You can also specify that boxes are placed in columns. The column
+function defines how much horizontal space, within the 12-unit width
+grid, each element should occupy.</p>
+<p>In the following code, note how:</p>
+<ul>
+<li><p>a background for a box is defined (e.g., background=‘navy’);</p></li>
+<li><p>five boxes are organized into two columns (rows &lt;- fluidRow(col1,col2));</p></li>
+<li><p>volume of shares traded is formatted with commas (formatC(getQuote(’AAPL')$Volume,big.mark=',').</p></li>
+</ul>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="dashboards.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb548-2"><a href="dashboards.html#cb548-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb548-3"><a href="dashboards.html#cb548-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
+<span id="cb548-4"><a href="dashboards.html#cb548-4" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">&#39;Apple stock watch&#39;</span>)</span>
+<span id="cb548-5"><a href="dashboards.html#cb548-5" aria-hidden="true" tabindex="-1"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>()</span>
+<span id="cb548-6"><a href="dashboards.html#cb548-6" aria-hidden="true" tabindex="-1"></a>boxLast <span class="ot">&lt;-</span>  <span class="fu">box</span>(<span class="at">title =</span> <span class="st">&#39;Latest&#39;</span>, <span class="at">width=</span><span class="cn">NULL</span>, <span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>Last, <span class="at">background=</span><span class="st">&#39;navy&#39;</span>)</span>
+<span id="cb548-7"><a href="dashboards.html#cb548-7" aria-hidden="true" tabindex="-1"></a>boxHigh <span class="ot">&lt;-</span>  <span class="fu">box</span>(<span class="at">title =</span> <span class="st">&#39;High&#39;</span>, <span class="at">width=</span><span class="cn">NULL</span>, <span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>High , <span class="at">background=</span><span class="st">&#39;light-blue&#39;</span>)</span>
+<span id="cb548-8"><a href="dashboards.html#cb548-8" aria-hidden="true" tabindex="-1"></a>boxVolume <span class="ot">&lt;-</span> <span class="fu">box</span>(<span class="at">title =</span> <span class="st">&#39;Volume&#39;</span>, <span class="at">width=</span><span class="cn">NULL</span>, <span class="fu">formatC</span>(<span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>Volume,<span class="at">big.mark=</span><span class="st">&#39;,&#39;</span>), <span class="at">background=</span><span class="st">&#39;aqua&#39;</span>)</span>
+<span id="cb548-9"><a href="dashboards.html#cb548-9" aria-hidden="true" tabindex="-1"></a>boxChange <span class="ot">&lt;-</span>  <span class="fu">box</span>(<span class="at">title =</span> <span class="st">&#39;Change&#39;</span>, <span class="at">width=</span><span class="cn">NULL</span>, <span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>Change, <span class="at">background=</span><span class="st">&#39;light-blue&#39;</span>)</span>
+<span id="cb548-10"><a href="dashboards.html#cb548-10" aria-hidden="true" tabindex="-1"></a>boxLow <span class="ot">&lt;-</span>  <span class="fu">box</span>(<span class="at">title =</span> <span class="st">&#39;Low&#39;</span>, <span class="at">width=</span><span class="cn">NULL</span>, <span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>Low, <span class="at">background=</span><span class="st">&#39;light-blue&#39;</span>)</span>
+<span id="cb548-11"><a href="dashboards.html#cb548-11" aria-hidden="true" tabindex="-1"></a>col1 <span class="ot">&lt;-</span>  <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">4</span>,boxLast,boxHigh,boxVolume)</span>
+<span id="cb548-12"><a href="dashboards.html#cb548-12" aria-hidden="true" tabindex="-1"></a>col2 <span class="ot">&lt;-</span>  <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">4</span>,boxChange,boxLow)</span>
+<span id="cb548-13"><a href="dashboards.html#cb548-13" aria-hidden="true" tabindex="-1"></a>rows <span class="ot">&lt;-</span> <span class="fu">fluidRow</span>(col1,col2)</span>
+<span id="cb548-14"><a href="dashboards.html#cb548-14" aria-hidden="true" tabindex="-1"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(rows)</span>
+<span id="cb548-15"><a href="dashboards.html#cb548-15" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(header,sidebar,body)</span>
+<span id="cb548-16"><a href="dashboards.html#cb548-16" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {}</span>
+<span id="cb548-17"><a href="dashboards.html#cb548-17" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p><img src="Figures/Chapter%2019/dashboard-4.png" /></p>
+</div>
+<div id="sidebar-1" class="section level4 unnumbered">
+<h4>Sidebar</h4>
+<p>A sidebar is typically used to enable quick navigation of a dashboard’s
+features. It can contain layers of menus, and by clicking on a menu link
+or icon, the dashboard can display different content in the body area.</p>
+<p>A library of icons is available
+(<a href="http://fontawesome.io/icons/"><u>Font-Awesome</u></a> and
+<a href="http://www.apple.com"><u>Glyphicons</u></a>) for use in the
+creation of a dashboard.</p>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="dashboards.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb549-2"><a href="dashboards.html#cb549-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb549-3"><a href="dashboards.html#cb549-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
+<span id="cb549-4"><a href="dashboards.html#cb549-4" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span>  <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">&#39;Stock watch&#39;</span>)</span>
+<span id="cb549-5"><a href="dashboards.html#cb549-5" aria-hidden="true" tabindex="-1"></a>menuApple <span class="ot">&lt;-</span>  <span class="fu">menuItem</span>(<span class="st">&quot;Apple&quot;</span>, <span class="at">tabName =</span> <span class="st">&quot;Apple&quot;</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">&quot;dashboard&quot;</span>))</span>
+<span id="cb549-6"><a href="dashboards.html#cb549-6" aria-hidden="true" tabindex="-1"></a>menuGoogle <span class="ot">&lt;-</span> <span class="fu">menuItem</span>(<span class="st">&quot;Google&quot;</span>, <span class="at">tabName =</span> <span class="st">&quot;Google&quot;</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">&quot;dashboard&quot;</span>))</span>
+<span id="cb549-7"><a href="dashboards.html#cb549-7" aria-hidden="true" tabindex="-1"></a>sidebar <span class="ot">&lt;-</span>  <span class="fu">dashboardSidebar</span>(<span class="fu">sidebarMenu</span>(menuApple, menuGoogle))</span>
+<span id="cb549-8"><a href="dashboards.html#cb549-8" aria-hidden="true" tabindex="-1"></a>tabApple <span class="ot">&lt;-</span>  <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">&quot;Apple&quot;</span>, <span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>Last)</span>
+<span id="cb549-9"><a href="dashboards.html#cb549-9" aria-hidden="true" tabindex="-1"></a>tabGoogle <span class="ot">&lt;-</span>  <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">&quot;Google&quot;</span>, <span class="fu">getQuote</span>(<span class="st">&#39;GOOG&#39;</span>)<span class="sc">$</span>Last)</span>
+<span id="cb549-10"><a href="dashboards.html#cb549-10" aria-hidden="true" tabindex="-1"></a>tabs <span class="ot">&lt;-</span>  <span class="fu">tabItems</span>(tabApple,tabGoogle)</span>
+<span id="cb549-11"><a href="dashboards.html#cb549-11" aria-hidden="true" tabindex="-1"></a>body <span class="ot">&lt;-</span>  <span class="fu">dashboardBody</span>(tabs)</span>
+<span id="cb549-12"><a href="dashboards.html#cb549-12" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(header, sidebar, body)</span>
+<span id="cb549-13"><a href="dashboards.html#cb549-13" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {}</span>
+<span id="cb549-14"><a href="dashboards.html#cb549-14" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p>For the following dashboard, by clicking on Apple, you get its latest
+share price, and similarly for Google.</p>
+<p><img src="Figures/Chapter%2019/dashboard-5.png" /></p>
+</div>
+<div id="infobox" class="section level4 unnumbered">
+<h4>Infobox</h4>
+<p>An infobox is often used to display a single measure, such as a KPI.</p>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="dashboards.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb550-2"><a href="dashboards.html#cb550-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb550-3"><a href="dashboards.html#cb550-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
+<span id="cb550-4"><a href="dashboards.html#cb550-4" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">&#39;Apple stock watch&#39;</span>)</span>
+<span id="cb550-5"><a href="dashboards.html#cb550-5" aria-hidden="true" tabindex="-1"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>()</span>
+<span id="cb550-6"><a href="dashboards.html#cb550-6" aria-hidden="true" tabindex="-1"></a>infoLatest <span class="ot">&lt;-</span> <span class="fu">infoBox</span>(<span class="at">title =</span> <span class="st">&#39;Latest&#39;</span>, <span class="fu">icon</span>(<span class="st">&#39;dollar&#39;</span>), <span class="fu">getQuote</span>(<span class="st">&#39;AAPL&#39;</span>)<span class="sc">$</span>Last, <span class="at">color=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb550-7"><a href="dashboards.html#cb550-7" aria-hidden="true" tabindex="-1"></a>infoChange <span class="ot">&lt;-</span> <span class="fu">infoBox</span>(<span class="at">title =</span> <span class="st">&#39;Web site&#39;</span>, <span class="fu">icon</span>(<span class="st">&#39;apple&#39;</span>),<span class="at">href=</span><span class="st">&#39;http://investor.apple.com&#39;</span>, <span class="at">color=</span><span class="st">&#39;purple&#39;</span>)</span>
+<span id="cb550-8"><a href="dashboards.html#cb550-8" aria-hidden="true" tabindex="-1"></a>row <span class="ot">&lt;-</span> <span class="fu">fluidRow</span>(<span class="at">width=</span><span class="dv">4</span>,infoLatest,infoChange)</span>
+<span id="cb550-9"><a href="dashboards.html#cb550-9" aria-hidden="true" tabindex="-1"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(row)</span>
+<span id="cb550-10"><a href="dashboards.html#cb550-10" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(header,sidebar,body)</span>
+<span id="cb550-11"><a href="dashboards.html#cb550-11" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {}</span>
+<span id="cb550-12"><a href="dashboards.html#cb550-12" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)<span class="er">)</span></span></code></pre></div>
+<p>The following dashboard shows the latest price for Apple’s shares. By
+clicking on the purple infobox, you access Apple investors’ web site.</p>
+<p><img src="Figures/Chapter%2019/dashboard-6.png" /></p>
+</div>
+<div id="dynamic-dashboards" class="section level4 unnumbered">
+<h4>Dynamic dashboards</h4>
+<p>Dashboards are more useful when they give managers access to determine
+what is presented. The server function supports dynamic dashboards and
+executes when a dashboard is opened or refreshed.</p>
+<p>The following basic dashboard illustrates how a server function is
+specified and how it communicates with the user interface. Using the
+time series graphing package, dygraphs, it creates a dashboard showing
+the closing price for Apple. Key points to note:</p>
+<ul>
+<li><p>The ui function indicates that it wants to create a graph with the code
+<code>dygraphOutput('apple')</code>.</p></li>
+<li><p>The server executes <code>output$apple &lt;- renderDygraph({dygraph(Cl(get(getSymbols('AAPL'))))})</code>
+to produce the graph.</p></li>
+<li><p>The linkage between the UI and the server functions is through the
+highlighted code, as shown in the preceding two bullets and the
+following code block.</p></li>
+<li><p>The text parameter of <code>dynagraphOutput()</code> in the UI function must match the text following <code>output$</code> in the server function.</p></li>
+<li><p>The data to be graphed are retrieved with the Cl function of the quantmod package.<a href="#fn75" class="footnote-ref" id="fnref75"><sup>75</sup></a></p></li>
+</ul>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="dashboards.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb551-2"><a href="dashboards.html#cb551-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb551-3"><a href="dashboards.html#cb551-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
+<span id="cb551-4"><a href="dashboards.html#cb551-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dygraphs) <span class="co"># graphic package for time series</span></span>
+<span id="cb551-5"><a href="dashboards.html#cb551-5" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span>  <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">&#39;Apple stock watch&#39;</span>)</span>
+<span id="cb551-6"><a href="dashboards.html#cb551-6" aria-hidden="true" tabindex="-1"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>(<span class="cn">NULL</span>)</span>
+<span id="cb551-7"><a href="dashboards.html#cb551-7" aria-hidden="true" tabindex="-1"></a>boxPrice <span class="ot">&lt;-</span> <span class="fu">box</span>(<span class="at">title=</span><span class="st">&#39;Closing share price&#39;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="cn">NULL</span>, <span class="fu">dygraphOutput</span>(<span class="st">&#39;apple&#39;</span>))</span>
+<span id="cb551-8"><a href="dashboards.html#cb551-8" aria-hidden="true" tabindex="-1"></a>body <span class="ot">&lt;-</span>   <span class="fu">dashboardBody</span>(<span class="fu">fluidRow</span>(boxPrice))</span>
+<span id="cb551-9"><a href="dashboards.html#cb551-9" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(header, sidebar, body)</span>
+<span id="cb551-10"><a href="dashboards.html#cb551-10" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb551-11"><a href="dashboards.html#cb551-11" aria-hidden="true" tabindex="-1"></a><span class="co"># quantmod retrieves closing price as a time series</span></span>
+<span id="cb551-12"><a href="dashboards.html#cb551-12" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>apple <span class="ot">&lt;-</span> <span class="fu">renderDygraph</span>({<span class="fu">dygraph</span>(<span class="fu">Cl</span>(<span class="fu">get</span>(<span class="fu">getSymbols</span>(<span class="st">&#39;AAPL&#39;</span>))))})</span>
+<span id="cb551-13"><a href="dashboards.html#cb551-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb551-14"><a href="dashboards.html#cb551-14" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p>When you create the dashboard, mouse over the points on the graph and
+observe the data that are reported.</p>
+<p><img src="Figures/Chapter%2019/dashboard-7.png" /></p>
+<p>The following code illustrates how to create a dashboard that enables an
+analyst to graph the closing share price for Apple, Google, or Ford.
+Important variables in the code have been highlighted so you can easily
+see the correspondence between the UI and server functions. Note:</p>
+<ul>
+<li><p>The use of a selection list to pick one of three companies
+(<code>selectInput("symbol", "Equity:", choices = c("Apple" = "AAPL", "Ford" = "F", "Google" = "GOOG"))</code>).</p></li>
+<li><p>When an analyst selects one of the three firms, its stock exchange
+symbol (symbol) is passed to the server function.</p></li>
+<li><p>The value of symbol is used to retrieve the time series for the
+stock and to generate the graphic (chart ) for display with
+<code>boxSymbol</code>. The symbol is also inserted into a text string (text) for display with <code>boxOutput</code>.</p></li>
+</ul>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="dashboards.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb552-2"><a href="dashboards.html#cb552-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb552-3"><a href="dashboards.html#cb552-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
+<span id="cb552-4"><a href="dashboards.html#cb552-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dygraphs)</span>
+<span id="cb552-5"><a href="dashboards.html#cb552-5" aria-hidden="true" tabindex="-1"></a>header <span class="ot">&lt;-</span>  <span class="fu">dashboardHeader</span>(<span class="at">title =</span> <span class="st">&#39;Stock watch&#39;</span>)</span>
+<span id="cb552-6"><a href="dashboards.html#cb552-6" aria-hidden="true" tabindex="-1"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>(<span class="cn">NULL</span>)</span>
+<span id="cb552-7"><a href="dashboards.html#cb552-7" aria-hidden="true" tabindex="-1"></a>boxSymbol <span class="ot">&lt;-</span>  <span class="fu">box</span>(<span class="fu">selectInput</span>(<span class="st">&quot;symbol&quot;</span>, <span class="st">&quot;Equity:&quot;</span>, <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">&quot;Apple&quot;</span> <span class="ot">=</span> <span class="st">&quot;AAPL&quot;</span>,  <span class="st">&quot;Ford&quot;</span> <span class="ot">=</span> <span class="st">&quot;F&quot;</span>, <span class="st">&quot;Google&quot;</span> <span class="ot">=</span> <span class="st">&quot;GOOG&quot;</span>), <span class="at">selected =</span> <span class="st">&#39;AAPL&#39;</span>))</span>
+<span id="cb552-8"><a href="dashboards.html#cb552-8" aria-hidden="true" tabindex="-1"></a>boxPrice <span class="ot">&lt;-</span> <span class="fu">box</span>(<span class="at">title=</span><span class="st">&#39;Closing price&#39;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="cn">NULL</span>, <span class="fu">dygraphOutput</span>(<span class="st">&quot;chart&quot;</span>))</span>
+<span id="cb552-9"><a href="dashboards.html#cb552-9" aria-hidden="true" tabindex="-1"></a>boxOutput <span class="ot">&lt;-</span>  <span class="fu">box</span>(<span class="fu">textOutput</span>(<span class="st">&quot;text&quot;</span>))</span>
+<span id="cb552-10"><a href="dashboards.html#cb552-10" aria-hidden="true" tabindex="-1"></a>body <span class="ot">&lt;-</span>   <span class="fu">dashboardBody</span>(<span class="fu">fluidRow</span>(boxSymbol, boxOutput, boxPrice))</span>
+<span id="cb552-11"><a href="dashboards.html#cb552-11" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">dashboardPage</span>(header, sidebar, body)</span>
+<span id="cb552-12"><a href="dashboards.html#cb552-12" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb552-13"><a href="dashboards.html#cb552-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb552-14"><a href="dashboards.html#cb552-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">&quot;Symbol is:&quot;</span>,input<span class="sc">$</span>symbol)</span>
+<span id="cb552-15"><a href="dashboards.html#cb552-15" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb552-16"><a href="dashboards.html#cb552-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Cl in quantmod retrieves closing price as a time series</span></span>
+<span id="cb552-17"><a href="dashboards.html#cb552-17" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>chart <span class="ot">&lt;-</span> <span class="fu">renderDygraph</span>({<span class="fu">dygraph</span>(<span class="fu">Cl</span>(<span class="fu">get</span>(input<span class="sc">$</span>symbol)))}) <span class="co"># graph time series</span></span>
+<span id="cb552-18"><a href="dashboards.html#cb552-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb552-19"><a href="dashboards.html#cb552-19" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+<p>The following dashboard shows the pull down list in the top left for
+selecting an equity. The equity’s symbol is then displayed in the top
+right box, and a time series of its closing price appears in the box
+occupying the entire second row.</p>
+<p><img src="Figures/Chapter%2019/dashboard-8.png" /></p>
+</div>
+<div id="input-options" class="section level4 unnumbered">
+<h4>Input options</h4>
+<p>The preceding example illustrates the use of a selectInput function to
+select an equity from a list. There are other input options available,
+and these are listed in the following table.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">checkboxInput()</td>
+<td align="left">Check one or more boxes</td>
+</tr>
+<tr class="even">
+<td align="left">checkboxGroupInput()</td>
+<td align="left">A group of checkboxes</td>
+</tr>
+<tr class="odd">
+<td align="left">numericInput()</td>
+<td align="left">A spin box for numeric input</td>
+</tr>
+<tr class="even">
+<td align="left">radioButtons()</td>
+<td align="left">Pick one from a set of options</td>
+</tr>
+<tr class="odd">
+<td align="left">selectInput()</td>
+<td align="left">Select from a drop-down text box</td>
+</tr>
+<tr class="even">
+<td align="left">selectSlider()</td>
+<td align="left">Select using a slider</td>
+</tr>
+<tr class="odd">
+<td align="left">textInput()</td>
+<td align="left">Input text</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>❓<em>Skill builder</em> Using ClassicModels, build a dashboard to report total orders by value and number for a given year and month.</p>
+</blockquote>
+</div>
+</div>
+<div id="conclusion-5" class="section level3 unnumbered">
+<h3>Conclusion</h3>
+<p>This chapter has introduced you to the basic structure and use of
+shinydashboard. It has many options, and you will need to consult the
+online
+<a href="http://rpackages.ianhowson.com/cran/shinydashboard/"><u>documentation</u></a>
+and examples to learn more about creating dashboards.</p>
+</div>
+</div>
+<div id="summary-19" class="section level2 unnumbered">
+<h2>Summary</h2>
+<p>A dashboard is a web page or mobile app screen that is designed to
+present important information in an easy to comprehend and primarily
+visual format. A dashboard consists of a header, sidebar, and body.
+Shinydashboard is an R package based on shiny that facilitates the
+creation of interactive real-time dashboards. It must be used in
+conjunction with RStudio.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Body</td>
+<td align="left">Sidebar</td>
+</tr>
+<tr class="even">
+<td align="left">Header</td>
+<td align="left">UI function</td>
+</tr>
+<tr class="odd">
+<td align="left">Server function</td>
+<td align="left">User-interface (ui)</td>
+</tr>
+</tbody>
+</table>
+<div id="references-3" class="section level3 unnumbered">
+<h3>References</h3>
+<p>Few, S. (2006). <em>Information dashboard design</em>: O'Reilly.</p>
+</div>
+<div id="exercises-18" class="section level3 unnumbered">
+<h3>Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>Create a dashboard to show the current conditions and temperatures
+in both Fahrenheit and Celsius at a location. Your will need the
+<a href="https://cran.r-project.org/web/packages/rwunderground/index.html"><u>rwunderground</u></a>
+package and <a href="https://www.wunderground.com/weather/api/d/docs"><u>an API
+key</u></a>.</p></li>
+<li><p>Revise the dashboard created in the prior exercise to allow someone
+to select from up to five cities to get the weather details for that
+city.</p></li>
+<li><p>Extend the previous dashboard. If the temperature is about 30C
+(86F), code the server function to give both temperature boxes a red
+background, and if it is below 10C (50F) give both a blue
+background. Otherwise the color should be yellow.</p></li>
+<li><p>Use the WDI package to access World Bank Data and create a dashboard
+for a country of your choosing. Show three or more of the most
+current measures of the state of the selected country as an
+information box.</p></li>
+<li><p>Use the WDI package to access World Bank Data for China, India, and
+the US for three variables, (1) CO2 emissions (metric tons per
+capita), (2) Electric power consumption (kWh per capita), and (3)
+forest area (% of land area). The corresponding WDI codes are:
+EN.ATM.CO2E.PC, EG.USE.ELEC.KH.PC, and AG.LND.FRST.ZS. Set up a
+dashboard so that a person can select the country from a pull down
+list and then the data for that country are shown in three
+infoboxes.</p></li>
+<li><p>Use the WDI package to access World Bank Data for China, India, and
+the US for three variables, (1) CO2 emissions (metric tons per
+capita), (2) Electric power consumption (kWh per capita), and (3)
+forest area (% of land area). The corresponding WDI codes are:
+EN.ATM.CO2E.PC, EG.USE.ELEC.KH.PC, and AG.LND.FRST.ZS. Set up a
+dashboard so that a person can select one of the three measures, and
+then the data for each country are shown in separate infoboxes.</p></li>
+<li><p>Create a dashboard to:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Show the conversion rate between two currencies using the quantmod
+package to retrieve exchange rates. Let a person select from one of
+five currencies using a drop down box;</p></li>
+<li><p>Show the value of input amount when converted one of the selected
+currencies to the other selected currency;</p></li>
+<li><p>Show the exchange rate between the two selected currencies over the
+last 100 days</p></li>
+</ol></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="73">
+<li id="fn73"><p><a href="http://articles.latimes.com/2013/apr/18/news/la-paloma-picasso-discusses-new-olive-leaf-collection-for-tiffany-co-20130418" class="uri">http://articles.latimes.com/2013/apr/18/news/la-paloma-picasso-discusses-new-olive-leaf-collection-for-tiffany-co-20130418</a><a href="dashboards.html#fnref73" class="footnote-back">↩︎</a></p></li>
+<li id="fn74"><p><sup>getQuote returns a dataframe, containing eight values :Trade Time, Last, Change, % Change, Open, High, Low, Volume. For example, getQuote(‘AAPL’)$`% Change` returns the percentage change in price since the daily opening price.</sup><a href="dashboards.html#fnref74" class="footnote-back">↩︎</a></p></li>
+<li id="fn75"><p><sup>The quantmod function getSymbols('X') returns an time series object named X. The get function retrieves the name of the object and passes it to the Cl function and then the time series is graphed by dygraph. The code is a bit complicated, but necessary to generalize it for use with an interactive dashboard.</sup><a href="dashboards.html#fnref75" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cluster-computing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section-4-managing-organizational-memory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/319-dashboards.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["DataManagement.pdf", "pdf"]],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Managing Data | DataManagement.utf8</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Managing Data | DataManagement.utf8" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Managing Data | DataManagement.utf8" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="section-1-the-managerial-perspective.html"/>
+<link rel="next" href="information.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/detect-resize-0.5.3/jquery.resize.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/d3-3.5.2/d3.min.js"></script>
+<script src="libs/vega-1.4.3/vega.min.js"></script>
+<script src="libs/lodash-2.2.1/lodash.min.js"></script>
+<script>var lodash = _.noConflict();</script>
+<link href="libs/ggvis-0.4.7/css/ggvis.css" rel="stylesheet" />
+<script src="libs/ggvis-0.4.7/js/ggvis.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Management: Databases and Organizations</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="data-management-databases-and-organizations.html"><a href="data-management-databases-and-organizations.html"><i class="fa fa-check"></i>Data Management: Databases and Organizations</a>
+<ul>
+<li><a href="data-management-databases-and-organizations.html#open-edition"><em>Open Edition</em></a></li>
+<li class="chapter" data-level="" data-path="data-management-databases-and-organizations.html"><a href="data-management-databases-and-organizations.html#richard-t.-watson"><i class="fa fa-check"></i>Richard T. Watson</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#supplements"><i class="fa fa-check"></i>Supplements</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1-the-managerial-perspective.html"><a href="section-1-the-managerial-perspective.html"><i class="fa fa-check"></i>Section 1 The Managerial Perspective</a></li>
+<li class="chapter" data-level="1" data-path="managing-data.html"><a href="managing-data.html"><i class="fa fa-check"></i><b>1</b> Managing Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#individual-data-management"><i class="fa fa-check"></i>Individual data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#organizational-data-management"><i class="fa fa-check"></i>Organizational data management</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#the-information-systems-cycle"><i class="fa fa-check"></i>The information systems cycle</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#desirable-attributes-of-data"><i class="fa fa-check"></i>Desirable attributes of data</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#components-of-organizational-memory"><i class="fa fa-check"></i>Components of organizational memory</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#components-of-organizational-memory-1"><i class="fa fa-check"></i>Components of organizational memory</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#problems-with-data-management-systems"><i class="fa fa-check"></i>Problems with data management systems</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#redundancy"><i class="fa fa-check"></i>Redundancy</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#lack-of-data-control"><i class="fa fa-check"></i>Lack of data control</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#poor-interface"><i class="fa fa-check"></i>Poor interface</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#delays"><i class="fa fa-check"></i>Delays</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#lack-of-reality"><i class="fa fa-check"></i>Lack of reality</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#lack-of-data-integration"><i class="fa fa-check"></i>Lack of data integration</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#a-brief-history-of-data-management-systems"><i class="fa fa-check"></i>A brief history of data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#data-information-and-knowledge"><i class="fa fa-check"></i>Data, information, and knowledge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#the-challenge"><i class="fa fa-check"></i>The challenge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#summary"><i class="fa fa-check"></i>Summary</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#references-and-additional-readings"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="information.html"><a href="information.html"><i class="fa fa-check"></i><b>2</b> Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#learning-objectives-1"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-historical-perspective"><i class="fa fa-check"></i>A historical perspective</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-brief-history-of-information-systems"><i class="fa fa-check"></i>A brief history of information systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-characteristics"><i class="fa fa-check"></i>Information characteristics</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-hardness"><i class="fa fa-check"></i>Information hardness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-richness"><i class="fa fa-check"></i>Information richness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-classes"><i class="fa fa-check"></i>Information classes</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-organizational-change"><i class="fa fa-check"></i>Information and organizational change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#goal-setting-information"><i class="fa fa-check"></i>Goal-setting information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#planning"><i class="fa fa-check"></i>Planning</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#benchmarking"><i class="fa fa-check"></i>Benchmarking</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#gap-information"><i class="fa fa-check"></i>Gap information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#problem-identification"><i class="fa fa-check"></i>Problem identification</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#scorekeeping"><i class="fa fa-check"></i>Scorekeeping</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#change-information"><i class="fa fa-check"></i>Change information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#problem-solution"><i class="fa fa-check"></i>Problem solution</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-as-a-means-of-change"><i class="fa fa-check"></i>Information as a means of change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#marketing"><i class="fa fa-check"></i>Marketing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#customer-service"><i class="fa fa-check"></i>Customer Service</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#empowerment"><i class="fa fa-check"></i>Empowerment</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-managerial-work"><i class="fa fa-check"></i>Information and managerial work</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-information-requirements"><i class="fa fa-check"></i>Managers’ information requirements</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-needs-for-information-vary-accordingly-with-responsibilities"><i class="fa fa-check"></i>Managers’ needs for information vary accordingly with responsibilities</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-satisficing"><i class="fa fa-check"></i>Information satisficing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-delivery-systems"><i class="fa fa-check"></i>Information delivery systems</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#verbal-exchange"><i class="fa fa-check"></i>Verbal exchange</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#voice-mail"><i class="fa fa-check"></i>Voice mail</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#electronic-mail"><i class="fa fa-check"></i>Electronic mail</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#formal-report"><i class="fa fa-check"></i>Formal report</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#meetings"><i class="fa fa-check"></i>Meetings</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#groupware"><i class="fa fa-check"></i>Groupware</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-integration"><i class="fa fa-check"></i>Information integration</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#knowledge-1"><i class="fa fa-check"></i>Knowledge</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#references-and-additional-readings-1"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-2-data-modeling-and-sql.html"><a href="section-2-data-modeling-and-sql.html"><i class="fa fa-check"></i>Section 2 Data Modeling and SQL</a></li>
+<li class="chapter" data-level="3" data-path="the-single-entity.html"><a href="the-single-entity.html"><i class="fa fa-check"></i><b>3</b> The Single Entity</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#learning-objectives-2"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#the-relational-model"><i class="fa fa-check"></i>The relational model</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#modeling-a-single-entity-database"><i class="fa fa-check"></i>Modeling a single-entity database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#creating-a-single-table-database"><i class="fa fa-check"></i>Creating a single-table database</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#data-modeling-with-mysql-workbench"><i class="fa fa-check"></i>Data modeling with MySQL Workbench</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#querying-a-database"><i class="fa fa-check"></i>Querying a database</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html"><i class="fa fa-check"></i><b>4</b> The One-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#learning-objectives-3"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#relationships"><i class="fa fa-check"></i>Relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#why-did-we-create-an-additional-entity"><i class="fa fa-check"></i>Why did we create an additional entity?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#creating-a-database-with-a-1m-relationship"><i class="fa fa-check"></i>Creating a database with a 1:m relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#mysql-workbench"><i class="fa fa-check"></i>MySQL Workbench</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#querying-a-two-table-database"><i class="fa fa-check"></i>Querying a two-table database</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#join"><i class="fa fa-check"></i>Join</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#control-break-reporting"><i class="fa fa-check"></i>Control break reporting</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#regular-expressionpattern-matching-1"><i class="fa fa-check"></i>Regular expression—pattern matching</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#subqueries-1"><i class="fa fa-check"></i>Subqueries</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#viewsvirtual-tables"><i class="fa fa-check"></i>Views—virtual tables</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#key-terms-and-concepts-1"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html"><i class="fa fa-check"></i><b>5</b> The Many-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#learning-objectives-4"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#the-many-to-many-relationship-1"><i class="fa fa-check"></i>The many-to-many relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#mysql-workbench-1"><i class="fa fa-check"></i>MySQL Workbench</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#why-did-we-create-a-third-entity"><i class="fa fa-check"></i>Why did we create a third entity?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#creating-a-relational-database-with-an-mm-relationship"><i class="fa fa-check"></i>Creating a relational database with an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#querying-an-mm-relationship"><i class="fa fa-check"></i>Querying an m:m relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#a-three-table-join"><i class="fa fa-check"></i>A three-table join</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#existsdoes-a-value-exist"><i class="fa fa-check"></i>EXISTS—does a value exist</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#not-existsselect-a-value-if-it-does-not-exist"><i class="fa fa-check"></i>NOT EXISTS—select a value if it does not exist</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#divide-and-be-conquered"><i class="fa fa-check"></i>Divide (and be conquered)</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#beyond-the-great-divide"><i class="fa fa-check"></i>Beyond the great divide</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#set-operations"><i class="fa fa-check"></i>Set operations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#key-terms-and-concepts-2"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html"><i class="fa fa-check"></i><b>6</b> One-to-One and Recursive Relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#learning-objectives-5"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-one-to-one-relationship"><i class="fa fa-check"></i>Querying a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-1m-relationship"><i class="fa fa-check"></i>Querying a recursive 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Querying a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Modeling a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#key-terms-and-concepts-3"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-modeling.html"><a href="data-modeling.html"><i class="fa fa-check"></i><b>7</b> Data Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#learning-objectives-6"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#modeling"><i class="fa fa-check"></i>Modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-1"><i class="fa fa-check"></i>Data modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-building-blocks"><i class="fa fa-check"></i>The building blocks</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#entity"><i class="fa fa-check"></i>Entity</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#attribute"><i class="fa fa-check"></i>Attribute</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#relationship"><i class="fa fa-check"></i>Relationship</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#identifier"><i class="fa fa-check"></i>Identifier</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-model-quality"><i class="fa fa-check"></i>Data model quality</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-well-formed-data-model"><i class="fa fa-check"></i>A well-formed data model</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-high-fidelity-image"><i class="fa fa-check"></i>A high-fidelity image</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#quality-improvement"><i class="fa fa-check"></i>Quality improvement</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#detail-and-context"><i class="fa fa-check"></i>Detail and context</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-lesson-in-pure-geography"><i class="fa fa-check"></i>A lesson in pure geography</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#family-matters"><i class="fa fa-check"></i>Family matters</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#whens-a-book-not-a-book"><i class="fa fa-check"></i>When’s a book not a book?</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-history-lesson"><i class="fa fa-check"></i>A history lesson</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#a-ménage-à-trois-for-entities"><i class="fa fa-check"></i>A ménage à trois for entities</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#project-managementplanning-and-doing"><i class="fa fa-check"></i>Project management—planning and doing</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#cardinality"><i class="fa fa-check"></i>Cardinality</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#entity-types"><i class="fa fa-check"></i>Entity types</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#generalization-and-aggregation"><i class="fa fa-check"></i>Generalization and aggregation</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#aggregation"><i class="fa fa-check"></i>Aggregation</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-hints"><i class="fa fa-check"></i>Data modeling hints</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-rise-and-fall-of-a-data-model"><i class="fa fa-check"></i>The rise and fall of a data model</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#identifier-1"><i class="fa fa-check"></i>Identifier</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#position-and-order"><i class="fa fa-check"></i>Position and order</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#attributes-and-consistency"><i class="fa fa-check"></i>Attributes and consistency</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#names-and-addresses"><i class="fa fa-check"></i>Names and addresses</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#single-instance-entities"><i class="fa fa-check"></i>Single-instance entities</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#picking-words"><i class="fa fa-check"></i>Picking words</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#synonyms"><i class="fa fa-check"></i>Synonyms</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#homonyms"><i class="fa fa-check"></i>Homonyms</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#exception-hunting"><i class="fa fa-check"></i>Exception hunting</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#relationship-labeling"><i class="fa fa-check"></i>Relationship labeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#keeping-the-data-model-in-shape"><i class="fa fa-check"></i>Keeping the data model in shape</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#used-entities"><i class="fa fa-check"></i>Used entities</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#meaningful-identifiers"><i class="fa fa-check"></i>Meaningful identifiers</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#advantages-of-meaningful-identifiers"><i class="fa fa-check"></i>Advantages of meaningful identifiers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#disadvantages-of-meaningful-identifiers"><i class="fa fa-check"></i>Disadvantages of meaningful identifiers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-solutionnon-meaningful-identifiers"><i class="fa fa-check"></i>The solution—non-meaningful identifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-seven-habits-of-highly-effective-data-modelers"><i class="fa fa-check"></i>The seven habits of highly effective data modelers</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#immerse"><i class="fa fa-check"></i>Immerse</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#challenge"><i class="fa fa-check"></i>Challenge</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#generalize"><i class="fa fa-check"></i>Generalize</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#test"><i class="fa fa-check"></i>Test</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#limit"><i class="fa fa-check"></i>Limit</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#integrate"><i class="fa fa-check"></i>Integrate</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#complete"><i class="fa fa-check"></i>Complete</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#summary-7"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#key-terms-and-concepts-4"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#references-and-additional-readings-2"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#exercises-5"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#short-answers"><i class="fa fa-check"></i>Short answers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-2"><i class="fa fa-check"></i>Data modeling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html"><i class="fa fa-check"></i>Reference 1: Basic Structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#one-entity"><i class="fa fa-check"></i>One entity</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#no-relationships"><i class="fa fa-check"></i>No relationships</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-11-recursive-relationship"><i class="fa fa-check"></i>A 1:1 recursive relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-recursive-1m-relationship"><i class="fa fa-check"></i>A recursive 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-recursive-mm-relationship"><i class="fa fa-check"></i>A recursive m:m relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#two-entities"><i class="fa fa-check"></i>Two entities</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#no-relationship"><i class="fa fa-check"></i>No relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-11-relationship"><i class="fa fa-check"></i>A 1:1 relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-1m-relationship"><i class="fa fa-check"></i>A 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#an-mm-relationship"><i class="fa fa-check"></i>An m:m relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#another-entitys-identifier-as-part-of-the-identifier"><i class="fa fa-check"></i>Another entity’s identifier as part of the identifier</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-weak-or-dependent-entity"><i class="fa fa-check"></i>A weak or dependent entity</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#an-associative-entity"><i class="fa fa-check"></i>An associative entity</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#a-tree-structure"><i class="fa fa-check"></i>A tree structure</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html"><i class="fa fa-check"></i><b>8</b> Normalization and Other Data Modeling Methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#learning-objectives-7"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#introduction-2"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normalization"><i class="fa fa-check"></i>Normalization</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#functional-dependency"><i class="fa fa-check"></i>Functional dependency</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normal-forms"><i class="fa fa-check"></i>Normal forms</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#first-normal-form"><i class="fa fa-check"></i>First normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#second-normal-form"><i class="fa fa-check"></i>Second normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#third-normal-form"><i class="fa fa-check"></i>Third normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#boyce-codd-normal-form"><i class="fa fa-check"></i>Boyce-Codd normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#fourth-normal-form"><i class="fa fa-check"></i>Fourth normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#fifth-normal-form"><i class="fa fa-check"></i>Fifth normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#domain-key-normal-form"><i class="fa fa-check"></i>Domain-key normal form</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#other-data-modeling-methods"><i class="fa fa-check"></i>Other data modeling methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#the-e-r-model"><i class="fa fa-check"></i>The E-R model</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#conclusion-1"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#summary-8"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#key-terms-and-concepts-5"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#references-and-additional-readings-3"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#exercises-7"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#short-answers-1"><i class="fa fa-check"></i>Short answers</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normalization-and-data-modeling"><i class="fa fa-check"></i>Normalization and data modeling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html"><i class="fa fa-check"></i><b>9</b> The Relational Model and Relational Algebra</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#learning-objectives-8"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#data-structures"><i class="fa fa-check"></i>Data structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#domain"><i class="fa fa-check"></i>Domain</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#relations"><i class="fa fa-check"></i>Relations</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#relational-database"><i class="fa fa-check"></i>Relational database</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#primary-key"><i class="fa fa-check"></i>Primary key</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#candidate-key"><i class="fa fa-check"></i>Candidate key</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#alternate-key"><i class="fa fa-check"></i>Alternate key</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#foreign-key"><i class="fa fa-check"></i>Foreign key</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#integrity-rules"><i class="fa fa-check"></i>Integrity rules</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#manipulation-languages"><i class="fa fa-check"></i>Manipulation languages</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#relational-algebra"><i class="fa fa-check"></i>Relational algebra</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#restrict"><i class="fa fa-check"></i>Restrict</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#project"><i class="fa fa-check"></i>Project</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#product"><i class="fa fa-check"></i>Product</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#union"><i class="fa fa-check"></i>Union</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#intersect"><i class="fa fa-check"></i>Intersect</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#difference"><i class="fa fa-check"></i>Difference</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#join-1"><i class="fa fa-check"></i>Join</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#divide"><i class="fa fa-check"></i>Divide</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#querying-with-relational-algebra"><i class="fa fa-check"></i>Querying with relational algebra</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-primitive-set-of-relational-operators"><i class="fa fa-check"></i>A primitive set of relational operators</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-fully-relational-database"><i class="fa fa-check"></i>A fully relational database</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#summary-9"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#key-terms-and-concepts-6"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#references-and-additional-readings-4"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>10</b> SQL</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#learning-objectives-9"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#introduction-3"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-definition"><i class="fa fa-check"></i>Data definition</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#keys"><i class="fa fa-check"></i>Keys</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#indexes"><i class="fa fa-check"></i>Indexes</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-table"><i class="fa fa-check"></i>Creating a table</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#column-definition"><i class="fa fa-check"></i>Column definition</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#constraints"><i class="fa fa-check"></i>Constraints</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#primary-key-constraint"><i class="fa fa-check"></i>Primary key constraint</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#foreign-key-constraint"><i class="fa fa-check"></i>Foreign key constraint</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#unique-constraint"><i class="fa fa-check"></i>Unique constraint</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#check-constraint"><i class="fa fa-check"></i>Check constraint</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-types"><i class="fa fa-check"></i>Data types</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#boolean"><i class="fa fa-check"></i>BOOLEAN</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#smallint-and-integer"><i class="fa fa-check"></i>SMALLINT and INTEGER</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#float"><i class="fa fa-check"></i>FLOAT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#decimal"><i class="fa fa-check"></i>DECIMAL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#char-and-varchar"><i class="fa fa-check"></i>CHAR and VARCHAR</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#times-and-dates"><i class="fa fa-check"></i>Times and dates</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#blob-binary-large-object"><i class="fa fa-check"></i>BLOB (binary large object)</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#clob-character-large-object"><i class="fa fa-check"></i>CLOB (character large object)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#collation-sequence"><i class="fa fa-check"></i>Collation sequence</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#scalar-functions"><i class="fa fa-check"></i>Scalar functions</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#formatting"><i class="fa fa-check"></i>Formatting</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#altering-a-table"><i class="fa fa-check"></i>Altering a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-table"><i class="fa fa-check"></i>Dropping a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-view"><i class="fa fa-check"></i>Creating a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-view"><i class="fa fa-check"></i>Dropping a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-an-index"><i class="fa fa-check"></i>Creating an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-an-index"><i class="fa fa-check"></i>Dropping an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-manipulation"><i class="fa fa-check"></i>Data manipulation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#qualifying-column-names"><i class="fa fa-check"></i>Qualifying column names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#temporary-names"><i class="fa fa-check"></i>Temporary names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#select"><i class="fa fa-check"></i>SELECT</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#product-1"><i class="fa fa-check"></i>Product</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#inner-join"><i class="fa fa-check"></i>Inner join</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#outer-join"><i class="fa fa-check"></i>Outer join</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#simple-subquery"><i class="fa fa-check"></i>Simple subquery</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#correlated-subquery-1"><i class="fa fa-check"></i>Correlated subquery</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#aggregate-functions-1"><i class="fa fa-check"></i>Aggregate functions</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#group-by-and-having"><i class="fa fa-check"></i>GROUP BY and HAVING</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#regexp"><i class="fa fa-check"></i>REGEXP</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#insert"><i class="fa fa-check"></i>INSERT</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#inserting-a-single-record"><i class="fa fa-check"></i>Inserting a single record</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#inserting-multiple-records-using-a-query"><i class="fa fa-check"></i>Inserting multiple records using a query</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#update-1"><i class="fa fa-check"></i>UPDATE</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#updating-a-single-row"><i class="fa fa-check"></i>Updating a single row</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#updating-multiple-rows"><i class="fa fa-check"></i>Updating multiple rows</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#updating-all-rows"><i class="fa fa-check"></i>Updating all rows</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#updating-with-a-subquery"><i class="fa fa-check"></i>Updating with a subquery</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-1"><i class="fa fa-check"></i>DELETE</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-a-single-record"><i class="fa fa-check"></i>Delete a single record</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-multiple-records"><i class="fa fa-check"></i>Delete multiple records</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-all-records"><i class="fa fa-check"></i>Delete all records</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-with-a-subquery"><i class="fa fa-check"></i>Delete with a subquery</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-routines"><i class="fa fa-check"></i>SQL routines</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-function"><i class="fa fa-check"></i>SQL function</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-procedure"><i class="fa fa-check"></i>SQL procedure</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#trigger"><i class="fa fa-check"></i>Trigger</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#nullsmuch-ado-about-missing-information"><i class="fa fa-check"></i>Nulls—much ado about missing information</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#security"><i class="fa fa-check"></i>Security</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#grant"><i class="fa fa-check"></i>GRANT</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-with-grant-option-clause"><i class="fa fa-check"></i>The WITH GRANT OPTION clause</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#revoke"><i class="fa fa-check"></i>REVOKE</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#cascading-revoke"><i class="fa fa-check"></i>Cascading revoke</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-system-catalog"><i class="fa fa-check"></i>The system catalog</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#natural-language-processing"><i class="fa fa-check"></i>Natural language processing</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#connectivity-and-odbc"><i class="fa fa-check"></i>Connectivity and ODBC</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#open-database-connectivity-odbc"><i class="fa fa-check"></i>Open database connectivity (ODBC)</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#embedded-sql"><i class="fa fa-check"></i>Embedded SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#user-defined-types"><i class="fa fa-check"></i>User-defined types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-future-of-sql"><i class="fa fa-check"></i>The future of SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#summary-10"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#key-terms-and-concepts-7"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#references-and-additional-readings-5"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#exercises-9"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html"><i class="fa fa-check"></i>Reference 2: SQL Playbook</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html#the-power-of-sql"><i class="fa fa-check"></i>The power of SQL</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3-advanced-data-management.html"><a href="section-3-advanced-data-management.html"><i class="fa fa-check"></i>Section 3 Advanced Data Management</a></li>
+<li class="chapter" data-level="11" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html"><i class="fa fa-check"></i><b>11</b> Spatial and Temporal Data Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#learning-objectives-10"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#introduction-4"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-spatial-data"><i class="fa fa-check"></i>Managing spatial data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#sqlmm-spatial"><i class="fa fa-check"></i>SQL/MM Spatial</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#spatial-reference-support-system-srs"><i class="fa fa-check"></i>Spatial Reference Support System (SRS)</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#data-model-mapping"><i class="fa fa-check"></i>Data model mapping</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#geometry-collections"><i class="fa fa-check"></i>Geometry collections</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#geocoding-using-google-maps"><i class="fa fa-check"></i>Geocoding using Google Maps</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#r-tree"><i class="fa fa-check"></i>R-tree</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-temporal-data"><i class="fa fa-check"></i>Managing temporal data</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#times-remembered"><i class="fa fa-check"></i>Times remembered</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#summary-11"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#key-terms-and-concepts-8"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#references-and-additional-readings-6"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#exercises-10"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graph-databases.html"><a href="graph-databases.html"><i class="fa fa-check"></i><b>12</b> Graph Databases</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#learning-objectives-11"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#introduction-5"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-graph-database"><i class="fa fa-check"></i>A graph database</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#property-data-types"><i class="fa fa-check"></i>Property data types</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#neo4j-a-graph-database-implementation"><i class="fa fa-check"></i>Neo4j – a graph database implementation</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-single-node"><i class="fa fa-check"></i>A single node</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#inserting-nodes"><i class="fa fa-check"></i>Inserting nodes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-a-node"><i class="fa fa-check"></i>Querying a node</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#displaying-data-for-nodes-with-the-same-label"><i class="fa fa-check"></i>Displaying data for nodes with the same label</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#reporting-properties"><i class="fa fa-check"></i>Reporting properties</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#reporting-nodes"><i class="fa fa-check"></i>Reporting nodes</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#reporting-properties-and-nodes"><i class="fa fa-check"></i>Reporting properties and nodes</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#in-for-a-list-of-values"><i class="fa fa-check"></i>IN for a list of values</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#ordering-rows-1"><i class="fa fa-check"></i>Ordering rows</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#derived-data-1"><i class="fa fa-check"></i>Derived data</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#aggregate-functions-2"><i class="fa fa-check"></i>Aggregate functions</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#string-handling"><i class="fa fa-check"></i>String handling</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#subqueries-2"><i class="fa fa-check"></i>Subqueries</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-relationship-between-nodes"><i class="fa fa-check"></i>A relationship between nodes</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#specifying-relationships-in-cypher"><i class="fa fa-check"></i>Specifying relationships in Cypher</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-relationships"><i class="fa fa-check"></i>Querying relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-an-mm-relationship-1"><i class="fa fa-check"></i>Querying an m:m relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#does-a-relationship-exist"><i class="fa fa-check"></i>Does a relationship exist?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#recursive-relationships"><i class="fa fa-check"></i>Recursive relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-a-recursive-relationship"><i class="fa fa-check"></i>Querying a recursive relationship</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#indexes-and-constraints"><i class="fa fa-check"></i>Indexes and constraints</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#remove-duplicates"><i class="fa fa-check"></i>Remove duplicates</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#delete-all-nodes-and-relationships"><i class="fa fa-check"></i>Delete all nodes and relationships</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#summary-12"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#key-terms-and-concepts-9"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#references-and-additional-resources"><i class="fa fa-check"></i>References and additional resources</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#exercises-11"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html"><i class="fa fa-check"></i><b>13</b> XML: Managing Data Exchange</a>
+<ul>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#learning-objectives-12"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#introduction-6"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#sgml"><i class="fa fa-check"></i>SGML</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml"><i class="fa fa-check"></i>XML</a>
+<ul>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml-language-design"><i class="fa fa-check"></i>XML language design</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml-schema"><i class="fa fa-check"></i>XML schema</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#cd-library-case"><i class="fa fa-check"></i>CD library case</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html"><i class="fa fa-check"></i><b>14</b> Organizational Intelligence</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#learning-objectives-13"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#introduction-7"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#an-organizational-intelligence-system"><i class="fa fa-check"></i>An organizational intelligence system</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#the-data-warehouse"><i class="fa fa-check"></i>The data warehouse</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#creating-and-maintaining-the-data-warehouse"><i class="fa fa-check"></i>Creating and maintaining the data warehouse</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-warehouse-technology"><i class="fa fa-check"></i>Data warehouse technology</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exploiting-data-stores"><i class="fa fa-check"></i>Exploiting data stores</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#verification-and-discovery"><i class="fa fa-check"></i>Verification and discovery</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#olap"><i class="fa fa-check"></i>OLAP</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#mddb"><i class="fa fa-check"></i>MDDB</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#the-hypercube"><i class="fa fa-check"></i>The hypercube</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#designing-a-multidimensional-database"><i class="fa fa-check"></i>Designing a multidimensional database</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining"><i class="fa fa-check"></i>Data mining</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining-uses"><i class="fa fa-check"></i>Data mining uses</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining-functions"><i class="fa fa-check"></i>Data mining functions</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining-technologies"><i class="fa fa-check"></i>Data mining technologies</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#sql-99-and-olap"><i class="fa fa-check"></i>SQL-99 and OLAP</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#conclusion-4"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#summary-14"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#key-terms-and-concepts-11"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#references-and-additional-readings-8"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exercises-13"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>15</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#learning-objectives-14"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-r-project"><i class="fa fa-check"></i>The R project</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#creating-a-project"><i class="fa fa-check"></i>Creating a project</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#scripting"><i class="fa fa-check"></i>Scripting</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#datasets"><i class="fa fa-check"></i>Datasets</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#logical-operators"><i class="fa fa-check"></i>Logical operators</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#types-of-data"><i class="fa fa-check"></i>Types of data</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#missing-values"><i class="fa fa-check"></i>Missing values</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#reading-a-file"><i class="fa fa-check"></i>Reading a file</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#referencing-columns"><i class="fa fa-check"></i>Referencing columns</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#recoding"><i class="fa fa-check"></i>Recoding</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#deleting-a-column"><i class="fa fa-check"></i>Deleting a column</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#reshaping-data"><i class="fa fa-check"></i>Reshaping data</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#writing-files"><i class="fa fa-check"></i>Writing files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-manipulation-with-dplyr"><i class="fa fa-check"></i>Data manipulation with dplyr</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#sorting"><i class="fa fa-check"></i>Sorting</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#summarizing-data"><i class="fa fa-check"></i>Summarizing data</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#adding-a-column"><i class="fa fa-check"></i>Adding a column</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#merging-files"><i class="fa fa-check"></i>Merging files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-manipulation-with-sqldf"><i class="fa fa-check"></i>Data manipulation with sqldf</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#correlation-coefficient"><i class="fa fa-check"></i>Correlation coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#database-access"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#timestamps"><i class="fa fa-check"></i>Timestamps</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#excel-files"><i class="fa fa-check"></i>Excel files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-and-data-analytics"><i class="fa fa-check"></i>R and data analytics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#summary-15"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#key-terms-and-concepts-12"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#exercises-14"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="data-visualization-1.html"><a href="data-visualization-1.html"><i class="fa fa-check"></i><b>16</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#learning-objectives-15"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#visual-processing"><i class="fa fa-check"></i>Visual processing</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#ggvis"><i class="fa fa-check"></i>ggvis</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#data"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#transformation-1"><i class="fa fa-check"></i>Transformation</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#coord"><i class="fa fa-check"></i>Coord</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#element"><i class="fa fa-check"></i>Element</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#scale"><i class="fa fa-check"></i>Scale</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#axes-and-legends"><i class="fa fa-check"></i>Axes and legends</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#guides"><i class="fa fa-check"></i>Guides</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#some-recipes"><i class="fa fa-check"></i>Some recipes</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#histogram"><i class="fa fa-check"></i>Histogram</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#bar-graph"><i class="fa fa-check"></i>Bar graph</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#scatterplot"><i class="fa fa-check"></i>Scatterplot</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#smoothing"><i class="fa fa-check"></i>Smoothing</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#box-plot"><i class="fa fa-check"></i>Box Plot</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#heat-map"><i class="fa fa-check"></i>Heat map</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#interactive-graphics"><i class="fa fa-check"></i>Interactive graphics</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#selecting-a-property-using-a-drop-down-list"><i class="fa fa-check"></i>Selecting a property using a drop-down list</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#selecting-a-numeric-value-with-a-slider"><i class="fa fa-check"></i>Selecting a numeric value with a slider</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#geographic-data"><i class="fa fa-check"></i>Geographic data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#r-resources-1"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#summary-16"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#references-1"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#exercises-15"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html"><i class="fa fa-check"></i><b>17</b> Text mining &amp; natural language processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#learning-objectives-16"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#the-nature-of-language"><i class="fa fa-check"></i>The nature of language</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#levels-of-processing"><i class="fa fa-check"></i>Levels of processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#semantics"><i class="fa fa-check"></i>Semantics</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#discourse"><i class="fa fa-check"></i>Discourse</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#pragmatics"><i class="fa fa-check"></i>Pragmatics</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#tokenization"><i class="fa fa-check"></i>Tokenization</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#counting-words"><i class="fa fa-check"></i>Counting words</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#sentiment-analysis"><i class="fa fa-check"></i>Sentiment analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#corpus"><i class="fa fa-check"></i>Corpus</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#readability"><i class="fa fa-check"></i>Readability</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#preprocessing"><i class="fa fa-check"></i>Preprocessing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#case-conversion"><i class="fa fa-check"></i>Case conversion</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#punctuation-removal"><i class="fa fa-check"></i>Punctuation removal</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#number-removal"><i class="fa fa-check"></i>Number removal</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#stripping-extra-white-spaces"><i class="fa fa-check"></i>Stripping extra white spaces</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#stop-word-filtering"><i class="fa fa-check"></i>Stop word filtering</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#specific-word-removal"><i class="fa fa-check"></i>Specific word removal</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#word-length-filtering"><i class="fa fa-check"></i>Word length filtering</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#parts-of-speech-pos-filtering"><i class="fa fa-check"></i>Parts of speech (POS) filtering</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#stemming"><i class="fa fa-check"></i>Stemming</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#regex-filtering"><i class="fa fa-check"></i>Regex filtering</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#word-frequency-analysis"><i class="fa fa-check"></i>Word frequency analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#term-frequency"><i class="fa fa-check"></i>Term frequency</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#co-occurrence-and-association"><i class="fa fa-check"></i>Co-occurrence and association</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#cluster-analysis"><i class="fa fa-check"></i>Cluster analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#topic-modeling"><i class="fa fa-check"></i>Topic modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#inverse-document-frequency"><i class="fa fa-check"></i>Inverse document frequency</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#term-frequency-inverse-document-frequency-tf-idf"><i class="fa fa-check"></i>Term frequency inverse document frequency (tf-idf)</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#topic-modeling-with-r"><i class="fa fa-check"></i>Topic modeling with R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#named-entity-recognition-ner"><i class="fa fa-check"></i>Named-entity recognition (NER)</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#ner-software"><i class="fa fa-check"></i>NER software</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#future-developments"><i class="fa fa-check"></i>Future developments</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#summary-17"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#key-terms-and-concepts-13"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#references-2"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#exercises-16"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="cluster-computing.html"><a href="cluster-computing.html"><i class="fa fa-check"></i><b>18</b> Cluster computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#learning-objectives-17"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#a-paradigm-shift"><i class="fa fa-check"></i>A paradigm shift</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-drivers"><i class="fa fa-check"></i>The drivers</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-bottleneck-and-its-solution"><i class="fa fa-check"></i>The bottleneck and its solution</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#lambda-architecture"><i class="fa fa-check"></i>Lambda Architecture</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-batch-layer"><i class="fa fa-check"></i>The batch layer</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-serving-layer"><i class="fa fa-check"></i>The serving layer</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#speed-layer"><i class="fa fa-check"></i>Speed layer</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#putting-the-layers-together"><i class="fa fa-check"></i>Putting the layers together</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#benefits-of-the-lambda-architecture"><i class="fa fa-check"></i>Benefits of the Lambda Architecture</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#relational-and-lambda-architectures"><i class="fa fa-check"></i>Relational and Lambda Architectures</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#hadoop"><i class="fa fa-check"></i>Hadoop</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#hadoop-distributed-file-system-hdfs"><i class="fa fa-check"></i>Hadoop distributed file system (HDFS)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#spark"><i class="fa fa-check"></i>Spark</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#computation-with-spark"><i class="fa fa-check"></i>Computation with Spark</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#tabulation"><i class="fa fa-check"></i>Tabulation</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#basic-statistics-with-spark"><i class="fa fa-check"></i>Basic statistics with Spark</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#summary-18"><i class="fa fa-check"></i>Summary</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#key-terms-and-concepts-14"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#exercises-17"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="dashboards.html"><a href="dashboards.html"><i class="fa fa-check"></i><b>19</b> Dashboards</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#learning-objectives-18"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#the-value-of-dashboards"><i class="fa fa-check"></i>The value of dashboards</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#header"><i class="fa fa-check"></i>Header</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#sidebar"><i class="fa fa-check"></i>Sidebar</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#body"><i class="fa fa-check"></i>Body</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#designing-a-dashboard"><i class="fa fa-check"></i>Designing a dashboard</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#dashboards-with-r"><i class="fa fa-check"></i>Dashboards with R</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#conclusion-5"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#summary-19"><i class="fa fa-check"></i>Summary</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#references-3"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#exercises-18"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-4-managing-organizational-memory.html"><a href="section-4-managing-organizational-memory.html"><i class="fa fa-check"></i>Section 4 Managing Organizational Memory</a></li>
+<li class="chapter" data-level="20" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html"><i class="fa fa-check"></i><b>20</b> Data Structure and Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#learning-objectives-19"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-data-deluge"><i class="fa fa-check"></i>The data deluge</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-structures-1"><i class="fa fa-check"></i>Data structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#database-access-1"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-disk-manager"><i class="fa fa-check"></i>The disk manager</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-file-manager"><i class="fa fa-check"></i>The file manager</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#techniques-for-reducing-head-movement"><i class="fa fa-check"></i>Techniques for reducing head movement</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#techniques-for-reducing-disk-accesses"><i class="fa fa-check"></i>Techniques for reducing disk accesses</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#indexing"><i class="fa fa-check"></i>Indexing</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#b-trees"><i class="fa fa-check"></i>B-trees</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#hashing"><i class="fa fa-check"></i>Hashing</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#linked-lists"><i class="fa fa-check"></i>Linked lists</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#bitmap-index"><i class="fa fa-check"></i>Bitmap index</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#join-index"><i class="fa fa-check"></i>Join index</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-coding-standards"><i class="fa fa-check"></i>Data coding standards</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#ascii"><i class="fa fa-check"></i>ASCII</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#unicode"><i class="fa fa-check"></i>Unicode</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-storage-devices"><i class="fa fa-check"></i>Data storage devices</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#magnetic-technology"><i class="fa fa-check"></i>Magnetic technology</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#solid-state-memory"><i class="fa fa-check"></i>Solid-state memory</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#optical-technology"><i class="fa fa-check"></i>Optical technology</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#storage-area-networks"><i class="fa fa-check"></i>Storage-area networks</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#long-term-storage"><i class="fa fa-check"></i>Long-term storage</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-compression"><i class="fa fa-check"></i>Data compression</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#lossless-compression"><i class="fa fa-check"></i>Lossless compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#lossy-compression"><i class="fa fa-check"></i>Lossy compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#conclusion-6"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#summary-20"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#key-terms-and-concepts-15"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#exercises-19"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html"><i class="fa fa-check"></i><b>21</b> Data Processing Architectures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#learning-objectives-20"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-capabilities"><i class="fa fa-check"></i>Cloud capabilities</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#strategic-risk"><i class="fa fa-check"></i>Strategic risk</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database"><i class="fa fa-check"></i>Distributed database</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#a-hybrid-distributed-architecture"><i class="fa fa-check"></i>A hybrid, distributed architecture</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#transparency"><i class="fa fa-check"></i>Transparency</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#no-reliance-on-a-central-site"><i class="fa fa-check"></i>No reliance on a central site</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#local-autonomy"><i class="fa fa-check"></i>Local autonomy</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#continuous-operation"><i class="fa fa-check"></i>Continuous operation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-query-processing"><i class="fa fa-check"></i>Distributed query processing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-transaction-processing"><i class="fa fa-check"></i>Distributed transaction processing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#fragmentation-independence"><i class="fa fa-check"></i>Fragmentation independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#replication-independence"><i class="fa fa-check"></i>Replication independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#hardware-independence"><i class="fa fa-check"></i>Hardware independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#operating-system-independence"><i class="fa fa-check"></i>Operating system independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#network-independence"><i class="fa fa-check"></i>Network independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#dbms-independence"><i class="fa fa-check"></i>DBMS independence</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#conclusionparadise-postponed"><i class="fa fa-check"></i>Conclusion—paradise postponed</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-request"><i class="fa fa-check"></i>Remote request</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-transaction"><i class="fa fa-check"></i>Remote transaction</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-transaction"><i class="fa fa-check"></i>Distributed transaction</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-request"><i class="fa fa-check"></i>Distributed request</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#horizontal-fragmentation"><i class="fa fa-check"></i>Horizontal fragmentation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#vertical-fragmentation"><i class="fa fa-check"></i>Vertical fragmentation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#hybrid-fragmentation"><i class="fa fa-check"></i>Hybrid fragmentation</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#replication"><i class="fa fa-check"></i>Replication</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#conclusion-7"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#summary-21"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#key-terms-and-concepts-16"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#references-and-additional-readings-10"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#exercises-20"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="sql-and-java.html"><a href="sql-and-java.html"><i class="fa fa-check"></i><b>22</b> SQL and Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#learning-objectives-21"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#introduction-8"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#jdbc"><i class="fa fa-check"></i>JDBC</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#java-ee"><i class="fa fa-check"></i>Java EE</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#using-sql-within-java"><i class="fa fa-check"></i>Using SQL within Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#connect-to-the-database"><i class="fa fa-check"></i>Connect to the database</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#create-and-execute-an-sql-statement"><i class="fa fa-check"></i>Create and execute an SQL statement</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#report-a-select"><i class="fa fa-check"></i>Report a SELECT</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#inserting-a-row"><i class="fa fa-check"></i>Inserting a row</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#release-the-statement-object"><i class="fa fa-check"></i>Release the Statement object</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#loading-a-text-file-into-a-database"><i class="fa fa-check"></i>Loading a text file into a database</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#javaserver-pages-jsp"><i class="fa fa-check"></i>JavaServer Pages (JSP)</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#map-collection-case"><i class="fa fa-check"></i>Map collection case</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#conclusion-8"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#summary-22"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#key-terms-and-concepts-17"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#references-and-additional-readings-11"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#exercises-21"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="data-integrity.html"><a href="data-integrity.html"><i class="fa fa-check"></i><b>23</b> Data Integrity</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#learning-objectives-22"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#introduction-9"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-management"><i class="fa fa-check"></i>Transaction management</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#concurrent-update-control"><i class="fa fa-check"></i>Concurrent update control</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-failure-and-recovery"><i class="fa fa-check"></i>Transaction failure and recovery</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#protecting-existence"><i class="fa fa-check"></i>Protecting existence</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#backup-and-recovery"><i class="fa fa-check"></i>Backup and recovery</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#recovery-strategies"><i class="fa fa-check"></i>Recovery strategies</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#use-of-recovery-procedures"><i class="fa fa-check"></i>Use of recovery procedures</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#maintaining-data-quality"><i class="fa fa-check"></i>Maintaining data quality</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#dimensions"><i class="fa fa-check"></i>Dimensions</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#dbms-and-data-quality"><i class="fa fa-check"></i>DBMS and data quality</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#ensuring-confidentiality"><i class="fa fa-check"></i>Ensuring confidentiality</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#general-model-of-data-security"><i class="fa fa-check"></i>General model of data security</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#data-access-control"><i class="fa fa-check"></i>Data access control</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#encryption"><i class="fa fa-check"></i>Encryption</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#monitoring-activity"><i class="fa fa-check"></i>Monitoring activity</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#summary-23"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#key-terms-and-concepts-18"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#exercises-22"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="data-administration.html"><a href="data-administration.html"><i class="fa fa-check"></i><b>24</b> Data Administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#learning-objectives-23"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#introduction-10"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#why-manage-data"><i class="fa fa-check"></i>Why manage data?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#the-chief-data-officer"><i class="fa fa-check"></i>The Chief Data Officer</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#cdo-role-dimensions"><i class="fa fa-check"></i>CDO role dimensions</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#cdo-archetypes"><i class="fa fa-check"></i>CDO archetypes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#management-of-the-database-environment"><i class="fa fa-check"></i>Management of the database environment</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#databases"><i class="fa fa-check"></i>Databases</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#system-interface"><i class="fa fa-check"></i>System interface</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-dictionary"><i class="fa fa-check"></i>Data dictionary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#external-databases"><i class="fa fa-check"></i>External databases</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-1"><i class="fa fa-check"></i>Data administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-functions-and-roles"><i class="fa fa-check"></i>Data administration functions and roles</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-levels"><i class="fa fa-check"></i>Database levels</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#system-level-data-administration-functions"><i class="fa fa-check"></i>System-level data administration functions</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#project-level-data-administration"><i class="fa fa-check"></i>Project-level data administration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#systems-development-life-cycle-sdlc"><i class="fa fa-check"></i>Systems development life cycle (SDLC)</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-interfaces"><i class="fa fa-check"></i>Data administration interfaces</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-management-systems-dbmss"><i class="fa fa-check"></i>Database management systems (DBMSs)</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#performance-monitoring-tools"><i class="fa fa-check"></i>Performance monitoring tools</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#case-tools"><i class="fa fa-check"></i>CASE tools</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#groupware-1"><i class="fa fa-check"></i>Groupware</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-integration"><i class="fa fa-check"></i>Data integration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#conclusion-9"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#summary-24"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#key-terms-and-concepts-19"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#references-and-additional-readings-12"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#exercises-23"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="managing-data" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Managing Data</h1>
+<blockquote>
+<p><em>All the value of this company is in its people. If you burned down
+all our plants, and we just kept our people and our information files,
+we should soon be as strong as ever.</em></p>
+<p>Thomas Watson, Jr., former chairman of IBM<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+</blockquote>
+<div id="learning-objectives" class="section level2 unnumbered">
+<h2>Learning objectives</h2>
+<p>Students completing this chapter will</p>
+<ul>
+<li><p>understand the key concepts of data management;</p></li>
+<li><p>recognize that there are many components of an organization’s
+memory;</p></li>
+<li><p>understand the problems with existing data management systems;</p></li>
+<li><p>realize that successful data management requires an integrated
+understanding of organizational behavior and information technology.</p></li>
+</ul>
+</div>
+<div id="introduction" class="section level2 unnumbered">
+<h2>Introduction</h2>
+<p>Imagine what would happen to a bank that forgot who owed it money or a
+magazine that lost the names and addresses of its subscribers. Both
+would soon be in serious difficulty, if not out of business.
+Organizations have data management systems to record the myriad of
+details necessary for transacting business and making informed
+decisions. Since the birth of agriculture, societies and organizations
+have recorded data. The system may be as simple as carving a notch in a
+stick to keep a tally, or as intricate as modern database technology. A
+memory system can be as personal as a to-do list or as public as a
+library.</p>
+<p>The management of organizational data, generally known as data
+management, requires skills in designing, using, and managing the memory
+systems of modern organizations. It requires multiple perspectives. Data
+managers need to see the organization as a social system and to
+understand data management technology. The integration of these views,
+the socio-technical perspective, is a prerequisite for successful data
+management.</p>
+<p>Individuals also need to manage data. You undoubtedly are more familiar
+with individual memory management systems. They provide a convenient way
+of introducing some of the key concepts of data management.</p>
+</div>
+<div id="individual-data-management" class="section level2 unnumbered">
+<h2>Individual data management</h2>
+<p>As humans, we are well aware of our limited capacity to remember many
+things. The brain, our internal memory, can get overloaded with too much
+detail, and its memory decays with time. We store a few things
+internally: our cell phone number, where we last parked our car, and
+faces of people we have met recently. We use external memory to keep
+track of those many things we would like to remember. External memory
+comes in a variety of forms.</p>
+<p>On our smartphones, we have calendars to remind us of meetings and
+project deadlines. We have a contact app to record the addresses and
+phone numbers of those we contact frequently. We use to-do lists to
+remind us of the things we must do today or this week. The interesting
+thing about these aides-mémoire is that each has a unique way of storing
+data and supporting its rapid retrieval.</p>
+<p>Calendars come in many shapes and forms, but they are all based on the
+same organizing principle. A set amount of space is allocated for each
+day of the year, and the spaces are organized in date and time order,
+which supports rapid retrieval. Some calendars have added features to
+speed up access. For example, electronic calendars usually have a button
+to select today’s data.</p>
+<p><em>A calendar</em></p>
+<p><img src="Figures/Chapter%201/calendar.png" /></p>
+<p>Address books also have a standard format. They typically contain
+predefined spaces for storing address details (e.g., name, company,
+phone, and email). Access is often supported by a set of buttons for
+each letter of the alphabet and a search engine.</p>
+<p><em>An address book</em></p>
+<p><img src="Figures/Chapter%201/address%20book.png" /></p>
+<p>The structure of to-do lists tends to be fairly standard. They are often
+set up in list format with a small left-hand margin. The idea is to
+enter each item to be done on the right side of the screen. The left
+side is used to check or mark those tasks that have been completed. The
+beauty of the check method is that you can quickly scan the left side to
+identify incomplete tasks.</p>
+<p><em>A to-do or reminder list</em></p>
+<p><img src="Figures/Chapter%201/todo%20list%20new.png" width="320" /></p>
+<p>Many people use some form of the individual memory systems just
+described. They are typically included in the suite of standard
+applications for a smart phone.</p>
+<p>These three examples of individual memory systems illustrate some
+features common to all data management systems:</p>
+<ul>
+<li><p>There is a storage medium. Data are stored electronically in each
+case.</p></li>
+<li><p>There is a structure for storing data. For instance, the address
+book has labeled spaces for entering pertinent data.</p></li>
+<li><p>The interface organized for rapid data entry and retrieval. A
+calendar is stored in date and time sequence so that the data space
+for any appointment for a particular day can be found quickly.</p></li>
+<li><p>The selection of a data management system frequently requires a
+trade-off decision. In these examples, the trade-off is screen
+dimensions versus the amount of data that can be seen without
+scrolling. For example, you will notice the address book screen is
+truncated and will need to be scrolled to see full address details.</p></li>
+</ul>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>Smart phones have dramatically changed individual data management. We
+now have calendars, address books, to-do lists, and many more apps
+literally in our hands. What individual data are still difficult to
+manage? What might be the characteristics of an app for these data?</p>
+</blockquote>
+<p>There are differences between internal and external memories. Our
+internal memory is small, fast, and convenient (our brain is always with
+us—well, most of the time). External memory is often slower to
+reference and not always as convenient. The two systems are
+interconnected. We rely on our internal memory to access external
+memory. Our internal memory and our brain’s processing skills manage the
+use of external memories. For example, we depend on our internal memory
+to recall how to use our smartphone and its apps. Again, we see some
+trade-offs. Ideally, we would like to store everything in our fast and
+convenient internal memory, but its limited capacity means that we are
+forced to use external memory for many items.</p>
+</div>
+<div id="organizational-data-management" class="section level2 unnumbered">
+<h2>Organizational data management</h2>
+<p>Organizations, like people, need to remember many things. If you look
+around any office, you will see examples of the apparatus of
+organizational memory: people, bookshelves, planning boards, and
+computers. The same principles found in individual memory systems apply
+to an organization’s data management systems.</p>
+<p>There is a storage medium. In the case of computers, the storage medium
+varies. Small files might be stored on a USB drive and large, archival
+files on a magnetic disk. The chapter <em>Data Structure and Storage</em>
+discusses electronic storage media in more detail.</p>
+<p>A table is a common structure for storing data. For example, if we want
+to store details of customers, we can set up a table with each row
+containing individual details of a customer and each column containing
+data on a particular feature (e.g., customer code).</p>
+<p>Storage devices are organized for rapid data entry and retrieval. Time
+is the manager’s enemy: too many things to be done in too little time.
+Customers expect rapid responses to their questions and quick processing
+of their transactions. Rapid data access is a key goal of nearly all
+data management systems, but it always comes at a price. Fast access
+memories cost more, so there is nearly always a trade-off between access
+speed and cost.</p>
+<p>As you will see, selecting <em>how</em> and <em>where</em> to store organizational
+data frequently involves a trade-off. Data managers need to know and
+understand what the compromises entail. They must know the key questions
+to ask when evaluating choices.</p>
+<p>When we move from individual to organizational memory, some other
+factors come into play. To understand these factors, we need to review
+the different types of information systems. The automation of routine
+business transactions was the earliest application of information
+technology to business. A transaction processing system (TPS) handles
+common business tasks such as accounting, inventory, purchasing, and
+sales. The realization that the data collected by these systems could be
+sorted, summarized, and rearranged gave birth to the notion of a
+management information system (MIS). Furthermore, it was recognized that
+when internal data captured by a TPS is combined with appropriate
+external data, the raw material is available for a decision support
+system (DSS). Online analytical processing (OLAP), data mining, business
+intelligence (BI), and machine learning are techniques analyzing data
+captured by business transactions and gathered from other sources (these
+systems are covered in detail in Chapter 14). The purpose of each of
+these systems is described in the following table and their
+interrelationship can be understood by examining the information systems
+cycle.</p>
+<p><em>Types of information systems</em></p>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="22%" />
+<col width="73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Type of in formation system</th>
+<th align="left">System’s purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TPS</td>
+<td align="left">Tr ansaction p rocessing system</td>
+<td align="left">Collect and store data from routine transactions</td>
+</tr>
+<tr class="even">
+<td>MIS</td>
+<td align="left">M anagement in formation system</td>
+<td align="left">Convert data from a TPS into information for planning, controlling, and managing an organization</td>
+</tr>
+<tr class="odd">
+<td>DSS</td>
+<td align="left">Decision support system</td>
+<td align="left">Support managerial decision making by providing models for processing and analyzing data</td>
+</tr>
+<tr class="even">
+<td>BI</td>
+<td align="left">Business int elligence</td>
+<td align="left">Gather, store, and analyze data to improve decision making</td>
+</tr>
+<tr class="odd">
+<td>OLAP</td>
+<td align="left">Online a nalytical p rocessing</td>
+<td align="left">Provide a multidimensional view of data</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="left">Data mining</td>
+<td align="left">Use of statistical analysis and artificial intelligence techniques to identify hidden relationships in data</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="left">Machine learning</td>
+<td align="left">Using software to make decisions or recommendations traditionally made by humans.</td>
+</tr>
+</tbody>
+</table>
+<div id="the-information-systems-cycle" class="section level3 unnumbered">
+<h3>The information systems cycle</h3>
+<p>The various systems and technologies found in an organization are linked
+in a cycle. The routine ongoing business of the organization is
+processed by TPSs, the systems that handle the present. Data collected
+by TPSs are stored in databases, a record of the past, the history of
+the organization and its interaction with those with whom it conducts
+business. These data are converted into information by analysts using a
+variety of software (e.g., a DSS). These technologies are used by the
+organization to prepare for the future (e.g., sales in Finland have
+expanded, so we will build a new service center in Helsinki). The
+business systems created to prepare for the future determine the
+transactions the company will process and the data that will be
+collected, and the process continues. The entire cycle is driven by
+people using technology (e.g., a customer booking a hotel room via a Web
+browser).</p>
+<p><em>The information systems cycle</em></p>
+<p><img src="Figures/Chapter%201/IS%20cycle.png" /></p>
+<p>Decision making, or preparing for the future, is the central activity of
+modern organizations. Today’s organizations are busy turning out goods,
+services, and decisions. Knowledge and information workers, over half of
+the U.S. labor force, produce the bulk of GDP. Many of these people are
+decision makers. Their success, and their organization’s as well,
+depends on the quality of their decisions.</p>
+<p>Industrial society is a producer of goods, and the hallmark of success
+is product quality. Japanese manufacturers convincingly demonstrated
+that focusing on product quality is the key to market leadership and
+profitability. The methods and the philosophy of quality gurus, such as
+W. Edwards Deming, have been internationally recognized and adopted by
+many providers of goods and services. We are now in the information age
+as is evidenced by the key consumer products of the times, such as smart
+phones, tablets, and wearables. These are all information appliances,
+and they are supported by a host of information services. For example,
+consider how Apple connects together its various devices and services
+through cloud-based systems. For example, a person can buy an electronic
+book from Apple’s store to read with the iBooks app on an iPhone or
+iPad.</p>
+<p>In the information society, which is based on innovation, knowledge, and
+services, the key determinant of success has shifted from product
+quality to decision quality. In the turbulent environment of global
+business, successful organizations are those able to quickly make
+high-quality decisions about what customers will buy, how much they will
+pay, and how to deliver a high-quality experience with a minimum of
+fuss. Companies are very dependent on information systems to create
+value for their customers.</p>
+</div>
+<div id="desirable-attributes-of-data" class="section level3 unnumbered">
+<h3>Desirable attributes of data</h3>
+<p>Once we realize the critical importance of data to organizations, we can
+recognize some desirable attributes of data.</p>
+<p><em>Desirable attributes of data</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Shareable</th>
+<th align="left">Readily accessed by more than one person at a time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Transportable</td>
+<td align="left">Easily moved to a decision maker</td>
+</tr>
+<tr class="even">
+<td align="left">Secure</td>
+<td align="left">Protected from destruction and unauthorized use</td>
+</tr>
+<tr class="odd">
+<td align="left">Accurate</td>
+<td align="left">Reliable, precise records</td>
+</tr>
+<tr class="even">
+<td align="left">Timely</td>
+<td align="left">Current and up-to-date</td>
+</tr>
+<tr class="odd">
+<td align="left">Relevant</td>
+<td align="left">Appropriate to the decision</td>
+</tr>
+</tbody>
+</table>
+<div id="shareable" class="section level4 unnumbered">
+<h4>Shareable</h4>
+<p>Organizations contain many decision makers. There are occasions when
+more than one person will require access to the same data at the same
+time. For example, in a large bank it would not be uncommon for two
+customer representatives simultaneously to want data on the latest rate
+for a three-year certificate of deposit. As data become more volatile,
+shareability becomes more of a problem. Consider a restaurant. The
+permanent menu is printed, today’s special might be displayed on a
+blackboard, and the waiter tells you what is no longer available.</p>
+</div>
+<div id="transportable" class="section level4 unnumbered">
+<h4>Transportable</h4>
+<p>Data should be transportable from their storage location to the decision
+maker. Technologies that transport data have a long history. Homing
+pigeons were used to relay messages by the Egyptians and Persians 3,000
+years ago. The telephone revolutionized business and social life because
+it rapidly transmitted voice data. Computers have changed the nature of
+many aspects of business because they enable the transport of text,
+visuals, voice and video.</p>
+<p>Today, transportability is more than just getting data to a decision
+maker’s desk. It means getting product availability data to a
+salesperson in a client’s office or advising a delivery driver, en
+route, of address details for an urgent parcel pickup. The general
+notion is that decision makers should have access to relevant data
+whenever and wherever required, although many organizations are still
+some way from reaching this target.</p>
+</div>
+<div id="secure" class="section level4 unnumbered">
+<h4>Secure</h4>
+<p>In an information society, organizations value data as a resource. As
+you have already learned, data support day-to-day business transactions
+and decision making. Because the forgetful organization will soon be out
+of business, organizations are very vigilant in protecting their data.
+There are a number of actions that organizations take to protect data
+against loss, sabotage, and theft. A common approach is to duplicate
+data and store the copy, or copies, at other locations. This technique
+is popular for data stored in computer systems. Access to data is often
+restricted through the use of physical barriers (e.g., a vault) or
+electronic barriers (e.g., a password). Another approach, which is
+popular with firms that employ knowledge workers, is a noncompete
+contract. For example, some software companies legally restrain computer
+programmers from working for a competitor for two years after they
+leave, hoping to prevent the transfer of valuable data, in the form of
+the programmer’s knowledge of software, to competitors.</p>
+</div>
+<div id="accurate" class="section level4 unnumbered">
+<h4>Accurate</h4>
+<p>You probably recall friends who excel in exams because of their good
+memories. Similarly, organizations with an accurate memory will do
+better than their less precise competitors. Organizations need to
+remember many details precisely. For example, an airline needs accurate
+data to predict the demand for each of its flights. The quality of
+decision making will drop dramatically if managers use a data management
+system riddled with errors.</p>
+<p>Polluted data threatens a firm’s profitability. One study suggests that
+missing, wrong, and otherwise bad data cost U.S. firms billions of
+dollars annually. The consequences of bad data include improper billing,
+cost overruns, delivery delays, and product recalls. Because data
+accuracy is so critical, organizations need to be watchful when
+capturing data—the point at which data accuracy is most vulnerable.</p>
+</div>
+<div id="timely" class="section level4 unnumbered">
+<h4>Timely</h4>
+<p>The value of a collection of data is often determined by its age. You
+can fantasize about how rich you would be if you knew tomorrow’s stock
+prices. Although decision makers are most interested in current data,
+the required currency of data can vary with the task. Operational
+managers often want real-time data. They want to tap the pulse of the
+production line so that they can react quickly to machine breakdowns or
+quality slippages. In contrast, strategic planners might be content with
+data that are months old because they are more concerned with detecting
+long-term trends.</p>
+</div>
+<div id="relevant" class="section level4 unnumbered">
+<h4>Relevant</h4>
+<p>Organizations must maintain data that are relevant to transaction
+processing and decision making. In processing a credit card application,
+the most relevant data might be the customer’s credit history, current
+employment status, and income level. Hair color would be irrelevant.
+When assessing the success of a new product line, a marketing manager
+probably wants an aggregate report of sales by marketing region. A
+voluminous report detailing every sale would be irrelevant. Data are
+relevant when they pertain directly to the decision and are aggregated
+appropriately.</p>
+<p>Relevance is a key concern in designing a data management system.
+Clients have to decide what should be stored because it is pertinent now
+or could have future relevance. Of course, identifying data that might
+be relevant in the future is difficult, and there is a tendency to
+accumulate too much. Relevance is also an important consideration when
+extracting and processing data from a data management system. Provided
+the germane data are available, query languages can be used to aggregate
+data appropriately.</p>
+<p>In the final years of the twentieth century, organizations started to
+share much of their data, both high and low volatility, via the Web.
+This move increased shareability, timeliness, and availability, and it
+has lowered the cost of distributing data.</p>
+<p>In summary, a data management system for maintaining an organization’s
+memory supports transaction processing, remembering the past, and
+decision making. Its contents must be shareable, secure, and accurate.
+Ideally, the clients of a data management system must be able to get
+timely and relevant data when and where required. A major challenge for
+data management professionals is to create data management systems that
+meet these criteria. Unfortunately, many existing systems fail in this
+regard, though we can understand some of the reasons why by reviewing
+the components of existing organizational memory systems.</p>
+</div>
+</div>
+<div id="components-of-organizational-memory" class="section level3 unnumbered">
+<h3>Components of organizational memory</h3>
+<p>An organization’s memory resides on a variety of media in a variety of
+ways. It is in people, standard operating procedures, roles,
+organizational culture, physical storage equipment, and electronic
+devices. It is scattered around the organization like pieces of a jigsaw
+puzzle designed by a berserk artist. The pieces don’t fit together, they
+sometimes overlap, there are gaps, and there are no edge pieces to
+define the boundaries. Organizations struggle to design structures and
+use data management technology to link some of the pieces. To understand
+the complexity of this wicked puzzle, we need to examine some of the
+pieces. Data managers have a particular need to understand the different
+forms of organizational memory because their activities often influence
+a number of the components.</p>
+<p><em>Components of organizational memory</em></p>
+<p><img src="Figures/Chapter%201/org%20memory%20components.jpg" /></p>
+<div id="people" class="section level4 unnumbered">
+<h4>People</h4>
+<p>People are the linchpin of an organization’s memory. They recall prior
+decisions and business actions. They create, maintain, evolve, and use
+data management systems. They are the major component of an
+organization’s memory because they know how to use many of the other
+components. People extract data from the various elements of
+organizational memory to provide as complete a picture of a situation as
+possible.</p>
+<p>Each person in an organization has a role and a position in the
+hierarchy. Role and position are both devices for remembering how the
+organization functions and how to process data. By labeling people
+(e.g., Chief Information Officer) and placing their names on an
+organizational chart, the organization creates another form of
+organizational memory.</p>
+<p>Organizational culture is the shared beliefs, values, attitudes, and
+norms that influence the behavior and expectations of each person in an
+organization. As a long-lived and stable memory system, culture
+determines acceptable behavior and influences decision making.</p>
+<p>People develop skills for doing their particular job—learning what to
+do, how to do it, and who can help them get things done. For example,
+they might discover someone in employee benefits who can handle
+personnel problems or a contact in a software company who can answer
+questions promptly. These social networks, which often take years to
+develop, are used to make things happen and to learn about the business
+environment. Despite their high value, they are rarely documented, at
+least not beyond an address book, and they are typically lost when a
+person leaves an organization.</p>
+<p><strong>Conversations</strong> are an important method for knowledge workers to
+create, modify, and share organizational memory and to build
+relationships and social networks. Discussions with customers are a key
+device for learning how to improve an organization’s products and
+services and learning about competitors. The <strong><em>conversational
+company</em></strong> can detect change faster and react more rapidly. The
+telephone, instant message, e-mail, coffee machine, cocktail hour, and
+cafeteria are all devices for promoting conversation and creating
+networks. Some firms deliberately create structures for supporting
+dialog to make the people component of organizational memory more
+effective.</p>
+<p>Standard operating procedures exist for many organizational tasks.
+Processing a credit application, selecting a marketing trainee, and
+preparing a departmental budget are typical procedures that are clearly
+defined by many organizations. They are described on Web pages, computer
+programs, and job specifications. They are the way an organization
+remembers how to perform routine activities.</p>
+<p>Successful people learn how to use organizational memory. They learn
+what data are stored where, how to retrieve them, and how to put them
+together. In promoting a new product, a salesperson might send the
+prospect a package containing some brochures and an email of a product
+review in a trade journal, and supply the phone number and e-mail
+address of the firm’s technical expert for that product. People’s recall
+of how to use organizational memory is the core component of
+organizational memory. Academics call this <strong>metamemory</strong>; people in
+business call it <em><strong>l</strong>earning the ropes</em>. New employees spend a great
+deal of time building their metamemory so that they can use
+organizational memory effectively. Without this knowledge,
+organizational memory has little value.</p>
+</div>
+<div id="tables" class="section level4 unnumbered">
+<h4>Tables</h4>
+<p>A table is a common form of storing organizational data. The following
+table shows a price list in tabular form. Often, the first row defines
+the meaning of data in subsequent rows.</p>
+<p><em>A price list</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Product</th>
+<th align="left">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Pocket knife–Nile</td>
+<td align="left">4.5</td>
+</tr>
+<tr class="even">
+<td align="left">Compass</td>
+<td align="left">10</td>
+</tr>
+<tr class="odd">
+<td align="left">Geopositioning system</td>
+<td align="left">500</td>
+</tr>
+<tr class="even">
+<td align="left">Map measure</td>
+<td align="left">4.9</td>
+</tr>
+</tbody>
+</table>
+<p>A table is a general form that describes a variety of other structures
+used to store data. Computer-based files are tables or can be
+transformed into tables; the same is true for general ledgers,
+worksheets, and spreadsheets. Accounting systems make frequent use of
+tables. As you will discover in the next section, the table is the
+central structure of the relational database model.</p>
+<p>Data stored in tables typically have certain characteristics:</p>
+<ul>
+<li><p>Data in one column are of the same type. For example, each cell of
+the column headed “Price” contains a number. (Of course, the
+exception is the first row of each column, which contains the title
+of the column.)</p></li>
+<li><p>Data are limited by the width of the available space.</p></li>
+</ul>
+<p>Rapid searching is one of the prime advantages of a table. For example,
+if the price list is sorted by product name, you can quickly find the
+price of any product.</p>
+<p>Tables are a common form of storing organizational data because their
+structure is readily understood. People learn to read and build tables
+in the early years of their schooling. Also, a great deal of the data
+that organizations want to remember can be stored in tabular form.</p>
+</div>
+<div id="documents" class="section level4 unnumbered">
+<h4>Documents</h4>
+<p>A <strong>document</strong>—of which reports, manuals, brochures, and memos are
+examples—is a common medium for storing organizational data. Although
+documents may be subdivided into chapters, sections, paragraphs, and
+sentences, they lack the regularity and discipline of a table. Each row
+of a table has the same number of columns, but each paragraph of a
+document does not have the same number of sentences.</p>
+<p>Most documents are now stored electronically. Because of the widespread
+use of word processing, text files are a common means of storing
+documents. Typically, such files are read sequentially like a book.
+Although there is support for limited searching of the text, such as
+finding the next occurrence of a specified text string, text files are
+usually processed linearly.</p>
+<p>Hypertext, the familiar linking technology of the Web, supports
+nonlinear document processing. A hypertext document has built-in
+linkages between sections of text that permit the reader to jump quickly
+from one part to another. As a result, readers can find data they
+require more rapidly.</p>
+<p>Although hypertext is certainly more reader-friendly than a flat,
+sequential text file, it takes time and expertise to establish the links
+between the various parts of the text and to other documents. Someone
+familiar with the topic has to decide what should be linked and then
+establish these links. While it takes the author more time to prepare a
+document this way, the payoff is the speed at which readers of the
+document can find what they want.</p>
+</div>
+<div id="multimedia" class="section level4 unnumbered">
+<h4>Multimedia</h4>
+<p>Many Web sites display multimedia objects, such as sound and video
+clips. Automotive company Web sites have video clips of cars, music
+outlets provide sound clips of new releases, and clothing companies have
+online catalogs displaying photos of their latest products. Maintaining
+a Web site, because of the many multimedia objects that some sites
+contain, has become a significant data management problem for some
+organizations. Consider the different types of data that a news outfit
+such as the British Broadcasting Corporation (BBC) has to store to
+provide a timely, informative, and engaging Web site.</p>
+</div>
+<div id="images" class="section level4 unnumbered">
+<h4>Images</h4>
+<p>Images are visual data: photographs and sketches. Image banks are
+maintained for several reasons. <em>First<strong>,</strong></em> images are widely used for
+identification and security. Police departments keep fingerprints and
+mug shots. <em>Second</em>, images are used as evidence. Highly valuable items
+such as paintings and jewelry often are photographed for insurance
+records. <em>Third</em>, images are used for advertising and promotional
+campaigns, and organizations need to maintain records of material used
+in these ventures. Image archiving and retrieval are essential for
+mail-order companies, which often produce several photo-laden catalogs
+every year. <em>Fourth</em>, some organizations specialize in selling images
+and maintain extensive libraries of clip art and photographs.</p>
+</div>
+<div id="graphics" class="section level4 unnumbered">
+<h4>Graphics</h4>
+<p>Maps and engineering drawings are examples of electronically stored
+graphics. An organization might maintain a map of sales territories and
+customers. Manufacturers have extensive libraries of engineering
+drawings that define the products they produce. Graphics often contain a
+high level of detail. An engineering drawing will define the dimensions
+of all parts and may refer to other drawings for finer detail about any
+components.</p>
+<p>A graphic differs from an image in that it contains explicitly embedded
+data. Consider the difference between an engineering plan for a widget
+and a photograph of the same item. An engineering plan shows dimensional
+data and may describe the composition of the various components. The
+embedded data are used to manufacture the widget. A photograph of a
+widget does not have embedded data and contains insufficient data to
+manufacture the product. An industrial spy will receive far more for an
+engineering plan than for a photograph of a widget.</p>
+<p>A geographic information systems <strong>(</strong>GIS<strong>)</strong> is a specialized
+graphical storage system for geographic data. The underlying structure
+of a GIS is a map on which data are displayed. A power company can use a
+GIS to store and display data about its electricity grid and the
+location of transformers. Using a pointing device such as a mouse, an
+engineer can click on a transformer’s location to display a window of
+data about the transformer (e.g., type, capacity, installation date, and
+repair history). GISs have found widespread use in governments and
+organizations that have geographically dispersed resources.</p>
+</div>
+<div id="audio" class="section level4 unnumbered">
+<h4>Audio</h4>
+<p>News organizations, such as National Public Radio (NPR), provide audio
+versions of their new stories for replay. Some firms conduct a great
+deal of their business by phone. In many cases, it is important to
+maintain a record of the conversation between the customer and the
+firm’s representative. The Royal Hong Kong Jockey Club, which covers
+horse racing gambling in Hong Kong, records all conversations between
+its operators and customers. Phone calls are stored on a highly
+specialized voice recorder, which records the time of the call and other
+data necessary for rapid retrieval. In the case of a customer dispute,
+an operator can play back the original conversation.</p>
+</div>
+<div id="video" class="section level4 unnumbered">
+<h4>Video</h4>
+<p>A video clip can give a potential customer additional detail that cannot
+be readily conveyed by text or a still image. Consequently, some auto
+companies use video and virtual reality to promote their cars. On a
+visit to Toyota’s Web site, you can view video clips of the latest
+models or rotate an image to view a car from multiple angles.</p>
+</div>
+<div id="models" class="section level4 unnumbered">
+<h4>Models</h4>
+<p>Organizations build mathematical models to describe their business.
+These models, usually placed in the broader category of DSS, are then
+used to analyze existing problems and forecast future business
+conditions. A mathematical model can often produce substantial benefits
+to the organization.</p>
+</div>
+<div id="knowledge" class="section level4 unnumbered">
+<h4>Knowledge</h4>
+<p>Organizations build systems to capture the knowledge of their
+experienced decision makers and problem solvers. This expertise is
+typically represented as a set of rules, semantic nets, and frames in a
+knowledge base, another form of organizational memory.</p>
+</div>
+<div id="decisions" class="section level4 unnumbered">
+<h4>Decisions</h4>
+<p>Decision making is the central activity of modern organizations. Very
+few organizations, however, have a formal system for recording
+decisions. Most keep the minutes of meetings, but these are often very
+brief and record only a meeting’s outcome. Because they do not record
+details such as the objectives, criteria, assumptions, and alternatives
+that were considered prior to making a decision, there is no formal
+audit trail for decision making. As a result, most organizations rely on
+humans to remember the circumstances and details of prior decisions.</p>
+</div>
+<div id="specialized-memories" class="section level4 unnumbered">
+<h4>Specialized memories</h4>
+<p>Because of the particular nature of their business, some organizations
+maintain memories rarely found elsewhere. Perfume companies, for
+instance, maintain a library of scents, and paint manufacturers and dye
+makers catalog colors.</p>
+</div>
+</div>
+<div id="components-of-organizational-memory-1" class="section level3 unnumbered">
+<h3>Components of organizational memory</h3>
+<p>Organizations are not limited to their own memory stores. There are
+firms whose business is to store data for resale to other organizations.
+Such businesses have existed for many years and are growing as the
+importance of data in a postindustrial society expands. U.S. lawyers can
+use document management services to access the laws and court decisions
+of all 50 American states and the U.S. federal government. Similar legal
+data services exist in many other nations. There is a range of other
+services that provide news, financial, business, scientific, and medical
+data.</p>
+</div>
+</div>
+<div id="problems-with-data-management-systems" class="section level2 unnumbered">
+<h2>Problems with data management systems</h2>
+<p>Successful management of data is a critical skill for nearly every
+organization. Yet few have gained complete mastery, and there are a
+variety of problems that typically afflict data management in most
+firms.</p>
+<p><em>Problems with organizational data management systems</em></p>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Redundancy</th>
+<th align="left">Same data are stored in different systems</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Lack of data control</td>
+<td align="left">Data are poorly managed</td>
+</tr>
+<tr class="even">
+<td align="left">Poor interface</td>
+<td align="left">Data are difficult to access</td>
+</tr>
+<tr class="odd">
+<td align="left">Delays</td>
+<td align="left">There are frequently delays following requests for reports</td>
+</tr>
+<tr class="even">
+<td align="left">Lack of reality</td>
+<td align="left">Data management systems do not reflect the complexity of the real world</td>
+</tr>
+<tr class="odd">
+<td align="left">Lack of data integration</td>
+<td align="left">Data are dispersed across different systems</td>
+</tr>
+</tbody>
+</table>
+<div id="redundancy" class="section level3 unnumbered">
+<h3>Redundancy</h3>
+<p>In many cases, data management systems have grown haphazardly. As a
+result, it is often the situation that the same data are stored in
+several different memories. The classic example is a customer’s address,
+which might be stored in the sales reporting system, accounts receivable
+system, and the salesperson’s address book. The danger is that when the
+customer changes address, the alteration is not recorded in all systems.
+Data redundancy causes additional work because the same item must be
+entered several times. Redundancy causes confusion when what is
+supposedly the same item has different values.</p>
+</div>
+<div id="lack-of-data-control" class="section level3 unnumbered">
+<h3>Lack of data control</h3>
+<p>Allied with the redundancy problem is poor data control. Although data
+are an important organizational resource, they frequently do not receive
+the same degree of management attention as other important
+organizational resources, such as people and money. Organizations have a
+personnel department to manage human resources and a treasury to handle
+cash. The IS department looks after data captured by the computer
+systems it operates, but there are many other data stores scattered
+around the organization. Data are stored everywhere in the organization
+(e.g., on personal computers and departmental servers), but there is a
+general lack of data management. This lack is particularly surprising,
+since many pundits claim that data are a key competitive resource.</p>
+</div>
+<div id="poor-interface" class="section level3 unnumbered">
+<h3>Poor interface</h3>
+<p>Too frequently, the potential clients of data management systems have
+been deterred by an unfriendly interface. The computer interface for
+accessing a data store is sometimes difficult to remember for the
+occasional inquirer. People become frustrated and give up because their
+queries are rejected and error messages are unintelligible.</p>
+</div>
+<div id="delays" class="section level3 unnumbered">
+<h3>Delays</h3>
+<p>Globalization and technology have accelerated the pace of business in
+recent years. Managers must make more decisions more rapidly. They
+cannot afford to wait for programmers to write special-purpose programs
+to retrieve data and format reports. They expect their questions to be
+answered rapidly, often within an hour and sometimes more quickly.
+Managers, or their support personnel, need query languages that provide
+rapid access to the data they need, in a format that they want.</p>
+</div>
+<div id="lack-of-reality" class="section level3 unnumbered">
+<h3>Lack of reality</h3>
+<p>Organizational data stores must reflect the reality and complexity of
+the real world. Consider a typical bank customer who might have a
+personal checking account, mortgage account, credit card account, and
+some certificates of deposit. When a customer requests an overdraft
+extension, the bank officer needs full details of the customer’s
+relationship with the bank to make an informed decision. If customer
+data are scattered across unrelated data stores, then these data are not
+easily found, and in some cases important data might be overlooked. The
+request for full customer details is reasonable and realistic, and the
+bank officer should expect to be able to enter a single query to obtain
+it. Unfortunately, this is not always the case, because data management
+systems do not always reflect reality.</p>
+<p>In this example, the reality is that the personal checking, mortgage,
+and credit card accounts, and certificates of deposit all belong to one
+customer. If the bank’s data management system does not record this
+relationship, then it does not mimic reality. This makes it impossible
+to retrieve a single customer’s data with a single query.</p>
+<p>A data management system must meet the decision making needs of
+managers, who must be able to request both routine and ad hoc reports.
+To do so effectively, a data management system must reflect the
+complexity of the real world. If it does not store required
+organizational data or record a real-world relationship between data
+elements, then some managerial queries might not be answerable quickly.</p>
+</div>
+<div id="lack-of-data-integration" class="section level3 unnumbered">
+<h3>Lack of data integration</h3>
+<p>There is a general lack of data integration in most organizations. Not
+only are data dispersed in different forms of organizational memory
+(e.g., files and image stores), but even within one storage format there
+is often a lack of integration. For example, many organizations maintain
+file systems that are not integrated. Appropriate files in the
+accounting system may not be linked to the production system.</p>
+<p>This lack of integration will be a continuing problem for most
+organizations for two important reasons. <strong><em>First,</em></strong> earlier computer
+systems might not have been integrated because of the limitations of
+available technology. Organizations created simple file systems to
+support a particular function. Many of these systems are still in use.
+<strong><em>Second</em></strong>, integration is a long-term goal. As new systems are
+developed and old ones rewritten, organizations can evolve integrated
+systems. It would be too costly and disruptive to try to solve the data
+integration problem in one step.</p>
+<p>Many data management problems can be solved with present technology.
+Data modeling and relational database technology, topics covered in
+Section 2, help overcome many of the current problems.</p>
+</div>
+</div>
+<div id="a-brief-history-of-data-management-systems" class="section level2 unnumbered">
+<h2>A brief history of data management systems</h2>
+<p>Data management is not a new organizational concern. It is an old
+problem that has become more significant, important, and critical
+because of the emergence of data as a critical resource for effective
+performance in the modern economy. Organizations have always needed to
+manage their data so that they could remember a wide variety of facts
+necessary to conduct their affairs. The recent history of computer-based
+data management systems is depicted in the following figure.</p>
+<p><em>Data management systems timeline</em></p>
+<p><img src="Figures/Chapter%201/timeline2.png" /></p>
+<p>File systems were the earliest form of data management. Limited by the
+sequential nature of magnetic tape technology, it was very difficult to
+integrate data from different files. The advent of magnetic disk
+technology in the mid-1950s stimulated development of integrated file
+systems, and the hierarchical database management system (DBMS) emerged
+in the 1960s, followed some years later by the network DBMS. The spatial
+database, or geographic information system (GIS), appeared around 1970.
+Until the mid-1990s, the hierarchical DBMS, mainly in the form of IBM’s
+DL/I product, was the predominant technology for managing data. It has
+now been replaced by the relational DBMS, a concept first discussed by
+Edgar Frank Codd in an academic paper in 1970 but not commercially
+available until the mid-1970s. In the late 1980s, the notion of an
+object-oriented DBMS, primed by the ideas of object-oriented
+programming, emerged as a solution to situations not handled well by the
+relational DBMS. Also around this time, the idea of modeling a database
+as a graph was introduced. Towards the end of the 20th century, XML was
+developed for exchanging data between computers, and it can also be used
+as a data store as you will learn in section 3. More recently,
+tdistributed files system, such as Hadoop, have emerged as alternative
+models for data management. Other recent data management systems include
+graph and NoSQL databases. While these are beyond the scope of an
+introductory data management text, if you decided to pursue a career in
+data management you should learn about their advantages and the
+applications to which they are well-suited. For example, graph databases
+are a good fit for the analysis of social networks.</p>
+<p>This book concentrates on the relational model, currently the most
+widely used data management system. As mentioned, Section 2 is devoted
+to the development of the necessary skills for designing and using a
+relational database.</p>
+</div>
+<div id="data-information-and-knowledge" class="section level2 unnumbered">
+<h2>Data, information, and knowledge</h2>
+<p>Often the terms <strong><em>data</em></strong> and <strong><em>information</em></strong> are used
+interchangeably, but they are distinctly different. Data are raw,
+unsummarized, and unanalyzed facts. Information is data that have been
+processed into a meaningful form.</p>
+<p>A list of a supermarket’s daily receipts is data, but it is not
+information, because it is too detailed to be very useful. A summary of
+the data that gives daily departmental totals is information, because
+the store manager can use the report to monitor store performance. The
+same report might be data for a regional manager, because it is too
+detailed for meaningful decision making at the regional level.
+Information for a regional manager might be a weekly report of sales by
+department for each supermarket.</p>
+<p>Data are always data, but one person’s information can be another
+person’s data. Information that is meaningful to one person can be too
+detailed for another. A manager’s notion of information can change
+quickly, however. When a problem is identified, a manager might request
+finer levels of detail to diagnose the problem’s cause. Thus, what was
+previously data suddenly becomes information because it helps solve the
+problem. When the problem is solved, the information reverts to data.
+There is a need for information systems that let managers customize the
+processing of data so that they always get information. As their needs
+change, they need to be able to adjust the detail of the reports they
+receive.</p>
+<p>Knowledge is the capacity to use information. The education and
+experience that managers accumulate provide them with the expertise to
+make sense of the information they receive. Knowledge means that
+managers can interpret information and use it in decision making. In
+addition, knowledge is the capacity to recognize what information would
+be useful for making decisions. For example, a sales manager might know
+that requesting a report of profitability by product line is useful when
+she has to decide whether to employ a new product manager. Thus, when a
+new information system is delivered, managers need to be taught what
+information the system can deliver and what that information means.</p>
+<p>The relationship between data, information, and knowledge is depicted in
+the following figure. A knowledgeable person requests information to
+support decision making. To fulfill the request, data are converted into
+information. Personal knowledge is then applied to interpret the
+requested information and reach a conclusion. Of course, the cycle can
+be repeated several times if more information is needed before a
+decision can be made. Notice how knowledge is essential for grasping
+what information to request and interpreting that information in terms
+of the required decision.</p>
+<p><em>The relationship between data, information, and knowledge</em></p>
+<p><img src="Figures/Chapter%201/data-info-know.jpg" /></p>
+</div>
+<div id="the-challenge" class="section level2 unnumbered">
+<h2>The challenge</h2>
+<p>A major challenge facing organizations is to make effective use of the
+data currently stored in their diverse data management systems. This
+challenge exists because these various systems are not integrated and
+many potential clients not only lack the training to access the systems
+but often are unaware what data exist. Before data managers can begin to
+address this problem, however, they must understand how organizational
+memories are used. In particular, they need to understand the
+relationship between information and managerial decision making. Data
+management is not a new problem. It has existed since the early days of
+civilization and will be an enduring problem for organizations and
+societies.</p>
+</div>
+<div id="summary" class="section level2 unnumbered">
+<h2>Summary</h2>
+<p>Organizations must maintain a memory to process transactions and make
+decisions. Organizational data should be shareable, transportable,
+secure, and accurate, and provide timely, relevant information. The
+essential components are people (the most important), text, multimedia
+data, models, and knowledge. A wide variety of technologies can be used
+to manage data. External memories enlarge the range of data available to
+an organization. Data management systems often have some major
+shortcomings: redundancy, poor data control, poor interfaces, long lead
+times for query resolution, an inability to supply answers for questions
+posed by managers, and poor data integration. Data are raw facts;
+information is data processed into a meaningful form. Knowledge is the
+capacity to use information.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Key terms and concepts</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Data</td>
+<td>Internal memory</td>
+</tr>
+<tr class="even">
+<td align="left">Database management system (DBMS)</td>
+<td>Knowledge</td>
+</tr>
+<tr class="odd">
+<td align="left">Data management</td>
+<td>Machine learning</td>
+</tr>
+<tr class="even">
+<td align="left">Data mining</td>
+<td>Management information system (MIS)</td>
+</tr>
+<tr class="odd">
+<td align="left">Data security</td>
+<td>Metamemory</td>
+</tr>
+<tr class="even">
+<td align="left">Decision making</td>
+<td>Online analytical processing (OLAP)</td>
+</tr>
+<tr class="odd">
+<td align="left">Decision quality</td>
+<td>Organizational culture</td>
+</tr>
+<tr class="even">
+<td align="left">Decision support system (DSS)</td>
+<td>Organizational memory</td>
+</tr>
+<tr class="odd">
+<td align="left">External memory</td>
+<td>Standard operating procedures</td>
+</tr>
+<tr class="even">
+<td align="left">Geographic information system (GIS)</td>
+<td>Tables</td>
+</tr>
+<tr class="odd">
+<td align="left">Information</td>
+<td>Transaction processing system (TPS)</td>
+</tr>
+</tbody>
+</table>
+<div id="references-and-additional-readings" class="section level3 unnumbered">
+<h3>References and additional readings</h3>
+<p>Davenport, T. H. (1998). Putting the enterprise into the enterprise
+system. <em>Harvard Business Review</em>, 76(4), 121-131.</p>
+</div>
+<div id="exercises" class="section level3 unnumbered">
+<h3>Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>What are the major differences between internal and external memory?</p></li>
+<li><p>What is the difference between the things you remember and the
+things you record on your computer?</p></li>
+<li><p>What features are common to most individual memory systems?</p></li>
+<li><p>What do you think organizations did before computers were invented?</p></li>
+<li><p>Discuss the memory systems you use. How do they improve your
+performance? What are the shortcomings of your existing systems? How
+can you improve them?</p></li>
+<li><p>Describe the most “organized” person you know. Why is that person so
+organized? Why haven’t you adopted some of the same methods? Why do
+you think people differ in the extent to which they are organized?</p></li>
+<li><p>Think about the last time you enrolled in a class. What data do you
+think were recorded for this transaction?</p></li>
+<li><p>What roles do people play in organizational memory?</p></li>
+<li><p>What do you think is the most important attribute of organizational
+memory? Justify your answer.</p></li>
+<li><p>What is the difference between transaction processing and decision
+making?</p></li>
+<li><p>When are data relevant?</p></li>
+<li><p>Give some examples of specialized memories.</p></li>
+<li><p>How can you measure the quality of a decision?</p></li>
+<li><p>What is organizational culture? Can you name some organizations that
+have a distinctive culture?</p></li>
+<li><p>What is hypertext? How does it differ from linear text? Why might
+hypertext be useful in an organizational memory system?</p></li>
+<li><p>What is imaging? What are the characteristics of applications well
+suited for imaging?</p></li>
+<li><p>What is an external memory? Why do organizations use external
+memories instead of building internal memories?</p></li>
+<li><p>What is the common name used to refer to systems that help
+organizations remember knowledge?</p></li>
+<li><p>What is a DSS? What is its role in organizational memory?</p></li>
+<li><p>What are the major shortcomings of many data management systems?
+Which do you think is the most significant shortcoming?</p></li>
+<li><p>What is the relationship between data, information, and knowledge?</p></li>
+<li><p>Estimate how much data Netflix requires to store its many movies.</p></li>
+<li><p>Using the Web, find some stories about firms using data management
+systems. You might enter keywords such as “database” and “business
+analytics” and access the sites of publications such as
+<a href="http://www.computerworld.com/"><u>Computerworld</u></a>. Identify the
+purpose of each system. How does the system improve organizational
+performance? What are the attributes of the technology that make it
+useful? Describe any trade-offs the organization might have made.
+Identify other organizations in which the same technology might be
+applied.</p></li>
+<li><p>Make a list of the organizational memory systems identified in this
+chapter. Interview several people working in organizations. Ask them
+to indicate which organizational memory systems they use. Ask which
+system is most important and why. Write up your findings and your
+conclusion.</p></li>
+</ol>
+<div style="page-break-after: always;"></div>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>Quinn, J. B. (1994). Appraising intellectual assets. *The
+McKinsey Quarterly*(2), 90-96.<a href="managing-data.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="section-1-the-managerial-perspective.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="information.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/101-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["DataManagement.pdf", "pdf"]],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
