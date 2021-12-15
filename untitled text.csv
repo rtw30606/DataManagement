@@ -1,0 +1,7 @@
+ category    score
+  <chr>       <dbl>
+1 Community    66.5
+2 Customers    35.8
+3 Environment   7.2
+4 Governance   45.3
+5 Workers      64.6
