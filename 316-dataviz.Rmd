@@ -17,7 +17,7 @@ Students completing this chapter will:
 
 -   Understand the principles of the grammar of graphics;
 
--   Be able to use ggvis to create common business graphics;
+-   Be able to use ggplot2 to create common business graphics;
 
 -   Be able to select data from a database for graphic creation;
 
@@ -41,12 +41,12 @@ their preference for visual and textual information, it often makes
 sense to support both types of reporting.
 
 In order to learn how to visualize data, you need to become familiar
-with the grammar of graphics and ggvis (an R extension for graphics). In
+with the grammar of graphics and ggplot2 (an R extension for graphics). In
 line with the learning of data modeling and SQL, we will take an
 intertwined spiral approach. First we will tackle the grammar of
-graphics (the abstract) and then move to ggvis (the concrete). You will
+graphics (the abstract) and then move to ggplot2 (the concrete). You will
 also learn how to take the output of an SQL query and feed it directly
-into ggvis. The end result will be a comprehensive set of practical
+into ggplot2. The end result will be a comprehensive set of practical
 skills for data visualization.
 
 ## The grammar of graphics {.unnumbered}
@@ -115,15 +115,15 @@ marks (such as rectangles, circles, and arcs) for displaying the data.
 
 [^dataviz-2]: <http://trifacta.github.io/vega/>
 
-## ggvis {.unnumbered}
+## ggplot2 {.unnumbered}
 
-ggvis is an implementation of Vega in R Because it is based on a
-grammar, ggvis is a very powerful graphics tool for creating both simple
+ggplot2 is an implementation of Vega in R Because it is based on a
+grammar, ggplot2 is a very powerful graphics tool for creating both simple
 and complex graphs. It is well-suited for generating multi-layered
-graphs because of its grammatical foundation. As a result, using ggvis
+graphs because of its grammatical foundation. As a result, using ggplot2
 you specify a series of steps (think of them as sentences) to create a
 graphic (think of it as a paragraph) to visually convey your message.
-ggvis is a descendant of ggplot2 and adds new features to support
+ggplot2 is a descendant of ggplot2 and adds new features to support
 interactive visualization using shiny, another R package, which we will
 cover later.
 
@@ -159,7 +159,7 @@ system (GPS ) reading of latitude and longitude describes where you are
 on the surface of the globe. It is typically layered onto a map so you
 can see where you are relative to your current location. Most graphs are
 plotted on a two-dimensional (2D) grid with x (horizontal) and y
-(vertical) coordinates. ggvis currently supports six 2D coordinate
+(vertical) coordinates. ggplot2 currently supports six 2D coordinate
 systems, as shown in the following table. The default coordinate system
 for most packages is Cartesian.
 
@@ -178,16 +178,16 @@ for most packages is Cartesian.
 
 An element is a graph and its attributes. Let's start with a simple
 scatterplot of year against CO~2~ emissions. We do this in two steps
-applying the ggvis approach of building a graphic by adding layers.
-ggvis uses the pipe function to specify a linear sequence of processing.
+applying the ggplot2 approach of building a graphic by adding layers.
+ggplot2 uses the pipe function to specify a linear sequence of processing.
 
--   The foundation is the ggvis function, which identifies the source of
+-   The foundation is the ggplot2 function, which identifies the source of
     the data and what is to be plotted. In the following example, the
-    file carbon is fed into the ggvis function, which selects year and
+    file carbon is fed into the ggplot2 function, which selects year and
     CO2 as the x and y, respectively, dimensions of the graph
 
 -   A graph consists of a number of layers, and in the following example
-    the points layer receives the x and y values from ggvis and plots
+    the points layer receives the x and y values from ggplot2 and plots
     each pair of points with a red dot.
 
 ```{r element, message = TRUE}
@@ -226,7 +226,7 @@ xlab('Year') + ylab('Relative change of atmospheric CO2') + ylim(0,.5)
 Axes and legends are both forms of guides, which help the reader to
 understand a graphic. Readability enhancers such as axes, title, and
 tick marks are generated automatically based on the parameters specified
-in the ggvis command. You can override the defaults.
+in the ggplot2 command. You can override the defaults.
 
 Let's redo the graphic with the relative change since the beginning of
 industrialization in the mid 18th century, when the level of CO2 was
@@ -250,8 +250,8 @@ continuing to grow.
 ### Guides {.unnumbered}
 
 Axes and legends are both forms of guides, which help the reader to
-understand a graphic. In ggvis, legends and axes are generated
-automatically based on the parameters specified in the ggvis command.
+understand a graphic. In ggplot2, legends and axes are generated
+automatically based on the parameters specified in the ggplot2 command.
 You have the capability to override the defaults for axes, but the
 legend is quite fixed in its format.
 
@@ -273,7 +273,7 @@ diamond) and shape size to aid matching.
 
 ## Some recipes {.unnumbered}
 
-Learning the full power of ggvis is quite an undertaking, so here are a
+Learning the full power of ggplot2 is quite an undertaking, so here are a
 few recipes for visualizing data.
 
 ### Histogram {.unnumbered}
@@ -281,13 +281,13 @@ few recipes for visualizing data.
 Histograms are useful for showing the distribution of values in a single
 column. A histogram has a vertical orientation. The number of
 occurrences of a particular value in a column are automatically counted
-by the ggvis function. In the following sample code, we show the
+by the ggplot2 function. In the following sample code, we show the
 distribution of temperatures in Celsius for the Central Park temperature
 data. Notice that the Celsius conversion is rounded to an integer for
 plotting. Width specifies the size of the bin, which is two in this
 case. This means that the bin above the tick mark 10 contains all values
 in the range 9 to 11. There is online a list of names of colors you can
-use in ggvis.[^dataviz-3]
+use in ggplot2.[^dataviz-3]
 
 [^dataviz-3]: <http://www.w3schools.com/cssref/css_colornames.asp>
 
@@ -387,7 +387,7 @@ ggplot(d,aes(x=orderMonth,y=orderValue)) + geom_point(color='red') + geom_line(c
 ```
 
 It is sometimes helpful to show multiple scatterplots on the one grid.
-In ggvis, you can create groups of points for plotting. Sometimes, you
+In ggplot, you can create groups of points for plotting. Sometimes, you
 might find it convenient to recode data so you can use different colors
 or lines to distinguish values in set categories. Let's examine grouping
 by year.
@@ -399,72 +399,42 @@ library(DBI)
 library(RMySQL)
 library(scales)
 # Get the value of orders by year and month
+conn <- dbConnect(RMySQL::MySQL(), 'www.richardtwatson.com', dbname = 'ClassicModels', user = 'student', password = 'student')
 d <- dbGetQuery(conn,"SELECT YEAR(orderDate) AS orderYear, MONTH(orderDate) AS Month, sum((quantityOrdered*priceEach)) AS Value FROM Orders, OrderDetails WHERE Orders.orderNumber = OrderDetails.orderNumber GROUP BY orderYear, Month;")
 # Plot data orders by month and grouped by year
 # ggplot expects grouping variables to be character, so convert
 # load scales package for formatting as dollars
 d$Year <- as.character(d$orderYear)
-ggplot(d,aes(x=Month,y=Value,group=Year)) + 
-geom_line(aes(color=Year)) +
+  ggplot(d,aes(x=Month,y=Value,group=Year)) + 
+  geom_line(aes(color=Year)) +
 # Format as dollars
-scale_y_continuous(labels = dollar)
-```
-
-Because ggplot2 is based on a grammar of graphics, with a few changes, you
-can create a bar graph of the same data.
-
-```{r barchart, eval = TRUE}
-library(tidyverse)
-library(DBI)
-library(RMySQL)
-conn <- dbConnect(RMySQL::MySQL(), 'www.richardtwatson.com', dbname = 'ClassicModels', user = 'student', password = 'student')
-# Query the database and create file for use with R
-d <- dbGetQuery(conn,'SELECT * from Products;') 
-da <-  d %>% 
-  group_by(productLine) %>% 
-  summarize(count = n())
-ggplot(d,aes(productLine)) + 
-  geom_bar(fill='gold') +
-  coord_flip()
+  scale_y_continuous(labels = dollar)
 ```
 
 Sometimes the data that you want to graph will be in multiple files.
 Here is a case where we want to show ClassicCars orders and payments by
 month on the same plot.
 
-```{r, eval = TRUE}
-library(ggvis)
+```{r scatterplot-3, eval = TRUE}
+library(tidyverse)
 library(DBI)
-library(dplyr)
-library(lubridate)
+library(RMySQL)
+library(scales)
 # Load the driver
 conn <- dbConnect(RMySQL::MySQL(), "www.richardtwatson.com", dbname="ClassicModels", user="student", password="student")
-o <- dbGetQuery(conn,"SELECT * FROM Orders") 
-od <- dbGetQuery(conn,"SELECT * FROM OrderDetails")
-d <- inner_join(o,od)
-d2 <- 
-  d %>% 
-  mutate(month = month(orderDate)) %>% 
-  mutate(year = year(orderDate)) %>% 
-  filter(year == 2004) %>% 
-  group_by(month) %>% 
-  summarize(value = sum(quantityOrdered*priceEach))
-d2$category <- 'Orders'
-p <-  dbGetQuery(conn,"SELECT * from Payments;")
-p2 <- p %>% 
-  mutate(month = month(paymentDate)) %>% 
-  mutate(year = year(paymentDate)) %>% 
-  filter(year==2004) %>% 
-  group_by(month) %>% 
-  summarize(value = sum(amount))
-p2$category <- 'Payments'
-m <- rbind(d2,p2) # bind by rows
-m %>% 
-  group_by(category) %>% 
-  ggvis(~month, ~value, stroke = ~ category) %>% 
-  layer_lines() %>% 
-  add_axis('x',title='Month') %>% 
-  add_axis('y',title='Value',title_offset=70)  
+library(scales)
+library(ggplot2)
+orders <- dbGetQuery(conn,"SELECT MONTH(orderDate) AS month, sum((quantityOrdered*priceEach)) AS orderValue FROM Orders, OrderDetails WHERE Orders.orderNumber = OrderDetails.orderNumber and YEAR(orderDate) = 2004 GROUP BY Month;")
+payments <-  dbGetQuery(conn,"SELECT MONTH(paymentDate) AS month, SUM(amount) AS payValue FROM Payments WHERE YEAR(paymentDate) = 2004 GROUP BY MONTH;")
+ggplot(orders,aes(x=month)) + 
+  geom_line(aes(y=orders$orderValue, color='Orders')) +   
+  geom_line(aes(y=payments$payValue, color='Payments')) +
+  xlab('Month') + ylab('') +
+  # Format as dollars and show each month
+  scale_y_continuous(label = dollar)  + scale_x_continuous(breaks=c(1:12)) +
+  # Remove the legend
+  theme(legend.title=element_blank())
+
 ```
 
 ### Smoothing {.unnumbered}
@@ -495,36 +465,15 @@ median, and upper quartile for each variable. The following code creates
 a box plot for a single variable. Notice that we use factor(0) to
 indicate there is no grouping variable.
 
-```{r, eval = TRUE}
-library(ggvis)
+```{r boxplot, eval = TRUE}
+library(tidyverse)
 library(DBI)
 conn <- dbConnect(RMySQL::MySQL(), "www.richardtwatson.com", dbname="ClassicModels", user="student", password="student")
 d <- dbGetQuery(conn,"SELECT * from Payments;")
 # Boxplot of amounts paid
-d %>% 
-  ggvis(~factor(0),~amount) %>% 
-  layer_boxplots() %>%
-  add_axis('x',title='Checks') %>% 
-  add_axis('y',title='')
-```
+ggplot(d,aes(factor(0),amount)) + 
+  geom_boxplot(outlier.colour='red') +  xlab("") + ylab("Check")
 
-The following example shows a box plot for each month. Notice how to
-indicate the values for each of the ticks for the x-axis. Try running
-the code without the values specification.
-
-```{r, eval = TRUE}
-library(ggvis)
-library(DBI)
-library(lubridate)
-conn <- dbConnect(RMySQL::MySQL(), "www.richardtwatson.com", dbname="ClassicModels", user="student", password="student")
-d <- dbGetQuery(conn,"SELECT * from Payments;")
-# Boxplot of amounts paid
-d %>% 
-  mutate(month = month(paymentDate)) %>% 
-  ggvis(~month,~amount) %>% 
-  layer_boxplots() %>%
-  add_axis('x',title='Month', values=c(1:12)) %>%
-  add_axis('y',title='Amount', title_offset=70)
 ```
 
 ### Heat map {.unnumbered}
@@ -577,7 +526,7 @@ library(RMySQL)
 conn <- dbConnect(RMySQL::MySQL(), 'www.richardtwatson.com', dbname = 'ClassicModels', user = 'student', password = 'student')
 # Google maps requires lon and lat, in that order, to create markers
 d <- dbGetQuery(conn,"SELECT ST_Y(officeLocation) AS lon, ST_X(officeLocation) AS lat FROM Offices;")
-t <- read_csv("~/Dropbox/0Documents/R/GoogleAPIkey.txt")
+t <- read_csv("GoogleAPIkey.txt")
 register_google(key = t$key)
 # show offices in the United States
 # vary zoom to change the size of the map
@@ -586,8 +535,6 @@ ggmap(map) +
   labs(x = 'Longitude', y = 'Latitude') + 
   ggtitle('US offices')
 ```
-
-![](Figures/Chapter%2016/geographic.png)
 
 > ❓**Skill builder**
 >
@@ -603,8 +550,8 @@ ggmap(map) +
 
 ## R resources {.unnumbered}
 
-The developer of ggvis, Hadley Wickham, maintains a [[web
-site]{.ul}](http://ggvis.rstudio.com). Another useful web site for data
+The developer of ggplot2, Hadley Wickham, maintains a [[web
+site]{.ul}](http://ggplot2.tidyverse.org). Another useful web site for data
 visualization is [[FlowingData]{.ul}](http://flowingdata.com), which has
 an associated book, titled *Visualize This*. If you become heavily
 involved in visualization, we suggest you read some of the works of
@@ -616,7 +563,7 @@ Because of evolutionary pressure, humans became strong visual
 processors. Consequently, graphics can be very effective for presenting
 information. The grammar of graphics provides a logical foundation for
 the construction of a graphic by adding successive layers of
-information. ggvis is a package implementing the grammar of graphics in
+information. ggplot2 is a package implementing the grammar of graphics in
 R, the open source statistics platform. Data can be extracted from an
 MySQL database for processing and graphical presentation in R. Spatial
 data can be selected from a database and displayed on a Google map.
@@ -626,7 +573,7 @@ data can be selected from a database and displayed on a Google map.
 | Bar chart              | Graphic     |
 | Box plot               | Heat map    |
 | dplyr                  | Histogram   |
-| ggvis                  | Scatterplot |
+| ggplot2                  | Scatterplot |
 | Grammar of graphics    | Smooth      |
 | Graph                  |             |
 
@@ -711,7 +658,7 @@ item <-  c('TV set', 'DVD player', 'Vacuum cleaner', 'Scotch whisky', 'Coffee', 
 11. Read the table
     [[http://www.richardtwatson.com/data/wealth.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/wealth.csv)
     containing details of the wealth of various countries. Create
-    histograms for each of the wealth measures. Consult the ggvis color
+    histograms for each of the wealth measures. Consult the ggplot2 color
     chart[^dataviz-6] for a choice of colors.
 
 12. Merge the data for weather
