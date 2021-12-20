@@ -99,30 +99,30 @@ The previous script
 [^intror-1]: RStudio provides a keyboard command, which is Alt+-
     (Windows & Linux) or Option+- (Mac)
 
-+---------------------------------------------------------------------+
-| ### Smart editing {#smart-editing}                                  |
-|                                                                     |
-| It is not uncommon to find that a dataset you would like to use is  |
-| in electronic format, but not in a format that matches your need.   |
-| In most cases, you can use a word processor, spreadsheet, or text   |
-| editor to reformat the data. In the case of the data in the         |
-| previous table, here is a recipe for reformatting the data.         |
-|                                                                     |
-| 1.  Copy each column to a word processor                            |
-|                                                                     |
-| 2.  Use the convert table to text command                           |
-|                                                                     |
-| 3.  Search and replace commas with nulls (i.e, "")                  |
-|                                                                     |
-| 4.  Search and replace returns with commas                          |
-|                                                                     |
-| 5.  Edit to put R code around numbers                               |
-|                                                                     |
-| In some cases, you might find it quicker to copy a table to a       |
-| spreadsheet, select each column within the spreadsheet, and then    |
-| proceed as described above. This technique works well when the      |
-| original table is in a pdf document.                                |
-+---------------------------------------------------------------------+
++--------------------------------------------------------------------+
+| ### Smart editing {#smart-editing}                                 |
+|                                                                    |
+| It is not uncommon to find that a dataset you would like to use is |
+| in electronic format, but not in a format that matches your need.  |
+| In most cases, you can use a word processor, spreadsheet, or text  |
+| editor to reformat the data. In the case of the data in the        |
+| previous table, here is a recipe for reformatting the data.        |
+|                                                                    |
+| 1.  Copy each column to a word processor                           |
+|                                                                    |
+| 2.  Use the convert table to text command                          |
+|                                                                    |
+| 3.  Search and replace commas with nulls (i.e, "")                 |
+|                                                                    |
+| 4.  Search and replace returns with commas                         |
+|                                                                    |
+| 5.  Edit to put R code around numbers                              |
+|                                                                    |
+| In some cases, you might find it quicker to copy a table to a      |
+| spreadsheet, select each column within the spreadsheet, and then   |
+| proceed as described above. This technique works well when the     |
+| original table is in a pdf document.                               |
++--------------------------------------------------------------------+
 
 > ❓**Skill builder**
 >
@@ -453,8 +453,6 @@ convert the column quarter from character to integer.
 *Reshaping data with gathering and
 spreading*![](Figures/Chapter%2015/gather-spread.png)
 
-![](Chapter%2015/Figures/gather-spread.png)
-
 ```{r, reshaping, eval = TRUE}
 library(tidyverse)
 url <-  'http://www.richardtwatson.com/data/gatherExample.csv'
@@ -670,24 +668,24 @@ atmospheric CO~2~, we can also state that the observations support this
 theory. In other words, an increase in CO~2~ increases temperatures in
 Central Park.
 
-+-------------------------------------------+
-| ***Pearson's product-moment               |
-| correlation***                            |
-|                                           |
-| data: m\$mean and m\$CO2                  |
-|                                           |
-| t = 3.1173, df = 51, p-value = 0.002997   |
-|                                           |
-| 95 percent confidence interval:           |
-|                                           |
-| 0.1454994 0.6049393                       |
-|                                           |
-| sample estimates:                         |
-|                                           |
-| cor                                       |
-|                                           |
-| 0.4000598                                 |
-+-------------------------------------------+
++------------------------------------------+
+| ***Pearson's product-moment              |
+| correlation***                           |
+|                                          |
+| data: m\$mean and m\$CO2                 |
+|                                          |
+| t = 3.1173, df = 51, p-value = 0.002997  |
+|                                          |
+| 95 percent confidence interval:          |
+|                                          |
+| 0.1454994 0.6049393                      |
+|                                          |
+| sample estimates:                        |
+|                                          |
+| cor                                      |
+|                                          |
+| 0.4000598                                |
++------------------------------------------+
 
 When reporting correlation coefficients, you can you use the terms
 small, moderate, and large in accordance with the values specified in

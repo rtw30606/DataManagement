@@ -172,27 +172,31 @@ worker as a printout.
 
 *Information systems eras*
 
-+------+--------------+--------------+--------------+--------------+
-| E ra | Focus        | Period       | Technology   | Networks     |
-+======+==============+==============+==============+==============+
-| 1    | Take i       | 1950s ---    | Batch        | Few data     |
-|      | nformation   | mid-1970s    |              | networks     |
-|      | work to the  |              |              |              |
-|      | computer     |              |              |              |
-+------+--------------+--------------+--------------+--------------+
-| 2    | Take i       | ## Mid-1970s | H ost/termin | Spread of    |
-|      | nformation   |              | al           | private      |
-|      | work to the  | mid-1990s    |              | networks     |
-|      | employee     |              | Cli          |              |
-|      |              |              | ent/server   |              |
-+------+--------------+--------------+--------------+--------------+
-| 3    | Take i       | ## Mid-1990s | Brow         | Public       |
-|      | nformation   |              | ser/server   | networks\    |
-|      | work to the  | present      |              | (Internet)   |
-|      | customer and |              |              |              |
-|      | other st     |              |              |              |
-|      | akeholders   |              |              |              |
-+------+--------------+--------------+--------------+--------------+
++------------+------------+------------+------------+------------+
+| E ra       | Focus      | Period     | Technology | Networks   |
++============+============+============+============+============+
+| 1          | Take i     | 1950s ---  | Batch      | Few data   |
+|            | nformation | mid-1970s  |            | networks   |
+|            | work to    |            |            |            |
+|            | the        |            |            |            |
+|            | computer   |            |            |            |
++------------+------------+------------+------------+------------+
+| 2          | Take i     | ##         | H          | Spread of  |
+|            | nformation |  Mid-1970s | ost/termin | private    |
+|            | work to    |            | al         | networks   |
+|            | the        | mid-1990s  |            |            |
+|            | employee   |            | Cli        |            |
+|            |            |            | ent/server |            |
++------------+------------+------------+------------+------------+
+| 3          | Take i     | ##         | Brow       | Public     |
+|            | nformation |  Mid-1990s | ser/server | networks\  |
+|            | work to    |            |            | (Internet) |
+|            | the        | present    |            |            |
+|            | customer   |            |            |            |
+|            | and other  |            |            |            |
+|            | st         |            |            |            |
+|            | akeholders |            |            |            |
++------------+------------+------------+------------+------------+
 
 In the second era, private networks were used to take information work
 to the employee. Initially, these were time-sharing and host/terminal
@@ -276,18 +280,40 @@ which comes from unidentified sources, is rife with uncertainty.
 
 *An information hardness scale*
 
-| Mineral     | S cale | Data                                                                               |
-|:------------|:------:|:-----------------------------------------------------------------------------------|
-| Talc        |   1    | Unidentified source---rumors, gossip, and hearsay                                  |
-| Gypsum      |   2    | Identified non-expert source---opinions, feelings, and ideas                       |
-| Calcite     |   3    | Identified expert source---predictions, speculations, forecasts, and estimates     |
-| Fluorite    |   4    | Unsworn testimony---explanations, justifications, assessments, and interpretations |
-| Apatite     |   5    | Sworn testimony---explanations, justifications, assessments, and interpretations   |
-| Or thoclase |   6    | Budgets, formal plans                                                              |
-| Quartz      |   7    | News reports, non-financial data, industry statistics, and surveys                 |
-| Topaz       |   8    | Unaudited financial statements, and government statistics                          |
-| Corundum    |   9    | Audited financial statements                                                       |
-| Diamond     |  1 0   | Stock exchange and commodity market data                                           |
++---------+---------+-------------------------------------------------+
+| Mineral | S cale  | Data                                            |
++:========+:=======:+:================================================+
+| Talc    | 1       | Unidentified source---rumors, gossip, and       |
+|         |         | hearsay                                         |
++---------+---------+-------------------------------------------------+
+| Gypsum  | 2       | Identified non-expert source---opinions,        |
+|         |         | feelings, and ideas                             |
++---------+---------+-------------------------------------------------+
+| Calcite | 3       | Identified expert source---predictions,         |
+|         |         | speculations, forecasts, and estimates          |
++---------+---------+-------------------------------------------------+
+| F       | 4       | Unsworn testimony---explanations,               |
+| luorite |         | justifications, assessments, and                |
+|         |         | interpretations                                 |
++---------+---------+-------------------------------------------------+
+| Apatite | 5       | Sworn testimony---explanations, justifications, |
+|         |         | assessments, and interpretations                |
++---------+---------+-------------------------------------------------+
+| Or      | 6       | Budgets, formal plans                           |
+| t       |         |                                                 |
+| hoclase |         |                                                 |
++---------+---------+-------------------------------------------------+
+| Quartz  | 7       | News reports, non-financial data, industry      |
+|         |         | statistics, and surveys                         |
++---------+---------+-------------------------------------------------+
+| Topaz   | 8       | Unaudited financial statements, and government  |
+|         |         | statistics                                      |
++---------+---------+-------------------------------------------------+
+| C       | 9       | Audited financial statements                    |
+| orundum |         |                                                 |
++---------+---------+-------------------------------------------------+
+| Diamond | 1 0     | Stock exchange and commodity market data        |
++---------+---------+-------------------------------------------------+
 
 Audited financial statements are in the corundum zone. They are measured
 according to standard rules (known as "generally accepted accounting
@@ -338,9 +364,13 @@ communication media is shown in the following table.
     information requirements, media richness, and structural design.
     Management Science*, 32(5), 554-571.
 
-| Richest       |           |                    |                              | Leanest           |
-|:--------------|-----------|--------------------|------------------------------|:------------------|
-| Fac e-to-face | Telephone | Personal documents | Impersonal written documents | Numeric documents |
++------------+------------+------------+-----------------+------------+
+| Richest    |            |            |                 | Leanest    |
++:===========+============+============+=================+:===========+
+| Fac        | Telephone  | Personal   | Impersonal      | Numeric    |
+| e-to-face  |            | documents  | written         | documents  |
+|            |            |            | documents       |            |
++------------+------------+------------+-----------------+------------+
 
 Managers seek rich information when they are trying to resolve
 equivocality or ambiguity. It means that managers cannot make sense of a
