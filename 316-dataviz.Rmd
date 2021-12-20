@@ -142,7 +142,7 @@ visualization. In this case, we want to depict the relative change in
 carbon levels since pre-industrial periods, when the value was 280 ppm.
 Here are sample R commands.
 
-```{r transform, eval = TRUE}
+```{r transform-1, eval = TRUE}
 # compute a new column in carbon containing the relative change in CO2
 carbon$relCO2 = (carbon$CO2-280)/280
 ```
@@ -191,10 +191,9 @@ ggplot2 uses the pipe function to specify a linear sequence of processing.
     each pair of points with a red dot.
 
 ```{r element, message = TRUE}
-library(ggplot2)
-library(readr)
-url <- 'http://www.richardtwatson.com/data/carbon.csv'
-carbon <- read_delim(url, delim=',')
+library(tidyverse)
+url <- 'http://www.richardtwatson.com/data/carbon.txt'
+carbon <- read_delim(url, delim = ',')
 # Select year(x) and CO2(y) to create a x-y point plot
 # Specify red points, as you find that aesthetically pleasing
 ggplot(carbon,aes(year,CO2)) + geom_point(color='red')
@@ -216,9 +215,15 @@ have a zero point for the y axis so you don't distort the slope of the
 line. In the following example, ylim() sets the range for y.
 
 ```{r zero, message = TRUE}
+library(tidyverse)
+url <- 'http://www.richardtwatson.com/data/carbon.txt'
+carbon <- read_delim(url, delim = ',')
 # compute a new column in carbon containing the relative change in CO2
+carbon$relCO2 = (carbon$CO2-280)/280
 ggplot(carbon,aes(year,relCO2)) + geom_line(color='salmon') +
-xlab('Year') + ylab('Relative change of atmospheric CO2') + ylim(0,.5)
+  xlab('Year') + 
+  ylab('Relative change of atmospheric CO2') + 
+  ylim(0,.5)
 ```
 
 ### Axes and legends {.unnumbered}
@@ -235,7 +240,7 @@ titles for the axes and specify a format of four consecutive digits for
 displaying a year on the x-axis. We also move or offset the title for
 the y-axis a bit to the left to improve readability.
 
-```{r transform, message = TRUE}
+```{r transform-2, message = TRUE}
 # compute a new column containing the relative change in CO2
 # compute a new column in carbon containing the relative change in CO2
 carbon$relCO2 = (carbon$CO2-280)/280 
