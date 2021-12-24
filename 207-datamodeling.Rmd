@@ -368,76 +368,85 @@ state). How many errors can you find in the initial data model?
 
 Problems and solutions for the initial world's cities data model
 
-+-----------+----------------------------+----------------------------+
-|           | Problem                    | Solution                   |
-+:==========+:===========================+:===========================+
-| 1         | City names are not unique. | To identify a city         |
-|           | There is an Athens in      | uniquely, you need to      |
-|           | Greece and the U.S. has an | specify its administrative |
-|           | Athens in Georgia,         | unit and country. Add a    |
-|           | Alabama, Ohio,             | plus sign to the crow's    |
-|           | Pennsylvania, Tennessee,   | feet between CITY and      |
-|           | and Texas.                 | ADMIN UNIT and between     |
-|           |                            | ADMIN UNIT and NATION.     |
-+-----------+----------------------------+----------------------------+
-| 2         | Administrative unit names  | To identify an             |
-|           | are not necessarily        | administrative unit        |
-|           | unique. There used to be a | uniquely, you also need to |
-|           | Georgia in the old         | know the country in which  |
-|           | U.S.S.R., and there is a   | it is found. Add a plus    |
-|           | Georgia in the U.S. There  | sign to the crow's foot    |
-|           | is no guarantee that       | between ADMIN UNIT and     |
-|           | administrative unit names  | NATION.                    |
-|           | will always be unique.     |                            |
-+-----------+----------------------------+----------------------------+
-| 3         | There is an unlabeled 1:1  | Label relationships (e.g., |
-|           | relationship between CITY  | national capital city).    |
-|           | and ADMIN UNIT and CITY    |                            |
-|           | and NATION. What do these  |                            |
-|           | mean? They are supposed to |                            |
-|           | indicate that an           |                            |
-|           | administrative unit has a  |                            |
-|           | capital, and a nation has  |                            |
-|           | a capital.                 |                            |
-+-----------+----------------------------+----------------------------+
-| 4         | The assumption is that a   | Change the relationship    |
-|           | nation has only one        | between NATION and CITY to |
-|           | capital, but there are     | 1:m. Add an attribute      |
-|           | exceptions. South Africa   | natcaptype to CITY to      |
-|           | has three capitals: Cape   | distinguish between types  |
-|           | Town (legislative),        | of capitals.               |
-|           | Pretoria (administrative), |                            |
-|           | and Bloemfontein           |                            |
-|           | (judicial). You need only  |                            |
-|           | one exception to lower the |                            |
-|           | fidelity of a data model   |                            |
-|           | significantly.             |                            |
-+-----------+----------------------------+----------------------------+
-| 5         | The assumption is that an  | Change the relationship    |
-|           | administrative unit has    | between ADMIN UNIT and     |
-|           | only one capital, but      | CITY to m:m by creating an |
-|           | there are exceptions. At   | associative entity and     |
-|           | one point, Chandigarh was  | include a distinguishing   |
-|           | the capital of two Indian  | attribute of unitcaptype.  |
-|           | states, Punjab and         |                            |
-|           | Haryana. The Indian state  |                            |
-|           | of Jammu & Kashmir has two |                            |
-|           | capitals: Jammu (summer)   |                            |
-|           | and Srinagar (winter).     |                            |
-+-----------+----------------------------+----------------------------+
-| 6         | Some values can be         | Remove the attributes      |
-|           | derived. National          | natpop and natarea from    |
-|           | population, natpop, and    | NATION.                    |
-|           | area, natarea, are the sum |                            |
-|           | of the regional            |                            |
-|           | populations, regpop, and   |                            |
-|           | areas, regarea,            |                            |
-|           | respectively. The same     |                            |
-|           | rule does not apply to     |                            |
-|           | regions and cities because |                            |
-|           | not everyone lives in a    |                            |
-|           | city.                      |                            |
-+-----------+----------------------------+----------------------------+
++--------------+-------------------------+-------------------------+
+|              | Problem                 | Solution                |
++:=============+:========================+:========================+
+| 1            | City names are not      | To identify a city      |
+|              | unique. There is an     | uniquely, you need to   |
+|              | Athens in Greece and    | specify its             |
+|              | the U.S. has an Athens  | administrative unit and |
+|              | in Georgia, Alabama,    | country. Add a plus     |
+|              | Ohio, Pennsylvania,     | sign to the crow's feet |
+|              | Tennessee, and Texas.   | between CITY and ADMIN  |
+|              |                         | UNIT and between ADMIN  |
+|              |                         | UNIT and NATION.        |
++--------------+-------------------------+-------------------------+
+| 2            | Administrative unit     | To identify an          |
+|              | names are not           | administrative unit     |
+|              | necessarily unique.     | uniquely, you also need |
+|              | There used to be a      | to know the country in  |
+|              | Georgia in the old      | which it is found. Add  |
+|              | U.S.S.R., and there is  | a plus sign to the      |
+|              | a Georgia in the U.S.   | crow's foot between     |
+|              | There is no guarantee   | ADMIN UNIT and NATION.  |
+|              | that administrative     |                         |
+|              | unit names will always  |                         |
+|              | be unique.              |                         |
++--------------+-------------------------+-------------------------+
+| 3            | There is an unlabeled   | Label relationships     |
+|              | 1:1 relationship        | (e.g., national capital |
+|              | between CITY and ADMIN  | city).                  |
+|              | UNIT and CITY and       |                         |
+|              | NATION. What do these   |                         |
+|              | mean? They are supposed |                         |
+|              | to indicate that an     |                         |
+|              | administrative unit has |                         |
+|              | a capital, and a nation |                         |
+|              | has a capital.          |                         |
++--------------+-------------------------+-------------------------+
+| 4            | The assumption is that  | Change the relationship |
+|              | a nation has only one   | between NATION and CITY |
+|              | capital, but there are  | to 1:m. Add an          |
+|              | exceptions. South       | attribute natcaptype to |
+|              | Africa has three        | CITY to distinguish     |
+|              | capitals: Cape Town     | between types of        |
+|              | (legislative), Pretoria | capitals.               |
+|              | (administrative), and   |                         |
+|              | Bloemfontein            |                         |
+|              | (judicial). You need    |                         |
+|              | only one exception to   |                         |
+|              | lower the fidelity of a |                         |
+|              | data model              |                         |
+|              | significantly.          |                         |
++--------------+-------------------------+-------------------------+
+| 5            | The assumption is that  | Change the relationship |
+|              | an administrative unit  | between ADMIN UNIT and  |
+|              | has only one capital,   | CITY to m:m by creating |
+|              | but there are           | an associative entity   |
+|              | exceptions. At one      | and include a           |
+|              | point, Chandigarh was   | distinguishing          |
+|              | the capital of two      | attribute of            |
+|              | Indian states, Punjab   | unitcaptype.            |
+|              | and Haryana. The Indian |                         |
+|              | state of Jammu &        |                         |
+|              | Kashmir has two         |                         |
+|              | capitals: Jammu         |                         |
+|              | (summer) and Srinagar   |                         |
+|              | (winter).               |                         |
++--------------+-------------------------+-------------------------+
+| 6            | Some values can be      | Remove the attributes   |
+|              | derived. National       | natpop and natarea from |
+|              | population, natpop, and | NATION.                 |
+|              | area, natarea, are the  |                         |
+|              | sum of the regional     |                         |
+|              | populations, regpop,    |                         |
+|              | and areas, regarea,     |                         |
+|              | respectively. The same  |                         |
+|              | rule does not apply to  |                         |
+|              | regions and cities      |                         |
+|              | because not everyone    |                         |
+|              | lives in a city.        |                         |
++--------------+-------------------------+-------------------------+
 
 *A revised world's cities data model*
 
@@ -750,23 +759,23 @@ end of the relationship.
 
 *Cardinality and modality options*
 
-+----------+----------+-----------------------------------------------+
-| C ardin  | Mo dal   | Meaning                                       |
-| ality    | ity      |                                               |
-+:=========+:=========+:==============================================+
-| 0,1      | Op tio   | There can be zero or one instance of the      |
-|          | nal      | entity relative to the other entity.          |
-+----------+----------+-----------------------------------------------+
-| 0,n      |          | There can be zero or many instances of the    |
-|          |          | entity relative to the other entity.          |
-+----------+----------+-----------------------------------------------+
-| 1,1      | Man dat  | There is exactly one instance of the entity   |
-|          | ory      | relative to the other entity.                 |
-+----------+----------+-----------------------------------------------+
-| 1,n      |          | The entity must have at least one and can     |
-|          |          | have many instances relative to the other     |
-|          |          | entity.                                       |
-+----------+----------+-----------------------------------------------+
++------------+------------+------------------------------------------+
+| C ardin    | Mo dal ity | Meaning                                  |
+| ality      |            |                                          |
++:===========+:===========+:=========================================+
+| 0,1        | Op tio nal | There can be zero or one instance of the |
+|            |            | entity relative to the other entity.     |
++------------+------------+------------------------------------------+
+| 0,n        |            | There can be zero or many instances of   |
+|            |            | the entity relative to the other entity. |
++------------+------------+------------------------------------------+
+| 1,1        | Man dat    | There is exactly one instance of the     |
+|            | ory        | entity relative to the other entity.     |
++------------+------------+------------------------------------------+
+| 1,n        |            | The entity must have at least one and    |
+|            |            | can have many instances relative to the  |
+|            |            | other entity.                            |
++------------+------------+------------------------------------------+
 
 The data modeling method of this text, as you now realize, has taken a
 broad approach to cardinality (is it 1:1 or 1:m?). We have not been
@@ -1380,16 +1389,17 @@ and these are now considered.
 
 *Advantages and disadvantages of meaningful identifiers*
 
-+------------------------------+-----------------------+
-| Advantages                   | Disadvantages         |
-+==============================+=======================+
-| Recognizable and             | Identifier exhaustion |
-| rememberable                 |                       |
-|                              | Reality changes       |
-| Administrative simplicity    |                       |
-|                              | Loss of               |
-|                              | meaningfulness        |
-+------------------------------+-----------------------+
++-----------------------------+----------------------+
+| Advantages                  | Disadvantages        |
++=============================+======================+
+| Recognizable and            | Identifier           |
+| rememberable                | exhaustion         |
+|                             |                      |
+| Administrative simplicity   | Reality changes      |
+|                             |                      |
+|                             | Loss of              |
+|                             | meaningfulness       |
++-----------------------------+----------------------+
 
 ### Advantages of meaningful identifiers {.unnumbered}
 
@@ -1501,41 +1511,41 @@ the characteristics of the entity (e.g., color, type of wood). A clear
 distinction between the role of identifiers and attributes creates fewer
 data management problems now and in the future.
 
-+---------------------------------------------------------------------+
-| *Vehicle identification*                                            |
-|                                                                     |
-| In most countries, every road vehicle is uniquely identified. The   |
-| Vehicle Identification Number (VIN) was originally described in ISO |
-| Standard 3779 in February 1977 and last revised in 1983. It is      |
-| designed to identify motor vehicles, trailers, motorcycles, and     |
-| mopeds. A VIN is 17 characters, A through Z and 0 through 9.        |
-|                                                                     |
-| The European Union and the United States have different             |
-| implementations of the standard. The U.S. VIN is divided into four  |
-| parts                                                               |
-|                                                                     |
-| -   World Manufacturer's Identification (WMI) - three characters    |
-|                                                                     |
-| -   Vehicle Description Section (VDS) - five characters             |
-|                                                                     |
-| -   Check digit                                                     |
-|                                                                     |
-| -   Vehicle Identification Section (VIS) - eight characters         |
-|                                                                     |
-| When decoded, a VIN specifies the country and year of manufacture;  |
-| make, model, and serial number; assembly plant; and even some       |
-| equipment specifications.                                           |
-|                                                                     |
-| VINs are normally located in several locations on a car, but the    |
-| most common places are in the door frame of the front doors, on the |
-| engine itself, around the steering wheel, or on the dash near the   |
-| window.                                                             |
-|                                                                     |
-| What do you think of the VIN as a method of vehicle identification? |
-| How do you reconcile it with the recommendation to use meaningless  |
-| identifiers? If you were consulted on a new VIN system, what would  |
-| advise?                                                             |
-+---------------------------------------------------------------------+
++--------------------------------------------------------------------+
+| *Vehicle identification*                                           |
+|                                                                    |
+| In most countries, every road vehicle is uniquely identified. The  |
+| Vehicle Identification Number (VIN) was originally described in    |
+| ISO Standard 3779 in February 1977 and last revised in 1983. It is |
+| designed to identify motor vehicles, trailers, motorcycles, and    |
+| mopeds. A VIN is 17 characters, A through Z and 0 through 9.       |
+|                                                                    |
+| The European Union and the United States have different            |
+| implementations of the standard. The U.S. VIN is divided into four |
+| parts                                                              |
+|                                                                    |
+| -   World Manufacturer's Identification (WMI) - three characters   |
+|                                                                    |
+| -   Vehicle Description Section (VDS) - five characters            |
+|                                                                    |
+| -   Check digit                                                    |
+|                                                                    |
+| -   Vehicle Identification Section (VIS) - eight characters        |
+|                                                                    |
+| When decoded, a VIN specifies the country and year of manufacture; |
+| make, model, and serial number; assembly plant; and even some      |
+| equipment specifications.                                          |
+|                                                                    |
+| VINs are normally located in several locations on a car, but the   |
+| most common places are in the door frame of the front doors, on    |
+| the engine itself, around the steering wheel, or on the dash near  |
+| the window.                                                        |
+|                                                                    |
+| What do you think of the VIN as a method of vehicle                |
+| identification? How do you reconcile it with the recommendation to |
+| use meaningless identifiers? If you were consulted on a new VIN    |
+| system, what would advise?                                         |
++--------------------------------------------------------------------+
 
 ## The seven habits of highly effective data modelers {.unnumbered}
 
@@ -1810,48 +1820,56 @@ identifier(s) and attributes of each entity.
     table for evaluating microwave ovens would have a similar layout,
     but different features would be reported (e.g., cooking quality).
 
-+------+------+------+------+------+------+------+------+
-| B    | Pr   | Ove  | S    | Tap  | FM\  | CD\  | E    |
-| rand | ice  | r    | o    | ing\ | t    | ha n | ase  |
-| and  |      | all\ | und\ | qua  | u    | d    |      |
-| m    |      | s    | q u  | lity | ning | ling | of   |
-| odel |      | core | a    |      |      |      | use  |
-|      |      |      | lity |      |      |      |      |
-+======+======+======+======+======+======+======+======+
-| Phi  | 140  | 62   | Very | Good | Very | Exc  | F    |
-| l    |      |      | good |      | good | e    | air  |
-| lips |      |      |      |      |      | l    |      |
-| SC-  |      |      |      |      |      | lent |      |
-| A    |      |      |      |      |      |      |      |
-| K103 |      |      |      |      |      |      |      |
-+------+------+------+------+------+------+------+------+
-| Pana | 215  | 55   | Good | Good | Very | Very | G    |
-| s    |      |      |      |      | good | good | ood  |
-| onic |      |      |      |      |      |      |      |
-| M    |      |      |      |      |      |      |      |
-| C-50 |      |      |      |      |      |      |      |
-+------+------+------+------+------+------+------+------+
-| Rio  | 165  | 38   | Good | Good | Fair | Very | P    |
-| G300 |      |      |      |      |      | good | oor  |
-+------+------+------+------+------+------+------+------+
++-----+-----+-----+-----+-----+-----+-----+-----+
+| B   | Pr  | Ove | S o | Tap | FM\ | CD\ | E   |
+| r   | ice | r   | u   | i   | t u | ha  | ase |
+| and |     | a   | nd\ | ng\ | n   | n d |     |
+| and |     | ll\ | q u | qua | ing | l   | of  |
+| m   |     | s   | a   | l   |     | ing | use |
+| o   |     | c   | l   | ity |     |     |     |
+| del |     | ore | ity |     |     |     |     |
++=====+=====+=====+=====+=====+=====+=====+=====+
+| Phi | 140 | 62  | V   | G   | V   | Exc | F   |
+| l   |     |     | ery | ood | ery | e l | air |
+| l   |     |     | g   |     | g   | l   |     |
+| ips |     |     | ood |     | ood | ent |     |
+| SC- |     |     |     |     |     |     |     |
+| A   |     |     |     |     |     |     |     |
+| K   |     |     |     |     |     |     |     |
+| 103 |     |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+| P   | 215 | 55  | G   | G   | V   | V   | G   |
+| ana |     |     | ood | ood | ery | ery | ood |
+| s   |     |     |     |     | g   | g   |     |
+| o   |     |     |     |     | ood | ood |     |
+| nic |     |     |     |     |     |     |     |
+| M   |     |     |     |     |     |     |     |
+| C   |     |     |     |     |     |     |     |
+| -50 |     |     |     |     |     |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+| Rio | 165 | 38  | G   | G   | F   | V   | P   |
+| G   |     |     | ood | ood | air | ery | oor |
+| 300 |     |     |     |     |     | g   |     |
+|     |     |     |     |     |     | ood |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
 
 12. Draw a data model for the following freight table taken from a mail
     order catalog.
 
-+-----------------+----------------+-----------------+-----------------+
-| Merchandise     | Regular        | Rush delivery   | Express         |
-|                 | delivery       |                 | delivery        |
-| subtotals       |                | 4--5 business   |                 |
-|                 | 7--10 days     | days            | 1--2 business   |
-|                 |                |                 | days            |
-+=================+================+=================+=================+
-| Up to \$30.00   | \$4.95         | \$9.95          | \$12.45         |
-+-----------------+----------------+-----------------+-----------------+
-| \$              | \$6.95         | \$11.95         | \$15.45         |
-| 30.01--\$65.00  |                |                 |                 |
-+-----------------+----------------+-----------------+-----------------+
-| \$6             | \$8.95         | \$13.95         | \$20.45         |
-| 5.01--\$125.00  |                |                 |                 |
-+-----------------+----------------+-----------------+-----------------+
-| \$125.01+       | \$9.95         | \$15.95         | \$25.45         |
-+-----------------+----------------+-----------------+-----------------+
++----------------+----------------+----------------+----------------+
+| Merchandise    | Regular        | Rush delivery  | Express        |
+|                | delivery       |                | delivery       |
+| subtotals      |                | 4--5 business  |                |
+|                | 7--10 days     | days           | 1--2 business  |
+|                |                |                | days           |
++================+================+================+================+
+| Up to \$30.00  | \$4.95         | \$9.95         | \$12.45        |
++----------------+----------------+----------------+----------------+
+| \$             | \$6.95         | \$11.95        | \$15.45        |
+| 30.01--\$65.00 |                |                |                |
++----------------+----------------+----------------+----------------+
+| \$6            | \$8.95         | \$13.95        | \$20.45        |
+| 5.01--\$125.00 |                |                |                |
++----------------+----------------+----------------+----------------+
+| \$125.01+      | \$9.95         | \$15.95        | \$25.45        |
++----------------+----------------+----------------+----------------+
