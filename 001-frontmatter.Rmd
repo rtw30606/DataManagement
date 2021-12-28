@@ -1,8 +1,14 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+  always_allow_html: true 
+---
 # Data Management: Databases and Organizations {.unnumbered}
 
-## *Open Edition* {.unnumbered}
+### *Open Edition* {.unnumbered}
 
-## Richard T. Watson {.unnumbered}
+### Richard T. Watson {.unnumbered}
 
 > Department of MIS
 >
