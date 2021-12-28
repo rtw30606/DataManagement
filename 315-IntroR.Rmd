@@ -47,7 +47,7 @@ It usually makes sense to store all R scripts and data in the same
 folder or directory. Thus, when you first start RStudio, create a new
 project.
 
-Project \> Create Project...
+Project > Create Project...
 
 RStudio remembers the state of each window, so when you quit and reopen,
 it will restore the windows to their prior state. You can also open an
@@ -92,37 +92,37 @@ The previous script
     lower-right window.
 
 +-----------------------------------------------------------------------+
-| Note the use of \<- for assigning values to an object and that c is   |
+| Note the use of <- for assigning values to an object and that c is   |
 | short for combine in the expression:[^intror-1]                       |
 +-----------------------------------------------------------------------+
 
 [^intror-1]: RStudio provides a keyboard command, which is Alt+-
     (Windows & Linux) or Option+- (Mac)
 
-+--------------------------------------------------------------------+
-| ### Smart editing {#smart-editing}                                 |
-|                                                                    |
-| It is not uncommon to find that a dataset you would like to use is |
-| in electronic format, but not in a format that matches your need.  |
-| In most cases, you can use a word processor, spreadsheet, or text  |
-| editor to reformat the data. In the case of the data in the        |
-| previous table, here is a recipe for reformatting the data.        |
-|                                                                    |
-| 1.  Copy each column to a word processor                           |
-|                                                                    |
-| 2.  Use the convert table to text command                          |
-|                                                                    |
-| 3.  Search and replace commas with nulls (i.e, "")                 |
-|                                                                    |
-| 4.  Search and replace returns with commas                         |
-|                                                                    |
-| 5.  Edit to put R code around numbers                              |
-|                                                                    |
-| In some cases, you might find it quicker to copy a table to a      |
-| spreadsheet, select each column within the spreadsheet, and then   |
-| proceed as described above. This technique works well when the     |
-| original table is in a pdf document.                               |
-+--------------------------------------------------------------------+
++-------------------------------------------------------------------+
+| ### Smart editing {#smart-editing}                                |
+|                                                                   |
+| It is not uncommon to find that a dataset you would like to use   |
+| is in electronic format, but not in a format that matches your    |
+| need. In most cases, you can use a word processor, spreadsheet,   |
+| or text editor to reformat the data. In the case of the data in   |
+| the previous table, here is a recipe for reformatting the data.   |
+|                                                                   |
+| 1.  Copy each column to a word processor                          |
+|                                                                   |
+| 2.  Use the convert table to text command                         |
+|                                                                   |
+| 3.  Search and replace commas with nulls (i.e, "")                |
+|                                                                   |
+| 4.  Search and replace returns with commas                        |
+|                                                                   |
+| 5.  Edit to put R code around numbers                             |
+|                                                                   |
+| In some cases, you might find it quicker to copy a table to a     |
+| spreadsheet, select each column within the spreadsheet, and then  |
+| proceed as described above. This technique works well when the    |
+| original table is in a pdf document.                              |
++-------------------------------------------------------------------+
 
 > ❓**Skill builder**
 >
@@ -138,13 +138,13 @@ The previous script
 > | 2011 | 15,573,100  | 2,187,164 |
 > | 2012 | 15,740,742  | 2,057,364 |
 >
-> \# Data in R format
+> # Data in R format
 >
-> year \<- (2007:2012)
+> year <- (2007:2012)
 >
-> sqft \<- c(14214216, 14359041, 14752886, 15341886, 15573100, 15740742)
+> sqft <- c(14214216, 14359041, 14752886, 15341886, 15573100, 15740742)
 >
-> kwh \<- c(2141705, 2108088, 2150841, 2211414, 2187164, 2057364)
+> kwh <- c(2141705, 2108088, 2150841, 2211414, 2187164, 2057364)
 
 ### Datasets {.unnumbered}
 
@@ -177,12 +177,12 @@ m <- matrix(1:12, nrow=4,ncol=3)
 m[4,3] # show the value in row 4, column 3
 ```
 
-|        | \[,1\] | \[,2\] | \[,3\] |
+|        | [,1] | [,2] | [,3] |
 |--------|--------|--------|--------|
-| \[1,\] | 1      | 5      | 9      |
-| \[2,\] | 2      | 6      | 10     |
-| \[3,\] | 3      | 7      | 11     |
-| \[4,\] | 4      | 8      | 12     |
+| [1,] | 1      | 5      | 9      |
+| [2,] | 2      | 6      | 10     |
+| [3,] | 3      | 7      | 11     |
+| [4,] | 4      | 8      | 12     |
 
 > ❓**Skill builder** Create a matrix with 6 rows and 3 columns
 > containing the numbers 1 through 18.
@@ -221,8 +221,8 @@ The most general form of data storage is a list, which is an ordered
 collection of objects. It permits you to store a variety of objects
 together under a single name. In other words, a list is an object that
 contains other objects. Retrieve a list member with a *single square
-bracket* \[\]. To reference a list member directly, use a *double square
-bracket* \[\[\]\].
+bracket* []. To reference a list member directly, use a *double square
+bracket* [[]].
 
 ```{r, list, eval = TRUE}
 l <-  list(co2,m,df)
@@ -241,7 +241,7 @@ table.
 |:-----------------|:-------|
 | EQUAL            | =='    |
 | AND              | &      |
-| OR               | \|     |
+| OR               | |     |
 | NOT              | !      |
 
 #### Object {.unnumbered}
@@ -366,7 +366,7 @@ t <- read_delim(url, delim=',')
 ```
 
 You must define the separator for data fields with the delim keyword
-(e.g., for a tab use `delim='\t')`.
+(e.g., for a tab use `delim='t')`.
 
 #### Learning about a file {.unnumbered}
 
@@ -392,7 +392,7 @@ class(t) #type of object
 ### Referencing columns {.unnumbered}
 
 Columns within a table are referenced by using the format
-tablename\$columname. This is similar to the qualification method used
+tablename$columname. This is similar to the qualification method used
 in SQL. The following code shows a few examples. It also illustrates how
 to add a new column to an existing table.
 
@@ -668,24 +668,24 @@ atmospheric CO~2~, we can also state that the observations support this
 theory. In other words, an increase in CO~2~ increases temperatures in
 Central Park.
 
-+------------------------------------------+
-| ***Pearson's product-moment              |
-| correlation***                           |
-|                                          |
-| data: m\$mean and m\$CO2                 |
-|                                          |
-| t = 3.1173, df = 51, p-value = 0.002997  |
-|                                          |
-| 95 percent confidence interval:          |
-|                                          |
-| 0.1454994 0.6049393                      |
-|                                          |
-| sample estimates:                        |
-|                                          |
-| cor                                      |
-|                                          |
-| 0.4000598                                |
-+------------------------------------------+
++-----------------------------------------+
+| ***Pearson's product-moment             |
+| correlation***                          |
+|                                         |
+| data: m$mean and m$CO2                |
+|                                         |
+| t = 3.1173, df = 51, p-value = 0.002997 |
+|                                         |
+| 95 percent confidence interval:         |
+|                                         |
+| 0.1454994 0.6049393                     |
+|                                         |
+| sample estimates:                       |
+|                                         |
+| cor                                     |
+|                                         |
+| 0.4000598                               |
++-----------------------------------------+
 
 When reporting correlation coefficients, you can you use the terms
 small, moderate, and large in accordance with the values specified in
@@ -695,7 +695,7 @@ following table.
 |:------------------------|:------------|
 | .10 - .30               | Small       |
 | .30 - .50               | Moderate    |
-| \> .50                  | Large       |
+| > .50                  | Large       |
 
 If we want to understand the nature of the relationship, we could fit a
 linear model.
@@ -705,7 +705,7 @@ mod <- lm(m$mean ~ m$CO2)
 summary(mod)
 ```
 
-The following results indicate a linear model is significant (p \< .05),
+The following results indicate a linear model is significant (p < .05),
 and it explains 14.36% (adjusted multiple R-squared) of the variation
 between temperature and atmospheric CO~2~. The linear equation is
 
@@ -758,9 +758,9 @@ For security reasons, it is not a good idea to put database access
 details in your R code. They should be hidden in a file. I recommend
 that you create a csv file within your R code folder to containing
 database access parameters. First, create a new directory or folder
-(File \> New Project \> New Directory \> Empty Project), called dbaccess
+(File > New Project > New Directory > Empty Project), called dbaccess
 for containing you database access files. Then, create a csvfile (Use
-File \> New File \> Text File) with the name weather_richardtwatson.csv
+File > New File > Text File) with the name weather_richardtwatson.csv
 in the newly created folder containing the following data:
 
 *url,dbname,user,password:*
@@ -895,7 +895,7 @@ CSV), statistical package (e.g., SAS), and XML. Data can be reshaped.
 Gathering converts a document from what is commonly called wide to
 narrow format. Spreading takes a narrow file and converts it to wide
 format. Columns within a table are referenced using the format
-tablename\$columname. R can write data to a file. A major advantage of R
+tablename$columname. R can write data to a file. A major advantage of R
 is that the basic software can be easily extended by installing
 additional packages. The dplyr packages adds functionality for data
 management and reporting. Learning R is a major challenge because of the

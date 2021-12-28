@@ -1,22 +1,20 @@
 ---
-title: "Data Management"
-author: "Richard T. Watson"
-
 bookdown::gitbook:
   css: style.css
-  config:
-    toc:
-      before: |
-        <li><a href="./">Data Management: Databases and Organizations</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
-    download: ["pdf", "epub"]
+  toc_depth: 2
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
-bookdown::epub_book: default
+bookdown::epub_book: 
+  cover_image: 'Open cover.png'
+
+bookdown::bs4_book: default
 ---
