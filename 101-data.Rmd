@@ -196,15 +196,15 @@ cycle.
 
 *Types of information systems*
 
-|      | Type of in formation system     | System's purpose                                                                                            |
-|------|:--------------------------------|:------------------------------------------------------------------------------------------------------------|
-| TPS  | Tr ansaction p rocessing system | Collect and store data from routine transactions                                                            |
-| MIS  | M anagement in formation system | Convert data from a TPS into information for planning, controlling, and managing an organization            |
-| DSS  | Decision support system         | Support managerial decision making by providing models for processing and analyzing data                    |
-| BI   | Business int elligence          | Gather, store, and analyze data to improve decision making                                                  |
-| OLAP | Online a nalytical p rocessing  | Provide a multidimensional view of data                                                                     |
-|      | Data mining                     | Use of statistical analysis and artificial intelligence techniques to identify hidden relationships in data |
-|      | Machine learning                | Using software to make decisions or recommendations traditionally made by humans.                           |
+|      | Type                          | System’s purpose                                                                                            |
+| ---- | :----------------------------- | :----------------------------------------------------------------------------------------------------------- |
+| TPS  | Transaction processing system | Collect and store data from routine transactions                                                            |
+| MIS  | Management information system | Convert data from a TPS into information for planning, controlling, and managing an organization            |
+| DSS  | Decision support system       | Support managerial decision making by providing models for processing and analyzing data                    |
+| BI   | Business intelligence         | Gather, store, and analyze data to improve decision making                                                  |
+| OLAP | Online analytical processing  | Provide a multidimensional view of data                                                                     |
+|      | Data mining                   | Use of statistical analysis and artificial intelligence techniques to identify hidden relationships in data |
+|      | Machine learning              | Using software to make decisions or recommendations traditionally made by humans.                           |
 
 ### The information systems cycle {.unnumbered}
 
@@ -667,13 +667,23 @@ firms.
 
 *Problems with organizational data management systems*
 
-| Redundancy               | Same data are stored in different systems                               |
-|:-------------------------|:------------------------------------------------------------------------|
-| Lack of data control     | Data are poorly managed                                                 |
-| Poor interface           | Data are difficult to access                                            |
-| Delays                   | There are frequently delays following requests for reports              |
-| Lack of reality          | Data management systems do not reflect the complexity of the real world |
-| Lack of data integration | Data are dispersed across different systems                             |
++-----------------+--------------------------------------------------+
+| Redundancy      | Same data are stored in different systems        |
++:================+:=================================================+
+| Lack of data    | Data are poorly managed                          |
+| control         |                                                  |
++-----------------+--------------------------------------------------+
+| Poor interface  | Data are difficult to access                     |
++-----------------+--------------------------------------------------+
+| Delays          | There are frequently delays following requests   |
+|                 | for reports                                      |
++-----------------+--------------------------------------------------+
+| Lack of reality | Data management systems do not reflect the       |
+|                 | complexity of the real world                     |
++-----------------+--------------------------------------------------+
+| Lack of data    | Data are dispersed across different systems      |
+| integration     |                                                  |
++-----------------+--------------------------------------------------+
 
 ### Redundancy {.unnumbered}
 

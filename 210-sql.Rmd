@@ -126,7 +126,7 @@ by embedding the statement in a host language. The statement specifies a
 table's name, provides details of its columns, and provides integrity
 checks. The syntax of the command is
 
-```{sql, connection = db, eval = FALSE}
+```{sql sql-create, connection = db, eval = FALSE}
 CREATE TABLE base-table
 	column-definition-block
 	[primary-key-block]
@@ -141,7 +141,7 @@ definition consists of a column name, data type, and optionally the
 specification that the column cannot contain null values. The general
 form is
 
-```{sql, connection = db, eval = FALSE}
+```{sql sql-connection, connection = db, eval = FALSE}
 (column-definition [, ...])
 ```
 
@@ -502,11 +502,18 @@ SQL Server has more than 100 additional functions.
 
 *Some examples of SQL's built-in scalar functions*
 
-| Function                                | Description                                                                        |
-|:----------------------------------------|:-----------------------------------------------------------------------------------|
-| CURRENT_DATE()                          | Retrieves the current date                                                         |
-| EXTRACT(date_time_part FROM expression) | Retrieves part of a time or date (e.g., YEAR, MONTH, DAY, HOUR, MINUTE, or SECOND) |
-| SUBSTRING(str, pos, len)                | Retrieves a string of length *len* starting at position pos from string *str*      |
++----------------------+-----------------------------------------------+
+| Function             | Description                                   |
++:=====================+:==============================================+
+| CURRENT_DATE()       | Retrieves the current date                    |
++----------------------+-----------------------------------------------+
+| EX                   | Retrieves part of a time or date (e.g., YEAR, |
+| TRACT(date_time_part | MONTH, DAY, HOUR, MINUTE, or SECOND)          |
+| FROM expression)     |                                               |
++----------------------+-----------------------------------------------+
+| SUBSTRING(str, pos,  | Retrieves a string of length *len* starting   |
+| len)                 | at position pos from string *str*             |
++----------------------+-----------------------------------------------+
 
 Some examples:
 
@@ -514,7 +521,7 @@ Some examples:
 SELECT extract(day FROM CURRENT_DATE());
 ```
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT SUBSTRING(`person first`, 1,1), `person last` FROM person;
 ```
 
@@ -528,7 +535,7 @@ know that there is a function, DATEDIFF, to determine the number of days
 between any two dates. Consult your DBMS manual to learn about other
 functions for dealing with dates and times.
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 WITH
 late AS (SELECT * FROM sale), 
 early AS (SELECT * FROM sale) 
@@ -689,11 +696,11 @@ definition, is executed only when the view is referenced in an SQL
 command. For example, the following command would enable the subquery to
 be executed and the view created:
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT * FROM stkvalue WHERE price > 10;
 ```
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT natname, stkfirm, stkprice*exchrate, stkqty, stkprice*exchrate*stkqty
 	FROM stock JOIN nation
 		ON stock.natcode = nation.natcode
@@ -779,7 +786,7 @@ in several tables. Clarity is maintained by prefixing the column name
 with the table name. The following example demonstrates qualification of
 the `natcode`, which appears in both `stock` and `nation`.
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT stkfirm, stkprice FROM stock JOIN nation
 	ON stock.natcode = nation.natcode;
 ```
@@ -790,7 +797,7 @@ Using the WITH clause, a table or view can be given a temporary name, or
 alias, that remains current for a query. Temporary names are used in a
 self-join to distinguish the copies of the table.
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 WITH
 wrk AS (SELECT * FROM emp), 
 boss AS (SELECT * FROM emp) 
@@ -809,7 +816,7 @@ also use that temporary name.
 
 The SELECT statement is by far the most interesting and challenging of
 the four DML statements. It reveals a major benefit of the relational
-model---powerful interrogation capabilities. It is challenging because
+model: powerful interrogation capabilities. It is challenging because
 mastering the power of SELECT requires considerable practice with a wide
 range of queries. The major varieties of SELECT are presented in this
 section. The SQL Playbook, which follows this chapter, reveals the full
@@ -828,7 +835,7 @@ Alternatively, we can diagram the structure of SELECT.
 
 *Structure of SELECT*
 
-![]() *MISSING*
+![](Figures/Chapter%2010/select%20structure.png)
 
 ### Product {.unnumbered}
 
@@ -853,7 +860,7 @@ with each row in `nation`.
 *Product of stock and nation*
 
 | stkcode | stkfirm             | stkprice | stkqty  | stkdiv | stkpe | natcode | natcode | natname        | exchrate |
-|:--------|:--------------------|:---------|:--------|:-------|:------|:--------|:--------|:---------------|:---------|
+|:--------|:--------------------|---------:|--------:|-------:|------:|:--------|:--------|:---------------|---------:|
 | FC      | Freedonia Copper    | 27.5     | 10529   | 1.84   | 16    | UK      | UK      | United Kingdom | 1.0000   |
 | FC      | Freedonia Copper    | 27.5     | 10529   | 1.84   | 16    | UK      | US      | United States  | 0.6700   |
 | FC      | Freedonia Copper    | 27.5     | 10529   | 1.84   | 16    | UK      | AUS     | Australia      | 0.4600   |
@@ -974,7 +981,7 @@ SELECT auscount/totalcount*100 as Percentage
 The preceding example was used to show when you might find product
 useful. You can also write the query as
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT (SELECT COUNT(*) FROM stock WHERE natcode = 'AUS')*100/
 	(SELECT COUNT(*) FROM stock) as Percentage;
 ```
@@ -986,7 +993,7 @@ operation. It creates a new table from two existing tables by matching
 on a column common to both tables. An **equijoin** is the simplest form
 of join; in this case, columns are matched on equality.
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT * FROM stock JOIN nation
 	ON stock.natcode = nation.natcode;
 ```
@@ -994,7 +1001,7 @@ SELECT * FROM stock JOIN nation
 There are other ways of expressing join that are more concise. For
 example, we can write
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT * FROM stock INNER JOIN nation USING (natcode);
 ```
 
@@ -1004,7 +1011,7 @@ column name for matching primary and foreign keys.
 A further simplification is to rely on the primary and foreign key
 definitions to determine the join condition, so we can write
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT * FROM stock NATURAL JOIN nation;
 ```
 
@@ -1016,8 +1023,8 @@ As you now realize, join can be thought of as a product with a condition
 clause. There is no reason why this condition needs to be restricted to
 equality. There could easily be another comparison operator between the
 two columns. This general version is called a theta-join because theta
-is a variable that can take any value from the set $$=, \<\>, \>, \>=,
-\<, \<=$$.
+is a variable that can take any value from the set '=', '\<', '\<=',
+'>', and '>='.
 
 As you discovered earlier, there are occasions when you need to join a
 table to itself. To do this, make two copies of the table first and give
@@ -1025,7 +1032,7 @@ each of these copies a unique name.
 
 *Find the names of employees who earn more than their boss.*
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT wrk.empfname
 	FROM emp wrk JOIN emp boss
 		ON wrk.bossno = boss.empno
@@ -1034,17 +1041,7 @@ SELECT wrk.empfname
 
 ### Outer join {.unnumbered}
 
-An inner join reports those rows where the primary and foreign keys
-match. There are also situations where you might want an **outer join**,
-which comes in three flavors as shown in the following figure.
-
-*Types of joins*
-
-![]() *MISSING*
-
-An outer join reports these matching rows and others depending on which
-form is used, as the following examples illustrate for a sample pair of
-tables.
+A traditional join, more formally known as an inner join, reports those rows where the primary and foreign keys match. An outer join reports these matching rows and others depending on which form is used, as the following examples illustrate for the sample table.
 
 | t1  |      |     | t2  |      |
 |:----|------|-----|:----|------|
@@ -1071,7 +1068,7 @@ Here is an example to illustrate the use of a left join.
 *For all brown items, report each sale. Include in the report those
 brown items that have appeared in no sales.*
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT itemname, saleno, lineqty FROM item
 	LEFT JOIN lineitem USING (itemno)
 		WHERE itemcolor = 'Brown'
@@ -1121,7 +1118,7 @@ inside another SELECT statement. Simple subqueries were used extensively
 in earlier chapters. For reference, here is a simple subquery used
 earlier:
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT stkfirm FROM stock
 	WHERE natcode IN
 		(SELECT natcode FROM nation
@@ -1137,7 +1134,7 @@ described previously:
 *Find those stocks where the quantity is greater than the average for
 that country.*
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT natname, stkfirm, stkqty FROM stock JOIN nation
 ON stock.natcode = nation.natcode
 WHERE stkqty > 
@@ -1162,13 +1159,13 @@ a column. Use COUNT(columnname) to exclude a null value in columnname.
 
 *Aggregate functions*
 
-| Function | Description                                      |
-|:---------|:-------------------------------------------------|
-| COUNT    | Counts the number of values in a column          |
-| SUM      | Sums the values in a column                      |
-| AVG      | Determines the average of the values in a column |
-| MAX      | Determines the largest value in a column         |
-| MIN      | Determines the smallest value in a column        |
+| Function | Description                                   |
+|:------|:-------------------------------------------------|
+| COUNT | Counts the number of values in a column          |
+| SUM   | Sums the values in a column                      |
+| AVG   | Determines the average of the values in a column |
+| MAX   | Determines the largest value in a column         |
+| MIN   | Determines the smallest value in a column        |
 
 ### GROUP BY and HAVING {.unnumbered}
 
@@ -1179,7 +1176,7 @@ column. For example,
 
 *Report by nation the total value of stockholdings.*
 
-```{sql, connection = db, eval = TRUE}
+```{sql, connection = db, eval = FALSE}
 SELECT natname, SUM(stkprice*stkqty*exchrate) AS total
 	FROM stock JOIN nation ON stock.natcode = nation.natcode
 		GROUP BY natname;
@@ -1402,8 +1399,8 @@ not familiar with SI,[^sql-1] it decides to implement a series of
 user-defined functions to handle the conversion. Here is the function
 for converting from kilometers to miles.
 
-[^sql-1]: The international system of units of measurement. SI is the from
-    French *Système International*.
+[^sql-1]: The international system of units of measurement. SI is the
+    from French *Système International*.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE FUNCTION km_to_miles(km REAL)
@@ -1502,11 +1499,6 @@ credit account) from account 2 (the debit account). The specific call is
 CALL transfer(1,2,100,1005);
 ```
 
-Alternatively, you can use an automatically generated pop-up window to
-run the procedure by clicking on the rightmost icon for the procedure
-under the Stored Procedures header.
-
-![]() *MISSING*
 
 > ❓*Skill builder*
 >
@@ -1769,9 +1761,15 @@ clarification where necessary.
 
 *An example of natural language processing*
 
-| English                                                 | SQL generated for MS Access                                                                                                                                                                    |
-|:--------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Which movies have won best foreign film sorted by year? | SELECT DISTINCT [Year], [Title] FROM [Awards] INNER JOIN [Movies] ON [Movies].[Movie ID] = [Awards].[Movie ID] WHERE [Category]='Best Foreign Film' and [Status]='Winner' ORDER BY [Year] ASC; |
++----------------+-----------------------------------------------------+
+| English        | SQL generated for MS Access                         |
++:===============+:====================================================+
+| Which movies   | SELECT DISTINCT \[Year\], \[Title\] FROM \[Awards\] |
+| have won best  | INNER JOIN \[Movies\] ON \[Movies\].\[Movie ID\] =  |
+| foreign film   | \[Awards\].\[Movie ID\] WHERE \[Category\]='Best    |
+| sorted by      | Foreign Film' and \[Status\]='Winner' ORDER BY      |
+| year?          | \[Year\] ASC;                                       |
++----------------+-----------------------------------------------------+
 
 ## Connectivity and ODBC {.unnumbered}
 

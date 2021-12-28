@@ -35,17 +35,17 @@ Students completing this chapter will
 
 There are three characteristics of the early decades of the twenty-first
 century: global warming, high-velocity global change, and the emerging
-power of information organizations.[^information-1] The need to create a sustainable
-civilization, the globalization of business, and the rise of China as a
-major economic power are major forces contributing to mass change.
-Organizations are undergoing large-scale restructuring as they attempt
-to reposition themselves to survive the threats and exploit the
+power of information organizations.[^information-1] The need to create a
+sustainable civilization, the globalization of business, and the rise of
+China as a major economic power are major forces contributing to mass
+change. Organizations are undergoing large-scale restructuring as they
+attempt to reposition themselves to survive the threats and exploit the
 opportunities presented by these changes.
 
-[^information-1]: In mid 2017, the five most valuable public companies were Apple,
-    Google, Amazon, Microsoft, and Facebook. Furthermore, they are
-    concentrated on the west coast of the U.S. in either Silicon Valley
-    or Seattle.
+[^information-1]: In mid 2017, the five most valuable public companies
+    were Apple, Google, Amazon, Microsoft, and Facebook. Furthermore,
+    they are concentrated on the west coast of the U.S. in either
+    Silicon Valley or Seattle.
 
 In the last few years, some very powerful and highly profitable
 information-based organizations have emerged. Apple and MS vie to be the
@@ -98,21 +98,21 @@ centuries of industrialization, atmospheric CO~2~ levels have become
 alarmingly high. We are also reaching the limits of the planet's
 resources as its population now exceeds seven billion people. As a
 result, a new class of application is emerging, such as environmental
-management systems and UPS's telematics project.[^information-2] These new systems
-will also include, for example, support for understanding environmental
-impact through simulation of energy consuming and production systems,
-optimization of energy systems, and design of low impact production and
-customer service systems. Notice that dominant issues don't disappear
-but rather aggregate in layers, so tomorrow's business will be concerned
-with survival, production, customer service, and sustainability. As a
-result, a firm's need for data never diminishes, and each new layer
-creates another set of data needs. The flood will not subside and for
-most firms the data flow will need to grow significantly to meet the new
-challenge of sustainability.
+management systems and UPS's telematics project.[^information-2] These
+new systems will also include, for example, support for understanding
+environmental impact through simulation of energy consuming and
+production systems, optimization of energy systems, and design of low
+impact production and customer service systems. Notice that dominant
+issues don't disappear but rather aggregate in layers, so tomorrow's
+business will be concerned with survival, production, customer service,
+and sustainability. As a result, a firm's need for data never
+diminishes, and each new layer creates another set of data needs. The
+flood will not subside and for most firms the data flow will need to
+grow significantly to meet the new challenge of sustainability.
 
-[^information-2]: Watson, R. T., Boudreau, M.-C., Li, S., & Levis, J. (2010).
-    Telematics at UPS: En route to Energy Informatics. MISQ Executive,
-    9(1), 1-11.
+[^information-2]: Watson, R. T., Boudreau, M.-C., Li, S., & Levis, J.
+    (2010). Telematics at UPS: En route to Energy Informatics. MISQ
+    Executive, 9(1), 1-11.
 
 A constant across all of these economies is organizational memory, or in
 its larger form, social memory. Writing and paper manufacturing
@@ -172,34 +172,31 @@ worker as a printout.
 
 *Information systems eras*
 
-+----+------------+------------+------------+------------+
-| E  | Focus      | Period     | Technology | Networks   |
-| ra |            |            |            |            |
-+====+============+============+============+============+
-| 1  | Take       | 1950s ---  | Batch      | Few data   |
-|    | i          | mid-1970s  |            | networks   |
-|    | nformation |            |            |            |
-|    | work to    |            |            |            |
-|    | the        |            |            |            |
-|    | computer   |            |            |            |
-+----+------------+------------+------------+------------+
-| 2  | Take       | Mid-1970s  | H          | Spread of  |
-|    | i          | ---        | ost/termin | private    |
-|    | nformation | mid-1990s  | al         | networks   |
-|    | work to    |            |            |            |
-|    | the        |            | Cli        |            |
-|    | employee   |            | ent/server |            |
-+----+------------+------------+------------+------------+
-| 3  | Take       | Mid-1990s  | Brow       | Public     |
-|    | i          | ---        | ser/server | networks\  |
-|    | nformation | present    |            | (Internet) |
-|    | work to    |            |            |            |
-|    | the        |            |            |            |
-|    | customer   |            |            |            |
-|    | and other  |            |            |            |
-|    | st         |            |            |            |
-|    | akeholders |            |            |            |
-+----+------------+------------+------------+------------+
++------------+------------+------------+------------+------------+
+| E ra       | Focus      | Period     | Technology | Networks   |
++============+============+============+============+============+
+| 1          | Take i     | 1950s ---  | Batch      | Few data   |
+|            | nformation | mid-1970s  |            | networks   |
+|            | work to    |            |            |            |
+|            | the        |            |            |            |
+|            | computer   |            |            |            |
++------------+------------+------------+------------+------------+
+| 2          | Take i     | ##         | H          | Spread of  |
+|            | nformation |  Mid-1970s | ost/termin | private    |
+|            | work to    |            | al         | networks   |
+|            | the        | mid-1990s  |            |            |
+|            | employee   |            | Cli        |            |
+|            |            |            | ent/server |            |
++------------+------------+------------+------------+------------+
+| 3          | Take i     | ##         | Brow       | Public     |
+|            | nformation |  Mid-1990s | ser/server | networks\  |
+|            | work to    |            |            | (Internet) |
+|            | the        | present    |            |            |
+|            | customer   |            |            |            |
+|            | and other  |            |            |            |
+|            | st         |            |            |            |
+|            | akeholders |            |            |            |
++------------+------------+------------+------------+------------+
 
 In the second era, private networks were used to take information work
 to the employee. Initially, these were time-sharing and host/terminal
@@ -283,40 +280,40 @@ which comes from unidentified sources, is rife with uncertainty.
 
 *An information hardness scale*
 
-+----------+------+------------------------------------------------+
-| Mineral  | S    | Data                                           |
-|          | cale |                                                |
-+:=========+:====:+:===============================================+
-| Talc     | 1    | Unidentified source---rumors, gossip, and      |
-|          |      | hearsay                                        |
-+----------+------+------------------------------------------------+
-| Gypsum   | 2    | Identified non-expert source---opinions,       |
-|          |      | feelings, and ideas                            |
-+----------+------+------------------------------------------------+
-| Calcite  | 3    | Identified expert source---predictions,        |
-|          |      | speculations, forecasts, and estimates         |
-+----------+------+------------------------------------------------+
-| Fluorite | 4    | Unsworn testimony---explanations,              |
-|          |      | justifications, assessments, and               |
-|          |      | interpretations                                |
-+----------+------+------------------------------------------------+
-| Apatite  | 5    | Sworn testimony---explanations,                |
-|          |      | justifications, assessments, and               |
-|          |      | interpretations                                |
-+----------+------+------------------------------------------------+
-| Or       | 6    | Budgets, formal plans                          |
-| thoclase |      |                                                |
-+----------+------+------------------------------------------------+
-| Quartz   | 7    | News reports, non-financial data, industry     |
-|          |      | statistics, and surveys                        |
-+----------+------+------------------------------------------------+
-| Topaz    | 8    | Unaudited financial statements, and government |
-|          |      | statistics                                     |
-+----------+------+------------------------------------------------+
-| Corundum | 9    | Audited financial statements                   |
-+----------+------+------------------------------------------------+
-| Diamond  | 1 0  | Stock exchange and commodity market data       |
-+----------+------+------------------------------------------------+
++---------+---------+-------------------------------------------------+
+| Mineral | S cale  | Data                                            |
++:========+:=======:+:================================================+
+| Talc    | 1       | Unidentified source---rumors, gossip, and       |
+|         |         | hearsay                                         |
++---------+---------+-------------------------------------------------+
+| Gypsum  | 2       | Identified non-expert source---opinions,        |
+|         |         | feelings, and ideas                             |
++---------+---------+-------------------------------------------------+
+| Calcite | 3       | Identified expert source---predictions,         |
+|         |         | speculations, forecasts, and estimates          |
++---------+---------+-------------------------------------------------+
+| F       | 4       | Unsworn testimony---explanations,               |
+| luorite |         | justifications, assessments, and                |
+|         |         | interpretations                                 |
++---------+---------+-------------------------------------------------+
+| Apatite | 5       | Sworn testimony---explanations, justifications, |
+|         |         | assessments, and interpretations                |
++---------+---------+-------------------------------------------------+
+| Or      | 6       | Budgets, formal plans                           |
+| t       |         |                                                 |
+| hoclase |         |                                                 |
++---------+---------+-------------------------------------------------+
+| Quartz  | 7       | News reports, non-financial data, industry      |
+|         |         | statistics, and surveys                         |
++---------+---------+-------------------------------------------------+
+| Topaz   | 8       | Unaudited financial statements, and government  |
+|         |         | statistics                                      |
++---------+---------+-------------------------------------------------+
+| C       | 9       | Audited financial statements                    |
+| orundum |         |                                                 |
++---------+---------+-------------------------------------------------+
+| Diamond | 1 0     | Stock exchange and commodity market data        |
++---------+---------+-------------------------------------------------+
 
 Audited financial statements are in the corundum zone. They are measured
 according to standard rules (known as "generally accepted accounting
@@ -363,17 +360,17 @@ communication media is shown in the following table.
 
 *Information richness and communication media*[^information-3]
 
-[^information-3]: *Daft, R. L., & Lengel, R. H. (1986). Organizational information
-    requirements, media richness, and structural design. Management
-    Science*, 32(5), 554-571.
+[^information-3]: *Daft, R. L., & Lengel, R. H. (1986). Organizational
+    information requirements, media richness, and structural design.
+    Management Science*, 32(5), 554-571.
 
-+-----------+-----------+-----------+---------------+-----------+
-| Richest   |           |           |               | Leanest   |
-+:==========+===========+===========+===============+:==========+
-| Fac       | Telephone | Personal  | Impersonal    | Numeric   |
-| e-to-face |           | documents | written       | documents |
-|           |           |           | documents     |           |
-+-----------+-----------+-----------+---------------+-----------+
++------------+------------+------------+-----------------+------------+
+| Richest    |            |            |                 | Leanest    |
++:===========+============+============+=================+:===========+
+| Fac        | Telephone  | Personal   | Impersonal      | Numeric    |
+| e-to-face  |            | documents  | written         | documents  |
+|            |            |            | documents       |            |
++------------+------------+------------+-----------------+------------+
 
 Managers seek rich information when they are trying to resolve
 equivocality or ambiguity. It means that managers cannot make sense of a
@@ -409,17 +406,12 @@ the first category.
 
 *Information classes*
 
-+----------+-----------------------------------------------------------+
-| Class    | Description                                               |
-+:=========+:==========================================================+
-| Content  | Quantity, location, and types of items                    |
-+----------+-----------------------------------------------------------+
-| Form     | Shape and composition of an object                        |
-+----------+-----------------------------------------------------------+
-| Behavior | Simulation of a physical object                           |
-+----------+-----------------------------------------------------------+
-| Action   | Creation of action (e.g., industrial robots)              |
-+----------+-----------------------------------------------------------+
+| Class    | Description                                  |
+|:---------|:---------------------------------------------|
+| Content  | Quantity, location, and types of items       |
+| Form     | Shape and composition of an object           |
+| Behavior | Simulation of a physical object              |
+| Action   | Creation of action (e.g., industrial robots) |
 
 Content information records details about quantity, location, and types
 of items. It tends to be historical in nature and is traditionally the
@@ -560,55 +552,36 @@ input information (e.g., number of service calls) can also be measured,
 and there is qualitative information to be considered. Because of time
 constraints, most managers are forced to limit their attention to 10 or
 fewer key variables singled out by the critical success factors (CSF)
-method.[^information-4] Scorekeeping information is usually fairly stable.
+method.[^information-4] Scorekeeping information is usually fairly
+stable.
 
-[^information-4]: Rockart, J.F. (1982). The changing role of the information systems
-    executive: a critical success factors perspective. *Sloan Management
-    Review*, 24(1), 3-13.
+[^information-4]: Rockart, J.F. (1982). The changing role of the
+    information systems executive: a critical success factors
+    perspective. *Sloan Management Review*, 24(1), 3-13.
 
 *Sales output tracking information*
 
-+--------------+-------------------------------------------------------+
-| Category     | Example                                               |
-+:=============+:======================================================+
-| Orders       | Number of current customers                           |
-+--------------+-------------------------------------------------------+
-|              | Average order size                                    |
-+--------------+-------------------------------------------------------+
-|              | Batting average (orders to calls)                     |
-+--------------+-------------------------------------------------------+
-| Sales volume | Dollar sales volume                                   |
-+--------------+-------------------------------------------------------+
-|              | Unit sales volume                                     |
-+--------------+-------------------------------------------------------+
-|              | By customer type                                      |
-+--------------+-------------------------------------------------------+
-|              | By product category                                   |
-+--------------+-------------------------------------------------------+
-|              | Translated to market share                            |
-+--------------+-------------------------------------------------------+
-|              | Quota achieved                                        |
-+--------------+-------------------------------------------------------+
-| Margins      | Gross margin                                          |
-+--------------+-------------------------------------------------------+
-|              | Net profit                                            |
-+--------------+-------------------------------------------------------+
-|              | By customer type                                      |
-+--------------+-------------------------------------------------------+
-|              | By product                                            |
-+--------------+-------------------------------------------------------+
-| Customers    | Number of new accounts                                |
-+--------------+-------------------------------------------------------+
-|              | Number of lost accounts                               |
-+--------------+-------------------------------------------------------+
-|              | Percentage of accounts sold                           |
-+--------------+-------------------------------------------------------+
-|              | Number of accounts overdue                            |
-+--------------+-------------------------------------------------------+
-|              | Dollar value of receivables                           |
-+--------------+-------------------------------------------------------+
-|              | Collections of receivables                            |
-+--------------+-------------------------------------------------------+
+| Category     | Example                           |
+|:-------------|:----------------------------------|
+| Orders       | Number of current customers       |
+|              | Average order size                |
+|              | Batting average (orders to calls) |
+| Sales volume | Dollar sales volume               |
+|              | Unit sales volume                 |
+|              | By customer type                  |
+|              | By product category               |
+|              | Translated to market share        |
+|              | Quota achieved                    |
+| Margins      | Gross margin                      |
+|              | Net profit                        |
+|              | By customer type                  |
+|              | By product                        |
+| Customers    | Number of new accounts            |
+|              | Number of lost accounts           |
+|              | Percentage of accounts sold       |
+|              | Number of accounts overdue        |
+|              | Dollar value of receivables       |
+|              | Collections of receivables        |
 
 ## Change information {.unnumbered}
 
@@ -837,47 +810,27 @@ to the manager.
 
 *Information delivery systems software*
 
-+-----------------------+----------------------------------------------+
-| Organizational memory | Delivery systems                             |
-+:======================+:=============================================+
-| People                | Conversation                                 |
-+-----------------------+----------------------------------------------+
-|                       | E-mail                                       |
-+-----------------------+----------------------------------------------+
-|                       | Meeting                                      |
-+-----------------------+----------------------------------------------+
-|                       | Report                                       |
-+-----------------------+----------------------------------------------+
-|                       | Groupware                                    |
-+-----------------------+----------------------------------------------+
-| Files                 | Management information system (MIS)          |
-+-----------------------+----------------------------------------------+
-| Documents             | Web browser                                  |
-+-----------------------+----------------------------------------------+
-|                       | E-mail attachment                            |
-+-----------------------+----------------------------------------------+
-| Images                | Image processing system (IPS)                |
-+-----------------------+----------------------------------------------+
-| Graphics              | Computer aided design (CAD)                  |
-+-----------------------+----------------------------------------------+
-|                       | Geographic information system (GIS)          |
-+-----------------------+----------------------------------------------+
-| Voice                 | Voice mail                                   |
-+-----------------------+----------------------------------------------+
-|                       | Voice recording system                       |
-+-----------------------+----------------------------------------------+
-| Mathematical model    | Decision support system (DSS)                |
-+-----------------------+----------------------------------------------+
-| Decisions             | Conversation                                 |
-+-----------------------+----------------------------------------------+
-|                       | E-mail                                       |
-+-----------------------+----------------------------------------------+
-|                       | Meeting                                      |
-+-----------------------+----------------------------------------------+
-|                       | Report                                       |
-+-----------------------+----------------------------------------------+
-|                       | Groupware                                    |
-+-----------------------+----------------------------------------------+
+| Organizational memory | Delivery systems                    |
+|:----------------------|:------------------------------------|
+| People                | Conversation                        |
+|                       | E-mail                              |
+|                       | Meeting                             |
+|                       | Report                              |
+|                       | Groupware                           |
+| Files                 | Management information system (MIS) |
+| Documents             | Web browser                         |
+|                       | E-mail attachment                   |
+| Images                | Image processing system (IPS)       |
+| Graphics              | Computer aided design (CAD)         |
+|                       | Geographic information system (GIS) |
+| Voice                 | Voice mail                          |
+|                       | Voice recording system              |
+| Mathematical model    | Decision support system (DSS)       |
+| Decisions             | Conversation                        |
+|                       | E-mail                              |
+|                       | Meeting                             |
+|                       | Report                              |
+|                       | Groupware                           |
 
 Software is used to move data to and from organizational memory. There
 is usually tight coupling between software and the format of an

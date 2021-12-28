@@ -1,5 +1,15 @@
 # Section 3 Advanced Data Management {.unnumbered}
 
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(DBI)
+library(RMySQL)
+db <- dbConnect(RMySQL::MySQL(),
+                  dbname = "Text",
+                  host = "www.richardtwatson.com",
+                  user="student",
+                  password = "student")
+```
+
 ```{css, echo=FALSE}
 .vignette {
   background-color: lightpink;

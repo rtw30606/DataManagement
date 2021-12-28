@@ -138,8 +138,8 @@ words as the foundation for analysis.
 
 To count the number of words in a string, simply count the number of
 times there are one or more consecutive spaces using the pattern
-"[:space:]+" and then add one, because the last word is not followed by
-a space.
+"\[:space:\]+" and then add one, because the last word is not followed
+by a space.
 
 ```{r counting, eval = TRUE}
 library(stringr)
@@ -285,7 +285,7 @@ Tables, page numbers, and graphics were removed during the conversion.
 [^textmining-2]: <http://www.berkshirehathaway.com/letters/letters.html>
 
 [^textmining-3]: The converted letters are available at
-    [<http://www.richardtwatson.com/BuffettLetters/>](http://www.terry.uga.edu/people/rwatson/)
+    [\<http://www.richardtwatson.com/BuffettLetters/>](http://www.terry.uga.edu/people/rwatson/)
     and will be extended to include earlier and more recent letters. The
     folder also contains the original letter in pdf.
 
@@ -364,7 +364,8 @@ for processing. Several steps are usually taken.
 ### Case conversion {.unnumbered}
 
 For comparison purposes, all text should be of the same case.
-Conventionally, the choice is to convert to all lower case. First convert to UTF-8.
+Conventionally, the choice is to convert to all lower case. First
+convert to UTF-8.
 
 ```{r case, eval = T, message = FALSE}
 content_transformer <- function(x) iconv(x, to='UTF-8-MAC', sub='byte')
@@ -581,7 +582,7 @@ as.matrix(tdm)
 We compute the correlation of rows to get a measure of association
 across documents.
 
-```{r correlation2, eval = T, message = FALSE}
+```{r correlation, eval = T, message = FALSE}
 # Correlation between word2 and word3, word4, and word5
 cor(c(0,1,1,1,1),c(0,0,1,1,1))
 cor(c(0,1,1,1,1),c(0,0,0,1,1))
@@ -699,13 +700,8 @@ terms discriminate among documents. It is based on the term frequency
 The inverse document frequency (idf) measures the frequency of a term
 across documents.
 
-```{=tex}
-\begin{equation}
+![](Figures/Chapter%2017/idf.png)
 
-idf_t = log_2\frac{m}{df_t}
-
-\end{equation}
-```
 > Where
 >
 > m = number of documents (i.e., rows in the case of a term-document
@@ -740,13 +736,8 @@ The weighted term frequency inverse document frequency (tf-idf or ω~td~)
 is calculated by multiplying a term's frequency (tf) by its inverse
 document frequency (idf).
 
-```{=tex}
-\begin{equation}
+![](Figures/Chapter%2017/tf-idf.png)
 
-\omega_{td} = tf_{td}\cdotp log_2\frac{m}{df_t}
-
-\end{equation}
-```
 Where
 
 tf~td~ = frequency of term *t* in document *d.*
@@ -847,8 +838,8 @@ Named-entity recognition example
 Tags are added to the corpus to denote the category of the terms
 identified.
 
-The \<organization\>Olympics\</organization\> were in
-\<place\>London\</place\> in \<date\>2012\</date\>.
+The \<organization>Olympics\</organization> were in
+\<place>London\</place> in \<date>2012\</date>.
 
 There are two approaches to developing an NER capability. A
 *rules-based* approach works well for a well-understood domain, but it

@@ -91,8 +91,7 @@ by an ordered set of line segments (a path).
 
 *Data model for political units*
 
-![](Figures/Chapter%2014/political%20unit.png)
-
+![](Figures/Chapter%2014/political%20unit.png){width="360"}
 ### SQL/MM Spatial {.unnumbered}
 
 SQL/MM, also known as ISO 13249, is an extension of SQL to handle
@@ -105,11 +104,23 @@ think of ST\_ as meaning *Spatial Type*.
 
 MySQL has data types for storing geometric data, which are:
 
-| Type       | Representation                                | Description                                                                                                           |
-|:-----------|:----------------------------------------------|:----------------------------------------------------------------------------------------------------------------------|
-| Point      | POINT(x y)                                    | A point in space (e.g., a city's center)                                                                              |
-| LineString | LINESTRING(x1 y1,x2 y2,...)                   | A sequence of points with linear interpolation between points (e.g., a road)                                          |
-| Polygon    | POLYGON((x1 y1,x2 y2,...), (x1 y1,x2 y2,...)) | A polygon (e.g., a boundary) which has a single exterior boundary and zero or more interior boundaries ( i.e., holes) |
++------------+-------------+------------------------------------------+
+| Type       | Rep         | Description                              |
+|            | resentation |                                          |
++:===========+:============+:=========================================+
+| Point      | POINT(x y)  | A point in space (e.g., a city's center) |
++------------+-------------+------------------------------------------+
+| LineString | LI          | A sequence of points with linear         |
+|            | NESTRING(x1 | interpolation between points (e.g., a    |
+|            | y1,x2       | road)                                    |
+|            | y2,...)     |                                          |
++------------+-------------+------------------------------------------+
+| Polygon    | POLYGON((x1 | A polygon (e.g., a boundary) which has a |
+|            | y1,x2       | single exterior boundary and zero or     |
+|            | y2,...),    | more interior boundaries ( i.e., holes)  |
+|            | (x1 y1,x2   |                                          |
+|            | y2,...))    |                                          |
++------------+-------------+------------------------------------------+
 
 ### Spatial Reference Support System (SRS) {.unnumbered}
 
@@ -550,10 +561,10 @@ and **unanchored time** is a block of time with no specified start
 
 *Types of temporal data*[^spatial-2]
 
-[^spatial-2]: Adapted from: Goralwalla, I. A., M. T. Özsu, and D. Szafron. 1998.
-    *An object-oriented framework for temporal data models. In Temporal
-    databases: research and practice*, edited by O. Etzion, S. Jajoda,
-    and S. Sripada. Berlin: Springer-Verlag
+[^spatial-2]: Adapted from: Goralwalla, I. A., M. T. Özsu, and D.
+    Szafron. 1998. *An object-oriented framework for temporal data
+    models. In Temporal databases: research and practice*, edited by O.
+    Etzion, S. Jajoda, and S. Sripada. Berlin: Springer-Verlag
 
 ![](Figures/Chapter%2013/temporal%20data.png)
 
@@ -562,8 +573,8 @@ Anchored time is further split into an instant or interval. An
 instant can be represented by a date, time, or timestamp data type. An
 **interval** is the time between two specified instants, and can be
 defined as a value or a range with an upper and lower bound instant. For
-example, [2011-01-01, 2011-01-23] defines an interval in 2011 beginning
-January 1 and ending January 23.
+example, \[2011-01-01, 2011-01-23\] defines an interval in 2011
+beginning January 1 and ending January 23.
 
 #### Interval {.unnumbered}
 
@@ -584,28 +595,29 @@ CREATE TABLE planet (
 
 *Planetary data*
 
-+----------+--------------------+-----------------+
-| Planet   | Rotational period\ | Orbital period\ |
-|          | (hours)            | (years)         |
-+:=========+:===================+:================+
-| Mercury  | 1407.51            | 0.24            |
-+----------+--------------------+-----------------+
-| Venus    | --5832.44^a^       | 0.62            |
-+----------+--------------------+-----------------+
-| Earth    | 23.93              | 1               |
-+----------+--------------------+-----------------+
-| Mars     | 24.62              | 1.88            |
-+----------+--------------------+-----------------+
-| Jupiter  | 9.92               | 11.86           |
-+----------+--------------------+-----------------+
-| Saturn   | 10.66              | 29.45           |
-+----------+--------------------+-----------------+
-| Uranus   | 17.24              | 84.02           |
-+----------+--------------------+-----------------+
-| Neptune  | 16.11              | 164.79          |
-+----------+--------------------+-----------------+
-| Pluto    | 153.28             | 247.92          |
-+----------+--------------------+-----------------+
++--------------+-----------------+--------------+
+| Planet       | Rotational      | Orbital      |
+|              | period\         | period\      |
+|              | (hours)         | (years)      |
++:=============+:================+:=============+
+| Mercury      | 1407.51         | 0.24         |
++--------------+-----------------+--------------+
+| Venus        | --5832.44^a^    | 0.62         |
++--------------+-----------------+--------------+
+| Earth        | 23.93           | 1            |
++--------------+-----------------+--------------+
+| Mars         | 24.62           | 1.88         |
++--------------+-----------------+--------------+
+| Jupiter      | 9.92            | 11.86        |
++--------------+-----------------+--------------+
+| Saturn       | 10.66           | 29.45        |
++--------------+-----------------+--------------+
+| Uranus       | 17.24           | 84.02        |
++--------------+-----------------+--------------+
+| Neptune      | 16.11           | 164.79       |
++--------------+-----------------+--------------+
+| Pluto        | 153.28          | 247.92       |
++--------------+-----------------+--------------+
 
 a\. Rotates in the opposite direction to the other planets
 

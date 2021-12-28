@@ -47,7 +47,7 @@ It usually makes sense to store all R scripts and data in the same
 folder or directory. Thus, when you first start RStudio, create a new
 project.
 
-Project \> Create Project...
+Project > Create Project...
 
 RStudio remembers the state of each window, so when you quit and reopen,
 it will restore the windows to their prior state. You can also open an
@@ -92,37 +92,37 @@ The previous script
     lower-right window.
 
 +-----------------------------------------------------------------------+
-| Note the use of \<- for assigning values to an object and that c is   |
-| short for combine in the expression:[^IntroR-1]                       |
+| Note the use of <- for assigning values to an object and that c is   |
+| short for combine in the expression:[^intror-1]                       |
 +-----------------------------------------------------------------------+
 
-[^IntroR-1]: RStudio provides a keyboard command, which is Alt+- (Windows &
-    Linux) or Option+- (Mac)
+[^intror-1]: RStudio provides a keyboard command, which is Alt+-
+    (Windows & Linux) or Option+- (Mac)
 
-+-----------------------------------------------------------------------+
-| ### Smart editing {#smart-editing}                                    |
-|                                                                       |
-| It is not uncommon to find that a dataset you would like to use is in |
-| electronic format, but not in a format that matches your need. In     |
-| most cases, you can use a word processor, spreadsheet, or text editor |
-| to reformat the data. In the case of the data in the previous table,  |
-| here is a recipe for reformatting the data.                           |
-|                                                                       |
-| 1.  Copy each column to a word processor                              |
-|                                                                       |
-| 2.  Use the convert table to text command                             |
-|                                                                       |
-| 3.  Search and replace commas with nulls (i.e, "")                    |
-|                                                                       |
-| 4.  Search and replace returns with commas                            |
-|                                                                       |
-| 5.  Edit to put R code around numbers                                 |
-|                                                                       |
-| In some cases, you might find it quicker to copy a table to a         |
-| spreadsheet, select each column within the spreadsheet, and then      |
-| proceed as described above. This technique works well when the        |
-| original table is in a pdf document.                                  |
-+-----------------------------------------------------------------------+
++-------------------------------------------------------------------+
+| ### Smart editing {#smart-editing}                                |
+|                                                                   |
+| It is not uncommon to find that a dataset you would like to use   |
+| is in electronic format, but not in a format that matches your    |
+| need. In most cases, you can use a word processor, spreadsheet,   |
+| or text editor to reformat the data. In the case of the data in   |
+| the previous table, here is a recipe for reformatting the data.   |
+|                                                                   |
+| 1.  Copy each column to a word processor                          |
+|                                                                   |
+| 2.  Use the convert table to text command                         |
+|                                                                   |
+| 3.  Search and replace commas with nulls (i.e, "")                |
+|                                                                   |
+| 4.  Search and replace returns with commas                        |
+|                                                                   |
+| 5.  Edit to put R code around numbers                             |
+|                                                                   |
+| In some cases, you might find it quicker to copy a table to a     |
+| spreadsheet, select each column within the spreadsheet, and then  |
+| proceed as described above. This technique works well when the    |
+| original table is in a pdf document.                              |
++-------------------------------------------------------------------+
 
 > ❓**Skill builder**
 >
@@ -138,13 +138,13 @@ The previous script
 > | 2011 | 15,573,100  | 2,187,164 |
 > | 2012 | 15,740,742  | 2,057,364 |
 >
-> \# Data in R format
+> # Data in R format
 >
-> year \<- (2007:2012)
+> year <- (2007:2012)
 >
-> sqft \<- c(14214216, 14359041, 14752886, 15341886, 15573100, 15740742)
+> sqft <- c(14214216, 14359041, 14752886, 15341886, 15573100, 15740742)
 >
-> kwh \<- c(2141705, 2108088, 2150841, 2211414, 2187164, 2057364)
+> kwh <- c(2141705, 2108088, 2150841, 2211414, 2187164, 2057364)
 
 ### Datasets {.unnumbered}
 
@@ -177,17 +177,12 @@ m <- matrix(1:12, nrow=4,ncol=3)
 m[4,3] # show the value in row 4, column 3
 ```
 
-+----------------+-----------------+-----------------+-----------------+
-|                | [,1]            | [,2]            | [,3]            |
-+================+=================+=================+=================+
-| [1,]           | 1               | 5               | 9               |
-+----------------+-----------------+-----------------+-----------------+
-| [2,]           | 2               | 6               | 10              |
-+----------------+-----------------+-----------------+-----------------+
-| [3,]           | 3               | 7               | 11              |
-+----------------+-----------------+-----------------+-----------------+
-| [4,]           | 4               | 8               | 12              |
-+----------------+-----------------+-----------------+-----------------+
+|        | [,1] | [,2] | [,3] |
+|--------|--------|--------|--------|
+| [1,] | 1      | 5      | 9      |
+| [2,] | 2      | 6      | 10     |
+| [3,] | 3      | 7      | 11     |
+| [4,] | 4      | 8      | 12     |
 
 > ❓**Skill builder** Create a matrix with 6 rows and 3 columns
 > containing the numbers 1 through 18.
@@ -246,7 +241,7 @@ table.
 |:-----------------|:-------|
 | EQUAL            | =='    |
 | AND              | &      |
-| OR               | \|     |
+| OR               | |     |
 | NOT              | !      |
 
 #### Object {.unnumbered}
@@ -320,11 +315,11 @@ df2 <-  na.omit(df)
 A major advantage of R is that the basic software can be easily extended
 by installing additional packages, of which more than 6,000 exist. You
 can consult the R package directory to help find a package that has the
-functions you need.[^IntroR-2] RStudio has an interface for finding and
+functions you need.[^intror-2] RStudio has an interface for finding and
 installing packages. See the Packages tab on RStudio's lower-right
 window.
 
-[^IntroR-2]: <http://cran.r-project.org/web/packages/>
+[^intror-2]: <http://cran.r-project.org/web/packages/>
 
 Before running a script, you need to indicate which packages it needs,
 beyond the default packages that are automatically loaded. The library
@@ -371,7 +366,7 @@ t <- read_delim(url, delim=',')
 ```
 
 You must define the separator for data fields with the delim keyword
-(e.g., for a tab use `delim='\t')`.
+(e.g., for a tab use `delim='t')`.
 
 #### Learning about a file {.unnumbered}
 
@@ -397,7 +392,7 @@ class(t) #type of object
 ### Referencing columns {.unnumbered}
 
 Columns within a table are referenced by using the format
-tablename\$columname. This is similar to the qualification method used
+tablename$columname. This is similar to the qualification method used
 in SQL. The following code shows a few examples. It also illustrates how
 to add a new column to an existing table.
 
@@ -455,13 +450,11 @@ of the new file, and the columns of the input file to be gathered (i.e.,
 the four quarters in columns 2 through 5). Note that you also need
 convert the column quarter from character to integer.
 
-*Reshaping data with gathering and spreading*
-
-![](Chapter%2015/Figures/gather-spread.png)
+*Reshaping data with gathering and
+spreading*![](Figures/Chapter%2015/gather-spread.png)
 
 ```{r, reshaping, eval = TRUE}
-library(readr)
-library(tidyr)
+library(tidyverse)
 url <-  'http://www.richardtwatson.com/data/gatherExample.csv'
 t <- read_csv(url)
 t
@@ -505,15 +498,16 @@ write_csv(t,"centralparktempsCF.txt")
 
 ### Data manipulation with dplyr {.unnumbered}
 
-The dplyr package[^IntroR-3] provides functions for efficiently manipulating
-data sets. By providing a series of basic data handling functions and
-use of the pipe function ( %\>% ),[^IntroR-4] dplyr implements a grammar for
-data manipulation. The pipe function is used to pass data from one
-operation to the next.
+The dplyr package[^intror-3] provides functions for efficiently
+manipulating data sets. By providing a series of basic data handling
+functions and use of the pipe function ( %>% ),[^intror-4] dplyr
+implements a grammar for data manipulation. The pipe function is used to
+pass data from one operation to the next.
 
-[^IntroR-3]: <http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html>
+[^intror-3]: <http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html>
 
-[^IntroR-4]: Short cuts is Ctrl+Shift+M (Windows & Linux) and Cmd+Shift+M (Mac)
+[^intror-4]: Short cuts is Ctrl+Shift+M (Windows & Linux) and
+    Cmd+Shift+M (Mac)
 
 *Some dplyr functions*
 
@@ -604,13 +598,13 @@ summarize(t, mean(CTemp))
 ### Merging files {.unnumbered}
 
 If there is a common column in two files, then they can be merged using
-dplyr.::inner_join().[^IntroR-5] This is the same as joining two tables using a
-primary key and foreign key match. In the following code, a file is
-created with the mean temperature for each year, and it is merged with
-CO~2~ readings for the same set of years.
+dplyr.::inner_join().[^intror-5] This is the same as joining two tables
+using a primary key and foreign key match. In the following code, a file
+is created with the mean temperature for each year, and it is merged
+with CO~2~ readings for the same set of years.
 
-[^IntroR-5]: This is the R notation for indicating the package (dplyr) to which
-    a method (inner_join) belongs.
+[^intror-5]: This is the R notation for indicating the package (dplyr)
+    to which a method (inner_join) belongs.
 
 ```{r, merging, eval = TRUE}
 library(dplyr)
@@ -654,12 +648,12 @@ analysis with dplyr.
 A correlation coefficient is a measure of the covariation between two
 sets of observations. In this case, we are interested in whether there
 is a statistically significant covariation between temperature and the
-level of atmospheric CO~2~.[^IntroR-6]
+level of atmospheric CO~2~.[^intror-6]
 
-[^IntroR-6]: As I continually revise data files to include the latest
+[^intror-6]: As I continually revise data files to include the latest
     observations, your answer might differ for this and other analyses.
 
-```{r, correlation, eval = TRUE}
+```{r, correlation-1, eval = TRUE}
 cor.test(m$mean, m$CO2)
 ```
 
@@ -674,23 +668,24 @@ atmospheric CO~2~, we can also state that the observations support this
 theory. In other words, an increase in CO~2~ increases temperatures in
 Central Park.
 
-+---------------------------------------------+
-| ***Pearson's product-moment correlation***  |
-|                                             |
-| data: m\$mean and m\$CO2                    |
-|                                             |
-| t = 3.1173, df = 51, p-value = 0.002997     |
-|                                             |
-| 95 percent confidence interval:             |
-|                                             |
-| 0.1454994 0.6049393                         |
-|                                             |
-| sample estimates:                           |
-|                                             |
-| cor                                         |
-|                                             |
-| 0.4000598                                   |
-+---------------------------------------------+
++-----------------------------------------+
+| ***Pearson's product-moment             |
+| correlation***                          |
+|                                         |
+| data: m$mean and m$CO2                |
+|                                         |
+| t = 3.1173, df = 51, p-value = 0.002997 |
+|                                         |
+| 95 percent confidence interval:         |
+|                                         |
+| 0.1454994 0.6049393                     |
+|                                         |
+| sample estimates:                       |
+|                                         |
+| cor                                     |
+|                                         |
+| 0.4000598                               |
++-----------------------------------------+
 
 When reporting correlation coefficients, you can you use the terms
 small, moderate, and large in accordance with the values specified in
@@ -700,7 +695,7 @@ following table.
 |:------------------------|:------------|
 | .10 - .30               | Small       |
 | .30 - .50               | Moderate    |
-| \> .50                  | Large       |
+| > .50                  | Large       |
 
 If we want to understand the nature of the relationship, we could fit a
 linear model.
@@ -710,7 +705,7 @@ mod <- lm(m$mean ~ m$CO2)
 summary(mod)
 ```
 
-The following results indicate a linear model is significant (p \< .05),
+The following results indicate a linear model is significant (p < .05),
 and it explains 14.36% (adjusted multiple R-squared) of the variation
 between temperature and atmospheric CO~2~. The linear equation is
 
@@ -725,28 +720,14 @@ As a linear model explains about 14% of the variation, this suggests
 that there might other variables that should be considered (e.g., level
 of volcanic activity) and that the relationship might not be linear.
 
-+-----+-----------------+--------------+--------------+--------------+
-|     | timestamp       | airTemp      | humidity     | p            |
-|     |                 |              |              | recipitation |
-+=====+=================+==============+==============+==============+
-| 1   | 2010-01-01      | 44           | 93           | 0            |
-|     | 03:00:00        |              |              |              |
-+-----+-----------------+--------------+--------------+--------------+
-| 2   | 2010-01-01      | 44           | 89           | 0            |
-|     | 04:00:00        |              |              |              |
-+-----+-----------------+--------------+--------------+--------------+
-| 3   | 2010-01-01      | 43           | 89           | 0            |
-|     | 05:00:00        |              |              |              |
-+-----+-----------------+--------------+--------------+--------------+
-| 4   | 2010-01-01      | 42           | 83           | 0            |
-|     | 06:00:00        |              |              |              |
-+-----+-----------------+--------------+--------------+--------------+
-| 5   | 2010-01-01      | 41           | 86           | 0            |
-|     | 07:00:00        |              |              |              |
-+-----+-----------------+--------------+--------------+--------------+
-| 6   | 2010-01-01      | 40           | 79           | 0            |
-|     | 08:00:00        |              |              |              |
-+-----+-----------------+--------------+--------------+--------------+
+|     | timestamp           | airTemp | humidity | p recipitation |
+|-----|---------------------|---------|----------|----------------|
+| 1   | 2010-01-01 03:00:00 | 44      | 93       | 0              |
+| 2   | 2010-01-01 04:00:00 | 44      | 89       | 0              |
+| 3   | 2010-01-01 05:00:00 | 43      | 89       | 0              |
+| 4   | 2010-01-01 06:00:00 | 42      | 83       | 0              |
+| 5   | 2010-01-01 07:00:00 | 41      | 86       | 0              |
+| 6   | 2010-01-01 08:00:00 | 40      | 79       | 0              |
 
 ## Database access {.unnumbered}
 
@@ -757,13 +738,13 @@ results into a R data frame.
 
 The dbConnect() function makes the connection. You specify the type of
 relational database, url, database name, userid, and password, as shown
-in the following code.[^IntroR-7]
+in the following code.[^intror-7]
 
-[^IntroR-7]: You will likely get a warning message of the form "unrecognized
-    MySQL field type 7 in column 0 imported as character," because R
-    does does recognize the first column as a timestamp. You can ignore
-    it, but later you might need to convert the column to R's timestamp
-    format.
+[^intror-7]: You will likely get a warning message of the form
+    "unrecognized MySQL field type 7 in column 0 imported as character,"
+    because R does does recognize the first column as a timestamp. You
+    can ignore it, but later you might need to convert the column to R's
+    timestamp format.
 
 ```{r, database, eval = TRUE}
 library(DBI)
@@ -777,9 +758,9 @@ For security reasons, it is not a good idea to put database access
 details in your R code. They should be hidden in a file. I recommend
 that you create a csv file within your R code folder to containing
 database access parameters. First, create a new directory or folder
-(File \> New Project \> New Directory \> Empty Project), called dbaccess
+(File > New Project > New Directory > Empty Project), called dbaccess
 for containing you database access files. Then, create a csvfile (Use
-File \> New File \> Text File) with the name weather_richardtwatson.csv
+File > New File > Text File) with the name weather_richardtwatson.csv
 in the newly created folder containing the following data:
 
 *url,dbname,user,password:*
@@ -854,8 +835,8 @@ certain you save the script, with some embedded comments, so you can
 reuse the code for a future problem. There are books that you might find
 useful to have in electronic format on your computer or tablet, and one
 of these is listed at the end of the chapter. There are, however, many
-more books,[^IntroR-8] both of a general and specialized nature. The [[*R
-Reference
+more books,[^intror-8] both of a general and specialized nature. The
+[[*R Reference
 Card*]{.ul}](http://cran.r-project.org/doc/contrib/Short-refcard.pdf) is
 handy to keep nearby when you are writing scripts. I printed and
 laminated a copy, and it's in the top drawer of my desk. A useful
@@ -864,7 +845,7 @@ online reference for common tasks, such as those covered in this
 chapter. For a quick tutorial, you can [[Try
 R]{.ul}](http://tryr.codeschool.com).
 
-[^IntroR-8]: <http://www.r-project.org/doc/bib/R-books.html>
+[^intror-8]: <http://www.r-project.org/doc/bib/R-books.html>
 
 ## R and data analytics {.unnumbered}
 
@@ -889,9 +870,9 @@ cluster computing, and text mining. [[Energy
 Informatics]{.ul}](http://energyinformatics.info) is concerned with
 optimizing energy flows, and R is an appropriate tool for analysis and
 optimization of energy systems. R is being used extensively to analyze
-climate change data.[^IntroR-9]
+climate change data.[^intror-9]
 
-[^IntroR-9]: <http://chartsgraphs.wordpress.com/category/r-climate-data-analysis-tool/>
+[^intror-9]: <http://chartsgraphs.wordpress.com/category/r-climate-data-analysis-tool/>
 
 R is also a programming language. You might find that in some
 situations, R provides a quick method for reshaping files and performing
@@ -914,7 +895,7 @@ CSV), statistical package (e.g., SAS), and XML. Data can be reshaped.
 Gathering converts a document from what is commonly called wide to
 narrow format. Spreading takes a narrow file and converts it to wide
 format. Columns within a table are referenced using the format
-tablename\$columname. R can write data to a file. A major advantage of R
+tablename$columname. R can write data to a file. A major advantage of R
 is that the basic software can be easily extended by installing
 additional packages. The dplyr packages adds functionality for data
 management and reporting. Learning R is a major challenge because of the
@@ -957,7 +938,7 @@ Wickham, H., & Grolemund, G. (2017). R for data science: O'Reilly.
 
 2.  Use the 'Import Dataset' feature of RStudio to read
     <http://www.richardtwatson.com/data/electricityprices.csv>, which
-    contains details of electricity prices for a major city.[^IntroR-10]
+    contains details of electricity prices for a major city.[^intror-10]
 
     a.  What is the maximum cost?
 
@@ -989,10 +970,10 @@ Wickham, H., & Grolemund, G. (2017). R for data science: O'Reilly.
     compute the correlation between temperature and electricity price.
     **Hint**: MySQL might return a timestamp with decimal seconds (e.g.,
     2010-01-01 01:00:00.0), and you can remove the rightmost two
-    characters using substr(),[^IntroR-11] so that the two timestamp columns
-    are of the same format and length. Also, you need to ensure that the
-    timestamps from the two data frames are of the same data type (e.g.,
-    both character).
+    characters using substr(),[^intror-11] so that the two timestamp
+    columns are of the same format and length. Also, you need to ensure
+    that the timestamps from the two data frames are of the same data
+    type (e.g., both character).
 
 5.  Get the list of failed US banks from
     [[https://explore.data.gov/Banking-Finance-and-Insurance/FDIC-Failed-Bank-List/pwaj-zn2n]{.ul}](https://explore.data.gov/Banking-Finance-and-Insurance/FDIC-Failed-Bank-List/pwaj-zn2n).
@@ -1023,7 +1004,7 @@ Wickham, H., & Grolemund, G. (2017). R for data science: O'Reilly.
 
     d.  Save the reshaped file.
 
-[^IntroR-10]: Note these prices have been transformed from the original values,
-    but are still representative of the changes over time.
+[^intror-10]: Note these prices have been transformed from the original
+    values, but are still representative of the changes over time.
 
-[^IntroR-11]: <http://www.statmethods.net/management/functions.html>
+[^intror-11]: <http://www.statmethods.net/management/functions.html>

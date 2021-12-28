@@ -127,12 +127,12 @@ In summary, the key features of a labelled property graph database are:
 **Cypher** is a combined graph description language (GDL) and graph
 query languages (GQL) for graph databases. Originally designed for the
 Neo4j graph database, it is now, in the form of Cypher 9, governed by
-the openCypher Implementation Group.[^graph-1] Cypher is used in open source
-projects (e.g., Apache Spark) and commercial products (e.g., SAP HANA).
-These actions indicate that Cypher will likely emerge as the industry
-standard language for labelled property graphs. In parallel, ISO has
-launched a project to create a new query language for graph databases
-based on openCypher and other GQLs.[^graph-2]
+the openCypher Implementation Group.[^graph-1] Cypher is used in open
+source projects (e.g., Apache Spark) and commercial products (e.g., SAP
+HANA). These actions indicate that Cypher will likely emerge as the
+industry standard language for labelled property graphs. In parallel,
+ISO has launched a project to create a new query language for graph
+databases based on openCypher and other GQLs.[^graph-2]
 
 [^graph-1]: <https://www.opencypher.org>
 
@@ -146,8 +146,8 @@ learning how to create and use a graph database. To get started:
 
 -   Watch the video titled *Neo4j in Two Minutes;*[^graph-3]
 
--   Download Neo4j Desktop[^graph-4] and follow the installation and launch
-    guide to create a project and open your browser.
+-   Download Neo4j Desktop[^graph-4] and follow the installation and
+    launch guide to create a project and open your browser.
 
 [^graph-3]: <https://neo4j.com/neo4j-graph-database/>
 
@@ -361,7 +361,7 @@ expressions.
 
 In the following code, the regular expression looks for any number of
 characters at the beginning or end of each string (.\*) with two
-consecutive 'e's ([e]{2}) in between.
+consecutive 'e's (\[e\]{2}) in between.
 
 ```{cypher, eval = FALSE}
 MATCH (s:Stock)
@@ -390,8 +390,6 @@ then use the computed value in a second query.
 *Report all firms with a PE ratio greater than the average for the
 portfolio.*
 
-![](Figures/Chapter%2012/graph-nation-stock.png)
-
 ```{cypher, eval = FALSE}
 MATCH (s:Stock)
 WITH AVG(s.PE) AS AvgPE
@@ -411,6 +409,8 @@ lists to use as a relationship name.
 
 A graphical data model for an international portfolio of stocks
 
+![](Figures/Chapter%2012/graph-nation-stock.png)
+
 In this case, a country can list many stocks. First, we need to add four
 nation nodes to the graph database, as follows:
 
@@ -422,13 +422,13 @@ RETURN count(n);
 
 ### Specifying relationships in Cypher {.unnumbered}
 
-Relationships are represented in Cypher using an arrow, either -\> or
+Relationships are represented in Cypher using an arrow, either -> or
 \<-, between two nodes. A node can have relationships to itself (i.e.,
-recursive). In Neo4j, all relationships are directed (i.e., they are -\>
+recursive). In Neo4j, all relationships are directed (i.e., they are ->
 or \<-).
 
 The nature of the relationship is defined within square brackets, such
-as [:LISTS] in the case where a nation lists a stock on its exchange:
+as \[:LISTS\] in the case where a nation lists a stock on its exchange:
 
 ```{cypher, eval = FALSE}
 (n:Nation)-[:LISTS]->(s:Stock);
@@ -825,9 +825,9 @@ types of questions: How do things spread? What are the capacities,
 costs, and control points? How do things interact, and will that
 change?[^graph-6]
 
-[^graph-6]: Needham, M., & Hodler, A. E. (2019). *Graph Algorithms: Practical
-    Examples in Apache Spark and Neo4j:* O\\'Reilly Media. ISBN:
-    1492047651
+[^graph-6]: Needham, M., & Hodler, A. E. (2019). *Graph Algorithms:
+    Practical Examples in Apache Spark and Neo4j:* O\\'Reilly Media.
+    ISBN: 1492047651
 
 ## Summary {.unnumbered}
 
@@ -864,8 +864,8 @@ Problem showcases: [[gist.neo4j.org/]{.ul}](http://gist.neo4j.org/) and
 [[neo4j.com/use-cases/]{.ul}](http://neo4j.com/use-cases/)
 
 The following exercises are based on the NorthWinds graph database,
-which you can create on your desktop by running the supplied code.[^graph-7]
-The graph model for NorthWinds follows the questions.
+which you can create on your desktop by running the supplied
+code.[^graph-7] The graph model for NorthWinds follows the questions.
 
 [^graph-7]: <https://www.richardtwatson.com/dm6e/reader/northwind.cypher>
 
@@ -924,4 +924,4 @@ The graph model for NorthWinds follows the questions.
 
 *Graph model for NorthWinds*
 
-![](Figures/Chapter%2012/graph-NorthWinds)
+![](Figures/Chapter%2012/graph-NorthWinds.png)

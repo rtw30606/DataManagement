@@ -28,26 +28,8 @@ After completing this chapter, you will
 -   realize that successful data management requires making data
     available and maintaining data integrity.
 
-![](Figures/Chapter%201/expeditioner.png)
 
-The Expeditioner has become very dependent on its databases. The
-day-to-day operations of the company would be adversely affected if the
-major operational databases were lost. Indeed, The Expeditioner may not
-be able to survive a major data loss. Recently, there have also been a
-few minor problems with the quality and confidentiality of some of the
-databases. A part-time salesperson was discovered making a query about
-staff salaries. A major order was nearly lost when it was shipped to the
-wrong address because the complete shipping address had not been entered
-when the order was taken. The sales database had been offline for 30
-minutes last Monday morning because of a disk sector read error.
-
-The Expeditioner had spent much time and money creating an extremely
-effective and efficient management system. It became clear, however,
-that more attention needed to be paid to maintaining the system and
-ensuring that high-quality data were continuously available to
-authorized users.
-
-### Introduction {.unnumbered}
+## Introduction {.unnumbered}
 
 The management of data is driven by two goals: availability and
 integrity. **Availability** deals with making data available to whomever

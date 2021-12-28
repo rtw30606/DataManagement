@@ -182,21 +182,35 @@ The following table shows some of the data types supported by most relational da
 
 *Some allowable data types*
 
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Category  | Data type                | Description                                                                                                           |
-|:----------|:-------------------------|:----------------------------------------------------------------------------------------------------------------------|
++:==========+:=========================+:======================================================================================================================+
 | Numeric   | SMALLINT                 | A 15-bit signed binary value                                                                                          |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | INTEGER                  | A 31-bit signed binary value                                                                                          |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | FLOAT(p)                 | A scientific format number of p binary digits precision                                                               |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | DECIMAL(p,q)             | A packed decimal number of p digits total length; q decimal spaces to the right of the decimal point may be specified |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | String    | CHAR(n)                  | A fixed-length string of n characters                                                                                 |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | VARCHAR(n)               | A variable-length string of up to n characters                                                                        |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | TEXT                     | A variable-length string of up to 65,535 characters                                                                   |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Date/time | DATE                     | Date in the form yyyymmdd                                                                                             |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | TIME                     | Time in the form hhmmss                                                                                               |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | DATETIME                 | A combination of date and time in the form yyyymmdd hhmmss                                                            |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | TIMESTAMP                | A combination of date and time to the nearest microsecond                                                             |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |           | TIMESTAMP WITH TIME ZONE | Same as timestamp, with the addition of an offset from universal time coordinated (UTC) of the specified time         |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Logical   | BOOLEAN                  | A set of truth values: TRUE, FALSE, or UNKNOWN                                                                        |
++-----------+--------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
 The CHAR and VARCHAR data types are similar but differ in the way character strings are stored and retrieved. Both can be up to 255 characters long. The length of a CHAR column is fixed to the declared length. When values are stored, they are right-padded with spaces to the specified length. When CHAR values are retrieved, trailing spaces are removed. VARCHAR columns store variable-length strings and use only as many characters as are needed to store the string. Values are not padded; instead, trailing spaces are removed. In this book, we use VARCHAR to define most character strings, unless they are short (less than five characters is a good rule-of-thumb).
 
