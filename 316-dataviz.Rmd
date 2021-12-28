@@ -503,7 +503,6 @@ ggplot(da,aes(productLine,productScale)) +
   xlab('Line') + ylab('Scale')
 ```
 
-
 ## Geographic data {.unnumbered}
 
 The ggmap package supports a variety of mapping systems, including
@@ -540,6 +539,8 @@ ggmap(map) +
   labs(x = 'Longitude', y = 'Latitude') + 
   ggtitle('US offices')
 ```
+
+![](Figures/Chapter%2016/google-map.png)
 
 > ❓**Skill builder**
 >
