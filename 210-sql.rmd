@@ -2096,5 +2096,4 @@ Reading, MA: Addison-Wesley.
     the MSRP of all products in a product line by a specified
     percentage. Provide before and after queries to show your procedure
     works.
-    
-    fix
+
