@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 The Many-to-Many Relationship | DataManagement.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 The Many-to-Many Relationship | DataManagement.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 The Many-to-Many Relationship | DataManagement.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-one-to-many-relationship.html"/>
+<link rel="next" href="one-to-one-and-recursive-relationships.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="data-management-databases-and-organizations.html"><a href="data-management-databases-and-organizations.html"><i class="fa fa-check"></i>Data Management: Databases and Organizations</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#supplements"><i class="fa fa-check"></i>Supplements</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1-the-managerial-perspective.html"><a href="section-1-the-managerial-perspective.html"><i class="fa fa-check"></i>Section 1 The Managerial Perspective</a></li>
+<li class="chapter" data-level="1" data-path="managing-data.html"><a href="managing-data.html"><i class="fa fa-check"></i><b>1</b> Managing Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#individual-data-management"><i class="fa fa-check"></i>Individual data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#organizational-data-management"><i class="fa fa-check"></i>Organizational data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#problems-with-data-management-systems"><i class="fa fa-check"></i>Problems with data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#a-brief-history-of-data-management-systems"><i class="fa fa-check"></i>A brief history of data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#data-information-and-knowledge"><i class="fa fa-check"></i>Data, information, and knowledge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#the-challenge"><i class="fa fa-check"></i>The challenge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="information.html"><a href="information.html"><i class="fa fa-check"></i><b>2</b> Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#learning-objectives-1"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-historical-perspective"><i class="fa fa-check"></i>A historical perspective</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-brief-history-of-information-systems"><i class="fa fa-check"></i>A brief history of information systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-characteristics"><i class="fa fa-check"></i>Information characteristics</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-hardness"><i class="fa fa-check"></i>Information hardness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-richness"><i class="fa fa-check"></i>Information richness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-classes"><i class="fa fa-check"></i>Information classes</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-organizational-change"><i class="fa fa-check"></i>Information and organizational change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#goal-setting-information"><i class="fa fa-check"></i>Goal-setting information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#gap-information"><i class="fa fa-check"></i>Gap information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#change-information"><i class="fa fa-check"></i>Change information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#problem-solution"><i class="fa fa-check"></i>Problem solution</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-as-a-means-of-change"><i class="fa fa-check"></i>Information as a means of change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#marketing"><i class="fa fa-check"></i>Marketing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#customer-service"><i class="fa fa-check"></i>Customer Service</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#empowerment"><i class="fa fa-check"></i>Empowerment</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-managerial-work"><i class="fa fa-check"></i>Information and managerial work</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-information-requirements"><i class="fa fa-check"></i>Managers’ information requirements</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-needs-for-information-vary-accordingly-with-responsibilities"><i class="fa fa-check"></i>Managers’ needs for information vary accordingly with responsibilities</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-satisficing"><i class="fa fa-check"></i>Information satisficing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-delivery-systems"><i class="fa fa-check"></i>Information delivery systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-integration"><i class="fa fa-check"></i>Information integration</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#knowledge-1"><i class="fa fa-check"></i>Knowledge</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#references-and-additional-readings-1"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-2-data-modeling-and-sql.html"><a href="section-2-data-modeling-and-sql.html"><i class="fa fa-check"></i>Section 2 Data Modeling and SQL</a></li>
+<li class="chapter" data-level="3" data-path="the-single-entity.html"><a href="the-single-entity.html"><i class="fa fa-check"></i><b>3</b> The Single Entity</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#the-relational-model"><i class="fa fa-check"></i>The relational model</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#modeling-a-single-entity-database"><i class="fa fa-check"></i>Modeling a single-entity database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#creating-a-single-table-database"><i class="fa fa-check"></i>Creating a single-table database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html"><i class="fa fa-check"></i><b>4</b> The One-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#relationships"><i class="fa fa-check"></i>Relationships</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#creating-a-database-with-a-1m-relationship"><i class="fa fa-check"></i>Creating a database with a 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#querying-a-two-table-database"><i class="fa fa-check"></i>Querying a two-table database</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#key-terms-and-concepts-1"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html"><i class="fa fa-check"></i><b>5</b> The Many-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#the-many-to-many-relationship-1"><i class="fa fa-check"></i>The many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#creating-a-relational-database-with-an-mm-relationship"><i class="fa fa-check"></i>Creating a relational database with an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#querying-an-mm-relationship"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#key-terms-and-concepts-2"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html"><i class="fa fa-check"></i><b>6</b> One-to-One and Recursive Relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#learning-objectives-5"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-one-to-one-relationship"><i class="fa fa-check"></i>Querying a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-1m-relationship"><i class="fa fa-check"></i>Querying a recursive 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Querying a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Modeling a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#key-terms-and-concepts-3"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-modeling.html"><a href="data-modeling.html"><i class="fa fa-check"></i><b>7</b> Data Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#modeling"><i class="fa fa-check"></i>Modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-1"><i class="fa fa-check"></i>Data modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-building-blocks"><i class="fa fa-check"></i>The building blocks</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-model-quality"><i class="fa fa-check"></i>Data model quality</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#quality-improvement"><i class="fa fa-check"></i>Quality improvement</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#meaningful-identifiers"><i class="fa fa-check"></i>Meaningful identifiers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-seven-habits-of-highly-effective-data-modelers"><i class="fa fa-check"></i>The seven habits of highly effective data modelers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#summary-7"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#key-terms-and-concepts-4"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#references-and-additional-readings-2"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html"><i class="fa fa-check"></i>Reference 1: Basic Structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#one-entity"><i class="fa fa-check"></i>One entity</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#two-entities"><i class="fa fa-check"></i>Two entities</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#another-entitys-identifier-as-part-of-the-identifier"><i class="fa fa-check"></i>Another entity’s identifier as part of the identifier</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html"><i class="fa fa-check"></i><b>8</b> Normalization and Other Data Modeling Methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normalization"><i class="fa fa-check"></i>Normalization</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#other-data-modeling-methods"><i class="fa fa-check"></i>Other data modeling methods</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#summary-8"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#key-terms-and-concepts-5"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#references-and-additional-readings-3"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html"><i class="fa fa-check"></i><b>9</b> The Relational Model and Relational Algebra</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#data-structures"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#integrity-rules"><i class="fa fa-check"></i>Integrity rules</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#manipulation-languages"><i class="fa fa-check"></i>Manipulation languages</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-primitive-set-of-relational-operators"><i class="fa fa-check"></i>A primitive set of relational operators</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-fully-relational-database"><i class="fa fa-check"></i>A fully relational database</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#summary-9"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#key-terms-and-concepts-6"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#references-and-additional-readings-4"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>10</b> SQL</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#introduction-3"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-definition"><i class="fa fa-check"></i>Data definition</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#keys"><i class="fa fa-check"></i>Keys</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#indexes"><i class="fa fa-check"></i>Indexes</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-table"><i class="fa fa-check"></i>Creating a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#constraints"><i class="fa fa-check"></i>Constraints</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#collation-sequence"><i class="fa fa-check"></i>Collation sequence</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#scalar-functions"><i class="fa fa-check"></i>Scalar functions</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#formatting"><i class="fa fa-check"></i>Formatting</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#altering-a-table"><i class="fa fa-check"></i>Altering a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-table"><i class="fa fa-check"></i>Dropping a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-view"><i class="fa fa-check"></i>Creating a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-view"><i class="fa fa-check"></i>Dropping a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-an-index"><i class="fa fa-check"></i>Creating an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-an-index"><i class="fa fa-check"></i>Dropping an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-manipulation"><i class="fa fa-check"></i>Data manipulation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#qualifying-column-names"><i class="fa fa-check"></i>Qualifying column names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#temporary-names"><i class="fa fa-check"></i>Temporary names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#select"><i class="fa fa-check"></i>SELECT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#insert"><i class="fa fa-check"></i>INSERT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#update-1"><i class="fa fa-check"></i>UPDATE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-1"><i class="fa fa-check"></i>DELETE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-routines"><i class="fa fa-check"></i>SQL routines</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-function"><i class="fa fa-check"></i>SQL function</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-procedure"><i class="fa fa-check"></i>SQL procedure</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#trigger"><i class="fa fa-check"></i>Trigger</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#nullsmuch-ado-about-missing-information"><i class="fa fa-check"></i>Nulls—much ado about missing information</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#security"><i class="fa fa-check"></i>Security</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#grant"><i class="fa fa-check"></i>GRANT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#revoke"><i class="fa fa-check"></i>REVOKE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-system-catalog"><i class="fa fa-check"></i>The system catalog</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#natural-language-processing"><i class="fa fa-check"></i>Natural language processing</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#connectivity-and-odbc"><i class="fa fa-check"></i>Connectivity and ODBC</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#open-database-connectivity-odbc"><i class="fa fa-check"></i>Open database connectivity (ODBC)</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#embedded-sql"><i class="fa fa-check"></i>Embedded SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#user-defined-types"><i class="fa fa-check"></i>User-defined types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-future-of-sql"><i class="fa fa-check"></i>The future of SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#summary-10"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#key-terms-and-concepts-7"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#references-and-additional-readings-5"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#exercises-9"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html"><i class="fa fa-check"></i>Reference 2: SQL Playbook</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html#the-power-of-sql"><i class="fa fa-check"></i>The power of SQL</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3-advanced-data-management.html"><a href="section-3-advanced-data-management.html"><i class="fa fa-check"></i>Section 3 Advanced Data Management</a></li>
+<li class="chapter" data-level="11" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html"><i class="fa fa-check"></i><b>11</b> Spatial and Temporal Data Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#learning-objectives-10"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#introduction-4"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-spatial-data"><i class="fa fa-check"></i>Managing spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-temporal-data"><i class="fa fa-check"></i>Managing temporal data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#summary-11"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#key-terms-and-concepts-8"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#references-and-additional-readings-6"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#exercises-10"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graph-databases.html"><a href="graph-databases.html"><i class="fa fa-check"></i><b>12</b> Graph Databases</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-graph-database"><i class="fa fa-check"></i>A graph database</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#neo4j-a-graph-database-implementation"><i class="fa fa-check"></i>Neo4j – a graph database implementation</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-single-node"><i class="fa fa-check"></i>A single node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-a-node"><i class="fa fa-check"></i>Querying a node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-relationship-between-nodes"><i class="fa fa-check"></i>A relationship between nodes</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-an-mm-relationship-1"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#recursive-relationships"><i class="fa fa-check"></i>Recursive relationships</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#summary-12"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#key-terms-and-concepts-9"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#references-and-additional-resources"><i class="fa fa-check"></i>References and additional resources</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#exercises-11"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html"><i class="fa fa-check"></i><b>13</b> XML: Managing Data Exchange</a>
+<ul>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#sgml"><i class="fa fa-check"></i>SGML</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml"><i class="fa fa-check"></i>XML</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html"><i class="fa fa-check"></i><b>14</b> Organizational Intelligence</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#the-data-warehouse"><i class="fa fa-check"></i>The data warehouse</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exploiting-data-stores"><i class="fa fa-check"></i>Exploiting data stores</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#olap"><i class="fa fa-check"></i>OLAP</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining"><i class="fa fa-check"></i>Data mining</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#summary-14"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#key-terms-and-concepts-11"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#references-and-additional-readings-8"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exercises-13"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>15</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-r-project"><i class="fa fa-check"></i>The R project</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#database-access"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#timestamps"><i class="fa fa-check"></i>Timestamps</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#excel-files"><i class="fa fa-check"></i>Excel files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-and-data-analytics"><i class="fa fa-check"></i>R and data analytics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#summary-15"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#key-terms-and-concepts-12"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#exercises-14"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="data-visualization-1.html"><a href="data-visualization-1.html"><i class="fa fa-check"></i><b>16</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#visual-processing"><i class="fa fa-check"></i>Visual processing</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#ggplot2"><i class="fa fa-check"></i>ggplot2</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#some-recipes"><i class="fa fa-check"></i>Some recipes</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#geographic-data"><i class="fa fa-check"></i>Geographic data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#r-resources-1"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#summary-16"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#references-1"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#exercises-15"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html"><i class="fa fa-check"></i><b>17</b> Text mining &amp; natural language processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#the-nature-of-language"><i class="fa fa-check"></i>The nature of language</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#levels-of-processing"><i class="fa fa-check"></i>Levels of processing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#tokenization"><i class="fa fa-check"></i>Tokenization</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#sentiment-analysis"><i class="fa fa-check"></i>Sentiment analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#corpus"><i class="fa fa-check"></i>Corpus</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#readability"><i class="fa fa-check"></i>Readability</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#preprocessing"><i class="fa fa-check"></i>Preprocessing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#word-frequency-analysis"><i class="fa fa-check"></i>Word frequency analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#co-occurrence-and-association"><i class="fa fa-check"></i>Co-occurrence and association</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#cluster-analysis"><i class="fa fa-check"></i>Cluster analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#topic-modeling"><i class="fa fa-check"></i>Topic modeling</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#named-entity-recognition-ner"><i class="fa fa-check"></i>Named-entity recognition (NER)</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#future-developments"><i class="fa fa-check"></i>Future developments</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#summary-17"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#key-terms-and-concepts-13"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#references-2"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#exercises-16"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="cluster-computing.html"><a href="cluster-computing.html"><i class="fa fa-check"></i><b>18</b> Cluster computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#a-paradigm-shift"><i class="fa fa-check"></i>A paradigm shift</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-drivers"><i class="fa fa-check"></i>The drivers</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-bottleneck-and-its-solution"><i class="fa fa-check"></i>The bottleneck and its solution</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#lambda-architecture"><i class="fa fa-check"></i>Lambda Architecture</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#hadoop"><i class="fa fa-check"></i>Hadoop</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#spark"><i class="fa fa-check"></i>Spark</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#summary-18"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="dashboards.html"><a href="dashboards.html"><i class="fa fa-check"></i><b>19</b> Dashboards</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#the-value-of-dashboards"><i class="fa fa-check"></i>The value of dashboards</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#summary-19"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-4-managing-organizational-memory.html"><a href="section-4-managing-organizational-memory.html"><i class="fa fa-check"></i>Section 4 Managing Organizational Memory</a></li>
+<li class="chapter" data-level="20" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html"><i class="fa fa-check"></i><b>20</b> Data Structure and Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-data-deluge"><i class="fa fa-check"></i>The data deluge</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-structures-1"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-coding-standards"><i class="fa fa-check"></i>Data coding standards</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-storage-devices"><i class="fa fa-check"></i>Data storage devices</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-compression"><i class="fa fa-check"></i>Data compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#summary-20"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#key-terms-and-concepts-15"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#exercises-19"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html"><i class="fa fa-check"></i><b>21</b> Data Processing Architectures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database"><i class="fa fa-check"></i>Distributed database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#summary-21"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#key-terms-and-concepts-16"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#references-and-additional-readings-10"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#exercises-20"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="sql-and-java.html"><a href="sql-and-java.html"><i class="fa fa-check"></i><b>22</b> SQL and Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#jdbc"><i class="fa fa-check"></i>JDBC</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#java-ee"><i class="fa fa-check"></i>Java EE</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#using-sql-within-java"><i class="fa fa-check"></i>Using SQL within Java</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#javaserver-pages-jsp"><i class="fa fa-check"></i>JavaServer Pages (JSP)</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#summary-22"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#key-terms-and-concepts-17"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#references-and-additional-readings-11"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#exercises-21"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="data-integrity.html"><a href="data-integrity.html"><i class="fa fa-check"></i><b>23</b> Data Integrity</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#introduction-9"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-management"><i class="fa fa-check"></i>Transaction management</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#protecting-existence"><i class="fa fa-check"></i>Protecting existence</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#maintaining-data-quality"><i class="fa fa-check"></i>Maintaining data quality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#ensuring-confidentiality"><i class="fa fa-check"></i>Ensuring confidentiality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#summary-23"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#key-terms-and-concepts-18"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#exercises-22"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="data-administration.html"><a href="data-administration.html"><i class="fa fa-check"></i><b>24</b> Data Administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#introduction-10"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#the-chief-data-officer"><i class="fa fa-check"></i>The Chief Data Officer</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#management-of-the-database-environment"><i class="fa fa-check"></i>Management of the database environment</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-1"><i class="fa fa-check"></i>Data administration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-management-systems-dbmss"><i class="fa fa-check"></i>Database management systems (DBMSs)</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#groupware-1"><i class="fa fa-check"></i>Groupware</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-integration"><i class="fa fa-check"></i>Data integration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#conclusion-9"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#summary-24"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#key-terms-and-concepts-19"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#references-and-additional-readings-12"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#exercises-23"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-many-to-many-relationship" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> The Many-to-Many Relationship</h1>
+<blockquote>
+<p><em>Fearful concatenation of circumstances.</em></p>
+<p>Daniel Webster</p>
+</blockquote>
+<div id="learning-objectives-4" class="section level3 unnumbered">
+<h3>Learning objectives</h3>
+<p>Students completing this chapter will be able to</p>
+<ul>
+<li><p>model a many-to-many relationship between two entities;</p></li>
+<li><p>define a database with a many-to-many relationship;</p></li>
+<li><p>write queries for a database with a many-to-many relationship.</p></li>
+</ul>
+</div>
+<div id="the-many-to-many-relationship-1" class="section level2 unnumbered">
+<h2>The many-to-many relationship</h2>
+<p>Consider the case when items are sold. We can immediately identify two entities: SALE and ITEM. A sale can contain many items, and an item can appear in many sales. We are not saying the same item can be sold many times, but the particular type of item (e.g., a compass) can be sold many times; thus we have a many-to-many (m:m) relationship between SALE and ITEM. When we have an m:m relationship, we create a third entity to link the entities through two 1:m relationships. Usually, it is fairly easy to name this third entity. In this case, this third entity, typically known as an <strong>associative entity</strong>, is called LINE ITEM. A typical old style sales form lists the items purchased by a customer. Each of the lines appearing on the order form is generally known in retailing as a line item, which links an item and a sale.</p>
+<p><em>A sales form</em> <img src="Figures/Chapter%205/sales%20form.png" /></p>
+<p>The representation of this m:m relationship is shown. We say many-to-many because there are two relationships—an ITEM is related to many SALEs, and a SALE is related to many ITEMs. This data model can also be read as: “a sale has many line items, but a line item refers to only one sale. Similarly, an item can appear as many line items, but a line item references only one item.”</p>
+<p><em>An m:m relationship between SALE and ITEM</em></p>
+<p><img src="Figures/Chapter%205/sale-item.png" width="566" /></p>
+<p>The entity SALE is identified by <em>saleno</em> and has the attributes <em>saledate</em> and <em>saletext</em> (a brief comment on the customer—soft information). LINEITEM is partially identified by <em>lineno</em> and has attributes <em>lineqty</em> (the number of units sold) and <em>lineprice</em> (the unit selling price for this sale). ITEM is identified by <em>itemno</em> and has attributes <em>itemname</em>, <em>itemtype</em> (e.g., clothing, equipment, navigation aids, furniture, and so on), and <em>itemcolor</em>.</p>
+<p>If you look carefully at the m:m relationship figure, you will notice that there is a plus sign (+) above the crow’s foot at the “many” end of the 1:m relationship between SALE and LINEITEM. This plus sign provides information about the identifier of LINEITEM. As you know, every entity must have a unique identifier. A sales order is a series of rows or lines, and <em>lineno</em> is unique only within a particular order. If we just use <em>lineno</em> as the identifier, we cannot guarantee that every instance of LINEITEM is unique. If we use <em>saleno</em> and <em>lineno</em> together, however, we have a unique identifier for every instance of LINEITEM. Identifier <em>saleno</em> is unique for every sale, and <em>lineno</em> is unique within any sale. The plus indicates that LINEITEM’s unique identifier is the concatenation of <em>saleno</em> and <em>lineno</em>. The order of concatenation does not matter.</p>
+<p>LINEITEM is termed a <strong>weak entity</strong> because it relies on another entity for its existence and identification.</p>
+<div id="mysql-workbench-1" class="section level3 unnumbered">
+<h3>MySQL Workbench</h3>
+<p>Workbench automatically creates an associative entity for an m:m relationship and populates it with a composite primary key based on concatenating the primary keys of the two entities forming the m:m relationship. <em>First</em>, draw the two tables and enter their respective primary keys and columns. <em>Second</em>, select the m:m symbol and connect the two tables through clicking on one and dragging to the second and releasing. You can then modify the associative entity as required, such as changing its primary key. The capability to automatically create an associative entity for an m:m relationship is a very useful Workbench feature.</p>
+<p><em>An m:m relationship with Workbench</em></p>
+<p><img src="Figures/Chapter%205/m-m-wb.png" /></p>
+<p>Workbench distinguishes between two types of relationships. An <strong>identifying relationship</strong>, shown by a solid line, is used when the entity at the many end of the relationship is a weak entity and needs the identifier of the one end of the relationship to uniquely identify an instance of the relationship, as in LINEITEM. An identifying relationship corresponds to the + sign associated with a crow’s foot. The other type of relationship, shown by a dashed line, is known as a <em>non-identifying</em> relationship. The mapping between the type of relationship and the representation (i.e., dashed or solid line) is arbitrary and thus not always easily recalled. We think that using a + on the crow’s foot is a better way of denoting weak entities.</p>
+<p>When the relationship between SALE and ITEM is drawn in Workbench, as shown in the following figure, there are two things to notice. <em>First</em>, the table, lineitem, maps the associative entity generated for the m:m relationship. <em>Second</em>, lineitem has an identifying relationship with sale and a non-identifying relationship with item.</p>
+<p><em>An m:m relationship between SALE and ITEM in MySQL Workbench</em></p>
+<p><img src="Figures/Chapter%205/sale-item-wb.png" /></p>
+</div>
+<div id="why-did-we-create-a-third-entity" class="section level3 unnumbered">
+<h3>Why did we create a third entity?</h3>
+<p>When we have an m:m relationship, we create an associative entity to store data about the relationship. In this case, we have to store data about the items sold. We cannot store the data with SALE because a sale can have many items, and an instance of an entity stores only single-value facts. Similarly, we cannot store data with ITEM because an item can appear in many sales. Since we cannot store data in SALE or ITEM, we must create another entity to store data about the m:m relationship.</p>
+<p>You might find it useful to think of the m:m relationship as two 1:m relationships. An item can appear on many line item listings, and a line item entry refers to only one item. A sale has many line items, and each line item entry refers to only one sale.</p>
+<blockquote>
+<p><strong><em>Social Security number is notunique!</em></strong></p>
+<p>Two girls named Sarah Lee Ferguson were born on May 3, 1959. The U.S. government considered them one and the same and issued both the same Social Security number (SSN), a nine-digit identifier of U.S. residents. Now Sarah Lee Ferguson Boles and Sarah Lee Ferguson Johnson share the same SSN.<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a></p>
+<p>Mrs. Boles became aware of her SSN twin in 1987 when the Internal Revenue Service claimed there was a discrepancy in her reported income Because SSN is widely used as an attribute or identifier in many computer systems, Mrs. Boles encountered other incidents of mistaken identity. Some of Mrs. Johnson’s purchases appeared on Mrs. Boles’ credit reports.</p>
+<p>In late 1989, the Social Security Administration notified Mrs. Boles that her original number was given to her in error and she had to provide evidence of her age, identity, and citizenship to get a new number. When Mrs. Boles got her new SSN, it is likely she had to also get a new driver’s license and establish a new credit history.</p>
+</blockquote>
+</div>
+</div>
+<div id="creating-a-relational-database-with-an-mm-relationship" class="section level2 unnumbered">
+<h2>Creating a relational database with an m:m relationship</h2>
+<p>As before, each entity becomes a table in a relational database, the entity name becomes the table name, each attribute becomes a column, and each identifier becomes a primary key. Remember, a 1:m relationship is mapped by adding a column to the entity of the many end of the relationship. The new column contains the identifier of the one end of the relationship.</p>
+<p>Conversion of the foregoing data model results in the three tables following. Note the one-to-one correspondence between attributes and columns for sale and item. Observe the lineitem has two additional columns, saleno and itemno. Both of these columns are foreign keys in lineitem (remember the use of italics to signify foreign keys). Two foreign keys are required to record the two 1:m relationships. Notice in lineitem that saleno is both part of the primary key and a foreign key.</p>
+<p><em>Tables sale, lineitem, and item</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><u>saleno</u></th>
+<th align="left">saledate</th>
+<th align="left">saletext</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">2020-01-15</td>
+<td align="left">Scruffy Australian—called himself Bruce.</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2020-01-15</td>
+<td align="left">Man. Rather fond of hats.</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">2020-01-15</td>
+<td align="left">Woman. Planning to row Atlantic—lengthwise!</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">2020-01-15</td>
+<td align="left">Man. Trip to New York—thinks NY is a jungle!</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">2020-01-16</td>
+<td align="left">Expedition leader for African safari.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><u>lineno</u></th>
+<th align="right">lineqty</th>
+<th align="right">lineprice</th>
+<th align="right"><u><em>saleno</em></u></th>
+<th align="right"><em>itemno</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="right">4.50</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="right">25.00</td>
+<td align="right">2</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">1</td>
+<td align="right">20.00</td>
+<td align="right">2</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="right">1</td>
+<td align="right">25.00</td>
+<td align="right">2</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="right">1</td>
+<td align="right">2.25</td>
+<td align="right">2</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="right">500.00</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">1</td>
+<td align="right">2.25</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="right">500.00</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">1</td>
+<td align="right">65.00</td>
+<td align="right">4</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="right">1</td>
+<td align="right">60.00</td>
+<td align="right">4</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="right">1</td>
+<td align="right">75.00</td>
+<td align="right">4</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="right">1</td>
+<td align="right">10.00</td>
+<td align="right">4</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="right">1</td>
+<td align="right">2.25</td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">50</td>
+<td align="right">36.00</td>
+<td align="right">5</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">50</td>
+<td align="right">40.50</td>
+<td align="right">5</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="right">8</td>
+<td align="right">153.00</td>
+<td align="right">5</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="right">1</td>
+<td align="right">60.00</td>
+<td align="right">5</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="right">1</td>
+<td align="right">0.00</td>
+<td align="right">5</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><u>itemno</u></th>
+<th align="left">itemname</th>
+<th align="left">itemtype</th>
+<th align="left">itemcolor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Pocket knife—Nile</td>
+<td align="left">E</td>
+<td align="left">Brown</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">Pocket knife—Avon</td>
+<td align="left">E</td>
+<td align="left">Brown</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">Compass</td>
+<td align="left">N</td>
+<td align="left">—</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">Geopositioning system</td>
+<td align="left">N</td>
+<td align="left">—</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">Map measure</td>
+<td align="left">N</td>
+<td align="left">—</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">Hat—Polar Explorer</td>
+<td align="left">C</td>
+<td align="left">Red</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">Hat—Polar Explorer</td>
+<td align="left">C</td>
+<td align="left">White</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">Boots—snake proof</td>
+<td align="left">C</td>
+<td align="left">Green</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">Boots—snake proof</td>
+<td align="left">C</td>
+<td align="left">Black</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">Safari chair</td>
+<td align="left">F</td>
+<td align="left">Khaki</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="left">Hammock</td>
+<td align="left">F</td>
+<td align="left">Khaki</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="left">Tent—8 person</td>
+<td align="left">F</td>
+<td align="left">Khaki</td>
+</tr>
+<tr class="odd">
+<td align="left">13</td>
+<td align="left">Tent—2 person</td>
+<td align="left">F</td>
+<td align="left">Khaki</td>
+</tr>
+<tr class="even">
+<td align="left">14</td>
+<td align="left">Safari cooking kit</td>
+<td align="left">E</td>
+<td align="left">—</td>
+</tr>
+<tr class="odd">
+<td align="left">15</td>
+<td align="left">Pith helmet</td>
+<td align="left">C</td>
+<td align="left">Khaki</td>
+</tr>
+<tr class="even">
+<td align="left">16</td>
+<td align="left">Pith helmet</td>
+<td align="left">C</td>
+<td align="left">White</td>
+</tr>
+<tr class="odd">
+<td align="left">17</td>
+<td align="left">Map case</td>
+<td align="left">N</td>
+<td align="left">Brown</td>
+</tr>
+<tr class="even">
+<td align="left">18</td>
+<td align="left">Sextant</td>
+<td align="left">N</td>
+<td align="left">—</td>
+</tr>
+<tr class="odd">
+<td align="left">19</td>
+<td align="left">Stetson</td>
+<td align="left">C</td>
+<td align="left">Black</td>
+</tr>
+<tr class="even">
+<td align="left">20</td>
+<td align="left">Stetson</td>
+<td align="left">C</td>
+<td align="left">Brown</td>
+</tr>
+</tbody>
+</table>
+<p>The SQL commands to create the three tables are as follows:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb58-1"><a href="the-many-to-many-relationship.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> sale (</span>
+<span id="cb58-2"><a href="the-many-to-many-relationship.html#cb58-2" aria-hidden="true" tabindex="-1"></a>    saleno      <span class="dt">INTEGER</span>,</span>
+<span id="cb58-3"><a href="the-many-to-many-relationship.html#cb58-3" aria-hidden="true" tabindex="-1"></a>    saledate        <span class="dt">DATE</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb58-4"><a href="the-many-to-many-relationship.html#cb58-4" aria-hidden="true" tabindex="-1"></a>    saletext        <span class="dt">VARCHAR</span>(<span class="dv">50</span>),</span>
+<span id="cb58-5"><a href="the-many-to-many-relationship.html#cb58-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">PRIMARY</span> <span class="kw">KEY</span>(saleno));</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb59-1"><a href="the-many-to-many-relationship.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> item (</span>
+<span id="cb59-2"><a href="the-many-to-many-relationship.html#cb59-2" aria-hidden="true" tabindex="-1"></a>    itemno      <span class="dt">INTEGER</span>,</span>
+<span id="cb59-3"><a href="the-many-to-many-relationship.html#cb59-3" aria-hidden="true" tabindex="-1"></a>    itemname        <span class="dt">VARCHAR</span>(<span class="dv">30</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb59-4"><a href="the-many-to-many-relationship.html#cb59-4" aria-hidden="true" tabindex="-1"></a>    itemtype        <span class="dt">CHAR</span>(<span class="dv">1</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb59-5"><a href="the-many-to-many-relationship.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    itemcolor       <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb59-6"><a href="the-many-to-many-relationship.html#cb59-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">PRIMARY</span> <span class="kw">KEY</span>(itemno));</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb60-1"><a href="the-many-to-many-relationship.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> lineitem (</span>
+<span id="cb60-2"><a href="the-many-to-many-relationship.html#cb60-2" aria-hidden="true" tabindex="-1"></a>    lineno      <span class="dt">INTEGER</span>,</span>
+<span id="cb60-3"><a href="the-many-to-many-relationship.html#cb60-3" aria-hidden="true" tabindex="-1"></a>    lineqty     <span class="dt">INTEGER</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb60-4"><a href="the-many-to-many-relationship.html#cb60-4" aria-hidden="true" tabindex="-1"></a>    lineprice       <span class="dt">DECIMAL</span>(<span class="dv">7</span>,<span class="dv">2</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb60-5"><a href="the-many-to-many-relationship.html#cb60-5" aria-hidden="true" tabindex="-1"></a>    saleno      <span class="dt">INTEGER</span>,</span>
+<span id="cb60-6"><a href="the-many-to-many-relationship.html#cb60-6" aria-hidden="true" tabindex="-1"></a>    itemno      <span class="dt">INTEGER</span>,</span>
+<span id="cb60-7"><a href="the-many-to-many-relationship.html#cb60-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">PRIMARY</span> <span class="kw">KEY</span>(lineno,saleno),</span>
+<span id="cb60-8"><a href="the-many-to-many-relationship.html#cb60-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CONSTRAINT</span> fk_has_sale <span class="kw">FOREIGN</span> <span class="kw">KEY</span>(saleno)</span>
+<span id="cb60-9"><a href="the-many-to-many-relationship.html#cb60-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">REFERENCES</span> sale(saleno),</span>
+<span id="cb60-10"><a href="the-many-to-many-relationship.html#cb60-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CONSTRAINT</span> fk_has_item <span class="kw">FOREIGN</span> <span class="kw">KEY</span>(itemno)</span>
+<span id="cb60-11"><a href="the-many-to-many-relationship.html#cb60-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">REFERENCES</span> item(itemno));</span></code></pre></div>
+<p>Although the <code>sale</code> and <code>item</code> tables are created in a similar fashion to previous examples, there are two things to note about the definition of <code>lineitem</code>. <em>First,</em> the primary key is a composite of <code>lineno</code> and <code>saleno</code>, because together they uniquely identify an instance of <code>lineitem</code>. <em>Second</em>, there are two foreign keys, because <code>lineno</code> is at the “many” end of two 1: m relationships.</p>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>A hamburger shop makes several types of hamburgers, and the same type of ingredient can be used with several types of hamburgers. This does not literally mean the same piece of lettuce is used many times, but lettuce is used with several types of hamburgers. Draw the data model for this situation. What is a good name for the associative entity?</p>
+</blockquote>
+</div>
+<div id="querying-an-mm-relationship" class="section level2 unnumbered">
+<h2>Querying an m:m relationship</h2>
+<div id="a-three-table-join" class="section level3 unnumbered">
+<h3>A three-table join</h3>
+<p>The join operation can be easily extended from two tables to three or more merely by specifying the tables to be joined and the matching conditions. For example:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb61-1"><a href="the-many-to-many-relationship.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> sale <span class="kw">JOIN</span> lineitem </span>
+<span id="cb61-2"><a href="the-many-to-many-relationship.html#cb61-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> sale.saleno <span class="op">=</span> lineitem.saleno</span>
+<span id="cb61-3"><a href="the-many-to-many-relationship.html#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> item</span>
+<span id="cb61-4"><a href="the-many-to-many-relationship.html#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> item.itemno <span class="op">=</span> lineitem.itemno;</span></code></pre></div>
+<p>There are two matching conditions: one for <code>sale</code> and <code>lineitem</code> (<code>sale.saleno</code> = <code>lineitem.saleno</code>) and one for the item and <code>lineitem</code> tables (<code>item.itemno</code> = <code>lineitem.itemno</code>). The table <code>lineitem</code> is the link between <code>sale</code> and <code>item</code> and must be referenced in both matching conditions.</p>
+<p>You can tailor the join to be more precise and report some columns rather than all.</p>
+<p><em>List the name, quantity, price, and value of items sold on January 16, 2011.</em></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb62-1"><a href="the-many-to-many-relationship.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> itemname, lineqty, lineprice, lineqty<span class="op">*</span>lineprice <span class="kw">AS</span> total</span>
+<span id="cb62-2"><a href="the-many-to-many-relationship.html#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> sale, lineitem, item</span>
+<span id="cb62-3"><a href="the-many-to-many-relationship.html#cb62-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> lineitem.saleno <span class="op">=</span> sale.saleno</span>
+<span id="cb62-4"><a href="the-many-to-many-relationship.html#cb62-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> item.itemno <span class="op">=</span> lineitem.itemno</span>
+<span id="cb62-5"><a href="the-many-to-many-relationship.html#cb62-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">AND</span> saledate <span class="op">=</span> <span class="st">&#39;2011-01-16&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-63">Table 5.1: </span>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">itemname</th>
+<th align="right">lineqty</th>
+<th align="right">lineprice</th>
+<th align="right">total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Safari chair</td>
+<td align="right">50</td>
+<td align="right">36.0</td>
+<td align="right">1800</td>
+</tr>
+<tr class="even">
+<td align="left">Hammock</td>
+<td align="right">50</td>
+<td align="right">40.5</td>
+<td align="right">2025</td>
+</tr>
+<tr class="odd">
+<td align="left">Tent - 8 person</td>
+<td align="right">8</td>
+<td align="right">153.0</td>
+<td align="right">1224</td>
+</tr>
+<tr class="even">
+<td align="left">Tent - 2 person</td>
+<td align="right">1</td>
+<td align="right">60.0</td>
+<td align="right">60</td>
+</tr>
+<tr class="odd">
+<td align="left">Pocket knife - Avon</td>
+<td align="right">1</td>
+<td align="right">0.0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="existsdoes-a-value-exist" class="section level3 unnumbered">
+<h3>EXISTS—does a value exist</h3>
+<p>EXISTS is used in a WHERE clause to test whether a table contains at least one row satisfying a specified condition. It returns the value <strong>true</strong> if and only if some row satisfies the condition; otherwise it returns <strong>false</strong>. EXISTS represents the <strong>existential quantifier</strong> of formal logic. The best way to get a feel for EXISTS is to examine a query.</p>
+<p><em>Report all clothing items (type “C”) for which a sale is recorded.</em></p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb63-1"><a href="the-many-to-many-relationship.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> itemname, itemcolor <span class="kw">FROM</span> item</span>
+<span id="cb63-2"><a href="the-many-to-many-relationship.html#cb63-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> itemtype <span class="op">=</span> <span class="st">&#39;C&#39;</span></span>
+<span id="cb63-3"><a href="the-many-to-many-relationship.html#cb63-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">AND</span> <span class="kw">EXISTS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> lineitem</span>
+<span id="cb63-4"><a href="the-many-to-many-relationship.html#cb63-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> lineitem.itemno <span class="op">=</span> item.itemno);</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-64">Table 5.2: </span>4 records</caption>
+<thead>
+<tr class="header">
+<th align="left">itemname</th>
+<th align="left">itemcolor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Hat - Polar explorer</td>
+<td align="left">Red</td>
+</tr>
+<tr class="even">
+<td align="left">Boots - snake proof</td>
+<td align="left">Black</td>
+</tr>
+<tr class="odd">
+<td align="left">Pith helmet</td>
+<td align="left">White</td>
+</tr>
+<tr class="even">
+<td align="left">Stetson</td>
+<td align="left">Black</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Conceptually, we can think of this query as evaluating the subquery for each row of item. The first item with itemtype = ‘C’, Hat—Polar Explorer (red), in item has itemno = 6. Thus, the query becomes</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb64-1"><a href="the-many-to-many-relationship.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> itemname, itemcolor <span class="kw">FROM</span> item</span>
+<span id="cb64-2"><a href="the-many-to-many-relationship.html#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> itemtype <span class="op">=</span> <span class="st">&#39;C&#39;</span></span>
+<span id="cb64-3"><a href="the-many-to-many-relationship.html#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">AND</span> <span class="kw">EXISTS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> lineitem</span>
+<span id="cb64-4"><a href="the-many-to-many-relationship.html#cb64-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> lineitem.itemno <span class="op">=</span> <span class="dv">6</span>);</span></code></pre></div>
+<p>Because there is at least one row in <code>lineitem</code> with <code>itemno</code> = 6, the subquery returns <em>true</em>. The item has been sold and should be reported. The second clothing item, Hat—Polar Explorer (white), in <code>item</code> has <code>itemno</code> = 7. There are no rows in <code>lineitem</code> with <code>itemno</code> = 7, so the subquery returns <em>false</em>. That item has not been sold and should not be reported.</p>
+<p>You can also think of the query as, “Select clothing items for which a sale exists.” Remember, for EXISTS to return <em>true</em>, there needs to be only one row for which the condition is <em>true</em>.</p>
+</div>
+<div id="not-existsselect-a-value-if-it-does-not-exist" class="section level3 unnumbered">
+<h3>NOT EXISTS—select a value if it does not exist</h3>
+<p>NOT EXISTS is the negative of EXISTS. It is used in a WHERE clause to test whether all rows in a table fail to satisfy a specified condition. It returns the value <em>true</em> if there are no rows satisfying the condition; otherwise it returns <em>false</em>.</p>
+<p><em>Report all clothing items that have not been sold.</em></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb65-1"><a href="the-many-to-many-relationship.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> itemname, itemcolor <span class="kw">FROM</span> item</span>
+<span id="cb65-2"><a href="the-many-to-many-relationship.html#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> itemtype <span class="op">=</span> <span class="st">&#39;C&#39;</span></span>
+<span id="cb65-3"><a href="the-many-to-many-relationship.html#cb65-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">AND</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span></span>
+<span id="cb65-4"><a href="the-many-to-many-relationship.html#cb65-4" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> lineitem</span>
+<span id="cb65-5"><a href="the-many-to-many-relationship.html#cb65-5" aria-hidden="true" tabindex="-1"></a>            <span class="kw">WHERE</span> item.itemno <span class="op">=</span> lineitem.itemno);</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-66">Table 5.3: </span>4 records</caption>
+<thead>
+<tr class="header">
+<th align="left">itemname</th>
+<th align="left">itemcolor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Hat - Polar explorer</td>
+<td align="left">White</td>
+</tr>
+<tr class="even">
+<td align="left">Boots - snake proof</td>
+<td align="left">Green</td>
+</tr>
+<tr class="odd">
+<td align="left">Pith helmet</td>
+<td align="left">Khaki</td>
+</tr>
+<tr class="even">
+<td align="left">Stetson</td>
+<td align="left">Brown</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can also think of the query as, “Select clothing items for which no sales exist.” Also remember, for NOT EXISTS to return <em>true</em>, no rows should satisfy the condition.</p>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>Report all red items that have not been sold. Write the query twice, once using EXISTS and once without EXISTS.</p>
+</blockquote>
+</div>
+<div id="divide-and-be-conquered" class="section level3 unnumbered">
+<h3>Divide (and be conquered)</h3>
+<p>In addition to the existential quantifier that you have already encountered, formal logic has a <strong>universal quantifier</strong> known as <strong>forall</strong> that is necessary for queries such as</p>
+<p>Find the items that have appeared in all sales.</p>
+<p>If a universal quantifier were supported by SQL, this query could be phrased as, “Select item names where <em>forall</em> sales there <em>exists</em> a <code>lineitem</code> row recording that this item was sold.” A quick inspection of the first set of tables shows that one item satisfies this condition (<code>itemno</code> = 2).</p>
+<p>While SQL does not directly support the universal quantifier, formal logic shows that <em>forall</em> can be expressed using EXISTS. The query becomes, “Find items such that there does not exist a sale in which this item does not appear.” The equivalent SQL expression is</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb66-1"><a href="the-many-to-many-relationship.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> itemno, itemname <span class="kw">FROM</span> item</span>
+<span id="cb66-2"><a href="the-many-to-many-relationship.html#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span></span>
+<span id="cb66-3"><a href="the-many-to-many-relationship.html#cb66-3" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> sale</span>
+<span id="cb66-4"><a href="the-many-to-many-relationship.html#cb66-4" aria-hidden="true" tabindex="-1"></a>            <span class="kw">WHERE</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span></span>
+<span id="cb66-5"><a href="the-many-to-many-relationship.html#cb66-5" aria-hidden="true" tabindex="-1"></a>                (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> lineitem</span>
+<span id="cb66-6"><a href="the-many-to-many-relationship.html#cb66-6" aria-hidden="true" tabindex="-1"></a>                    <span class="kw">WHERE</span> lineitem.itemno <span class="op">=</span> item.itemno</span>
+<span id="cb66-7"><a href="the-many-to-many-relationship.html#cb66-7" aria-hidden="true" tabindex="-1"></a>                    <span class="kw">AND</span> lineitem.saleno <span class="op">=</span> sale.saleno));</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-67">Table 5.4: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="right">itemno</th>
+<th align="left">itemname</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">Pocket knife - Avon</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you are interested in learning the inner workings of the preceding SQL for divide, see the additional material for Chapter 5 on the book’s Web site.</p>
+<p>Relational algebra (Chapter 9) has the divide operation, which makes divide queries easy to write. Be careful: Not all queries containing the word <em>all</em> are divides. With experience, you will learn to recognize and conquer divide.</p>
+<p>To save the tedium of formulating this query from scratch, we have developed a template for dealing with these sorts of queries. Divide queries typically occur with m:m relationships.</p>
+<p><em>A template for divide</em></p>
+<p><img src="Figures/Chapter%205/divide%20template.png" width="566" /></p>
+<p>An appropriate generic query and template SQL command are</p>
+<p><em>Find the target1 that have appeared in all sources.</em></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb67-1"><a href="the-many-to-many-relationship.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> target1 <span class="kw">FROM</span> target</span>
+<span id="cb67-2"><a href="the-many-to-many-relationship.html#cb67-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span></span>
+<span id="cb67-3"><a href="the-many-to-many-relationship.html#cb67-3" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="kw">source</span></span>
+<span id="cb67-4"><a href="the-many-to-many-relationship.html#cb67-4" aria-hidden="true" tabindex="-1"></a>            <span class="kw">WHERE</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span></span>
+<span id="cb67-5"><a href="the-many-to-many-relationship.html#cb67-5" aria-hidden="true" tabindex="-1"></a>                (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> target<span class="op">-</span><span class="kw">source</span></span>
+<span id="cb67-6"><a href="the-many-to-many-relationship.html#cb67-6" aria-hidden="true" tabindex="-1"></a>                    <span class="kw">WHERE</span> target<span class="op">-</span><span class="kw">source</span>.target# <span class="op">=</span> target.target#</span>
+<span id="cb67-7"><a href="the-many-to-many-relationship.html#cb67-7" aria-hidden="true" tabindex="-1"></a>                    <span class="kw">AND</span> target<span class="op">-</span><span class="kw">source</span>.source# <span class="op">=</span> <span class="kw">source</span>.source#));</span></code></pre></div>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>Find the brown items that have appeared in all sales.</p>
+</blockquote>
+</div>
+<div id="beyond-the-great-divide" class="section level3 unnumbered">
+<h3>Beyond the great divide</h3>
+<p>Divide proves troublesome to most people because of the double negative—we just don’t think that way. If divide sends your neurons into knots, then try the following approach.</p>
+<p>The query “Find the items that have appeared in all sales” can be rephrased as “Find the items for which the number of sales that include this item is equal to the total number of sales.” This is an easier query to write than “Find items such that there does not exist a sale in which this item does not appear.” The rephrased query has two parts. <em>First<strong>,</strong></em> determine the total number of sales. Here we mean distinct sales (i.e., the number of rows with a distinct value for saleno). The SQL is</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb68-1"><a href="the-many-to-many-relationship.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span> (<span class="kw">DISTINCT</span> saleno) <span class="kw">FROM</span> sale;</span></code></pre></div>
+<p><em>Second</em>, group the items sold by <code>itemno</code> and <code>itemname</code> and use a HAVING clause with COUNT to calculate the number of sales in which the item has occurred. Forcing the count in the HAVING clause to equal the result of the first query, which becomes an inner query, results in a list of items appearing in all sales.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb69-1"><a href="the-many-to-many-relationship.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> item.itemno, item.itemname</span>
+<span id="cb69-2"><a href="the-many-to-many-relationship.html#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> item <span class="kw">JOIN</span> lineitem</span>
+<span id="cb69-3"><a href="the-many-to-many-relationship.html#cb69-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> item.itemno <span class="op">=</span> lineitem.itemno</span>
+<span id="cb69-4"><a href="the-many-to-many-relationship.html#cb69-4" aria-hidden="true" tabindex="-1"></a>            <span class="kw">GROUP</span> <span class="kw">BY</span> item.itemno, item.itemname</span>
+<span id="cb69-5"><a href="the-many-to-many-relationship.html#cb69-5" aria-hidden="true" tabindex="-1"></a>                <span class="kw">HAVING</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> saleno)</span>
+<span id="cb69-6"><a href="the-many-to-many-relationship.html#cb69-6" aria-hidden="true" tabindex="-1"></a>                    <span class="op">=</span> (<span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> saleno) <span class="kw">FROM</span> sale);</span></code></pre></div>
+</div>
+<div id="set-operations" class="section level3 unnumbered">
+<h3>Set operations</h3>
+<p>Set operators are useful for combining the values derived from two or more SQL queries. The UNION operation is equivalent to <em>or</em>, and INTERSECT is equivalent to <em>and</em>.</p>
+<p><em>List items that were sold on January 16, 2011, or are brown.</em></p>
+<p>Resolution of this query requires two tables: one to report items sold on January 16, 2011, and one to report the brown items. UNION (i.e., or) then combines the results of the tables, including <em>any</em> rows in both tables and excluding duplicate rows.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb70-1"><a href="the-many-to-many-relationship.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> itemname <span class="kw">FROM</span> item <span class="kw">JOIN</span> lineitem</span>
+<span id="cb70-2"><a href="the-many-to-many-relationship.html#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> item.itemno <span class="op">=</span> lineitem.itemno</span>
+<span id="cb70-3"><a href="the-many-to-many-relationship.html#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> sale</span>
+<span id="cb70-4"><a href="the-many-to-many-relationship.html#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> lineitem.saleno <span class="op">=</span> sale.saleno</span>
+<span id="cb70-5"><a href="the-many-to-many-relationship.html#cb70-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> saledate <span class="op">=</span> <span class="st">&#39;2011-01-16&#39;</span></span>
+<span id="cb70-6"><a href="the-many-to-many-relationship.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="kw">UNION</span></span>
+<span id="cb70-7"><a href="the-many-to-many-relationship.html#cb70-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> itemname <span class="kw">FROM</span> item <span class="kw">WHERE</span> itemcolor <span class="op">=</span> <span class="st">&#39;Brown&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-71">Table 5.5: </span>8 records</caption>
+<thead>
+<tr class="header">
+<th align="left">itemname</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Safari chair</td>
+</tr>
+<tr class="even">
+<td align="left">Hammock</td>
+</tr>
+<tr class="odd">
+<td align="left">Tent - 8 person</td>
+</tr>
+<tr class="even">
+<td align="left">Tent - 2 person</td>
+</tr>
+<tr class="odd">
+<td align="left">Pocket knife - Avon</td>
+</tr>
+<tr class="even">
+<td align="left">Pocket knife - Nile</td>
+</tr>
+<tr class="odd">
+<td align="left">Map case</td>
+</tr>
+<tr class="even">
+<td align="left">Stetson</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>List items that were sold on January 16, 2011, and are brown.</em></p>
+<p>This query uses the same two tables as the previous query. In this case, INTERSECT (i.e., and) then combines the results of the tables including <strong><em>only</em></strong> rows in both tables and excluding duplicates.<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb71-1"><a href="the-many-to-many-relationship.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> itemname <span class="kw">FROM</span> item <span class="kw">JOIN</span> lineitem</span>
+<span id="cb71-2"><a href="the-many-to-many-relationship.html#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> item.itemno <span class="op">=</span> lineitem.itemno</span>
+<span id="cb71-3"><a href="the-many-to-many-relationship.html#cb71-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">JOIN</span> sale</span>
+<span id="cb71-4"><a href="the-many-to-many-relationship.html#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> lineitem.saleno <span class="op">=</span> sale.saleno</span>
+<span id="cb71-5"><a href="the-many-to-many-relationship.html#cb71-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> saledate <span class="op">=</span> <span class="st">&#39;2011-01-16&#39;</span></span>
+<span id="cb71-6"><a href="the-many-to-many-relationship.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="kw">INTERSECT</span></span>
+<span id="cb71-7"><a href="the-many-to-many-relationship.html#cb71-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span> itemname <span class="kw">FROM</span> item <span class="kw">WHERE</span> itemcolor <span class="op">=</span> <span class="st">&#39;Brown&#39;</span>;</span></code></pre></div>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>List the items that contain the words “Hat”, “Helmet”, or “Stetson” in their names</p>
+</blockquote>
+</div>
+</div>
+<div id="summary-4" class="section level2 unnumbered">
+<h2>Summary</h2>
+<p>There can be a many-to-many (m:m) relationship between entities, which is represented by creating an associative entity and two 1:m relationships. An associative entity stores data about an m:m relationship. The join operation can be extended from two tables to three or more tables. EXISTS tests whether a table has at least one row that meets a specified condition. NOT EXISTS tests whether all rows in a table do not satisfy a specified condition. Both EXISTS and NOT EXISTS can return <em>true</em> or <em>false</em>. The relational operation divide, also known as <em>forall</em>, can be translated into a double negative. It is represented in SQL by a query containing two NOT EXISTS statements. Set operations enable the results of queries to be combined.</p>
+</div>
+<div id="key-terms-and-concepts-2" class="section level2 unnumbered">
+<h2>Key terms and concepts</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Associative entity</td>
+<td>Many-to-many (m:m) relationship</td>
+</tr>
+<tr class="even">
+<td align="left">Divide</td>
+<td>NOT EXISTS</td>
+</tr>
+<tr class="odd">
+<td align="left">Existential quantifier</td>
+<td>UNION</td>
+</tr>
+<tr class="even">
+<td align="left">EXISTS</td>
+<td>Universal quantifier</td>
+</tr>
+<tr class="odd">
+<td align="left">INTERSECT</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="exercises-4" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Draw data models for the following situations. In each case, think about the names you give each entity:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Farmers can own cows or share cows with other farmers.</p></li>
+<li><p>A track and field meet can have many competitors, and a competitor can participate in more than one event.</p></li>
+<li><p>A patient can have many physicians, and a physician can have many patients.</p></li>
+<li><p>A student can attend more than one class, and the same class can have many students.</p></li>
+<li><p><em>The Marathoner</em>, a monthly magazine, regularly reports the performance of professional marathon runners. It has asked you to design a database to record the details of all major marathons (e.g., Boston, London, and Paris). Professional marathon runners compete in several races each year. A race may have thousands of competitors, but only about 200 or so are professional runners, the ones <em>The Marathoner</em> tracks. For each race, the magazine reports a runner’s time and finishing position and some personal details such as name, gender, and age.</p></li>
+</ol></li>
+<li><p>The data model shown was designed by a golf statistician. Write SQL statements to create the corresponding relational database.</p></li>
+</ol>
+<p><img src="Figures/Chapter%205/golf.png" width="523" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Write the following SQL queries for the database described in this chapter:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>List the names of items for which the quantity sold is greater than one for any sale.</p></li>
+<li><p>Compute the total value of sales for each item by date.</p></li>
+<li><p>Report all items of type “F” that have been sold.</p></li>
+<li><p>List all items of type “F” that have not been sold.</p></li>
+<li><p>Compute the total value of each sale.</p></li>
+</ol></li>
+<li><p>Why do you have to create a third entity when you have an m:m relationship?</p></li>
+<li><p>What does a plus sign near a relationship arc mean?</p></li>
+<li><p>How does EXISTS differ from other clauses in an SQL statement?</p></li>
+<li><p>Answer the following queries based on the described relational database.</p>
+<p><img src="Figures/Chapter%205/gift.png" width="443" /></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>List the phone numbers of donors Hays and Jefts.</p></li>
+<li><p>How many donors are there in the donor table?</p></li>
+<li><p>How many people made donations in 1999?</p></li>
+<li><p>What is the name of the person who made the largest donation in 1999?</p></li>
+<li><p>What was the total amount donated in 2000?</p></li>
+<li><p>List the donors who have made a donation every year.</p></li>
+<li><p>List the donors whose average donation is more than twice the average donation of all donors.</p></li>
+<li><p>List the total amount given by each person across all years; sort the report by the donor’s name.</p></li>
+<li><p>Report the total donations in 2001 by state.</p></li>
+<li><p>In which years did the total donated exceed the goal for the year?</p></li>
+</ol></li>
+<li><p>The following table records data found on the side of a breakfast cereal carton. Use these data as a guide to develop a data model to record nutrition facts for a meal. In this case, a meal is a cup of cereal and 1/2 cup of skim milk.</p></li>
+</ol>
+<table style="width:99%;">
+<colgroup>
+<col width="47%" />
+<col width="12%" />
+<col width="38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><p><strong>Nutrition facts</strong></p>
+<p>Serving size 1 cup (30g)</p>
+Servings per container about 17</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Amount per serving</td>
+<td>Cereal</td>
+<td>with 1/2 cup of skim milk</td>
+</tr>
+<tr class="even">
+<td>Calories</td>
+<td>110</td>
+<td>150</td>
+</tr>
+<tr class="odd">
+<td>Calories from Fat</td>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>% Daily Value</td>
+</tr>
+<tr class="odd">
+<td>Total Fat 1g</td>
+<td>1%</td>
+<td>2%</td>
+</tr>
+<tr class="even">
+<td>Saturated Fat 0g</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr class="odd">
+<td>Polyunsaturated Fat 0g</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Monounsaturated Fat 0g</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Cholesterol 0mg</td>
+<td>0%</td>
+<td>1%</td>
+</tr>
+<tr class="even">
+<td>Sodium 220mg</td>
+<td>9%</td>
+<td>12%</td>
+</tr>
+<tr class="odd">
+<td>Potassium 105 mg</td>
+<td>3%</td>
+<td>9%</td>
+</tr>
+<tr class="even">
+<td>Total Carbohydrate 24g</td>
+<td>8%</td>
+<td>10%</td>
+</tr>
+<tr class="odd">
+<td>Dietary Fiber 3g</td>
+<td>13%</td>
+<td>13%</td>
+</tr>
+<tr class="even">
+<td>Sugars 4g</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Other Carbohydrate 17g</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Protein 3g</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Vitamin A</td>
+<td>10%</td>
+<td>15%</td>
+</tr>
+<tr class="even">
+<td>Vitamin C</td>
+<td>10%</td>
+<td>10%</td>
+</tr>
+<tr class="odd">
+<td>Calcium</td>
+<td>2%</td>
+<td>15%</td>
+</tr>
+<tr class="even">
+<td>Iron</td>
+<td>45%</td>
+<td>45%</td>
+</tr>
+<tr class="odd">
+<td>Vitamin D</td>
+<td>10%</td>
+<td>25%</td>
+</tr>
+<tr class="even">
+<td>Thiamin</td>
+<td>50%</td>
+<td>50%</td>
+</tr>
+<tr class="odd">
+<td>Riboflavin</td>
+<td>50%</td>
+<td>50%</td>
+</tr>
+<tr class="even">
+<td>Niacin</td>
+<td>50%</td>
+<td>50%</td>
+</tr>
+<tr class="odd">
+<td>Vitamin B12</td>
+<td>50%</td>
+<td>60%</td>
+</tr>
+<tr class="even">
+<td>Phosphorus</td>
+<td>10%</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td>Magnesium</td>
+<td>8%</td>
+<td>10%</td>
+</tr>
+<tr class="even">
+<td>Zinc</td>
+<td>50%</td>
+<td>50%</td>
+</tr>
+<tr class="odd">
+<td>Copper</td>
+<td>4%</td>
+<td>4%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="16">
+<li id="fn16"><p>“Two women share a name, birthday, and S.S. number!” Athens Daily News, January 29 1990, 7A. Also, see &gt; <a href="https://www.computerworld.com/article/3004659/a-tale-of-two-women-same-birthday-same-social-security-number-same-big-data-mess.html" class="uri">https://www.computerworld.com/article/3004659/a-tale-of-two-women-same-birthday-same-social-security-number-same-big-data-mess.html</a><a href="the-many-to-many-relationship.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p>MySQL does not support INTERSECT. Use another AND in the WHERE statement. <a href="the-many-to-many-relationship.html#fnref17" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-one-to-many-relationship.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="one-to-one-and-recursive-relationships.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["DataManagement.pdf", "DataManagement.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

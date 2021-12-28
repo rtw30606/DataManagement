@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 16 Data visualization | DataManagement.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 16 Data visualization | DataManagement.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 16 Data visualization | DataManagement.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-r.html"/>
+<link rel="next" href="text-mining-natural-language-processing.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="data-management-databases-and-organizations.html"><a href="data-management-databases-and-organizations.html"><i class="fa fa-check"></i>Data Management: Databases and Organizations</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#supplements"><i class="fa fa-check"></i>Supplements</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1-the-managerial-perspective.html"><a href="section-1-the-managerial-perspective.html"><i class="fa fa-check"></i>Section 1 The Managerial Perspective</a></li>
+<li class="chapter" data-level="1" data-path="managing-data.html"><a href="managing-data.html"><i class="fa fa-check"></i><b>1</b> Managing Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#individual-data-management"><i class="fa fa-check"></i>Individual data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#organizational-data-management"><i class="fa fa-check"></i>Organizational data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#problems-with-data-management-systems"><i class="fa fa-check"></i>Problems with data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#a-brief-history-of-data-management-systems"><i class="fa fa-check"></i>A brief history of data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#data-information-and-knowledge"><i class="fa fa-check"></i>Data, information, and knowledge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#the-challenge"><i class="fa fa-check"></i>The challenge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="information.html"><a href="information.html"><i class="fa fa-check"></i><b>2</b> Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#learning-objectives-1"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-historical-perspective"><i class="fa fa-check"></i>A historical perspective</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-brief-history-of-information-systems"><i class="fa fa-check"></i>A brief history of information systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-characteristics"><i class="fa fa-check"></i>Information characteristics</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-hardness"><i class="fa fa-check"></i>Information hardness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-richness"><i class="fa fa-check"></i>Information richness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-classes"><i class="fa fa-check"></i>Information classes</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-organizational-change"><i class="fa fa-check"></i>Information and organizational change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#goal-setting-information"><i class="fa fa-check"></i>Goal-setting information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#gap-information"><i class="fa fa-check"></i>Gap information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#change-information"><i class="fa fa-check"></i>Change information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#problem-solution"><i class="fa fa-check"></i>Problem solution</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-as-a-means-of-change"><i class="fa fa-check"></i>Information as a means of change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#marketing"><i class="fa fa-check"></i>Marketing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#customer-service"><i class="fa fa-check"></i>Customer Service</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#empowerment"><i class="fa fa-check"></i>Empowerment</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-managerial-work"><i class="fa fa-check"></i>Information and managerial work</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-information-requirements"><i class="fa fa-check"></i>Managers’ information requirements</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-needs-for-information-vary-accordingly-with-responsibilities"><i class="fa fa-check"></i>Managers’ needs for information vary accordingly with responsibilities</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-satisficing"><i class="fa fa-check"></i>Information satisficing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-delivery-systems"><i class="fa fa-check"></i>Information delivery systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-integration"><i class="fa fa-check"></i>Information integration</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#knowledge-1"><i class="fa fa-check"></i>Knowledge</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#references-and-additional-readings-1"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-2-data-modeling-and-sql.html"><a href="section-2-data-modeling-and-sql.html"><i class="fa fa-check"></i>Section 2 Data Modeling and SQL</a></li>
+<li class="chapter" data-level="3" data-path="the-single-entity.html"><a href="the-single-entity.html"><i class="fa fa-check"></i><b>3</b> The Single Entity</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#the-relational-model"><i class="fa fa-check"></i>The relational model</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#modeling-a-single-entity-database"><i class="fa fa-check"></i>Modeling a single-entity database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#creating-a-single-table-database"><i class="fa fa-check"></i>Creating a single-table database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html"><i class="fa fa-check"></i><b>4</b> The One-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#relationships"><i class="fa fa-check"></i>Relationships</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#creating-a-database-with-a-1m-relationship"><i class="fa fa-check"></i>Creating a database with a 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#querying-a-two-table-database"><i class="fa fa-check"></i>Querying a two-table database</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#key-terms-and-concepts-1"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html"><i class="fa fa-check"></i><b>5</b> The Many-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#the-many-to-many-relationship-1"><i class="fa fa-check"></i>The many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#creating-a-relational-database-with-an-mm-relationship"><i class="fa fa-check"></i>Creating a relational database with an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#querying-an-mm-relationship"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#key-terms-and-concepts-2"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html"><i class="fa fa-check"></i><b>6</b> One-to-One and Recursive Relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#learning-objectives-5"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-one-to-one-relationship"><i class="fa fa-check"></i>Querying a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-1m-relationship"><i class="fa fa-check"></i>Querying a recursive 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Querying a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Modeling a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#key-terms-and-concepts-3"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-modeling.html"><a href="data-modeling.html"><i class="fa fa-check"></i><b>7</b> Data Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#modeling"><i class="fa fa-check"></i>Modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-1"><i class="fa fa-check"></i>Data modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-building-blocks"><i class="fa fa-check"></i>The building blocks</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-model-quality"><i class="fa fa-check"></i>Data model quality</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#quality-improvement"><i class="fa fa-check"></i>Quality improvement</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#meaningful-identifiers"><i class="fa fa-check"></i>Meaningful identifiers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-seven-habits-of-highly-effective-data-modelers"><i class="fa fa-check"></i>The seven habits of highly effective data modelers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#summary-7"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#key-terms-and-concepts-4"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#references-and-additional-readings-2"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html"><i class="fa fa-check"></i>Reference 1: Basic Structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#one-entity"><i class="fa fa-check"></i>One entity</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#two-entities"><i class="fa fa-check"></i>Two entities</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#another-entitys-identifier-as-part-of-the-identifier"><i class="fa fa-check"></i>Another entity’s identifier as part of the identifier</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html"><i class="fa fa-check"></i><b>8</b> Normalization and Other Data Modeling Methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normalization"><i class="fa fa-check"></i>Normalization</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#other-data-modeling-methods"><i class="fa fa-check"></i>Other data modeling methods</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#summary-8"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#key-terms-and-concepts-5"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#references-and-additional-readings-3"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html"><i class="fa fa-check"></i><b>9</b> The Relational Model and Relational Algebra</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#data-structures"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#integrity-rules"><i class="fa fa-check"></i>Integrity rules</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#manipulation-languages"><i class="fa fa-check"></i>Manipulation languages</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-primitive-set-of-relational-operators"><i class="fa fa-check"></i>A primitive set of relational operators</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-fully-relational-database"><i class="fa fa-check"></i>A fully relational database</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#summary-9"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#key-terms-and-concepts-6"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#references-and-additional-readings-4"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>10</b> SQL</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#introduction-3"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-definition"><i class="fa fa-check"></i>Data definition</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#keys"><i class="fa fa-check"></i>Keys</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#indexes"><i class="fa fa-check"></i>Indexes</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-table"><i class="fa fa-check"></i>Creating a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#constraints"><i class="fa fa-check"></i>Constraints</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#collation-sequence"><i class="fa fa-check"></i>Collation sequence</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#scalar-functions"><i class="fa fa-check"></i>Scalar functions</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#formatting"><i class="fa fa-check"></i>Formatting</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#altering-a-table"><i class="fa fa-check"></i>Altering a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-table"><i class="fa fa-check"></i>Dropping a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-view"><i class="fa fa-check"></i>Creating a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-view"><i class="fa fa-check"></i>Dropping a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-an-index"><i class="fa fa-check"></i>Creating an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-an-index"><i class="fa fa-check"></i>Dropping an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-manipulation"><i class="fa fa-check"></i>Data manipulation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#qualifying-column-names"><i class="fa fa-check"></i>Qualifying column names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#temporary-names"><i class="fa fa-check"></i>Temporary names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#select"><i class="fa fa-check"></i>SELECT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#insert"><i class="fa fa-check"></i>INSERT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#update-1"><i class="fa fa-check"></i>UPDATE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-1"><i class="fa fa-check"></i>DELETE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-routines"><i class="fa fa-check"></i>SQL routines</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-function"><i class="fa fa-check"></i>SQL function</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-procedure"><i class="fa fa-check"></i>SQL procedure</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#trigger"><i class="fa fa-check"></i>Trigger</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#nullsmuch-ado-about-missing-information"><i class="fa fa-check"></i>Nulls—much ado about missing information</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#security"><i class="fa fa-check"></i>Security</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#grant"><i class="fa fa-check"></i>GRANT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#revoke"><i class="fa fa-check"></i>REVOKE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-system-catalog"><i class="fa fa-check"></i>The system catalog</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#natural-language-processing"><i class="fa fa-check"></i>Natural language processing</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#connectivity-and-odbc"><i class="fa fa-check"></i>Connectivity and ODBC</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#open-database-connectivity-odbc"><i class="fa fa-check"></i>Open database connectivity (ODBC)</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#embedded-sql"><i class="fa fa-check"></i>Embedded SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#user-defined-types"><i class="fa fa-check"></i>User-defined types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-future-of-sql"><i class="fa fa-check"></i>The future of SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#summary-10"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#key-terms-and-concepts-7"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#references-and-additional-readings-5"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#exercises-9"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html"><i class="fa fa-check"></i>Reference 2: SQL Playbook</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html#the-power-of-sql"><i class="fa fa-check"></i>The power of SQL</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3-advanced-data-management.html"><a href="section-3-advanced-data-management.html"><i class="fa fa-check"></i>Section 3 Advanced Data Management</a></li>
+<li class="chapter" data-level="11" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html"><i class="fa fa-check"></i><b>11</b> Spatial and Temporal Data Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#learning-objectives-10"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#introduction-4"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-spatial-data"><i class="fa fa-check"></i>Managing spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-temporal-data"><i class="fa fa-check"></i>Managing temporal data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#summary-11"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#key-terms-and-concepts-8"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#references-and-additional-readings-6"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#exercises-10"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graph-databases.html"><a href="graph-databases.html"><i class="fa fa-check"></i><b>12</b> Graph Databases</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-graph-database"><i class="fa fa-check"></i>A graph database</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#neo4j-a-graph-database-implementation"><i class="fa fa-check"></i>Neo4j – a graph database implementation</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-single-node"><i class="fa fa-check"></i>A single node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-a-node"><i class="fa fa-check"></i>Querying a node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-relationship-between-nodes"><i class="fa fa-check"></i>A relationship between nodes</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-an-mm-relationship-1"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#recursive-relationships"><i class="fa fa-check"></i>Recursive relationships</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#summary-12"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#key-terms-and-concepts-9"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#references-and-additional-resources"><i class="fa fa-check"></i>References and additional resources</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#exercises-11"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html"><i class="fa fa-check"></i><b>13</b> XML: Managing Data Exchange</a>
+<ul>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#sgml"><i class="fa fa-check"></i>SGML</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml"><i class="fa fa-check"></i>XML</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html"><i class="fa fa-check"></i><b>14</b> Organizational Intelligence</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#the-data-warehouse"><i class="fa fa-check"></i>The data warehouse</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exploiting-data-stores"><i class="fa fa-check"></i>Exploiting data stores</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#olap"><i class="fa fa-check"></i>OLAP</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining"><i class="fa fa-check"></i>Data mining</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#summary-14"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#key-terms-and-concepts-11"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#references-and-additional-readings-8"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exercises-13"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>15</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-r-project"><i class="fa fa-check"></i>The R project</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#database-access"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#timestamps"><i class="fa fa-check"></i>Timestamps</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#excel-files"><i class="fa fa-check"></i>Excel files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-and-data-analytics"><i class="fa fa-check"></i>R and data analytics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#summary-15"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#key-terms-and-concepts-12"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#exercises-14"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="data-visualization-1.html"><a href="data-visualization-1.html"><i class="fa fa-check"></i><b>16</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#visual-processing"><i class="fa fa-check"></i>Visual processing</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#ggplot2"><i class="fa fa-check"></i>ggplot2</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#some-recipes"><i class="fa fa-check"></i>Some recipes</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#geographic-data"><i class="fa fa-check"></i>Geographic data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#r-resources-1"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#summary-16"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#references-1"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#exercises-15"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html"><i class="fa fa-check"></i><b>17</b> Text mining &amp; natural language processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#the-nature-of-language"><i class="fa fa-check"></i>The nature of language</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#levels-of-processing"><i class="fa fa-check"></i>Levels of processing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#tokenization"><i class="fa fa-check"></i>Tokenization</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#sentiment-analysis"><i class="fa fa-check"></i>Sentiment analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#corpus"><i class="fa fa-check"></i>Corpus</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#readability"><i class="fa fa-check"></i>Readability</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#preprocessing"><i class="fa fa-check"></i>Preprocessing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#word-frequency-analysis"><i class="fa fa-check"></i>Word frequency analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#co-occurrence-and-association"><i class="fa fa-check"></i>Co-occurrence and association</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#cluster-analysis"><i class="fa fa-check"></i>Cluster analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#topic-modeling"><i class="fa fa-check"></i>Topic modeling</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#named-entity-recognition-ner"><i class="fa fa-check"></i>Named-entity recognition (NER)</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#future-developments"><i class="fa fa-check"></i>Future developments</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#summary-17"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#key-terms-and-concepts-13"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#references-2"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#exercises-16"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="cluster-computing.html"><a href="cluster-computing.html"><i class="fa fa-check"></i><b>18</b> Cluster computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#a-paradigm-shift"><i class="fa fa-check"></i>A paradigm shift</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-drivers"><i class="fa fa-check"></i>The drivers</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-bottleneck-and-its-solution"><i class="fa fa-check"></i>The bottleneck and its solution</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#lambda-architecture"><i class="fa fa-check"></i>Lambda Architecture</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#hadoop"><i class="fa fa-check"></i>Hadoop</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#spark"><i class="fa fa-check"></i>Spark</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#summary-18"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="dashboards.html"><a href="dashboards.html"><i class="fa fa-check"></i><b>19</b> Dashboards</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#the-value-of-dashboards"><i class="fa fa-check"></i>The value of dashboards</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#summary-19"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-4-managing-organizational-memory.html"><a href="section-4-managing-organizational-memory.html"><i class="fa fa-check"></i>Section 4 Managing Organizational Memory</a></li>
+<li class="chapter" data-level="20" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html"><i class="fa fa-check"></i><b>20</b> Data Structure and Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-data-deluge"><i class="fa fa-check"></i>The data deluge</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-structures-1"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-coding-standards"><i class="fa fa-check"></i>Data coding standards</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-storage-devices"><i class="fa fa-check"></i>Data storage devices</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-compression"><i class="fa fa-check"></i>Data compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#summary-20"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#key-terms-and-concepts-15"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#exercises-19"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html"><i class="fa fa-check"></i><b>21</b> Data Processing Architectures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database"><i class="fa fa-check"></i>Distributed database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#summary-21"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#key-terms-and-concepts-16"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#references-and-additional-readings-10"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#exercises-20"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="sql-and-java.html"><a href="sql-and-java.html"><i class="fa fa-check"></i><b>22</b> SQL and Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#jdbc"><i class="fa fa-check"></i>JDBC</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#java-ee"><i class="fa fa-check"></i>Java EE</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#using-sql-within-java"><i class="fa fa-check"></i>Using SQL within Java</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#javaserver-pages-jsp"><i class="fa fa-check"></i>JavaServer Pages (JSP)</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#summary-22"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#key-terms-and-concepts-17"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#references-and-additional-readings-11"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#exercises-21"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="data-integrity.html"><a href="data-integrity.html"><i class="fa fa-check"></i><b>23</b> Data Integrity</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#introduction-9"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-management"><i class="fa fa-check"></i>Transaction management</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#protecting-existence"><i class="fa fa-check"></i>Protecting existence</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#maintaining-data-quality"><i class="fa fa-check"></i>Maintaining data quality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#ensuring-confidentiality"><i class="fa fa-check"></i>Ensuring confidentiality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#summary-23"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#key-terms-and-concepts-18"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#exercises-22"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="data-administration.html"><a href="data-administration.html"><i class="fa fa-check"></i><b>24</b> Data Administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#introduction-10"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#the-chief-data-officer"><i class="fa fa-check"></i>The Chief Data Officer</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#management-of-the-database-environment"><i class="fa fa-check"></i>Management of the database environment</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-1"><i class="fa fa-check"></i>Data administration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-management-systems-dbmss"><i class="fa fa-check"></i>Database management systems (DBMSs)</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#groupware-1"><i class="fa fa-check"></i>Groupware</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-integration"><i class="fa fa-check"></i>Data integration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#conclusion-9"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#summary-24"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#key-terms-and-concepts-19"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#references-and-additional-readings-12"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#exercises-23"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-visualization-1" class="section level1" number="16">
+<h1><span class="header-section-number">Chapter 16</span> Data visualization</h1>
+<blockquote>
+<p><em>The commonality between science and art is in trying to see
+profoundly - to develop strategies of seeing and showing.</em></p>
+<p>Edward Tufte, <em>The Visual Display of Quantitative Information</em></p>
+</blockquote>
+<div id="learning-objectives-15" class="section level3 unnumbered">
+<h3>Learning objectives</h3>
+<p>Students completing this chapter will:</p>
+<ul>
+<li><p>Understand the principles of the grammar of graphics;</p></li>
+<li><p>Be able to use ggplot2 to create common business graphics;</p></li>
+<li><p>Be able to select data from a database for graphic creation;</p></li>
+<li><p>Be able to depict locations on a Google map.</p></li>
+</ul>
+</div>
+<div id="visual-processing" class="section level2 unnumbered">
+<h2>Visual processing</h2>
+<p>Humans are particularly skilled at processing visual information because
+it is an innate capability, compared to reading which is a learned
+skill. When we evolved on the Savannah of Africa, we had to be adept at
+processing visual information (e.g., recognizing danger) and deciding on
+the right course of action (fight or flight). Our ancestors were those
+who were efficient visual processors and quickly detected threats and
+used this information to make effective decisions. They selected actions
+that led to survival. Those who were inefficient visual information
+processors did not survive to reproduce. Even those with good visual
+skills failed to propagate if they made poor decisions relative to
+detected dangers. Consequently, we should seek opportunities to present
+information visually and play to our evolved strength. As people vary in
+their preference for visual and textual information, it often makes
+sense to support both types of reporting.</p>
+<p>In order to learn how to visualize data, you need to become familiar
+with the grammar of graphics and ggplot2 (an R extension for graphics). In
+line with the learning of data modeling and SQL, we will take an
+intertwined spiral approach. First we will tackle the grammar of
+graphics (the abstract) and then move to ggplot2 (the concrete). You will
+also learn how to take the output of an SQL query and feed it directly
+into ggplot2. The end result will be a comprehensive set of practical
+skills for data visualization.</p>
+</div>
+<div id="the-grammar-of-graphics" class="section level2 unnumbered">
+<h2>The grammar of graphics</h2>
+<p>A grammar is a system of rules for generating valid statements in a
+language. A grammar makes it possible for people to communicate
+accurately and concisely. English has a rather complex grammar, as do
+most languages. In contrast, computer-related languages, such as SQL,
+have a relatively simple grammar because they are carefully designed for
+expressive power, consistency, and ease of use. Each of the dialects of
+data modeling also has a grammar, and each of these grammars is quite
+similar in that they all have the same foundational elements: entities,
+attributes, identifiers, and relationships.</p>
+<p>A grammar has been designed by Wilkinson<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a> for creating graphics to
+enhance their expressiveness and comprehensiveness. From a mathematical
+perspective, a graph is a set of points. A graphic is a physical
+representation of a graph. Thus, a graph can have many physical
+representations, and one of the skills you need to gain is to be able to
+judge what is a meaningful graphic for your clients. A grammar for
+graphics provides you with many ways of creating a graphic, just as the
+grammar of English gives you many ways of writing a sentence. Of course,
+we differ in our ability to convey information in English. Similarly, we
+also differ in our skills in representing a graph in a visual format.
+The aesthetic attributes of a graph determine its ability to convey
+information. For a graphic, aesthetics are specified by elements such as
+size and color. One of the most applauded graphics is Minard’s drawing
+in 1861 of Napoleon’s advance on and retreat from Russia during 1812.
+The dominating aspect of the graphic is the dwindling size of the French
+army as it battled winter, disease, and the Russian army. The graph
+shows the size of the army, its location, and the direction of its
+movement. The temperature during the retreat is drawn at the bottom of
+graphic.</p>
+<p><em>Charles Joseph Minard’s graphic of Napoleon’s Russian expedition in
+1812</em></p>
+<p><img src="Figures/Chapter%2016/Charles-Joseph-Minard.png" /></p>
+<p>Wilkinson’s grammar is based on six elements:</p>
+<ol style="list-style-type: decimal">
+<li><p><em>Data</em>: a set of data operations that creates variables from
+datasets;</p></li>
+<li><p><em>Trans</em>: variable transformations;</p></li>
+<li><p><em>Scale</em>: scale transformations;</p></li>
+<li><p><em>Coord</em>: a coordinate system;</p></li>
+<li><p><em>Element</em>: a graph and its aesthetic attributes;</p></li>
+<li><p><em>Guide</em>: one or more guides.</p></li>
+</ol>
+<p>Interest in the grammar of data visualization has increased in recent
+years because of the growth in data. There is ongoing search to find
+ways to reveal clearly the information in large data sets. Vega<a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a> is a
+recent formulation building on Wilkinson’s work. In Vega, a
+visualization consists of basic properties of a graph (such as the width
+and height) and definitions of the data to visualize, scales for mapping
+to data to a visual form, axes for representing scales, and graphic
+marks (such as rectangles, circles, and arcs) for displaying the data.</p>
+</div>
+<div id="ggplot2" class="section level2 unnumbered">
+<h2>ggplot2</h2>
+<p>ggplot2 is an implementation of Vega in R Because it is based on a
+grammar, ggplot2 is a very powerful graphics tool for creating both simple
+and complex graphs. It is well-suited for generating multi-layered
+graphs because of its grammatical foundation. As a result, using ggplot2
+you specify a series of steps (think of them as sentences) to create a
+graphic (think of it as a paragraph) to visually convey your message.
+ggplot2 is a descendant of ggplot2 and adds new features to support
+interactive visualization using shiny, another R package, which we will
+cover later.</p>
+<div id="data" class="section level3 unnumbered">
+<h3>Data</h3>
+<p>Most structured data, which is what we require for graphing, are
+typically stored in spreadsheets or databases. In the prior chapter
+introducing R, you learned how to read a spreadsheet exported as a CSV
+file and access a database. These are also the skills you need for
+reading a file containing data to be visualized.</p>
+</div>
+<div id="transformation-1" class="section level3 unnumbered">
+<h3>Transformation</h3>
+<p>A transformation converts data into a format suitable for the intended
+visualization. In this case, we want to depict the relative change in
+carbon levels since pre-industrial periods, when the value was 280 ppm.
+Here are sample R commands.</p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="data-visualization-1.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute a new column in carbon containing the relative change in CO2</span></span>
+<span id="cb435-2"><a href="data-visualization-1.html#cb435-2" aria-hidden="true" tabindex="-1"></a>carbon<span class="sc">$</span>relCO2 <span class="ot">=</span> (carbon<span class="sc">$</span>CO2<span class="dv">-280</span>)<span class="sc">/</span><span class="dv">280</span></span></code></pre></div>
+<p>There are many ways that you might want to transform data. The preceding
+example just illustrates the general nature of a transformation. You can
+also think of SQL as a transformation process as it can compute new
+values from existing columns.</p>
+</div>
+<div id="coord" class="section level3 unnumbered">
+<h3>Coord</h3>
+<p>A coordinate system describes where things are located. A geopositioning
+system (GPS ) reading of latitude and longitude describes where you are
+on the surface of the globe. It is typically layered onto a map so you
+can see where you are relative to your current location. Most graphs are
+plotted on a two-dimensional (2D) grid with x (horizontal) and y
+(vertical) coordinates. ggplot2 currently supports six 2D coordinate
+systems, as shown in the following table. The default coordinate system
+for most packages is Cartesian.</p>
+<p><em>Coordinate systems</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cartesian</td>
+<td align="left">Cartesian coordinates</td>
+</tr>
+<tr class="even">
+<td align="left">equal</td>
+<td align="left">Equal scale Cartesian coordinates</td>
+</tr>
+<tr class="odd">
+<td align="left">flip</td>
+<td align="left">Flipped Cartesian coordinates</td>
+</tr>
+<tr class="even">
+<td align="left">trans</td>
+<td align="left">Transformed Cartesian coordinates</td>
+</tr>
+<tr class="odd">
+<td align="left">map</td>
+<td align="left">Map projections</td>
+</tr>
+<tr class="even">
+<td align="left">polar</td>
+<td align="left">Polar coordinates</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="element" class="section level3 unnumbered">
+<h3>Element</h3>
+<p>An element is a graph and its attributes. Let’s start with a simple
+scatterplot of year against CO<sub>2</sub> emissions. We do this in two steps
+applying the ggplot2 approach of building a graphic by adding layers.
+ggplot2 uses the pipe function to specify a linear sequence of processing.</p>
+<ul>
+<li><p>The foundation is the ggplot2 function, which identifies the source of
+the data and what is to be plotted. In the following example, the
+file carbon is fed into the ggplot2 function, which selects year and
+CO2 as the x and y, respectively, dimensions of the graph</p></li>
+<li><p>A graph consists of a number of layers, and in the following example
+the points layer receives the x and y values from ggplot2 and plots
+each pair of points with a red dot.</p></li>
+</ul>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="data-visualization-1.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb436-2"><a href="data-visualization-1.html#cb436-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&#39;http://www.richardtwatson.com/data/carbon.txt&#39;</span></span>
+<span id="cb436-3"><a href="data-visualization-1.html#cb436-3" aria-hidden="true" tabindex="-1"></a>carbon <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim =</span> <span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<pre><code>## Rows: 58 Columns: 2</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (2): year, CO2</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="data-visualization-1.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select year(x) and CO2(y) to create a x-y point plot</span></span>
+<span id="cb440-2"><a href="data-visualization-1.html#cb440-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify red points, as you find that aesthetically pleasing</span></span>
+<span id="cb440-3"><a href="data-visualization-1.html#cb440-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(carbon,<span class="fu">aes</span>(year,CO2)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/element-1.png" width="672" /></p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="data-visualization-1.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add some axes labels</span></span>
+<span id="cb441-2"><a href="data-visualization-1.html#cb441-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice how ‘+’ is used for commands that extend over one line</span></span>
+<span id="cb441-3"><a href="data-visualization-1.html#cb441-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(carbon,<span class="fu">aes</span>(year,CO2)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&#39;red&#39;</span>) <span class="sc">+</span></span>
+<span id="cb441-4"><a href="data-visualization-1.html#cb441-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&#39;Year&#39;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;CO2 ppm of the atmosphere&#39;</span>)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/element-2.png" width="672" /></p>
+<p>Graphics appear under the Plots tab of the bottom right window. You can
+select the Export tab to save a graphic to a file or the clipboard.
+Also, notice that you can use left and right arrows of the Plots tab to
+cycle through graphics created in a session.</p>
+</div>
+<div id="zero-point" class="section level3 unnumbered">
+<h3>Zero point</h3>
+<p>It is usually a good idea to
+have a zero point for the y axis so you don’t distort the slope of the
+line. In the following example, ylim() sets the range for y.</p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="data-visualization-1.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb442-2"><a href="data-visualization-1.html#cb442-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&#39;http://www.richardtwatson.com/data/carbon.txt&#39;</span></span>
+<span id="cb442-3"><a href="data-visualization-1.html#cb442-3" aria-hidden="true" tabindex="-1"></a>carbon <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim =</span> <span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<pre><code>## Rows: 58 Columns: 2</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (2): year, CO2</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="data-visualization-1.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute a new column in carbon containing the relative change in CO2</span></span>
+<span id="cb446-2"><a href="data-visualization-1.html#cb446-2" aria-hidden="true" tabindex="-1"></a>carbon<span class="sc">$</span>relCO2 <span class="ot">=</span> (carbon<span class="sc">$</span>CO2<span class="dv">-280</span>)<span class="sc">/</span><span class="dv">280</span></span>
+<span id="cb446-3"><a href="data-visualization-1.html#cb446-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(carbon,<span class="fu">aes</span>(year,relCO2)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">&#39;salmon&#39;</span>) <span class="sc">+</span></span>
+<span id="cb446-4"><a href="data-visualization-1.html#cb446-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Year&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb446-5"><a href="data-visualization-1.html#cb446-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;Relative change of atmospheric CO2&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb446-6"><a href="data-visualization-1.html#cb446-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,.<span class="dv">5</span>)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/zero-1.png" width="672" /></p>
+</div>
+<div id="axes-and-legends" class="section level3 unnumbered">
+<h3>Axes and legends</h3>
+<p>Axes and legends are both forms of guides, which help the reader to
+understand a graphic. Readability enhancers such as axes, title, and
+tick marks are generated automatically based on the parameters specified
+in the ggplot2 command. You can override the defaults.</p>
+<p>Let’s redo the graphic with the relative change since the beginning of
+industrialization in the mid 18th century, when the level of CO2 was
+around 280 ppm. This time, we will create a line plot. We also add some
+titles for the axes and specify a format of four consecutive digits for
+displaying a year on the x-axis. We also move or offset the title for
+the y-axis a bit to the left to improve readability.</p>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="data-visualization-1.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute a new column containing the relative change in CO2</span></span>
+<span id="cb447-2"><a href="data-visualization-1.html#cb447-2" aria-hidden="true" tabindex="-1"></a><span class="co"># compute a new column in carbon containing the relative change in CO2</span></span>
+<span id="cb447-3"><a href="data-visualization-1.html#cb447-3" aria-hidden="true" tabindex="-1"></a>carbon<span class="sc">$</span>relCO2 <span class="ot">=</span> (carbon<span class="sc">$</span>CO2<span class="dv">-280</span>)<span class="sc">/</span><span class="dv">280</span> </span>
+<span id="cb447-4"><a href="data-visualization-1.html#cb447-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(carbon,<span class="fu">aes</span>(year,relCO2)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">&#39;salmon&#39;</span>) <span class="sc">+</span></span>
+<span id="cb447-5"><a href="data-visualization-1.html#cb447-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&#39;Year&#39;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;Relative change of atmospheric CO2&#39;</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,.<span class="dv">5</span>)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/transform-2-1.png" width="672" /></p>
+<p>As the prior graphic shows, the present level of CO<sub>2</sub> in the atmosphere
+is now above 40 percent higher than the pre-industrial period and is
+continuing to grow.</p>
+</div>
+<div id="guides" class="section level3 unnumbered">
+<h3>Guides</h3>
+<p>Axes and legends are both forms of guides, which help the reader to
+understand a graphic. In ggplot2, legends and axes are generated
+automatically based on the parameters specified in the ggplot2 command.
+You have the capability to override the defaults for axes, but the
+legend is quite fixed in its format.</p>
+<p>In the following graphic, for each axis there is a label and there are
+tick marks with values so that you eyeball a point on the graphic for
+its x and y values. The legend enables you to determine which color, in
+this case, matches each year. A legend could also use shape (e.g., a
+diamond) and shape size to aid matching.</p>
+<p><img src="Figures/Chapter%2016/guides.png" /></p>
+<blockquote>
+<p>❓<strong>Skill builder</strong></p>
+<p>Create a line plot using the data in the following table.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">year</th>
+<th align="left">1804</th>
+<th align="left">1927</th>
+<th align="left">1960</th>
+<th align="left">1974</th>
+<th align="left">1987</th>
+<th align="left">1999</th>
+<th align="left">2012</th>
+<th align="left">2027</th>
+<th align="left">2046</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">population (billions)</td>
+<td align="left">1</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">4</td>
+<td align="left">5</td>
+<td align="left">6</td>
+<td align="left">7</td>
+<td align="left">8</td>
+<td align="left">9</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+</div>
+<div id="some-recipes" class="section level2 unnumbered">
+<h2>Some recipes</h2>
+<p>Learning the full power of ggplot2 is quite an undertaking, so here are a
+few recipes for visualizing data.</p>
+<div id="histogram" class="section level3 unnumbered">
+<h3>Histogram</h3>
+<p>Histograms are useful for showing the distribution of values in a single
+column. A histogram has a vertical orientation. The number of
+occurrences of a particular value in a column are automatically counted
+by the ggplot2 function. In the following sample code, we show the
+distribution of temperatures in Celsius for the Central Park temperature
+data. Notice that the Celsius conversion is rounded to an integer for
+plotting. Width specifies the size of the bin, which is two in this
+case. This means that the bin above the tick mark 10 contains all values
+in the range 9 to 11. There is online a list of names of colors you can
+use in ggplot2.<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a></p>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="data-visualization-1.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(measurements)</span>
+<span id="cb448-2"><a href="data-visualization-1.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb448-3"><a href="data-visualization-1.html#cb448-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb448-4"><a href="data-visualization-1.html#cb448-4" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&#39;http://www.richardtwatson.com/data/centralparktemps.txt&#39;</span></span>
+<span id="cb448-5"><a href="data-visualization-1.html#cb448-5" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<pre><code>## Rows: 1794 Columns: 3</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (3): year, month, temperature</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="data-visualization-1.html#cb452-1" aria-hidden="true" tabindex="-1"></a>t<span class="sc">$</span>C <span class="ot">&lt;-</span> <span class="fu">conv_unit</span>(t<span class="sc">$</span>temperature,<span class="st">&#39;F&#39;</span>,<span class="st">&#39;C&#39;</span>) </span>
+<span id="cb452-2"><a href="data-visualization-1.html#cb452-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(t,<span class="fu">aes</span>(C)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&#39;skyblue&#39;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&#39;Celsius&#39;</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="DataManagement_files/figure-html/histogram-1.png" width="672" /></p>
+</div>
+<div id="bar-graph" class="section level3 unnumbered">
+<h3>Bar graph</h3>
+<p>In the following example, we query a database to get data for plotting.
+Because the column selected for graphing, productLine is categorical, we
+need to use a bar graph.</p>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="data-visualization-1.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb454-2"><a href="data-visualization-1.html#cb454-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb454-3"><a href="data-visualization-1.html#cb454-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb454-4"><a href="data-visualization-1.html#cb454-4" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), <span class="st">&#39;www.richardtwatson.com&#39;</span>, <span class="at">dbname =</span> <span class="st">&#39;ClassicModels&#39;</span>, <span class="at">user =</span> <span class="st">&#39;student&#39;</span>, <span class="at">password =</span> <span class="st">&#39;student&#39;</span>)</span>
+<span id="cb454-5"><a href="data-visualization-1.html#cb454-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Query the database and create file for use with R</span></span>
+<span id="cb454-6"><a href="data-visualization-1.html#cb454-6" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,<span class="st">&#39;SELECT * from Products;&#39;</span>) </span>
+<span id="cb454-7"><a href="data-visualization-1.html#cb454-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the number of product lines</span></span>
+<span id="cb454-8"><a href="data-visualization-1.html#cb454-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d,<span class="fu">aes</span>(<span class="at">x=</span>productLine)) <span class="sc">+</span> </span>
+<span id="cb454-9"><a href="data-visualization-1.html#cb454-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&#39;chocolate&#39;</span>)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/bargraph-1.png" width="672" /></p>
+</div>
+<div id="column-graph" class="section level3 unnumbered">
+<h3>Column graph</h3>
+<p>In the following example, we query a database to get data for plotting/
+We then count the number of products in each productLine, and as we have counts a column graph is created.</p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="data-visualization-1.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb455-2"><a href="data-visualization-1.html#cb455-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb455-3"><a href="data-visualization-1.html#cb455-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb455-4"><a href="data-visualization-1.html#cb455-4" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), <span class="st">&#39;www.richardtwatson.com&#39;</span>, <span class="at">dbname =</span> <span class="st">&#39;ClassicModels&#39;</span>, <span class="at">user =</span> <span class="st">&#39;student&#39;</span>, <span class="at">password =</span> <span class="st">&#39;student&#39;</span>)</span>
+<span id="cb455-5"><a href="data-visualization-1.html#cb455-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Query the database and create file for use with R</span></span>
+<span id="cb455-6"><a href="data-visualization-1.html#cb455-6" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,<span class="st">&#39;SELECT * from Products;&#39;</span>) </span>
+<span id="cb455-7"><a href="data-visualization-1.html#cb455-7" aria-hidden="true" tabindex="-1"></a>da <span class="ot">&lt;-</span>  d <span class="sc">%&gt;%</span> </span>
+<span id="cb455-8"><a href="data-visualization-1.html#cb455-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(productLine) <span class="sc">%&gt;%</span> </span>
+<span id="cb455-9"><a href="data-visualization-1.html#cb455-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb455-10"><a href="data-visualization-1.html#cb455-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(da,<span class="fu">aes</span>(productLine,count)) <span class="sc">+</span> </span>
+<span id="cb455-11"><a href="data-visualization-1.html#cb455-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&#39;chocolate&#39;</span>)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/columngraph-1.png" width="672" /></p>
+</div>
+<div id="bar-chart" class="section level3 unnumbered">
+<h3>Bar chart</h3>
+<p>Because ggplot2 is based on a grammar of graphics, with a few changes, you
+can create a bar graph of the same data.</p>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="data-visualization-1.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb456-2"><a href="data-visualization-1.html#cb456-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb456-3"><a href="data-visualization-1.html#cb456-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb456-4"><a href="data-visualization-1.html#cb456-4" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), <span class="st">&#39;www.richardtwatson.com&#39;</span>, <span class="at">dbname =</span> <span class="st">&#39;ClassicModels&#39;</span>, <span class="at">user =</span> <span class="st">&#39;student&#39;</span>, <span class="at">password =</span> <span class="st">&#39;student&#39;</span>)</span>
+<span id="cb456-5"><a href="data-visualization-1.html#cb456-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Query the database and create file for use with R</span></span>
+<span id="cb456-6"><a href="data-visualization-1.html#cb456-6" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,<span class="st">&#39;SELECT * from Products;&#39;</span>) </span>
+<span id="cb456-7"><a href="data-visualization-1.html#cb456-7" aria-hidden="true" tabindex="-1"></a>da <span class="ot">&lt;-</span>  d <span class="sc">%&gt;%</span> </span>
+<span id="cb456-8"><a href="data-visualization-1.html#cb456-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(productLine) <span class="sc">%&gt;%</span> </span>
+<span id="cb456-9"><a href="data-visualization-1.html#cb456-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb456-10"><a href="data-visualization-1.html#cb456-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d,<span class="fu">aes</span>(productLine)) <span class="sc">+</span> </span>
+<span id="cb456-11"><a href="data-visualization-1.html#cb456-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">&#39;gold&#39;</span>) <span class="sc">+</span></span>
+<span id="cb456-12"><a href="data-visualization-1.html#cb456-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/barchart-1.png" width="672" /></p>
+<blockquote>
+<p>❓<strong>Skill builder</strong></p>
+<p>Create a bar graph using the data in the following table. Set
+population as the weight for each observation.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">year</th>
+<th align="left">1804</th>
+<th align="left">1927</th>
+<th align="left">1960</th>
+<th align="left">1974</th>
+<th align="left">1987</th>
+<th align="left">1999</th>
+<th align="left">2012</th>
+<th align="left">2027</th>
+<th align="left">2046</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">population (billions)</td>
+<td align="left">1</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">4</td>
+<td align="left">5</td>
+<td align="left">6</td>
+<td align="left">7</td>
+<td align="left">8</td>
+<td align="left">9</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+<div id="scatterplot" class="section level3 unnumbered">
+<h3>Scatterplot</h3>
+<p>A scatterplot shows points on an x-y grid, which means you need to have
+an x and y with numeric values.</p>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="data-visualization-1.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb457-2"><a href="data-visualization-1.html#cb457-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="data-visualization-1.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb460-2"><a href="data-visualization-1.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb460-3"><a href="data-visualization-1.html#cb460-3" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), <span class="st">&#39;www.richardtwatson.com&#39;</span>, <span class="at">dbname =</span> <span class="st">&#39;ClassicModels&#39;</span>, <span class="at">user =</span> <span class="st">&#39;student&#39;</span>, <span class="at">password =</span> <span class="st">&#39;student&#39;</span>)</span>
+<span id="cb460-4"><a href="data-visualization-1.html#cb460-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,<span class="st">&quot;SELECT MONTH(orderDate) AS orderMonth, sum(quantityOrdered*priceEach) AS orderValue FROM Orders JOIN OrderDetails ON Orders.orderNumber = OrderDetails.orderNumber GROUP BY orderMonth;&quot;</span>) </span>
+<span id="cb460-5"><a href="data-visualization-1.html#cb460-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data orders by month</span></span>
+<span id="cb460-6"><a href="data-visualization-1.html#cb460-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the points and the line</span></span>
+<span id="cb460-7"><a href="data-visualization-1.html#cb460-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d,<span class="fu">aes</span>(<span class="at">x=</span>orderMonth,<span class="at">y=</span>orderValue)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&#39;red&#39;</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/scatterplot-1-1.png" width="672" /></p>
+<p>It is sometimes helpful to show multiple scatterplots on the one grid.
+In ggplot, you can create groups of points for plotting. Sometimes, you
+might find it convenient to recode data so you can use different colors
+or lines to distinguish values in set categories. Let’s examine grouping
+by year.</p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="data-visualization-1.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb461-2"><a href="data-visualization-1.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb461-3"><a href="data-visualization-1.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb461-4"><a href="data-visualization-1.html#cb461-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb461-5"><a href="data-visualization-1.html#cb461-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="data-visualization-1.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the value of orders by year and month</span></span>
+<span id="cb465-2"><a href="data-visualization-1.html#cb465-2" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), <span class="st">&#39;www.richardtwatson.com&#39;</span>, <span class="at">dbname =</span> <span class="st">&#39;ClassicModels&#39;</span>, <span class="at">user =</span> <span class="st">&#39;student&#39;</span>, <span class="at">password =</span> <span class="st">&#39;student&#39;</span>)</span>
+<span id="cb465-3"><a href="data-visualization-1.html#cb465-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,<span class="st">&quot;SELECT YEAR(orderDate) AS orderYear, MONTH(orderDate) AS Month, sum((quantityOrdered*priceEach)) AS Value FROM Orders, OrderDetails WHERE Orders.orderNumber = OrderDetails.orderNumber GROUP BY orderYear, Month;&quot;</span>)</span>
+<span id="cb465-4"><a href="data-visualization-1.html#cb465-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data orders by month and grouped by year</span></span>
+<span id="cb465-5"><a href="data-visualization-1.html#cb465-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot expects grouping variables to be character, so convert</span></span>
+<span id="cb465-6"><a href="data-visualization-1.html#cb465-6" aria-hidden="true" tabindex="-1"></a><span class="co"># load scales package for formatting as dollars</span></span>
+<span id="cb465-7"><a href="data-visualization-1.html#cb465-7" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>Year <span class="ot">&lt;-</span> <span class="fu">as.character</span>(d<span class="sc">$</span>orderYear)</span>
+<span id="cb465-8"><a href="data-visualization-1.html#cb465-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(d,<span class="fu">aes</span>(<span class="at">x=</span>Month,<span class="at">y=</span>Value,<span class="at">group=</span>Year)) <span class="sc">+</span> </span>
+<span id="cb465-9"><a href="data-visualization-1.html#cb465-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color=</span>Year)) <span class="sc">+</span></span>
+<span id="cb465-10"><a href="data-visualization-1.html#cb465-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Format as dollars</span></span>
+<span id="cb465-11"><a href="data-visualization-1.html#cb465-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> dollar)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/scatterplot-2-1.png" width="672" /></p>
+<p>Sometimes the data that you want to graph will be in multiple files.
+Here is a case where we want to show ClassicCars orders and payments by
+month on the same plot.</p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="data-visualization-1.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb466-2"><a href="data-visualization-1.html#cb466-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb466-3"><a href="data-visualization-1.html#cb466-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb466-4"><a href="data-visualization-1.html#cb466-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb466-5"><a href="data-visualization-1.html#cb466-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the driver</span></span>
+<span id="cb466-6"><a href="data-visualization-1.html#cb466-6" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), <span class="st">&quot;www.richardtwatson.com&quot;</span>, <span class="at">dbname=</span><span class="st">&quot;ClassicModels&quot;</span>, <span class="at">user=</span><span class="st">&quot;student&quot;</span>, <span class="at">password=</span><span class="st">&quot;student&quot;</span>)</span>
+<span id="cb466-7"><a href="data-visualization-1.html#cb466-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb466-8"><a href="data-visualization-1.html#cb466-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb466-9"><a href="data-visualization-1.html#cb466-9" aria-hidden="true" tabindex="-1"></a>orders <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,<span class="st">&quot;SELECT MONTH(orderDate) AS month, sum((quantityOrdered*priceEach)) AS orderValue FROM Orders, OrderDetails WHERE Orders.orderNumber = OrderDetails.orderNumber and YEAR(orderDate) = 2004 GROUP BY Month;&quot;</span>)</span>
+<span id="cb466-10"><a href="data-visualization-1.html#cb466-10" aria-hidden="true" tabindex="-1"></a>payments <span class="ot">&lt;-</span>  <span class="fu">dbGetQuery</span>(conn,<span class="st">&quot;SELECT MONTH(paymentDate) AS month, SUM(amount) AS payValue FROM Payments WHERE YEAR(paymentDate) = 2004 GROUP BY MONTH;&quot;</span>)</span>
+<span id="cb466-11"><a href="data-visualization-1.html#cb466-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(orders,<span class="fu">aes</span>(<span class="at">x=</span>month)) <span class="sc">+</span> </span>
+<span id="cb466-12"><a href="data-visualization-1.html#cb466-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>orders<span class="sc">$</span>orderValue, <span class="at">color=</span><span class="st">&#39;Orders&#39;</span>)) <span class="sc">+</span>   </span>
+<span id="cb466-13"><a href="data-visualization-1.html#cb466-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>payments<span class="sc">$</span>payValue, <span class="at">color=</span><span class="st">&#39;Payments&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb466-14"><a href="data-visualization-1.html#cb466-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Month&#39;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;&#39;</span>) <span class="sc">+</span></span>
+<span id="cb466-15"><a href="data-visualization-1.html#cb466-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Format as dollars and show each month</span></span>
+<span id="cb466-16"><a href="data-visualization-1.html#cb466-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> dollar)  <span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb466-17"><a href="data-visualization-1.html#cb466-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove the legend</span></span>
+<span id="cb466-18"><a href="data-visualization-1.html#cb466-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.title=</span><span class="fu">element_blank</span>())</span></code></pre></div>
+<pre><code>## Warning: Use of `orders$orderValue` is discouraged. Use `orderValue` instead.</code></pre>
+<p><img src="DataManagement_files/figure-html/scatterplot-3-1.png" width="672" /></p>
+</div>
+<div id="smoothing" class="section level3 unnumbered">
+<h3>Smoothing</h3>
+<p>Smoothing helps to detect a trend in a line plot. The following example
+shows the average mean temperatures for August for Central Park.</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="data-visualization-1.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb468-2"><a href="data-visualization-1.html#cb468-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&#39;http://www.richardtwatson.com/data/centralparktemps.txt&#39;</span></span>
+<span id="cb468-3"><a href="data-visualization-1.html#cb468-3" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span></code></pre></div>
+<pre><code>## Rows: 1794 Columns: 3</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (3): year, month, temperature</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="data-visualization-1.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select the August data</span></span>
+<span id="cb472-2"><a href="data-visualization-1.html#cb472-2" aria-hidden="true" tabindex="-1"></a>ta <span class="ot">&lt;-</span>  t <span class="sc">%&gt;%</span> <span class="fu">filter</span>(month <span class="sc">==</span> <span class="dv">8</span>)</span>
+<span id="cb472-3"><a href="data-visualization-1.html#cb472-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ta,<span class="fu">aes</span>(year,temperature)) <span class="sc">+</span></span>
+<span id="cb472-4"><a href="data-visualization-1.html#cb472-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb472-5"><a href="data-visualization-1.html#cb472-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="DataManagement_files/figure-html/smoothing-1.png" width="672" /></p>
+<blockquote>
+<p>❓<strong>Skill builder</strong> Using the Central Park data, plot the temperatures
+for February and fit a straight line to the points. Use
+layer_model_predictions(). What do you observe?</p>
+</blockquote>
+</div>
+<div id="box-plot" class="section level3 unnumbered">
+<h3>Box Plot</h3>
+<p>A box plot is an effective means of displaying information about one or
+more variables. It shows minimum and maximum, range, lower quartile,
+median, and upper quartile for each variable. The following code creates
+a box plot for a single variable. Notice that we use factor(0) to
+indicate there is no grouping variable.</p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="data-visualization-1.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb474-2"><a href="data-visualization-1.html#cb474-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb474-3"><a href="data-visualization-1.html#cb474-3" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), <span class="st">&quot;www.richardtwatson.com&quot;</span>, <span class="at">dbname=</span><span class="st">&quot;ClassicModels&quot;</span>, <span class="at">user=</span><span class="st">&quot;student&quot;</span>, <span class="at">password=</span><span class="st">&quot;student&quot;</span>)</span>
+<span id="cb474-4"><a href="data-visualization-1.html#cb474-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,<span class="st">&quot;SELECT * from Payments;&quot;</span>)</span>
+<span id="cb474-5"><a href="data-visualization-1.html#cb474-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of amounts paid</span></span>
+<span id="cb474-6"><a href="data-visualization-1.html#cb474-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(d,<span class="fu">aes</span>(<span class="fu">factor</span>(<span class="dv">0</span>),amount)) <span class="sc">+</span> </span>
+<span id="cb474-7"><a href="data-visualization-1.html#cb474-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.colour=</span><span class="st">&#39;red&#39;</span>) <span class="sc">+</span>  <span class="fu">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;Check&quot;</span>)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/boxplot-1.png" width="672" /></p>
+</div>
+<div id="heat-map" class="section level3 unnumbered">
+<h3>Heat map</h3>
+<p>A heat map visualizes tabular data. It is useful when you have two
+categorical variables cross tabulated. Consider the case for the
+ClassicModels database where we want to get an idea of the different
+number of model scales in each product line. We can get a quick picture
+with the following code.</p>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="data-visualization-1.html#cb475-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb475-2"><a href="data-visualization-1.html#cb475-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb475-3"><a href="data-visualization-1.html#cb475-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb475-4"><a href="data-visualization-1.html#cb475-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb475-5"><a href="data-visualization-1.html#cb475-5" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,<span class="st">&#39;SELECT * from Products;&#39;</span>)</span>
+<span id="cb475-6"><a href="data-visualization-1.html#cb475-6" aria-hidden="true" tabindex="-1"></a>da <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(productLine, productScale) <span class="sc">%&gt;%</span> </span>
+<span id="cb475-7"><a href="data-visualization-1.html#cb475-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>())</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;productLine&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="data-visualization-1.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(da,<span class="fu">aes</span>(productLine,productScale)) <span class="sc">+</span> </span>
+<span id="cb477-2"><a href="data-visualization-1.html#cb477-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill=</span>count)) <span class="sc">+</span> </span>
+<span id="cb477-3"><a href="data-visualization-1.html#cb477-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&#39;light blue&#39;</span>, <span class="at">high =</span> <span class="st">&#39;dark blue&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb477-4"><a href="data-visualization-1.html#cb477-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Line&#39;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;Scale&#39;</span>)</span></code></pre></div>
+<p><img src="DataManagement_files/figure-html/heatmap-1.png" width="672" /></p>
+</div>
+</div>
+<div id="geographic-data" class="section level2 unnumbered">
+<h2>Geographic data</h2>
+<p>The ggmap package supports a variety of mapping systems, including
+Google maps. As you might expect, it offers many features, and we just
+touch on the basics in this example.</p>
+<p>The Offices table in the Classic Models database includes the latitude
+and longitude of each office in officeLocation, which has a datatype of
+POINT. The following R code can be used to mark each office on a Google
+map. After loading the required packages, a database query is executed
+to return the longitude and latitude for each office. Then, a Google map
+of the United States is displayed. The marker parameter specifies the
+name of the table containing the values for longitude and latitude.
+Offices that are not in the U.S. (e.g., Sydney) are ignored. Adjust
+zoom, an integer, to get a suitably sized map. Zoom can range from 3 (a
+continent) to 20 (a building).</p>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="data-visualization-1.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Google now requires an API key</span></span>
+<span id="cb478-2"><a href="data-visualization-1.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb478-3"><a href="data-visualization-1.html#cb478-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
+<span id="cb478-4"><a href="data-visualization-1.html#cb478-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapproj)</span>
+<span id="cb478-5"><a href="data-visualization-1.html#cb478-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb478-6"><a href="data-visualization-1.html#cb478-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb478-7"><a href="data-visualization-1.html#cb478-7" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(), <span class="st">&#39;www.richardtwatson.com&#39;</span>, <span class="at">dbname =</span> <span class="st">&#39;ClassicModels&#39;</span>, <span class="at">user =</span> <span class="st">&#39;student&#39;</span>, <span class="at">password =</span> <span class="st">&#39;student&#39;</span>)</span>
+<span id="cb478-8"><a href="data-visualization-1.html#cb478-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Google maps requires lon and lat, in that order, to create markers</span></span>
+<span id="cb478-9"><a href="data-visualization-1.html#cb478-9" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn,<span class="st">&quot;SELECT ST_Y(officeLocation) AS lon, ST_X(officeLocation) AS lat FROM Offices;&quot;</span>)</span>
+<span id="cb478-10"><a href="data-visualization-1.html#cb478-10" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;GoogleAPIkey.txt&quot;</span>)</span>
+<span id="cb478-11"><a href="data-visualization-1.html#cb478-11" aria-hidden="true" tabindex="-1"></a><span class="fu">register_google</span>(<span class="at">key =</span> t<span class="sc">$</span>key)</span>
+<span id="cb478-12"><a href="data-visualization-1.html#cb478-12" aria-hidden="true" tabindex="-1"></a><span class="co"># show offices in the United States</span></span>
+<span id="cb478-13"><a href="data-visualization-1.html#cb478-13" aria-hidden="true" tabindex="-1"></a><span class="co"># vary zoom to change the size of the map</span></span>
+<span id="cb478-14"><a href="data-visualization-1.html#cb478-14" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span>  <span class="fu">get_googlemap</span>(<span class="st">&#39;united states&#39;</span>,<span class="at">marker=</span>d,<span class="at">zoom=</span><span class="dv">4</span>)</span>
+<span id="cb478-15"><a href="data-visualization-1.html#cb478-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(map) <span class="sc">+</span> </span>
+<span id="cb478-16"><a href="data-visualization-1.html#cb478-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;Longitude&#39;</span>, <span class="at">y =</span> <span class="st">&#39;Latitude&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb478-17"><a href="data-visualization-1.html#cb478-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&#39;US offices&#39;</span>)</span></code></pre></div>
+<blockquote>
+<p>❓<strong>Skill builder</strong></p>
+<p>Create the following maps.</p>
+<ol style="list-style-type: decimal">
+<li><p>Offices in Europe</p></li>
+<li><p>Office location in Paris</p></li>
+<li><p>Customers in the US</p></li>
+<li><p>Customers in Sydney</p></li>
+</ol>
+</blockquote>
+</div>
+<div id="r-resources-1" class="section level2 unnumbered">
+<h2>R resources</h2>
+<p>The developer of ggplot2, Hadley Wickham, maintains a <a href="http://ggplot2.tidyverse.org"><u>web
+site</u></a>. Another useful web site for data
+visualization is <a href="http://flowingdata.com"><u>FlowingData</u></a>, which has
+an associated book, titled <em>Visualize This</em>. If you become heavily
+involved in visualization, we suggest you read some of the works of
+Edward Tufte. One of his books is listed in the references.</p>
+</div>
+<div id="summary-16" class="section level2 unnumbered">
+<h2>Summary</h2>
+<p>Because of evolutionary pressure, humans became strong visual
+processors. Consequently, graphics can be very effective for presenting
+information. The grammar of graphics provides a logical foundation for
+the construction of a graphic by adding successive layers of
+information. ggplot2 is a package implementing the grammar of graphics in
+R, the open source statistics platform. Data can be extracted from an
+MySQL database for processing and graphical presentation in R. Spatial
+data can be selected from a database and displayed on a Google map.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Key terms and concepts</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Bar chart</td>
+<td>Graphic</td>
+</tr>
+<tr class="even">
+<td align="left">Box plot</td>
+<td>Heat map</td>
+</tr>
+<tr class="odd">
+<td align="left">dplyr</td>
+<td>Histogram</td>
+</tr>
+<tr class="even">
+<td align="left">ggplot2</td>
+<td>Scatterplot</td>
+</tr>
+<tr class="odd">
+<td align="left">Grammar of graphics</td>
+<td>Smooth</td>
+</tr>
+<tr class="even">
+<td align="left">Graph</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="references-1" class="section level2 unnumbered">
+<h2>References</h2>
+<p>Kabacoff, R. I. (2009). <em>R in action: data analysis and graphics with
+R</em>. Greenwich, CT: Manning Publications.</p>
+<p>Kahle, D., &amp; Wickham, H. (2013). ggmap : Spatial Visualization with
+ggplot. <em>The R Journal</em>.</p>
+<p>Tufte, E. (1983). <em>The visual display of quantitative information</em>.
+Cheshire, CT: Graphics Press.</p>
+<p>Yau, N. (2011). <em>Visualize this: the flowing data guide to design,
+visualization, and statistics</em>. Indianapolis, IN: Wiley.</p>
+<p>Wilkinson, L. (2005). <em>The grammar of graphics</em> (2nd ed.). New York:
+Springer.</p>
+</div>
+<div id="exercises-15" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>Given the following data on the world’s cargo carrying capacity in
+millions of dead weight tons (dwt)<a href="#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a> for the given years, graph
+the relationship as a point plot. Add a linear prediction model to
+the graph. What is the approximate increase in the world capacity
+each year?</li>
+</ol>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="data-visualization-1.html#cb479-1" aria-hidden="true" tabindex="-1"></a>dwt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2566</span>, <span class="dv">3704</span>, <span class="dv">4008</span>, <span class="dv">5984</span>, <span class="dv">7700</span>, <span class="dv">8034</span>, <span class="dv">8229</span>, <span class="dv">7858</span>, <span class="dv">8408</span>, <span class="dv">8939</span>)</span>
+<span id="cb479-2"><a href="data-visualization-1.html#cb479-2" aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1970</span>, <span class="dv">1980</span>, <span class="dv">1990</span>, <span class="dv">2000</span>, <span class="dv">2006</span>, <span class="dv">2007</span>, <span class="dv">2008</span>, <span class="dv">2009</span>, <span class="dv">2010</span>, <span class="dv">2011</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Create a bar graph showing the relative ocean shipping cost as a
+percentage of total cost for some common household items using the
+following data.</li>
+</ol>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="data-visualization-1.html#cb480-1" aria-hidden="true" tabindex="-1"></a>unitCost <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">700</span>, <span class="dv">200</span>, <span class="dv">150</span>, <span class="dv">50</span>, <span class="dv">15</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb480-2"><a href="data-visualization-1.html#cb480-2" aria-hidden="true" tabindex="-1"></a>shipCost <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="fl">10.00</span>, <span class="fl">1.50</span>, <span class="fl">1.00</span>, <span class="fl">0.15</span>, <span class="fl">0.15</span>, <span class="fl">0.05</span>, <span class="fl">0.01</span>)</span>
+<span id="cb480-3"><a href="data-visualization-1.html#cb480-3" aria-hidden="true" tabindex="-1"></a>item <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">&#39;TV set&#39;</span>, <span class="st">&#39;DVD player&#39;</span>, <span class="st">&#39;Vacuum cleaner&#39;</span>, <span class="st">&#39;Scotch whisky&#39;</span>, <span class="st">&#39;Coffee&#39;</span>, <span class="st">&#39;Biscuits&#39;</span>, <span class="st">&#39;Beer&#39;</span>)</span></code></pre></div>
+<p><em>SQL input</em></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Visualize in blue the number of items for each product scale.</p></li>
+<li><p>Prepare a line plot with appropriate labels for total payments for
+each month in 2004.</p></li>
+<li><p>Create a histogram with appropriate labels for the value of orders
+received from the Nordic countries (Denmark, Finland, Norway,
+Sweden).</p></li>
+<li><p>Create a heatmap for product lines and Norwegian cities.</p></li>
+<li><p>Show on a Google map the customers in Japan.</p></li>
+<li><p>Show on a Google map the European customers who have never placed an
+order.</p></li>
+</ol>
+<p><em>File input</em></p>
+<ol start="9" style="list-style-type: decimal">
+<li><p>Access
+<a href="http://people.terry.uga.edu/rwatson/data/manheim.txt"><u>http://www.richardtwatson.com/data/manheim.txt</u></a>,
+which contains details of the sales of three car models: X, Y,
+and Z.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Create a bar chart for sales of each model (X, Y , or Z)</p></li>
+<li><p>Create bar chart for sales by each form of sale (online or
+auction).</p></li>
+</ol></li>
+<li><p>Use the ‘Import Dataset’ feature of RStudio to read
+<a href="http://people.terry.uga.edu/rwatson/data/electricityprices.csv"><u>http://www.richardtwatson.com/data/electricityprices.csv</u></a>,
+which contains details of electricity prices for a major city.<a href="#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a>
+Do a Box plot of cost. What do you conclude about cost?</p></li>
+<li><p>Read the table
+<a href="http://people.terry.uga.edu/rwatson/data/wealth.csv"><u>http://www.richardtwatson.com/data/wealth.csv</u></a>
+containing details of the wealth of various countries. Create
+histograms for each of the wealth measures. Consult the ggplot2 color
+chart<a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a> for a choice of colors.</p></li>
+<li><p>Merge the data for weather
+&lt;<a href="http://people.terry.uga.edu/rwatson/data/weather.csv"><u>http://www.richardtwatson.com/data/weather.csv</u></a>&gt;
+and electricity prices
+&lt;<a href="http://people.terry.uga.edu/rwatson/data/electricityprices.csv"><u>http://www.richardtwatson.com/data/electricityprices.csv</u></a>&gt;
+for a major city. The merged file should contain air temperature and
+electricity cost. Also, you need to convert air temperature from a
+factor to a numeric (hint: first convert to a character). As readr
+does not currently handle date and time stamps, use the following
+code to read the files.</p></li>
+</ol>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="data-visualization-1.html#cb481-1" aria-hidden="true" tabindex="-1"></a>wurl <span class="ot">&lt;-</span>  <span class="st">&#39;http://www.richardtwatson.com/data/weather.csv&#39;</span></span>
+<span id="cb481-2"><a href="data-visualization-1.html#cb481-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(wurl,<span class="at">sep=</span><span class="st">&#39;,&#39;</span>,<span class="at">header=</span>T)</span>
+<span id="cb481-3"><a href="data-visualization-1.html#cb481-3" aria-hidden="true" tabindex="-1"></a>eurl <span class="ot">&lt;-</span>  <span class="st">&#39;http://www.richardtwatson.com/data/electricityprices.csv&#39;</span></span>
+<span id="cb481-4"><a href="data-visualization-1.html#cb481-4" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(eurl,<span class="at">sep=</span><span class="st">&#39;,&#39;</span>,<span class="at">header=</span>T)</span></code></pre></div>
+<pre><code>a. Compute the correlation between temperature and electricity price.
+   What do you conclude?
+
+b. Graph the relationship between temperature and electricity price.
+
+c. Graph the relationship between temperature and electricity price
+   when the temperature is 95ºF and above.
+
+d. Create a single graph showing the relationship between temperature
+   and electricity price differentiating by color when the temperature
+   is above or below 90ºF. (Hint: Trying recoding temperature).</code></pre>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="50">
+<li id="fn50"><p>Wilkinson, L. (2005). *The grammar of graphics* (2nd ed.). New
+York: Springer.<a href="data-visualization-1.html#fnref50" class="footnote-back">↩︎</a></p></li>
+<li id="fn51"><p><a href="http://trifacta.github.io/vega/" class="uri">http://trifacta.github.io/vega/</a><a href="data-visualization-1.html#fnref51" class="footnote-back">↩︎</a></p></li>
+<li id="fn52"><p><a href="http://www.w3schools.com/cssref/css_colornames.asp" class="uri">http://www.w3schools.com/cssref/css_colornames.asp</a><a href="data-visualization-1.html#fnref52" class="footnote-back">↩︎</a></p></li>
+<li id="fn53"><p>Dead weight tonnage is a measure of how much weight, in tonnes, a
+ship can safely carry.<a href="data-visualization-1.html#fnref53" class="footnote-back">↩︎</a></p></li>
+<li id="fn54"><p>Note these prices have been transformed from the original values,
+but are still representative of the changes over time.<a href="data-visualization-1.html#fnref54" class="footnote-back">↩︎</a></p></li>
+<li id="fn55"><p><a href="http://www.w3schools.com/cssref/css_colornames.asp" class="uri">http://www.w3schools.com/cssref/css_colornames.asp</a><a href="data-visualization-1.html#fnref55" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="text-mining-natural-language-processing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["DataManagement.pdf", "DataManagement.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

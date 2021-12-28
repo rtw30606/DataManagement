@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Cluster computing | DataManagement.knit</title>
+  <title>Chapter 18 Cluster computing | DataManagement.knit</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Cluster computing | DataManagement.knit" />
+  <meta property="og:title" content="Chapter 18 Cluster computing | DataManagement.knit" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Cluster computing | DataManagement.knit" />
+  <meta name="twitter:title" content="Chapter 18 Cluster computing | DataManagement.knit" />
   
   
   
@@ -29,10 +29,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<link rel="prev" href="text-mining-natural-language-processing.html"/>
+<link rel="next" href="dashboards.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -40,7 +41,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -132,43 +132,359 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="318-clustercomputing.html"><a href="#cluster-computing"><i class="fa fa-check"></i><b>1</b> Cluster computing</a>
+<li class="chapter" data-level="" data-path="data-management-databases-and-organizations.html"><a href="data-management-databases-and-organizations.html"><i class="fa fa-check"></i>Data Management: Databases and Organizations</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#a-paradigm-shift"><i class="fa fa-check"></i>A paradigm shift</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#the-drivers"><i class="fa fa-check"></i>The drivers</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#the-bottleneck-and-its-solution"><i class="fa fa-check"></i>The bottleneck and its solution</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#lambda-architecture"><i class="fa fa-check"></i>Lambda Architecture</a>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#supplements"><i class="fa fa-check"></i>Supplements</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1-the-managerial-perspective.html"><a href="section-1-the-managerial-perspective.html"><i class="fa fa-check"></i>Section 1 The Managerial Perspective</a></li>
+<li class="chapter" data-level="1" data-path="managing-data.html"><a href="managing-data.html"><i class="fa fa-check"></i><b>1</b> Managing Data</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#the-batch-layer"><i class="fa fa-check"></i>The batch layer</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#the-serving-layer"><i class="fa fa-check"></i>The serving layer</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#speed-layer"><i class="fa fa-check"></i>Speed layer</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#putting-the-layers-together"><i class="fa fa-check"></i>Putting the layers together</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#benefits-of-the-lambda-architecture"><i class="fa fa-check"></i>Benefits of the Lambda Architecture</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#relational-and-lambda-architectures"><i class="fa fa-check"></i>Relational and Lambda Architectures</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#individual-data-management"><i class="fa fa-check"></i>Individual data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#organizational-data-management"><i class="fa fa-check"></i>Organizational data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#problems-with-data-management-systems"><i class="fa fa-check"></i>Problems with data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#a-brief-history-of-data-management-systems"><i class="fa fa-check"></i>A brief history of data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#data-information-and-knowledge"><i class="fa fa-check"></i>Data, information, and knowledge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#the-challenge"><i class="fa fa-check"></i>The challenge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#summary"><i class="fa fa-check"></i>Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#hadoop"><i class="fa fa-check"></i>Hadoop</a>
+<li class="chapter" data-level="2" data-path="information.html"><a href="information.html"><i class="fa fa-check"></i><b>2</b> Information</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#hadoop-distributed-file-system-hdfs"><i class="fa fa-check"></i>Hadoop distributed file system (HDFS)</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#learning-objectives-1"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-historical-perspective"><i class="fa fa-check"></i>A historical perspective</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-brief-history-of-information-systems"><i class="fa fa-check"></i>A brief history of information systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-characteristics"><i class="fa fa-check"></i>Information characteristics</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-hardness"><i class="fa fa-check"></i>Information hardness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-richness"><i class="fa fa-check"></i>Information richness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-classes"><i class="fa fa-check"></i>Information classes</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-organizational-change"><i class="fa fa-check"></i>Information and organizational change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#goal-setting-information"><i class="fa fa-check"></i>Goal-setting information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#gap-information"><i class="fa fa-check"></i>Gap information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#change-information"><i class="fa fa-check"></i>Change information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#problem-solution"><i class="fa fa-check"></i>Problem solution</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-as-a-means-of-change"><i class="fa fa-check"></i>Information as a means of change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#marketing"><i class="fa fa-check"></i>Marketing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#customer-service"><i class="fa fa-check"></i>Customer Service</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#empowerment"><i class="fa fa-check"></i>Empowerment</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-managerial-work"><i class="fa fa-check"></i>Information and managerial work</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-information-requirements"><i class="fa fa-check"></i>Managers’ information requirements</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-needs-for-information-vary-accordingly-with-responsibilities"><i class="fa fa-check"></i>Managers’ needs for information vary accordingly with responsibilities</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-satisficing"><i class="fa fa-check"></i>Information satisficing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-delivery-systems"><i class="fa fa-check"></i>Information delivery systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-integration"><i class="fa fa-check"></i>Information integration</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#knowledge-1"><i class="fa fa-check"></i>Knowledge</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#references-and-additional-readings-1"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#spark"><i class="fa fa-check"></i>Spark</a>
+<li class="chapter" data-level="" data-path="section-2-data-modeling-and-sql.html"><a href="section-2-data-modeling-and-sql.html"><i class="fa fa-check"></i>Section 2 Data Modeling and SQL</a></li>
+<li class="chapter" data-level="3" data-path="the-single-entity.html"><a href="the-single-entity.html"><i class="fa fa-check"></i><b>3</b> The Single Entity</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#computation-with-spark"><i class="fa fa-check"></i>Computation with Spark</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#tabulation"><i class="fa fa-check"></i>Tabulation</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#basic-statistics-with-spark"><i class="fa fa-check"></i>Basic statistics with Spark</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#the-relational-model"><i class="fa fa-check"></i>The relational model</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#modeling-a-single-entity-database"><i class="fa fa-check"></i>Modeling a single-entity database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#creating-a-single-table-database"><i class="fa fa-check"></i>Creating a single-table database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#summary"><i class="fa fa-check"></i>Summary</a>
+<li class="chapter" data-level="4" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html"><i class="fa fa-check"></i><b>4</b> The One-to-Many Relationship</a>
 <ul>
-<li class="chapter" data-level="" data-path=""><a href="#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#exercises"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#relationships"><i class="fa fa-check"></i>Relationships</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#creating-a-database-with-a-1m-relationship"><i class="fa fa-check"></i>Creating a database with a 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#querying-a-two-table-database"><i class="fa fa-check"></i>Querying a two-table database</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#key-terms-and-concepts-1"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html"><i class="fa fa-check"></i><b>5</b> The Many-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#the-many-to-many-relationship-1"><i class="fa fa-check"></i>The many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#creating-a-relational-database-with-an-mm-relationship"><i class="fa fa-check"></i>Creating a relational database with an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#querying-an-mm-relationship"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#key-terms-and-concepts-2"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
+<li class="chapter" data-level="6" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html"><i class="fa fa-check"></i><b>6</b> One-to-One and Recursive Relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#learning-objectives-5"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-one-to-one-relationship"><i class="fa fa-check"></i>Querying a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-1m-relationship"><i class="fa fa-check"></i>Querying a recursive 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Querying a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Modeling a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#key-terms-and-concepts-3"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-modeling.html"><a href="data-modeling.html"><i class="fa fa-check"></i><b>7</b> Data Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#modeling"><i class="fa fa-check"></i>Modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-1"><i class="fa fa-check"></i>Data modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-building-blocks"><i class="fa fa-check"></i>The building blocks</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-model-quality"><i class="fa fa-check"></i>Data model quality</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#quality-improvement"><i class="fa fa-check"></i>Quality improvement</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#meaningful-identifiers"><i class="fa fa-check"></i>Meaningful identifiers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-seven-habits-of-highly-effective-data-modelers"><i class="fa fa-check"></i>The seven habits of highly effective data modelers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#summary-7"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#key-terms-and-concepts-4"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#references-and-additional-readings-2"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html"><i class="fa fa-check"></i>Reference 1: Basic Structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#one-entity"><i class="fa fa-check"></i>One entity</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#two-entities"><i class="fa fa-check"></i>Two entities</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#another-entitys-identifier-as-part-of-the-identifier"><i class="fa fa-check"></i>Another entity’s identifier as part of the identifier</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html"><i class="fa fa-check"></i><b>8</b> Normalization and Other Data Modeling Methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normalization"><i class="fa fa-check"></i>Normalization</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#other-data-modeling-methods"><i class="fa fa-check"></i>Other data modeling methods</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#summary-8"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#key-terms-and-concepts-5"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#references-and-additional-readings-3"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html"><i class="fa fa-check"></i><b>9</b> The Relational Model and Relational Algebra</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#data-structures"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#integrity-rules"><i class="fa fa-check"></i>Integrity rules</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#manipulation-languages"><i class="fa fa-check"></i>Manipulation languages</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-primitive-set-of-relational-operators"><i class="fa fa-check"></i>A primitive set of relational operators</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-fully-relational-database"><i class="fa fa-check"></i>A fully relational database</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#summary-9"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#key-terms-and-concepts-6"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#references-and-additional-readings-4"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>10</b> SQL</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#introduction-3"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-definition"><i class="fa fa-check"></i>Data definition</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#keys"><i class="fa fa-check"></i>Keys</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#indexes"><i class="fa fa-check"></i>Indexes</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-table"><i class="fa fa-check"></i>Creating a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#constraints"><i class="fa fa-check"></i>Constraints</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#collation-sequence"><i class="fa fa-check"></i>Collation sequence</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#scalar-functions"><i class="fa fa-check"></i>Scalar functions</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#formatting"><i class="fa fa-check"></i>Formatting</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#altering-a-table"><i class="fa fa-check"></i>Altering a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-table"><i class="fa fa-check"></i>Dropping a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-view"><i class="fa fa-check"></i>Creating a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-view"><i class="fa fa-check"></i>Dropping a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-an-index"><i class="fa fa-check"></i>Creating an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-an-index"><i class="fa fa-check"></i>Dropping an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-manipulation"><i class="fa fa-check"></i>Data manipulation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#qualifying-column-names"><i class="fa fa-check"></i>Qualifying column names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#temporary-names"><i class="fa fa-check"></i>Temporary names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#select"><i class="fa fa-check"></i>SELECT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#insert"><i class="fa fa-check"></i>INSERT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#update-1"><i class="fa fa-check"></i>UPDATE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-1"><i class="fa fa-check"></i>DELETE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-routines"><i class="fa fa-check"></i>SQL routines</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-function"><i class="fa fa-check"></i>SQL function</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-procedure"><i class="fa fa-check"></i>SQL procedure</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#trigger"><i class="fa fa-check"></i>Trigger</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#nullsmuch-ado-about-missing-information"><i class="fa fa-check"></i>Nulls—much ado about missing information</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#security"><i class="fa fa-check"></i>Security</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#grant"><i class="fa fa-check"></i>GRANT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#revoke"><i class="fa fa-check"></i>REVOKE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-system-catalog"><i class="fa fa-check"></i>The system catalog</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#natural-language-processing"><i class="fa fa-check"></i>Natural language processing</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#connectivity-and-odbc"><i class="fa fa-check"></i>Connectivity and ODBC</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#open-database-connectivity-odbc"><i class="fa fa-check"></i>Open database connectivity (ODBC)</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#embedded-sql"><i class="fa fa-check"></i>Embedded SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#user-defined-types"><i class="fa fa-check"></i>User-defined types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-future-of-sql"><i class="fa fa-check"></i>The future of SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#summary-10"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#key-terms-and-concepts-7"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#references-and-additional-readings-5"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#exercises-9"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html"><i class="fa fa-check"></i>Reference 2: SQL Playbook</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html#the-power-of-sql"><i class="fa fa-check"></i>The power of SQL</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3-advanced-data-management.html"><a href="section-3-advanced-data-management.html"><i class="fa fa-check"></i>Section 3 Advanced Data Management</a></li>
+<li class="chapter" data-level="11" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html"><i class="fa fa-check"></i><b>11</b> Spatial and Temporal Data Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#learning-objectives-10"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#introduction-4"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-spatial-data"><i class="fa fa-check"></i>Managing spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-temporal-data"><i class="fa fa-check"></i>Managing temporal data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#summary-11"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#key-terms-and-concepts-8"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#references-and-additional-readings-6"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#exercises-10"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graph-databases.html"><a href="graph-databases.html"><i class="fa fa-check"></i><b>12</b> Graph Databases</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-graph-database"><i class="fa fa-check"></i>A graph database</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#neo4j-a-graph-database-implementation"><i class="fa fa-check"></i>Neo4j – a graph database implementation</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-single-node"><i class="fa fa-check"></i>A single node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-a-node"><i class="fa fa-check"></i>Querying a node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-relationship-between-nodes"><i class="fa fa-check"></i>A relationship between nodes</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-an-mm-relationship-1"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#recursive-relationships"><i class="fa fa-check"></i>Recursive relationships</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#summary-12"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#key-terms-and-concepts-9"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#references-and-additional-resources"><i class="fa fa-check"></i>References and additional resources</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#exercises-11"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html"><i class="fa fa-check"></i><b>13</b> XML: Managing Data Exchange</a>
+<ul>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#sgml"><i class="fa fa-check"></i>SGML</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml"><i class="fa fa-check"></i>XML</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html"><i class="fa fa-check"></i><b>14</b> Organizational Intelligence</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#the-data-warehouse"><i class="fa fa-check"></i>The data warehouse</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exploiting-data-stores"><i class="fa fa-check"></i>Exploiting data stores</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#olap"><i class="fa fa-check"></i>OLAP</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining"><i class="fa fa-check"></i>Data mining</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#summary-14"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#key-terms-and-concepts-11"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#references-and-additional-readings-8"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exercises-13"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>15</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-r-project"><i class="fa fa-check"></i>The R project</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#database-access"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#timestamps"><i class="fa fa-check"></i>Timestamps</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#excel-files"><i class="fa fa-check"></i>Excel files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-and-data-analytics"><i class="fa fa-check"></i>R and data analytics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#summary-15"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#key-terms-and-concepts-12"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#exercises-14"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="data-visualization-1.html"><a href="data-visualization-1.html"><i class="fa fa-check"></i><b>16</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#visual-processing"><i class="fa fa-check"></i>Visual processing</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#ggplot2"><i class="fa fa-check"></i>ggplot2</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#some-recipes"><i class="fa fa-check"></i>Some recipes</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#geographic-data"><i class="fa fa-check"></i>Geographic data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#r-resources-1"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#summary-16"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#references-1"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#exercises-15"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html"><i class="fa fa-check"></i><b>17</b> Text mining &amp; natural language processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#the-nature-of-language"><i class="fa fa-check"></i>The nature of language</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#levels-of-processing"><i class="fa fa-check"></i>Levels of processing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#tokenization"><i class="fa fa-check"></i>Tokenization</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#sentiment-analysis"><i class="fa fa-check"></i>Sentiment analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#corpus"><i class="fa fa-check"></i>Corpus</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#readability"><i class="fa fa-check"></i>Readability</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#preprocessing"><i class="fa fa-check"></i>Preprocessing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#word-frequency-analysis"><i class="fa fa-check"></i>Word frequency analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#co-occurrence-and-association"><i class="fa fa-check"></i>Co-occurrence and association</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#cluster-analysis"><i class="fa fa-check"></i>Cluster analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#topic-modeling"><i class="fa fa-check"></i>Topic modeling</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#named-entity-recognition-ner"><i class="fa fa-check"></i>Named-entity recognition (NER)</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#future-developments"><i class="fa fa-check"></i>Future developments</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#summary-17"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#key-terms-and-concepts-13"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#references-2"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#exercises-16"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="cluster-computing.html"><a href="cluster-computing.html"><i class="fa fa-check"></i><b>18</b> Cluster computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#a-paradigm-shift"><i class="fa fa-check"></i>A paradigm shift</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-drivers"><i class="fa fa-check"></i>The drivers</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-bottleneck-and-its-solution"><i class="fa fa-check"></i>The bottleneck and its solution</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#lambda-architecture"><i class="fa fa-check"></i>Lambda Architecture</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#hadoop"><i class="fa fa-check"></i>Hadoop</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#spark"><i class="fa fa-check"></i>Spark</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#summary-18"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="dashboards.html"><a href="dashboards.html"><i class="fa fa-check"></i><b>19</b> Dashboards</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#the-value-of-dashboards"><i class="fa fa-check"></i>The value of dashboards</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#summary-19"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-4-managing-organizational-memory.html"><a href="section-4-managing-organizational-memory.html"><i class="fa fa-check"></i>Section 4 Managing Organizational Memory</a></li>
+<li class="chapter" data-level="20" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html"><i class="fa fa-check"></i><b>20</b> Data Structure and Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-data-deluge"><i class="fa fa-check"></i>The data deluge</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-structures-1"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-coding-standards"><i class="fa fa-check"></i>Data coding standards</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-storage-devices"><i class="fa fa-check"></i>Data storage devices</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-compression"><i class="fa fa-check"></i>Data compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#summary-20"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#key-terms-and-concepts-15"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#exercises-19"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html"><i class="fa fa-check"></i><b>21</b> Data Processing Architectures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database"><i class="fa fa-check"></i>Distributed database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#summary-21"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#key-terms-and-concepts-16"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#references-and-additional-readings-10"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#exercises-20"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="sql-and-java.html"><a href="sql-and-java.html"><i class="fa fa-check"></i><b>22</b> SQL and Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#jdbc"><i class="fa fa-check"></i>JDBC</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#java-ee"><i class="fa fa-check"></i>Java EE</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#using-sql-within-java"><i class="fa fa-check"></i>Using SQL within Java</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#javaserver-pages-jsp"><i class="fa fa-check"></i>JavaServer Pages (JSP)</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#summary-22"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#key-terms-and-concepts-17"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#references-and-additional-readings-11"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#exercises-21"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="data-integrity.html"><a href="data-integrity.html"><i class="fa fa-check"></i><b>23</b> Data Integrity</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#introduction-9"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-management"><i class="fa fa-check"></i>Transaction management</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#protecting-existence"><i class="fa fa-check"></i>Protecting existence</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#maintaining-data-quality"><i class="fa fa-check"></i>Maintaining data quality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#ensuring-confidentiality"><i class="fa fa-check"></i>Ensuring confidentiality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#summary-23"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#key-terms-and-concepts-18"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#exercises-22"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="data-administration.html"><a href="data-administration.html"><i class="fa fa-check"></i><b>24</b> Data Administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#introduction-10"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#the-chief-data-officer"><i class="fa fa-check"></i>The Chief Data Officer</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#management-of-the-database-environment"><i class="fa fa-check"></i>Management of the database environment</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-1"><i class="fa fa-check"></i>Data administration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-management-systems-dbmss"><i class="fa fa-check"></i>Database management systems (DBMSs)</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#groupware-1"><i class="fa fa-check"></i>Groupware</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-integration"><i class="fa fa-check"></i>Data integration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#conclusion-9"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#summary-24"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#key-terms-and-concepts-19"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#references-and-additional-readings-12"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#exercises-23"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -186,10 +502,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="cluster-computing" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Cluster computing</h1>
+<div id="cluster-computing" class="section level1" number="18">
+<h1><span class="header-section-number">Chapter 18</span> Cluster computing</h1>
 <blockquote>
 <p><em>Let us change our traditional attitude to the construction of
 programs: Instead of imagining that our main task is to instruct a
@@ -197,7 +511,7 @@ computer what to do, let us concentrate rather on explaining to humans
 what we want the computer to do</em></p>
 <p>Donald E. Knuth, <em>Literate Programming</em>, 1984</p>
 </blockquote>
-<div id="learning-objectives" class="section level3 unnumbered">
+<div id="learning-objectives-17" class="section level3 unnumbered">
 <h3>Learning objectives</h3>
 <p>Students completing this chapter will:</p>
 <ul>
@@ -300,7 +614,7 @@ the conversion, request, and interpretation bottlenecks.</p>
 <p><img src="Figures/Chapter%2018/bottleneck.png" /></p>
 <p>The people skills problem is being addressed by the many universities
 that have added graduate courses in data analytics. The <strong>Lambda
-Architecture</strong><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> is a proposed general solution to
+Architecture</strong><a href="#fn64" class="footnote-ref" id="fnref64"><sup>64</sup></a> is a proposed general solution to
 the speed and cost problem.</p>
 </div>
 <div id="lambda-architecture" class="section level2 unnumbered">
@@ -475,7 +789,7 @@ are fed to Lambda Architecture based business analytics.</p>
 </div>
 <div id="hadoop" class="section level2 unnumbered">
 <h2>Hadoop</h2>
-<p>Hadoop, an Apache project,<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> supports distributed
+<p>Hadoop, an Apache project,<a href="#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a> supports distributed
 processing of large data sets across a cluster of computers. A Hadoop
 cluster consists of many standard processors, nodes, with associated
 main memory and disks. They are connected by Ethernet or switches so
@@ -485,14 +799,11 @@ architecture. Hadoop is a foundation for data analytics, machine
 learning, search ranking, email anti-spam, ad optimization, and other
 areas of applications which are constantly emerging.</p>
 <p>A market analysis projects that the Hadoop market is growing at 58% per
-year.[^clustercomputing-3] It also asserts that, “Hadoop is the only
+year.<a href="#fn66" class="footnote-ref" id="fnref66"><sup>66</sup></a> It also asserts that, “Hadoop is the only
 cost-sensible and scalable open source alternative to commercially
 available Big Data management packages. It also becomes an integral part
 of almost any commercially available Big Data solution and de-facto
 industry standard for business intelligence (BI).”</p>
-<p>[^clustercomputing-3] :
-<a href="https://www.marketanalysis.com/?p=279"><u>https://www.marketanalysis.com/?p=279</u></a>
-(Hadoop Market Forecast 2017-2022, May 2017)</p>
 <div id="hadoop-distributed-file-system-hdfs" class="section level3 unnumbered">
 <h3>Hadoop distributed file system (HDFS)</h3>
 <p>HDFS is a highly scalable, fault-toleration, distributed file system.
@@ -503,7 +814,7 @@ illustrates, an original file when written to HDFS is broken into
 multiple large blocks that are spread across multiple nodes. HDFS
 provides a set of functions for converting a file to and from HDFS
 format and handling HDFS.</p>
-<p><em>Splitting of a file across a HDFS cluster.</em></p>
+<p><em>Splitting of file across a HDFS cluster.</em></p>
 <p><img src="Figures/Chapter%2018/splitting-cluster.png" /></p>
 <p>On each node, blocks are stored sequentially to minimize disk head
 movement. Blocks are grouped into files, and all files for a dataset are
@@ -521,15 +832,13 @@ data in a single folder.</p>
 </div>
 <div id="spark" class="section level2 unnumbered">
 <h2>Spark</h2>
-<p>Spark is an Apache project[^clustercomputing-4] for cluster computing
+<p>Spark is an Apache project<a href="#fn67" class="footnote-ref" id="fnref67"><sup>67</sup></a> for cluster computing
 that was initiated at the University of California Berkeley and later
 transferred to Apache as an open source project. Spark’s distributed
 file system, resilient distributed dataset (RDD), has similar
 characteristics to HDFS. Spark can also interface with HDFS and other
 distributed file systems. For testing and development, Spark has a local
 mode, that can work with a local file system.</p>
-<p>[^clustercomputing-4] :
-<a href="https://spark.apache.org"><u>https://spark.apache.org</u></a></p>
 <p>Spark includes several component, including Spark SQL for SQL-type
 queries, Spark streaming for real-time analysis of event data as it is
 received, and a machine learning (ML) library. This library is designed
@@ -539,79 +848,39 @@ implemented using GraphX.</p>
 <div id="computation-with-spark" class="section level3 unnumbered">
 <h3>Computation with Spark</h3>
 <p>Spark applications can be written in Java, Scala, Python, and R. In our
-case, we will use the sparklyr,[^clustercomputing-5] an R interface to
+case, we will use the sparklyr,<a href="#fn68" class="footnote-ref" id="fnref68"><sup>68</sup></a> an R interface to
 Spark. This package provides a simple, easy to use set of commands for
 exposing the distributed processing power of Spark to those familiar
 with R. In particular, it supports dplyr for data manipulation of Spark
 datasets and access to Sparks ML library.</p>
-<p>[^clustercomputing-5] :
-<a href="http://spark.rstudio.com"><u>http://spark.rstudio.com</u></a></p>
 <p>Before starting with sparklyr, you need to check that you have latest
-version of Java on your machine.[^clustercomputing-6] Use RStudio to
+version of Java on your machine.<a href="#fn69" class="footnote-ref" id="fnref69"><sup>69</sup></a> Use RStudio to
 install sparklyr. For developing and testing on your computer, install a
 local version of Spark.</p>
-<p>[^clustercomputing-6] :
-<a href="https://www.java.com/en/download/help/version_manual.xml"><u>https://www.java.com/en/download/help/version_manual.xml</u></a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;sparklyr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:stats&#39;:
-## 
-##     filter</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_install</span>(<span class="at">version=</span><span class="st">&#39;2.4&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="cluster-computing.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span>
+<span id="cb542-2"><a href="cluster-computing.html#cb542-2" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_install</span>(<span class="at">version=</span><span class="st">&#39;2.4&#39;</span>)</span></code></pre></div>
 <p>Use the <code>spark_connect</code> function to connect to Spark either locally or
 on a remote Spark cluster. The following code shows how to specify local
 Spark connection (sc).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">&quot;local&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="cluster-computing.html#cb543-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span>
+<span id="cb543-2"><a href="cluster-computing.html#cb543-2" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">&quot;local&quot;</span>)</span></code></pre></div>
 </div>
 <div id="tabulation" class="section level3 unnumbered">
 <h3>Tabulation</h3>
 <p>In this example, we have a list of average monthly temperatures for New
-York’s Central Park[^clustercomputing-7] and we want to determine how
+York’s Central Park<a href="#fn70" class="footnote-ref" id="fnref70"><sup>70</sup></a> and we want to determine how
 often each particular temperature occurred. R</p>
-<p>[^clustercomputing-7] :
-<a href="http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html"><u>http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html</u></a></p>
 <p>Average monthly temperatures since 1869 are read, and the temperature
 rounded to an integer for the convenience of tabulation.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span></code></pre></div>
-<pre><code>## Rows: 1794 Columns: 3</code></pre>
-<pre><code>## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## dbl (3): year, month, temperature</code></pre>
-<pre><code>## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulate frequencies for temperature</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fahrenheit =</span> <span class="fu">round</span>(temperature,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fahrenheit) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Frequency =</span> <span class="fu">n</span>())</span></code></pre></div>
-<pre><code>## # A tibble: 61 × 2
-##    Fahrenheit Frequency
-##         &lt;dbl&gt;     &lt;int&gt;
-##  1         20         1
-##  2         22         2
-##  3         23         3
-##  4         24         5
-##  5         25        15
-##  6         26        10
-##  7         27         8
-##  8         28        19
-##  9         29        24
-## 10         30        32
-## # … with 51 more rows</code></pre>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="cluster-computing.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb544-2"><a href="cluster-computing.html#cb544-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb544-3"><a href="cluster-computing.html#cb544-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
+<span id="cb544-4"><a href="cluster-computing.html#cb544-4" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span>
+<span id="cb544-5"><a href="cluster-computing.html#cb544-5" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulate frequencies for temperature</span></span>
+<span id="cb544-6"><a href="cluster-computing.html#cb544-6" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span> </span>
+<span id="cb544-7"><a href="cluster-computing.html#cb544-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fahrenheit =</span> <span class="fu">round</span>(temperature,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb544-8"><a href="cluster-computing.html#cb544-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fahrenheit) <span class="sc">%&gt;%</span></span>
+<span id="cb544-9"><a href="cluster-computing.html#cb544-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Frequency =</span> <span class="fu">n</span>())</span></code></pre></div>
 <div id="spark-1" class="section level4 unnumbered">
 <h4>Spark</h4>
 <p>By using dplyr in the prior R code, we can copy and paste and add a few
@@ -619,53 +888,28 @@ commands for the Spark implementation. The major differences are the
 creation of a Spark connection (sc) and copying the R tibble to Spark
 with copy-to. Also, note that you need to sort the resulting tibble,
 which is not required in regular R.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_install</span>(<span class="at">version=</span><span class="st">&#39;2.4&#39;</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">&quot;local&quot;</span>, <span class="at">spark_home=</span><span class="fu">spark_home_dir</span>(<span class="at">version =</span> <span class="st">&#39;2.4&#39;</span>))</span></code></pre></div>
-<pre><code>## Re-using existing Spark connection to local</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span></code></pre></div>
-<pre><code>## Rows: 1794 Columns: 3</code></pre>
-<pre><code>## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## dbl (3): year, month, temperature</code></pre>
-<pre><code>## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="ot">&lt;-</span> <span class="fu">copy_to</span>(sc,t)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fahrenheit =</span> <span class="fu">round</span>(temperature,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fahrenheit) <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Frequency =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Fahrenheit)</span></code></pre></div>
-<pre><code>## # Source:     spark&lt;?&gt; [?? x 2]
-## # Ordered by: Fahrenheit
-##    Fahrenheit Frequency
-##         &lt;dbl&gt;     &lt;dbl&gt;
-##  1         20         1
-##  2         22         2
-##  3         23         3
-##  4         24         5
-##  5         25        15
-##  6         26         9
-##  7         27         9
-##  8         28        17
-##  9         29        26
-## 10         30        30
-## # … with more rows</code></pre>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="cluster-computing.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb545-2"><a href="cluster-computing.html#cb545-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb545-3"><a href="cluster-computing.html#cb545-3" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_install</span>(<span class="at">version=</span><span class="st">&#39;2.4&#39;</span>)</span>
+<span id="cb545-4"><a href="cluster-computing.html#cb545-4" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">&quot;local&quot;</span>, <span class="at">spark_home=</span><span class="fu">spark_home_dir</span>(<span class="at">version =</span> <span class="st">&#39;2.4&#39;</span>))</span>
+<span id="cb545-5"><a href="cluster-computing.html#cb545-5" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
+<span id="cb545-6"><a href="cluster-computing.html#cb545-6" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span>
+<span id="cb545-7"><a href="cluster-computing.html#cb545-7" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="ot">&lt;-</span> <span class="fu">copy_to</span>(sc,t)</span>
+<span id="cb545-8"><a href="cluster-computing.html#cb545-8" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb545-9"><a href="cluster-computing.html#cb545-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fahrenheit =</span> <span class="fu">round</span>(temperature,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb545-10"><a href="cluster-computing.html#cb545-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Fahrenheit) <span class="sc">%&gt;%</span></span>
+<span id="cb545-11"><a href="cluster-computing.html#cb545-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Frequency =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb545-12"><a href="cluster-computing.html#cb545-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Fahrenheit)</span></code></pre></div>
 <p>It you observe the two sets of output carefully, you will note that the
 results are not identical. It is because rounding can vary across
 systems. The IEEE Standard for Floating-Point Arithmetic (IEEE
-754)[^clustercomputing-8] states on rounding, “if the number falls
+754)<a href="#fn71" class="footnote-ref" id="fnref71"><sup>71</sup></a> states on rounding, “if the number falls
 midway it is rounded to the nearest value with an even (zero) least
 significant bit.” Compare the results for round(12.5,0) and
 round(13.5,0). R follows the IEEE standard, but Spark apparently does
 not.</p>
-<p>[^clustercomputing-8] :
-<a href="https://en.wikipedia.org/wiki/IEEE_floating_point"><u>https://en.wikipedia.org/wiki/IEEE_floating_point</u></a></p>
 <blockquote>
-<p>❓<em>Skill builder</em> Redo the tabulation example with temperatures in
+<p>❓<em>Skill builder</em> Aedo the tabulation example with temperatures in
 Celsius.</p>
 </blockquote>
 </div>
@@ -677,68 +921,44 @@ max monthly average temperatures for each year and put the results in a
 single file.</p>
 <div id="r" class="section level4 unnumbered">
 <h4>R</h4>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span></code></pre></div>
-<pre><code>## Rows: 1794 Columns: 3</code></pre>
-<pre><code>## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## dbl (3): year, month, temperature</code></pre>
-<pre><code>## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># report minimum, mean, and maximum by year</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span> </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Min=</span><span class="fu">min</span>(temperature),</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(temperature),<span class="dv">1</span>), </span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Max =</span> <span class="fu">max</span>(temperature))</span></code></pre></div>
-<pre><code>## # A tibble: 150 × 4
-##     year   Min  Mean   Max
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1  1869  34.5  51.4  72.8
-##  2  1870  31.3  53.6  76.6
-##  3  1871  28.3  51.1  73.6
-##  4  1872  26.7  51    77.5
-##  5  1873  28.6  51    75.4
-##  6  1874  31.3  51.3  73.9
-##  7  1875  23.8  49.4  74  
-##  8  1876  24.9  51.9  79.4
-##  9  1877  27.7  52.8  75.4
-## 10  1878  30.3  53.5  77.8
-## # … with 140 more rows</code></pre>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="cluster-computing.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb546-2"><a href="cluster-computing.html#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb546-3"><a href="cluster-computing.html#cb546-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
+<span id="cb546-4"><a href="cluster-computing.html#cb546-4" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span>
+<span id="cb546-5"><a href="cluster-computing.html#cb546-5" aria-hidden="true" tabindex="-1"></a><span class="co"># report minimum, mean, and maximum by year</span></span>
+<span id="cb546-6"><a href="cluster-computing.html#cb546-6" aria-hidden="true" tabindex="-1"></a>t <span class="sc">%&gt;%</span> </span>
+<span id="cb546-7"><a href="cluster-computing.html#cb546-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb546-8"><a href="cluster-computing.html#cb546-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Min=</span><span class="fu">min</span>(temperature),</span>
+<span id="cb546-9"><a href="cluster-computing.html#cb546-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(temperature),<span class="dv">1</span>), </span>
+<span id="cb546-10"><a href="cluster-computing.html#cb546-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Max =</span> <span class="fu">max</span>(temperature))</span></code></pre></div>
 </div>
 <div id="spark-2" class="section level4 unnumbered">
 <h4>Spark</h4>
 <p>Again, the use of dplyr makes the conversion to Spark simple.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_install</span>(<span class="at">version=</span><span class="st">&#39;2.4&#39;</span>)</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">&quot;local&quot;</span>, <span class="at">spark_home=</span><span class="fu">spark_home_dir</span>(<span class="at">version =</span> <span class="st">&#39;2.4&#39;</span>))</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="ot">&lt;-</span> <span class="fu">copy_to</span>(sc,t)</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co"># report minimum, mean, and maximum by year</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># note that sparkly gives a warning if you do not specify how to handle missing values</span></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Min=</span><span class="fu">min</span>(temperature, <span class="at">na.rm =</span> T), </span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(temperature, <span class="at">na.rm =</span> T),<span class="dv">1</span>), </span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">Max =</span> <span class="fu">max</span>(temperature, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year)</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="cluster-computing.html#cb547-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span>
+<span id="cb547-2"><a href="cluster-computing.html#cb547-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb547-3"><a href="cluster-computing.html#cb547-3" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_install</span>(<span class="at">version=</span><span class="st">&#39;2.4&#39;</span>)</span>
+<span id="cb547-4"><a href="cluster-computing.html#cb547-4" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">&quot;local&quot;</span>, <span class="at">spark_home=</span><span class="fu">spark_home_dir</span>(<span class="at">version =</span> <span class="st">&#39;2.4&#39;</span>))</span>
+<span id="cb547-5"><a href="cluster-computing.html#cb547-5" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span>  <span class="st">&quot;http://www.richardtwatson.com/data/centralparktemps.txt&quot;</span></span>
+<span id="cb547-6"><a href="cluster-computing.html#cb547-6" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(url, <span class="at">delim=</span><span class="st">&#39;,&#39;</span>)</span>
+<span id="cb547-7"><a href="cluster-computing.html#cb547-7" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="ot">&lt;-</span> <span class="fu">copy_to</span>(sc,t)</span>
+<span id="cb547-8"><a href="cluster-computing.html#cb547-8" aria-hidden="true" tabindex="-1"></a><span class="co"># report minimum, mean, and maximum by year</span></span>
+<span id="cb547-9"><a href="cluster-computing.html#cb547-9" aria-hidden="true" tabindex="-1"></a><span class="co"># note that sparkly gives a warning if you do not specify how to handle missing values</span></span>
+<span id="cb547-10"><a href="cluster-computing.html#cb547-10" aria-hidden="true" tabindex="-1"></a>t_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb547-11"><a href="cluster-computing.html#cb547-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb547-12"><a href="cluster-computing.html#cb547-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Min=</span><span class="fu">min</span>(temperature, <span class="at">na.rm =</span> T), </span>
+<span id="cb547-13"><a href="cluster-computing.html#cb547-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(temperature, <span class="at">na.rm =</span> T),<span class="dv">1</span>), </span>
+<span id="cb547-14"><a href="cluster-computing.html#cb547-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">Max =</span> <span class="fu">max</span>(temperature, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
+<span id="cb547-15"><a href="cluster-computing.html#cb547-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year)</span></code></pre></div>
 <blockquote>
-<p>❓<em>Skill builder</em> A file[^clustercomputing-9] of electricity costs for
+<p>❓<em>Skill builder</em> A file<a href="#fn72" class="footnote-ref" id="fnref72"><sup>72</sup></a> of electricity costs for
 a major city contains a timestamp and cost separated by a comma.
 Compute the minimum, mean, and maximum costs.</p>
 </blockquote>
-<p>[^clustercomputing-9] :
-<a href="http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv">^<u>http://www.richardtwatson.com/data/electricityprices.csv</u>^</a></p>
 </div>
 </div>
 </div>
-<div id="summary" class="section level2 unnumbered">
+<div id="summary-18" class="section level2 unnumbered">
 <h2>Summary</h2>
 <p>Big data is a paradigm shift to new file structures, such as HDFS and
 RDD, and algorithms for the parallel processing of large volumes of
@@ -768,7 +988,7 @@ processors, nodes, with associated main memory and disks. HDFS is a
 highly scalable, fault-toleration, distributed file system. Spark is a
 distributed computing method for scalable and fault-tolerant cluster
 computation.</p>
-<div id="key-terms-and-concepts" class="section level3 unnumbered">
+<div id="key-terms-and-concepts-14" class="section level3 unnumbered">
 <h3>Key terms and concepts</h3>
 <table>
 <tbody>
@@ -798,13 +1018,13 @@ computation.</p>
 </tr>
 </tbody>
 </table>
-<div id="references-and-additional-readings" class="section level4 unnumbered">
+<div id="references-and-additional-readings-9" class="section level4 unnumbered">
 <h4>References and additional readings</h4>
 <p>Lam, C. (2010). <em>Hadoop in action</em>: Manning Publications Co.</p>
 <p>Marz, N., &amp; Warren, J. (2012). <em>Big Data</em>: Manning Publications.</p>
 </div>
 </div>
-<div id="exercises" class="section level3 unnumbered">
+<div id="exercises-17" class="section level3 unnumbered">
 <h3>Exercises</h3>
 <ol style="list-style-type: decimal">
 <li><p>Write Spark code for the following situations.</p>
@@ -819,31 +1039,30 @@ Park, compute the max, mean, and min for August. You will need
 to use subsetting, as discussed in this chapter.</p></li>
 <li><p>Using the electricity price data, compute the average hourly
 cost.</p></li>
-<li><p>Read the national GDP file,[^clustercomputing-10] which records
+<li><p>Read the national GDP file,<a href="#fn73" class="footnote-ref" id="fnref73"><sup>73</sup></a> which records
 GDP in millions, and count how many countries have a GDP greater
 than or less than 10,000 million.</p></li>
 </ol></li>
 </ol>
-<p>[^clustercomputing-10] :
-<a href="http://people.terry.uga.edu/rwatson/data/GDP.csv"><u>http://www.richardtwatson.com/data/GDP.csv</u></a></p>
 
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Marz, N., &amp; Warren, J. (2012). <em>Big Data</em>:
-Manning Publications.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p><a href="http://hadoop.apache.org"><u>http://hadoop.apache.org</u></a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<ol start="64">
+<li id="fn64"><p>Marz, N., &amp; Warren, J. (2012). <em>Big Data</em>:
+Manning Publications.<a href="cluster-computing.html#fnref64" class="footnote-back">↩︎</a></p></li>
+<li id="fn65"><p><a href="http://hadoop.apache.org"><u>http://hadoop.apache.org</u></a><a href="cluster-computing.html#fnref65" class="footnote-back">↩︎</a></p></li>
+<li id="fn66"><p><a href="https://www.marketanalysis.com/?p=279"><u>https://www.marketanalysis.com/?p=279</u></a>
+(Hadoop Market Forecast 2017-2022, May 2017)<a href="cluster-computing.html#fnref66" class="footnote-back">↩︎</a></p></li>
+<li id="fn67"><p><a href="https://spark.apache.org"><u>https://spark.apache.org</u></a><a href="cluster-computing.html#fnref67" class="footnote-back">↩︎</a></p></li>
+<li id="fn68"><p><a href="http://spark.rstudio.com"><u>http://spark.rstudio.com</u></a><a href="cluster-computing.html#fnref68" class="footnote-back">↩︎</a></p></li>
+<li id="fn69"><p><a href="https://www.java.com/en/download/help/version_manual.xml"><u>https://www.java.com/en/download/help/version_manual.xml</u></a><a href="cluster-computing.html#fnref69" class="footnote-back">↩︎</a></p></li>
+<li id="fn70"><p><a href="http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html"><u>http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html</u></a><a href="cluster-computing.html#fnref70" class="footnote-back">↩︎</a></p></li>
+<li id="fn71"><p><a href="https://en.wikipedia.org/wiki/IEEE_floating_point"><u>https://en.wikipedia.org/wiki/IEEE_floating_point</u></a><a href="cluster-computing.html#fnref71" class="footnote-back">↩︎</a></p></li>
+<li id="fn72"><p><a href="http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv">http://www.richardtwatson.com/data/electricityprices.csv</a><a href="cluster-computing.html#fnref72" class="footnote-back">↩︎</a></p></li>
+<li id="fn73"><p><a href="http://www.richardtwatson.com/data/GDP.csv" class="uri">http://www.richardtwatson.com/data/GDP.csv</a><a href="cluster-computing.html#fnref73" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -851,12 +1070,11 @@ Manning Publications.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
           </div>
         </div>
       </div>
-
-
+<a href="text-mining-natural-language-processing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dashboards.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -884,8 +1102,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/318-clustercomputing.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -897,7 +1115,7 @@ gitbook.start({
 },
 "download": ["DataManagement.pdf", "DataManagement.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
@@ -907,6 +1125,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -1,0 +1,2601 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Data Modeling | DataManagement.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Data Modeling | DataManagement.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Data Modeling | DataManagement.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="one-to-one-and-recursive-relationships.html"/>
+<link rel="next" href="reference-1-basic-structures.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="data-management-databases-and-organizations.html"><a href="data-management-databases-and-organizations.html"><i class="fa fa-check"></i>Data Management: Databases and Organizations</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#supplements"><i class="fa fa-check"></i>Supplements</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1-the-managerial-perspective.html"><a href="section-1-the-managerial-perspective.html"><i class="fa fa-check"></i>Section 1 The Managerial Perspective</a></li>
+<li class="chapter" data-level="1" data-path="managing-data.html"><a href="managing-data.html"><i class="fa fa-check"></i><b>1</b> Managing Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#individual-data-management"><i class="fa fa-check"></i>Individual data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#organizational-data-management"><i class="fa fa-check"></i>Organizational data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#problems-with-data-management-systems"><i class="fa fa-check"></i>Problems with data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#a-brief-history-of-data-management-systems"><i class="fa fa-check"></i>A brief history of data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#data-information-and-knowledge"><i class="fa fa-check"></i>Data, information, and knowledge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#the-challenge"><i class="fa fa-check"></i>The challenge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="information.html"><a href="information.html"><i class="fa fa-check"></i><b>2</b> Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#learning-objectives-1"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-historical-perspective"><i class="fa fa-check"></i>A historical perspective</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-brief-history-of-information-systems"><i class="fa fa-check"></i>A brief history of information systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-characteristics"><i class="fa fa-check"></i>Information characteristics</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-hardness"><i class="fa fa-check"></i>Information hardness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-richness"><i class="fa fa-check"></i>Information richness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-classes"><i class="fa fa-check"></i>Information classes</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-organizational-change"><i class="fa fa-check"></i>Information and organizational change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#goal-setting-information"><i class="fa fa-check"></i>Goal-setting information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#gap-information"><i class="fa fa-check"></i>Gap information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#change-information"><i class="fa fa-check"></i>Change information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#problem-solution"><i class="fa fa-check"></i>Problem solution</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-as-a-means-of-change"><i class="fa fa-check"></i>Information as a means of change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#marketing"><i class="fa fa-check"></i>Marketing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#customer-service"><i class="fa fa-check"></i>Customer Service</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#empowerment"><i class="fa fa-check"></i>Empowerment</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-managerial-work"><i class="fa fa-check"></i>Information and managerial work</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-information-requirements"><i class="fa fa-check"></i>Managers’ information requirements</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-needs-for-information-vary-accordingly-with-responsibilities"><i class="fa fa-check"></i>Managers’ needs for information vary accordingly with responsibilities</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-satisficing"><i class="fa fa-check"></i>Information satisficing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-delivery-systems"><i class="fa fa-check"></i>Information delivery systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-integration"><i class="fa fa-check"></i>Information integration</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#knowledge-1"><i class="fa fa-check"></i>Knowledge</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#references-and-additional-readings-1"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-2-data-modeling-and-sql.html"><a href="section-2-data-modeling-and-sql.html"><i class="fa fa-check"></i>Section 2 Data Modeling and SQL</a></li>
+<li class="chapter" data-level="3" data-path="the-single-entity.html"><a href="the-single-entity.html"><i class="fa fa-check"></i><b>3</b> The Single Entity</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#the-relational-model"><i class="fa fa-check"></i>The relational model</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#modeling-a-single-entity-database"><i class="fa fa-check"></i>Modeling a single-entity database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#creating-a-single-table-database"><i class="fa fa-check"></i>Creating a single-table database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html"><i class="fa fa-check"></i><b>4</b> The One-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#relationships"><i class="fa fa-check"></i>Relationships</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#creating-a-database-with-a-1m-relationship"><i class="fa fa-check"></i>Creating a database with a 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#querying-a-two-table-database"><i class="fa fa-check"></i>Querying a two-table database</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#key-terms-and-concepts-1"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html"><i class="fa fa-check"></i><b>5</b> The Many-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#the-many-to-many-relationship-1"><i class="fa fa-check"></i>The many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#creating-a-relational-database-with-an-mm-relationship"><i class="fa fa-check"></i>Creating a relational database with an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#querying-an-mm-relationship"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#key-terms-and-concepts-2"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html"><i class="fa fa-check"></i><b>6</b> One-to-One and Recursive Relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#learning-objectives-5"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-one-to-one-relationship"><i class="fa fa-check"></i>Querying a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-1m-relationship"><i class="fa fa-check"></i>Querying a recursive 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Querying a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Modeling a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#key-terms-and-concepts-3"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-modeling.html"><a href="data-modeling.html"><i class="fa fa-check"></i><b>7</b> Data Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#modeling"><i class="fa fa-check"></i>Modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-1"><i class="fa fa-check"></i>Data modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-building-blocks"><i class="fa fa-check"></i>The building blocks</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-model-quality"><i class="fa fa-check"></i>Data model quality</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#quality-improvement"><i class="fa fa-check"></i>Quality improvement</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#meaningful-identifiers"><i class="fa fa-check"></i>Meaningful identifiers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-seven-habits-of-highly-effective-data-modelers"><i class="fa fa-check"></i>The seven habits of highly effective data modelers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#summary-7"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#key-terms-and-concepts-4"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#references-and-additional-readings-2"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html"><i class="fa fa-check"></i>Reference 1: Basic Structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#one-entity"><i class="fa fa-check"></i>One entity</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#two-entities"><i class="fa fa-check"></i>Two entities</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#another-entitys-identifier-as-part-of-the-identifier"><i class="fa fa-check"></i>Another entity’s identifier as part of the identifier</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html"><i class="fa fa-check"></i><b>8</b> Normalization and Other Data Modeling Methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normalization"><i class="fa fa-check"></i>Normalization</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#other-data-modeling-methods"><i class="fa fa-check"></i>Other data modeling methods</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#summary-8"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#key-terms-and-concepts-5"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#references-and-additional-readings-3"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html"><i class="fa fa-check"></i><b>9</b> The Relational Model and Relational Algebra</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#data-structures"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#integrity-rules"><i class="fa fa-check"></i>Integrity rules</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#manipulation-languages"><i class="fa fa-check"></i>Manipulation languages</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-primitive-set-of-relational-operators"><i class="fa fa-check"></i>A primitive set of relational operators</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-fully-relational-database"><i class="fa fa-check"></i>A fully relational database</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#summary-9"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#key-terms-and-concepts-6"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#references-and-additional-readings-4"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>10</b> SQL</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#introduction-3"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-definition"><i class="fa fa-check"></i>Data definition</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#keys"><i class="fa fa-check"></i>Keys</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#indexes"><i class="fa fa-check"></i>Indexes</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-table"><i class="fa fa-check"></i>Creating a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#constraints"><i class="fa fa-check"></i>Constraints</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#collation-sequence"><i class="fa fa-check"></i>Collation sequence</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#scalar-functions"><i class="fa fa-check"></i>Scalar functions</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#formatting"><i class="fa fa-check"></i>Formatting</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#altering-a-table"><i class="fa fa-check"></i>Altering a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-table"><i class="fa fa-check"></i>Dropping a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-view"><i class="fa fa-check"></i>Creating a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-view"><i class="fa fa-check"></i>Dropping a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-an-index"><i class="fa fa-check"></i>Creating an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-an-index"><i class="fa fa-check"></i>Dropping an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-manipulation"><i class="fa fa-check"></i>Data manipulation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#qualifying-column-names"><i class="fa fa-check"></i>Qualifying column names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#temporary-names"><i class="fa fa-check"></i>Temporary names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#select"><i class="fa fa-check"></i>SELECT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#insert"><i class="fa fa-check"></i>INSERT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#update-1"><i class="fa fa-check"></i>UPDATE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-1"><i class="fa fa-check"></i>DELETE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-routines"><i class="fa fa-check"></i>SQL routines</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-function"><i class="fa fa-check"></i>SQL function</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-procedure"><i class="fa fa-check"></i>SQL procedure</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#trigger"><i class="fa fa-check"></i>Trigger</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#nullsmuch-ado-about-missing-information"><i class="fa fa-check"></i>Nulls—much ado about missing information</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#security"><i class="fa fa-check"></i>Security</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#grant"><i class="fa fa-check"></i>GRANT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#revoke"><i class="fa fa-check"></i>REVOKE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-system-catalog"><i class="fa fa-check"></i>The system catalog</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#natural-language-processing"><i class="fa fa-check"></i>Natural language processing</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#connectivity-and-odbc"><i class="fa fa-check"></i>Connectivity and ODBC</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#open-database-connectivity-odbc"><i class="fa fa-check"></i>Open database connectivity (ODBC)</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#embedded-sql"><i class="fa fa-check"></i>Embedded SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#user-defined-types"><i class="fa fa-check"></i>User-defined types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-future-of-sql"><i class="fa fa-check"></i>The future of SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#summary-10"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#key-terms-and-concepts-7"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#references-and-additional-readings-5"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#exercises-9"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html"><i class="fa fa-check"></i>Reference 2: SQL Playbook</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html#the-power-of-sql"><i class="fa fa-check"></i>The power of SQL</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3-advanced-data-management.html"><a href="section-3-advanced-data-management.html"><i class="fa fa-check"></i>Section 3 Advanced Data Management</a></li>
+<li class="chapter" data-level="11" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html"><i class="fa fa-check"></i><b>11</b> Spatial and Temporal Data Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#learning-objectives-10"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#introduction-4"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-spatial-data"><i class="fa fa-check"></i>Managing spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-temporal-data"><i class="fa fa-check"></i>Managing temporal data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#summary-11"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#key-terms-and-concepts-8"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#references-and-additional-readings-6"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#exercises-10"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graph-databases.html"><a href="graph-databases.html"><i class="fa fa-check"></i><b>12</b> Graph Databases</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-graph-database"><i class="fa fa-check"></i>A graph database</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#neo4j-a-graph-database-implementation"><i class="fa fa-check"></i>Neo4j – a graph database implementation</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-single-node"><i class="fa fa-check"></i>A single node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-a-node"><i class="fa fa-check"></i>Querying a node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-relationship-between-nodes"><i class="fa fa-check"></i>A relationship between nodes</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-an-mm-relationship-1"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#recursive-relationships"><i class="fa fa-check"></i>Recursive relationships</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#summary-12"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#key-terms-and-concepts-9"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#references-and-additional-resources"><i class="fa fa-check"></i>References and additional resources</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#exercises-11"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html"><i class="fa fa-check"></i><b>13</b> XML: Managing Data Exchange</a>
+<ul>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#sgml"><i class="fa fa-check"></i>SGML</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml"><i class="fa fa-check"></i>XML</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html"><i class="fa fa-check"></i><b>14</b> Organizational Intelligence</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#the-data-warehouse"><i class="fa fa-check"></i>The data warehouse</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exploiting-data-stores"><i class="fa fa-check"></i>Exploiting data stores</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#olap"><i class="fa fa-check"></i>OLAP</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining"><i class="fa fa-check"></i>Data mining</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#summary-14"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#key-terms-and-concepts-11"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#references-and-additional-readings-8"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exercises-13"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>15</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-r-project"><i class="fa fa-check"></i>The R project</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#database-access"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#timestamps"><i class="fa fa-check"></i>Timestamps</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#excel-files"><i class="fa fa-check"></i>Excel files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-and-data-analytics"><i class="fa fa-check"></i>R and data analytics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#summary-15"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#key-terms-and-concepts-12"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#exercises-14"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="data-visualization-1.html"><a href="data-visualization-1.html"><i class="fa fa-check"></i><b>16</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#visual-processing"><i class="fa fa-check"></i>Visual processing</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#ggplot2"><i class="fa fa-check"></i>ggplot2</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#some-recipes"><i class="fa fa-check"></i>Some recipes</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#geographic-data"><i class="fa fa-check"></i>Geographic data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#r-resources-1"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#summary-16"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#references-1"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#exercises-15"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html"><i class="fa fa-check"></i><b>17</b> Text mining &amp; natural language processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#the-nature-of-language"><i class="fa fa-check"></i>The nature of language</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#levels-of-processing"><i class="fa fa-check"></i>Levels of processing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#tokenization"><i class="fa fa-check"></i>Tokenization</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#sentiment-analysis"><i class="fa fa-check"></i>Sentiment analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#corpus"><i class="fa fa-check"></i>Corpus</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#readability"><i class="fa fa-check"></i>Readability</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#preprocessing"><i class="fa fa-check"></i>Preprocessing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#word-frequency-analysis"><i class="fa fa-check"></i>Word frequency analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#co-occurrence-and-association"><i class="fa fa-check"></i>Co-occurrence and association</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#cluster-analysis"><i class="fa fa-check"></i>Cluster analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#topic-modeling"><i class="fa fa-check"></i>Topic modeling</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#named-entity-recognition-ner"><i class="fa fa-check"></i>Named-entity recognition (NER)</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#future-developments"><i class="fa fa-check"></i>Future developments</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#summary-17"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#key-terms-and-concepts-13"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#references-2"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#exercises-16"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="cluster-computing.html"><a href="cluster-computing.html"><i class="fa fa-check"></i><b>18</b> Cluster computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#a-paradigm-shift"><i class="fa fa-check"></i>A paradigm shift</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-drivers"><i class="fa fa-check"></i>The drivers</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-bottleneck-and-its-solution"><i class="fa fa-check"></i>The bottleneck and its solution</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#lambda-architecture"><i class="fa fa-check"></i>Lambda Architecture</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#hadoop"><i class="fa fa-check"></i>Hadoop</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#spark"><i class="fa fa-check"></i>Spark</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#summary-18"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="dashboards.html"><a href="dashboards.html"><i class="fa fa-check"></i><b>19</b> Dashboards</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#the-value-of-dashboards"><i class="fa fa-check"></i>The value of dashboards</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#summary-19"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-4-managing-organizational-memory.html"><a href="section-4-managing-organizational-memory.html"><i class="fa fa-check"></i>Section 4 Managing Organizational Memory</a></li>
+<li class="chapter" data-level="20" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html"><i class="fa fa-check"></i><b>20</b> Data Structure and Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-data-deluge"><i class="fa fa-check"></i>The data deluge</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-structures-1"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-coding-standards"><i class="fa fa-check"></i>Data coding standards</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-storage-devices"><i class="fa fa-check"></i>Data storage devices</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-compression"><i class="fa fa-check"></i>Data compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#summary-20"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#key-terms-and-concepts-15"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#exercises-19"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html"><i class="fa fa-check"></i><b>21</b> Data Processing Architectures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database"><i class="fa fa-check"></i>Distributed database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#summary-21"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#key-terms-and-concepts-16"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#references-and-additional-readings-10"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#exercises-20"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="sql-and-java.html"><a href="sql-and-java.html"><i class="fa fa-check"></i><b>22</b> SQL and Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#jdbc"><i class="fa fa-check"></i>JDBC</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#java-ee"><i class="fa fa-check"></i>Java EE</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#using-sql-within-java"><i class="fa fa-check"></i>Using SQL within Java</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#javaserver-pages-jsp"><i class="fa fa-check"></i>JavaServer Pages (JSP)</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#summary-22"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#key-terms-and-concepts-17"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#references-and-additional-readings-11"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#exercises-21"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="data-integrity.html"><a href="data-integrity.html"><i class="fa fa-check"></i><b>23</b> Data Integrity</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#introduction-9"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-management"><i class="fa fa-check"></i>Transaction management</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#protecting-existence"><i class="fa fa-check"></i>Protecting existence</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#maintaining-data-quality"><i class="fa fa-check"></i>Maintaining data quality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#ensuring-confidentiality"><i class="fa fa-check"></i>Ensuring confidentiality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#summary-23"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#key-terms-and-concepts-18"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#exercises-22"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="data-administration.html"><a href="data-administration.html"><i class="fa fa-check"></i><b>24</b> Data Administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#introduction-10"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#the-chief-data-officer"><i class="fa fa-check"></i>The Chief Data Officer</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#management-of-the-database-environment"><i class="fa fa-check"></i>Management of the database environment</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-1"><i class="fa fa-check"></i>Data administration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-management-systems-dbmss"><i class="fa fa-check"></i>Database management systems (DBMSs)</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#groupware-1"><i class="fa fa-check"></i>Groupware</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-integration"><i class="fa fa-check"></i>Data integration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#conclusion-9"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#summary-24"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#key-terms-and-concepts-19"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#references-and-additional-readings-12"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#exercises-23"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-modeling" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Data Modeling</h1>
+<blockquote>
+<p><em>Man is a knot, a web, a mesh into which relationships are tied. Only
+those relationships matter.</em></p>
+<p>Antoine de Saint-Exupéry in <em>Flight to Arras</em></p>
+</blockquote>
+<div id="learning-objectives-6" class="section level3 unnumbered">
+<h3>Learning objectives</h3>
+<p>Students completing this chapter will be able to create a well-formed,
+high-fidelity data model.</p>
+</div>
+<div id="modeling" class="section level2 unnumbered">
+<h2>Modeling</h2>
+<p>Modeling is widely used within business to learn about organizational
+problems and design solutions. To understand where data modeling fits
+within the broader context, it is useful to review the full range of
+modeling activities. The types of modeling methods follow the 5W-H model
+of journalism.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
+<p><em>A broad perspective on modeling</em></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th><strong>Scope</strong></th>
+<th><strong>Model</strong></th>
+<th><strong>Technology</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Motivation</strong></td>
+<td>Why</td>
+<td>Goals</td>
+<td>Business plan canvas</td>
+<td>Groupware</td>
+</tr>
+<tr class="even">
+<td><strong>People</strong></td>
+<td>Who</td>
+<td>Business units</td>
+<td>Organization chart</td>
+<td>System interface</td>
+</tr>
+<tr class="odd">
+<td><strong>Time</strong></td>
+<td>When</td>
+<td>Key events</td>
+<td>PERT chart</td>
+<td>Scheduling</td>
+</tr>
+<tr class="even">
+<td><strong>Data</strong></td>
+<td>What</td>
+<td>Key entities</td>
+<td>Data model</td>
+<td>Relational database</td>
+</tr>
+<tr class="odd">
+<td><strong>Network</strong></td>
+<td>Where</td>
+<td>Locations</td>
+<td>Logistics network</td>
+<td>System architecture</td>
+</tr>
+<tr class="even">
+<td><strong>Function</strong></td>
+<td>How</td>
+<td>Key processes</td>
+<td>Process model</td>
+<td>Application software</td>
+</tr>
+</tbody>
+</table>
+<p>Modeling occurs at multiple levels. At the highest level, an
+organization needs to determine the scope of its business by identifying
+the major elements of its environment, such as its goals, business
+units, where it operates, and critical events, entities, and processes.
+At the top level, textual models are frequently used. For example, an
+organization might list its major goals and business processes. A map
+will be typically used to display where the business operates.</p>
+<p>Once senior managers have clarified the scope of a business, models can
+be constructed for each of the major elements. Goals will be converted
+into a business plan, business units will be shown on an organizational
+chart, and so on. The key elements, from an IS perspective, are data and
+process modeling, which are typically covered in the core courses of an
+IS program.</p>
+<p>Technology, the final stage, converts models into operational systems to
+support the organization. Many organizations rely extensively on e-mail
+and Web technology for communicating business decisions. People connect
+to systems through an interface, such as a Web browser. Ensuring that
+events occur at the right time is managed by scheduling software. This
+could be implemented with operating system procedures that schedule the
+execution of applications. In some database management systems (DBMSs),
+triggers can be established. A <strong>trigger</strong> is a database procedure that
+is automatically executed when some event is recognized. For example,
+U.S. banks are required to report all deposits exceeding USD 10,000, and
+a trigger could be coded for this event.</p>
+<p>Data models are typically converted into relational databases, and
+process models become computer programs. Thus, you can see that data
+modeling is one element of a comprehensive modeling activity that is
+often required to design business systems. When a business undergoes a
+major change, such as a reengineering project, many dimensions can be
+altered, and it may be appropriate to rethink many elements of the
+business, starting with its goals. Because such major change is very
+disruptive and costly, it occurs less frequently. It is more likely that
+data modeling is conducted as a stand-alone activity or part of process
+modeling to create a new business application.</p>
+</div>
+<div id="data-modeling-1" class="section level2 unnumbered">
+<h2>Data modeling</h2>
+<p>You were introduced to the basic building blocks of data modeling in the
+earlier chapters of this section. Now it is time to learn how to
+assemble blocks to build a data model. Data modeling is a method for
+determining what data and relationships should be stored in the
+database. It is also a way of communicating a database design.</p>
+<p>The goal of data modeling is to identify the facts that must be stored
+in a database. A data model is not concerned with how the data will be
+stored. This is the concern of those who implement the database. A data
+model is not concerned with how the data will be processed. This is the
+province of process modeling. The goal is to create a data model that is
+an accurate representation of data needs and real-world data
+relationships.</p>
+<p>Building a data model is a partnership between a client, a
+representative of the eventual owners of the database, and a designer.
+Of course, there can be a team of clients and designers. For simplicity,
+we assume there is one client and one designer.</p>
+<p>Drawing a data model is an iterative process of trial and revision. A
+data model is a working document that will change as you learn more
+about the client’s needs and world. Your early versions are likely to be
+quite different from the final product. Use a product such as MySQL
+Workbench for drawing and revising a data model.</p>
+</div>
+<div id="the-building-blocks" class="section level2 unnumbered">
+<h2>The building blocks</h2>
+<p>The purpose of a database is to store data about things, which can
+include facts (e.g., an exchange rate), plans (e.g., scheduled
+production of two-person tents for June), estimates (e.g., forecast of
+demand for smart phones), and a variety of other data. A data model
+describes these things and their relationships with other things using
+four components: entity, attribute, relationship, and identifier.</p>
+<div id="entity" class="section level3 unnumbered">
+<h3>Entity</h3>
+<p>The entity is the basic building block of a data model. an entity is a
+thing about which data should be stored, something we need to describe.
+Each entity in a data model has a unique name that we write in singular
+form. Why singular? Because we want to emphasize that an entity
+describes an instance of a thing. Thus, we previously used the word
+SHARE to define an entity because it describes each instance of a share
+rather than shares in general.</p>
+<p>We have already introduced the convention that an entity is represented
+by a rectangle, and the name of the entity is shown in uppercase
+letters, as follows.</p>
+<p><em>The entity SHARE</em></p>
+<p><img src="Figures/Chapter%203/share.png" width="152" /></p>
+<p>A large data model might contain over a 1,000 entities. A database can
+easily contain hundreds of millions of instances (rows) for any one
+entity (table). Imagine the number of instances in a national tax
+department’s database.</p>
+<p>How do you begin to identify entities? One approach is to underline any
+<em>nouns</em> in the system proposal or provided documentation. Most nouns are
+possible entities, and underlining ensures that you do not overlook any
+potential entities. Start by selecting an entity that seems central to
+the problem. If you were designing a student database, you might start
+with the student. Once you have picked a central entity, describe it.
+Then move to the others.</p>
+</div>
+<div id="attribute" class="section level3 unnumbered">
+<h3>Attribute</h3>
+<p>An attribute describes an entity. When an entity has been identified,
+the next step is to determine its attributes, that is, the data that
+should be kept to describe fully the entity. An attribute name is
+singular and unique within the data model. You may need to use a
+modifier to make an attribute name unique (e.g., “hire date” and “sale
+date” rather than just “date”).</p>
+<p>Our convention is that the name of an attribute is recorded in lowercase
+letters within the entity rectangle. The following figure illustrates
+that SHARE has attributes <em>share code, share name, share price, share
+quantity, share dividend,</em> and <em>share PE</em>. Notice the frequent use of
+the modifier “share”. It is possible that other entities in the database
+might also have a price and quantity, so we use a modifier to create
+unique attribute names. Note also that <em>share cod</em>e is the identifier.</p>
+<p><em>The entity SHARE with its attributes</em></p>
+<p><img src="Figures/Chapter%203/share%20with%20attributes.png" width="152" /></p>
+<p>Defining attributes generally takes considerable discussion with the
+client. You should include any attribute that is likely to be required
+for present or future decision making, but don’t get carried away. Avoid
+storing unnecessary data. For example, to describe the entity STUDENT
+you usually record date of birth, but it is unlikely that you would
+store height. If you were describing an entity PATIENT, on the other
+hand, it might be necessary to record height, because that is sometimes
+relevant to medical decision making.</p>
+<p>An attribute has a single value, which may be null. Multiple values are
+not allowed. If you need to store multiple values, it is a signal that
+you have a one-to-many (1:m) relationship and need to define another
+entity.</p>
+</div>
+<div id="relationship" class="section level3 unnumbered">
+<h3>Relationship</h3>
+<p>Entities are related to other entities. If there were no relationships
+between entities, there would be no need for a data model and no need
+for a relational database. A simple, flat file (a single-entity
+database) would be sufficient. A relationship is binary. It describes a
+linkage between two entities and is represented by a line between them.</p>
+<p>Because a relationship is binary, strictly speaking it has two
+relationship descriptors, one for each entity. Each relationship
+descriptor has a degree stating how many instances of the other entity
+may be related to each instance of the described entity. Consider the
+entities STOCK and NATION and their 1:m relationship (see the following
+figure). We have two relationship descriptors: <em>stocks of nation</em> for
+NATION and <em>nation of stock</em> for STOCK. The relationship descriptor
+<em>stocks of nation</em> has a degree of m because a nation may have zero or
+more listed stocks. The relationship descriptor <em>nation of stock</em> has a
+degree of 1 because a stock is listed in at most one nation. To reduce
+data model clutter, where necessary for clarification, we will use a
+single label for the pair of relationship descriptors. Experience shows
+this approach captures the meaning of the relationship and improves
+readability.</p>
+<p><em>A 1:m relationship between STOCK and NATION</em></p>
+<p><img src="Figures/Chapter%204/nation-stock.png" width="374" /></p>
+<p>Because the meaning of relationships frequently can be inferred, there
+is no need to label every one; however, each additional relationship
+between two entities should be labeled to clarify meaning. Also, it is a
+good idea to label one-to-one (1:1) relationships, because the meaning
+of the relationship is not always obvious.</p>
+<p>Consider the fragment in the following figure. The descriptors of the
+1:m relationship can be inferred as a firm has employees and an employee
+belongs to a firm. the 1:1 relationship is clarified by labeling the 1:1
+relationship as firm’s boss.</p>
+<p><em>Relationship labeling</em></p>
+<p><img src="Figures/Chapter%207/relationship%20labeling.png" /></p>
+</div>
+<div id="identifier" class="section level3 unnumbered">
+<h3>Identifier</h3>
+<p>An identifier uniquely distinguishes an instance of an entity. An
+identifier can be one or more attributes and may include the identifier
+of a related entity. When a related entity’s identifier is part of an
+identifier, a plus sign is placed on the line closest to the entity
+being identified. In the following figure, an instance of the entity
+LINEITEM is identified by the composite of <em>lineno</em> and <em>saleno</em>, the
+identifier of SALE. The value <em>lineno</em> does not uniquely identify an
+instance of LINEITEM, because it is simply a number that appears on the
+sales form. Thus, the identifier must include <em>saleno</em> (the identifier
+of SALE). So, any instance of LINEITEM is uniquely identified by the
+composite <em>saleno</em> and <em>lineno</em>.</p>
+<p><em>A related entity’s identifier as part of the identifier</em></p>
+<p><img src="Figures/Chapter%205/sale-item.png" width="561" /></p>
+<p>Occasionally, there will be several possible identifiers, and these are
+each given a different symbol. Our convention is to prefix an identifier
+with an asterisk (*). If there are multiple identifiers, use other
+symbols such as #, !, or &amp;. Be careful: If you have too many possible
+identifiers, your model will look like comic book swearing. In most
+cases, you will have only one identifier.</p>
+<p>No part of an identifier can be null. If this were permitted, there
+would be no guarantee that the other parts of the identifier were
+sufficiently unique to distinguish all instances in the database.</p>
+</div>
+</div>
+<div id="data-model-quality" class="section level2 unnumbered">
+<h2>Data model quality</h2>
+<p>There are two criteria for judging the quality of a data model. It must
+be well-formed and have high fidelity.</p>
+<div id="a-well-formed-data-model" class="section level3 unnumbered">
+<h3>A well-formed data model</h3>
+<p>A well-formed data model clearly communicates information to the client.
+Being well-formed means the construction rules have been obeyed. There
+is no ambiguity; all entities are named, and all entities have
+identifiers. If identifiers are missing, the client may make incorrect
+inferences about the data model. All relationships are recorded using
+the proper notation and labeled whenever there is a possibility of
+confusion.</p>
+<p><em>Characteristics of a well-formed data model</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">All construction rules are obeyed.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">There is no ambiguity.</td>
+</tr>
+<tr class="even">
+<td align="left">All entities are named.</td>
+</tr>
+<tr class="odd">
+<td align="left">Every entity has an identifier.</td>
+</tr>
+<tr class="even">
+<td align="left">All relationships are represented, using the correct notation.</td>
+</tr>
+<tr class="odd">
+<td align="left">Relationships are labeled to avoid misunderstanding.</td>
+</tr>
+<tr class="even">
+<td align="left">All attributes of each entity are listed.</td>
+</tr>
+<tr class="odd">
+<td align="left">All attribute names are meaningful and unique.</td>
+</tr>
+</tbody>
+</table>
+<p>All the attributes of an entity are listed because missing attributes
+create two types of problems. <em>First<strong>,</strong></em> it is unclear what data will
+be stored about each instance. <em>Second</em>, the data model may be missing
+some relationships. Attributes that can have multiple values become
+entities. It is only by listing all of an entity’s attributes during
+data modeling that these additional entities are recognized.</p>
+<p>In a well-formed data model, all attribute names are meaningful and
+unique. The names of entities, identifiers, attributes, and
+relationships must be meaningful to the client because they are describe
+the client’s world. Indeed, in nearly all cases they are the client’s
+everyday names. Take care in selecting words because they are critical
+to communicating meaning. The acid test for comprehension is to get the
+client to read the data model to other potential users. Names need to be
+unique to avoid confusion.</p>
+</div>
+<div id="a-high-fidelity-image" class="section level3 unnumbered">
+<h3>A high-fidelity image</h3>
+<p>Music lovers aspire to own a high-fidelity stereo system—one that
+faithfully reproduces the original performance with minimal or no
+distortion. A data model is a high-fidelity image when it faithfully
+describes the world it is supposed to represent. All relationships are
+recorded and are of the correct degree. There are no compromises or
+distortions. If the real-world relationship is many-to-many (m:m), then
+so is the relationship shown in the data model. a well-formed,
+high-fidelity data model is complete, understandable, accurate, and
+syntactically correct.</p>
+</div>
+</div>
+<div id="quality-improvement" class="section level2 unnumbered">
+<h2>Quality improvement</h2>
+<p>A data model is an evolving representation. Each change should be an
+incremental improvement in quality. Occasionally, you will find a major
+quality problem at the data model’s core and have to change the model
+considerably.</p>
+<div id="detail-and-context" class="section level3 unnumbered">
+<h3>Detail and context</h3>
+<p>The quality of a data model can be determined only by understanding the
+context in which it will be used. Consider the data model (see the
+following figure) used in Chapter 4 to discuss the 1:m relationship.
+This fragment says a nation has many stocks. Is that really what we want
+to represent? Stocks are listed on a stock exchange, and a nation may
+have several stock exchanges. For example, the U.S. has the New York
+Stock Exchange and NASDAQ. Furthermore, some foreign stocks are listed
+on the New York Stock Exchange. If this is the world we have to
+describe, the data model is likely to differ from that shown in the
+figure. Try drawing the revised data model.</p>
+<p><em>A 1:m relationship between STOCK and NATION</em></p>
+<p><img src="Figures/Chapter%204/nation-stock.png" width="374" /></p>
+<p>As you can see, the data model in the following figure is quite
+different from the initial data model of preceding figure. Which one is
+better? They both can be valid models; it just depends on the world you
+are trying to represent and possible future queries. In the first case,
+the purpose was to determine the value of a portfolio. There was no
+interest in on which exchange stocks were listed or their home exchange.
+So the first model has high fidelity for the described situation.</p>
+<p>The second data model would be appropriate if the client needed to know
+the home exchange of stocks and their price on the various exchanges
+where they were listed. The second data model is an improvement on the
+first if it incorporates the additional facts and relationships
+required. If it does not, then the additional detail is not worth the
+extra cost.</p>
+<p><em>Revised NATION-STOCK data</em></p>
+<p><img src="Figures/Chapter%207/revised%20NATION-STOCK.png" /></p>
+</div>
+<div id="a-lesson-in-pure-geography" class="section level3 unnumbered">
+<h3>A lesson in pure geography</h3>
+<p>A data model must be an accurate representation of the world you want to
+model. The data model must account for all the exceptions—there should
+be no impurities. Let’s say you want to establish a database to store
+details of the world’s cities. You might start with the data model
+depicted in the following figure.</p>
+<p><em>A world’s cities data model</em></p>
+<p><img src="Figures/Chapter%207/geography.png" width="540" /></p>
+<p>Before looking more closely at the data model, let’s clarify the meaning
+of <em>unittype</em>. Because most countries are divided into administrative
+units that are variously called states, provinces, territories, and so
+forth, <em>unittype</em> indicates the type of administrative unit (e.g.,
+state). How many errors can you find in the initial data model?</p>
+<p>Problems and solutions for the initial world’s cities data model</p>
+<table style="width:93%;">
+<colgroup>
+<col width="20%" />
+<col width="36%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Problem</th>
+<th align="left">Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">City names are not
+unique. There is an
+Athens in Greece and
+the U.S. has an Athens
+in Georgia, Alabama,
+Ohio, Pennsylvania,
+Tennessee, and Texas.</td>
+<td align="left">To identify a city
+uniquely, you need to
+specify its
+administrative unit and
+country. Add a plus
+sign to the crow’s feet
+between CITY and ADMIN
+UNIT and between ADMIN
+UNIT and NATION.</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">Administrative unit
+names are not
+necessarily unique.
+There used to be a
+Georgia in the old
+U.S.S.R., and there is
+a Georgia in the U.S.
+There is no guarantee
+that administrative
+unit names will always
+be unique.</td>
+<td align="left">To identify an
+administrative unit
+uniquely, you also need
+to know the country in
+which it is found. Add
+a plus sign to the
+crow’s foot between
+ADMIN UNIT and NATION.</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">There is an unlabeled
+1:1 relationship
+between CITY and ADMIN
+UNIT and CITY and
+NATION. What do these
+mean? They are supposed
+to indicate that an
+administrative unit has
+a capital, and a nation
+has a capital.</td>
+<td align="left">Label relationships
+(e.g., national capital
+city).</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">The assumption is that
+a nation has only one
+capital, but there are
+exceptions. South
+Africa has three
+capitals: Cape Town
+(legislative), Pretoria
+(administrative), and
+Bloemfontein
+(judicial). You need
+only one exception to
+lower the fidelity of a
+data model
+significantly.</td>
+<td align="left">Change the relationship
+between NATION and CITY
+to 1:m. Add an
+attribute natcaptype to
+CITY to distinguish
+between types of
+capitals.</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">The assumption is that
+an administrative unit
+has only one capital,
+but there are
+exceptions. At one
+point, Chandigarh was
+the capital of two
+Indian states, Punjab
+and Haryana. The Indian
+state of Jammu &amp;
+Kashmir has two
+capitals: Jammu
+(summer) and Srinagar
+(winter).</td>
+<td align="left">Change the relationship
+between ADMIN UNIT and
+CITY to m:m by creating
+an associative entity
+and include a
+distinguishing
+attribute of
+unitcaptype.</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">Some values can be
+derived. National
+population, natpop, and
+area, natarea, are the
+sum of the regional
+populations, regpop,
+and areas, regarea,
+respectively. The same
+rule does not apply to
+regions and cities
+because not everyone
+lives in a city.</td>
+<td align="left">Remove the attributes
+natpop and natarea from
+NATION.</td>
+</tr>
+</tbody>
+</table>
+<p><em>A revised world’s cities data model</em></p>
+<p><img src="Figures/Chapter%207/geography%20revised.png" /></p>
+<p>This geography lesson demonstrates how you often start with a simple
+model of low fidelity. By additional thinking about relationships and
+consideration of exceptions, you gradually create a high-fidelity data
+model.</p>
+<blockquote>
+<p>❓<strong>Skill builder</strong> Write SQL to determine which administrative units
+have two capitals and which have a shared capital.</p>
+</blockquote>
+</div>
+<div id="family-matters" class="section level3 unnumbered">
+<h3>Family matters</h3>
+<p>Families can be very complicated. It can be tricky to keep track of all
+those relations—maybe you need a relational database (this is the
+worst joke in the book; they improve after this). We start with a very
+limited view of marriage and gradually ease the restrictions to
+demonstrate how any and all aspects of a relationship can be modeled. An
+initial fragment of the data model is shown in the following figure.
+There are several things to notice about it.</p>
+<p><em>A man-woman data model</em></p>
+<p><img src="Figures/Chapter%207/marriage-1.png" width="527" /></p>
+<ol style="list-style-type: decimal">
+<li><p>There is a 1:1 relationship between man and woman. The labels
+indicate that this relationship is marriage, but there is no
+indication of the marriage date. We are left to infer that the data
+model records the current marriage.</p></li>
+<li><p>MAN and WOMAN have the same attributes. A prefix is used to make
+them unique. Both have an identifier (<em>id</em>, in the United States
+this would probably be a Social Security number), date of birth
+(<em>dob</em>), first name (<em>fname</em>), other names (<em>oname</em>), and last name
+(<em>name</em>).</p></li>
+<li><p>Other names (<em>oname</em>) looks like a multivalued attribute, which is
+not allowed. Should <em>oname</em> be single or multivalue? This is a
+tricky decision. It depends on how these data will be used. If
+queries such as “find all men whose other names include Herbert” are
+likely, then a person’s other names—kept as a separate entity that
+has a 1:m relationship for MAN and WOMAN—must be established. That
+is, a man or woman can have one or more other names. However, if you
+just want to store the data for completeness and retrieve it in its
+entirety, then <em>oname</em> is fine. It is just a text string. The key
+question to ask is, “What is the lowest level of detail possibly
+required for future queries?” Also, remember that SQL’s REGEXP
+clause can be used to search for values within a text string.</p></li>
+</ol>
+<p>The use of a prefix to distinguish attribute names in different entities
+suggests you should consider combining the entities. In this case, we
+could combine the entities MAN and WOMAN to create an entity called
+PERSON. Usually when entities are combined, you have to create a new
+attribute to distinguish between the different types. In this example,
+the attribute <em>gender</em> is added. We can also generalize the relationship
+label to <em>spouse</em>. The revised data model appears in the following
+figure.</p>
+<p><em>A PERSON data model</em></p>
+<p><img src="Figures/Chapter%207/marriage-2.png" width="257" /></p>
+<p>Now for a bit of marriage counseling. Marriage normally is a
+relationship between two people. Is that so? Well, some societies permit
+polygyny (one man can have many wives), others allow polyandry (one
+woman can have many husbands), and some permit same-sex marriages. So
+marriage, if we consider all the possibilities, is an m:m relationship
+between people, and partner might be a better choice than spouse for
+labeling the relationship Also, a person can be married more than once.
+To distinguish between different marriages, we really need to record the
+start and end date of each relationship and who was involved.</p>
+<p><em>A marriage data model</em></p>
+<p><img src="Figures/Chapter%207/marriage-3.png" width="360" /></p>
+<p>Marriage is an m:m relationship between two persons. It has attributes
+<em>begindate</em> and <em>enddate</em>. An instance of marriage is uniquely
+identified by a composite identifier: the two spouse identifiers and
+<em>begindate</em>. This means any marriage is uniquely identified by the
+composite of two person identifiers and the beginning date of the
+marriage. We need <em>begindate</em> as part of the identifier because the same
+couple might have more than one marriage (e.g., get divorced and remarry
+each other later). Furthermore, we can safely assume that it is
+impossible for a couple to get married, divorced, and remarried all on
+the one day. <em>Begindate</em> and <em>enddate</em> can be used to determine the
+current state of a marriage. If <em>enddate</em> is null, the marriage is
+current; otherwise, the couple has divorced.</p>
+<p>This data model assumes a couple goes through some formal process to get
+married or divorced, and there is an official date for both of these
+events. What happens if they just gradually drift into cohabitation, and
+there is no official beginning date? Think about it. (The data model
+problem, that is—not cohabitation!) Many countries recognize this
+situation as a common-law marriage, so the data model needs to recognize
+it. The present data model cannot handle this situation because
+<em>begindate</em> cannot be null—it is an identifier. Instead, a new
+identifier is needed, and <em>begindate</em> should become an attribute.</p>
+<p>Two new attributes can handle a common-law marriage. <em>Marriageno</em> can
+count the number of times a couple has been married to each other. In
+the majority of cases, <em>marriageno</em> will be 1. <em>Marriagestatus</em> can
+record whether a marriage is current or ended. Now we have a data model
+that can also handle common-law marriages. This is also a high-quality
+data model in that the client does not have to remember to examine
+<em>enddate</em> to determine a marriage’s current status. It is easier to
+remember to examine <em>marriagestatus</em> to check status. Also, we can allow
+a couple to be married, divorced, and remarried as many times as they
+like on the one day—which means we can now use the database in Las
+Vegas.</p>
+<p><em>A revised marriage data model</em></p>
+<p><img src="Figures/Chapter%207/marriage-4.png" width="360" /></p>
+<p>All right, now that we have the couple successfully married, we need to
+start thinking about children. A marriage has zero or more children, and
+let’s start with the assumption a child belongs to only one marriage.
+Therefore, we have a 1:m relationship between marriage and person to
+represent the children of a marriage.</p>
+<p><em>A marriage with children data model</em></p>
+<p><img src="Figures/Chapter%207/marriage-5.png" width="435" /></p>
+<p>You might want to consider how the model would change to handle
+single-parent families, adopted children, and other aspects of human
+relationships.</p>
+<blockquote>
+<p>❓<strong>Skill builder</strong> The International Commission for Border Resolution
+Disputes requires a database to record details of which countries have
+common borders. Design the database. Incidentally, which country
+borders the most other countries?</p>
+</blockquote>
+</div>
+<div id="whens-a-book-not-a-book" class="section level3 unnumbered">
+<h3>When’s a book not a book?</h3>
+<p>Sometimes we have to rethink our ideas of physical objects. Consider a
+data model for a library.</p>
+<p><em>A library data model fragment</em></p>
+<p><img src="Figures/Chapter%207/library-1.png" /></p>
+<p>The preceding fragment assumes that a person borrows a book. What
+happens if the library has two copies of the book? Do we add an
+attribute to BOOK called <em>copy number</em>? No, because we would introduce
+redundancy by repeating the same information for each book. What you
+need to recognize is that in the realm of data modeling, a book is not
+really a physical thing, but the copy is, because it is what you borrow.</p>
+<p><em>A revised library data model fragment</em></p>
+<p><img src="Figures/Chapter%207/library-2.png" /></p>
+<p>As you can see, a book has many copies, and a copy is of one book. A
+book can be identified by <em>callno</em>, which is usually a Library of
+Congress number or Dewey number. A copy is identified by a <em>bookno</em>.
+This is a unique number allocated by the library to the copy of the
+book. If you look in a library book, you will generally find it pasted
+on the inside back cover and shown in numeric and bar code format.
+Notice that it is called <em>book number</em> despite the fact that it really
+identifies a copy of a book. This is because most people, including
+librarians, think of the copy as a book.</p>
+<p>The International Standard Book Number (ISBN) uniquely identifies any
+instance of a book (not copy). Although it sounds like a potential
+identifier for BOOK, it is not. ISBNs were introduced in the second half
+of the twentieth century, and books published before then do not have an
+ISBN.</p>
+</div>
+<div id="a-history-lesson" class="section level3 unnumbered">
+<h3>A history lesson</h3>
+<p>Many organizations maintain historical data (e.g., a person’s job
+history or a student’s enrollment record). A data model can depict
+historical data relationships just as readily as current data
+relationships.</p>
+<p>Consider the case of an employee who works for a firm that consists of
+divisions (e.g., production) and departments (e.g., quality control).
+The firm contains many departments, but a department belongs to only one
+division. At any one time, an employee belongs to only one department.</p>
+<p><em>Employment history—take 1</em></p>
+<p><img src="Figures/Chapter%207/history-1.png" /></p>
+<p>The fragment in the figure can be amended to keep track of the divisions
+and departments in which a person works. While employed with a firm, a
+person can work in more than one department. Since a department can have
+many employees, we have an m:m relationship between DEPARTMENT and
+EMPLOYEE. We might call the resulting associative entity POSITION.</p>
+<p><em>Employment history—take 2</em></p>
+<p><img src="Figures/Chapter%207/history-2.png" /></p>
+<p>The revised fragment records employee work history. Note that any
+instance of POSITION is identified by <em>begdate</em> and the identifiers for
+EMPLOYEE and DEPARTMENT. The fragment is typical of what happens when
+you move from just keeping current data to recording history. A 1:m
+becomes an m:m relationship to record history.</p>
+<p>People who work get paid. How do we keep track of an employee’s pay
+data? An employee has many pay slips, but a pay slip belongs to one
+employee. When you look at a pay slip, you will find it contains many
+items: gross pay and a series of deductions for tax, medical insurance,
+and so on. Think of a pay slip as containing many lines, analogous to a
+sales form. Now look at the revised data model.</p>
+<p><em>Employment history—take 3</em></p>
+<p><img src="Figures/Chapter%207/history-3.png" /></p>
+<p>Typically, an amount shown on a pay slip is identified by a short text
+field (e.g., gross pay). PAYSLIPLINE contains an attribute <em>psltype</em> to
+identify the text that should accompany an amount, but where is the
+text? When dealing with codes like <em>psltype</em> and their associated text,
+the fidelity of a data model is improved by creating a separate entity,
+PSLTEXT, for the code and its text.</p>
+<p><em>Employment history—take 4</em></p>
+<p><img src="Figures/Chapter%207/history-4.png" /></p>
+</div>
+<div id="a-ménage-à-trois-for-entities" class="section level3 unnumbered">
+<h3>A ménage à trois for entities</h3>
+<p>Consider aircraft leasing. A plane is leased to an airline for a
+specific period. When a lease expires, the plane can be leased to
+another airline. So, an aircraft can be leased many times, and an
+airline can lease many aircraft. Furthermore, there is an agent
+responsible for handling each deal. An agent can lease many aircraft and
+deal with many airlines. Over time, an airline will deal with many
+agents. When an agent reaches a deal with an airline to lease a
+particular aircraft, you have a transaction. If you analyze the aircraft
+leasing business, you discover there are three m:m relationships. You
+might think of these as three separate relationships.</p>
+<p><em>An aircraft-airline-agent data model</em></p>
+<p><img src="Figures/Chapter%207/airline.png" /></p>
+<p>The problem with three separate m:m relationships is that it is unclear
+where to store data about the lease. Is it stored in AIRLINE-AIRCRAFT?
+If you store the information there, what do you do about recording the
+agent who closed the deal? After you read the fine print and do some
+more thinking, you discover that a lease is the association of these
+three entities in an m:m relationship.</p>
+<p><em>A revised aircraft-airline-agent data model</em></p>
+<p><img src="Figures/Chapter%207/airline%20revised.png" /></p>
+<blockquote>
+<p>❓<strong>Skill builder</strong> Horse racing is a popular sport in some parts of
+the world. A horse<br />
+competes in at most one race on a course at a particular date. Over
+time, a horse can compete in many races on many courses. A horse’s
+rider is called a jockey, and a jockey can ride many horses and a
+horse can have many jockeys. Of course, there is only ever one jockey
+riding a horse at a particular time. Courses vary in their features,
+such as the length of the course and the type of surface (e.g., dirt
+or grass). Design a database to keep track of the results of horse
+races.</p>
+</blockquote>
+</div>
+<div id="project-managementplanning-and-doing" class="section level3 unnumbered">
+<h3>Project management—planning and doing</h3>
+<p>Project management involves both planned and actual data. A project is
+divided into a number of activities that use resources. Planning
+includes estimation of the resources to be consumed. When a project is
+being executed, managers keep track of the resources used to monitor
+progress and keep the project on budget. Planning data may not be as
+detailed as actual data and is typically fairly broad, such as an
+estimate of the number of hours that an activity will take. Actual data
+will be more detailed because they are usually collected by getting
+those assigned to the project to log a daily account of how they spent
+their time. Also, resources used on a project are allocated to a
+particular activity. For the purposes of this data model, we will focus
+only on recording time and nothing else.</p>
+<p><em>A project management data model</em></p>
+<p><img src="Figures/Chapter%207/planning.png" /></p>
+<p>Notice that <em>planned hours</em> is an attribute of ACTIVITY, and <em>actual
+hours</em> is an attribute of DAILY WORK. The hours spent on an activity are
+derived by summing <em>actual hours</em> in the associated DAILY WORK entity.
+This is a high-fidelity data model if planning is done at the activity
+level and employees submit daily worksheets. Planning can be done in
+greater detail, however, if planners indicate how many hours of each day
+each employee should spend on a project.</p>
+<p><em>A revised project management data model</em></p>
+<p><img src="Figures/Chapter%207/planning%20revised.png" /></p>
+<p>Now you see that <em>planned hours</em> and <em>actual hours</em> are both attributes
+of DAILY WORK. The message of this example, therefore, is not to assume
+that planned and actual data have the same level of detail, but do not
+be surprised if they do.</p>
+</div>
+<div id="cardinality" class="section level3 unnumbered">
+<h3>Cardinality</h3>
+<p>Some data modeling languages are quite precise in specifying the
+cardinality, or multiplicity, of a relationship. Thus, in a 1:m
+relationship, you might see additional information on the diagram. For
+example, the “many” end of the relationship might contain notation (such
+as 0,n) to indicate zero or more instances of the entity at the “many”
+end of the relationship.</p>
+<p><em>Cardinality and modality options</em></p>
+<table style="width:96%;">
+<colgroup>
+<col width="18%" />
+<col width="18%" />
+<col width="59%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">C ardin
+ality</th>
+<th align="left">Mo dal ity</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0,1</td>
+<td align="left">Op tio nal</td>
+<td align="left">There can be zero or one instance of the
+entity relative to the other entity.</td>
+</tr>
+<tr class="even">
+<td align="left">0,n</td>
+<td align="left"></td>
+<td align="left">There can be zero or many instances of
+the entity relative to the other entity.</td>
+</tr>
+<tr class="odd">
+<td align="left">1,1</td>
+<td align="left">Man dat
+ory</td>
+<td align="left">There is exactly one instance of the
+entity relative to the other entity.</td>
+</tr>
+<tr class="even">
+<td align="left">1,n</td>
+<td align="left"></td>
+<td align="left">The entity must have at least one and
+can have many instances relative to the
+other entity.</td>
+</tr>
+</tbody>
+</table>
+<p>The data modeling method of this text, as you now realize, has taken a
+broad approach to cardinality (is it 1:1 or 1:m?). We have not been
+concerned with greater precision (is it 0,1 or 1,1?), because the focus
+has been on acquiring basic data modeling skills. Once you know how to
+model, you can add more detail. When learning to model, too much detail
+and too much terminology can get in the way of mastering this difficult
+skill. Also, it is far easier to sketch models on a whiteboard or paper
+when you have less to draw. Once you switch to a data modeling tool,
+then adding cardinality precision is easier and appropriate.</p>
+<p><em>Modality</em></p>
+<p>Modality, also known as optionality, specifies whether an instance of an
+entity must participate in a relationship. Cardinality indicates the
+range of instances of an entity participating in a relationship, while
+modality defines the minimum number of instances. Cardinality and
+modality are linked, as shown in the table above. If an entity is
+optional, the minimum cardinality will be 0, and if mandatory, the
+minimum cardinality is 1.</p>
+<p>By asking the question, “Does an occurrence of this entity require an
+occurrence of the other entity?” you can assess whether an entity is
+mandatory. The usual practice is to use “O” for optional and place it
+near the entity that is optional. Mandatory relationships are often
+indicated by a short line (or bar) at right angles to the relationship
+between the entities.</p>
+<p>In the following figure, it is mandatory for an instance of STOCK to
+have an instance of NATION, and optional for an instance of NATION to
+have an instance of STOCK, which means we can record details of a nation
+for which stocks have not yet been purchased. During conversion of the
+data model to a relational database, the mandatory requirement (i.e.,
+each stock must have a nation) is enforced by the foreign key
+constraint.</p>
+<p><em>1:m relationship showing modality</em></p>
+<p><img src="Figures/Chapter%207/nation-stock-modal.png" /></p>
+<p>Now consider an example of an m:m relationship. A SALE can have many
+LINEITEMs, and a LINEITEM has only one SALE. An instance of LINEITEM
+must be related to an instance of SALE, otherwise it can’t exist.
+Similarly, it is mandatory for an instance of SALE to have an instance
+of LINEITEM, because it makes no sense to have a sale without any items
+being sold.</p>
+<p>In a relational database, the foreign key constraint handles the
+mandatory relationship between instances of LINEITEM and SALE, The
+mandatory requirement between SALE and LINEITEM has to be built into the
+processing logic of the application that processes a sales transaction.
+Basic business logic requires that a sale include some items, so a sales
+transaction creates one instance of SALE and multiple instances of
+LINEITEM. It does not make sense to have a sale that does not sell
+something.</p>
+<p><em>An m:m relationship showing modality</em></p>
+<p><img src="Figures/Chapter%207/m-and-m-modality.png" /></p>
+<p>The relationship between ITEM and LINEITEM is similar in structure to
+that of NATION and STOCK, which we saw in the previous example. An
+instance of a LINEITEM has a mandatory requirement for an instance of
+ITEM. An instance of an ITEM can exist without the need for an instance
+of a LINEITEM (i.e., the items that have not been sold).</p>
+<p>We gain further understanding of modality by considering a 1:1
+relationship. We focus attention on the 1:1 because the 1:m relationship
+has been covered. The 1:1 implies that it is mandatory for an instance
+of DEPT to be related to one instance of EMP (i.e., a department must
+have a person who is the boss), and an instance of EMP is optionally
+related to one instance of DEPT (i.e., an employee can be a boss, but
+not all employees are departmental bosses).</p>
+<p><em>A 1:1 relationship showing modality</em></p>
+<p><img src="Figures/Chapter%207/1-and-1-modality.png" /></p>
+<p>Earlier, when deciding where to store the foreign key for the 1:1
+relationship, we settled on placing the foreign key in DEPT, because all
+departments have a boss. Now we have a rule. The foreign key goes with
+the entity for which the relationship is mandatory. When specifying the
+create statements, you will need to be aware of the chicken-and-egg
+connection between DEPT and EMP. We cannot insert an employee in EMP
+unless we know that person’s department, and we cannot insert a
+department unless we have already inserted the boss for that department
+in EMP. We can get around this problem by using a <strong>deferrable foreign
+key constraint</strong>, but at this point we don’t know enough about
+transaction processing to discuss this approach.</p>
+<p>Let’s now consider recursive relationships. The following figure shows a
+recursive 1:m between employees, representing that one employee can be
+the boss of many other employees and a person has one boss. It is
+optional that a person is a boss, and optional that everyone has a boss,
+mainly because there has to be one person who is the boss of everyone.
+However, we can get around this one exception by inserting employees in
+a particular order. By inserting the biggest boss first, we effectively
+make it mandatory that all employees have a boss. Nevertheless, data
+models cover every situation and exception, so we still show the
+relationship as optional.</p>
+<p><em>1:m recursive with modality</em></p>
+<p><img src="Figures/Chapter%207/rec-1-and-m-modality.png" /></p>
+<p>We rely again on the British monarchy. This time we use it to illustrate
+modality with a 1:1 recursive relationship. As the following figure
+shows, it is optional for a monarch to have a successor. We are not
+talking about the end of a monarchy, but rather how we address the data
+modeling issue of not knowing who succeeds the current monarch.
+Similarly, there must be a monarch who did not succeed someone (i.e.,
+the first king or queen). Thus, both ends of the succession relationship
+have optional modality.</p>
+<p><em>1:1 recursive with modality</em></p>
+<p><img src="Figures/Chapter%207/rec-1-and-1-modality.png" /></p>
+<p>Finally, in our exploration of modality, we examine the m:m recursive.
+The model indicates that it is optional for a product to have components
+and optional for a product to be a component in other products. However,
+every assembly must have associated products.</p>
+<p><em>m:m recursive with modality</em></p>
+<p><img src="Figures/Chapter%207/rec-m-and-m-modality.png" /></p>
+<div id="summary-6" class="section level4 unnumbered">
+<h4>Summary</h4>
+<p>Modality adds additional information to a data model, and once you have
+grasped the fundamental ideas of entities and relationships, it is quite
+straightforward to consider whether a relationship is optional or
+mandatory. When a relationship is mandatory, you need to consider what
+constraint you can add to a table’s definition to enforce the
+relationship. As we have seen, in some cases the foreign key constraint
+handles mandatory relationships. In other cases, the logic for enforcing
+a requirement will be built into the application.</p>
+</div>
+</div>
+<div id="entity-types" class="section level3 unnumbered">
+<h3>Entity types</h3>
+<p>A data model contains different kinds of entities, which are
+distinguished by the format of their identifiers. Labeling each of these
+entities by type will help you to determine what questions to ask.</p>
+<div id="independent-entity" class="section level4 unnumbered">
+<h4>Independent entity</h4>
+<p>An independent entity is often central to a data model and foremost in
+the client’s mind. Independent entities are frequently the starting
+points of a data model. Remember that in the investment database, the
+independent entities are STOCK and NATION. Independent entities
+typically have clearly distinguishable names because they occur so
+frequently in the client’s world. In addition, they usually have a
+single identifier, such as <em>stock code</em> or <em>nation code</em>.</p>
+<p>Independent entities are often connected to other independent entities
+in a 1:m or m:m relationship. The data model in the following figure
+shows two independent entities linked in a 1:m relationship.</p>
+<p><em>NATION and STOCK—independent entities</em></p>
+<p><img src="Figures/Chapter%204/nation-stock.png" width="370" /></p>
+</div>
+<div id="weak-or-dependent-entity" class="section level4 unnumbered">
+<h4>Weak or dependent entity</h4>
+<p>A weak entity (also known as a dependent entity) relies on another
+entity for its existence and identification. It is recognized by a plus
+on the weak entity’s end of the relationship. CITY cannot exist without
+REGION. A CITY is uniquely identified by <em>cityname</em> and <em>regname</em>. If
+the composite identifier becomes unwieldy, creating an arbitrary
+identifier (e.g., cityno) will change the weak entity into an
+independent one.</p>
+<p><em>CITY—a weak entity</em></p>
+<p><img src="Figures/Chapter%207/region-city.png" width="360" /></p>
+</div>
+<div id="associative-entity" class="section level4 unnumbered">
+<h4>Associative entity</h4>
+<p>Associative entities are by-products of m:m relationships. They are
+typically found between independent entities. Associative entities
+sometimes have obvious names because they occur in the real world. For
+instance, the associative entity for the m:m relationship between
+DEPARTMENT and EMPLOYEE is usually called POSITION. If the associative
+entity does not have a common name, the two entity names are generally
+hyphenated (e.g., DEPARTMENT-EMPLOYEE). Always search for the
+appropriate name, because it will improve the quality of the data model.
+Hyphenated names are a last resort.</p>
+<p><em>POSITION is an associative entity</em></p>
+<p><img src="Figures/Chapter%207/history-2.png" /></p>
+<p>Associative entities can show either the current or the historic
+relationship between two entities. If an associative entity’s only
+identifiers are the two related entities’ identifiers, then it records
+the current relationship between the entities. If the associative entity
+has some time measure (e.g., date or hour) as a partial identifier, then
+it records the history of the relationship. Whenever you find an
+associative entity, ask the client whether the history of the
+relationship should be recorded.</p>
+<p>Creating a single, arbitrary identifier for an associative entity will
+change it to an independent one. This is likely to happen if the
+associative entity becomes central to an application. For example, if a
+personnel department does a lot of work with POSITION, it may find it
+more expedient to give it a separate identifier (e.g., <em>position
+number</em>).</p>
+</div>
+<div id="aggregate-entity" class="section level4 unnumbered">
+<h4>Aggregate entity</h4>
+<p>An aggregate entity is created when several different entities have
+similar attributes that are distinguished by a preceding or following
+modifier to keep their names unique. For example, because components of
+an address might occur in several entities (e.g., CUSTOMER and
+SUPPLIER), an aggregate address entity can be created to store details
+of all addresses. Aggregate entities usually become independent
+entities. In this case, we could use <em>address number</em> to identify an
+instance of address uniquely.</p>
+</div>
+<div id="subordinate-entity" class="section level4 unnumbered">
+<h4>Subordinate entity</h4>
+<p>A subordinate entity stores data about an entity that can vary among
+instances. A subordinate entity is useful when an entity consists of
+mutually exclusive classes that have different descriptions. The farm
+animal database shown in the following figure indicates that the farmer
+requires different data for sheep and horses. Notice that each of the
+subordinate entities is identified by the related entity’s identifier.
+You could avoid subordinate entities by placing all the attributes in
+ANIMAL, but then you make it incumbent on the client to remember which
+attributes apply to horses and which to sheep. This becomes an important
+issue for null fields. For example, is the attribute <em>hay consumption</em>
+null because it does not apply to sheep, or is it null because the value
+is unknown?</p>
+<p><em>SHEEP and HORSE are subordinate entities</em></p>
+<p><img src="Figures/Chapter%207/animal.png" width="360" /></p>
+<p>If a subordinate entity becomes important, it is likely to evolve into
+an independent entity. The framing of a problem often determines whether
+subordinate entities are created. Stating the problem as, “a farmer has
+many animals, and these animals can be horses or sheep,” might lead to
+the creation of subordinate entities. Alternatively, saying that “a
+farmer has many sheep and horses” might lead to setting up SHEEP and
+HORSE as independent entities.</p>
+</div>
+</div>
+<div id="generalization-and-aggregation" class="section level3 unnumbered">
+<h3>Generalization and aggregation</h3>
+<p>Generalization and aggregation are common ideas in many modeling
+languages, particularly object-oriented modeling languages such as the
+Unified Modeling Language (UML), which we will use in this section.</p>
+<div id="generalization" class="section level4 unnumbered">
+<h4>Generalization</h4>
+<p>A generalization is a relationship between a more general element and a
+more specific element. In the following figure, the general element is
+<em>animal</em>, and the specific elements are <em>sheep</em> and <em>horse</em>. A horse is
+a subtype of animal. A generalization is often called an “is a”
+relationship because the subtype element is a member of the
+generalization.</p>
+<p>A generalization is directly mapped to the relational model with one
+table for each entity. For each of the subtype entities (i.e., SHEEP and
+HORSE), the primary key is that of the supertype entity (i.e., ANIMAL).
+You must also make this column a foreign key so that a subtype cannot be
+inserted without the presence of the matching supertype. A
+generalization is represented by a series of 1:1 relationships to weak
+entities.</p>
+<p><em>A generalization hierarchy in UML</em></p>
+<p><img src="Figures/Chapter%207/generalizationanimal.png" width="400" /></p>
+</div>
+</div>
+<div id="aggregation" class="section level3 unnumbered">
+<h3>Aggregation</h3>
+<p>Aggregation is a part-whole relationship between two entities. Common
+phrases used to describe an aggregation are “consists of,” “contains,”
+and “is part of.” The following figure shows an aggregation where a herd
+consists of many cows. Cows can be removed or added, but it is still a
+herd. An open diamond next to the whole denotes an aggregation. In data
+modeling terms, there is a 1:m relationship between herd and cow.</p>
+<p><em>An aggregation in UML and data modeling</em></p>
+<p><img src="Figures/Chapter%207/aggregate.png" /></p>
+<p>There are two special types of aggregation: shared and composition. With
+<strong>shared aggregation</strong>, one entity owns another entity, but other
+entities can own that entity as well. A sample shared aggregation is
+displayed in the following figure, which shows that a class has many
+students, and a student can be a member of many classes. Students, the
+parts in this case, can be part of many classes. An open diamond next to
+the whole denotes a shared aggregation, which we represent in data
+modeling as an m:m relationship.</p>
+<p><em>Shared aggregation in UML and data modeling</em></p>
+<p><img src="Figures/Chapter%207/sharedaggregate.png" /></p>
+<p>In a <strong>composition aggregation,</strong> one entity exclusively owns the other
+entity. A solid diamond at the whole end of the relationship denotes
+composition aggregation. The appropriate data model is a weak entity, as
+shown in the following figure.</p>
+<p><em>Composition aggregation in UML and data modeling</em></p>
+<p><img src="Figures/Chapter%207/compaggregate.png" /></p>
+</div>
+<div id="data-modeling-hints" class="section level3 unnumbered">
+<h3>Data modeling hints</h3>
+<p>A high-fidelity data model takes time to develop. The client must
+explain the problem fully so that the database designer can understand
+the client’s requirements and translate them into a data model. Data
+modeling is like prototyping; the database designer gradually creates a
+model of the database as a result of interaction with the client. Some
+issues will frequently arise in this progressive creation, and the
+following hints should help you resolve many of the common problems you
+will encounter.</p>
+</div>
+<div id="the-rise-and-fall-of-a-data-model" class="section level3 unnumbered">
+<h3>The rise and fall of a data model</h3>
+<p>Expect your data model to both expand and contract. Your initial data
+model will expand as you extend the boundaries of the application. You
+will discover some attributes will evolve into entities, and some 1:m
+relationships will become m:m relationships. It will grow because you
+will add entities, attributes, and relationships to allow for
+exceptions. Your data model will grow because you are representing the
+complexity of the real world. Do not try to constrain growth. Let the
+data model be as large as is necessary. As a rough rule, expect your
+final data model to grow to about two to three times the number of
+entities of your initial data model.</p>
+<p>Expect your data model to contract as you generalize structures. The
+following fragment is typical of the models produced by novice data
+modelers. It can be reduced by recognizing that PAINTING, SCULPTURE, and
+CERAMIC are all types of art. A more general entity, ART, could be used
+to represent the same data. Of course, it would need an additional
+attribute to distinguish the different types of art recordings.</p>
+<p><img src="Figures/Chapter%207/art%20collection.png" /></p>
+<p><em>The shrunken data model</em></p>
+<p><img src="Figures/Chapter%207/art%20collection%20revised.png" width="152" /></p>
+<p>As you discover new entities, your data model will grow. As you
+generalize, your data model will shrink.</p>
+</div>
+<div id="identifier-1" class="section level3 unnumbered">
+<h3>Identifier</h3>
+<p>If there is no obvious simple identifier, invent one. The simplest is a
+meaningless code (e.g., <em>person number</em> or <em>order number</em>). If you
+create an identifier, you can also guarantee its uniqueness.</p>
+<p>Don’t overwork an identifier. The worst case we have seen is a
+22-character product code used by a plastics company that supposedly not
+only uniquely identified an item but told you its color, its
+manufacturing process, and type of plastic used to make it! Color,
+manufacturing process, and type of plastic are all attributes. This
+product code was unwieldy. Data entry error rates were extremely high,
+and very few people could remember how to decipher the code.</p>
+<p>An identifier has to do only one thing: uniquely identify every instance
+of the entity. Sometimes trying to make it do double, or even triple,
+duty only creates more work for the client.</p>
+</div>
+<div id="position-and-order" class="section level3 unnumbered">
+<h3>Position and order</h3>
+<p>There is no ordering in a data model. Entities can appear anywhere. You
+will usually find a central entity near the middle of the data model
+only because you tend to start with prominent entities (e.g., starting
+with STUDENT when modeling a student information system). What really
+matters is that you identify all relevant entities.</p>
+<p>Attributes are in no order. You find that you will tend to list them as
+they are identified. For readability, it is a good idea to list some
+attributes sequentially. For example, first name, other names, and last
+name are usually together. This is not necessary, but it speeds up
+verification of a data model’s completeness.</p>
+<p>Instances are also assumed to have no ordering. There is no first
+instance, next instance, or last instance. If you must recognize a
+particular order, create an attribute to record the order. For example,
+if ranking of potential investment projects must be recorded, include an
+attribute (<em>projrank</em>) to store this data. This does not mean the
+instances will be stored in <em>projrank</em> order, but it does allow you to
+use the ORDER BY clause of SQL to report the projects in rank order.</p>
+<p>If you need to store details of a precedence relationship (i.e., there
+is an ordering of instances and a need to know the successor and
+predecessor of any instance), then use a 1:1 recursive relationship.</p>
+<p><em>Using an attribute to record an ordering of instances</em></p>
+<p><img src="Figures/Chapter%206/recursive-1-and-1.png" width="235" /></p>
+</div>
+<div id="attributes-and-consistency" class="section level3 unnumbered">
+<h3>Attributes and consistency</h3>
+<p>Attributes must be consistent, retaining the same meaning for every
+instance. An example of an inconsistent attribute would be an attribute
+<em>stock info</em> that contains a stock’s PE ratio or its ROI (return on
+investment). Another attribute, say <em>stock info code</em>, is required to
+decipher which meaning applies to any particular instance. The code
+could be “1” for PE and “2” for ROI. If one attribute determines the
+meaning of another, you have inconsistency. Writing SQL queries will be
+extremely challenging because inconsistent data increases query
+complexity. It is better to create separate attributes for PE and ROI.</p>
+</div>
+<div id="names-and-addresses" class="section level3 unnumbered">
+<h3>Names and addresses</h3>
+<p>An attribute is the smallest piece of data that will conceivably form
+part of a query. If an attribute has segments (e.g., a person’s name),
+determine whether these could form part of a query. If so, then make
+them separate attributes and reapply the query test. When you apply the
+query test to <em>person name</em>, you will usually decide to create three
+attributes: <em><strong>f</strong>irst name</em>, <em>other names</em>, and <em>last name</em>.</p>
+<p>What about titles? There are two sorts of modifier titles: preceding
+titles (e.g., Mr., Mrs., Ms., and Dr.) and following titles (e.g., Jr.
+and III). These should be separate attributes, especially if you have
+divided <em>name</em> into separate attributes.</p>
+<p>Addresses seem to cause more concern than names because they are more
+variant. Business addresses tend to be the most complicated, and foreign
+addresses add a few more twists. The data model fragment in the
+following figure works in most cases.</p>
+<p><em>Handling addresses</em></p>
+<p><img src="Figures/Chapter%207/address.png" /></p>
+<p>Common features of every address are city, state (province in Canada,
+county in Eire), postal code (ZIP code in the United States), and
+nation. Some of these can be null. For example, Singapore does not have
+any units corresponding to states. In the United States, city and state
+can be derived from the zip code, but this is not necessarily true for
+other countries. Furthermore, even if this were true for every nation,
+you would need a different derivation rule for each country, which is a
+complexity you might want to avoid. If there is a lifetime guarantee
+that every address in the database will be for one country, then examine
+the possibility of reducing redundancy by just storing post code.</p>
+<p>Notice that the problem of multiple address lines is represented by a
+1:m relationship. An address line is a text string that appears as one
+line of an address. There is often a set sequence in which these are
+displayed. The attribute <em>address rank</em> records this order.</p>
+<p>How do you address students? First names may be all right for class, but
+it is not adequate enough for student records. Students typically have
+multiple addresses: a home address, a school address, and maybe a summer
+address. The following data model fragment shows how to handle this
+situation. Any instance of ADDRESS LINE is identified by the composite
+of <em>studentid<strong>,</strong> addresstype</em>, and <em>address rank</em>.</p>
+<p><em>Students with multiple addresses</em></p>
+<p><img src="Figures/Chapter%207/address-multiple.png" /></p>
+<p>The identifier <em>address type</em> is used to distinguish among the different
+types of addresses. The same data model fragment works in situations
+where a business has different mailing and shipping addresses.</p>
+<p>When data modeling, can you take a shortcut with names and addresses? It
+is time consuming to write out all the components of name and address.
+It creates clutter and does not add much fidelity. Our practical advice
+is to do two things. <em>First<strong>,</strong></em> create a policy for all names and
+addresses (e.g., all names will be stored as three parts: first name,
+other names, last name). <em>Second</em>, use shorthand forms of attributes for
+names and addresses when they obey the policy. So from now on, we will
+sometimes use name and address as attributes with the understanding that
+when the database is created, the parts will become separate columns.</p>
+</div>
+<div id="single-instance-entities" class="section level3 unnumbered">
+<h3>Single-instance entities</h3>
+<p>Do not be afraid of creating an entity with a single instance. Consider
+the data model fragment in the following figure which describes a single
+fast-food chain. Because the data model describes only one firm, the
+entity FIRM will have only one instance. The inclusion of this single
+instance entity permits facts about the firm to be maintained.
+Furthermore, it provides flexibility for expansion. If two fast-food
+chains combine, the data model needs no amendment.</p>
+<p><em>FIRM—a single-instance entity</em></p>
+<p><img src="Figures/Chapter%207/single%20instance%20(firm).png" /></p>
+</div>
+<div id="picking-words" class="section level3 unnumbered">
+<h3>Picking words</h3>
+<p>Words are very important. They are all we have to make ourselves
+understood. Let the client choose the words, because the data model
+belongs to the client and describes the client’s world. If you try to
+impose your words on the client, you are likely to create a
+misunderstanding.</p>
+</div>
+<div id="synonyms" class="section level3 unnumbered">
+<h3>Synonyms</h3>
+<p>Synonyms are words that have the same meaning. For example, task,
+assignment, and project might all refer to the same real-world object.
+One of these terms, maybe the one in most common use, needs to be
+selected for naming the entity. Clients need to be told the official
+name for the entity and encouraged to adopt this term for describing it.
+Alternatively, create views that enable clients to use their own term.
+Synonyms are not a technical problem. It is a social problem of getting
+clients to agree on one word.</p>
+</div>
+<div id="homonyms" class="section level3 unnumbered">
+<h3>Homonyms</h3>
+<p>Homonyms are words that sound the same but have different meanings.
+Homonyms can create real confusion. <em>Sale date</em> is a classic example. In
+business it can have several meanings. To the salespeople, it might be
+the day that the customer shakes hands and says, “We have a deal.” For
+the lawyers, it is could be the day when the contract is signed, and for
+production, it might be the day the customer takes delivery. In this
+case, the solution is reasonably obvious; redefine <em>sale date</em> to be
+separate terms for each area (e.g., <em>sales date</em>, <em>contract date</em>, and
+<em>delivery date</em> for sales, legal, and production departments,
+respectively).</p>
+<p>Homonyms cause real confusion when clients do not realize that they are
+using the same word for different entities or attributes. Hunt down
+homonyms by asking lots of questions and querying a range of clients.</p>
+</div>
+<div id="exception-hunting" class="section level3 unnumbered">
+<h3>Exception hunting</h3>
+<p>Go hunting for exceptions. Keep asking the client questions such as</p>
+<ul>
+<li><p>Is it always like this?</p></li>
+<li><p>Would there be any situations where this could be an m:m
+relationship?</p></li>
+<li><p>Have there ever been any exceptions?</p></li>
+<li><p>Are things likely to change in the future?</p></li>
+</ul>
+<p>Always probe for exceptions and look for them in the examples the client
+uses. Redesigning the data model to handle exceptions increases
+fidelity.</p>
+</div>
+<div id="relationship-labeling" class="section level3 unnumbered">
+<h3>Relationship labeling</h3>
+<p>Relationship labeling clutters a data model. In most cases, labels can
+be correctly inferred, so use labels only when there is a possibility of
+ambiguity.</p>
+</div>
+<div id="keeping-the-data-model-in-shape" class="section level3 unnumbered">
+<h3>Keeping the data model in shape</h3>
+<p>As you add to a data model, maintain fidelity. Do not add entities
+without also completing details of the identifier and attributes. By
+keeping the data model well formed, you avoid ambiguity, which
+frequently leads to miscommunication.</p>
+</div>
+<div id="used-entities" class="section level3 unnumbered">
+<h3>Used entities</h3>
+<p>Would you buy a used data model? Certainly, because a used data model is
+more likely to have higher fidelity than a brand new one. A used data
+model has been subjected to much scrutiny and revision and should be a
+more accurate representation of the real world.</p>
+</div>
+</div>
+<div id="meaningful-identifiers" class="section level2 unnumbered">
+<h2>Meaningful identifiers</h2>
+<p>An identifier is said to be meaningful when some attributes of the
+entity can be inferred from the identifier’s value (e.g., a code of B78
+for an item informs a clerk that the item is black). The word
+“meaningful” in everyday speech usually connotes something desirable,
+but many data managers agree that meaningful identifiers or codes create
+problems. While avoiding meaningful identifiers is generally accepted as
+good data management practice, they are still widely used. After a short
+description of some examples of meaningful identifiers, this section
+discusses the pros and cons of meaningful identifiers.</p>
+<p>The invoice number “12dec0001” is a meaningful identifier. The first
+five positions indicate in which period the invoice was generated. The
+last four digits of the invoice number have a meaning. The 0001
+indicates it was the first invoice sent in December. In addition, e-mail
+addresses, like <a href="mailto:mvdpas@bizzo.nl"><u>mvdpas@bizzo.nl</u></a>, have
+a meaning.</p>
+<p>When coding a person’s gender, some systems use the codes “m” and “f”
+and others “1” and “2.” The pair (m, f) is meaningful, but (1, 2) is not
+and puts the onus on the user to remember the meaning. The codes “m” and
+“f’” are derived from the reality that they represent. They are the
+first letters of the words male and female. The “1” and “2” are not
+abstracted from reality, and therefore they do not have an intuitive
+meaning.</p>
+<p>However, if you want to set an international standard suitable for many
+languages, then you need to revert to numeric codes, because “m” and “f”
+are not the first letters in all languages for male and female,
+respectively. Thus the English version of the International Organization
+for Standardization (ISO) information interchange standard for the
+representation of human sexes (ISO 5218) states:</p>
+<p><em>No significance is to be placed on the fact that “Male” is coded “1”
+and “Female” is coded “2.” This standard was developed based upon
+predominant practices of the countries involved and does not convey any
+meaning of importance, ranking or any other basis that could imply
+discrimination.</em></p>
+<p>In determining whether an identifier is meaningful, one can look at the
+way new values of that identifier are generated. If the creation takes
+place on the basis of characteristics that appear in reality, the
+identifier is meaningful. That is why the identifier of the invoice
+“12dec0002,” which is the identifier assigned to the second invoice
+generated in December 2012, is meaningful. It is also why the e-mail
+address <a href="mailto:rwatson@terry.uga.edu"><u>rwatson@terry.uga.edu</u></a> is
+meaningful.</p>
+<p>Meaningful identifiers clearly have some advantages and disadvantages,
+and these are now considered.</p>
+<p><em>Advantages and disadvantages of meaningful identifiers</em></p>
+<table style="width:74%;">
+<colgroup>
+<col width="41%" />
+<col width="31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>Recognizable and
+rememberable</p>
+<p>Administrative simplicity</p></td>
+<td><p>Identifier
+exhaustion</p>
+<p>Reality changes</p>
+<p>Loss of
+meaningfulness</p></td>
+</tr>
+</tbody>
+</table>
+<div id="advantages-of-meaningful-identifiers" class="section level3 unnumbered">
+<h3>Advantages of meaningful identifiers</h3>
+<div id="recognizable-and-rememberable" class="section level4 unnumbered">
+<h4>Recognizable and rememberable</h4>
+<p>People can often recognize and remember the significance of meaningful
+identifiers. If, for example, someone receives an e-mail from
+<a href="mailto:rwatson@terry.uga.edu"><u>rwatson@terry.uga.edu</u></a>, this
+person can probably deduce the sender’s name and workplace. If a
+manufacturer, for instance, uses the last two digits of its furniture
+code to indicate the color (e.g., 08 = beech), employees can then
+quickly determine the color of a packed piece of furniture. Of course,
+the firm could also show the color of the furniture on the label, in
+which case customers, who are most unlikely to know the coding scheme,
+can quickly determine the color of the enclosed product.</p>
+</div>
+<div id="administrative-simplicity" class="section level4 unnumbered">
+<h4>Administrative simplicity</h4>
+<p>By using meaningful identifiers, administration can be relatively easily
+decentralized. Administering e-mail addresses, for instance, can be
+handled at the domain level. This way, one can avoid the process of
+synchronizing with other domains whenever a new e-mail address is
+created.</p>
+<p>A second example is the EAN (European article number), the bar code on
+European products. Issuing EANs can be administered per country, since
+each country has a unique number in the EAN. When issuing a new number,
+a country need only issue a code that is not yet in use in that country.
+The method of contacting all countries to ask whether an EAN has already
+been issued is time consuming and open to error. On the other hand,
+creating a central database of issued EAN codes is an option. If every
+issuer of EAN codes can access such a database, alignment among
+countries is created and duplicates are prevented.</p>
+</div>
+</div>
+<div id="disadvantages-of-meaningful-identifiers" class="section level3 unnumbered">
+<h3>Disadvantages of meaningful identifiers</h3>
+<div id="identifier-exhaustion" class="section level4 unnumbered">
+<h4>Identifier exhaustion</h4>
+<p>Suppose a company with a six-digit item identifier decides to use the
+first three digits to specify the product group (e.g., stationery)
+uniquely. Within this group, the remaining three digits are used to
+define the item (e.g., yellow lined pad). As a consequence, only one
+thousand items can be specified per product group. This problem remains
+even when some numbers in a specific product group, or even when entire
+product groups, are not used.</p>
+<p>Consider the case when product group “010” is exhausted and is
+supplemented by the still unused product group code “940.” What seems to
+be a simple quick fix causes problems, because a particular product
+group is not uniquely identified by a single identifier. Clients have to
+remember there is an exception.</p>
+<p>A real-world example of identifier exhaustion is a holding company that
+identifies its subsidiaries by using a code, where the first character
+is the first letter of the subsidiary’s name. When the holding company
+acquired its seventh subsidiary, the meaningfulness of the coding system
+failed. The newly acquired subsidiary name started with the same letter
+as one of the existing subsidiaries. The system had already run out of
+identifiers.</p>
+<p>When existing identifiers have to be converted because of exhaustion,
+printed codes on labels, packages, shelves, and catalogs will have to be
+redone. Recoding is an expensive process and should be avoided.</p>
+<p>Exhaustion is not only a problem with meaningful identifiers. It can
+happen with non-meaningful identifiers. The problem is that meaningful
+identifier systems tend to exhaust sooner. To avoid identifier
+exhaustion and maintain meaningful identifiers, some designers increase
+identifier lengths (e.g., four digits for product group).</p>
+</div>
+<div id="reality-changes" class="section level4 unnumbered">
+<h4>Reality changes</h4>
+<p>The second problem of meaningful identifiers is that the reality they
+record changes. For example, a company changes its name. The College of
+Business at the University of Georgia was renamed the Terry College of
+Business. E-mail addresses changed (e.g.,
+<a href="mailto:rwatson@cba.uga.edu"><u>rwatson@cba.uga.edu</u></a> became
+<a href="mailto:rwatson@terry.uga.edu"><u>rwatson@terry.uga.edu</u></a>). An
+identifier can remain meaningful over a long period only if the
+meaningful part rarely or never changes.</p>
+<p>Non-meaningful identifiers avoid reality changes. Consider the case of
+most telephone billing systems, which use an account ID to identify a
+customer rather than a telephone number. This means a customer can
+change telephone numbers without causing any coding problems because
+telephone number is not the unique identifier of each customer.</p>
+</div>
+<div id="a-meaningful-identifier-can-lose-its-meaningfulness" class="section level4 unnumbered">
+<h4>A meaningful identifier can lose its meaningfulness</h4>
+<p>Consider the problems that can occur with the identifier that records
+both the color and the material of an article. Chipboard with a beech
+wood veneer is coded BW. A black product, on the other hand, is coded
+BL. Problems arise whenever there is an overlap between these
+characteristics. What happens with a product that is finished with a
+black veneer on beech wood? Should the code be BW or BL? What about a
+black-painted product that is made out of beech wood? Maybe a new code,
+BB for black beech wood, is required. There will always be employees and
+customers who do not know the meaning of these not-so-meaningful
+identifiers and attribute the wrong meaning to them.</p>
+</div>
+</div>
+<div id="the-solutionnon-meaningful-identifiers" class="section level3 unnumbered">
+<h3>The solution—non-meaningful identifiers</h3>
+<p>Most people are initially inclined to try to make identifiers
+meaningful. There is a sense that something is lost by using a simple
+numeric to identify a product or customer. Nothing, however, is lost and
+much is gained. Non-meaningful identifiers serve their sole purpose
+well—to identify an entity uniquely. Attributes are used to describe
+the characteristics of the entity (e.g., color, type of wood). A clear
+distinction between the role of identifiers and attributes creates fewer
+data management problems now and in the future.</p>
+<table style="width:96%;">
+<colgroup>
+<col width="95%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><em>Vehicle identification</em></p>
+<p>In most countries, every road vehicle is uniquely identified. The
+Vehicle Identification Number (VIN) was originally described in
+ISO Standard 3779 in February 1977 and last revised in 1983. It is
+designed to identify motor vehicles, trailers, motorcycles, and
+mopeds. A VIN is 17 characters, A through Z and 0 through 9.</p>
+<p>The European Union and the United States have different
+implementations of the standard. The U.S. VIN is divided into four
+parts</p>
+<ul>
+<li><p>World Manufacturer’s Identification (WMI) - three characters</p></li>
+<li><p>Vehicle Description Section (VDS) - five characters</p></li>
+<li><p>Check digit</p></li>
+<li><p>Vehicle Identification Section (VIS) - eight characters</p></li>
+</ul>
+<p>When decoded, a VIN specifies the country and year of manufacture;
+make, model, and serial number; assembly plant; and even some
+equipment specifications.</p>
+<p>VINs are normally located in several locations on a car, but the
+most common places are in the door frame of the front doors, on
+the engine itself, around the steering wheel, or on the dash near
+the window.</p>
+<p>What do you think of the VIN as a method of vehicle
+identification? How do you reconcile it with the recommendation to
+use meaningless identifiers? If you were consulted on a new VIN
+system, what would advise?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="the-seven-habits-of-highly-effective-data-modelers" class="section level2 unnumbered">
+<h2>The seven habits of highly effective data modelers</h2>
+<p>There is often a large gap between the performance of <em>average</em> and
+<em>expert</em> data modelers. An insight into the characteristics that make
+some data modelers more skillful than others should improve your data
+modeling capabilities.</p>
+<div id="immerse" class="section level3 unnumbered">
+<h3>Immerse</h3>
+<p>Find out what the client wants by immersing yourself in the task
+environment. Spend some time following the client around and participate
+in daily business. Firsthand experience of the problem will give you a
+greater understanding of the client’s requirements. Observe, ask
+questions, reflect, and talk to a wide variety of people (e.g.,
+managers, operations personnel, customers, and suppliers). The more you
+learn about the problem, the better equipped you are to create a
+high-fidelity data model.</p>
+</div>
+<div id="challenge" class="section level3 unnumbered">
+<h3>Challenge</h3>
+<p>Challenge existing assumptions; dig out the exceptions. Test the
+boundaries of the data model. Try to think about the business problem
+from different perspectives (e.g., how might the industry leader tackle
+this problem?). Run a brainstorming session with the client to stimulate
+the search for breakthrough solutions.</p>
+</div>
+<div id="generalize" class="section level3 unnumbered">
+<h3>Generalize</h3>
+<p>Reduce the number of entities whenever possible by using generalized
+structures (remember the Art Collection model) to simplify the data
+model. Simpler data models are usually easier to understand and less
+costly to implement. Expert data modelers can see beyond surface
+differences to discern the underlying similarities of seemingly
+different entities.</p>
+</div>
+<div id="test" class="section level3 unnumbered">
+<h3>Test</h3>
+<p>Test the data model by reading it to yourself and several people
+intimately familiar with the problem. Test both directions of every
+relationship (e.g., a farmer has many cows and a cow belongs to only one
+farmer). Build a prototype so that the client can experiment and learn
+with a concrete model. Testing is very important because it costs very
+little to fix a data model but a great deal to repair a system based on
+an incorrect data model.</p>
+</div>
+<div id="limit" class="section level3 unnumbered">
+<h3>Limit</h3>
+<p>Set reasonable limits to the time and scope of data modeling. Don’t let
+the data modeling phase continue forever. Discover the boundaries early
+in the project and stick to these unless there are compelling reasons to
+extend the project. Too many projects are allowed to expand because it
+is easier to say <em>yes</em> than <em>no</em>. In the long run, however, you do the
+client a disservice by promising too much and extending the life of the
+project. Determine the core entities and attributes that will solve most
+of the problems, and confine the data model to this core. Keep sight of
+the time and budget constraints of the project.</p>
+</div>
+<div id="integrate" class="section level3 unnumbered">
+<h3>Integrate</h3>
+<p>Step back and reflect on how your project fits with the organization’s
+information architecture. Integrate with existing systems where feasible
+and avoid duplication. How does your data model fit with the corporate
+data model and those of other projects? Can you use part of an existing
+data model? A skilled data modeler has to see both the fine-grained
+detail of a project data model and the big picture of the corporate data
+resource.</p>
+</div>
+<div id="complete" class="section level3 unnumbered">
+<h3>Complete</h3>
+<p>Good data modelers don’t leave data models ill-defined. All entities,
+attributes, and relationships are carefully defined, ambiguities are
+resolved, and exceptions are handled. Because the full value of a data
+model is realized only when the system is complete, the data modeler
+should stay involved with the project until the system is implemented.
+The data modeler, who generally gets involved in the project from its
+earliest days, can provide continuity through the various phases and
+ensure the system solves the problem.</p>
+</div>
+</div>
+<div id="summary-7" class="section level2 unnumbered">
+<h2>Summary</h2>
+<p>Data modeling is both a technique for modeling data and its
+relationships and a graphical representation of a database. It
+communicates a database’s design. The goal is to identify the facts that
+must be stored in a database. Building a data model is a partnership
+between a client, a representative of the eventual owners of the
+database, and a designer. The building blocks are an entity, attribute,
+identifier, and relationship. A well-formed data model, which means the
+construction rules have been obeyed, clearly communicates information to
+the client. A high-fidelity data model faithfully describes the world it
+represents.</p>
+<p>A data model is an evolving representation. Each change should be an
+incremental improvement in quality. The quality of a data model can be
+determined only by understanding the context in which it will be used. A
+data model can model historical data relationships just as readily as
+current ones. Cardinality specifies the precise multiplicity of a
+relationship. Modality indicates whether a relationship is optional or
+mandatory. The five different types of entities are independent,
+dependent, associative, aggregate, and subordinate. Expect a data model
+to expand and contract. A data model has no ordering. Introduce an
+attribute if ordering is required. An attribute must have the same
+meaning for every instance. An attribute is the smallest piece of data
+that will conceivably form part of a query. Synonyms are words that have
+the same meaning; homonyms are words that sound the same but have
+different meanings. Identifiers should generally have no meaning. Highly
+effective data modelers immerse, challenge, generalize, test, limit,
+integrate, and complete.</p>
+</div>
+<div id="key-terms-and-concepts-4" class="section level2 unnumbered">
+<h2>Key terms and concepts</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Aggregate entity</td>
+<td>Homonym</td>
+</tr>
+<tr class="even">
+<td align="left">Aggregation</td>
+<td>Identifier</td>
+</tr>
+<tr class="odd">
+<td align="left">Associative entity</td>
+<td>Independent entity</td>
+</tr>
+<tr class="even">
+<td align="left">Attribute</td>
+<td>Instance</td>
+</tr>
+<tr class="odd">
+<td align="left">Cardinality</td>
+<td>Mandatory</td>
+</tr>
+<tr class="even">
+<td align="left">Composite aggregation</td>
+<td>Modality</td>
+</tr>
+<tr class="odd">
+<td align="left">Data model</td>
+<td>Modeling</td>
+</tr>
+<tr class="even">
+<td align="left">Data model quality</td>
+<td>Optional</td>
+</tr>
+<tr class="odd">
+<td align="left">Dependent entity</td>
+<td>Relationship</td>
+</tr>
+<tr class="even">
+<td align="left">Determinant</td>
+<td>Relationship descriptor</td>
+</tr>
+<tr class="odd">
+<td align="left">Domain</td>
+<td>Relationship label</td>
+</tr>
+<tr class="even">
+<td align="left">Entity</td>
+<td>Shared aggregation</td>
+</tr>
+<tr class="odd">
+<td align="left">Generalization</td>
+<td>Synonym</td>
+</tr>
+<tr class="even">
+<td align="left">High-fidelity image</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="references-and-additional-readings-2" class="section level2 unnumbered">
+<h2>References and additional readings</h2>
+<p>Carlis, J. V. 1991. <em>Logical data structures</em>. Minneapolis, MN:
+University of Minnesota.</p>
+<p>Hammer, M. 1990. Reengineering work: Don’t automate, obliterate.
+<em>Harvard Business Review</em> 68 (4):104–112.</p>
+</div>
+<div id="exercises-5" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<div id="short-answers" class="section level3 unnumbered">
+<h3>Short answers</h3>
+<ol style="list-style-type: decimal">
+<li><p>What is data modeling?</p></li>
+<li><p>What is a useful technique for identifying entities in a written
+description of a data modeling problem?</p></li>
+<li><p>When do you label relationships?</p></li>
+<li><p>When is a data model well formed, and when is it high-fidelity?</p></li>
+<li><p>How do you handle exceptions when data modeling?</p></li>
+<li><p>Describe the different types of entities.</p></li>
+<li><p>Why might a data model grow?</p></li>
+<li><p>Why might a data model contract?</p></li>
+<li><p>How do you indicate ordering of instances in a data model?</p></li>
+<li><p>What is the difference between a synonym and a homonym?</p></li>
+</ol>
+</div>
+<div id="data-modeling-2" class="section level3 unnumbered">
+<h3>Data modeling</h3>
+<p>Create a data model from the following narratives, which are sometimes
+intentionally incomplete. You will have to make some assumptions. Make
+certain you state these alongside your data model. Define the
+identifier(s) and attributes of each entity.</p>
+<ol style="list-style-type: decimal">
+<li><p>The president of a book wholesaler has told you that she wants
+information about publishers, authors, and books.</p></li>
+<li><p>A university has many subject areas (e.g., MIS, Romance languages).
+Professors teach in only one subject area, but the same subject area
+can have many professors. Professors can teach many different
+courses in their subject area. An offering of a course (e.g., Data
+Management 457, French 101) is taught by only one professor at a
+particular time.</p></li>
+<li><p>Kids’n’Vans retails minivans for a number of manufacturers. Each
+manufacturer offers several models of its minivan (e.g., SE, LE,
+GT). Each model comes with a standard set of equipment (e.g., the
+Acme SE comes with wheels, seats, and an engine). Minivans can have
+a variety of additional equipment or accessories (radio,
+air-conditioning, automatic transmission, airbag, etc.), but not all
+accessories are available for all minivans (e.g., not all
+manufacturers offer a driver’s side airbag). Some sets of
+accessories are sold as packages (e.g., the luxury package might
+include stereo, six speakers, cocktail bar, and twin overhead
+foxtails).</p></li>
+<li><p>Steve operates a cinema chain and has given you the following
+information:<br />
+“I have many cinemas. Each cinema can have multiple theaters. Movies
+are shown throughout the day starting at 11 a.m. and finishing at 1
+a.m. Each movie is given a two-hour time slot. We never show a movie
+in more than one theater at a time, but we do shift movies among
+theaters because seating capacity varies. I am interested in knowing
+how many people, classified by adults and children, attended each
+showing of a movie. I vary ticket prices by movie and time slot. For
+instance, Lassie Get Lost is 50 cents for everyone at 11 a.m. but is
+75 cents at 11 p.m.”</p></li>
+<li><p>A university gymnastics team can have as many as 10 gymnasts. The
+team competes many times during the season. A meet can have one or
+more opponents and consists of four events: vault, uneven bars,
+beam, and floor routine. A gymnast can participate in all or some of
+these events though the team is limited to five participants in any
+event.</p></li>
+<li><p>A famous Greek shipping magnate, Stell, owns many container ships.
+Containers are collected at one port and delivered to another port.
+Customers pay a negotiated fee for the delivery of each container.
+Each ship has a sailing schedule that lists the ports the ship will
+visit over the next six months. The schedule shows the expected
+arrival and departure dates. The daily charge for use of each port
+is also recorded.</p></li>
+<li><p>A medical center employs several physicians. A physician can see
+many patients, and a patient can be seen by many physicians, though
+not always on the one visit. On any particular visit, a patient may
+be diagnosed to have one or more illnesses.</p></li>
+<li><p>A telephone company offers a 10 percent discount to any customer who
+phones another person who is also a customer of the company. To be
+eligible for the discount, the pairing of the two phone numbers must
+be registered with the telephone company. Furthermore, for billing
+purposes, the company records both phone numbers, start time, end
+time, and date of call.</p></li>
+<li><p>Global Trading (GT), Inc. is a conglomerate. It buys and sells
+businesses frequently and has difficulty keeping track of what
+strategic business units (SBUs) it owns, in what nations it
+operates, and what markets it serves. For example, the CEO was
+recently surprised to find that GT owns 25 percent of Dundee’s Wild
+Adventures, headquartered in Zaire, that has subsidiaries operating
+tours of Australia, Zaire, and New York. You have been commissioned
+to design a database to keep track of GT’s businesses. The CEO has
+provided you with the following information:<br />
+<br />
+SBUs are headquartered in one country, not necessarily the United
+States. Each SBU has subsidiaries or foreign agents, depending on
+local legal requirements, in a number of countries. Each subsidiary
+or foreign agent operates in only one country but can operate in
+more than one market. GT uses the standard industrial code (SIC) to
+identify a market (e.g., newspaper publishing). The SIC is a unique
+four-digit code.<br />
+<br />
+While foreign agents operate as separate legal entities, GT needs to
+know in what countries and markets they operate. On the other hand,
+subsidiaries are fully or partly owned by GT, and it is important
+for GT to know who are the other owners of any subsidiary and what
+percentage of the subsidiary they own. It is not unusual for a
+corporation to have shares in several of GT’s subsidiary companies
+and for several corporations to own a portion of a subsidiary.
+Multiple ownership can also occur at the SBU level.</p></li>
+<li><p>A real estate investment company owns many shopping malls. Each mall
+contains many shops. To encourage rental of its shops, the company
+gives a negotiated discount to retailers who have shops in more than
+one mall. Each shop generates an income stream that can vary from
+month to month because rental is based on a flat rental charge and a
+negotiated percentage of sales revenue. Also, each shop has monthly
+expenses for scheduled and unscheduled maintenance. The company uses
+the data to compute its monthly net income per square meter for each
+shop and for ad hoc querying.</p></li>
+<li><p>Draw a data model for the following table taken from a magazine that
+evaluates consumer goods. The reports follow a standard fashion of
+listing a brand and model, price, overall score, and then an
+evaluation of a series of attributes, which can vary with the
+product. For example, the sample table evaluates stereo systems. A
+table for evaluating microwave ovens would have a similar layout,
+but different features would be reported (e.g., cooking quality).</p></li>
+</ol>
+<table style="width:67%;">
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>B
+r
+and
+and
+m
+o
+del</th>
+<th>Pr
+ice</th>
+<th>Ove
+r
+a
+ll<br />
+s
+c
+ore</th>
+<th>S o
+u
+nd<br />
+q u
+a
+l
+ity</th>
+<th>Tap
+i
+ng<br />
+qua
+l
+ity</th>
+<th>FM<br />
+t u
+n
+ing</th>
+<th>CD<br />
+ha
+n d
+l
+ing</th>
+<th><p>E
+ase</p>
+of
+use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phi
+l
+l
+ips
+SC-
+A
+K
+103</td>
+<td>140</td>
+<td>62</td>
+<td>V
+ery
+g
+ood</td>
+<td>G
+ood</td>
+<td>V
+ery
+g
+ood</td>
+<td>Exc
+e l
+l
+ent</td>
+<td>F
+air</td>
+</tr>
+<tr class="even">
+<td>P
+ana
+s
+o
+nic
+M
+C
+-50</td>
+<td>215</td>
+<td>55</td>
+<td>G
+ood</td>
+<td>G
+ood</td>
+<td>V
+ery
+g
+ood</td>
+<td>V
+ery
+g
+ood</td>
+<td>G
+ood</td>
+</tr>
+<tr class="odd">
+<td>Rio
+G
+300</td>
+<td>165</td>
+<td>38</td>
+<td>G
+ood</td>
+<td>G
+ood</td>
+<td>F
+air</td>
+<td>V
+ery
+g
+ood</td>
+<td>P
+oor</td>
+</tr>
+</tbody>
+</table>
+<ol start="12" style="list-style-type: decimal">
+<li>Draw a data model for the following freight table taken from a mail
+order catalog.</li>
+</ol>
+<table style="width:94%;">
+<colgroup>
+<col width="23%" />
+<col width="23%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><p>Merchandise</p>
+subtotals</th>
+<th><p>Regular
+delivery</p>
+7–10 days</th>
+<th><p>Rush delivery</p>
+4–5 business
+days</th>
+<th><p>Express
+delivery</p>
+1–2 business
+days</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Up to $30.00</td>
+<td>$4.95</td>
+<td>$9.95</td>
+<td>$12.45</td>
+</tr>
+<tr class="even">
+<td>$
+30.01–$65.00</td>
+<td>$6.95</td>
+<td>$11.95</td>
+<td>$15.45</td>
+</tr>
+<tr class="odd">
+<td>$6
+5.01–$125.00</td>
+<td>$8.95</td>
+<td>$13.95</td>
+<td>$20.45</td>
+</tr>
+<tr class="even">
+<td>$125.01+</td>
+<td>$9.95</td>
+<td>$15.95</td>
+<td>$25.45</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="18">
+<li id="fn18"><p> Roberto Franzosi, “On Quantitative Narrative
+Analysis,” in Varieties of Narrative Analysis, ed. James A. Holstein
+and Jaber F. Gubrium (SAGE Publications, Inc., 2012), 75–96.<a href="data-modeling.html#fnref18" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="one-to-one-and-recursive-relationships.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reference-1-basic-structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["DataManagement.pdf", "DataManagement.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

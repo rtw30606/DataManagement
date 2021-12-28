@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 One-to-One and Recursive Relationships | DataManagement.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 One-to-One and Recursive Relationships | DataManagement.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 One-to-One and Recursive Relationships | DataManagement.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-many-to-many-relationship.html"/>
+<link rel="next" href="data-modeling.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="data-management-databases-and-organizations.html"><a href="data-management-databases-and-organizations.html"><i class="fa fa-check"></i>Data Management: Databases and Organizations</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#supplements"><i class="fa fa-check"></i>Supplements</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-1-the-managerial-perspective.html"><a href="section-1-the-managerial-perspective.html"><i class="fa fa-check"></i>Section 1 The Managerial Perspective</a></li>
+<li class="chapter" data-level="1" data-path="managing-data.html"><a href="managing-data.html"><i class="fa fa-check"></i><b>1</b> Managing Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#individual-data-management"><i class="fa fa-check"></i>Individual data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#organizational-data-management"><i class="fa fa-check"></i>Organizational data management</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#problems-with-data-management-systems"><i class="fa fa-check"></i>Problems with data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#a-brief-history-of-data-management-systems"><i class="fa fa-check"></i>A brief history of data management systems</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#data-information-and-knowledge"><i class="fa fa-check"></i>Data, information, and knowledge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#the-challenge"><i class="fa fa-check"></i>The challenge</a></li>
+<li class="chapter" data-level="" data-path="managing-data.html"><a href="managing-data.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="information.html"><a href="information.html"><i class="fa fa-check"></i><b>2</b> Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#learning-objectives-1"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-historical-perspective"><i class="fa fa-check"></i>A historical perspective</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#a-brief-history-of-information-systems"><i class="fa fa-check"></i>A brief history of information systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-characteristics"><i class="fa fa-check"></i>Information characteristics</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-hardness"><i class="fa fa-check"></i>Information hardness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-richness"><i class="fa fa-check"></i>Information richness</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-classes"><i class="fa fa-check"></i>Information classes</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-organizational-change"><i class="fa fa-check"></i>Information and organizational change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#goal-setting-information"><i class="fa fa-check"></i>Goal-setting information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#gap-information"><i class="fa fa-check"></i>Gap information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#change-information"><i class="fa fa-check"></i>Change information</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#problem-solution"><i class="fa fa-check"></i>Problem solution</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-as-a-means-of-change"><i class="fa fa-check"></i>Information as a means of change</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#marketing"><i class="fa fa-check"></i>Marketing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#customer-service"><i class="fa fa-check"></i>Customer Service</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#empowerment"><i class="fa fa-check"></i>Empowerment</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-and-managerial-work"><i class="fa fa-check"></i>Information and managerial work</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-information-requirements"><i class="fa fa-check"></i>Managers’ information requirements</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#managers-needs-for-information-vary-accordingly-with-responsibilities"><i class="fa fa-check"></i>Managers’ needs for information vary accordingly with responsibilities</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-satisficing"><i class="fa fa-check"></i>Information satisficing</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-delivery-systems"><i class="fa fa-check"></i>Information delivery systems</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#information-integration"><i class="fa fa-check"></i>Information integration</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#knowledge-1"><i class="fa fa-check"></i>Knowledge</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#references-and-additional-readings-1"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="information.html"><a href="information.html#exercises-1"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-2-data-modeling-and-sql.html"><a href="section-2-data-modeling-and-sql.html"><i class="fa fa-check"></i>Section 2 Data Modeling and SQL</a></li>
+<li class="chapter" data-level="3" data-path="the-single-entity.html"><a href="the-single-entity.html"><i class="fa fa-check"></i><b>3</b> The Single Entity</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#the-relational-model"><i class="fa fa-check"></i>The relational model</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#modeling-a-single-entity-database"><i class="fa fa-check"></i>Modeling a single-entity database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#creating-a-single-table-database"><i class="fa fa-check"></i>Creating a single-table database</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#key-terms-and-concepts"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-single-entity.html"><a href="the-single-entity.html#exercises-2"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html"><i class="fa fa-check"></i><b>4</b> The One-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#relationships"><i class="fa fa-check"></i>Relationships</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#creating-a-database-with-a-1m-relationship"><i class="fa fa-check"></i>Creating a database with a 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#querying-a-two-table-database"><i class="fa fa-check"></i>Querying a two-table database</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#key-terms-and-concepts-1"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-one-to-many-relationship.html"><a href="the-one-to-many-relationship.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html"><i class="fa fa-check"></i><b>5</b> The Many-to-Many Relationship</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#the-many-to-many-relationship-1"><i class="fa fa-check"></i>The many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#creating-a-relational-database-with-an-mm-relationship"><i class="fa fa-check"></i>Creating a relational database with an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#querying-an-mm-relationship"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#key-terms-and-concepts-2"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-many-to-many-relationship.html"><a href="the-many-to-many-relationship.html#exercises-4"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html"><i class="fa fa-check"></i><b>6</b> One-to-One and Recursive Relationships</a>
+<ul>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#learning-objectives-5"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-one-to-one-relationship"><i class="fa fa-check"></i>Querying a one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-1m-relationship"><i class="fa fa-check"></i>Querying a recursive 1:m relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Modeling a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Mapping a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#querying-a-recursive-one-to-one-relationship"><i class="fa fa-check"></i>Querying a recursive one-to-one relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#modeling-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Modeling a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#mapping-a-recursive-many-to-many-relationship"><i class="fa fa-check"></i>Mapping a recursive many-to-many relationship</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#key-terms-and-concepts-3"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="one-to-one-and-recursive-relationships.html"><a href="one-to-one-and-recursive-relationships.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-modeling.html"><a href="data-modeling.html"><i class="fa fa-check"></i><b>7</b> Data Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#modeling"><i class="fa fa-check"></i>Modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-modeling-1"><i class="fa fa-check"></i>Data modeling</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-building-blocks"><i class="fa fa-check"></i>The building blocks</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#data-model-quality"><i class="fa fa-check"></i>Data model quality</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#quality-improvement"><i class="fa fa-check"></i>Quality improvement</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#meaningful-identifiers"><i class="fa fa-check"></i>Meaningful identifiers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#the-seven-habits-of-highly-effective-data-modelers"><i class="fa fa-check"></i>The seven habits of highly effective data modelers</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#summary-7"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#key-terms-and-concepts-4"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#references-and-additional-readings-2"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-modeling.html"><a href="data-modeling.html#exercises-5"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html"><i class="fa fa-check"></i>Reference 1: Basic Structures</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#one-entity"><i class="fa fa-check"></i>One entity</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#two-entities"><i class="fa fa-check"></i>Two entities</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#another-entitys-identifier-as-part-of-the-identifier"><i class="fa fa-check"></i>Another entity’s identifier as part of the identifier</a></li>
+<li class="chapter" data-level="" data-path="reference-1-basic-structures.html"><a href="reference-1-basic-structures.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html"><i class="fa fa-check"></i><b>8</b> Normalization and Other Data Modeling Methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#normalization"><i class="fa fa-check"></i>Normalization</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#other-data-modeling-methods"><i class="fa fa-check"></i>Other data modeling methods</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#summary-8"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#key-terms-and-concepts-5"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#references-and-additional-readings-3"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="normalization-and-other-data-modeling-methods.html"><a href="normalization-and-other-data-modeling-methods.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html"><i class="fa fa-check"></i><b>9</b> The Relational Model and Relational Algebra</a>
+<ul>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#data-structures"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#integrity-rules"><i class="fa fa-check"></i>Integrity rules</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#manipulation-languages"><i class="fa fa-check"></i>Manipulation languages</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-primitive-set-of-relational-operators"><i class="fa fa-check"></i>A primitive set of relational operators</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#a-fully-relational-database"><i class="fa fa-check"></i>A fully relational database</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#summary-9"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#key-terms-and-concepts-6"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#references-and-additional-readings-4"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="the-relational-model-and-relational-algebra.html"><a href="the-relational-model-and-relational-algebra.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>10</b> SQL</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#introduction-3"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-definition"><i class="fa fa-check"></i>Data definition</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#keys"><i class="fa fa-check"></i>Keys</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#indexes"><i class="fa fa-check"></i>Indexes</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-table"><i class="fa fa-check"></i>Creating a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#constraints"><i class="fa fa-check"></i>Constraints</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-types"><i class="fa fa-check"></i>Data types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#collation-sequence"><i class="fa fa-check"></i>Collation sequence</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#scalar-functions"><i class="fa fa-check"></i>Scalar functions</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#formatting"><i class="fa fa-check"></i>Formatting</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#altering-a-table"><i class="fa fa-check"></i>Altering a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-table"><i class="fa fa-check"></i>Dropping a table</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-a-view"><i class="fa fa-check"></i>Creating a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-a-view"><i class="fa fa-check"></i>Dropping a view</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#creating-an-index"><i class="fa fa-check"></i>Creating an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#dropping-an-index"><i class="fa fa-check"></i>Dropping an index</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#data-manipulation"><i class="fa fa-check"></i>Data manipulation</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#qualifying-column-names"><i class="fa fa-check"></i>Qualifying column names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#temporary-names"><i class="fa fa-check"></i>Temporary names</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#select"><i class="fa fa-check"></i>SELECT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#insert"><i class="fa fa-check"></i>INSERT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#update-1"><i class="fa fa-check"></i>UPDATE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#delete-1"><i class="fa fa-check"></i>DELETE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-routines"><i class="fa fa-check"></i>SQL routines</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-function"><i class="fa fa-check"></i>SQL function</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#sql-procedure"><i class="fa fa-check"></i>SQL procedure</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#trigger"><i class="fa fa-check"></i>Trigger</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#nullsmuch-ado-about-missing-information"><i class="fa fa-check"></i>Nulls—much ado about missing information</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#security"><i class="fa fa-check"></i>Security</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#grant"><i class="fa fa-check"></i>GRANT</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#revoke"><i class="fa fa-check"></i>REVOKE</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-system-catalog"><i class="fa fa-check"></i>The system catalog</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#natural-language-processing"><i class="fa fa-check"></i>Natural language processing</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#connectivity-and-odbc"><i class="fa fa-check"></i>Connectivity and ODBC</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#open-database-connectivity-odbc"><i class="fa fa-check"></i>Open database connectivity (ODBC)</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#embedded-sql"><i class="fa fa-check"></i>Embedded SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#user-defined-types"><i class="fa fa-check"></i>User-defined types</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#the-future-of-sql"><i class="fa fa-check"></i>The future of SQL</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#summary-10"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#key-terms-and-concepts-7"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#references-and-additional-readings-5"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql.html"><a href="sql.html#exercises-9"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html"><i class="fa fa-check"></i>Reference 2: SQL Playbook</a>
+<ul>
+<li class="chapter" data-level="" data-path="reference-2-sql-playbook.html"><a href="reference-2-sql-playbook.html#the-power-of-sql"><i class="fa fa-check"></i>The power of SQL</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-3-advanced-data-management.html"><a href="section-3-advanced-data-management.html"><i class="fa fa-check"></i>Section 3 Advanced Data Management</a></li>
+<li class="chapter" data-level="11" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html"><i class="fa fa-check"></i><b>11</b> Spatial and Temporal Data Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#learning-objectives-10"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#introduction-4"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-spatial-data"><i class="fa fa-check"></i>Managing spatial data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#managing-temporal-data"><i class="fa fa-check"></i>Managing temporal data</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#summary-11"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#key-terms-and-concepts-8"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#references-and-additional-readings-6"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="spatial-and-temporal-data-management.html"><a href="spatial-and-temporal-data-management.html#exercises-10"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="graph-databases.html"><a href="graph-databases.html"><i class="fa fa-check"></i><b>12</b> Graph Databases</a>
+<ul>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-graph-database"><i class="fa fa-check"></i>A graph database</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#neo4j-a-graph-database-implementation"><i class="fa fa-check"></i>Neo4j – a graph database implementation</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-single-node"><i class="fa fa-check"></i>A single node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-a-node"><i class="fa fa-check"></i>Querying a node</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#a-relationship-between-nodes"><i class="fa fa-check"></i>A relationship between nodes</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#querying-an-mm-relationship-1"><i class="fa fa-check"></i>Querying an m:m relationship</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#recursive-relationships"><i class="fa fa-check"></i>Recursive relationships</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#summary-12"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#key-terms-and-concepts-9"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#references-and-additional-resources"><i class="fa fa-check"></i>References and additional resources</a></li>
+<li class="chapter" data-level="" data-path="graph-databases.html"><a href="graph-databases.html#exercises-11"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html"><i class="fa fa-check"></i><b>13</b> XML: Managing Data Exchange</a>
+<ul>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#sgml"><i class="fa fa-check"></i>SGML</a></li>
+<li class="chapter" data-level="" data-path="xml-managing-data-exchange.html"><a href="xml-managing-data-exchange.html#xml"><i class="fa fa-check"></i>XML</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html"><i class="fa fa-check"></i><b>14</b> Organizational Intelligence</a>
+<ul>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#the-data-warehouse"><i class="fa fa-check"></i>The data warehouse</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exploiting-data-stores"><i class="fa fa-check"></i>Exploiting data stores</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#olap"><i class="fa fa-check"></i>OLAP</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#data-mining"><i class="fa fa-check"></i>Data mining</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#summary-14"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#key-terms-and-concepts-11"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#references-and-additional-readings-8"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="organizational-intelligence.html"><a href="organizational-intelligence.html#exercises-13"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>15</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#the-r-project"><i class="fa fa-check"></i>The R project</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#database-access"><i class="fa fa-check"></i>Database access</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#timestamps"><i class="fa fa-check"></i>Timestamps</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#excel-files"><i class="fa fa-check"></i>Excel files</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-and-data-analytics"><i class="fa fa-check"></i>R and data analytics</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#summary-15"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#key-terms-and-concepts-12"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#references"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r.html"><a href="introduction-to-r.html#exercises-14"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="data-visualization-1.html"><a href="data-visualization-1.html"><i class="fa fa-check"></i><b>16</b> Data visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#visual-processing"><i class="fa fa-check"></i>Visual processing</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#ggplot2"><i class="fa fa-check"></i>ggplot2</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#some-recipes"><i class="fa fa-check"></i>Some recipes</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#geographic-data"><i class="fa fa-check"></i>Geographic data</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#r-resources-1"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#summary-16"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#references-1"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-1.html"><a href="data-visualization-1.html#exercises-15"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html"><i class="fa fa-check"></i><b>17</b> Text mining &amp; natural language processing</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#the-nature-of-language"><i class="fa fa-check"></i>The nature of language</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#levels-of-processing"><i class="fa fa-check"></i>Levels of processing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#tokenization"><i class="fa fa-check"></i>Tokenization</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#sentiment-analysis"><i class="fa fa-check"></i>Sentiment analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#corpus"><i class="fa fa-check"></i>Corpus</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#readability"><i class="fa fa-check"></i>Readability</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#preprocessing"><i class="fa fa-check"></i>Preprocessing</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#word-frequency-analysis"><i class="fa fa-check"></i>Word frequency analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#co-occurrence-and-association"><i class="fa fa-check"></i>Co-occurrence and association</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#cluster-analysis"><i class="fa fa-check"></i>Cluster analysis</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#topic-modeling"><i class="fa fa-check"></i>Topic modeling</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#named-entity-recognition-ner"><i class="fa fa-check"></i>Named-entity recognition (NER)</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#future-developments"><i class="fa fa-check"></i>Future developments</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#summary-17"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#key-terms-and-concepts-13"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#references-2"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="text-mining-natural-language-processing.html"><a href="text-mining-natural-language-processing.html#exercises-16"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="cluster-computing.html"><a href="cluster-computing.html"><i class="fa fa-check"></i><b>18</b> Cluster computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#a-paradigm-shift"><i class="fa fa-check"></i>A paradigm shift</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-drivers"><i class="fa fa-check"></i>The drivers</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#the-bottleneck-and-its-solution"><i class="fa fa-check"></i>The bottleneck and its solution</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#lambda-architecture"><i class="fa fa-check"></i>Lambda Architecture</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#hadoop"><i class="fa fa-check"></i>Hadoop</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#spark"><i class="fa fa-check"></i>Spark</a></li>
+<li class="chapter" data-level="" data-path="cluster-computing.html"><a href="cluster-computing.html#summary-18"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="dashboards.html"><a href="dashboards.html"><i class="fa fa-check"></i><b>19</b> Dashboards</a>
+<ul>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#the-value-of-dashboards"><i class="fa fa-check"></i>The value of dashboards</a></li>
+<li class="chapter" data-level="" data-path="dashboards.html"><a href="dashboards.html#summary-19"><i class="fa fa-check"></i>Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="section-4-managing-organizational-memory.html"><a href="section-4-managing-organizational-memory.html"><i class="fa fa-check"></i>Section 4 Managing Organizational Memory</a></li>
+<li class="chapter" data-level="20" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html"><i class="fa fa-check"></i><b>20</b> Data Structure and Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#the-data-deluge"><i class="fa fa-check"></i>The data deluge</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-structures-1"><i class="fa fa-check"></i>Data structures</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-coding-standards"><i class="fa fa-check"></i>Data coding standards</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-storage-devices"><i class="fa fa-check"></i>Data storage devices</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#data-compression"><i class="fa fa-check"></i>Data compression</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#summary-20"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#key-terms-and-concepts-15"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-structure-and-storage.html"><a href="data-structure-and-storage.html#exercises-19"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html"><i class="fa fa-check"></i><b>21</b> Data Processing Architectures</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#architectural-choices"><i class="fa fa-check"></i>Architectural choices</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#remote-job-entry"><i class="fa fa-check"></i>Remote job entry</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#personal-database"><i class="fa fa-check"></i>Personal database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#clientserver"><i class="fa fa-check"></i>Client/server</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#cloud-computing"><i class="fa fa-check"></i>Cloud computing</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database"><i class="fa fa-check"></i>Distributed database</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-data-access"><i class="fa fa-check"></i>Distributed data access</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#distributed-database-design"><i class="fa fa-check"></i>Distributed database design</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#summary-21"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#key-terms-and-concepts-16"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#references-and-additional-readings-10"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-processing-architectures.html"><a href="data-processing-architectures.html#exercises-20"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="sql-and-java.html"><a href="sql-and-java.html"><i class="fa fa-check"></i><b>22</b> SQL and Java</a>
+<ul>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#jdbc"><i class="fa fa-check"></i>JDBC</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#java-ee"><i class="fa fa-check"></i>Java EE</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#using-sql-within-java"><i class="fa fa-check"></i>Using SQL within Java</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#javaserver-pages-jsp"><i class="fa fa-check"></i>JavaServer Pages (JSP)</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#summary-22"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#key-terms-and-concepts-17"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#references-and-additional-readings-11"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="sql-and-java.html"><a href="sql-and-java.html#exercises-21"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="data-integrity.html"><a href="data-integrity.html"><i class="fa fa-check"></i><b>23</b> Data Integrity</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#introduction-9"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#transaction-management"><i class="fa fa-check"></i>Transaction management</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#protecting-existence"><i class="fa fa-check"></i>Protecting existence</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#maintaining-data-quality"><i class="fa fa-check"></i>Maintaining data quality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#ensuring-confidentiality"><i class="fa fa-check"></i>Ensuring confidentiality</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#summary-23"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#key-terms-and-concepts-18"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-integrity.html"><a href="data-integrity.html#exercises-22"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="data-administration.html"><a href="data-administration.html"><i class="fa fa-check"></i><b>24</b> Data Administration</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#introduction-10"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#the-chief-data-officer"><i class="fa fa-check"></i>The Chief Data Officer</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#management-of-the-database-environment"><i class="fa fa-check"></i>Management of the database environment</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-administration-1"><i class="fa fa-check"></i>Data administration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#database-management-systems-dbmss"><i class="fa fa-check"></i>Database management systems (DBMSs)</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#groupware-1"><i class="fa fa-check"></i>Groupware</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#data-integration"><i class="fa fa-check"></i>Data integration</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#conclusion-9"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#summary-24"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#key-terms-and-concepts-19"><i class="fa fa-check"></i>Key terms and concepts</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#references-and-additional-readings-12"><i class="fa fa-check"></i>References and additional readings</a></li>
+<li class="chapter" data-level="" data-path="data-administration.html"><a href="data-administration.html#exercises-23"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="one-to-one-and-recursive-relationships" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> One-to-One and Recursive Relationships</h1>
+<blockquote>
+<p><em>Self-reflection is the school of wisdom.</em></p>
+<p>Baltasar Gracián, <em>The Art of Worldly Wisdom</em>, 1647</p>
+</blockquote>
+<div id="learning-objectives-5" class="section level2 unnumbered">
+<h2>Learning objectives</h2>
+<p>Students completing this chapter will be able to</p>
+<ul>
+<li><p>model one-to-one and recursive relationships;</p></li>
+<li><p>define a database with one-to-one and recursive relationships;</p></li>
+<li><p>write queries for a database with one-to-one and recursive
+relationships.</p></li>
+</ul>
+<p>An organizational chart, as shown in the following diagram, can be
+modeled with several relationships.</p>
+<p><em>The Expeditioner’s organizational chart</em></p>
+<p><img src="Figures/Chapter%206/org%20chart.png" width="476" /></p>
+</div>
+<div id="modeling-a-one-to-one-relationship" class="section level2 unnumbered">
+<h2>Modeling a one-to-one relationship</h2>
+<p>Initially, the organization chart appears to record two relationships.
+<em>First<strong>,</strong></em> a department has one or more employees, and an employee
+belongs to one department. <em>Second</em>, a department has one boss, and a
+person is boss of only one department. That is, boss is a 1:1
+relationship between DEPT and EMP. The data model for this situation is
+shown.</p>
+<p><em>A data model illustrating a 1:m and 1:1 relationship</em></p>
+<p><img src="Figures/Chapter%206/1-and-1.png" width="452" /></p>
+<p><em>MySQL Workbench version of a 1:m and 1:1 relationship</em></p>
+<p><img src="Figures/Chapter%206/1-1-wb.png" /></p>
+<p>As a general rule, the 1:1 relationship is labeled to avoid confusion
+because the meaning of such a relationship cannot always be inferred.
+This label is called a <strong>relationship descriptor</strong>. The 1:m relationship
+between DEPT and EMP is not labeled because its meaning is readily
+understood by reading the model. Use a relationship descriptor when
+there is more than one relationship between entities or when the meaning
+of the relationship is not readily inferred from the model.</p>
+<p>If we think about this problem, we realize there is more to boss than
+just a department. People also have a boss. Thus, Alice is the boss of
+all the other employees. In this case, we are mainly interested in who
+directly bosses someone else. So, Alice is the direct boss of Ned, Todd,
+Brier, and Sophie. We need to record the person-boss relationship as
+well as the department-boss relationship.</p>
+<p>The person-boss relationship is a <strong>recursive 1:m relationship</strong> because
+it is a relationship between employees—an employee has one boss and a
+boss can have many employees. The data model is shown in the following
+figure.</p>
+<p><em>A data model illustrating a recursive 1:m relationship</em></p>
+<p><img src="Figures/Chapter%206/recursive-1-and-m.png" width="545" /></p>
+<p><em>MySQL Workbench version of a recursive 1:m relationship</em></p>
+<p><img src="Figures/Chapter%206/recursive-1-and-m-wb.png" /></p>
+<p>It is a good idea to label the recursive relationship, because its
+meaning is often not obvious from the data model.</p>
+</div>
+<div id="mapping-a-one-to-one-relationship" class="section level2 unnumbered">
+<h2>Mapping a one-to-one relationship</h2>
+<p>Since mapping a 1:1 relationship follows the same rules as for any other
+data model, the major consideration is where to place the foreign
+key(s). There are three alternatives:</p>
+<ol style="list-style-type: decimal">
+<li><p>Put the foreign key in dept.<br />
+Doing so means that every instance of dept will record the empno of
+the employee who is boss. Because it is mandatory that all
+departments, in this case have a boss, the foreign key will always
+be non-null.</p></li>
+<li><p>Put the foreign key in emp.<br />
+Choosing this alternative means that every instance of emp should
+record deptname of the department this employee bosses. Since many
+employees are not bosses, the value of the foreign key column will
+generally be null.</p></li>
+<li><p>Put a foreign key in both dept and emp.<br />
+The consequence of putting a foreign key in both tables in the 1:1
+relationship is the combination of points 1 and 2.</p></li>
+</ol>
+<p>The best approach is to put the foreign key in dept, because it is
+mandatory for each department to have a boss, and the foreign key will
+always be non-null.</p>
+</div>
+<div id="mapping-a-recursive-one-to-many-relationship" class="section level2 unnumbered">
+<h2>Mapping a recursive one-to-many relationship</h2>
+<p>A recursive 1:m relationship is mapped like a standard 1:m relationship.
+An additional column, for the foreign key, is created for the entity at
+the “many” end of the relationship. Of course, in this case the “one”
+and “many” ends are the same entity, so an additional column is added to
+<code>emp</code>. This column contains the key <code>empno</code> of the “one” end of the
+relationship. Since <code>empno</code> is already used as a column name, a
+different name needs to be selected. In this case, it makes sense to
+call the foreign key column <code>bossno</code> because it stores the boss’s
+employee number.</p>
+<p>The mapping of the data model is shown in the following table. Note that
+<code>deptname</code> becomes a column in <code>emp</code>, the “many” end of the 1:m
+relationship, and <code>empno</code> becomes a foreign key in <code>dept</code>, an end of the
+1:1 relationship.</p>
+<p><em>The tables dept and emp</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><u>deptname</u></th>
+<th align="center">deptfloor</th>
+<th align="center">deptphone</th>
+<th align="center"><em>empno</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Management</td>
+<td align="center">5</td>
+<td align="center">2001</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="left">Marketing</td>
+<td align="center">1</td>
+<td align="center">2002</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Accounting</td>
+<td align="center">4</td>
+<td align="center">2003</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="left">Purchasing</td>
+<td align="center">4</td>
+<td align="center">2004</td>
+<td align="center">7</td>
+</tr>
+<tr class="odd">
+<td align="left">Personnel &amp; PR</td>
+<td align="center">1</td>
+<td align="center">2005</td>
+<td align="center">9</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><u>empno</u></th>
+<th align="left">empfname</th>
+<th align="right">empsalary</th>
+<th align="left">deptname</th>
+<th align="center">bossno</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="left"><em>Alice</em></td>
+<td align="right">75000</td>
+<td align="left"><em>Management</em></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="left"><em>Ned</em></td>
+<td align="right">45000</td>
+<td align="left"><em>Marketing</em></td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="left"><em>Andrew</em></td>
+<td align="right">25000</td>
+<td align="left"><em>Marketing</em></td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="left"><em>Clare</em></td>
+<td align="right">22000</td>
+<td align="left"><em>Marketing</em></td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="left"><em>Todd</em></td>
+<td align="right">38000</td>
+<td align="left"><em>Accounting</em></td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="left"><em>Nancy</em></td>
+<td align="right">22000</td>
+<td align="left"><em>Accounting</em></td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="left"><em>Brier</em></td>
+<td align="right">43000</td>
+<td align="left"><em>Purchasing</em></td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="left"><em>Sarah</em></td>
+<td align="right">56000</td>
+<td align="left"><em>Purchasing</em></td>
+<td align="center">7</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="left"><em>Sophie</em></td>
+<td align="right">35000</td>
+<td align="left"><em>Personnel &amp; PR</em></td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>If you examine <code>emp</code>, you will see that the boss of the employee with
+<code>empno</code> = 2 (Ned) has <code>bossno</code> = 1. You can then look up the row in
+<code>emp</code> with <code>empno</code> = 1 to find that Ned’s boss is Alice. This “double
+lookup” is frequently used when manually interrogating a table that
+represents a recursive relationship. Soon you will discover how this is
+handled with SQL.</p>
+<p>Here is the SQL to create the two tables:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb72-1"><a href="one-to-one-and-recursive-relationships.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> dept (</span>
+<span id="cb72-2"><a href="one-to-one-and-recursive-relationships.html#cb72-2" aria-hidden="true" tabindex="-1"></a>    deptname        <span class="dt">VARCHAR</span>(<span class="dv">15</span>),</span>
+<span id="cb72-3"><a href="one-to-one-and-recursive-relationships.html#cb72-3" aria-hidden="true" tabindex="-1"></a>    deptfloor       <span class="dt">SMALLINT</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb72-4"><a href="one-to-one-and-recursive-relationships.html#cb72-4" aria-hidden="true" tabindex="-1"></a>    deptphone       <span class="dt">SMALLINT</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb72-5"><a href="one-to-one-and-recursive-relationships.html#cb72-5" aria-hidden="true" tabindex="-1"></a>    empno           <span class="dt">SMALLINT</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb72-6"><a href="one-to-one-and-recursive-relationships.html#cb72-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">PRIMARY</span> <span class="kw">KEY</span>(deptname));</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb73-1"><a href="one-to-one-and-recursive-relationships.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> emp (</span>
+<span id="cb73-2"><a href="one-to-one-and-recursive-relationships.html#cb73-2" aria-hidden="true" tabindex="-1"></a>    empno           <span class="dt">SMALLINT</span>,</span>
+<span id="cb73-3"><a href="one-to-one-and-recursive-relationships.html#cb73-3" aria-hidden="true" tabindex="-1"></a>    empfname        <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb73-4"><a href="one-to-one-and-recursive-relationships.html#cb73-4" aria-hidden="true" tabindex="-1"></a>    empsalary       <span class="dt">DECIMAL</span>(<span class="dv">7</span>,<span class="dv">0</span>),</span>
+<span id="cb73-5"><a href="one-to-one-and-recursive-relationships.html#cb73-5" aria-hidden="true" tabindex="-1"></a>    deptname        <span class="dt">VARCHAR</span>(<span class="dv">15</span>),</span>
+<span id="cb73-6"><a href="one-to-one-and-recursive-relationships.html#cb73-6" aria-hidden="true" tabindex="-1"></a>    bossno          <span class="dt">SMALLINT</span>,</span>
+<span id="cb73-7"><a href="one-to-one-and-recursive-relationships.html#cb73-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">PRIMARY</span> <span class="kw">KEY</span>(empno),</span>
+<span id="cb73-8"><a href="one-to-one-and-recursive-relationships.html#cb73-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> fk_belong_dept <span class="kw">FOREIGN</span> <span class="kw">KEY</span>(deptname) </span>
+<span id="cb73-9"><a href="one-to-one-and-recursive-relationships.html#cb73-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">REFERENCES</span> dept(deptname),</span>
+<span id="cb73-10"><a href="one-to-one-and-recursive-relationships.html#cb73-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> fk_has_boss <span class="kw">FOREIGN</span> <span class="kw">KEY</span>(bossno) </span>
+<span id="cb73-11"><a href="one-to-one-and-recursive-relationships.html#cb73-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">REFERENCES</span> emp(empno));</span></code></pre></div>
+<p>You will notice that there is no foreign key definition for <code>empno</code> in
+<code>dept</code> (the 1:1 department’s boss relationship). Why? Observe that
+<code>deptname</code> is a foreign key in <code>emp</code>. If we make <code>empno</code> a foreign key
+in <code>dept</code>, then we have a <em>deadly embrace</em>. A new department cannot be
+added to the <code>dept</code> table until there is a boss for that department
+(i.e., there is a person in the <code>emp</code> table with the <code>empno</code> of the
+boss); however, the other constraint states that an employee cannot be
+added to the <code>emp</code> table unless there is a department to which that
+person is assigned. If we have both foreign key constraints, we cannot
+add a new department until we have added a boss, and we cannot add a
+boss until we have added a department for that person. Nothing, under
+these circumstances, can happen if both foreign key constraints are in
+place. Thus, only one of them is specified.</p>
+<p>In the case of the recursive employee relationship, we can create a
+constraint to ensure that <code>bossno</code> exists for each employee, except of
+course the person, Alice, who is top of the pyramid. This form of
+constraint is known as a <strong>self-referential</strong> foreign key. However, we
+must make certain that the first person inserted into <code>emp</code> is Alice.
+The following statements illustrate that we must always insert a
+person’s boss before we insert the person.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb74-1"><a href="one-to-one-and-recursive-relationships.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> emp (empno, empfname, empsalary, deptname) <span class="kw">VALUES</span> (<span class="dv">1</span>,<span class="st">&#39;Alice&#39;</span>,<span class="dv">75000</span>,<span class="st">&#39;Management&#39;</span>);</span>
+<span id="cb74-2"><a href="one-to-one-and-recursive-relationships.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> emp <span class="kw">VALUES</span> (<span class="dv">2</span>,<span class="st">&#39;Ned&#39;</span>,<span class="dv">45000</span>,<span class="st">&#39;Marketing&#39;</span>,<span class="dv">1</span>);</span>
+<span id="cb74-3"><a href="one-to-one-and-recursive-relationships.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> emp <span class="kw">VALUES</span> (<span class="dv">3</span>,<span class="st">&#39;Andrew&#39;</span>,<span class="dv">25000</span>,<span class="st">&#39;Marketing&#39;</span>,<span class="dv">2</span>);</span>
+<span id="cb74-4"><a href="one-to-one-and-recursive-relationships.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> emp <span class="kw">VALUES</span> (<span class="dv">4</span>,<span class="st">&#39;Clare&#39;</span>,<span class="dv">22000</span>,<span class="st">&#39;Marketing&#39;</span>,<span class="dv">2</span>);</span>
+<span id="cb74-5"><a href="one-to-one-and-recursive-relationships.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> emp <span class="kw">VALUES</span> (<span class="dv">5</span>,<span class="st">&#39;Todd&#39;</span>,<span class="dv">38000</span>,<span class="st">&#39;Accounting&#39;</span>,<span class="dv">1</span>);</span>
+<span id="cb74-6"><a href="one-to-one-and-recursive-relationships.html#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> emp <span class="kw">VALUES</span> (<span class="dv">6</span>,<span class="st">&#39;Nancy&#39;</span>,<span class="dv">22000</span>,<span class="st">&#39;Accounting&#39;</span>,<span class="dv">5</span>);</span>
+<span id="cb74-7"><a href="one-to-one-and-recursive-relationships.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> emp <span class="kw">VALUES</span> (<span class="dv">7</span>,<span class="st">&#39;Brier&#39;</span>,<span class="dv">43000</span>,<span class="st">&#39;Purchasing&#39;</span>,<span class="dv">1</span>);</span>
+<span id="cb74-8"><a href="one-to-one-and-recursive-relationships.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> emp <span class="kw">VALUES</span> (<span class="dv">8</span>,<span class="st">&#39;Sarah&#39;</span>,<span class="dv">56000</span>,<span class="st">&#39;Purchasing&#39;</span>,<span class="dv">7</span>);</span>
+<span id="cb74-9"><a href="one-to-one-and-recursive-relationships.html#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> emp <span class="kw">VALUES</span> (<span class="dv">9</span>,<span class="st">&#39;Sophie&#39;</span>,<span class="dv">35000</span>,<span class="st">&#39;Personnel&#39;</span>,<span class="dv">1</span>);</span></code></pre></div>
+<p>In more complex modeling situations, such as when there are multiple
+relationships between a pair of entities, use of a FOREIGN KEY clause
+may result in a deadlock. Always consider the consequences of using a
+FOREIGN KEY clause before applying it.</p>
+<blockquote>
+<p>❓<em>Skill builder</em> A consulting company has assigned each of its
+employees to a specialist group (e.g., database management). Each
+specialist group has a team leader. When employees join the company,
+they are assigned a mentor for the first year. One person might mentor
+several employees, but an employee has at most one mentor.</p>
+</blockquote>
+</div>
+<div id="querying-a-one-to-one-relationship" class="section level2 unnumbered">
+<h2>Querying a one-to-one relationship</h2>
+<p>Querying a 1:1 relationship presents no special difficulties but does
+allow us to see additional SQL features.</p>
+<p><em>List the salary of each department’s boss.</em></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb75-1"><a href="one-to-one-and-recursive-relationships.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> empfname, deptname, empsalary <span class="kw">FROM</span> emp</span>
+<span id="cb75-2"><a href="one-to-one-and-recursive-relationships.html#cb75-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> empno <span class="kw">IN</span> (<span class="kw">SELECT</span> empno <span class="kw">FROM</span> dept);</span></code></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb76-1"><a href="one-to-one-and-recursive-relationships.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> empfname, dept.deptname, empsalary</span>
+<span id="cb76-2"><a href="one-to-one-and-recursive-relationships.html#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> emp <span class="kw">JOIN</span> dept</span>
+<span id="cb76-3"><a href="one-to-one-and-recursive-relationships.html#cb76-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> dept.empno <span class="op">=</span> emp.empno;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-77">Table 6.1: </span>5 records</caption>
+<thead>
+<tr class="header">
+<th align="left">empfname</th>
+<th align="left">deptname</th>
+<th align="right">empsalary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Todd</td>
+<td align="left">Accounting</td>
+<td align="right">38000</td>
+</tr>
+<tr class="even">
+<td align="left">Alice</td>
+<td align="left">Management</td>
+<td align="right">75000</td>
+</tr>
+<tr class="odd">
+<td align="left">Ned</td>
+<td align="left">Marketing</td>
+<td align="right">45000</td>
+</tr>
+<tr class="even">
+<td align="left">Sophie</td>
+<td align="left">Personnel</td>
+<td align="right">35000</td>
+</tr>
+<tr class="odd">
+<td align="left">Brier</td>
+<td align="left">Purchasing</td>
+<td align="right">43000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="querying-a-recursive-1m-relationship" class="section level2 unnumbered">
+<h2>Querying a recursive 1:m relationship</h2>
+<p>Querying a recursive relationship is puzzling until you realize that you
+can join a table to itself by creating two copies of the table. In SQL,
+you use the WITH clause, also known as the <em>common table expression
+(CTE)</em> to create a temporary copy, a <strong>table alias.</strong> First, use WITH to
+define two aliases, <code>wrk</code> and <code>boss</code> for <code>emp</code>. Table aliases are
+required so that SQL can distinguish which copy of the table is
+referenced. To demonstrate:</p>
+<p><em>Find the salary of Nancy’s boss.</em></p>
+<p>First, use WITH to define two aliases, <code>wrk</code> and <code>boss</code> for <code>emp</code>.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb77-1"><a href="one-to-one-and-recursive-relationships.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span></span>
+<span id="cb77-2"><a href="one-to-one-and-recursive-relationships.html#cb77-2" aria-hidden="true" tabindex="-1"></a>wrk <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> emp), </span>
+<span id="cb77-3"><a href="one-to-one-and-recursive-relationships.html#cb77-3" aria-hidden="true" tabindex="-1"></a>boss <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> emp) </span>
+<span id="cb77-4"><a href="one-to-one-and-recursive-relationships.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> wrk.empfname, wrk.empsalary,boss.empfname, boss.empsalary</span>
+<span id="cb77-5"><a href="one-to-one-and-recursive-relationships.html#cb77-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> wrk <span class="kw">JOIN</span> boss </span>
+<span id="cb77-6"><a href="one-to-one-and-recursive-relationships.html#cb77-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> wrk.bossno <span class="op">=</span> boss.empno</span>
+<span id="cb77-7"><a href="one-to-one-and-recursive-relationships.html#cb77-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> wrk.empfname <span class="op">=</span> <span class="st">&#39;Nancy&#39;</span>;</span></code></pre></div>
+<p>Many queries are solved by getting all the data you need to answer the
+request in one row. In this case, the query is easy to answer once the
+data for Nancy and her boss are in the one row. Thus, think of this
+query as joining two copies of the table <code>emp</code> to get the worker and her
+boss’s data in one row. Notice that there is a qualifier (<code>wrk</code> and
+<code>boss</code>) for each copy of the table to distinguish between them. It helps
+to use a qualifier that makes sense. In this case, the <code>wrk</code> and <code>boss</code>
+qualifiers can be thought of as referring to the worker and boss tables,
+respectively. You can understand how the query works by examining the
+following table illustrating the self-join.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">wrk</th>
+<th></th>
+<th align="right"></th>
+<th></th>
+<th align="center"></th>
+<th align="center">boss</th>
+<th></th>
+<th align="right"></th>
+<th></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">empno</td>
+<td>empfname</td>
+<td align="right">empsalary</td>
+<td>deptname</td>
+<td align="center">bossno</td>
+<td align="center">empno</td>
+<td>empfname</td>
+<td align="right">empsalary</td>
+<td>deptname</td>
+<td align="center">bossno</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td>Ned</td>
+<td align="right">45000</td>
+<td>Marketing</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td>Alice</td>
+<td align="right">75000</td>
+<td>Management</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td>Andrew</td>
+<td align="right">25000</td>
+<td>Marketing</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td>Ned</td>
+<td align="right">45000</td>
+<td>Marketing</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td>Clare</td>
+<td align="right">22000</td>
+<td>Marketing</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td>Ned</td>
+<td align="right">45000</td>
+<td>Marketing</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td>Todd</td>
+<td align="right">38000</td>
+<td>Accounting</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td>Alice</td>
+<td align="right">75000</td>
+<td>Management</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td>Nancy</td>
+<td align="right">22000</td>
+<td>Accounting</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td>Todd</td>
+<td align="right">38000</td>
+<td>Accounting</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td>Brier</td>
+<td align="right">43000</td>
+<td>Purchasing</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td>Alice</td>
+<td align="right">75000</td>
+<td>Management</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td>Sarah</td>
+<td align="right">56000</td>
+<td>Purchasing</td>
+<td align="center">7</td>
+<td align="center">7</td>
+<td>Brier</td>
+<td align="right">43000</td>
+<td>Purchasing</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td>Sophie</td>
+<td align="right">35000</td>
+<td>Personnel &amp; PR</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td>Alice</td>
+<td align="right">75000</td>
+<td>Management</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>The result of the SQL query is now quite clear once we apply the WHERE
+clause (see the highlighted row in the preceding table):</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb78-1"><a href="one-to-one-and-recursive-relationships.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span></span>
+<span id="cb78-2"><a href="one-to-one-and-recursive-relationships.html#cb78-2" aria-hidden="true" tabindex="-1"></a>wrk <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> emp), </span>
+<span id="cb78-3"><a href="one-to-one-and-recursive-relationships.html#cb78-3" aria-hidden="true" tabindex="-1"></a>boss <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> emp) </span>
+<span id="cb78-4"><a href="one-to-one-and-recursive-relationships.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> wrk.empfname, wrk.empsalary,boss.empfname, boss.empsalary</span>
+<span id="cb78-5"><a href="one-to-one-and-recursive-relationships.html#cb78-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> wrk <span class="kw">JOIN</span> boss </span>
+<span id="cb78-6"><a href="one-to-one-and-recursive-relationships.html#cb78-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> wrk.bossno <span class="op">=</span> boss.empno</span>
+<span id="cb78-7"><a href="one-to-one-and-recursive-relationships.html#cb78-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> wrk.empfname <span class="op">=</span> <span class="st">&#39;Nancy&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-79">Table 6.2: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">empfname</th>
+<th align="right">empsalary</th>
+<th align="left">empfname</th>
+<th align="right">empsalary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Nancy</td>
+<td align="right">22000</td>
+<td align="left">Todd</td>
+<td align="right">38000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Find the names of employees who earn more than their boss.</em></p>
+<p>This would be very easy if the employee and boss data were in the same
+row. We could simply compare the salaries of the two people. To get the
+data in the one row, we repeat the self-join with a different WHERE
+condition. The result is as follows:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb79-1"><a href="one-to-one-and-recursive-relationships.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span></span>
+<span id="cb79-2"><a href="one-to-one-and-recursive-relationships.html#cb79-2" aria-hidden="true" tabindex="-1"></a>wrk <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> emp), </span>
+<span id="cb79-3"><a href="one-to-one-and-recursive-relationships.html#cb79-3" aria-hidden="true" tabindex="-1"></a>boss <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> emp) </span>
+<span id="cb79-4"><a href="one-to-one-and-recursive-relationships.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> wrk.empfname <span class="kw">FROM</span> wrk <span class="kw">JOIN</span> boss </span>
+<span id="cb79-5"><a href="one-to-one-and-recursive-relationships.html#cb79-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> wrk.bossno <span class="op">=</span> boss.empno</span>
+<span id="cb79-6"><a href="one-to-one-and-recursive-relationships.html#cb79-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> wrk.empsalary <span class="op">&gt;</span> boss.empsalary;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-80">Table 6.3: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">empfname</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sarah</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>Find the name of Sophie’s boss.</p>
+</blockquote>
+<p><img src="Figures/Chapter%201/expeditioner.png" width="190" /></p>
+<p>Alice has found several histories of The Expeditioner from a variety of
+eras. Because many expeditions they outfitted were conducted under royal
+patronage, it was not uncommon for these histories to refer to British
+monarchs. Alice could remember very little about British history, let
+alone when various kings and queens reigned. This sounded like another
+database problem. She would ask Ned to create a database that recorded
+details of each monarch. She thought it also would be useful to record
+details of royal succession.</p>
+</div>
+<div id="modeling-a-recursive-one-to-one-relationship" class="section level2 unnumbered">
+<h2>Modeling a recursive one-to-one relationship</h2>
+<p>The British monarchy can be represented by a simple one-entity model. A
+monarch has one direct successor and one direct predecessor. The
+sequencing of monarchs can be modeled by a recursive 1:1 relationship,
+shown in the following figure.</p>
+<p><em>A data model illustrating a recursive 1:1 relationship</em></p>
+<p><img src="Figures/Chapter%206/recursive-1-and-1.png" width="236" /></p>
+<p><em>MySQL Workbench version of a recursive 1:1 relationship</em></p>
+<p><img src="Figures/Chapter%206/recursive-1-and-1-wb.png" /></p>
+</div>
+<div id="mapping-a-recursive-one-to-one-relationship" class="section level2 unnumbered">
+<h2>Mapping a recursive one-to-one relationship</h2>
+<p>The recursive 1:1 relationship is mapped by adding a foreign key to
+<code>monarch</code>. You can add a foreign key to represent either the successor
+or predecessor relationship. In this case, for no particular reason, the
+preceding relationship is selected. Because each instance of a monarch
+is identified by a composite key, two columns are added to <code>monarch</code> for
+the foreign key. Data for recent monarchs are shown in the following
+table.</p>
+<p><em>The table monarch</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">montype</th>
+<th align="left">monname</th>
+<th align="center">monnum</th>
+<th align="left">rgnbeg</th>
+<th align="left">premonname</th>
+<th align="center">premonnum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">King</td>
+<td align="left">William</td>
+<td align="center">IV</td>
+<td align="left">1830/6/26</td>
+<td align="left"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Queen</td>
+<td align="left">Victoria</td>
+<td align="center">I</td>
+<td align="left">1837/6/20</td>
+<td align="left">William</td>
+<td align="center">IV</td>
+</tr>
+<tr class="odd">
+<td align="left">King</td>
+<td align="left">Edward</td>
+<td align="center">VII</td>
+<td align="left">1901/1/22</td>
+<td align="left">Victoria</td>
+<td align="center">I</td>
+</tr>
+<tr class="even">
+<td align="left">King</td>
+<td align="left">George</td>
+<td align="center">V</td>
+<td align="left">1910/5/6</td>
+<td align="left">Edward</td>
+<td align="center">VII</td>
+</tr>
+<tr class="odd">
+<td align="left">King</td>
+<td align="left">Edward</td>
+<td align="center">VIII</td>
+<td align="left">1936/1/20</td>
+<td align="left">George</td>
+<td align="center">V</td>
+</tr>
+<tr class="even">
+<td align="left">King</td>
+<td align="left">George</td>
+<td align="center">VI</td>
+<td align="left">1936/12/11</td>
+<td align="left">Edward</td>
+<td align="center">VIII</td>
+</tr>
+<tr class="odd">
+<td align="left">Queen</td>
+<td align="left">Elizabeth</td>
+<td align="center">II</td>
+<td align="left">1952/02/06</td>
+<td align="left">George</td>
+<td align="center">VI</td>
+</tr>
+</tbody>
+</table>
+<p>The SQL statements to create the table are very straightforward.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb80-1"><a href="one-to-one-and-recursive-relationships.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> monarch (</span>
+<span id="cb80-2"><a href="one-to-one-and-recursive-relationships.html#cb80-2" aria-hidden="true" tabindex="-1"></a>    montype     <span class="dt">CHAR</span>(<span class="dv">5</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb80-3"><a href="one-to-one-and-recursive-relationships.html#cb80-3" aria-hidden="true" tabindex="-1"></a>    monname     <span class="dt">VARCHAR</span>(<span class="dv">15</span>),</span>
+<span id="cb80-4"><a href="one-to-one-and-recursive-relationships.html#cb80-4" aria-hidden="true" tabindex="-1"></a>    monnum          <span class="dt">VARCHAR</span>(<span class="dv">5</span>),</span>
+<span id="cb80-5"><a href="one-to-one-and-recursive-relationships.html#cb80-5" aria-hidden="true" tabindex="-1"></a>    rgnbeg          <span class="dt">DATE</span>,</span>
+<span id="cb80-6"><a href="one-to-one-and-recursive-relationships.html#cb80-6" aria-hidden="true" tabindex="-1"></a>    premonname      <span class="dt">VARCHAR</span>(<span class="dv">15</span>),</span>
+<span id="cb80-7"><a href="one-to-one-and-recursive-relationships.html#cb80-7" aria-hidden="true" tabindex="-1"></a>    premonnum       <span class="dt">VARCHAR</span>(<span class="dv">5</span>),</span>
+<span id="cb80-8"><a href="one-to-one-and-recursive-relationships.html#cb80-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">PRIMARY</span> <span class="kw">KEY</span>(monname,monnum),</span>
+<span id="cb80-9"><a href="one-to-one-and-recursive-relationships.html#cb80-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">CONSTRAINT</span> fk_monarch <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (premonname, premonnum)</span>
+<span id="cb80-10"><a href="one-to-one-and-recursive-relationships.html#cb80-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">REFERENCES</span> monarch(monname, monnum);</span></code></pre></div>
+<p>Because the 1:1 relationship is recursive, you cannot insert Queen
+Victoria without first inserting King William IV. What you can do is
+first insert King William, without any reference to the preceding
+monarch (i.e., a null foreign key). The following code illustrates the
+order of record insertion so that the referential integrity constraint
+is obeyed.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb81-1"><a href="one-to-one-and-recursive-relationships.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> MONARCH (montype,monname, monnum,rgnbeg) <span class="kw">VALUES</span> (<span class="st">&#39;King&#39;</span>,<span class="st">&#39;William&#39;</span>,<span class="st">&#39;IV&#39;</span>,<span class="st">&#39;1830-06-26&#39;</span>);</span>
+<span id="cb81-2"><a href="one-to-one-and-recursive-relationships.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> MONARCH <span class="kw">VALUES</span> (<span class="st">&#39;Queen&#39;</span>,<span class="st">&#39;Victoria&#39;</span>,<span class="st">&#39;I&#39;</span>,<span class="st">&#39;1837-06-20&#39;</span>,<span class="st">&#39;William&#39;</span>,<span class="st">&#39;IV&#39;</span>);</span>
+<span id="cb81-3"><a href="one-to-one-and-recursive-relationships.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> MONARCH <span class="kw">VALUES</span> (<span class="st">&#39;King&#39;</span>,<span class="st">&#39;Edward&#39;</span>,<span class="st">&#39;VII&#39;</span>,<span class="st">&#39;1901-01-22&#39;</span>,<span class="st">&#39;Victoria&#39;</span>,<span class="st">&#39;I&#39;</span>);</span>
+<span id="cb81-4"><a href="one-to-one-and-recursive-relationships.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> MONARCH <span class="kw">VALUES</span> (<span class="st">&#39;King&#39;</span>,<span class="st">&#39;George&#39;</span>,<span class="st">&#39;V&#39;</span>,<span class="st">&#39;1910-05-06&#39;</span>,<span class="st">&#39;Edward&#39;</span>,<span class="st">&#39;VII&#39;</span>);</span>
+<span id="cb81-5"><a href="one-to-one-and-recursive-relationships.html#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> MONARCH <span class="kw">VALUES</span> (<span class="st">&#39;King&#39;</span>,<span class="st">&#39;Edward&#39;</span>,<span class="st">&#39;VIII&#39;</span>,<span class="st">&#39;1936-01-20&#39;</span>,<span class="st">&#39;George&#39;</span>,<span class="st">&#39;V&#39;</span>);</span>
+<span id="cb81-6"><a href="one-to-one-and-recursive-relationships.html#cb81-6" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> MONARCH <span class="kw">VALUES</span>(<span class="st">&#39;King&#39;</span>,<span class="st">&#39;George&#39;</span>,<span class="st">&#39;VI&#39;</span>,<span class="st">&#39;1936-12-11&#39;</span>,<span class="st">&#39;Edward&#39;</span>,<span class="st">&#39;VIII&#39;</span>);</span>
+<span id="cb81-7"><a href="one-to-one-and-recursive-relationships.html#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> MONARCH <span class="kw">VALUES</span>(<span class="st">&#39;Queen&#39;</span>,<span class="st">&#39;Elizabeth&#39;</span>,<span class="st">&#39;II&#39;</span>,<span class="st">&#39;1952-02-06&#39;</span>,<span class="st">&#39;George&#39;</span>,<span class="st">&#39;VI&#39;</span>);</span></code></pre></div>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>In a competitive bridge competition, the same pair of players play
+together for the entire tournament. Draw a data model to record
+details of all the players and the pairs of players.ß</p>
+</blockquote>
+</div>
+<div id="querying-a-recursive-one-to-one-relationship" class="section level2 unnumbered">
+<h2>Querying a recursive one-to-one relationship</h2>
+<p>Some queries on the monarch table demonstrate querying a recursive 1:1
+relationship.</p>
+<p><em>Who preceded Elizabeth II?</em></p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb82-1"><a href="one-to-one-and-recursive-relationships.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> premonname, premonnum <span class="kw">FROM</span> monarch</span>
+<span id="cb82-2"><a href="one-to-one-and-recursive-relationships.html#cb82-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> monname <span class="op">=</span> <span class="st">&#39;Elizabeth&#39;</span> <span class="kw">and</span> monnum <span class="op">=</span> <span class="st">&#39;II&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-83">Table 6.4: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">premonname</th>
+<th align="left">premonnum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">George</td>
+<td align="left">VI</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This is simple because all the data are in one row. A more complex query
+is:</p>
+<p><em>Was Elizabeth II’s predecessor a king or queen?</em></p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb83-1"><a href="one-to-one-and-recursive-relationships.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span></span>
+<span id="cb83-2"><a href="one-to-one-and-recursive-relationships.html#cb83-2" aria-hidden="true" tabindex="-1"></a>cur <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> monarch), </span>
+<span id="cb83-3"><a href="one-to-one-and-recursive-relationships.html#cb83-3" aria-hidden="true" tabindex="-1"></a>pre <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> monarch) </span>
+<span id="cb83-4"><a href="one-to-one-and-recursive-relationships.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> pre.montype <span class="kw">FROM</span> cur <span class="kw">JOIN</span>  pre</span>
+<span id="cb83-5"><a href="one-to-one-and-recursive-relationships.html#cb83-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> cur.premonname <span class="op">=</span> pre.monname <span class="kw">AND</span> cur.premonnum <span class="op">=</span> pre.monnum</span>
+<span id="cb83-6"><a href="one-to-one-and-recursive-relationships.html#cb83-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> cur.monname <span class="op">=</span> <span class="st">&#39;Elizabeth&#39;</span></span>
+<span id="cb83-7"><a href="one-to-one-and-recursive-relationships.html#cb83-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">AND</span> cur.monnum <span class="op">=</span> <span class="st">&#39;II&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-84">Table 6.5: </span>1 records</caption>
+<thead>
+<tr class="header">
+<th align="left">montype</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">King</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Notice in the preceding query how to specify the ON clause when you have
+a composite key.</p>
+<p>This is very similar to the query to find the salary of Nancy’s boss.
+The <code>monarch</code> table is joined with itself to create a row that contains
+all the details to answer the query.</p>
+<p><em>List the kings and queens of England in ascending chronological order.</em></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb84-1"><a href="one-to-one-and-recursive-relationships.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> montype, monname, monnum, rgnbeg</span>
+<span id="cb84-2"><a href="one-to-one-and-recursive-relationships.html#cb84-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> monarch <span class="kw">ORDER</span> <span class="kw">BY</span> rgnbeg;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-85">Table 6.6: </span>7 records</caption>
+<thead>
+<tr class="header">
+<th align="left">montype</th>
+<th align="left">monname</th>
+<th align="left">monnum</th>
+<th align="left">rgnbeg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">King</td>
+<td align="left">William</td>
+<td align="left">IV</td>
+<td align="left">1830-06-26</td>
+</tr>
+<tr class="even">
+<td align="left">Queen</td>
+<td align="left">Victoria</td>
+<td align="left">I</td>
+<td align="left">1837-06-20</td>
+</tr>
+<tr class="odd">
+<td align="left">King</td>
+<td align="left">Edward</td>
+<td align="left">VII</td>
+<td align="left">1901-01-22</td>
+</tr>
+<tr class="even">
+<td align="left">King</td>
+<td align="left">George</td>
+<td align="left">V</td>
+<td align="left">1910-05-06</td>
+</tr>
+<tr class="odd">
+<td align="left">King</td>
+<td align="left">Edward</td>
+<td align="left">VIII</td>
+<td align="left">1936-01-20</td>
+</tr>
+<tr class="even">
+<td align="left">King</td>
+<td align="left">George</td>
+<td align="left">VI</td>
+<td align="left">1936-12-11</td>
+</tr>
+<tr class="odd">
+<td align="left">Queen</td>
+<td align="left">Elizabeth</td>
+<td align="left">II</td>
+<td align="left">1952-02-06</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This is a simple query because <code>rgnbeg</code> is like a ranking column. It
+would not be enough to store just the year in <code>rgnbeg</code>, because two
+kings started their reigns in 1936; hence, the full date is required.</p>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>Who succeeded Queen Victoria?</p>
+</blockquote>
+<p><img src="Figures/Chapter%201/expeditioner.png" width="190" /></p>
+<p>Of course, Alice soon had another project for Ned. The Expeditioner
+keeps a wide range of products that are sometimes assembled into kits to
+make other products. For example, the animal photography kit is made up
+of eight items that The Expeditioner also sells separately. In addition,
+some kits became part of much larger kits. The animal photography kit is
+included as one of 45 items in the East African Safari package. All of
+the various items are considered products, and each has its own product
+code. Ned was now required to create a product database that would keep
+track of all the items in The Expeditioner’s stock.</p>
+</div>
+<div id="modeling-a-recursive-many-to-many-relationship" class="section level2 unnumbered">
+<h2>Modeling a recursive many-to-many relationship</h2>
+<p>The assembly of products to create other products is very common in
+business. Manufacturing even has a special term to describe it: a bill
+of materials. The data model is relatively simple once you realize that
+a product can appear as part of many other products and can be composed
+of many other products; that is, we have a recursive many-to-many (m:m)
+relationship for product. As usual, we turn an m:m relationship into two
+one-to-many (1:m) relationships. Thus, we get the data model displayed
+in the following figure.</p>
+<p><em>A data model illustrating a recursive m:m relationship</em></p>
+<p><img src="Figures/Chapter%206/recursive-m-and-m.png" width="302" /></p>
+<p><em>MySQL Workbench version of a recursive m:m relationship</em></p>
+<p><img src="Figures/Chapter%206/recursive-m-and-m-wb.png" /></p>
+<p><em>Tables product and assembly</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right"><u>prodid</u></th>
+<th align="left">proddesc</th>
+<th align="right">prodcost</th>
+<th align="right">prodprice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1000</td>
+<td align="left">Animal photography kit</td>
+<td align="right"></td>
+<td align="right">725</td>
+</tr>
+<tr class="even">
+<td align="right">101</td>
+<td align="left">Camera</td>
+<td align="right">150</td>
+<td align="right">300</td>
+</tr>
+<tr class="odd">
+<td align="right">102</td>
+<td align="left">Camera case</td>
+<td align="right">10</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">103</td>
+<td align="left">70-210 zoom lens</td>
+<td align="right">125</td>
+<td align="right">200</td>
+</tr>
+<tr class="odd">
+<td align="right">104</td>
+<td align="left">28-85 zoom lens</td>
+<td align="right">115</td>
+<td align="right">185</td>
+</tr>
+<tr class="even">
+<td align="right">105</td>
+<td align="left">Photographer’s vest</td>
+<td align="right">25</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="right">106</td>
+<td align="left">Lens cleaning cloth</td>
+<td align="right">1</td>
+<td align="right">1.25</td>
+</tr>
+<tr class="even">
+<td align="right">107</td>
+<td align="left">Tripod</td>
+<td align="right">35</td>
+<td align="right">45</td>
+</tr>
+<tr class="odd">
+<td align="right">108</td>
+<td align="left">16 GB SDHC memory card</td>
+<td align="right">30</td>
+<td align="right">37</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="right">quantity</th>
+<th align="right"><u><em>prodid</em></u></th>
+<th align="right"><u><em>subprodid</em></u></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1000</td>
+<td align="right">101</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1000</td>
+<td align="right">102</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1000</td>
+<td align="right">103</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1000</td>
+<td align="right">104</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1000</td>
+<td align="right">105</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1000</td>
+<td align="right">106</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1000</td>
+<td align="right">107</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">1000</td>
+<td align="right">108</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="mapping-a-recursive-many-to-many-relationship" class="section level2 unnumbered">
+<h2>Mapping a recursive many-to-many relationship</h2>
+<p>Mapping follows the same procedure described previously, producing the
+two tables shown below. The SQL statements to create the tables are
+shown next. Observe that <code>assembly</code> has a composite key, and there are
+two foreign key constraints.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb85-1"><a href="one-to-one-and-recursive-relationships.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> product (</span>
+<span id="cb85-2"><a href="one-to-one-and-recursive-relationships.html#cb85-2" aria-hidden="true" tabindex="-1"></a>    prodid          <span class="dt">INTEGER</span>,</span>
+<span id="cb85-3"><a href="one-to-one-and-recursive-relationships.html#cb85-3" aria-hidden="true" tabindex="-1"></a>    proddesc        <span class="dt">VARCHAR</span>(<span class="dv">30</span>),</span>
+<span id="cb85-4"><a href="one-to-one-and-recursive-relationships.html#cb85-4" aria-hidden="true" tabindex="-1"></a>    prodcost        <span class="dt">DECIMAL</span>(<span class="dv">9</span>,<span class="dv">2</span>),</span>
+<span id="cb85-5"><a href="one-to-one-and-recursive-relationships.html#cb85-5" aria-hidden="true" tabindex="-1"></a>    prodprice       <span class="dt">DECIMAL</span>(<span class="dv">9</span>,<span class="dv">2</span>),</span>
+<span id="cb85-6"><a href="one-to-one-and-recursive-relationships.html#cb85-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">PRIMARY</span> <span class="kw">KEY</span>(prodid));</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb86-1"><a href="one-to-one-and-recursive-relationships.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> assembly (</span>
+<span id="cb86-2"><a href="one-to-one-and-recursive-relationships.html#cb86-2" aria-hidden="true" tabindex="-1"></a>    quantity        <span class="dt">INTEGER</span> <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb86-3"><a href="one-to-one-and-recursive-relationships.html#cb86-3" aria-hidden="true" tabindex="-1"></a>    prodid          <span class="dt">INTEGER</span>,</span>
+<span id="cb86-4"><a href="one-to-one-and-recursive-relationships.html#cb86-4" aria-hidden="true" tabindex="-1"></a>    subprodid       <span class="dt">INTEGER</span>,</span>
+<span id="cb86-5"><a href="one-to-one-and-recursive-relationships.html#cb86-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">PRIMARY</span> <span class="kw">KEY</span>(prodid, subprodid),</span>
+<span id="cb86-6"><a href="one-to-one-and-recursive-relationships.html#cb86-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CONSTRAINT</span> fk_assembly_product <span class="kw">FOREIGN</span> <span class="kw">KEY</span>(prodid)</span>
+<span id="cb86-7"><a href="one-to-one-and-recursive-relationships.html#cb86-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">REFERENCES</span> product(prodid),</span>
+<span id="cb86-8"><a href="one-to-one-and-recursive-relationships.html#cb86-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">CONSTRAINT</span> fk_assembly_subproduct <span class="kw">FOREIGN</span> <span class="kw">KEY</span>(subprodid)</span>
+<span id="cb86-9"><a href="one-to-one-and-recursive-relationships.html#cb86-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">REFERENCES</span> product(prodid));</span></code></pre></div>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>An army is broken up into many administrative units (e.g., army,
+brigade, platoon). A unit can contain many other units (e.g., a
+regiment contains two or more battalions), and a unit can be part of a
+larger unit (e.g., a squad is a member of a platoon). Draw a data
+model for this situation.<br />
+## Querying a recursive many-to-many relationship {-}</p>
+</blockquote>
+<p><em>List the product identifier of each component of the animal photography
+kit.</em></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb87-1"><a href="one-to-one-and-recursive-relationships.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> subprodid <span class="kw">FROM</span> product <span class="kw">JOIN</span> assembly</span>
+<span id="cb87-2"><a href="one-to-one-and-recursive-relationships.html#cb87-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> product.prodid <span class="op">=</span> assembly.prodid</span>
+<span id="cb87-3"><a href="one-to-one-and-recursive-relationships.html#cb87-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> proddesc <span class="op">=</span> <span class="st">&#39;Animal photography kit&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-88">Table 6.7: </span>8 records</caption>
+<thead>
+<tr class="header">
+<th align="left">subprodid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">101</td>
+</tr>
+<tr class="even">
+<td align="left">102</td>
+</tr>
+<tr class="odd">
+<td align="left">103</td>
+</tr>
+<tr class="even">
+<td align="left">104</td>
+</tr>
+<tr class="odd">
+<td align="left">105</td>
+</tr>
+<tr class="even">
+<td align="left">106</td>
+</tr>
+<tr class="odd">
+<td align="left">107</td>
+</tr>
+<tr class="even">
+<td align="left">108</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Why are the values for <code>subprodid</code> listed in no apparent order?
+Remember, there is no implied ordering of rows in a table, and it is
+quite possible, as this example illustrates, for the rows to have what
+appears to be an unusual ordering. If you want to order rows, use the
+ORDER BY clause.</p>
+<p><em>List the product description and cost of each component of the animal
+photography kit.</em></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb88-1"><a href="one-to-one-and-recursive-relationships.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> proddesc, prodcost <span class="kw">FROM</span> product</span>
+<span id="cb88-2"><a href="one-to-one-and-recursive-relationships.html#cb88-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">WHERE</span> prodid <span class="kw">IN</span></span>
+<span id="cb88-3"><a href="one-to-one-and-recursive-relationships.html#cb88-3" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">SELECT</span> subprodid <span class="kw">FROM</span> product <span class="kw">JOIN</span> assembly</span>
+<span id="cb88-4"><a href="one-to-one-and-recursive-relationships.html#cb88-4" aria-hidden="true" tabindex="-1"></a>                <span class="kw">ON</span> product.prodid <span class="op">=</span> assembly.prodid</span>
+<span id="cb88-5"><a href="one-to-one-and-recursive-relationships.html#cb88-5" aria-hidden="true" tabindex="-1"></a>                <span class="kw">WHERE</span> proddesc <span class="op">=</span> <span class="st">&#39;Animal photography kit&#39;</span>);</span></code></pre></div>
+<p>In this case, first determine the <code>prodid</code> of those products in the
+animal photography kit (the inner query), and then report the
+description of these products. Alternatively, a three-way join can be
+done using two copies of <code>product</code>.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb89-1"><a href="one-to-one-and-recursive-relationships.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span></span>
+<span id="cb89-2"><a href="one-to-one-and-recursive-relationships.html#cb89-2" aria-hidden="true" tabindex="-1"></a>a <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> product), </span>
+<span id="cb89-3"><a href="one-to-one-and-recursive-relationships.html#cb89-3" aria-hidden="true" tabindex="-1"></a>b <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> product) </span>
+<span id="cb89-4"><a href="one-to-one-and-recursive-relationships.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> b.proddesc, b.prodcost <span class="kw">FROM</span> a <span class="kw">JOIN</span> assembly</span>
+<span id="cb89-5"><a href="one-to-one-and-recursive-relationships.html#cb89-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> a.prodid <span class="op">=</span> assembly.prodid</span>
+<span id="cb89-6"><a href="one-to-one-and-recursive-relationships.html#cb89-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">JOIN</span> b</span>
+<span id="cb89-7"><a href="one-to-one-and-recursive-relationships.html#cb89-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">ON</span> assembly.subprodid <span class="op">=</span> b.prodid</span>
+<span id="cb89-8"><a href="one-to-one-and-recursive-relationships.html#cb89-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">WHERE</span> a.proddesc <span class="op">=</span> <span class="st">&#39;Animal photography kit&#39;</span>;</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-90">Table 6.8: </span>8 records</caption>
+<thead>
+<tr class="header">
+<th align="left">proddesc</th>
+<th align="right">prodcost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">35mm camera</td>
+<td align="right">150.00</td>
+</tr>
+<tr class="even">
+<td align="left">Camera case</td>
+<td align="right">10.00</td>
+</tr>
+<tr class="odd">
+<td align="left">70-210 zoom lens</td>
+<td align="right">125.00</td>
+</tr>
+<tr class="even">
+<td align="left">28-85 zoom lens</td>
+<td align="right">115.00</td>
+</tr>
+<tr class="odd">
+<td align="left">Photographers vest</td>
+<td align="right">25.00</td>
+</tr>
+<tr class="even">
+<td align="left">Lens cleaning cloth</td>
+<td align="right">1.00</td>
+</tr>
+<tr class="odd">
+<td align="left">Tripod</td>
+<td align="right">35.00</td>
+</tr>
+<tr class="even">
+<td align="left">24/100 ASA 35mm color neg film</td>
+<td align="right">0.85</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>❓<em>Skill builder</em></p>
+<p>How many lens cleaning cloths are there in the animal photography kit?</p>
+</blockquote>
+</div>
+<div id="summary-5" class="section level2 unnumbered">
+<h2>Summary</h2>
+<p>Relationships can be one-to-one and recursive. A recursive relationship
+is within a single entity rather than between entities. Recursive
+relationships are mapped to the relational model in the same way as
+other relationships. A self-referential foreign key constraint permits a
+foreign key reference to a key within the same table. Resolution of
+queries involving recursive relationships often requires a table to be
+joined with itself. Recursive many-to-many relationships occur in
+business in the form of a bill of materials.</p>
+</div>
+<div id="key-terms-and-concepts-3" class="section level2 unnumbered">
+<h2>Key terms and concepts</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td>JOIN</td>
+<td>Relationship</td>
+</tr>
+<tr class="even">
+<td>One-to-many (1:m) relationship</td>
+<td>Relationship descriptor</td>
+</tr>
+<tr class="odd">
+<td>One-to-one (1:1) relationship</td>
+<td>Self-join</td>
+</tr>
+<tr class="even">
+<td>Recursive 1:1 relationship</td>
+<td>Self-referential foreign key</td>
+</tr>
+<tr class="odd">
+<td>Recursive 1:m relationship</td>
+<td>Theta-join</td>
+</tr>
+<tr class="even">
+<td>Recursive m:m relationship</td>
+<td>Update anomalies</td>
+</tr>
+<tr class="odd">
+<td>Recursive relationship</td>
+<td>Views</td>
+</tr>
+<tr class="even">
+<td>Referential integrity</td>
+<td>Virtual table</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="exercise" class="section level2 unnumbered">
+<h2>Exercise</h2>
+<ol style="list-style-type: decimal">
+<li><p>Draw data models for the following two problems:</p>
+<ol style="list-style-type: lower-alpha">
+<li><ol style="list-style-type: lower-roman">
+<li><p>A dairy farmer, who is also a part-time cartoonist, has
+several herds of cows. He has assigned each cow to a
+particular herd. In each herd, the farmer has one cow that
+is his favorite—often that cow is featured in a cartoon.<br />
+</p></li>
+<li><p>A few malcontents in each herd, mainly those who feel they
+should have appeared in the cartoon, disagree with the
+farmer’s choice of a favorite cow, whom they disparagingly
+refer to as the sacred cow. As a result, each herd now has
+elected a herd leader.</p></li>
+</ol></li>
+<li><p>The originator of a pyramid marketing scheme has a system for
+selling ethnic jewelry. The pyramid has three levels—gold,
+silver, and bronze. New associates join the pyramid at the
+bronze level. They contribute 30 percent of the revenue of their
+sales of jewelry to the silver chief in charge of their clan. In
+turn, silver chiefs contribute 30 percent of what they receive
+from bronze associates to the gold master in command of their
+tribe. Finally, gold masters pass on 30 percent of what they
+receive to the originator of the scheme.</p></li>
+<li><p>The legion, the basic combat unit of the ancient Roman army,
+contained 3,000 to 6,000 men, consisting primarily of heavy
+infantry (hoplites), supported by light infantry (velites), and
+sometimes by cavalry. The hoplites were drawn up in three lines.
+The hastati (youngest men) were in the first, the principes
+(seasoned troops) in the second, and the triarii (oldest men)
+behind them, reinforced by velites. Each line was divided into
+10 maniples, consisting of two centuries (60 to 80 men per
+century) each. Each legion had a commander, and a century was
+commanded by a centurion. Julius Caesar, through one of his
+Californian channelers, has asked you to design a database to
+maintain details of soldiers. Of course, Julius is a little
+forgetful at times, and he has not supplied the titles of the
+officers who command maniples, lines, and hoplites, but he
+expects that you can handle this lack of fine detail.</p></li>
+<li><p>A travel agency is frequently asked questions about tourist
+destinations. For example, customers want to know details of the
+climate for a particular month, the population of the city, and
+other geographic facts. Sometimes they request the flying time
+and distance between two cities. The manager has asked you to
+create a database to maintain these facts.</p></li>
+<li><p>The Center for the Study of World Trade keeps track of trade
+treaties between nations. For each treaty, it records details of
+the countries signing the treaty and where and when it was
+signed.</p></li>
+<li><p>Design a database to store details about U.S. presidents and
+their terms in office. Also, record details of their date and
+place of birth, gender, and political party affiliation (e.g.,
+Caluthumpian Progress Party). You are required to record the
+sequence of presidents so that the predecessor and successor of
+any president can be identified. How will you model the case of
+Grover Cleveland, who served nonconsecutive terms as president?
+Is it feasible that political party affiliation may change? If
+so, how will you handle it?</p></li>
+<li><p>The IS department of a large organization makes extensive use of
+software modules. New applications are built, where possible,
+from existing modules. Software modules can also contain other
+modules. The IS manager realizes that she now needs a database
+to keep track of which modules are used in which applications or
+other modules. (Hint: It is helpful to think of an application
+as a module.)</p></li>
+<li><p>Data modeling is finally getting to you. Last night you dreamed
+you were asked by Noah to design a database to store data about
+the animals on the ark. All you can remember from Sunday school
+is the bit about the animals entering the ark two-by-two, so you
+thought you should check the real thing.<br />
+Take with you seven pairs of every kind of clean animal, a male
+and its mate, and two of every kind of unclean animal, a male
+and its mate, and also seven pair of every kind of bird, male
+and female. Genesis 7:2<br />
+Next time Noah disturbs your sleep, you want to be ready. So,
+draw a data model and make certain you record the two-by-two
+relationship.</p></li>
+</ol></li>
+<li><p>Write SQL to answer the following queries using the DEPT and EMP
+tables described in this chapter:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find the departments where all the employees earn less than
+their boss.</p></li>
+<li><p>Find the names of employees who are in the same department as
+their boss (as an employee).</p></li>
+<li><p>List the departments having an average salary greater than
+$25,000.</p></li>
+<li><p>List the departments where the average salary of the employees,
+excluding the boss, is greater than $25,000.</p></li>
+<li><p>List the names and manager of the employees of the Marketing
+department who have a salary greater than $25,000.</p></li>
+<li><p>List the names of the employees who earn more than any employee
+in the Marketing department.</p></li>
+</ol></li>
+<li><p>Write SQL to answer the following queries using the monarch table
+described in this chapter:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Who succeeded Victoria I?</p></li>
+<li><p>How many days did Victoria I reign?</p></li>
+<li><p>How many kings are there in the table?</p></li>
+<li><p>Which monarch had the shortest reign?</p></li>
+</ol></li>
+<li><p>Write SQL to answer the following queries using the product and
+assembly tables:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>How many different items are there in the animal photography
+kit?</p></li>
+<li><p>What is the most expensive item in the animal photography kit?</p></li>
+<li><p>What is the total cost of the components of the animal
+photography kit?</p></li>
+<li><p>Compute the total quantity for each of the items required to
+assemble 15 animal photography kits.</p></li>
+</ol></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-many-to-many-relationship.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-modeling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["DataManagement.pdf", "DataManagement.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
