@@ -41,13 +41,13 @@ their preference for visual and textual information, it often makes
 sense to support both types of reporting.
 
 In order to learn how to visualize data, you need to become familiar
-with the grammar of graphics and ggplot2 (an R extension for graphics). In
-line with the learning of data modeling and SQL, we will take an
+with the grammar of graphics and ggplot2 (an R extension for graphics).
+In line with the learning of data modeling and SQL, we will take an
 intertwined spiral approach. First we will tackle the grammar of
-graphics (the abstract) and then move to ggplot2 (the concrete). You will
-also learn how to take the output of an SQL query and feed it directly
-into ggplot2. The end result will be a comprehensive set of practical
-skills for data visualization.
+graphics (the abstract) and then move to ggplot2 (the concrete). You
+will also learn how to take the output of an SQL query and feed it
+directly into ggplot2. The end result will be a comprehensive set of
+practical skills for data visualization.
 
 ## The grammar of graphics {.unnumbered}
 
@@ -61,10 +61,10 @@ data modeling also has a grammar, and each of these grammars is quite
 similar in that they all have the same foundational elements: entities,
 attributes, identifiers, and relationships.
 
-A grammar has been designed by Wilkinson[^dataviz-1] for creating graphics to
-enhance their expressiveness and comprehensiveness. From a mathematical
-perspective, a graph is a set of points. A graphic is a physical
-representation of a graph. Thus, a graph can have many physical
+A grammar has been designed by Wilkinson[^dataviz-1] for creating
+graphics to enhance their expressiveness and comprehensiveness. From a
+mathematical perspective, a graph is a set of points. A graphic is a
+physical representation of a graph. Thus, a graph can have many physical
 representations, and one of the skills you need to gain is to be able to
 judge what is a meaningful graphic for your clients. A grammar for
 graphics provides you with many ways of creating a graphic, just as the
@@ -81,8 +81,8 @@ shows the size of the army, its location, and the direction of its
 movement. The temperature during the retreat is drawn at the bottom of
 graphic.
 
-[^dataviz-1]: Wilkinson, L. (2005). \*The grammar of graphics\* (2nd ed.). New
-    York: Springer.
+[^dataviz-1]: Wilkinson, L. (2005). \*The grammar of graphics\* (2nd
+    ed.). New York: Springer.
 
 *Charles Joseph Minard's graphic of Napoleon's Russian expedition in
 1812*
@@ -106,26 +106,27 @@ Wilkinson's grammar is based on six elements:
 
 Interest in the grammar of data visualization has increased in recent
 years because of the growth in data. There is ongoing search to find
-ways to reveal clearly the information in large data sets. Vega[^dataviz-2] is a
-recent formulation building on Wilkinson's work. In Vega, a
-visualization consists of basic properties of a graph (such as the width
-and height) and definitions of the data to visualize, scales for mapping
-to data to a visual form, axes for representing scales, and graphic
-marks (such as rectangles, circles, and arcs) for displaying the data.
+ways to reveal clearly the information in large data sets.
+Vega[^dataviz-2] is a recent formulation building on Wilkinson's work.
+In Vega, a visualization consists of basic properties of a graph (such
+as the width and height) and definitions of the data to visualize,
+scales for mapping to data to a visual form, axes for representing
+scales, and graphic marks (such as rectangles, circles, and arcs) for
+displaying the data.
 
 [^dataviz-2]: <http://trifacta.github.io/vega/>
 
 ## ggplot2 {.unnumbered}
 
 ggplot2 is an implementation of Vega in R Because it is based on a
-grammar, ggplot2 is a very powerful graphics tool for creating both simple
-and complex graphs. It is well-suited for generating multi-layered
-graphs because of its grammatical foundation. As a result, using ggplot2
-you specify a series of steps (think of them as sentences) to create a
-graphic (think of it as a paragraph) to visually convey your message.
-ggplot2 is a descendant of ggplot2 and adds new features to support
-interactive visualization using shiny, another R package, which we will
-cover later.
+grammar, ggplot2 is a very powerful graphics tool for creating both
+simple and complex graphs. It is well-suited for generating
+multi-layered graphs because of its grammatical foundation. As a result,
+using ggplot2 you specify a series of steps (think of them as sentences)
+to create a graphic (think of it as a paragraph) to visually convey your
+message. ggplot2 is a descendant of ggplot2 and adds new features to
+support interactive visualization using shiny, another R package, which
+we will cover later.
 
 ### Data {.unnumbered}
 
@@ -179,10 +180,11 @@ for most packages is Cartesian.
 An element is a graph and its attributes. Let's start with a simple
 scatterplot of year against CO~2~ emissions. We do this in two steps
 applying the ggplot2 approach of building a graphic by adding layers.
-ggplot2 uses the pipe function to specify a linear sequence of processing.
+ggplot2 uses the pipe function to specify a linear sequence of
+processing.
 
--   The foundation is the ggplot2 function, which identifies the source of
-    the data and what is to be plotted. In the following example, the
+-   The foundation is the ggplot2 function, which identifies the source
+    of the data and what is to be plotted. In the following example, the
     file carbon is fed into the ggplot2 function, which selects year and
     CO2 as the x and y, respectively, dimensions of the graph
 
@@ -210,9 +212,9 @@ cycle through graphics created in a session.
 
 ### Zero point {.unnumbered}
 
-It is usually a good idea to
-have a zero point for the y axis so you don't distort the slope of the
-line. In the following example, ylim() sets the range for y.
+It is usually a good idea to have a zero point for the y axis so you
+don't distort the slope of the line. In the following example, ylim()
+sets the range for y.
 
 ```{r zero, message = TRUE}
 library(tidyverse)
@@ -278,8 +280,8 @@ diamond) and shape size to aid matching.
 
 ## Some recipes {.unnumbered}
 
-Learning the full power of ggplot2 is quite an undertaking, so here are a
-few recipes for visualizing data.
+Learning the full power of ggplot2 is quite an undertaking, so here are
+a few recipes for visualizing data.
 
 ### Histogram {.unnumbered}
 
@@ -327,8 +329,8 @@ ggplot(d,aes(x=productLine)) +
 ### Column graph {.unnumbered}
 
 In the following example, we query a database to get data for plotting/
-We then count the number of products in each productLine, and as we have counts a column graph is created.
-
+We then count the number of products in each productLine, and as we have
+counts a column graph is created.
 
 ```{r columngraph, eval = TRUE}
 library(tidyverse)
@@ -346,8 +348,8 @@ ggplot(da,aes(productLine,count)) +
 
 ### Bar chart {.unnumbered}
 
-Because ggplot2 is based on a grammar of graphics, with a few changes, you
-can create a bar graph of the same data.
+Because ggplot2 is based on a grammar of graphics, with a few changes,
+you can create a bar graph of the same data.
 
 ```{r barchart, eval = TRUE}
 library(tidyverse)
@@ -521,7 +523,7 @@ zoom, an integer, to get a suitably sized map. Zoom can range from 3 (a
 continent) to 20 (a building).
 
 ```{r, eval = FALSE}
-# Google now requires an API key
+# Google maps requires an [API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
 library(tidyverse)
 library(ggmap)
 library(mapproj)
@@ -557,11 +559,11 @@ ggmap(map) +
 ## R resources {.unnumbered}
 
 The developer of ggplot2, Hadley Wickham, maintains a [[web
-site]{.ul}](http://ggplot2.tidyverse.org). Another useful web site for data
-visualization is [[FlowingData]{.ul}](http://flowingdata.com), which has
-an associated book, titled *Visualize This*. If you become heavily
-involved in visualization, we suggest you read some of the works of
-Edward Tufte. One of his books is listed in the references.
+site]{.ul}](http://ggplot2.tidyverse.org). Another useful web site for
+data visualization is [[FlowingData]{.ul}](http://flowingdata.com),
+which has an associated book, titled *Visualize This*. If you become
+heavily involved in visualization, we suggest you read some of the works
+of Edward Tufte. One of his books is listed in the references.
 
 ## Summary {.unnumbered}
 
@@ -569,8 +571,8 @@ Because of evolutionary pressure, humans became strong visual
 processors. Consequently, graphics can be very effective for presenting
 information. The grammar of graphics provides a logical foundation for
 the construction of a graphic by adding successive layers of
-information. ggplot2 is a package implementing the grammar of graphics in
-R, the open source statistics platform. Data can be extracted from an
+information. ggplot2 is a package implementing the grammar of graphics
+in R, the open source statistics platform. Data can be extracted from an
 MySQL database for processing and graphical presentation in R. Spatial
 data can be selected from a database and displayed on a Google map.
 
@@ -579,7 +581,7 @@ data can be selected from a database and displayed on a Google map.
 | Bar chart              | Graphic     |
 | Box plot               | Heat map    |
 | dplyr                  | Histogram   |
-| ggplot2                  | Scatterplot |
+| ggplot2                | Scatterplot |
 | Grammar of graphics    | Smooth      |
 | Graph                  |             |
 
@@ -603,13 +605,13 @@ Springer.
 ## Exercises {.unnumbered}
 
 1.  Given the following data on the world's cargo carrying capacity in
-    millions of dead weight tons (dwt)[^dataviz-4] for the given years, graph
-    the relationship as a point plot. Add a linear prediction model to
-    the graph. What is the approximate increase in the world capacity
-    each year?
+    millions of dead weight tons (dwt)[^dataviz-4] for the given years,
+    graph the relationship as a point plot. Add a linear prediction
+    model to the graph. What is the approximate increase in the world
+    capacity each year?
 
-[^dataviz-4]: Dead weight tonnage is a measure of how much weight, in tonnes, a
-    ship can safely carry.
+[^dataviz-4]: Dead weight tonnage is a measure of how much weight, in
+    tonnes, a ship can safely carry.
 
 ```{r, eval = FALSE}
 dwt <- c(2566, 3704, 4008, 5984, 7700, 8034, 8229, 7858, 8408, 8939)
@@ -658,14 +660,15 @@ item <-  c('TV set', 'DVD player', 'Vacuum cleaner', 'Scotch whisky', 'Coffee', 
 
 10. Use the 'Import Dataset' feature of RStudio to read
     [[http://www.richardtwatson.com/data/electricityprices.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/electricityprices.csv),
-    which contains details of electricity prices for a major city.[^dataviz-5]
-    Do a Box plot of cost. What do you conclude about cost?
+    which contains details of electricity prices for a major
+    city.[^dataviz-5] Do a Box plot of cost. What do you conclude about
+    cost?
 
 11. Read the table
     [[http://www.richardtwatson.com/data/wealth.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/wealth.csv)
     containing details of the wealth of various countries. Create
-    histograms for each of the wealth measures. Consult the ggplot2 color
-    chart[^dataviz-6] for a choice of colors.
+    histograms for each of the wealth measures. Consult the ggplot2
+    color chart[^dataviz-6] for a choice of colors.
 
 12. Merge the data for weather
     \<[[http://www.richardtwatson.com/data/weather.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/weather.csv)\>
@@ -677,8 +680,8 @@ item <-  c('TV set', 'DVD player', 'Vacuum cleaner', 'Scotch whisky', 'Coffee', 
     does not currently handle date and time stamps, use the following
     code to read the files.
 
-[^dataviz-5]: Note these prices have been transformed from the original values,
-    but are still representative of the changes over time.
+[^dataviz-5]: Note these prices have been transformed from the original
+    values, but are still representative of the changes over time.
 
 [^dataviz-6]: <http://www.w3schools.com/cssref/css_colornames.asp>
 

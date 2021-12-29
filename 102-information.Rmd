@@ -172,31 +172,11 @@ worker as a printout.
 
 *Information systems eras*
 
-+------------+------------+------------+------------+------------+
-| E ra       | Focus      | Period     | Technology | Networks   |
-+============+============+============+============+============+
-| 1          | Take i     | 1950s ---  | Batch      | Few data   |
-|            | nformation | mid-1970s  |            | networks   |
-|            | work to    |            |            |            |
-|            | the        |            |            |            |
-|            | computer   |            |            |            |
-+------------+------------+------------+------------+------------+
-| 2          | Take i     | ##         | H          | Spread of  |
-|            | nformation |  Mid-1970s | ost/termin | private    |
-|            | work to    |            | al         | networks   |
-|            | the        | mid-1990s  |            |            |
-|            | employee   |            | Cli        |            |
-|            |            |            | ent/server |            |
-+------------+------------+------------+------------+------------+
-| 3          | Take i     | ##         | Brow       | Public     |
-|            | nformation |  Mid-1990s | ser/server | networks\  |
-|            | work to    |            |            | (Internet) |
-|            | the        | present    |            |            |
-|            | customer   |            |            |            |
-|            | and other  |            |            |            |
-|            | st         |            |            |            |
-|            | akeholders |            |            |            |
-+------------+------------+------------+------------+------------+
+| Era | Focus                                                        | Period                | Technology                  | Networks                   |
+|-----|--------------------------------------------------------------|-----------------------|-----------------------------|----------------------------|
+| 1   | Take information work to the computer                        | 1950s – mid-1970s     | Batch                       | Few data networks          |
+| 2   | Take information work to the employee                        | Mid-1970s – mid-1990s | Host/terminal Client/server | Spread of private networks |
+| 3   | Take information work to the customer and other stakeholders | Mid-1990s – present   | Browser/server              | Public networks (Internet) |
 
 In the second era, private networks were used to take information work
 to the employee. Initially, these were time-sharing and host/terminal
