@@ -1,9 +1,14 @@
 ---
-editor_options: 
-  markdown: 
-    wrap: 72
-  always_allow_html: true 
+# title: "Data Management"
+# author: "Richard T. Watson"
+# date: "`r Sys.Date()`"
+# output: 
+#   html_document:
+#     toc: False 
+#     toc_depth: 1
 ---
+
+
 # Data Management: Databases and Organizations {.unnumbered}
 
 ### *Open Edition* {.unnumbered}
@@ -23,3 +28,4 @@ Release date `r as.Date(Sys.time())`
 The online version of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 <!-- You can purchase a hardcopy from [Prospect Press](https://www.prospectpressvt.com). -->
 
+\newpage

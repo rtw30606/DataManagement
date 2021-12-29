@@ -1,9 +1,3 @@
----
-editor_options:
-  markdown:
-    wrap: 72
----
-
 # Preface {.unnumbered}
 This is not your traditional database textbook. It differs in three
 fundamental ways.
@@ -153,3 +147,8 @@ the prior edition to Bookdown.
 Richard T. Watson
 
 Athens, Georgia
+
+\newpage
+\tableofcontents
+\newpage
+

@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Managing Data
 
 > *All the value of this company is in its people. If you burned down

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.12.15)  26 DEC 2021 13:37
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.12.15)  29 DEC 2021 15:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -466,40 +466,40 @@ LaTeX Info: Redefining \cite on input line 694.
 ) (./DataManagement.aux)
 \openout1 = `DataManagement.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 120.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 120.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 120.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 120.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 120.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 120.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 119.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 120.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 119.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -528,7 +528,7 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 120.
+(Font)              scaled to size 10.0pt on input line 119.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -567,18 +567,18 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 120.
+(Font)              scaled to size 10.0pt on input line 119.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 120.
+(Font)              `operators' in the math version `normal' on input line 119.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 120.
+ line 119.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 120.
+(Font)              `operators' in the math version `bold' on input line 119.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 120.
+t line 119.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -665,15 +665,15 @@ t=math;language=dflt;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 120.
+(Font)              `symbols' in the math version `normal' on input line 119.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 120.
+t line 119.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 120.
+(Font)              `symbols' in the math version `bold' on input line 119.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 120.
+t line 119.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -743,17 +743,17 @@ pt=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-20.
+19.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 120.
+t line 119.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 120
+(Font)              `largesymbols' in the math version `bold' on input line 119
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 120.
-Package hyperref Info: Link coloring OFF on input line 120.
+t line 119.
+Package hyperref Info: Link coloring OFF on input line 119.
 (/Users/rickwatson/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 (/Users/rickwatson/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -765,9 +765,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count318
 )
-LaTeX Info: Redefining \ref on input line 120.
-LaTeX Info: Redefining \pageref on input line 120.
-LaTeX Info: Redefining \nameref on input line 120.
+LaTeX Info: Redefining \ref on input line 119.
+LaTeX Info: Redefining \pageref on input line 119.
+LaTeX Info: Redefining \nameref on input line 119.
 (./DataManagement.out) (./DataManagement.out)
 \@outlinefile=\write4
 \openout4 = `DataManagement.out'.
@@ -806,45 +806,49 @@ LaTeX Info: Redefining \nameref on input line 120.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(./DataManagement.toc
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 127.
+
+File: Figures/Front matter/CC.by.png Graphic file (type bmp)
+<Figures/Front matter/CC.by.png>
+[1
+
+] [2] [3] (./DataManagement.toc
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 5.
+(Font)              scaled to size 7.0pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 5.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
+(Font)              scaled to size 5.0pt on input line 2.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
 .
 (/Users/rickwatson/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 5.
+(Font)              scaled to size 10.00092pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 5.
+(Font)              scaled to size 7.00064pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 5.
+(Font)              scaled to size 5.00046pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 5.
+(Font)              scaled to size 9.99893pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 5.
+(Font)              scaled to size 6.99925pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 5.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
+(Font)              scaled to size 4.99947pt on input line 2.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
 (/Users/rickwatson/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
 (/Users/rickwatson/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-] [2] [3] [4] [5] [6] [7] [8])
+) [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20
+] [21] [22])
 \tf@toc=\write5
 \openout5 = `DataManagement.toc'.
 
-[9]
-File: Figures/Front matter/CC.by.png Graphic file (type bmp)
-<Figures/Front matter/CC.by.png>
-[10] [11]
+[23]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 8.0pt on input line 348.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
@@ -859,523 +863,562 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 348.
 File: Figures/Section 1/Simon-Newell.png Graphic file (type bmp)
 <Figures/Section 1/Simon-Newell.png>
-[12]
+[24]
 File: Figures/Section 1/org info processing.png Graphic file (type bmp)
 <Figures/Section 1/org info processing.png>
-[13] [14] [15]
+[25] [26]
 File: Figures/Chapter 1/calendar.png Graphic file (type bmp)
 <Figures/Chapter 1/calendar.png>
 File: Figures/Chapter 1/address book.png Graphic file (type bmp)
 <Figures/Chapter 1/address book.png>
-[16]
+[27]
 File: Figures/Chapter 1/todo list new.png Graphic file (type bmp)
 <Figures/Chapter 1/todo list new.png>
-[17]
+[28]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[18]
-Overfull \hbox (6.2179pt too wide) in paragraph at lines 637--637
+[29]
+Overfull \hbox (6.2179pt too wide) in paragraph at lines 636--636
 []|\TU/lmr/m/n/10 TPS|  
  []
 
 
-Overfull \hbox (4.9679pt too wide) in paragraph at lines 638--638
+Overfull \hbox (4.9679pt too wide) in paragraph at lines 637--637
 []|\TU/lmr/m/n/10 MIS|  
  []
 
 
-Overfull \hbox (5.3879pt too wide) in paragraph at lines 639--639
+Overfull \hbox (5.3879pt too wide) in paragraph at lines 638--638
 []|\TU/lmr/m/n/10 DSS|  
  []
 
 
-Overfull \hbox (14.9679pt too wide) in paragraph at lines 641--641
+Overfull \hbox (14.9679pt too wide) in paragraph at lines 640--640
 []|\TU/lmr/m/n/10 OLAP|  
  []
 
-[19]
+[30]
 File: Figures/Chapter 1/IS cycle.png Graphic file (type bmp)
 <Figures/Chapter 1/IS cycle.png>
-[20] [21] [22]
+[31] [32] [33]
 File: Figures/Chapter 1/org memory components.jpg Graphic file (type bmp)
 <Figures/Chapter 1/org memory components.jpg>
-[23] [24] [25] [26] [27]
+[34] [35] [36] [37] [38]
 File: Figures/Chapter 1/timeline2.png Graphic file (type bmp)
 <Figures/Chapter 1/timeline2.png>
-[28] [29]
+[39] [40]
 File: Figures/Chapter 1/data-info-know.jpg Graphic file (type bmp)
 <Figures/Chapter 1/data-info-know.jpg>
-[30] [31] [32]
+[41] [42] [43]
 File: Figures/Chapter 2/societal focus.png Graphic file (type bmp)
 <Figures/Chapter 2/societal focus.png>
-[33] [34] [35] [36] [37] [38]
+[44] [45]
+Overfull \hbox (3.07787pt too wide) in paragraph at lines 1732--1733
+[]\TU/lmr/m/n/10 Era  
+ []
+
+[46] [47] [48] [49]
 File: Figures/Chapter 2/gap model.jpg Graphic file (type bmp)
 <Figures/Chapter 2/gap model.jpg>
-[39] [40] [41]
+[50] [51] [52]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[42]
+[53]
 File: Figures/Chapter 2/hardness-volume tradeoff.png Graphic file (type bmp)
 <Figures/Chapter 2/hardness-volume tradeoff.png>
-[43]
+[54]
 File: Figures/Chapter 2/onion model.jpg Graphic file (type bmp)
 <Figures/Chapter 2/onion model.jpg>
-[44] [45] [46] [47]
+[55] [56] [57] [58]
 File: Figures/Chapter 2/fragmented memory.png Graphic file (type bmp)
 <Figures/Chapter 2/fragmented memory.png>
 File: Figures/Chapter 2/integrated memory.png Graphic file (type bmp)
 <Figures/Chapter 2/integrated memory.png>
-[48] [49]
+[59] [60]
 File: Figures/Chapter 2/knowledge and training.png Graphic file (type bmp)
 <Figures/Chapter 2/knowledge and training.png>
-[50] [51] [52]
+[61] [62] [63]
 File: Figures/Section 2/Org Memory Files.png Graphic file (type bmp)
 <Figures/Section 2/Org Memory Files.png>
-[53] [54]
+[64]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 2932.
+
+[65]
 Missing character: There is no 💠 (U+1F4A0) in font [lmroman10-regular]:mapping=
 tex-text;!
-[55] [56]
+[66] [67]
 File: Figures/Chapter 3/share.png Graphic file (type bmp)
 <Figures/Chapter 3/share.png>
 File: Figures/Chapter 3/share with attributes.png Graphic file (type bmp)
 <Figures/Chapter 3/share with attributes.png>
 File: Figures/Chapter 3/share with identifier.png Graphic file (type bmp)
 <Figures/Chapter 3/share with identifier.png>
-[57]
+[68]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[58]
+[69]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 3150.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 3106.
 
-Overfull \hbox (4.08879pt too wide) in paragraph at lines 3186--3187
+Overfull \hbox (4.08879pt too wide) in paragraph at lines 3142--3143
 []\TU/lmr/m/n/10 Category  
  []
 
 
-Overfull \hbox (1.30879pt too wide) in paragraph at lines 3194--3194
+Overfull \hbox (1.30879pt too wide) in paragraph at lines 3150--3150
 []|\TU/lmr/m/n/10 Numeric|  
  []
 
 
-Overfull \hbox (9.7488pt too wide) in paragraph at lines 3201--3201
+Overfull \hbox (9.7488pt too wide) in paragraph at lines 3157--3157
 []|\TU/lmr/m/n/10 Date/time|  
  []
 
-[59]
+[70]
 File: Figures/Chapter 3/share-wb.png Graphic file (type bmp)
 <Figures/Chapter 3/share-wb.png>
-[60] [61]
+[71] [72]
 File: Figures/Chapter 3/wb-input.png Graphic file (type bmp)
 <Figures/Chapter 3/wb-input.png>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[62] [63]
+[73] [74]
 Overfull \vbox (73.94185pt too high) has occurred while \output is active []
 
-[64] [65]
+[75] [76]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[66] [67] [68]
+[77] [78] [79]
 Missing character: There is no ⚠ (U+26A0) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no ️ (U+FE0F) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[69] [70]
+[80] [81]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[71] [72] [73]
+[82] [83] [84]
 File: Figures/Chapter 3/alien entity.png Graphic file (type bmp)
 <Figures/Chapter 3/alien entity.png>
-[74] [75]
+[85]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 4379.
+
+[86]
 File: Figures/Chapter 4/nation-stock.png Graphic file (type bmp)
 <Figures/Chapter 4/nation-stock.png>
 File: Figures/Chapter 4/hierarchy.png Graphic file (type bmp)
 <Figures/Chapter 4/hierarchy.png>
-[76] [77] [78]
+[87] [88] [89]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 4/wb-stock-nation.png Graphic file (type bmp)
 <Figures/Chapter 4/wb-stock-nation.png>
-[79]
-Overfull \hbox (72.68506pt too wide) in paragraph at lines 4782--4807
+[90]
+Overfull \hbox (72.68506pt too wide) in paragraph at lines 4738--4763
  [][] 
  []
 
-[80] [81]
+[91] [92]
 File: Figures/Chapter 4/cbr.png Graphic file (type bmp)
 <Figures/Chapter 4/cbr.png>
-[82] [83]
+[93] [94]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[84]
+[95]
 
-LaTeX Warning: Command \^ invalid in math mode on input line 5138.
+LaTeX Warning: Command \^ invalid in math mode on input line 5094.
 
 Missing character: There is no â ("E2) in font lmmi10!
-[85] [86]
+[96] [97]
 Overfull \vbox (42.21086pt too high) has occurred while \output is active []
 
-[87]
+[98]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[88]
+[99]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[89] [90]
+[100] [101]
 File: Figures/Chapter 4/person-car.png Graphic file (type bmp)
 <Figures/Chapter 4/person-car.png>
-[91]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 5739.
+
+[102]
 File: Figures/Chapter 5/sales form.png Graphic file (type bmp)
 <Figures/Chapter 5/sales form.png>
 
-Overfull \hbox (55.69278pt too wide) in paragraph at lines 5802--5803
+Overfull \hbox (55.69278pt too wide) in paragraph at lines 5758--5759
 []\TU/lmr/m/it/10 A sales form [] 
  []
 
 File: Figures/Chapter 5/sale-item.png Graphic file (type bmp)
 <Figures/Chapter 5/sale-item.png>
-[92]
+[103]
 File: Figures/Chapter 5/m-m-wb.png Graphic file (type bmp)
 <Figures/Chapter 5/m-m-wb.png>
-[93]
+[104]
 File: Figures/Chapter 5/sale-item-wb.png Graphic file (type bmp)
 <Figures/Chapter 5/sale-item-wb.png>
-[94] [95]
+[105] [106]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[96] [97]
+[107] [108]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[98]
+[109]
 File: Figures/Chapter 5/divide template.png Graphic file (type bmp)
 <Figures/Chapter 5/divide template.png>
-[99]
+[110]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[100]
+[111]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[101]
+[112]
 File: Figures/Chapter 5/golf.png Graphic file (type bmp)
 <Figures/Chapter 5/golf.png>
-[102]
+[113]
 File: Figures/Chapter 5/gift.png Graphic file (type bmp)
 <Figures/Chapter 5/gift.png>
-[103]
+[114]
 File: Figures/Chapter 6/org chart.png Graphic file (type bmp)
 <Figures/Chapter 6/org chart.png>
-[104]
+[115]
 File: Figures/Chapter 6/1-and-1.png Graphic file (type bmp)
 <Figures/Chapter 6/1-and-1.png>
 File: Figures/Chapter 6/1-1-wb.png Graphic file (type bmp)
 <Figures/Chapter 6/1-1-wb.png>
 File: Figures/Chapter 6/recursive-1-and-m.png Graphic file (type bmp)
 <Figures/Chapter 6/recursive-1-and-m.png>
-[105]
+[116]
 File: Figures/Chapter 6/recursive-1-and-m-wb.png Graphic file (type bmp)
 <Figures/Chapter 6/recursive-1-and-m-wb.png>
-[106] [107]
+[117] [118]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[108]
-Overfull \hbox (59.41513pt too wide) in alignment at lines 6785--6789
+[119]
+Overfull \hbox (59.41513pt too wide) in alignment at lines 6741--6745
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (59.41513pt too wide) in alignment at lines 6789--6800
+Overfull \hbox (59.41513pt too wide) in alignment at lines 6745--6756
  [] [] [] [] [] [] [] [] [] [] 
  []
 
-[109]
+[120]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 1/expeditioner.png Graphic file (type bmp)
 <Figures/Chapter 1/expeditioner.png>
-[110]
+[121]
 File: Figures/Chapter 6/recursive-1-and-1.png Graphic file (type bmp)
 <Figures/Chapter 6/recursive-1-and-1.png>
 File: Figures/Chapter 6/recursive-1-and-1-wb.png Graphic file (type bmp)
 <Figures/Chapter 6/recursive-1-and-1-wb.png>
-[111]
+[122]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[112]
+[123]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 1/expeditioner.png Graphic file (type bmp)
 <Figures/Chapter 1/expeditioner.png>
-[113]
+[124]
 File: Figures/Chapter 6/recursive-m-and-m.png Graphic file (type bmp)
 <Figures/Chapter 6/recursive-m-and-m.png>
 File: Figures/Chapter 6/recursive-m-and-m-wb.png Graphic file (type bmp)
 <Figures/Chapter 6/recursive-m-and-m-wb.png>
-[114] [115]
+[125] [126]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[116]
+[127]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 7345--7350
+Underfull \hbox (badness 10000) in paragraph at lines 7301--7306
 
  []
 
-[117] [118] [119] [120]
+[128] [129]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 7454.
+
+[130] [131]
 File: Figures/Chapter 3/share.png Graphic file (type bmp)
 <Figures/Chapter 3/share.png>
 File: Figures/Chapter 3/share with attributes.png Graphic file (type bmp)
 <Figures/Chapter 3/share with attributes.png>
-[121]
+[132]
 File: Figures/Chapter 4/nation-stock.png Graphic file (type bmp)
 <Figures/Chapter 4/nation-stock.png>
-[122]
+[133]
 File: Figures/Chapter 7/relationship labeling.png Graphic file (type bmp)
 <Figures/Chapter 7/relationship labeling.png>
 File: Figures/Chapter 5/sale-item.png Graphic file (type bmp)
 <Figures/Chapter 5/sale-item.png>
-[123]
+[134]
 File: Figures/Chapter 4/nation-stock.png Graphic file (type bmp)
 <Figures/Chapter 4/nation-stock.png>
-[124]
+[135]
 File: Figures/Chapter 7/revised NATION-STOCK.png Graphic file (type bmp)
 <Figures/Chapter 7/revised NATION-STOCK.png>
 File: Figures/Chapter 7/geography.png Graphic file (type bmp)
 <Figures/Chapter 7/geography.png>
-[125] [126]
+[136] [137]
 File: Figures/Chapter 7/geography revised.png Graphic file (type bmp)
 <Figures/Chapter 7/geography revised.png>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 7/marriage-1.png Graphic file (type bmp)
 <Figures/Chapter 7/marriage-1.png>
-[127]
+[138]
 File: Figures/Chapter 7/marriage-2.png Graphic file (type bmp)
 <Figures/Chapter 7/marriage-2.png>
-[128]
+[139]
 File: Figures/Chapter 7/marriage-3.png Graphic file (type bmp)
 <Figures/Chapter 7/marriage-3.png>
 File: Figures/Chapter 7/marriage-4.png Graphic file (type bmp)
 <Figures/Chapter 7/marriage-4.png>
-[129]
+[140]
 File: Figures/Chapter 7/marriage-5.png Graphic file (type bmp)
 <Figures/Chapter 7/marriage-5.png>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 7/library-1.png Graphic file (type bmp)
 <Figures/Chapter 7/library-1.png>
-[130]
+[141]
 File: Figures/Chapter 7/library-2.png Graphic file (type bmp)
 <Figures/Chapter 7/library-2.png>
 File: Figures/Chapter 7/history-1.png Graphic file (type bmp)
 <Figures/Chapter 7/history-1.png>
 File: Figures/Chapter 7/history-2.png Graphic file (type bmp)
 <Figures/Chapter 7/history-2.png>
-[131]
+[142]
 File: Figures/Chapter 7/history-3.png Graphic file (type bmp)
 <Figures/Chapter 7/history-3.png>
 File: Figures/Chapter 7/history-4.png Graphic file (type bmp)
 <Figures/Chapter 7/history-4.png>
-[132]
+[143]
 File: Figures/Chapter 7/airline.png Graphic file (type bmp)
 <Figures/Chapter 7/airline.png>
 File: Figures/Chapter 7/airline revised.png Graphic file (type bmp)
 <Figures/Chapter 7/airline revised.png>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[133]
+[144]
 File: Figures/Chapter 7/planning.png Graphic file (type bmp)
 <Figures/Chapter 7/planning.png>
 File: Figures/Chapter 7/planning revised.png Graphic file (type bmp)
 <Figures/Chapter 7/planning revised.png>
-[134]
+[145]
 File: Figures/Chapter 7/nation-stock-modal.png Graphic file (type bmp)
 <Figures/Chapter 7/nation-stock-modal.png>
 File: Figures/Chapter 7/m-and-m-modality.png Graphic file (type bmp)
 <Figures/Chapter 7/m-and-m-modality.png>
-[135]
+[146]
 File: Figures/Chapter 7/1-and-1-modality.png Graphic file (type bmp)
 <Figures/Chapter 7/1-and-1-modality.png>
 File: Figures/Chapter 7/rec-1-and-m-modality.png Graphic file (type bmp)
 <Figures/Chapter 7/rec-1-and-m-modality.png>
-[136]
+[147]
 File: Figures/Chapter 7/rec-1-and-1-modality.png Graphic file (type bmp)
 <Figures/Chapter 7/rec-1-and-1-modality.png>
 File: Figures/Chapter 7/rec-m-and-m-modality.png Graphic file (type bmp)
 <Figures/Chapter 7/rec-m-and-m-modality.png>
 File: Figures/Chapter 4/nation-stock.png Graphic file (type bmp)
 <Figures/Chapter 4/nation-stock.png>
-[137]
+[148]
 File: Figures/Chapter 7/region-city.png Graphic file (type bmp)
 <Figures/Chapter 7/region-city.png>
 File: Figures/Chapter 7/history-2.png Graphic file (type bmp)
 <Figures/Chapter 7/history-2.png>
-[138]
+[149]
 File: Figures/Chapter 7/animal.png Graphic file (type bmp)
 <Figures/Chapter 7/animal.png>
-[139]
+[150]
 File: Figures/Chapter 7/generalizationanimal.png Graphic file (type bmp)
 <Figures/Chapter 7/generalizationanimal.png>
 File: Figures/Chapter 7/aggregate.png Graphic file (type bmp)
 <Figures/Chapter 7/aggregate.png>
 File: Figures/Chapter 7/sharedaggregate.png Graphic file (type bmp)
 <Figures/Chapter 7/sharedaggregate.png>
-[140]
+[151]
 File: Figures/Chapter 7/compaggregate.png Graphic file (type bmp)
 <Figures/Chapter 7/compaggregate.png>
 File: Figures/Chapter 7/art collection.png Graphic file (type bmp)
 <Figures/Chapter 7/art collection.png>
 File: Figures/Chapter 7/art collection revised.png Graphic file (type bmp)
 <Figures/Chapter 7/art collection revised.png>
-[141]
+[152]
 File: Figures/Chapter 6/recursive-1-and-1.png Graphic file (type bmp)
 <Figures/Chapter 6/recursive-1-and-1.png>
-[142]
+[153]
 File: Figures/Chapter 7/address.png Graphic file (type bmp)
 <Figures/Chapter 7/address.png>
-[143]
+[154]
 File: Figures/Chapter 7/address-multiple.png Graphic file (type bmp)
 <Figures/Chapter 7/address-multiple.png>
 File: Figures/Chapter 7/single instance (firm).png Graphic file (type bmp)
 <Figures/Chapter 7/single instance (firm).png>
-[144] [145] [146] [147] [148] [149] [150] [151] [152]
+[155] [156] [157] [158] [159] [160] [161] [162] [163]
 File: Figures/Reference 1/r1-person.png Graphic file (type bmp)
 <Figures/Reference 1/r1-person.png>
-[153]
+[164]
 File: Figures/Reference 1/r1-person-1-1.png Graphic file (type bmp)
 <Figures/Reference 1/r1-person-1-1.png>
 File: Figures/Reference 1/r1-person-1-m.png Graphic file (type bmp)
 <Figures/Reference 1/r1-person-1-m.png>
-[154]
+[165]
 File: Figures/Reference 1/r1-person-m-m.png Graphic file (type bmp)
 <Figures/Reference 1/r1-person-m-m.png>
-[155]
+[166]
 File: Figures/Reference 1/r1-dept-emp.png Graphic file (type bmp)
 <Figures/Reference 1/r1-dept-emp.png>
-[156]
+[167]
 File: Figures/Chapter 4/nation-stock.png Graphic file (type bmp)
 <Figures/Chapter 4/nation-stock.png>
 File: Figures/Reference 1/r1-book-copy-borrow.png Graphic file (type bmp)
 <Figures/Reference 1/r1-book-copy-borrow.png>
-[157]
+[168]
 File: Figures/Chapter 7/region-city.png Graphic file (type bmp)
 <Figures/Chapter 7/region-city.png>
-[158]
+[169]
 File: Figures/Reference 1/r1-city-store-firm.png Graphic file (type bmp)
 <Figures/Reference 1/r1-city-store-firm.png>
-[159]
+[170]
 File: Figures/Reference 1/r1-tree.png Graphic file (type bmp)
 <Figures/Reference 1/r1-tree.png>
-[160]
+[171]
 File: Figures/Reference 1/r1-flextree.png Graphic file (type bmp)
 <Figures/Reference 1/r1-flextree.png>
 File: Figures/Chapter 7/revised NATION-STOCK.png Graphic file (type bmp)
 <Figures/Chapter 7/revised NATION-STOCK.png>
 File: Figures/Chapter 7/geography revised.png Graphic file (type bmp)
 <Figures/Chapter 7/geography revised.png>
-[161]
+[172]
 File: Figures/Chapter 7/marriage-5.png Graphic file (type bmp)
 <Figures/Chapter 7/marriage-5.png>
 File: Figures/Chapter 7/airline revised.png Graphic file (type bmp)
 <Figures/Chapter 7/airline revised.png>
-[162] [163] [164] [165]
+[173]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 10196.
+
+[174] [175] [176]
 File: Figures/Chapter 8/2NF.png Graphic file (type bmp)
 <Figures/Chapter 8/2NF.png>
-[166]
+[177]
 File: Figures/Chapter 4/nation-stock.png Graphic file (type bmp)
 <Figures/Chapter 4/nation-stock.png>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[167]
+[178]
 File: Figures/Chapter 8/BCNF.png Graphic file (type bmp)
 <Figures/Chapter 8/BCNF.png>
-[168]
+[179]
 File: Figures/Chapter 8/4NF.png Graphic file (type bmp)
 <Figures/Chapter 8/4NF.png>
-[169]
+[180]
 File: Figures/Chapter 8/5NF-1.png Graphic file (type bmp)
 <Figures/Chapter 8/5NF-1.png>
 File: Figures/Chapter 8/5NF-2.png Graphic file (type bmp)
 <Figures/Chapter 8/5NF-2.png>
-[170] [171] [172]
+[181] [182] [183]
 File: Figures/Chapter 8/E-R.png Graphic file (type bmp)
 <Figures/Chapter 8/E-R.png>
-[173]
+[184]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[174] [175] [176] [177] [178] [179]
+[185] [186]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 11056.
+
+[187] [188] [189] [190]
 File: Figures/Chapter 9/query-by-example.png Graphic file (type bmp)
 <Figures/Chapter 9/query-by-example.png>
-[180]
+[191]
 File: Figures/Chapter 9/shadowed-rows.png Graphic file (type bmp)
 <Figures/Chapter 9/shadowed-rows.png>
-[181]
+[192]
 File: Figures/Chapter 9/shadowed-columns.png Graphic file (type bmp)
 <Figures/Chapter 9/shadowed-columns.png>
-[182] [183] [184] [185] [186]
+[193] [194] [195] [196] [197]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[187] [188] [189]
+[198] [199] [200]
 File: Figures/Chapter 5/gift.png Graphic file (type bmp)
 <Figures/Chapter 5/gift.png>
-[190] [191]
+[201]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 12203.
+
+[202]
 File: Figures/Chapter 11/index.png Graphic file (type bmp)
 <Figures/Chapter 11/index.png>
-[192] [193] [194] [195]
+[203] [204] [205] [206]
 File: Figures/Chapter 10/data types.png Graphic file (type bmp)
 <Figures/Chapter 10/data types.png>
-[196] [197]
+[207] [208]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[198]
+[209]
 Missing character: There is no ȃ (U+0203) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[199] [200] [201] [202] [203]
+[210] [211] [212] [213] [214]
 File: Figures/Chapter 10/select structure.png Graphic file (type bmp)
 <Figures/Chapter 10/select structure.png>
-[204]
-Overfull \hbox (62.08511pt too wide) in alignment at lines 13265--13269
+[215]
+Overfull \hbox (62.08511pt too wide) in alignment at lines 13221--13225
  [] [] [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (62.08511pt too wide) in alignment at lines 13269--13335
+Overfull \hbox (62.08511pt too wide) in alignment at lines 13225--13291
  [] [] [] [] [] [] [] [] [] [] 
  []
 
-[205] [206] [207] [208] [209] [210] [211] [212] [213]
+[216] [217] [218] [219] [220] [221] [222] [223] [224]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 10/accounting.png Graphic file (type bmp)
 <Figures/Chapter 10/accounting.png>
-[214]
+[225]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[215]
+[226]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[216] [217] [218] [219] [220] [221] [222] [223] [224] [225]
+[227] [228] [229] [230] [231] [232] [233] [234] [235] [236]
 File: Figures/Chapter 14/political unit.png Graphic file (type bmp)
 <Figures/Chapter 14/political unit.png>
-[226] [227]
+[237] [238]
 File: Figures/Chapter 13/Ireland grid.png Graphic file (type bmp)
 <Figures/Chapter 13/Ireland grid.png>
-[228] [229]
+[239] [240]
 File: Figures/Chapter 11/boundary.png Graphic file (type bmp)
 <Figures/Chapter 11/boundary.png>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[230] [231]
+[241] [242]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[232]
+[243]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 
-Overfull \hbox (1227.32895pt too wide) in paragraph at lines 15411--15414
+Overfull \hbox (1227.32895pt too wide) in paragraph at lines 15367--15370
 []\TU/lmr/m/n/10 The address bar (URL) will change. Copy the full link. For exa
 mple: []$[]$[]. 
  []
@@ -1384,630 +1427,699 @@ Missing character: There is no ≥ (U+2265) in font [lmroman10-regular]:mapping=
 ex-text;!
 File: Figures/Chapter 11/r-tree.png Graphic file (type bmp)
 <Figures/Chapter 11/r-tree.png>
-[233]
+[244]
 File: Figures/Chapter 11/searching-r-tree.png Graphic file (type bmp)
 <Figures/Chapter 11/searching-r-tree.png>
-[234] [235]
+[245] [246]
 File: Figures/Chapter 13/temporal data.png Graphic file (type bmp)
 <Figures/Chapter 13/temporal data.png>
-[236]
+[247]
 File: Figures/Chapter 7/planning revised.png Graphic file (type bmp)
 <Figures/Chapter 7/planning revised.png>
-[237]
+[248]
 File: Figures/Chapter 13/nation-stock temporal.png Graphic file (type bmp)
 <Figures/Chapter 13/nation-stock temporal.png>
-[238]
+[249]
 File: Figures/Chapter 13/Iberia-grid.png Graphic file (type bmp)
 <Figures/Chapter 13/Iberia-grid.png>
-[239] [240] [241]
+[250]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 15755.
+
+[251] [252]
 File: Figures/Chapter 12/graph-portfolio.png Graphic file (type bmp)
 <Figures/Chapter 12/graph-portfolio.png>
-[242]
-Overfull \hbox (149.74498pt too wide) in paragraph at lines 15989--15989
+[253]
+Overfull \hbox (149.74498pt too wide) in paragraph at lines 15945--15945
 []    \TU/lmtt/m/n/10 Price: toFloat(row.stkprice), Qty: toInteger(row.stkqty),
  Div: toFloat(row.stkdiv),     PE: toInteger(row.stkpe)})[] 
  []
 
 File: Figures/Chapter 12/unrelated-nodes.png Graphic file (type bmp)
 <Figures/Chapter 12/unrelated-nodes.png>
-[243] [244]
+[254] [255]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[245] [246]
+[256] [257]
 File: Figures/Chapter 12/graph-nation-stock.png Graphic file (type bmp)
 <Figures/Chapter 12/graph-nation-stock.png>
 
-Overfull \hbox (39.49498pt too wide) in paragraph at lines 16252--16252
+Overfull \hbox (39.49498pt too wide) in paragraph at lines 16208--16208
 []\TU/lmtt/m/n/10 CREATE (n:Nation {NationCode: row.natcode, Nation: row.natnam
 e, ExchRate: toFloat(row.exchrate)})[] 
  []
 
-[247] [248]
+[258] [259]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 12/graph-sales.png Graphic file (type bmp)
 <Figures/Chapter 12/graph-sales.png>
-[249]
-Overfull \hbox (165.49498pt too wide) in paragraph at lines 16400--16400
+[260]
+Overfull \hbox (165.49498pt too wide) in paragraph at lines 16356--16356
 []\TU/lmtt/m/n/10 CREATE (i:Item {ItemNo: toInteger(row.itemno), ItemName: row.
 itemname, ItemType: row.itemtype, ItemColor: row.itemcolor})[] 
  []
 
 
-Overfull \hbox (60.49498pt too wide) in paragraph at lines 16400--16400
+Overfull \hbox (60.49498pt too wide) in paragraph at lines 16356--16356
 []\TU/lmtt/m/n/10 CREATE (s:Sale {SaleNo: toInteger(row.saleno), SaleDate: date
 (row.saledate), SaleText: row.saletext})[] 
  []
 
 File: Figures/Chapter 12/view-sales-items.png Graphic file (type bmp)
 <Figures/Chapter 12/view-sales-items.png>
-[250] [251]
+[261] [262]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 12/graph-monarch.png Graphic file (type bmp)
 <Figures/Chapter 12/graph-monarch.png>
-[252]
+[263]
 File: Figures/Chapter 12/monarch-succession.png Graphic file (type bmp)
 <Figures/Chapter 12/monarch-succession.png>
-[253] [254] [255] [256]
+[264] [265] [266] [267]
 File: Figures/Chapter 12/graph-NorthWinds.png Graphic file (type bmp)
 <Figures/Chapter 12/graph-NorthWinds.png>
-[257] [258] [259] [260] [261] [262] [263]
+[268]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 16776.
+
+[269] [270] [271] [272] [273] [274]
 File: Figures/Chapter 18/CD.png Graphic file (type bmp)
 <Figures/Chapter 18/CD.png>
-[264]
-Underfull \hbox (badness 1354) in paragraph at lines 17331--17336
+[275]
+Underfull \hbox (badness 1354) in paragraph at lines 17287--17292
 []\TU/lmr/m/n/10 All XML documents begin with an XML declaration {1}.[][][] The
  encoding attribute (i.e.,
  []
 
 File: Figures/Chapter 18/xmlvisual.png Graphic file (type bmp)
 <Figures/Chapter 18/xmlvisual.png>
-[265] [266]
+[276] [277]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[267]
+[278]
 File: Figures/Chapter 13/cd-library-stylesheets.png Graphic file (type bmp)
 <Figures/Chapter 13/cd-library-stylesheets.png>
-[268] [269]
+[279] [280]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[270] [271]
-Overfull \hbox (17.24498pt too wide) in paragraph at lines 17823--17823
+[281] [282]
+Overfull \hbox (17.24498pt too wide) in paragraph at lines 17779--17779
  []\TU/lmtt/m/n/10 doc("http://www.richardtwatson.com/xml/cdlib.xml")/cdlibrary
 /cd[cdlabel='Verve']/cdtitle[] 
  []
 
-[272] [273] [274] [275] [276]
+[283] [284] [285] [286]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 18162.
+
+[287]
 File: Figures/Chapter 15/data warehouse.png Graphic file (type bmp)
 <Figures/Chapter 15/data warehouse.png>
-[277] [278] [279]
-Overfull \hbox (244.15504pt too wide) in alignment at lines 18512--18516
+[288] [289] [290]
+Overfull \hbox (244.15504pt too wide) in alignment at lines 18468--18472
  [] [] 
  []
 
 
-Overfull \hbox (244.15504pt too wide) in alignment at lines 18516--18520
+Overfull \hbox (244.15504pt too wide) in alignment at lines 18472--18476
  [] [] 
  []
 
-[280] [281]
+[291] [292]
 File: Figures/Chapter 15/star structure.png Graphic file (type bmp)
 <Figures/Chapter 15/star structure.png>
 File: Figures/Chapter 15/snowflake.png Graphic file (type bmp)
 <Figures/Chapter 15/snowflake.png>
-[282] [283]
+[293] [294]
 File: Figures/Chapter 15/hypercube.png Graphic file (type bmp)
 <Figures/Chapter 15/hypercube.png>
-[284]
+[295]
 File: Figures/Chapter 15/RDBMS-MDDB.png Graphic file (type bmp)
 <Figures/Chapter 15/RDBMS-MDDB.png>
-[285] [286]
+[296] [297]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[287] [288]
+[298] [299]
 File: Figures/Chapter 14/decision-tree.png Graphic file (type bmp)
 <Figures/Chapter 14/decision-tree.png>
-[289]
+[300]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[290] [291]
+[301] [302]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[292] [293] [294] [295]
+[303] [304] [305]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 19606.
+
+[306]
 File: Figures/Section 2/RStudio.png Graphic file (type bmp)
 <Figures/Section 2/RStudio.png>
-[296]
+[307]
 File: DataManagement_files/figure-latex/sample-script-1.pdf Graphic file (type 
 pdf)
 <use DataManagement_files/figure-latex/sample-script-1.pdf>
 
-Overfull \hbox (28.18416pt too wide) in paragraph at lines 19797--19826
+Overfull \hbox (28.18416pt too wide) in paragraph at lines 19753--19782
 []|[]|  
  []
 
-[297]
+[308]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[298]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 19817.
+
+[309]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[299] [300] [301]
+[310] [311] [312]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[302] [303] [304]
+[313] [314] [315]
 File: Figures/Chapter 15/gather-spread.png Graphic file (type bmp)
 <Figures/Chapter 15/gather-spread.png>
 
-Overfull \hbox (136.50261pt too wide) in paragraph at lines 20457--20458
+Overfull \hbox (136.50261pt too wide) in paragraph at lines 20413--20414
 []\TU/lmr/m/it/10 Reshaping data with gathering and spreading[] 
  []
 
-[305] [306] [307] [308] [309]
+[316] [317] [318] [319] [320]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[310]
+[321]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[311]
-Overfull \hbox (354.49498pt too wide) in paragraph at lines 20955--20955
+[322]
+Overfull \hbox (354.49498pt too wide) in paragraph at lines 20911--20911
 []\TU/lmtt/m/n/10 ## Warning in doTryCatch(return(expr), name, parentenv, handl
 er): unable to load shared object '/Library/Frameworks/R.framework/Resources/mo
 dules//R_X11.so':[] 
  []
 
 
-Overfull \hbox (202.24498pt too wide) in paragraph at lines 20955--20955
+Overfull \hbox (202.24498pt too wide) in paragraph at lines 20911--20911
 []\TU/lmtt/m/n/10 ##   dlopen(/Library/Frameworks/R.framework/Resources/modules
 //R_X11.so, 0x0006): Library not loaded: /opt/X11/lib/libSM.6.dylib[] 
  []
 
 
-Overfull \hbox (49.99498pt too wide) in paragraph at lines 20955--20955
+Overfull \hbox (49.99498pt too wide) in paragraph at lines 20911--20911
 []\TU/lmtt/m/n/10 ##   Referenced from: /Library/Frameworks/R.framework/Version
 s/4.1-arm64/Resources/modules/R_X11.so[] 
  []
 
 
-Overfull \hbox (805.99498pt too wide) in paragraph at lines 20955--20955
+Overfull \hbox (805.99498pt too wide) in paragraph at lines 20911--20911
 []\TU/lmtt/m/n/10 ##   Reason: tried: '/opt/X11/lib/libSM.6.dylib' (no such fil
 e), '/Library/Frameworks/R.framework/Resources/lib/libSM.6.dylib' (no such file
 ), '/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/lib/server/libSM
 .6.dylib' (no such file)[] 
  []
 
-[312] [313] [314] [315] [316] [317]
-Underfull \hbox (badness 2103) in paragraph at lines 21428--21432
+[323] [324] [325] [326] [327] [328]
+Underfull \hbox (badness 2103) in paragraph at lines 21384--21388
 []\TU/lmr/m/n/10 Use the ‘Import Dataset’ feature of RStudio to read []$[][][][
 ] [] [] [] [][][] [] [][][][][][][][][][][][][][] [] [][][] [] [][][][] []
  []
 
-[318]
-Overfull \hbox (115.59387pt too wide) in paragraph at lines 21476--21478
+[329]
+Overfull \hbox (115.59387pt too wide) in paragraph at lines 21432--21434
 []\TU/lmr/m/n/10 Get the list of failed US banks from []$[]$[]. 
  []
 
 
-Overfull \hbox (225.21498pt too wide) in paragraph at lines 21491--21497
+Overfull \hbox (225.21498pt too wide) in paragraph at lines 21447--21453
 []\TU/lmr/m/n/10 Use Table01 of U.S. broccoli data on farms and area harvested 
 from []$[]$[].
  []
 
-[319]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 21482.
+
+[330]
 File: Figures/Chapter 16/Charles-Joseph-Minard.png Graphic file (type bmp)
 <Figures/Chapter 16/Charles-Joseph-Minard.png>
-[320] [321] [322]
+[331] [332] [333]
 File: DataManagement_files/figure-latex/element-1.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/element-1.pdf>
 File: DataManagement_files/figure-latex/element-2.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/element-2.pdf>
-[323] [324]
+[334] [335]
 File: DataManagement_files/figure-latex/zero-1.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/zero-1.pdf>
 File: DataManagement_files/figure-latex/transform-2-1.pdf Graphic file (type pd
 f)
 <use DataManagement_files/figure-latex/transform-2-1.pdf>
-[325]
+[336]
 File: Figures/Chapter 16/guides.png Graphic file (type bmp)
 <Figures/Chapter 16/guides.png>
-[326]
+[337]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[327]
+[338]
 File: DataManagement_files/figure-latex/histogram-1.pdf Graphic file (type pdf)
 
 <use DataManagement_files/figure-latex/histogram-1.pdf>
-[328]
+[339]
 File: DataManagement_files/figure-latex/bargraph-1.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/bargraph-1.pdf>
 File: DataManagement_files/figure-latex/columngraph-1.pdf Graphic file (type pd
 f)
 <use DataManagement_files/figure-latex/columngraph-1.pdf>
-[329]
+[340]
 File: DataManagement_files/figure-latex/barchart-1.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/barchart-1.pdf>
-[330]
+[341]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[331]
+[342]
 File: DataManagement_files/figure-latex/scatterplot-1-1.pdf Graphic file (type 
 pdf)
 <use DataManagement_files/figure-latex/scatterplot-1-1.pdf>
-[332]
+[343]
 File: DataManagement_files/figure-latex/scatterplot-2-1.pdf Graphic file (type 
 pdf)
 <use DataManagement_files/figure-latex/scatterplot-2-1.pdf>
-[333]
+[344]
 File: DataManagement_files/figure-latex/scatterplot-3-1.pdf Graphic file (type 
 pdf)
 <use DataManagement_files/figure-latex/scatterplot-3-1.pdf>
-[334]
+[345]
 File: DataManagement_files/figure-latex/smoothing-1.pdf Graphic file (type pdf)
 
 <use DataManagement_files/figure-latex/smoothing-1.pdf>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[335]
+[346]
 File: DataManagement_files/figure-latex/boxplot-1.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/boxplot-1.pdf>
 
-Overfull \hbox (55.24498pt too wide) in paragraph at lines 22268--22268
+Overfull \hbox (55.24498pt too wide) in paragraph at lines 22227--22227
 []\TU/lmtt/m/n/10 ## `summarise()` has grouped output by 'productLine'. You can
  override using the `.groups` argument.[] 
  []
 
-[336]
+[347]
 File: DataManagement_files/figure-latex/heatmap-1.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/heatmap-1.pdf>
-[337]
+[348]
+File: Figures/Chapter 16/google-map.png Graphic file (type bmp)
+<Figures/Chapter 16/google-map.png>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[338]
-Overfull \hbox (34.61499pt too wide) in paragraph at lines 22481--22487
+[349] [350]
+Overfull \hbox (34.61499pt too wide) in paragraph at lines 22442--22449
 []\TU/lmr/m/n/10 Use the ‘Import Dataset’ feature of RStudio to read []$[]$[],
  []
 
-[339] [340] [341] [342] [343]
+[351]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 22503.
+
+[352] [353] [354] [355]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[344] [345] [346]
+[356] [357]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[347] [348] [349]
+[358] [359] [360]
 File: DataManagement_files/figure-latex/density-plot-1.pdf Graphic file (type p
 df)
 <use DataManagement_files/figure-latex/density-plot-1.pdf>
-[350]
+[361] [362]
 File: DataManagement_files/figure-latex/cloud-1.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/cloud-1.pdf>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[351] [352]
+[363] [364]
 File: DataManagement_files/figure-latex/cluster-1.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/cluster-1.pdf>
-[353]
+[365]
 File: Figures/Chapter 17/idf.png Graphic file (type bmp)
 <Figures/Chapter 17/idf.png>
-[354]
+[366]
 File: DataManagement_files/figure-latex/topic-1-1.pdf Graphic file (type pdf)
 <use DataManagement_files/figure-latex/topic-1-1.pdf>
 Missing character: There is no ω (U+03C9) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 17/tf-idf.png Graphic file (type bmp)
 <Figures/Chapter 17/tf-idf.png>
-[355] [356]
+[367] [368]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 17/name-entity-recognition.png Graphic file (type bmp)
 <Figures/Chapter 17/name-entity-recognition.png>
-[357] [358] [359] [360] [361]
+[369] [370] [371]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 23923.
+
+[372] [373]
 File: Figures/Chapter 18/bottleneck.png Graphic file (type bmp)
 <Figures/Chapter 18/bottleneck.png>
-[362]
+[374]
 File: Figures/Chapter 18/merge-speed-serving.png Graphic file (type bmp)
 <Figures/Chapter 18/merge-speed-serving.png>
-[363]
+[375]
 File: Figures/Chapter 18/batch-and-speed.png Graphic file (type bmp)
 <Figures/Chapter 18/batch-and-speed.png>
 File: Figures/Chapter 18/lambda.png Graphic file (type bmp)
 <Figures/Chapter 18/lambda.png>
-[364] [365]
+[376] [377]
 File: Figures/Chapter 18/splitting-cluster.png Graphic file (type bmp)
 <Figures/Chapter 18/splitting-cluster.png>
-[366] [367] [368]
+[378] [379] [380]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[369] [370]
-Underfull \hbox (badness 10000) in paragraph at lines 24628--24628
+[381] [382]
+Underfull \hbox (badness 10000) in paragraph at lines 24590--24590
 [][][][]$[][][][] [] [] [] [][][][][][][][] [] [][][][][][][] [] [][][] [] [][]
 [][] [] [][][] [] [][] [] [][][][] [] [][] [][] [][][][][][] [][] [][][][][][][
 ] [][] [][][][][][][][][] [][] [][][] [][] [][][][][] [][] [][][][] [][] [][][]
 [][][][][][][] [][] [][][] [][] [][][][][][][] [][] [][] [][]
  []
 
-[371]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 24595.
+
+[383]
 File: Figures/Chapter 19/climate-dashboard.png Graphic file (type bmp)
 <Figures/Chapter 19/climate-dashboard.png>
-[372]
+[384]
 File: Figures/Chapter 19/dashboard-1.png Graphic file (type bmp)
 <Figures/Chapter 19/dashboard-1.png>
-[373]
-Overfull \hbox (305.35703pt too wide) in paragraph at lines 24840--24840
+[385]
+Overfull \hbox (305.35703pt too wide) in paragraph at lines 24802--24802
 [][][]$[]$| 
  []
 
 File: Figures/Chapter 19/dashboard-2.png Graphic file (type bmp)
 <Figures/Chapter 19/dashboard-2.png>
-[374]
+[386]
 File: Figures/Chapter 19/dashboard-3.png Graphic file (type bmp)
 <Figures/Chapter 19/dashboard-3.png>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[375]
+[387]
 File: Figures/Chapter 19/dashboard-4.png Graphic file (type bmp)
 <Figures/Chapter 19/dashboard-4.png>
-[376]
+[388]
 File: Figures/Chapter 19/dashboard-5.png Graphic file (type bmp)
 <Figures/Chapter 19/dashboard-5.png>
-[377]
+[389]
 File: Figures/Chapter 19/dashboard-6.png Graphic file (type bmp)
 <Figures/Chapter 19/dashboard-6.png>
 
-Overfull \hbox (3.465pt too wide) in paragraph at lines 25026--25029
+Overfull \hbox (3.465pt too wide) in paragraph at lines 24988--24991
 []\TU/lmr/m/n/10 The server executes \TU/lmtt/m/n/10 output$apple <- renderDygr
 aph({dygraph(Cl(get(getSymbols([]AAPL[]))))})
  []
 
 
-Overfull \hbox (549.53302pt too wide) in paragraph at lines 25035--25035
+Overfull \hbox (549.53302pt too wide) in paragraph at lines 24997--24997
 [][][]$[]$| 
  []
 
-[378]
+[390]
 File: Figures/Chapter 19/dashboard-7.png Graphic file (type bmp)
 <Figures/Chapter 19/dashboard-7.png>
-[379]
+[391]
 File: Figures/Chapter 19/dashboard-8.png Graphic file (type bmp)
 <Figures/Chapter 19/dashboard-8.png>
-[380]
+[392]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[381] [382] [383]
+[393] [394]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 25289.
+
+[395]
 File: Figures/Chapter 20/database-access-layers.png Graphic file (type bmp)
 <Figures/Chapter 20/database-access-layers.png>
-[384]
+[396]
 File: Figures/Chapter 20/disk-manager.png Graphic file (type bmp)
 <Figures/Chapter 20/disk-manager.png>
 File: Figures/Chapter 20/file-manager.png Graphic file (type bmp)
 <Figures/Chapter 20/file-manager.png>
-[385]
+[397]
 File: Figures/Chapter 4/nation-stock.png Graphic file (type bmp)
 <Figures/Chapter 4/nation-stock.png>
-[386]
+[398]
 File: Figures/Chapter 20/index.png Graphic file (type bmp)
 <Figures/Chapter 20/index.png>
-[387] [388]
+[399] [400]
 File: Figures/Chapter 20/multiple indexes.png Graphic file (type bmp)
 <Figures/Chapter 20/multiple indexes.png>
-[389]
+[401]
 File: Figures/Chapter 20/sparse index.png Graphic file (type bmp)
 <Figures/Chapter 20/sparse index.png>
 File: Figures/Chapter 20/b-tree.png Graphic file (type bmp)
 <Figures/Chapter 20/b-tree.png>
-[390] [391]
+[402] [403]
 File: Figures/Chapter 20/hashing.png Graphic file (type bmp)
 <Figures/Chapter 20/hashing.png>
 File: Figures/Chapter 20/linked.png Graphic file (type bmp)
 <Figures/Chapter 20/linked.png>
-[392] [393] [394] [395] [396]
+[404] [405] [406] [407] [408]
 File: Figures/Chapter 20/mirroring.png Graphic file (type bmp)
 <Figures/Chapter 20/mirroring.png>
-[397]
+[409]
 File: Figures/Chapter 20/striping.png Graphic file (type bmp)
 <Figures/Chapter 20/striping.png>
-[398]
+[410]
 File: Figures/Chapter 20/raid-5.png Graphic file (type bmp)
 <Figures/Chapter 20/raid-5.png>
-[399] [400] [401]
+[411] [412] [413]
 File: Figures/Chapter 20/storage life.png Graphic file (type bmp)
 <Figures/Chapter 20/storage life.png>
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[402] [403] [404] [405] [406]
+[414] [415] [416] [417]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 27025.
+
+[418]
 File: Figures/Chapter 21/basic-architectures.png Graphic file (type bmp)
 <Figures/Chapter 21/basic-architectures.png>
-[407]
+[419]
 File: Figures/Chapter 21/three-tier-computing.png Graphic file (type bmp)
 <Figures/Chapter 21/three-tier-computing.png>
-[408]
-Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
-ex-text;!
-[409] [410] [411] [412]
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
-ex-text;!
-[413] [414] [415] [416] [417] [418]
-File: Figures/Chapter 21/frag-horizontal.png Graphic file (type bmp)
-<Figures/Chapter 21/frag-horizontal.png>
-[419]
-File: Figures/Chapter 21/frag-vertical.png Graphic file (type bmp)
-<Figures/Chapter 21/frag-vertical.png>
 [420]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[421] [422] [423] [424] [425]
+[421] [422] [423] [424]
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[425] [426] [427] [428] [429] [430]
+File: Figures/Chapter 21/frag-horizontal.png Graphic file (type bmp)
+<Figures/Chapter 21/frag-horizontal.png>
+[431]
+File: Figures/Chapter 21/frag-vertical.png Graphic file (type bmp)
+<Figures/Chapter 21/frag-vertical.png>
+[432]
+Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[433] [434]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 28277.
+
+[435] [436] [437]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 22/ArtCollection.png Graphic file (type bmp)
 <Figures/Chapter 22/ArtCollection.png>
-[426] [427] [428]
+[438] [439] [440]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 22/map-collection.png Graphic file (type bmp)
 <Figures/Chapter 22/map-collection.png>
-[429]
+[441]
 File: Figures/Chapter 22/data-entry.png Graphic file (type bmp)
 <Figures/Chapter 22/data-entry.png>
-[430] [431] [432]
-Underfull \vbox (badness 10000) detected at line 29088
+[442] [443] [444]
+Underfull \vbox (badness 10000) detected at line 29050
  []
 
 
-Underfull \vbox (badness 10000) detected at line 29088
+Underfull \vbox (badness 10000) detected at line 29050
  []
 
-[433] [434]
+[445] [446]
 File: Figures/Chapter 22/person-car.png Graphic file (type bmp)
 <Figures/Chapter 22/person-car.png>
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 29155.
+
 File: Figures/Chapter 23/goals.png Graphic file (type bmp)
 <Figures/Chapter 23/goals.png>
-[435] [436] [437] [438] [439]
+[447] [448] [449] [450] [451]
 File: Figures/Chapter 23/deadlock.png Graphic file (type bmp)
 <Figures/Chapter 23/deadlock.png>
-[440]
-Overfull \hbox (12.17668pt too wide) in paragraph at lines 29683--29683
+[452]
+Overfull \hbox (12.17668pt too wide) in paragraph at lines 29645--29645
 \TU/lmr/m/n/10 move/upgrade|  
  []
 
-[441] [442]
+[453] [454]
 File: Figures/Chapter 23/state-changes.png Graphic file (type bmp)
 <Figures/Chapter 23/state-changes.png>
 File: Figures/Chapter 23/procedures.png Graphic file (type bmp)
 <Figures/Chapter 23/procedures.png>
-[443] [444] [445] [446]
+[455] [456] [457] [458]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
 File: Figures/Chapter 23/data-quality-strategies.png Graphic file (type bmp)
 <Figures/Chapter 23/data-quality-strategies.png>
-[447] [448]
+[459] [460]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[449]
+[461]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[450] [451] [452]
+[462] [463] [464]
 File: Figures/Chapter 23/data-security-model.png Graphic file (type bmp)
 <Figures/Chapter 23/data-security-model.png>
-[453] [454]
+[465] [466]
 File: Figures/Chapter 23/public-key.png Graphic file (type bmp)
 <Figures/Chapter 23/public-key.png>
-[455]
+[467]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[456] [457] [458] [459] [460] [461]
+[468] [469] [470] [471]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 31065.
+
+[472] [473]
 File: Figures/Chapter 24/cdo.png Graphic file (type bmp)
 <Figures/Chapter 24/cdo.png>
-[462]
+[474]
 File: Figures/Chapter 24/cdo-archetypes.png Graphic file (type bmp)
 <Figures/Chapter 24/cdo-archetypes.png>
 
-Overfull \hbox (8.12877pt too wide) in paragraph at lines 31325--31326
+Overfull \hbox (8.12877pt too wide) in paragraph at lines 31287--31288
 []\TU/lmr/m/n/10 Archetype  
  []
 
 
-Overfull \hbox (16.50877pt too wide) in paragraph at lines 31331--31331
+Overfull \hbox (16.50877pt too wide) in paragraph at lines 31293--31293
 []|\TU/lmr/m/n/10 Coordinator|  
  []
 
 
-Overfull \hbox (2.18877pt too wide) in paragraph at lines 31332--31332
+Overfull \hbox (2.18877pt too wide) in paragraph at lines 31294--31294
 []|\TU/lmr/m/n/10 Reporter|  
  []
 
 
-Overfull \hbox (3.95877pt too wide) in paragraph at lines 31333--31333
+Overfull \hbox (3.95877pt too wide) in paragraph at lines 31295--31295
 []|\TU/lmr/m/n/10 Architect|  
  []
 
 
-Overfull \hbox (16.84877pt too wide) in paragraph at lines 31334--31334
+Overfull \hbox (16.84877pt too wide) in paragraph at lines 31296--31296
 []|\TU/lmr/m/n/10 Ambassador|  
  []
 
 
-Overfull \hbox (3.15877pt too wide) in paragraph at lines 31336--31336
+Overfull \hbox (3.15877pt too wide) in paragraph at lines 31298--31298
 []|\TU/lmr/m/n/10 Marketer|  
  []
 
 
-Overfull \hbox (6.87877pt too wide) in paragraph at lines 31337--31337
+Overfull \hbox (6.87877pt too wide) in paragraph at lines 31299--31299
 []|\TU/lmr/m/n/10 Developer|  
  []
 
 
-Overfull \hbox (22.74876pt too wide) in paragraph at lines 31338--31338
+Overfull \hbox (22.74876pt too wide) in paragraph at lines 31300--31300
 []|\TU/lmr/m/n/10 Experimenter|  
  []
 
-[463]
+[475]
 File: Figures/Chapter 24/database-environment.png Graphic file (type bmp)
 <Figures/Chapter 24/database-environment.png>
-[464] [465] [466] [467] [468]
+[476] [477] [478] [479] [480]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[469] [470] [471]
+[481] [482] [483]
 File: Figures/Chapter 24/DDLC.png Graphic file (type bmp)
 <Figures/Chapter 24/DDLC.png>
-[472] [473]
+[484] [485]
 File: Figures/Chapter 24/data-interfaces.png Graphic file (type bmp)
 <Figures/Chapter 24/data-interfaces.png>
-[474] [475]
-Overfull \hbox (8.19054pt too wide) in alignment at lines 32272--32293
+[486] [487]
+Overfull \hbox (8.19054pt too wide) in alignment at lines 32234--32255
  [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (8.19054pt too wide) in alignment at lines 32293--32390
+Overfull \hbox (8.19054pt too wide) in alignment at lines 32255--32352
  [] [] [] [] [] [] 
  []
 
-[476] [477] [478] [479]
+[488] [489] [490] [491]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[480]
+[492]
 Missing character: There is no ❓ (U+2753) in font [lmroman10-regular]:mapping=t
 ex-text;!
-[481] [482] [483] (./DataManagement.aux)
+[493] [494] [495] (./DataManagement.aux)
 Package rerunfilecheck Info: File `DataManagement.out' has not changed.
-(rerunfilecheck)             Checksum: 9A629DE7F2799DDD27791E82A30876A6;48768.
+(rerunfilecheck)             Checksum: 797101DA2B5FBB4936E7BAE4940CF762;109036.
+
  ) 
 Here is how much of TeX's memory you used:
- 20684 strings out of 478256
- 410100 string characters out of 5854874
- 918760 words of memory out of 5000000
- 40750 multiletter control sequences out of 15000+600000
+ 20784 strings out of 478256
+ 411665 string characters out of 5854874
+ 982060 words of memory out of 5000000
+ 40849 multiletter control sequences out of 15000+600000
  408944 words of font info for 77 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,11n,121p,1336b,669s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on DataManagement.pdf (483 pages).
+Output written on DataManagement.pdf (495 pages).

@@ -1,20 +1,19 @@
 ---
 bookdown::gitbook:
-  css: style.css
+  css: style.css 
   toc_depth: 2
   html_document:
     toc: true
     toc_float:
       collapsed: false
       smooth_scroll: false
+      download: ["pdf", "epub"]
 bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
+ #   includes:
+ #     in_header: preamble.tex
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
-bookdown::epub_book: 
-  cover_image: 'Open cover.png'
-
-bookdown::bs4_book: default
+  toc: false
+bookdown::epub_book: default
 ---
