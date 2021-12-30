@@ -27,7 +27,7 @@ Students completing this chapter will
 
 ## Introduction {.unnumbered}
 
-There are three characteristics of the early decades of the twenty-first
+There are three characteristics of the first two decades of the twenty-first
 century: global warming, high-velocity global change, and the emerging
 power of information organizations.[^information-1] The need to create a
 sustainable civilization, the globalization of business, and the rise of
@@ -36,13 +36,12 @@ change. Organizations are undergoing large-scale restructuring as they
 attempt to reposition themselves to survive the threats and exploit the
 opportunities presented by these changes.
 
-[^information-1]: In mid 2017, the five most valuable public companies
-    were Apple, Google, Amazon, Microsoft, and Facebook. Furthermore,
-    they are concentrated on the west coast of the U.S. in either
-    Silicon Valley or Seattle.
+[^information-1]: In late 2021, the four of five most valuable public companies
+    were Apple, Microsoft, Amazon, and Alphabet (Google). Furthermore,
+    these technology giants are concentrated on the west coast of the U.S. in either Silicon Valley or Seattle ([source](https://spendmenot.com/blog/largest-public-companies/)).
 
-In the last few years, some very powerful and highly profitable
-information-based organizations have emerged. Apple and MS vie to be the
+This century, some very powerful and highly profitable
+information-based organizations have emerged. In 20212, Apple and Microsoft vied to be the
 world's largest company in terms of market value. Leveraging the iPhone
 and IOS, Apple has shown the power of information services to change an
 industry. Google has become a well-known global brand as it fulfills its
@@ -66,13 +65,13 @@ reflect these concerns, as shown in the following table.
 
 ![](Figures/Chapter%202/societal%20focus.png)
 
-Agrarian society was concerned with productive farming, and an important
+**Agrarian society** was concerned with productive farming, and an important
 issue was when to plant crops. Ancient Egypt, for example, based its
 calendar on the flooding of the Nile. The focus shifted during the
-industrial era to management of resources (e.g., raw materials, labor,
+**industrial era** to management of resources (e.g., raw materials, labor,
 logistics). Accounting, ERP, and project management became key
-information systems for managing resources. In the current service
-economy, the focus has shifted to customer creation. There is an
+information systems for managing resources. In the current **service
+economy**, the focus has shifted to customer creation. There is an
 oversupply of many consumer products (e.g., cars) and companies compete
 to identify services and product features that will attract customers.
 They are concerned with determining what types of customers to recruit
@@ -81,23 +80,22 @@ business analytics and customer relationship management (CRM) to address
 this dominant issue. As well as creating customers, firms need to serve
 those already recruited. High quality service often requires frequent
 and reliable execution of multiple processes during manifold encounters
-with customers by a firm's many customer facing employees (e.g., a fast
-food store, an airline, a hospital). Consequently, business process
+with customers by a firm's many customer facing employees (e.g., a quick service restaurant, an airline, a hospital). Consequently, business process
 management (BPM) has grown in importance since the mid 1990s when there
 was a surge of interest in business process reengineering.
 
-We are in transition to a new era, sustainability, where attention
+We are in transition to a new era, **sustainability**, where attention
 shifts to assessing environmental impact because, after several
 centuries of industrialization, atmospheric CO~2~ levels have become
-alarmingly high. We are also reaching the limits of the planet's
-resources as its population now exceeds seven billion people. As a
+alarmingly high. We are also [exceeding the limits of the planet's
+resources](https://www.earthday.org) as global population  nears eight billion people. As a
 result, a new class of application is emerging, such as environmental
 management systems and UPS's telematics project.[^information-2] These
 new systems will also include, for example, support for understanding
-environmental impact through simulation of energy consuming and
+environmental impact through simulation of energy consumption and
 production systems, optimization of energy systems, and design of low
 impact production and customer service systems. Notice that dominant
-issues don't disappear but rather aggregate in layers, so tomorrow's
+issues don't disappear but rather aggregate in layers, so today's
 business will be concerned with survival, production, customer service,
 and sustainability. As a result, a firm's need for data never
 diminishes, and each new layer creates another set of data needs. The
@@ -119,9 +117,9 @@ accumulate from one generation to the next. Before writing, knowledge
 was confined by the limits of human memory.
 
 There is a need for a technology that can store knowledge for extended
-periods and support transport of written information. Storage medium has
+periods and support the transport of written information. Storage medium has
 advanced from clay tablets (4000 BCE), papyrus (3500 BCE), and parchment
-(2000 BCE) to paper (100 CE.). Written knowledge gained great impetus
+(2000 BCE) to paper (100 CE). Written knowledge gained great impetus
 from Johannes Gutenberg, whose achievement was a printing system
 involving movable metal type, ink, paper, and press. In less than 50
 years, printing technology diffused throughout most of Europe. In the
@@ -140,7 +138,7 @@ borders. Customers ignore national boundaries to buy products and
 services. In the borderless information age, the old ways of creating
 wealth have been displaced by intelligence, marketing, global reach, and
 education. Excelling in the management of data, information, and
-knowledge has become a prerequisite to corporate and national wealth.
+knowledge has become a prerequisite for corporate and national wealth.
 
 *Wealth creation*
 
@@ -166,7 +164,7 @@ worker as a printout.
 
 *Information systems eras*
 
-| Era | Focus                                                        | Period                | Technology                  | Networks                   |
+| Era | Focus  | Period   | Technology   | Networks    |
 |-----|--------------------------------------------------------------|-----------------------|-----------------------------|----------------------------|
 | 1   | Take information work to the computer                        | 1950s – mid-1970s     | Batch                       | Few data networks          |
 | 2   | Take information work to the employee                        | Mid-1970s – mid-1990s | Host/terminal Client/server | Spread of private networks |
@@ -189,10 +187,9 @@ reservation).
 
 The scale and complexity of era 3 is at least an order of magnitude
 greater than that of era 2. Nearly every company has far more customers
-than employees. For example, UPS, with an annual investment of more than
-\$1 billion in information technology and over 400,000 employees, is one
-of the world's largest employers. However, there are 11 million
-customers, over 25 times the number of employees, who are today
+than employees. For example, UPS, with an annual investment of billions in information systems and over 500,000 employees, is one
+of the world's largest employers. However, there are over 11 million
+customers, over 20 times the number of employees, who are
 electronically connected to UPS.
 
 Era 3 introduced direct electronic links between a firm and its
@@ -209,7 +206,7 @@ This brief history leads to the conclusion that the value IS creates is
 determined by whom an organization can reach, how it can reach them, and
 where and when it can reach them.
 
--   **Whom**. Whom an organization can contact determines whom it can
+-   **Who**. Who an organization can contact determines whom it can
     influence, inform, or transfer work to. For example, if a hotel can
     be contacted electronically by its customers, it can promote online
     reservations (transfer work to customers), and reduce its costs.
@@ -239,7 +236,7 @@ describes the concept that information can be rich or lean depending on
 the information delivery medium. Information class groups types of
 information by their key features.
 
-## Information hardness {.unnumbered}
+### Information hardness {.unnumbered}
 
 In 1812, the Austrian mineralogist Friedrich Mohs proposed a scale of
 hardness, in order of increasing relative hardness, based on 10 common
@@ -254,40 +251,20 @@ which comes from unidentified sources, is rife with uncertainty.
 
 *An information hardness scale*
 
-+---------+---------+-------------------------------------------------+
-| Mineral | S cale  | Data                                            |
-+:========+:=======:+:================================================+
-| Talc    | 1       | Unidentified source---rumors, gossip, and       |
-|         |         | hearsay                                         |
-+---------+---------+-------------------------------------------------+
-| Gypsum  | 2       | Identified non-expert source---opinions,        |
-|         |         | feelings, and ideas                             |
-+---------+---------+-------------------------------------------------+
-| Calcite | 3       | Identified expert source---predictions,         |
-|         |         | speculations, forecasts, and estimates          |
-+---------+---------+-------------------------------------------------+
-| F       | 4       | Unsworn testimony---explanations,               |
-| luorite |         | justifications, assessments, and                |
-|         |         | interpretations                                 |
-+---------+---------+-------------------------------------------------+
-| Apatite | 5       | Sworn testimony---explanations, justifications, |
-|         |         | assessments, and interpretations                |
-+---------+---------+-------------------------------------------------+
-| Or      | 6       | Budgets, formal plans                           |
-| t       |         |                                                 |
-| hoclase |         |                                                 |
-+---------+---------+-------------------------------------------------+
-| Quartz  | 7       | News reports, non-financial data, industry      |
-|         |         | statistics, and surveys                         |
-+---------+---------+-------------------------------------------------+
-| Topaz   | 8       | Unaudited financial statements, and government  |
-|         |         | statistics                                      |
-+---------+---------+-------------------------------------------------+
-| C       | 9       | Audited financial statements                    |
-| orundum |         |                                                 |
-+---------+---------+-------------------------------------------------+
+
+| Mineral | Scale  | Data                                            |
+|:---|:---:|:--|
+| Talc    | 1       | Unidentified source---rumors, gossip, and  hearsay      |
+| Gypsum  | 2       | Identified non-expert source---opinions, feelings, and ideas       |
+| Calcite | 3       | Identified expert source---predictions, speculations, forecasts, and estimates          |
+| Fluorite       | 4       | Unsworn testimony---explanations,justifications, assessments, and justifications, assessments, and interpretations             |
+| Apatite | 5       | Sworn testimony---explanations, justifications, assessments, and interpretations  |
+| Orthoclase      | 6       | Budgets, formal plans                           |
+| Quartz  | 7       | News reports, non-financial data, industry statistics, and surveys     |
+| Topaz   | 8       | Unaudited financial statements, and government statistics
+| Corundum       | 9       | Audited financial statements                    |
 | Diamond | 1 0     | Stock exchange and commodity market data        |
-+---------+---------+-------------------------------------------------+
+
 
 Audited financial statements are in the corundum zone. They are measured
 according to standard rules (known as "generally accepted accounting
@@ -315,12 +292,10 @@ information. Managers must rely on their judgment to assess information
 hardness.
 
 Although managers want hard information, there are many cases when it is
-not available. They compensate by seeking information from several
-different sources. Although this approach introduces redundancy, this is
-precisely what the manager seeks. Relatively consistent information from
-different sources is reassuring.
+not available from a single source. They compensate by seeking information from several different places.  Relatively consistent information from
+multiple sources is reassuring.
 
-## Information richness {.unnumbered}
+### Information richness {.unnumbered}
 
 Information can be described as rich or lean. It is richest when
 delivered face-to-face. Conversation permits immediate feedback for
@@ -336,18 +311,15 @@ communication media is shown in the following table.
 
 [^information-3]: *Daft, R. L., & Lengel, R. H. (1986). Organizational
     information requirements, media richness, and structural design.
-    Management Science*, 32(5), 554-571.
+    *Management Science*, 32(5), 554-571.
 
-+------------+------------+------------+-----------------+------------+
+
 | Richest    |            |            |                 | Leanest    |
-+:===========+============+============+=================+:===========+
-| Fac        | Telephone  | Personal   | Impersonal      | Numeric    |
-| e-to-face  |            | documents  | written         | documents  |
-|            |            |            | documents       |            |
-+------------+------------+------------+-----------------+------------+
+|---|---|---|---|---|
+| Face-to-face    | Telephone  | Personal documents  | Impersonal  documents    | Numeric documents   |
 
 Managers seek rich information when they are trying to resolve
-equivocality or ambiguity. It means that managers cannot make sense of a
+equivocality or ambiguity, which means that managers cannot make sense of a
 situation because they arrive at multiple, conflicting interpretations
 of the information. An example of an equivocal situation is a class
 assignment where some of the instructions are missing and others are
@@ -372,11 +344,11 @@ formal information systems that deliver lean information. Although this
 is their proper role, data managers must realize that they can deliver
 only a portion of the data required by decision makers.
 
-## Information classes {.unnumbered}
+### Information classes {.unnumbered}
 
-Information can be grouped into four classes: content, form, behavior,
+Information can be grouped into four categories: content, form, behavior,
 and action. Until recently, most organizational information fell into
-the first category.
+the first class.
 
 *Information classes*
 
@@ -397,13 +369,12 @@ content data are captured by a TPS.
 
 Form information describes the shape and composition of an object. For
 example, the form information of a car would define the dimensions and
-composition of every component in the car. Millions of bytes of data are
+composition of every component in it. Millions of bytes of data are
 needed to store the form of a car. CAD/CAM systems are used to create
 and store form information.
 
-Behavior information is used to predict the behavior of a physical
-object using simulation techniques, which typically require form
-information as input. Massive numbers of calculations per second are
+Behavior information is used to predict the responses of a physical
+object using simulation techniques. Such systems typically require a combination of input data and mathematical equations. Massive numbers of calculations per second are
 required to simulate behavior. For example, simulating the flight of a
 new aircraft design may require trillions of computations. Behavior
 information is often presented visually because the vast volume of data
@@ -419,7 +390,7 @@ action information in use.
 Organizations are goal-directed. They undergo continual change as they
 use their resources, people, technology, and financial assets to reach
 some future desired outcome. Goals are often clearly stated, such as to
-make a profit of \$100 million, win a football championship, or decrease
+make a profit of USD 100 million, win a football championship, or decrease
 the government deficit by 25 percent in five years. Goals are often not
 easily achieved, however, and organizations continually seek information
 that supports goal attainment. The information they seek falls into
@@ -433,7 +404,7 @@ The emergence of an information society also means that information
 provides dual possibilities for change. Information is used to plan
 change, and information is a medium for change.
 
-## Goal-setting information {.unnumbered}
+### Goal-setting information {.unnumbered}
 
 Organizations set goals or levels of desired performance. Managers need
 information to establish goals that are challenging but realistic. A
@@ -459,7 +430,7 @@ opportunities and avoid threats.
 Most of the information for long-term planning comes from sources
 external to the company. There are think tanks that analyze trends and
 publish reports on future conditions. Journal articles and books can be
-important sources of information about future events. There also will be
+important sources of information about future events. There will also  be
 a demand for some internal information to identify trends in costs and
 revenues. Major planning decisions, such as building a new plant, will
 be based on an analysis of internal data (use of existing capacity) and
@@ -484,7 +455,7 @@ Organizations need information to identify feasible, motivating, and
 challenging goals. Once these goals have been established, they need
 information on the extent to which these goals have been attained.
 
-## Gap information {.unnumbered}
+### Gap information {.unnumbered}
 
 Because goals are meant to be challenging, there is often a gap between
 actual and desired performance. Organizations use a number of mechanisms
@@ -496,10 +467,10 @@ and scorekeeping are two principal methods of providing gap information.
 Business conditions are continually changing because of competitors'
 actions, trends in consumer demand, and government actions. Often these
 changes are reflected in a gap between expectations and present
-performance. This gap is known as a problem.
+performance. This gap is often called a problem.
 
 To identify problems, managers use exception reports, which are
-generated only when conditions vary from the established goal or
+generated when conditions vary from the established goal or
 standard. Once a potential problem has been identified, managers collect
 additional information to confirm that a problem really exists. Once
 management has been alerted, the information delivery system needs to
@@ -557,7 +528,7 @@ stable.
 |              | Dollar value of receivables       |
 |              | Collections of receivables        |
 
-## Change information {.unnumbered}
+### Change information {.unnumbered}
 
 Accurate change information is very valuable because it enables managers
 to predict the outcome of various actions to close a gap with some
@@ -566,7 +537,7 @@ precise, and there are many variables that can influence the effect of
 any planned change. Nevertheless, organizations spend a great deal of
 time collecting information to support problem solving and planning.
 
-## Problem solution {.unnumbered}
+### Problem solution {.unnumbered}
 
 Once a concern has been identified, a manager seeks to find its cause. A
 decrease in sales could be the result of competitors introducing a new
@@ -578,7 +549,7 @@ economic recession, the manager might use a decision support system
 (DSS) to analyze the effect of a price decrease or a range of
 promotional activities.
 
-## Information as a means of change {.unnumbered}
+### Information as a means of change {.unnumbered}
 
 The emergence of an information society means that information can be
 used as a means of changing an organization's performance. Corporations
@@ -588,7 +559,7 @@ gain a competitive advantage. Further insights into the use of
 information as a change agent are gained by examining marketing,
 customer service, and empowerment.
 
-## Marketing {.unnumbered}
+### Marketing {.unnumbered}
 
 Marketing is a key strategy for changing organizational performance by
 increasing sales. Information has become an important component in
@@ -604,23 +575,22 @@ communications with customers. Broadcast media have been the traditional
 approach to communication. Advertisements are aired on television,
 placed in magazines, or displayed on a Web site. Database technology can
 be used to address customers directly. No longer just a mailing list,
-today's database is a memory of customer relationships, a record of
+today's database can be a memory of customer relationships, a record of
 every message and response between the firm and a customer. Some
 companies keep track of customers' preferences and customize
 advertisements to their needs. Leading online retailers now send
 customers only those emails for products for which they estimate there
 is a high probability of a purchase. For example, a customer with a
-history of buying jazz music is sent an email promoting jazz recordings
-instead of one featuring classical music.
+history of streaming jazz music is sent an email promoting a jazz concert in their city.
 
 The Web has significantly enhanced the value of database technology.
 Many firms now use a combination of a Web site and a DBMS to market
 products and service customers.
 
-## Customer Service {.unnumbered}
+### Customer Service {.unnumbered}
 
-Many American business leaders rank customer service as their most
-important goal for organizational success. Many of the developed
+Many business leaders consider customer service as a critical
+ goal for organizational success. Many of the developed
 economies are service driven. In the United States, services account for
 nearly 80 percent of the GNP and most of the new jobs. Many companies
 now compete for customers by offering superior customer service.
@@ -629,14 +599,14 @@ Information is frequently a key to this improved service.
 > ❓*Skill builder*
 >
 > For many businesses, information is the key to high-quality customer
-> service. Thus, some firms use information, and thus customer service,
+> service. Some firms use information, and thus customer service,
 > as a key differentiating factor, while others might compete on price.
 > Compare the electronics component of Web sites Amazon and Walmart. How
 > do they use price and information to compete? What are the
 > implications for data management if a firm uses information to
 > compete?
 
-## Empowerment {.unnumbered}
+### Empowerment {.unnumbered}
 
 Empowerment means giving employees greater freedom to make decisions.
 More precisely, it is sharing with frontline employees
@@ -679,12 +649,12 @@ contemplative analysis of information.
 
 Managers strongly prefer oral communication. They spend a great deal of
 time conversing directly or by telephone. Managers use interpersonal
-communication to establish networks, which they later use as a source of
-information and a way to make things happen. The continual flow of
+communication to establish networks and build social capital, which they later use as a source of
+information and a way to influence outcomes. The continual flow of
 verbal information helps them make sense of events and lets them feel
 the organizational pulse.
 
-Managers rarely use formal reporting systems. They do not spend their
+Managers rarely use formal reporting systems. They do not spend a lot of
 time analyzing computer reports or querying databases but resort to
 formal reports to confirm impressions, should interpersonal
 communications suggest there is a problem. Even when managers are
@@ -697,7 +667,7 @@ method of data gathering and dissemination.
 
 Managers have certain requirements of the information they receive.
 These expectations should shape a data management system's content and
-how data are processed.
+how data are processed and presented.
 
 Managers expect to receive information that is useful for their current
 task under existing business conditions. Unfortunately, managerial tasks
@@ -720,17 +690,17 @@ manager gains confidence in the information's accuracy.
 *Relationship of perceived information hardness to volume of information
 requested*
 
-![](Figures/Chapter%202/hardness-volume%20tradeoff.png){width="304"}
+![](Figures/Chapter%202/hardness-volume%20tradeoff.png)
 
 It is not unusual, therefore, to have a manager seek information from a
 database, a conversation with a subordinate, and a contact in another
 organization. If a manager gets essentially the same information from
-each source, she or he has the confirmation sought. This means each data
+each source, they have the confirmation they sought. This means each data
 management system should be designed to minimize redundancy, but
 different components of organizational memory can supply overlapping
 information.
 
-## Managers' needs for information vary accordingly with responsibilities {.unnumbered}
+### Managers' needs for information vary accordingly with responsibilities {.unnumbered}
 
 Operational managers need detailed, short-term information to deal with
 well-defined problems in areas such as sales, service, and production.
@@ -754,7 +724,7 @@ illustrated in the following figure.
 
 ![](Figures/Chapter%202/onion%20model.jpg)
 
-## Information satisficing {.unnumbered}
+### Information satisficing {.unnumbered}
 
 Because managers face making many decisions in a short period, most do
 not have the time or resources to collect and interpret all the
@@ -791,7 +761,6 @@ to the manager.
 |                       | Meeting                             |
 |                       | Report                              |
 |                       | Groupware                           |
-| Files                 | Management information system (MIS) |
 | Documents             | Web browser                         |
 |                       | E-mail attachment                   |
 | Images                | Image processing system (IPS)       |
@@ -826,8 +795,8 @@ information delivery. Indeed, managers show a strong preference for
 verbal exchange as a method for gathering information. This is not
 surprising because we are accustomed to oral information. This is the
 way we learned for thousands of years as a preliterate culture. Only
-recently have we learned to make decisions using spreadsheets and
-computer reports.
+recently have we learned to make decisions using
+computer reports and visuals.
 
 ### Voice mail {.unnumbered}
 
@@ -871,26 +840,7 @@ Groupware is a general term applied to a range of software systems
 designed to improve some aspect of group work. It is excellent for
 tapping soft information and the informal side of organizational memory.
 
-#### Management information system {.unnumbered}
-
-Management information systems are a common method of delivering
-information from data management systems. A preplanned query is often
-used to extract the data. Managers who have developed some skills in
-using a query language might create custom reports as needed.
-
-Preplanned reports often contain too much or too detailed information,
-because they are designed in anticipation of a manager's needs.
-Customized reports do not have these shortcomings, but they are often
-more expensive and time consuming because they need to be prepared by an
-analyst.
-
-#### Web {.unnumbered}
-
-Word processing, desktop publishing, or HTML editors are used for
-preparing documents that are disseminated by placing them on a Web
-server for convenient access and sharing.
-
-#### Image processing system {.unnumbered}
+### Image processing system {.unnumbered}
 
 An image processing system (IPS) captures data using a scanner to
 digitize an image. Images in the form of letters, reports,
@@ -898,31 +848,27 @@ illustrations, and graphics have always been an important type of
 organizational memory. An IPS permits these forms of information to be
 captured electronically and disseminated.
 
-#### Computer-aided design {.unnumbered}
+### Computer-aided design {.unnumbered}
 
 Computer-aided design (CAD) is used extensively to create graphics. For
 example, engineers use CAD in product design, and architects use it for
 building design. These plans are a part of organizational memory for
 designers and manufacturers.
 
-#### Geographic information system {.unnumbered}
+### Geographic information system {.unnumbered}
 
 Many cities uses a geographic information system (GIS) to store
 graphical data about roads, utilities, and services. This information is
 another form of organizational memory.
 
-#### Decision support system {.unnumbered}
+### Decision support system {.unnumbered}
 
-A decision support system (DSS) is frequently a computer-based
-mathematical model of a problem. DSS software, available in a range of
-packages, permits the model and data to be retrieved and executed. Model
-parameters can be varied to investigate alternatives.
+A DSS is frequently a computer-based mathematical model of a problem. DSS software permits the model and data to be retrieved and executed. Model parameters can be varied to investigate alternatives.
 
 ## Information integration {.unnumbered}
 
 A fundamental problem for most organizations is that their memory is
-fragmented across a wide variety of formats and technologies. Too
-frequently, there is a one-to-one correspondence between an
+fragmented across a wide variety of formats and technologies. Sometimes, there is a one-to-one correspondence between an
 organizational memory for a particular functional area and the software
 delivery system. For example, sales information is delivered by the
 sales system and production information by the production system. This
@@ -932,7 +878,7 @@ into a single report.
 
 A common solution is to develop software, such as a Web application,
 that integrates information from a variety of delivery systems. An
-important task of this apl is to integrate and present information from
+important task of this app is to integrate and present information from
 multiple organizational memories. Recently, some organizations have
 created vast integrated data stores---data warehouses--- that are
 organized repositories of organizational data.
@@ -950,7 +896,7 @@ organized repositories of organizational data.
 The performance of many organizations is determined more by their
 cognitive capabilities and knowledge than their physical assets. A
 nation's wealth is increasingly a result of the knowledge and skills of
-its citizens, rather than its natural resources and industrial plants.
+its citizens (human capital), rather than its natural capital and industrial plants.
 Currently, about 85 percent of all jobs in America and 80 percent of
 those in Europe are knowledge-based.
 
@@ -976,7 +922,7 @@ why you should learn data management skills. Managers know when and why
 to apply technology, whereas technicians know what to apply and how to
 apply it. Finally, you are probably an IS major, and your coursework is
 inculcating the values and norms of the IS profession so that you care
-why problems are solved using information technology.
+why problems are solved using information systems.
 
 Organizations tend to spend more on developing cognitive skills than
 they do on fostering creativity. This is, unfortunately, the wrong
@@ -1009,7 +955,7 @@ to represent an entity, because this knowledge is made explicit.
 However, you will find it much harder to model data, because this skill
 comes with practice. Ideally, you should develop several models under
 the guidance of an experienced modeler, such as your instructor, who can
-pass on his or her tacit knowledge.
+pass on their tacit knowledge.
 
 ### Summary {.unnumbered}
 
@@ -1027,7 +973,7 @@ systems. They expect to receive information that meets their current,
 ever changing needs. Operational managers need short-term information.
 Senior executives require mainly long-term information but still have a
 need for both short- and medium-term information. When managers face
-time constraints, they collect only enough information to make a
+time constraints, they  forced to collect only enough information to make a
 satisfactory decision. Organizational memory should be integrated to
 provide one interface to an organization's information stores.
 
