@@ -13,7 +13,7 @@ editor_options:
 >
 > David Lehman, End of the Word, 1991
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
@@ -1074,7 +1074,7 @@ consider the open content textbook (en.wikibooks.org/wiki/XML), which
 was created by students and is under continual revision. You might want
 to contribute to this book.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Electronic data exchange became more important with the introduction of
 the Internet. SGML, a precursor of XML, defines the structure of
@@ -1112,12 +1112,12 @@ database.
 | (HTML)                         |                                     |
 +--------------------------------+-------------------------------------+
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Watson, R. T., and others. 2004. *XML: managing data exchange*:\
 [[http://en.wikibooks.org/wiki/XML\_-\_Managing_Data_Exchange]{.ul}](http://en.wikibooks.org/wiki/XML_-_Managing_Data_Exchange).
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  A business has a telephone directory that records the first and last
     name, telephone number, and e-mail address of everyone working in

@@ -11,7 +11,7 @@ editor_options:
 >
 > Antoine de Saint-Exupéry in *Flight to Arras*
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to create a well-formed,
 high-fidelity data model.
@@ -903,7 +903,7 @@ every assembly must have associated products.
 
 ![](Figures/Chapter%207/rec-m-and-m-modality.png)
 
-#### Summary {.unnumbered}
+##### Summary {.unnumbered}
 
 Modality adds additional information to a data model, and once you have
 grasped the fundamental ideas of entities and relationships, it is quite
@@ -1625,7 +1625,7 @@ The data modeler, who generally gets involved in the project from its
 earliest days, can provide continuity through the various phases and
 ensure the system solves the problem.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Data modeling is both a technique for modeling data and its
 relationships and a graphical representation of a database. It
@@ -1674,7 +1674,7 @@ integrate, and complete.
 | Generalization        | Synonym                 |
 | High-fidelity image   |                         |
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Carlis, J. V. 1991. *Logical data structures*. Minneapolis, MN:
 University of Minnesota.
@@ -1682,7 +1682,7 @@ University of Minnesota.
 Hammer, M. 1990. Reengineering work: Don't automate, obliterate.
 *Harvard Business Review* 68 (4):104--112.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 ### Short answers {.unnumbered}
 

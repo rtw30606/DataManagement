@@ -10,7 +10,7 @@ editor_options:
 >
 > K. Lewin, 1945
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
@@ -796,7 +796,7 @@ relational DBMS must be able to manage databases entirely through its
 relational capacities. In other words, a DBMS is either totally
 relational or it is not relational.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 The relational model developed as a result of recognized shortcomings of
 hierarchical and network DBMSs. Codd created a strong theoretical base
@@ -861,12 +861,12 @@ either totally relational or it is not relational.
 | Integrity rules           | Union                      |
 | Intersect                 | View updating rule         |
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Codd, E. F. 1982. Relational database: A practical foundation for
 productivity. *Communications of the ACM* 25 (2):109--117.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  What reasons does Codd give for adopting the relational model?
 

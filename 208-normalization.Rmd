@@ -11,7 +11,7 @@ editor_options:
 >
 > Chinese Proverb
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
@@ -626,7 +626,7 @@ models, and it is similar to the representation style of MySQL
 Workbench. Also, if you have learned one data modeling method, you can
 quickly adapt to the nuances of other methods.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Normalization gradually converts a file design into normal form by
 successive application of rules to move the design from first to fifth
@@ -666,7 +666,7 @@ aim to improve database design.
 | Fourth normal form (1NF)        | Third normal form (3NF)             |
 | Full functional dependency      |                                     |
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Chen, P. 1976. The entity-relationship model---toward a unified view of
 data. *ACM Transactions on Database Systems* 1 (1):9--36.
@@ -674,7 +674,7 @@ data. *ACM Transactions on Database Systems* 1 (1):9--36.
 Kent, W. 1983. A simple guide to five normal forms in relational
 database theory. *Communications of the ACM 26 (2): 120-125.*
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 ### Short answers {.unnumbered}
 

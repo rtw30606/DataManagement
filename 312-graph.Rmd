@@ -12,7 +12,7 @@ editor_options:
 > Clay Shirky, *Cognitive Surplus: Creativity and Generosity in a
 > Connected Age*, 2010
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
@@ -829,7 +829,7 @@ change?[^graph-6]
     Practical Examples in Apache Spark and Neo4j:* O\\'Reilly Media.
     ISBN: 1492047651
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 A labeled property graph database consists of nodes and relationships.
 Both nodes and relationships can have properties. A relationship is
@@ -849,7 +849,7 @@ relationships between nodes.
 | Graph | Property     |
 | Label | Relationship |
 
-## References and additional resources {.unnumbered}
+### References and additional resources {.unnumbered}
 
 Francis, N., Green, A., Guagliardo, P., Libkin, L., Lindaaker, T.,
 Marsault, V., . . . Taylor, A. (2018). Cypher: An evolving query
@@ -869,7 +869,7 @@ code.[^graph-7] The graph model for NorthWinds follows the questions.
 
 [^graph-7]: <https://www.richardtwatson.com/dm6e/reader/northwind.cypher>
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Write Cypher code for the following queries.
 

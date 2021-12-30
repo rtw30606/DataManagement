@@ -13,7 +13,7 @@ editor_options:
 >
 > Noam Chomsky, *Syntactic Structures*
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will:
 
@@ -895,7 +895,7 @@ software with possible R versions. If you work in this area, you will
 need to continually scan for new software that extends the power of
 existing methods and adds new text mining capabilities.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Language enables cooperation through information exchange. Natural
 language processing (NLP) focuses on developing and implementing
@@ -957,7 +957,7 @@ retrieval are all areas of research.
 | Preprocessing                     | Word frequency analysis                   |
 | Punctuation removal               | Word length filtering                     |
 
-## References {.unnumbered}
+### References {.unnumbered}
 
 Feinerer, I. (2008). An introduction to text mining in R. *R News*,
 8(2), 19-22.
@@ -971,7 +971,7 @@ topic models. *Journal of Statistical Software*, 40(13), 1-30.
 Ingersoll, G., Morton, T., & Farris, L. (2012). *Taming Text: How to
 find, organize and manipulate it*. Greenwich, CT: Manning Publications.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Take the recent annual reports for UPS[^textmining-8] and convert
     them to text using an online service, such as

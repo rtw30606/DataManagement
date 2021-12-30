@@ -2,9 +2,9 @@
 # title: "Data Management"
 # author: "Richard T. Watson"
 # date: "`r Sys.Date()`"
-# output: 
+# output:
 #   html_document:
-#     toc: False 
+#     toc: False
 #     toc_depth: 1
 ---
 

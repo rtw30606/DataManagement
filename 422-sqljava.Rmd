@@ -12,7 +12,7 @@ editor_options:
 >
 > James Gosling, 2000
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
@@ -726,7 +726,7 @@ with various implementations of the relational database model (e.g.,
 Oracle, SQL Server, MySQL). As this chapter has demonstrated, with the
 help of a few examples, JDBC can be readily understood and applied.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Java is a platform-independent application development language. JDBC
 enables programs that are DBMS independent. SQL statements can be
@@ -743,13 +743,13 @@ processing. COMMIT and ROLLBACK are used for transaction processing.
 | IDE                    | Transaction processing            | 
 | Java                   |                                   |
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Barnes, D. J., and M. Kölling. 2005. Objects first with Java : a
 practical introduction using Blue J. 2nd ed. Upper Saddle River, NJ:
 Prentice Hall.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Write a Java program to run a parameterized query against the
     ClassicModels database. For example, you might report the sum of

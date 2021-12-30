@@ -12,7 +12,7 @@ editor_options:
 >
 > Goethe, 1810
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will, for a given situation, be able
 to:
@@ -1291,7 +1291,7 @@ data storage devices, the designer needs to be aware of the trade-offs.
 Various devices and media have both strengths and weaknesses, and these
 need to be considered.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 The data deluge is increasing the importance of data management for
 organizations. It takes considerably longer to retrieve data from a hard
@@ -1379,7 +1379,7 @@ techniques, some data are lost during compression.
 | Hashing                      | Unicode                                                      |
 | Index                        | VSAM                                                         |
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Why is a disk drive considered a bottleneck?
 

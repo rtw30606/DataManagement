@@ -4,7 +4,7 @@
 >
 > Daniel Webster
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
@@ -343,7 +343,7 @@ INTERSECT
 >
 > List the items that contain the words "Hat", "Helmet", or "Stetson" in their names
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 There can be a many-to-many (m:m) relationship between entities, which is represented by creating an associative entity and two 1:m relationships. An associative entity stores data about an m:m relationship. The join operation can be extended from two tables to three or more tables. EXISTS tests whether a table has at least one row that meets a specified condition. NOT EXISTS tests whether all rows in a table do not satisfy a specified condition. Both EXISTS and NOT EXISTS can return *true* or *false*. The relational operation divide, also known as *forall*, can be translated into a double negative. It is represented in SQL by a query containing two NOT EXISTS statements. Set operations enable the results of queries to be combined.
 
@@ -357,7 +357,7 @@ There can be a many-to-many (m:m) relationship between entities, which is repres
 | EXISTS                 | Universal quantifier            |
 | INTERSECT              |                                 |
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Draw data models for the following situations. In each case, think about the names you give each entity:
 

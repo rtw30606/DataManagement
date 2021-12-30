@@ -20,7 +20,7 @@ db <- dbConnect(RMySQL::MySQL(),
 >
 > George Moore, *The Bending of the Bough*, 1900
 
-### Learning Objectives {.unnumbered}
+#### Learning Objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
@@ -968,7 +968,7 @@ selected. SQL can be used to query local, remote, and distributed
 databases. Indeed, the adoption of client/server technology has seen a
 widespread increase in the demand for SQL skills.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Data can be stored and processed locally or remotely. Combinations of
 these two options provide the basic architecture options: remote job
@@ -1031,7 +1031,7 @@ processing at the cost of maintaining the replicas.
 | Hardware independence              | Two-tier architecture          |
 | Horizontal fragmentation           | Vertical fragmentation         |
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Child, J. (1987). Information technology, organizations, and the
 response to strategic challenges. *California Management Review, 30*(1),
@@ -1044,7 +1044,7 @@ understanding the seven capabilities of cloud computing. *MIS Executive,
 Watson, R. T., Wynn, D., & Boudreau, M.-C. (2005). JBoss: The evolution
 of professional open source software. *MISQ Executive, 4*(3), 329-341.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  How does client/server differ from cloud computing?
 

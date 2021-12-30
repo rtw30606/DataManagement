@@ -10,7 +10,7 @@ editor_options:
 >
 > Henry Clay, U.S. congressman and senator
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will:
 
@@ -368,7 +368,7 @@ t <- read_delim(url, delim=',')
 You must define the separator for data fields with the delim keyword
 (e.g., for a tab use `delim='t')`.
 
-#### Learning about a file {.unnumbered}
+##### Learning about a file {.unnumbered}
 
 After reading a file, you might want to learn about its contents. First,
 you can click on the file's name in the top-right window. This will open
@@ -878,7 +878,7 @@ R is also a programming language. You might find that in some
 situations, R provides a quick method for reshaping files and performing
 calculations.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 R is a free software environment for statistical computing, data
 visualization, and data analytics. RStudio is a commonly used integrated
@@ -915,11 +915,11 @@ many packages available.
 | Matrix     | Vector  |
 | Package    |         |
 
-## References {.unnumbered}
+### References {.unnumbered}
 
 Wickham, H., & Grolemund, G. (2017). R for data science: O'Reilly.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Access
     [[richardtwatson.com/data/manheim.txt]{.ul}](http://richardtwatson.com/data/manheim.txt)

@@ -10,7 +10,7 @@ editor_options:
 >
 > Spanish proverb
 
-### Learning Objectives {.unnumbered}
+#### Learning Objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
@@ -743,7 +743,7 @@ the stock portfolio.
 > when discussing the correlated subquery? \| *Find those stocks where
 > the quantity is greater than the average for that country.*
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Entities are related to other entities by relationships. The 1:m
 (one-to-many) relationship occurs frequently in data models. An
@@ -782,7 +782,7 @@ specified columns or rows.
 | HAVING                  | Virtual table                  |
 | Insert anomalies        |                                |
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Draw data models for the following situations. In each case, make
     certain that you show the attributes and feasible identifiers:

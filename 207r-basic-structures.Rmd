@@ -408,7 +408,7 @@ and this would be a good choice of name for the foreign key.
 
 ![](Figures/Reference%201/r1-flextree.png)
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 Write the SQL CREATE statements for the following data models.
 

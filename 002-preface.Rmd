@@ -6,35 +6,33 @@ fundamental ways.
 modeling and SQL. The market seeks graduates who have these fundamental
 skills. Time and again, students who have completed my data management
 class have told me how these skills have been invaluable in their first
-and subsequent jobs. The intention is to place great emphasis on the
-core skills of data management. The consequence is that there is a
-better match between the skills students develop and those the market
-needs. This means that students find this text highly relevant.
+and subsequent jobs. The book places great emphasis on the
+core skills of data management. Consequently, there is a
+better match between the skills you develop and those the market
+needs. This means you will find this text highly relevant.
 
 *Second*, the treatments of data modeling and SQL are intertwined
 because my database teaching experience indicates that students more
-readily understand the intent of data modeling when they grasp the
+readily understand the purpose of data modeling when they grasp the
 long-term goal---querying a well-designed relational database. The
 double helix, upward, intertwined, spiraling of data modeling and SQL is
 a unique pedagogical feature. Classroom testing indicates it is a
 superior method of teaching compared to handling data modeling and SQL
-separately. Students quickly understand the reason for data modeling and
+separately. You will quickly understand the reason for data modeling and
 appreciate why it is a valuable skill. Also, rapid exposure to SQL means
-students gain hands-on experience more quickly.
+you gain hands-on experience more quickly.
 
 *Third*, the book is broader than most database books. Databases are one
-component of an expansive organizational memory. Information systems
-professionals need to develop a wide perspective of data management if
-they are to comprehend fully the organizational role of information
+component of an expansive organizational memory. You need to develop a wide perspective of data management if you are to comprehend fully the organizational role of information
 systems.
 
 In essence, the book is deeper where it matters---data modeling and
-SQL---and broader to give students a managerial outlook and an
+SQL---and broader to give you a managerial outlook and an
 understanding of the latest technological advancements. Information is a
 key resource for modern organizations. It is a critical input to
 managerial tasks. Because managers need high-quality information to
-manage change in a turbulent, global environment, many organizations
-have established systems for storing and retrieving data, the raw
+manage change in a turbulent, global environment, nearly every organizations
+has established systems for storing and retrieving data, the raw
 material of information. These storage and retrieval systems are an
 organization's memory. The organization relies on them, just as
 individuals rely on their personal memory, to be able to continue as a
@@ -42,7 +40,7 @@ going concern.
 
 The central concern of information systems management is to design,
 build, and maintain information delivery systems. Information systems
-management needs to discover its organization's information
+managemers needs to discover their organization's information
 requirements, which includes the needs of its customers, so that it can
 design systems to serve these demands. It must merge a system's design
 and information technology to build applications that provide the
@@ -55,50 +53,47 @@ An information delivery system has two components: data and processes.
 This book concentrates on data, which is customarily thought of as a
 database. I deliberately set out to extend this horizon, however, by
 including all forms of organizational data stores because I believe
-students need to understand the role of data management that is aligned
+you need to understand the role of data management that is aligned
 with current practice. In my view, data management is the design and
 maintenance of computer-based organizational memory. Thus, you will find
 chapters on XML and organizational intelligence technologies.
 
 The decision to start the book with a managerial perspective arises from
-the belief that successful information systems practice is based on
+the observation that successful information systems practice is based on
 matching managerial needs, social system constraints, and technical
-opportunities in an ecologically sound way. I want readers to appreciate
-the big picture before they become immersed in the intricacies of data
+opportunities in an ecologically sound way. I want you to appreciate
+the big picture before you become immersed in the intricacies of data
 modeling and SQL.
 
 The second section of the book provides in-depth coverage of data
 modeling and SQL. Data modeling is the foundation of database quality. A
 solid grounding in data modeling principles and extensive practice are
 necessary for successful database design. In addition, this section
-exposes students to the full power of SQL.
+exposes you to the full power of SQL.
 
 I intend this book to be a long-term investment. There are useful
 reference sections for data modeling and SQL. The data modeling section
 details the standard structures and their relational mappings. The SQL
 section contains an extensive list of queries that serves as a basis for
 developing other SQL queries. The purpose of these sections is to
-facilitate pattern matching. For example, a student with an SQL query
-that is similar to a previous problem can rapidly search the SQL
-reference section to find the closest match. The student can then use
+facilitate pattern matching. For example, if you have an SQL query
+that is similar to a previous problem you can rapidly search the SQL
+reference section to find the closest match. You can then use
 the model answer as a guide to formulating the SQL query for the problem
 at hand. These reference sections are another unique teaching feature
-that will serve students well during the course and in their careers.
+that will serve you well during the course and in your career.
 
 The third section has chapters on R, a statistics and graphics package,
-which provides the foundation necessary for the new chapters on data
+which provides the foundation necessary for the  chapters on data
 visualization, text mining, cluster computing, and dashboards. These
-chapters provide today's students with the skills they need to work in
-topical areas such as social media analytics and big data. These
-chapters are included in this third section, Advanced Data Management,
-which also covers spatial and temporal data, XML, and organizational
-intelligence.
+chapters provide you with the skills they need to work in
+topical areas such as data analytics. The third section, Advanced Data Management, which also covers spatial and temporal data, XML, and organizational intelligence, and greaph databases
 
 The fourth and final section examines the management of organizational
 data stores. It covers data structures and storage, data processing
 architectures, SQL and Java, data integrity, and data administration.
 
-A student completing this text will
+As a result of completing this text you will
 
 -   have a broad, managerial perspective of an organization's need for a
     memory;
@@ -113,6 +108,8 @@ A student completing this text will
 -   understand the purpose of XML and be able to design an XML schema,
     prepare an XML document, and write an XML stylesheet;
 
+-   be able to use Cypher to query a graph database
+
 -   have a sound understanding of database architectures and their
     managerial implications;
 
@@ -124,17 +121,17 @@ A student completing this text will
 
 -   understand the fundamentals of data administration;
 
-My goal is to give the reader a data management text that is innovative,
+My goal is to give you a data management text that is innovative,
 relevant, and lively. I trust that you will enjoy learning about
 managing data in today's organization.
 
 ## Supplements {.unnumbered}
 
 Accompanying this book are an instructor's manual and an extensive [Web
-site](https://www.richardtwatson.com/dm6e/) that provides 
--   slides in PowerPoint format; 
--   all relational tables in the book in electronic format; 
--   code for examples in the book; 
+site](https://www.richardtwatson.com/open/) that provides
+-   slides in PowerPoint format;
+-   all relational tables in the book in electronic format;
+-   code for examples in the book;
 -   answers to many of the exercises;
 -   additional exercises.
 
@@ -142,7 +139,7 @@ site](https://www.richardtwatson.com/dm6e/) that provides
 
 I thank my wife, Clare, and son, Ned, for help with prior editions of
 the book. I appreciate the efforts of Christopher Gauthier in converting
-the prior edition to Bookdown.
+the prior edition to [Bookdown](https://bookdown.org) format.
 
 Richard T. Watson
 
@@ -151,4 +148,3 @@ Athens, Georgia
 \newpage
 \tableofcontents
 \newpage
-

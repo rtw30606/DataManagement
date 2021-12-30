@@ -10,7 +10,7 @@ editor_options:
 >
 > Machiavelli, *The Prince*, 1513
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
@@ -1059,7 +1059,7 @@ dual responsibility of administering databases that keep the
 organization in business today and tomorrow. They must now master the
 organizational intelligence technologies described in this chapter.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Organizations recognize that data are a key resource necessary for the
 daily operations of the business and its future success. Recent
@@ -1103,12 +1103,12 @@ aggregation reporting.
 | Information systems cycle           | Variable dimension                       |
 | K-nearest-neighbor method           | Verification                             |
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Codd, E. F., S. B. Codd, and C. T. Salley. 1993. Beyond decision
 support. *Computerworld*, 87--89.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Identify data captured by a TPS at your university. Estimate how
     much data are generated in a year.

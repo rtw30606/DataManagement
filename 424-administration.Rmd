@@ -11,7 +11,7 @@ editor_options:
 >
 > Adlai Stevenson, speech given in Los Angeles, September 11, 1952
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
@@ -1433,7 +1433,7 @@ data. Rather, it is now critical for many to insert to insert data
 management and exploitation into the strategic thinking of the top
 management team.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Companies are finding that data management is so critical to their
 future that they need a Chief Data Officer (CDO). Eight different types
@@ -1506,7 +1506,7 @@ performance monitoring tools, CASE tools, and groupware.
 | (DDLC)                             |                                 |
 +------------------------------------+---------------------------------+
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Bostrom, R. P. 1989. Successful application of communication techniques
 to improve the systems development process. *Information & Management*
@@ -1523,7 +1523,7 @@ Quarterly* 16 (3):293--311.
 Redman, T. C. 2001. Data quality: *The field guide*. Boston: Digital
 Press.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Why do organizations need to manage data?
 

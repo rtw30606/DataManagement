@@ -11,7 +11,7 @@ editor_options:
 >
 > Edward Tufte, *The Visual Display of Quantitative Information*
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will:
 
@@ -565,7 +565,7 @@ which has an associated book, titled *Visualize This*. If you become
 heavily involved in visualization, we suggest you read some of the works
 of Edward Tufte. One of his books is listed in the references.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Because of evolutionary pressure, humans became strong visual
 processors. Consequently, graphics can be very effective for presenting
@@ -585,7 +585,7 @@ data can be selected from a database and displayed on a Google map.
 | Grammar of graphics    | Smooth      |
 | Graph                  |             |
 
-## References {.unnumbered}
+### References {.unnumbered}
 
 Kabacoff, R. I. (2009). *R in action: data analysis and graphics with
 R*. Greenwich, CT: Manning Publications.
@@ -602,7 +602,7 @@ visualization, and statistics*. Indianapolis, IN: Wiley.
 Wilkinson, L. (2005). *The grammar of graphics* (2nd ed.). New York:
 Springer.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Given the following data on the world's cargo carrying capacity in
     millions of dead weight tons (dwt)[^dataviz-4] for the given years,

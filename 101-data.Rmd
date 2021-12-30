@@ -6,10 +6,10 @@
 >
 > Thomas Watson, Jr., former chairman of IBM[^data-1]
 
-[^data-1]: Quinn, J. B. (1994). Appraising intellectual assets. \*The
-    McKinsey Quarterly\*(2), 90-96.
+[^data-1]: Quinn, J. B. (1994). Appraising intellectual assets. *The
+    McKinsey Quarterly* (2), 90-96.
 
-## Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
@@ -26,15 +26,15 @@ Students completing this chapter will
 ## Introduction {.unnumbered}
 
 Imagine what would happen to a bank that forgot who owed it money or a
-magazine that lost the names and addresses of its subscribers. Both
+digital newspaper that lost the account details of its subscribers. Both
 would soon be in serious difficulty, if not out of business.
 Organizations have data management systems to record the myriad of
 details necessary for transacting business and making informed
 decisions. Since the birth of agriculture, societies and organizations
 have recorded data. The system may be as simple as carving a notch in a
 stick to keep a tally, or as intricate as modern database technology. A
-memory system can be as personal as a to-do list or as public as a
-library.
+memory system can be as personal as a to-do list or as public as
+[Wikipedia](https://en.wikipedia.org/).
 
 The management of organizational data, generally known as data
 management, requires skills in designing, using, and managing the memory
@@ -78,8 +78,7 @@ to select today's data.
 
 Address books also have a standard format. They typically contain
 predefined spaces for storing address details (e.g., name, company,
-phone, and email). Access is often supported by a set of buttons for
-each letter of the alphabet and a search engine.
+phone, and email). Rapid access is supported by a search engine.
 
 *An address book*
 
@@ -109,14 +108,14 @@ features common to all data management systems:
 -   There is a structure for storing data. For instance, the address
     book has labeled spaces for entering pertinent data.
 
--   The interface organized for rapid data entry and retrieval. A
+-   The interface is organized for rapid data entry and retrieval. A
     calendar is stored in date and time sequence so that the data space
     for any appointment for a particular day can be found quickly.
 
 -   The selection of a data management system frequently requires a
     trade-off decision. In these examples, the trade-off is screen
     dimensions versus the amount of data that can be seen without
-    scrolling. For example, you will notice the address book screen is
+    scrolling. For example, you will notice the address book sample screen is
     truncated and will need to be scrolled to see full address details.
 
 > ❓*Skill builder*
@@ -170,7 +169,7 @@ understand what the compromises entail. They must know the key questions
 to ask when evaluating choices.
 
 When we move from individual to organizational memory, some other
-factors come into play. To understand these factors, we need to review
+factors come into play. To understand them, we need to review
 the different types of information systems. The automation of routine
 business transactions was the earliest application of information
 technology to business. A transaction processing system (TPS) handles
@@ -180,25 +179,25 @@ sorted, summarized, and rearranged gave birth to the notion of a
 management information system (MIS). Furthermore, it was recognized that
 when internal data captured by a TPS is combined with appropriate
 external data, the raw material is available for a decision support
-system (DSS). Online analytical processing (OLAP), data mining, business
-intelligence (BI), and machine learning are techniques analyzing data
+system (DSS). Online analytical processing (OLAP), data mining (DM), business
+intelligence (BI), and machine learning (ML) are techniques analyzing data
 captured by business transactions and gathered from other sources (these
-systems are covered in detail in Chapter 14). The purpose of each of
+systems are covered in detail in the chapter on *Organizational Intelligence*). The purpose of each of
 these systems is described in the following table and their
 interrelationship can be understood by examining the information systems
 cycle.
 
 *Types of information systems*
 
-|      | Type                          | System’s purpose                                                                                            |
+|      | Type                           | System’s purpose                                                                                            |
 | ---- | :----------------------------- | :----------------------------------------------------------------------------------------------------------- |
-| TPS  | Transaction processing system | Collect and store data from routine transactions                                                            |
-| MIS  | Management information system | Convert data from a TPS into information for planning, controlling, and managing an organization            |
-| DSS  | Decision support system       | Support managerial decision making by providing models for processing and analyzing data                    |
-| BI   | Business intelligence         | Gather, store, and analyze data to improve decision making                                                  |
-| OLAP | Online analytical processing  | Provide a multidimensional view of data                                                                     |
-|      | Data mining                   | Use of statistical analysis and artificial intelligence techniques to identify hidden relationships in data |
-|      | Machine learning              | Using software to make decisions or recommendations traditionally made by humans.                           |
+| TPS  | Transaction processing system  | Collect and store data from routine transactions                                                            |
+| MIS  | Management information system  | Convert data from a TPS into information for planning, controlling, and managing an organization            |
+| DSS  | Decision support system        | Support managerial decision making by providing models for processing and analyzing data                    |
+| BI   | Business intelligence          | Gather, store, and analyze data to improve decision making                                                  |
+| OLAP | Online analytical processing   | Provide a multidimensional view of data                                                                     |
+| DM   | Data mining                    | Use of statistical analysis and artificial intelligence techniques to identify hidden relationships in data |
+| ML   | Machine learning               | Using software to make decisions or recommendations traditionally made by humans.                           |
 
 ### The information systems cycle {.unnumbered}
 
@@ -268,7 +267,7 @@ recognize some desirable attributes of data.
 
 #### Shareable {.unnumbered}
 
-Organizations contain many decision makers. There are occasions when
+Organizations contain many decision makers. There are many occasions when
 more than one person will require access to the same data at the same
 time. For example, in a large bank it would not be uncommon for two
 customer representatives simultaneously to want data on the latest rate
@@ -285,7 +284,7 @@ pigeons were used to relay messages by the Egyptians and Persians 3,000
 years ago. The telephone revolutionized business and social life because
 it rapidly transmitted voice data. Computers have changed the nature of
 many aspects of business because they enable the transport of text,
-visuals, voice and video.
+visuals, voice, and video.
 
 Today, transportability is more than just getting data to a decision
 maker's desk. It means getting product availability data to a
@@ -293,7 +292,7 @@ salesperson in a client's office or advising a delivery driver, en
 route, of address details for an urgent parcel pickup. The general
 notion is that decision makers should have access to relevant data
 whenever and wherever required, although many organizations are still
-some way from reaching this target.
+some way from fully achieving this goal.
 
 #### Secure {.unnumbered}
 
@@ -374,14 +373,14 @@ decision making. Its contents must be shareable, secure, and accurate.
 Ideally, the clients of a data management system must be able to get
 timely and relevant data when and where required. A major challenge for
 data management professionals is to create data management systems that
-meet these criteria. Unfortunately, many existing systems fail in this
+meet these criteria. Unfortunately, some existing systems fail in this
 regard, though we can understand some of the reasons why by reviewing
 the components of existing organizational memory systems.
 
 ### Components of organizational memory {.unnumbered}
 
-An organization's memory resides on a variety of media in a variety of
-ways. It is in people, standard operating procedures, roles,
+An organization's memory resides on various media in a variety of
+ways. It is in people's minds, standard operating procedures, roles,
 organizational culture, physical storage equipment, and electronic
 devices. It is scattered around the organization like pieces of a jigsaw
 puzzle designed by a berserk artist. The pieces don't fit together, they
@@ -417,26 +416,26 @@ organizational memory.
 Organizational culture is the shared beliefs, values, attitudes, and
 norms that influence the behavior and expectations of each person in an
 organization. As a long-lived and stable memory system, culture
-determines acceptable behavior and influences decision making.
+establishes acceptable behavior and influences decision making.
 
 People develop skills for doing their particular job---learning what to
 do, how to do it, and who can help them get things done. For example,
 they might discover someone in employee benefits who can handle
 personnel problems or a contact in a software company who can answer
-questions promptly. These social networks, which often take years to
-develop, are used to make things happen and to learn about the business
-environment. Despite their high value, they are rarely documented, at
-least not beyond an address book, and they are typically lost when a
+questions promptly. This social capital, which often take years to
+develop, is used to make things happen and to learn about the business
+environment. Despite its high value, social capital is rarely documented, at
+least not beyond an address book, and much is typically lost when a
 person leaves an organization.
 
 **Conversations** are an important method for knowledge workers to
 create, modify, and share organizational memory and to build
-relationships and social networks. Discussions with customers are a key
+relationships and social capital. Discussions with customers are a key
 device for learning how to improve an organization's products and
 services and learning about competitors. The ***conversational
 company*** can detect change faster and react more rapidly. The
 telephone, instant message, e-mail, coffee machine, cocktail hour, and
-cafeteria are all devices for promoting conversation and creating
+cafeteria are all devices for promoting conversation and creating social
 networks. Some firms deliberately create structures for supporting
 dialog to make the people component of organizational memory more
 effective.
@@ -446,7 +445,7 @@ Processing a credit application, selecting a marketing trainee, and
 preparing a departmental budget are typical procedures that are clearly
 defined by many organizations. They are described on Web pages, computer
 programs, and job specifications. They are the way an organization
-remembers how to perform routine activities.
+remembers how to perform routine activities. This organizational capital is a critical resource.
 
 Successful people learn how to use organizational memory. They learn
 what data are stored where, how to retrieve them, and how to put them
@@ -456,7 +455,7 @@ review in a trade journal, and supply the phone number and e-mail
 address of the firm's technical expert for that product. People's recall
 of how to use organizational memory is the core component of
 organizational memory. Academics call this **metamemory**; people in
-business call it ***l**earning the ropes*. New employees spend a great
+business call it *learning the ropes*. New employees spend a great
 deal of time building their metamemory so that they can use
 organizational memory effectively. Without this knowledge,
 organizational memory has little value.
@@ -469,12 +468,12 @@ the meaning of data in subsequent rows.
 
 *A price list*
 
-| Product               | Price |
-|:----------------------|:------|
-| Pocket knife--Nile    | 4.5   |
-| Compass               | 10    |
-| Geopositioning system | 500   |
-| Map measure           | 4.9   |
+| Product               | Price   |
+|:----------------------|--------:|
+| Pocket knife          |   4.50  |
+| Compass               |  10.00  |
+| Geopositioning system | 100.00  |
+| Map measure           |   4.95  |
 
 A table is a general form that describes a variety of other structures
 used to store data. Computer-based files are tables or can be
@@ -505,7 +504,7 @@ that organizations want to remember can be stored in tabular form.
 
 A **document**---of which reports, manuals, brochures, and memos are
 examples---is a common medium for storing organizational data. Although
-documents may be subdivided into chapters, sections, paragraphs, and
+documents may be subdivided into sections, chapters, paragraphs, and
 sentences, they lack the regularity and discipline of a table. Each row
 of a table has the same number of columns, but each paragraph of a
 document does not have the same number of sentences.
@@ -520,7 +519,7 @@ usually processed linearly.
 Hypertext, the familiar linking technology of the Web, supports
 nonlinear document processing. A hypertext document has built-in
 linkages between sections of text that permit the reader to jump quickly
-from one part to another. As a result, readers can find data they
+from one part to another, or to a different document. As a result, readers can find data they
 require more rapidly.
 
 Although hypertext is certainly more reader-friendly than a flat,
@@ -529,7 +528,7 @@ between the various parts of the text and to other documents. Someone
 familiar with the topic has to decide what should be linked and then
 establish these links. While it takes the author more time to prepare a
 document this way, the payoff is the speed at which readers of the
-document can find what they want.
+document can find what they want. A diligent author can save a great deal of time for many readers.
 
 #### Multimedia {.unnumbered}
 
@@ -538,24 +537,23 @@ clips. Automotive company Web sites have video clips of cars, music
 outlets provide sound clips of new releases, and clothing companies have
 online catalogs displaying photos of their latest products. Maintaining
 a Web site, because of the many multimedia objects that some sites
-contain, has become a significant data management problem for some
+contain, has become a significant data management activity for some
 organizations. Consider the different types of data that a news outfit
-such as the British Broadcasting Corporation (BBC) has to store to
+such as the [Australian Broadcasting Corporation](https://www.abc.net.au) has to store to
 provide a timely, informative, and engaging Web site.
 
 #### Images {.unnumbered}
 
 Images are visual data: photographs and sketches. Image banks are
-maintained for several reasons. *First**,*** images are widely used for
+maintained for several reasons. *First**, images are widely used for
 identification and security. Police departments keep fingerprints and
 mug shots. *Second*, images are used as evidence. Highly valuable items
 such as paintings and jewelry often are photographed for insurance
 records. *Third*, images are used for advertising and promotional
 campaigns, and organizations need to maintain records of material used
 in these ventures. Image archiving and retrieval are essential for
-mail-order companies, which often produce several photo-laden catalogs
-every year. *Fourth*, some organizations specialize in selling images
-and maintain extensive libraries of clip art and photographs.
+online retailers. *Fourth*, some organizations specialize in selling images
+and maintain extensive libraries of clip art and photographs (e.g., [Getty Images](https://www.gettyimages.com)).
 
 #### Graphics {.unnumbered}
 
@@ -576,7 +574,7 @@ widget does not have embedded data and contains insufficient data to
 manufacture the product. An industrial spy will receive far more for an
 engineering plan than for a photograph of a widget.
 
-A geographic information systems **(**GIS**)** is a specialized
+A **geographic information systems** (GIS) is a specialized
 graphical storage system for geographic data. The underlying structure
 of a GIS is a map on which data are displayed. A power company can use a
 GIS to store and display data about its electricity grid and the
@@ -588,11 +586,11 @@ organizations that have geographically dispersed resources.
 
 #### Audio {.unnumbered}
 
-News organizations, such as National Public Radio (NPR), provide audio
+News organizations, such as [National Public Radio](https://www.npr.org) (NPR) in the U.S., provide audio
 versions of their new stories for replay. Some firms conduct a great
 deal of their business by phone. In many cases, it is important to
 maintain a record of the conversation between the customer and the
-firm's representative. The Royal Hong Kong Jockey Club, which covers
+firm's representative. The [Royal Hong Kong Jockey Club](https://www.hkjc.com/home/english/index.aspx), which covers
 horse racing gambling in Hong Kong, records all conversations between
 its operators and customers. Phone calls are stored on a highly
 specialized voice recorder, which records the time of the call and other
@@ -604,8 +602,8 @@ an operator can play back the original conversation.
 A video clip can give a potential customer additional detail that cannot
 be readily conveyed by text or a still image. Consequently, some auto
 companies use video and virtual reality to promote their cars. On a
-visit to Toyota's Web site, you can view video clips of the latest
-models or rotate an image to view a car from multiple angles.
+visit to [Rivian's Web site](https://rivian.com), you can view video clips of the latest
+models in action.
 
 #### Models {.unnumbered}
 
@@ -613,7 +611,9 @@ Organizations build mathematical models to describe their business.
 These models, usually placed in the broader category of DSS, are then
 used to analyze existing problems and forecast future business
 conditions. A mathematical model can often produce substantial benefits
-to the organization.
+to the organization. Some of these models are now so detailed, they are a *digital twin* of a product or organization and support extensive exploration of possible product or business scenarios.
+
+**Machine learning** can be used to create decision making models when an organization has a large set of data of prior decisions and their associated factors. The system *learns* by iteratively fitting a large number of mathematical equations to the data so that the model generated accurately predicts prior decisions.
 
 #### Knowledge {.unnumbered}
 
@@ -661,23 +661,15 @@ firms.
 
 *Problems with organizational data management systems*
 
-+-----------------+--------------------------------------------------+
-| Redundancy      | Same data are stored in different systems        |
-+:================+:=================================================+
-| Lack of data    | Data are poorly managed                          |
-| control         |                                                  |
-+-----------------+--------------------------------------------------+
+| Problem        | Examples                                     |
+|----------------|-------------------------------------------------|
+| Redundancy  | Same data are stored in different systems        |
+| Lack of data  control | Data are poorly managed   |
 | Poor interface  | Data are difficult to access                     |
-+-----------------+--------------------------------------------------+
-| Delays          | There are frequently delays following requests   |
-|                 | for reports                                      |
-+-----------------+--------------------------------------------------+
-| Lack of reality | Data management systems do not reflect the       |
-|                 | complexity of the real world                     |
-+-----------------+--------------------------------------------------+
-| Lack of data    | Data are dispersed across different systems      |
-| integration     |                                                  |
-+-----------------+--------------------------------------------------+
+| Delays          | There are frequently delays following requests for reports  |                                     |
+| Lack of reality | Data management systems do not reflect the  complexity of the real world      |
+| Lack of data integration   | Data are dispersed across different systems      |
+
 
 ### Redundancy {.unnumbered}
 
@@ -685,7 +677,7 @@ In many cases, data management systems have grown haphazardly. As a
 result, it is often the situation that the same data are stored in
 several different memories. The classic example is a customer's address,
 which might be stored in the sales reporting system, accounts receivable
-system, and the salesperson's address book. The danger is that when the
+system, and a salesperson's address book. The danger is that when the
 customer changes address, the alteration is not recorded in all systems.
 Data redundancy causes additional work because the same item must be
 entered several times. Redundancy causes confusion when what is
@@ -701,14 +693,13 @@ personnel department to manage human resources and a treasury to handle
 cash. The IS department looks after data captured by the computer
 systems it operates, but there are many other data stores scattered
 around the organization. Data are stored everywhere in the organization
-(e.g., on personal computers and departmental servers), but there is a
+(e.g., on tablets and the cloud), but there is a
 general lack of data management. This lack is particularly surprising,
 since many pundits claim that data are a key competitive resource.
 
 ### Poor interface {.unnumbered}
 
-Too frequently, the potential clients of data management systems have
-been deterred by an unfriendly interface. The computer interface for
+Too frequently, the potential clients of data management systems are deterred by an unfriendly interface. The computer interface for
 accessing a data store is sometimes difficult to remember for the
 occasional inquirer. People become frustrated and give up because their
 queries are rejected and error messages are unintelligible.
@@ -741,7 +732,7 @@ systems do not always reflect reality.
 In this example, the reality is that the personal checking, mortgage,
 and credit card accounts, and certificates of deposit all belong to one
 customer. If the bank's data management system does not record this
-relationship, then it does not mimic reality. This makes it impossible
+relationship, then it does not mimic reality. This might make it impossible
 to retrieve a single customer's data with a single query.
 
 A data management system must meet the decision making needs of
@@ -755,20 +746,19 @@ elements, then some managerial queries might not be answerable quickly.
 
 There is a general lack of data integration in most organizations. Not
 only are data dispersed in different forms of organizational memory
-(e.g., files and image stores), but even within one storage format there
-is often a lack of integration. For example, many organizations maintain
-file systems that are not integrated. Appropriate files in the
-accounting system may not be linked to the production system.
+(e.g., files and image stores). Many organizations maintain
+file systems that are not interconnected. Appropriate files in the
+accounting system might not be linked to the production system.
 
 This lack of integration will be a continuing problem for most
-organizations for two important reasons. ***First,*** earlier computer
+organizations for two important reasons. ***First***, earlier computer
 systems might not have been integrated because of the limitations of
 available technology. Organizations created simple file systems to
-support a particular function. Many of these systems are still in use.
+support a particular function. Many of these legacy systems are still in use.
 ***Second***, integration is a long-term goal. As new systems are
 developed and old ones rewritten, organizations can evolve integrated
-systems. It would be too costly and disruptive to try to solve the data
-integration problem in one step.
+systems. It is likely  too costly and disruptive to try to solve the data
+integration problem in one or a few step.
 
 Many data management problems can be solved with present technology.
 Data modeling and relational database technology, topics covered in
@@ -784,32 +774,28 @@ manage their data so that they could remember a wide variety of facts
 necessary to conduct their affairs. The recent history of computer-based
 data management systems is depicted in the following figure.
 
-*Data management systems timeline*
-
-![](Figures/Chapter%201/timeline2.png)
-
-File systems were the earliest form of data management. Limited by the
+**File systems** were the earliest form of data management. Limited by the
 sequential nature of magnetic tape technology, it was very difficult to
 integrate data from different files. The advent of magnetic disk
 technology in the mid-1950s stimulated development of integrated file
-systems, and the hierarchical database management system (DBMS) emerged
-in the 1960s, followed some years later by the network DBMS. The spatial
-database, or geographic information system (GIS), appeared around 1970.
+systems, and the **hierarchical database management system** (DBMS) emerged
+in the 1960s, followed some years later by the **network DBMS**. The spatial
+database, or **geographic information system** (GIS), appeared around 1970.
 Until the mid-1990s, the hierarchical DBMS, mainly in the form of IBM's
-DL/I product, was the predominant technology for managing data. It has
-now been replaced by the relational DBMS, a concept first discussed by
+DL/I product, was the predominant technology for managing data. It was
+  replaced by the **relational DBMS**, a concept first discussed by
 Edgar Frank Codd in an academic paper in 1970 but not commercially
 available until the mid-1970s. In the late 1980s, the notion of an
-object-oriented DBMS, primed by the ideas of object-oriented
+**object-oriented DBMS**, primed by the ideas of object-oriented
 programming, emerged as a solution to situations not handled well by the
 relational DBMS. Also around this time, the idea of modeling a database
-as a graph was introduced. Towards the end of the 20th century, XML was
+as a graph resulted in **graph database technology**. Towards the end of the 20th century, **XML** was
 developed for exchanging data between computers, and it can also be used
 as a data store as you will learn in section 3. More recently,
-tdistributed files system, such as Hadoop, have emerged as alternative
+distributed files system, such as **Hadoop** and **Blockchain**, have emerged as alternative
 models for data management. Other recent data management systems include
-graph and NoSQL databases. While these are beyond the scope of an
-introductory data management text, if you decided to pursue a career in
+**NoSQL databases** (Not Only SQL). While these are beyond the scope of an
+introductory data management text, if you decide to pursue a career in
 data management you should learn about their advantages and the
 applications to which they are well-suited. For example, graph databases
 are a good fit for the analysis of social networks.
@@ -827,8 +813,7 @@ unsummarized, and unanalyzed facts. Information is data that have been
 processed into a meaningful form.
 
 A list of a supermarket's daily receipts is data, but it is not
-information, because it is too detailed to be very useful. A summary of
-the data that gives daily departmental totals is information, because
+information, because it is too detailed to be very useful for decision making. A summary of the data that gives daily departmental totals is information, because
 the store manager can use the report to monitor store performance. The
 same report might be data for a regional manager, because it is too
 detailed for meaningful decision making at the regional level.
@@ -841,7 +826,7 @@ detailed for another. A manager's notion of information can change
 quickly, however. When a problem is identified, a manager might request
 finer levels of detail to diagnose the problem's cause. Thus, what was
 previously data suddenly becomes information because it helps solve the
-problem. When the problem is solved, the information reverts to data.
+problem.
 There is a need for information systems that let managers customize the
 processing of data so that they always get information. As their needs
 change, they need to be able to adjust the detail of the reports they
@@ -854,9 +839,9 @@ managers can interpret information and use it in decision making. In
 addition, knowledge is the capacity to recognize what information would
 be useful for making decisions. For example, a sales manager might know
 that requesting a report of profitability by product line is useful when
-she has to decide whether to employ a new product manager. Thus, when a
+they has to decide whether to employ a new product manager. Thus, when a
 new information system is delivered, managers need to be taught what
-information the system can deliver and what that information means.
+information the system can deliver what that information means, and how it might be used.
 
 The relationship between data, information, and knowledge is depicted in
 the following figure. A knowledgeable person requests information to
@@ -886,7 +871,7 @@ management is not a new problem. It has existed since the early days of
 civilization and will be an enduring problem for organizations and
 societies.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Organizations must maintain a memory to process transactions and make
 decisions. Organizational data should be shareable, transportable,
@@ -902,25 +887,29 @@ information is data processed into a meaningful form. Knowledge is the
 capacity to use information.
 
 | Key terms and concepts              |                                     |
-|:------------------------------------|-------------------------------------|
+|-------------------------------------|-------------------------------------|
 | Data                                | Internal memory                     |
 | Database management system (DBMS)   | Knowledge                           |
-| Data management                     | Machine learning                    |
-| Data mining                         | Management information system (MIS) |
+| Data management                     | Machine learning (ML)               |
+| Data mining (DM)                    | Management information system (MIS) |
 | Data security                       | Metamemory                          |
 | Decision making                     | Online analytical processing (OLAP) |
 | Decision quality                    | Organizational culture              |
 | Decision support system (DSS)       | Organizational memory               |
-| External memory                     | Standard operating procedures       |
-| Geographic information system (GIS) | Tables                              |
-| Information                         | Transaction processing system (TPS) |
+| Digital twin                        | Standard operating procedures       |
+| External memory                     | Tables                              |
+| Geographic information system (GIS) | Transaction processing system (TPS) |
+| Information                         |                                     |
 
-### References and additional readings {.unnumbered}
+#### References and additional readings {.unnumbered}
 
 Davenport, T. H. (1998). Putting the enterprise into the enterprise
 system. *Harvard Business Review*, 76(4), 121-131.
 
-### Exercises {.unnumbered}
+Watson, R. T. (2020). [*Capital, Systems and Objects: The Foundation and Future of Organizations*](https://link.springer.com/book/10.1007/978-981-15-9418-2). Singapore: Springer
+
+
+#### Exercises {.unnumbered}
 
 1.  What are the major differences between internal and external memory?
 
@@ -933,7 +922,7 @@ system. *Harvard Business Review*, 76(4), 121-131.
 
 5.  Discuss the memory systems you use. How do they improve your
     performance? What are the shortcomings of your existing systems? How
-    can you improve them?
+    could you improve them?
 
 6.  Describe the most "organized" person you know. Why is that person so
     organized? Why haven't you adopted some of the same methods? Why do
@@ -985,7 +974,7 @@ system. *Harvard Business Review*, 76(4), 121-131.
     analytics" and access the sites of publications such as
     [[Computerworld]{.ul}](http://www.computerworld.com/). Identify the
     purpose of each system. How does the system improve organizational
-    performance? What are the attributes of the technology that make it
+    productivity? What are the attributes of the technology that make it
     useful? Describe any trade-offs the organization might have made.
     Identify other organizations in which the same technology might be
     applied.

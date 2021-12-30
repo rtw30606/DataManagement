@@ -6,7 +6,7 @@
 > Davenport, T. H. (1994). Saving IT's soul: human-centered information
 > management. *Harvard Business Review,* 72(2), 119-131.
 
-## Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
@@ -1011,7 +1011,7 @@ comes with practice. Ideally, you should develop several models under
 the guidance of an experienced modeler, such as your instructor, who can
 pass on his or her tacit knowledge.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Information has become a key foundation for organizational growth. The
 information society is founded on computer and communications
@@ -1047,12 +1047,12 @@ provide one interface to an organization's information stores.
 | Information hardness             | System understanding (know why)      |
 | Information integration          | Tacit knowledge                      |
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Quinn, J. B., P. Anderson, and S. Finkelstein. 1996. Leveraging
 intellect. *Academy of Management Executive* 10 (3):7-27.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  From an information perspective, what is likely to be different
     about the customer service era compared to the forthcoming

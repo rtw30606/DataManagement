@@ -11,7 +11,7 @@ editor_options:
 >
 > Charles Lamb, 1810.
 
-## Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
@@ -673,7 +673,7 @@ databases without specifying time-varying criteria. SQL:2011, the
 seventh revision of the SQL standard, has improved support for temporal
 data.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Spatial database technology stores details about items that have
 geometric features. It supports additional data types to describe these
@@ -698,7 +698,7 @@ and measured as an instant or as an interval.
 | Map                                 | Valid time       |
 | R-tree                              |                  |
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Gibson, Rich, and Schuyler Erle. 2006. *Google maps hacks*. Sebastopol,
 CA: O'Reilly.
@@ -707,7 +707,7 @@ Rigaux, P., M. O. Scholl, and A. Voisard. 2002. *Spatial databases: with
 application to GIS*, The Morgan Kaufmann series in data management
 systems. San Francisco: Morgan Kaufmann Publishers.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  What circumstances will lead to increased use of spatial data?
 

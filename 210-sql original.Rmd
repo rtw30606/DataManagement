@@ -10,7 +10,7 @@ editor_options:
 >
 > Sir Thomas Malory, *Le Morte D'Arthur*, 1470
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will have a detailed knowledge of SQL.
 
@@ -1871,7 +1871,7 @@ consistent, and SQL code is highly portable. Standardization was
 relatively easy when focused on the storage and retrieval of numbers and
 characters. Objects have made standardization more difficult.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Structured Query Language (SQL), a widely used relational database
 language, has been adopted as a standard by ANSI and ISO. It is a data
@@ -1952,12 +1952,12 @@ that enhance its usefulness.
 | Foreign key                      | UPDATE                            |
 | GRANT                            | View                              |
 
-## References and additional readings {.unnumbered}
+### References and additional readings {.unnumbered}
 
 Date, C. J. 2003. *An introduction to database systems*. 8th ed.
 Reading, MA: Addison-Wesley.
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  Why is it important that SQL was adopted as a standard by ANSI and
     ISO?

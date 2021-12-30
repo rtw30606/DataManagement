@@ -10,7 +10,7 @@ editor_options:
 >
 > Baltasar Gracián, *The Art of Worldly Wisdom*, 1647
 
-## Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
@@ -592,7 +592,7 @@ SELECT b.proddesc, b.prodcost FROM a JOIN assembly
 >
 > How many lens cleaning cloths are there in the animal photography kit?
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Relationships can be one-to-one and recursive. A recursive relationship
 is within a single entity rather than between entities. Recursive

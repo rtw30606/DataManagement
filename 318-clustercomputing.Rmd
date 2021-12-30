@@ -13,7 +13,7 @@ editor_options:
 >
 > Donald E. Knuth, *Literate Programming*, 1984
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will:
 
@@ -513,7 +513,7 @@ t_tbl %>%
 
 [^clustercomputing-9]: [http://www.richardtwatson.com/data/electricityprices.csv](http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv)
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 Big data is a paradigm shift to new file structures, such as HDFS and
 RDD, and algorithms for the parallel processing of large volumes of
@@ -556,13 +556,13 @@ computation.
 | HDFS              | Speed layer         |
 | Immutable data    |                     |
 
-#### References and additional readings {.unnumbered}
+##### References and additional readings {.unnumbered}
 
 Lam, C. (2010). *Hadoop in action*: Manning Publications Co.
 
 Marz, N., & Warren, J. (2012). *Big Data*: Manning Publications.
 
-### Exercises {.unnumbered}
+#### Exercises {.unnumbered}
 
 1.  Write Spark code for the following situations.
 

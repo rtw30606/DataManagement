@@ -15,7 +15,7 @@ editor_options:
 
 [^dashboards-1]: <http://articles.latimes.com/2013/apr/18/news/la-paloma-picasso-discusses-new-olive-leaf-collection-for-tiffany-co-20130418>
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 Students completing this chapter will:
 
@@ -463,7 +463,7 @@ online
 [[documentation]{.underline}](http://rpackages.ianhowson.com/cran/shinydashboard/)
 and examples to learn more about creating dashboards.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 A dashboard is a web page or mobile app screen that is designed to
 present important information in an easy to comprehend and primarily
@@ -478,11 +478,11 @@ conjunction with RStudio.
 | Header                  | UI function           |
 | Server function         | User-interface (ui)   |
 
-### References {.unnumbered}
+#### References {.unnumbered}
 
 Few, S. (2006). *Information dashboard design*: O\'Reilly.
 
-### Exercises {.unnumbered}
+#### Exercises {.unnumbered}
 
 1.  Create a dashboard to show the current conditions and temperatures
     in both Fahrenheit and Celsius at a location. Your will need the

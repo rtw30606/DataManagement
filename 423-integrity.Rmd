@@ -11,7 +11,7 @@ editor_options:
 >
 > Samuel Johnson, ***Rasselas***, 1759
 
-### Learning objectives {.unnumbered}
+#### Learning objectives {.unnumbered}
 
 After completing this chapter, you will
 
@@ -1440,7 +1440,7 @@ queries**, one or more authorized queries that collectively violate
 privacy. One approach to preventing tracker queries is to set a lower
 bound on the number of rows on which a query can report.
 
-## Summary {.unnumbered}
+### Summary {.unnumbered}
 
 The management of organizational data is driven by the joint goals of
 availability and integrity. Availability deals with making data
@@ -1546,7 +1546,7 @@ designed to reveal individual-level data.
 | Ensuring confidentiality  | Xlock                      |
 | GRANT                     |                            |
 
-## Exercises {.unnumbered}
+### Exercises {.unnumbered}
 
 1.  What are the three goals of maintaining organizational memory
     integrity?

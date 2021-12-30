@@ -29,23 +29,23 @@ these maps initially may be hard to read, and so you may need to consult
 them several times before you understand the landscape you are about to
 enter.
 
-The first map is based on the Newell-Simon model[^1] of the human
+The first map is based on the Newell-Simon model[^1-section-201] of the human
 information processing system, which shows that humans receive input,
 process it, and produce output. The processing is done by a processor,
 which is linked to a memory that stores both data and processes. The
 processor component retrieves both data and processes from memory.
 
-[^1]: Newell, A., & Simon, H. A. (1972). Human problem solving.
+[^1-section-201]: Newell, A., & Simon, H. A. (1972). Human problem solving.
     Englewood Cliffs, NJ: Prentice-Hall.
 
-![](Figures/Section%201/Simon-Newell.png)
+![](Figures/Section%201/Simon Newell.png)
 
 To understand this model, consider a person arriving on a flight who has
 agreed to meet a fellow traveler in the terminal. She receives a text
 message to meet her friend at B27. The message is input to her human
 information processing system. She retrieves the process for
 interpreting the message (i.e., decoding that B27 means terminal B and
-gate 27) and finds the terminal and gate. The person then walks to the
+gate 27). The person then walks to the
 terminal and gate, the output. Sometimes these processes are so well
 ingrained in our memory that we never think about retrieving them. We
 just do them automatically.
@@ -62,11 +62,11 @@ The original model of human information processing can be extended to
 include external memory, for storing data and processes, and external
 processors, for executing processes.
 
-***Missing this image***
+![](Figures/Section%201/augmented Simon Newell.png)
 
 This model of augmented human information processing translates directly
 to an organizational setting. Organizations collect inputs from the
-environment: market research, customer complaints, and competitor
+environment: market research, customer tweets, and competitor
 actions. They process these data and produce outputs: sales campaigns,
 new products, price changes, and so on. The following figure gives an
 example of how an organization might process data. As a result of some
