@@ -1001,7 +1001,7 @@ intellect. *Academy of Management Executive* 10 (3):7-27.
 ### Exercises {.unnumbered}
 
 1.  From an information perspective, what is likely to be different
-    about the customer service era compared to the forthcoming
+    about the customer service era compared to the
     sustainability era?
 
 2.  How does an information job differ from an industrial job?
@@ -1023,8 +1023,7 @@ intellect. *Academy of Management Executive* 10 (3):7-27.
 
 10. What sorts of information do senior managers want?
 
-11. Describe the differences between the way managers handle hard and
-    soft information.
+11. Describe the differences between the way managers handle hard and soft information.
 
 12. What is information satisficing?
 
@@ -1040,28 +1039,24 @@ intellect. *Academy of Management Executive* 10 (3):7-27.
 
 18. Could you develop a test for the hardness of a piece of information?
 
-19. Is very soft information worth storing in formal organizational
-    memory? If not, where might you draw the line?
+19. Is very soft information worth storing in formal organizational memory? If not, where might you draw the line?
 
-20. If you had just failed your database exam, would you use rich or
-    lean media to tell a parent or spouse about the result?
+20. If you had just failed your database exam, would you use rich or lean media to tell a parent or spouse about the result?
 
-21. Interview a businessperson to determine his or her firm's critical
-    success factors (CSFs). Remember, a CSF is something the firm must
+21. Interview a businessperson to determine his or her firm's critical success factors (CSFs). Remember, a CSF is something the firm must
     do right to be successful. Generally a firm has about seven CSFs.
-    For the firm's top three CSFs, identify the information that will
-    measure whether the CSF is being achieved.
+    For the firm's top three CSFs, identify the information that will measure whether the CSF is being achieved.
 
-22. If you were managing a fast-food store, what information would you
-    want to track store performance? Classify this information as
+22. If you were managing a quick service restaurant, what information would you
+    want to track performance? Classify this information as
     short-, medium-, or long-term.
 
-23. Interview a manager. Identify the information that person uses to
+23. Interview a manager. Identify the information they use to
     manage the company. Classify this information as short-, medium-, or
     long-term information. Comment on your findings.
 
 24. Why is organizational memory like a data warehouse? What needs to be
-    done to make good use of this data warehouse?
+    done to make good use of a data warehouse?
 
 25. What information are you collecting to help determine your career or
     find a job? What problems are you having collecting this
