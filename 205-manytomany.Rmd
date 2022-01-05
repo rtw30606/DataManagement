@@ -1,17 +1,25 @@
+```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
+library(DBI)
+library(RMySQL)
+db <- dbConnect(RMySQL::MySQL(),
+                  dbname = "Text",
+                  host = "www.richardtwatson.com",
+                  user="student",
+                  password = "student")
+```
+
 # The Many-to-Many Relationship
 
 > *Fearful concatenation of circumstances.*
 >
 > Daniel Webster
 
-#### Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
 -   model a many-to-many relationship between two entities;
-
 -   define a database with a many-to-many relationship;
-
 -   write queries for a database with a many-to-many relationship.
 
 ## The many-to-many relationship {.unnumbered}
@@ -58,11 +66,11 @@ You might find it useful to think of the m:m relationship as two 1:m relationshi
 >
 > Two girls named Sarah Lee Ferguson were born on May 3, 1959. The U.S. government considered them one and the same and issued both the same Social Security number (SSN), a nine-digit identifier of U.S. residents. Now Sarah Lee Ferguson Boles and Sarah Lee Ferguson Johnson share the same SSN.[^manytomany-1]
 >
-> Mrs. Boles became aware of her SSN twin in 1987 when the Internal Revenue Service claimed there was a discrepancy in her reported income Because SSN is widely used as an attribute or identifier in many computer systems, Mrs. Boles encountered other incidents of mistaken identity. Some of Mrs. Johnson's purchases appeared on Mrs. Boles' credit reports.
+> Mrs. Boles became aware of her SSN twin in 1987 when the Internal Revenue Service claimed there was a discrepancy in her reported income Because SSN is used as an identifier in IRS systems. Mrs. Boles encountered other incidents of mistaken identity. Some of Mrs. Johnson's purchases appeared on Mrs. Boles' credit reports.
 >
 > In late 1989, the Social Security Administration notified Mrs. Boles that her original number was given to her in error and she had to provide evidence of her age, identity, and citizenship to get a new number. When Mrs. Boles got her new SSN, it is likely she had to also get a new driver's license and establish a new credit history.
 
-[^manytomany-1]: "Two women share a name, birthday, and S.S. number!" Athens Daily News, January 29 1990, 7A. Also, see \> <https://www.computerworld.com/article/3004659/a-tale-of-two-women-same-birthday-same-social-security-number-same-big-data-mess.html>
+[^manytomany-1]: "Two women share a name, birthday, and S.S. number!" Athens Daily News, January 29 1990, 7A. Also, see <https://www.computerworld.com/article/3004659/a-tale-of-two-women-same-birthday-same-social-security-number-same-big-data-mess.html>
 
 ## Creating a relational database with an m:m relationship {.unnumbered}
 
@@ -72,57 +80,57 @@ Conversion of the foregoing data model results in the three tables following. No
 
 *Tables sale, lineitem, and item*
 
-| [saleno]{.ul} | saledate   | saletext                                       |
-|:--------------|:-----------|:-----------------------------------------------|
-| 1             | 2020-01-15 | Scruffy Australian---called himself Bruce.     |
-| 2             | 2020-01-15 | Man. Rather fond of hats.                      |
-| 3             | 2020-01-15 | Woman. Planning to row Atlantic---lengthwise!  |
-| 4             | 2020-01-15 | Man. Trip to New York---thinks NY is a jungle! |
-| 5             | 2020-01-16 | Expedition leader for African safari.          |
+| *saleno | saledate   | saletext                                       |
+|:---------|:-----------|:-----------------------------------------------|
+| 1        | 2020-01-15 | Scruffy Australian---called himself Bruce.     |
+| 2        | 2020-01-15 | Man. Rather fond of hats.                      |
+| 3        | 2020-01-15 | Woman. Planning to row Atlantic---lengthwise!  |
+| 4        | 2020-01-15 | Man. Trip to New York---thinks NY is a jungle! |
+| 5        | 2020-01-16 | Expedition leader for African safari.          |
 
-| [lineno]{.ul} | lineqty | lineprice | [*saleno*]{.ul} | *itemno* |
-|:--------------|--------:|----------:|----------------:|---------:|
-| 1             |       1 |      4.50 |               1 |        2 |
-| 1             |       1 |     25.00 |               2 |        6 |
-| 2             |       1 |     20.00 |               2 |       16 |
-| 3             |       1 |     25.00 |               2 |       19 |
-| 4             |       1 |      2.25 |               2 |        2 |
-| 1             |       1 |    500.00 |               3 |        4 |
-| 2             |       1 |      2.25 |               3 |        2 |
-| 1             |       1 |    500.00 |               4 |        4 |
-| 2             |       1 |     65.00 |               4 |        9 |
-| 3             |       1 |     60.00 |               4 |       13 |
-| 4             |       1 |     75.00 |               4 |       14 |
-| 5             |       1 |     10.00 |               4 |        3 |
-| 6             |       1 |      2.25 |               4 |        2 |
-| 1             |      50 |     36.00 |               5 |       10 |
-| 2             |      50 |     40.50 |               5 |       11 |
-| 3             |       8 |    153.00 |               5 |       12 |
-| 4             |       1 |     60.00 |               5 |       13 |
-| 5             |       1 |      0.00 |               5 |        2 |
+| *lineno | lineqty | lineprice | \**saleno* | *itemno* |
+|:---------|--------:|----------:|--------------:|---------:|
+| 1        |       1 |      4.50 |             1 |        2 |
+| 1        |       1 |     25.00 |             2 |        6 |
+| 2        |       1 |     20.00 |             2 |       16 |
+| 3        |       1 |     25.00 |             2 |       19 |
+| 4        |       1 |      2.25 |             2 |        2 |
+| 1        |       1 |    500.00 |             3 |        4 |
+| 2        |       1 |      2.25 |             3 |        2 |
+| 1        |       1 |    500.00 |             4 |        4 |
+| 2        |       1 |     65.00 |             4 |        9 |
+| 3        |       1 |     60.00 |             4 |       13 |
+| 4        |       1 |     75.00 |             4 |       14 |
+| 5        |       1 |     10.00 |             4 |        3 |
+| 6        |       1 |      2.25 |             4 |        2 |
+| 1        |      50 |     36.00 |             5 |       10 |
+| 2        |      50 |     40.50 |             5 |       11 |
+| 3        |       8 |    153.00 |             5 |       12 |
+| 4        |       1 |     60.00 |             5 |       13 |
+| 5        |       1 |      0.00 |             5 |        2 |
 
-| [itemno]{.ul} | itemname              | itemtype | itemcolor |
-|:--------------|:----------------------|:---------|:----------|
-| 1             | Pocket knife---Nile   | E        | Brown     |
-| 2             | Pocket knife---Avon   | E        | Brown     |
-| 3             | Compass               | N        | ---       |
-| 4             | Geopositioning system | N        | ---       |
-| 5             | Map measure           | N        | ---       |
-| 6             | Hat---Polar Explorer  | C        | Red       |
-| 7             | Hat---Polar Explorer  | C        | White     |
-| 8             | Boots---snake proof   | C        | Green     |
-| 9             | Boots---snake proof   | C        | Black     |
-| 10            | Safari chair          | F        | Khaki     |
-| 11            | Hammock               | F        | Khaki     |
-| 12            | Tent---8 person       | F        | Khaki     |
-| 13            | Tent---2 person       | F        | Khaki     |
-| 14            | Safari cooking kit    | E        | ---       |
-| 15            | Pith helmet           | C        | Khaki     |
-| 16            | Pith helmet           | C        | White     |
-| 17            | Map case              | N        | Brown     |
-| 18            | Sextant               | N        | ---       |
-| 19            | Stetson               | C        | Black     |
-| 20            | Stetson               | C        | Brown     |
+| *itemno | itemname              | itemtype | itemcolor |
+|:---------|:----------------------|:---------|:----------|
+| 1        | Pocket knife---Nile   | E        | Brown     |
+| 2        | Pocket knife---Avon   | E        | Brown     |
+| 3        | Compass               | N        | ---       |
+| 4        | Geopositioning system | N        | ---       |
+| 5        | Map measure           | N        | ---       |
+| 6        | Hat---Polar Explorer  | C        | Red       |
+| 7        | Hat---Polar Explorer  | C        | White     |
+| 8        | Boots---snake proof   | C        | Green     |
+| 9        | Boots---snake proof   | C        | Black     |
+| 10       | Safari chair          | F        | Khaki     |
+| 11       | Hammock               | F        | Khaki     |
+| 12       | Tent---8 person       | F        | Khaki     |
+| 13       | Tent---2 person       | F        | Khaki     |
+| 14       | Safari cooking kit    | E        | ---       |
+| 15       | Pith helmet           | C        | Khaki     |
+| 16       | Pith helmet           | C        | White     |
+| 17       | Map case              | N        | Brown     |
+| 18       | Sextant               | N        | ---       |
+| 19       | Stetson               | C        | Black     |
+| 20       | Stetson               | C        | Brown     |
 
 The SQL commands to create the three tables are as follows:
 
@@ -288,7 +296,9 @@ SELECT target1 FROM target
 
 Divide proves troublesome to most people because of the double negative---we just don't think that way. If divide sends your neurons into knots, then try the following approach.
 
-The query "Find the items that have appeared in all sales" can be rephrased as "Find the items for which the number of sales that include this item is equal to the total number of sales." This is an easier query to write than "Find items such that there does not exist a sale in which this item does not appear." The rephrased query has two parts. *First**,*** determine the total number of sales. Here we mean distinct sales (i.e., the number of rows with a distinct value for saleno). The SQL is
+The query "Find the items that have appeared in all sales" can be rephrased as "Find the items for which the number of sales that include this item is equal to the total number of sales." This is an easier query to write than "Find items such that there does not exist a sale in which this item does not appear." 
+
+The rephrased query has two parts. *First**,*** determine the total number of sales. Here we mean distinct sales (i.e., the number of rows with a distinct value for saleno). The SQL is
 
 ```{sql, connection = db, eval =FALSE}
 SELECT COUNT (DISTINCT saleno) FROM sale;
@@ -327,7 +337,7 @@ UNION
 
 This query uses the same two tables as the previous query. In this case, INTERSECT (i.e., and) then combines the results of the tables including ***only*** rows in both tables and excluding duplicates.[^manytomany-2]
 
-[^manytomany-2]: MySQL does not support INTERSECT. Use another AND in the WHERE statement. 
+[^manytomany-2]: MySQL does not support INTERSECT. Use another AND in the WHERE statement.
 
 ```{sql, connection = db, eval = F}
 SELECT itemname FROM item JOIN lineitem
@@ -419,68 +429,66 @@ There can be a many-to-many (m:m) relationship between entities, which is repres
 
 8.  The following table records data found on the side of a breakfast cereal carton. Use these data as a guide to develop a data model to record nutrition facts for a meal. In this case, a meal is a cup of cereal and 1/2 cup of skim milk.
 
-+---------------------------------+--------+---------------------------+
-| **Nutrition facts**             |        |                           |
-|                                 |        |                           |
-| Serving size 1 cup (30g)        |        |                           |
-|                                 |        |                           |
-| Servings per container about 17 |        |                           |
-+=================================+========+===========================+
-| Amount per serving              | Cereal | with 1/2 cup of skim milk |
-+---------------------------------+--------+---------------------------+
-| Calories                        | 110    | 150                       |
-+---------------------------------+--------+---------------------------+
-| Calories from Fat               | 10     | 10                        |
-+---------------------------------+--------+---------------------------+
-|                                 |        | \% Daily Value            |
-+---------------------------------+--------+---------------------------+
-| Total Fat 1g                    | 1%     | 2%                        |
-+---------------------------------+--------+---------------------------+
-| Saturated Fat 0g                | 0%     | 0%                        |
-+---------------------------------+--------+---------------------------+
-| Polyunsaturated Fat 0g          |        |                           |
-+---------------------------------+--------+---------------------------+
-| Monounsaturated Fat 0g          |        |                           |
-+---------------------------------+--------+---------------------------+
-| Cholesterol 0mg                 | 0%     | 1%                        |
-+---------------------------------+--------+---------------------------+
-| Sodium 220mg                    | 9%     | 12%                       |
-+---------------------------------+--------+---------------------------+
-| Potassium 105 mg                | 3%     | 9%                        |
-+---------------------------------+--------+---------------------------+
-| Total Carbohydrate 24g          | 8%     | 10%                       |
-+---------------------------------+--------+---------------------------+
-| Dietary Fiber 3g                | 13%    | 13%                       |
-+---------------------------------+--------+---------------------------+
-| Sugars 4g                       |        |                           |
-+---------------------------------+--------+---------------------------+
-| Other Carbohydrate 17g          |        |                           |
-+---------------------------------+--------+---------------------------+
-| Protein 3g                      |        |                           |
-+---------------------------------+--------+---------------------------+
-| Vitamin A                       | 10%    | 15%                       |
-+---------------------------------+--------+---------------------------+
-| Vitamin C                       | 10%    | 10%                       |
-+---------------------------------+--------+---------------------------+
-| Calcium                         | 2%     | 15%                       |
-+---------------------------------+--------+---------------------------+
-| Iron                            | 45%    | 45%                       |
-+---------------------------------+--------+---------------------------+
-| Vitamin D                       | 10%    | 25%                       |
-+---------------------------------+--------+---------------------------+
-| Thiamin                         | 50%    | 50%                       |
-+---------------------------------+--------+---------------------------+
-| Riboflavin                      | 50%    | 50%                       |
-+---------------------------------+--------+---------------------------+
-| Niacin                          | 50%    | 50%                       |
-+---------------------------------+--------+---------------------------+
-| Vitamin B12                     | 50%    | 60%                       |
-+---------------------------------+--------+---------------------------+
-| Phosphorus                      | 10%    | 20%                       |
-+---------------------------------+--------+---------------------------+
-| Magnesium                       | 8%     | 10%                       |
-+---------------------------------+--------+---------------------------+
-| Zinc                            | 50%    | 50%                       |
-+---------------------------------+--------+---------------------------+
-| Copper                          | 4%     | 4%                        |
-+---------------------------------+--------+---------------------------+
++---------------------------------+-------------+---------------------------+
+| **Nutrition facts**             |             |                           |
+| Serving size 1 cup (30g)        |             |                           |
+| Servings per container about 17 |             |                           |
++=================================+============:+==========================:+
+| Amount per serving              | Cereal      | with 1/2 cup of skim milk |
++---------------------------------+-------------+---------------------------+
+| Calories                        | 110         | 150                       |
++---------------------------------+-------------+---------------------------+
+| Calories from Fat               | 10          | 10                        |
++---------------------------------+-------------+---------------------------+
+|                                 |             | % Daily Value            |
++---------------------------------+-------------+---------------------------+
+| Total Fat 1g                    | 1%          | 2%                        |
++---------------------------------+-------------+---------------------------+
+| Saturated Fat 0g                | 0%          | 0%                        |
++---------------------------------+-------------+---------------------------+
+| Polyunsaturated Fat 0g          |             |                           |
++---------------------------------+-------------+---------------------------+
+| Monounsaturated Fat 0g          |             |                           |
++---------------------------------+-------------+---------------------------+
+| Cholesterol 0mg                 | 0%          | 1%                        |
++---------------------------------+-------------+---------------------------+
+| Sodium 220mg                    | 9%          | 12%                       |
++---------------------------------+-------------+---------------------------+
+| Potassium 105 mg                | 3%          | 9%                        |
++---------------------------------+-------------+---------------------------+
+| Total Carbohydrate 24g          | 8%          | 10%                       |
++---------------------------------+-------------+---------------------------+
+| Dietary Fiber 3g                | 13%         | 13%                       |
++---------------------------------+-------------+---------------------------+
+| Sugars 4g                       |             |                           |
++---------------------------------+-------------+---------------------------+
+| Other Carbohydrate 17g          |             |                           |
++---------------------------------+-------------+---------------------------+
+| Protein 3g                      |             |                           |
++---------------------------------+-------------+---------------------------+
+| Vitamin A                       | 10%         | 15%                       |
++---------------------------------+-------------+---------------------------+
+| Vitamin C                       | 10%         | 10%                       |
++---------------------------------+-------------+---------------------------+
+| Calcium                         | 2%          | 15%                       |
++---------------------------------+-------------+---------------------------+
+| Iron                            | 45%         | 45%                       |
++---------------------------------+-------------+---------------------------+
+| Vitamin D                       | 10%         | 25%                       |
++---------------------------------+-------------+---------------------------+
+| Thiamin                         | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Riboflavin                      | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Niacin                          | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Vitamin B12                     | 50%         | 60%                       |
++---------------------------------+-------------+---------------------------+
+| Phosphorus                      | 10%         | 20%                       |
++---------------------------------+-------------+---------------------------+
+| Magnesium                       | 8%          | 10%                       |
++---------------------------------+-------------+---------------------------+
+| Zinc                            | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Copper                          | 4%          | 4%                        |
++---------------------------------+-------------+---------------------------+

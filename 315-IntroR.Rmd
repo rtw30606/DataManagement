@@ -1,9 +1,12 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
+```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
+library(DBI)
+library(RMySQL)
+db <- dbConnect(RMySQL::MySQL(),
+                  dbname = "Text",
+                  host = "www.richardtwatson.com",
+                  user="student",
+                  password = "student")
+```
 # Introduction to R
 
 > *Statistics are no substitute for judgment*

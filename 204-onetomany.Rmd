@@ -1,9 +1,12 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(DBI)
+library(RMySQL)
+db <- dbConnect(RMySQL::MySQL(),
+                  dbname = "Text",
+                  host = "www.richardtwatson.com",
+                  user="student",
+                  password = "student")
+```
 # The One-to-Many Relationship
 
 > *Cow of many---well milked and badly fed.*
@@ -63,8 +66,8 @@ introduce considerable redundancy, as the following table illustrates.
 
 *The table stock with additional columns*
 
-| [stkcode]{.ul} | stkfirm             | stkprice | stkqty  | stkdiv | stkpe | natname        | exchrate |
-|:---------------|:--------------------|:---------|:--------|:-------|:------|:---------------|:---------|
+| *stkcode | stkfirm | stkprice | stkqty | stkdiv | stkpe | natname | exchrate |
+|:---------|:--------|---------:|-------:|-------:|------:|:--------|--------:|
 | FC             | Freedonia Copper    | 27.5     | 10529   | 1.84   | 16    | United Kingdom | 1        |
 | PT             | Patagonian Tea      | 55.25    | 12635   | 2.5    | 10    | United Kingdom | 1        |
 | AR             | Abyssinian Ruby     | 31.82    | 22010   | 1.32   | 13    | United Kingdom | 1        |
@@ -82,9 +85,8 @@ introduce considerable redundancy, as the following table illustrates.
 | IR             | Indooroopilly Ruby  | 15.92    | 56147   | 0.5    | 20    | Australia      | 0.46     |
 | BD             | Bombay Duck         | 25.55    | 167382  | 1      | 12    | India          | 0.0228   |
 
-The exact same nation name and *e*xchange rate data pair occurs 10 times
-for stocks listed in the United Kingdom. Redundancy presents problems
-when we want to insert, delete, or update data. These problems,
+The exact same nation name and exchange rate  pair occurs 10 times
+for stocks listed in the United Kingdom. This redundancy presents problems when we want to insert, delete, or update data. These problems,
 generally known as **update anomalies**, occur with these three basic
 operations.
 
@@ -115,9 +117,7 @@ in stock with nation = 'Australia' will have to be updated. In a large
 portfolio, many rows will be changed. There is also the danger of
 someone forgetting to update all the instances of the nation and
 exchange rate pair. As a result, there could be two exchange rates for
-the one nation. If exchange rate is stored in nation, however, only one
-change is necessary, there is no redundancy, and there is no danger of
-inconsistent exchange rates.
+the one nation. If exchange rate is stored in a nation table, however, only one change is necessary, there is no redundancy, and there is no danger of inconsistent exchange rates.
 
 ## Creating a database with a 1:m relationship {.unnumbered}
 
@@ -136,17 +136,17 @@ identity of the nation where the `stock` is listed.
 
 *A relational database with tables nation and stock*
 
-| nation         |                |          |     |
-|:---------------|----------------|----------|-----|
-| [natcode]{.ul} | natname        | exchrate |     |
-| AUS            | Australia      | 0.46     |     |
-| IND            | India          | 0.0228   |     |
-| UK             | United Kingdom | 1        |     |
-| USA            | United States  | 0.67     | →   |
+| nation    |                |          |  
+|:----------|----------------|---------:|
+| *natcode  | natname        | exchrate | 
+| AUS       | Australia      | 0.46     |   
+| IND       | India          | 0.0228   |   
+| UK        | United Kingdom | 1        |   
+| USA       | United States  | 0.67     | 
 
-| stock          |                     |          |           |        |       |           |     |
-|:---------------|---------------------|----------|-----------|--------|-------|-----------|-----|
-| [stkcode]{.ul} | stkfirm             | stkprice | stkqty    | stkdiv | stkpe | *natcode* |     |
+| stock     |  |    |    |     |    |      |    |
+|:------|------------|----------:|--------:|-------:|-------:|-----|
+| *stkcode | stkfirm | stkprice | stkqty | stkdiv | stkpe | *natcode*|  
 | FC             | Freedonia Copper    | 27.5     | 10,529    | 1.84   | 16    | UK        |     |
 | PT             | Patagonian Tea      | 55.25    | 12,635    | 2.5    | 10    | UK        |     |
 | AR             | Abyssinian Ruby     | 31.82    | 22,010    | 1.32   | 13    | UK        |     |
@@ -174,7 +174,7 @@ is the method for recording the 1:m relationship between the two tables.
 This method of representing a relationship is illustrated using shading
 and arrows for the two USA stocks. In the `stock` table, `natcode` is
 italicized to indicate that it is a foreign key. This method, like
-underlining a primary key, is a useful reminder.
+asterisking a primary key, is a useful reminder.
 
 Although the same name has been used for the primary key and the foreign
 key in this example, it is not mandatory. The two columns can have
@@ -190,7 +190,7 @@ Although a nation can have many stocks, it is not mandatory to have any.
 That is, in data modeling terminology, many can be zero, one, or more,
 but it is mandatory to have a value for `natcode` in `nation` for every
 value of `natcode` in `stock`. This requirement, known as the
-**referential integrity constraint**, maintains the accuracy of a
+**referential integrity constraint**, helps maintain the accuracy of a
 database. Its application means that every foreign key in a table has an
 identical primary key in that same table or another table. In this
 example, it means that for every value of `natcode` in `stock`, there is
@@ -269,7 +269,7 @@ the same data type and are the same length.
 > ❓*Skill builder*
 >
 > The university architect has asked you to develop a data model to
-> record details of the campus buildings. A building can have many
+> record details of  campus buildings. A building can have many
 > rooms, but a room can be in only one building. Buildings have names,
 > and rooms have a size and purpose (e.g., lecture, laboratory,
 > seminar). Draw a data model for this situation and create the matching
@@ -288,7 +288,7 @@ Workbench can generate automatically the SQL to create the
 tables,[^onetomany-1] we use lowercase table names and abbreviated
 column names.
 
-[^onetomany-1]: Database \> Forward Engineer...
+[^onetomany-1]: Database > Forward Engineer...
 
 *Specifying a 1:m relationship in MySQL Workbench*
 
@@ -313,7 +313,7 @@ and then find the exchange rate in the matching row in `nation`, the one
 with the same value for `natcode`. For example, to calculate the value
 of Georgia Peach, which has `natcode` = 'US', find the row in `nation`
 that also has `natcode` = 'US'. In this case, the stock's value is
-2.35\*387333\*0.67 = £609,855.81.
+2.35 * 387333 / 0.67 = £609,855.81.
 
 Calculation of stock value is very easy once a join is used to get the
 three values in one row. The SQL command for joining the two tables is:
@@ -329,7 +329,7 @@ The columns `stkprice` and `stkdiv` record values in the country's
 currency. Thus, the price of Bombay Duck is 25.55 Indian rupees. To find
 the value in U.K. pounds (GPB), multiply the price by 0.0228, because
 one rupee is worth 0.0228 GPB. The value of one share of Bombay Duck in
-U.S. dollars (USD) is 25.55\*0.0228/0.67 because one USD is worth 0.67
+U.S. dollars (USD) is 25.55 * 0.0228 / 0.67 because one USD is worth 0.67
 GBP.
 
 There are several things to notice about the SQL command and the result:
@@ -362,18 +362,10 @@ to put them back together later? There are two reasons. First, we want
 to avoid update anomalies. Second, as you will discover, we do not join
 the same tables every time.
 
-Join comes in several flavors. The matching condition can be =, \<\>,
-\<=, \<, \>=, and \>. This generalized version is called a **theta
+Join comes in several flavors. The matching condition can be =, <>,
+<=, <, >=, and >. This generalized version is called a **theta
 join**. Generally, when people refer to a join, they mean an equijoin,
 when the matching condition is equality.
-
-*In an alphabetical list of employees, how many appear before Clare?*
-
-```{sql, connection = db, eval = T}
-SELECT count(*) FROM emp A JOIN emp B
-  ON A.empfname > B.empfname
-  WHERE A.empfname = "Clare"
-```
 
 A join can be combined with other SQL commands.
 
@@ -398,7 +390,30 @@ because the same values apply to many stocks. A more appropriate format
 is shown in the following figure, an example of a **control break
 report**.
 
-![](Figures/Chapter%204/cbr.png)
+| Nation         |                     | Exchange rate |       |           |               |
+|:----------------|---------------------|---------------:|-------:|-----------:|---------------:|
+|                | Firm                |               | Price | Quantity  | Value         |
+| Australia      |                     | 0.46          |       |           |               |
+|                | Indooroopilly Ruby  |               | 15.92 | 56,147    | 411,175.71    |
+|                | Narembeen Emu       |               | 12.34 | 45,619    | 258,951.69    |
+|                | Queensland Diamond  |               | 6.73  | 89,251    | 276,303.25    |
+| India          |                     | 0.0228        |       |           |               |
+|                | Bombay Duck         |               | 25.55 | 167,382   | 97,506.71     |
+| United Kingdom |                     | 0.0228        |       |           |               |
+|                | Abyssinian Ruby     |               | 31.82 | 22,010    | 700,358.20    |
+|                | Bolivian Sheep      |               | 12.75 | 231,678   | 2,953,894.50  |
+|                | Burmese Elephant    |               | 0.07  | 154,713   | 10,829.91     |
+|                | Canadian Sugar      |               | 52.78 | 4,716     | 248,910.48    |
+|                | Freedonia Copper    |               | 27.50 | 10,529    | 289,547.50    |
+|                | Indian Lead & Zinc  |               | 37.75 | 6,390     | 241,222.50    |
+|                | Nigerian Geese      |               | 35.00 | 12,323    | 431,305.00    |
+|                | Patagonian Tea      |               | 55.25 | 12,635    | 698,083.75    |
+|                | Royal Ostrich Farms |               | 33.75 | 1,234,923 | 41,678,651.25 |
+|                | Sri Lankan Gold     |               | 50.37 | 32,868    | 1,655,561.16  |
+| United States  |                     | 0.0228        |       |           |               |
+|                | Georgia Peach       |               | 2.35  | 387,333   | 609,855.81    |
+|                | Minnesota Gold      |               | 53.87 | 816,122   | 29,456,209.73 |
+
 
 A control break report recognizes that the values in a particular column
 or columns seldom change. In this case, `natname` and `exchrate` are
@@ -450,7 +465,7 @@ function or be in a GROUP BY clause.
 for each PE ratio and the total value of those stock holdings in UK
 pounds.*
 
-```{sql, connection = db, eval = T}
+```{sql, connection = db, max.print = 14, eval = T}
 SELECT natname,stkpe,COUNT(*),
 	SUM(stkprice*stkqty*exchrate) AS stkvalue
 		FROM stock JOIN nation ON stock.natcode = nation.natcode
@@ -466,8 +481,7 @@ these stocks.
 
 #### HAVING---the WHERE clause of groups {.unnumbered}
 
-HAVING does in the GROUP BY what the WHERE clause does in a SELECT. It
-restricts the number of groups reported, whereas WHERE restricts the
+The HAVING clause in a GROUP BY is like the WHERE clause in a SELECT. It restricts the number of groups reported, whereas WHERE restricts the
 number of rows reported. Used with built-in functions, HAVING is always
 preceded by GROUP BY and is always followed by a function (SUM, AVG,
 MAX, MIN, or COUNT).
@@ -493,9 +507,9 @@ now continue to learn some more of its features.
 
 #### Search for a string not containing specified characters {.unnumbered}
 
-The \^ (carat) is the symbol for NOT. It is used when we want to find a
+The ^ (carat) is the symbol for NOT. It is used when we want to find a
 string not containing a character in one or more specified strings. For
-example, \[\^a-f\] means any character not in the set containing a, b,
+example, [^a-f] means any character not in the set containing a, b,
 c, d, e, or f.
 
 *List the names of nations with non-alphabetic characters in their
@@ -534,7 +548,7 @@ SELECT stkfirm FROM stock WHERE stkfirm REGEXP '[s]{2}|[n]{2}';
 
 If you are interested in find a string containing several specified
 string, you can use the square brackets to indicate the sought strings.
-For example, \[ea\] means any character from the set containing e and a.
+For example, [ea] means any character from the set containing e and a.
 
 *List the names of firms with names that include 'inia' or 'onia'.*
 
@@ -555,7 +569,7 @@ SELECT stkfirm FROM stock WHERE stkfirm REGEXP '^(.){2}t';
 
 The regular expression has three elements:
 
--   \^ indicates start searching at the beginning of the string;
+-   ^ indicates start searching at the beginning of the string;
 
 -   (.){2} specifies that anything is acceptable for the next two
     characters;
@@ -598,16 +612,11 @@ preceding the inner query. In this case, the outer and inner queries
 are:
 
 +---------------+--------------------------+
-| Outer query   | SELECT stkfirm FROM      |
-|               | stock                    |
-|               |                          |
-|               | WHERE natcode IN         |
+| Outer query   | SELECT stkfirm FROM stock     |
+|               |   WHERE natcode IN   |
 +---------------+--------------------------+
-| Inner query   | (SELECT natcode FROM     |
-|               | nation                   |
-|               |                          |
-|               | WHERE natname =          |
-|               | 'Australia');            |
+| Inner query   | (SELECT natcode FROM nation    |
+|               | WHERE natname =   'Australia');         |
 +---------------+--------------------------+
 
 Note that in this case we do not have to qualify `natcode`. There is no
@@ -708,13 +717,12 @@ CREATE VIEW stkvalue
 
 There are several things to notice about creating a view:
 
--   The six names enclosed by parentheses are the column names for the
+-   The six names enclosed in parentheses are the column names for the
     view.
-
 -   There is a one-to-one correspondence between the names in
     parentheses and the names or expressions in the SELECT clause. Thus
     the view column named `value` contains the result of the arithmetic
-    expression `stkprice`\*`stkqty`\*`exchrate`.
+    expression `stkprice * stkqty * exchrate`.
 
 A view can be used in a query, such as:
 
@@ -740,7 +748,9 @@ the stock portfolio.
 > ❓*Skill builder*
 >
 > How could you use a view to solve the following query that was used
-> when discussing the correlated subquery? \| *Find those stocks where
+> when discussing the correlated subquery? 
+>
+> *Find those stocks where
 > the quantity is greater than the average for that country.*
 
 ### Summary {.unnumbered}
@@ -757,7 +767,7 @@ table. A foreign key constraint is specified in a CREATE statement.
 Join creates a new table from two existing tables by matching on a
 column common to both tables. Often the common column is a primary
 key--foreign key combination. A theta-join can have matching conditions
-of =, \<\>, \<=, \<, \>=, and \>. An equijoin describes the situation
+of =, <>, <=, <, >=, and >. An equijoin describes the situation
 where the matching condition is equality. The GROUP BY clause is used to
 create an elementary control break report. The HAVING clause of GROUP BY
 is like the WHERE clause of SELECT. A subquery, which has a SELECT
@@ -768,7 +778,7 @@ by the outer query. A view is a virtual table that is created when
 required. Views can simplify report writing and restrict access to
 specified columns or rows.
 
-## Key terms and concepts {.unnumbered}
+### Key terms and concepts {.unnumbered}
 
 |                         |                                |
 |:------------------------|:-------------------------------|

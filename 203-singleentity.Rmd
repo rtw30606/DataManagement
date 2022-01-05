@@ -539,7 +539,7 @@ SELECT shrfirm FROM share WHERE shrfirm REGEXP 'Ruby';
 
 In some situations you want to find columns that contain more than one string. In this case, we use the alternation symbol '\|' to indicate the alternatives being sought. For example, a\|b finds 'a' or 'b'.
 
-*List the firms containing gold or zinc in their name, irrespective of case.*
+*List firms containing gold or zinc in their name, irrespective of case.*
 
 ```{sql, connection = db, eval = T}
 SELECT shrfirm FROM share WHERE shrfirm REGEXP 'gold|zinc|Gold|Zinc';

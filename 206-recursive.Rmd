@@ -1,8 +1,12 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
+```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
+library(DBI)
+library(RMySQL)
+db <- dbConnect(RMySQL::MySQL(),
+                  dbname = "Text",
+                  host = "www.richardtwatson.com",
+                  user="student",
+                  password = "student")
+```
 
 # One-to-One and Recursive Relationships
 
@@ -24,7 +28,7 @@ Students completing this chapter will be able to
 An organizational chart, as shown in the following diagram, can be
 modeled with several relationships.
 
-*The Expeditioner's organizational chart*
+*An organizational chart*
 
 ![](Figures/Chapter%206/org%20chart.png){width="476"}
 
@@ -82,19 +86,22 @@ Since mapping a 1:1 relationship follows the same rules as for any other
 data model, the major consideration is where to place the foreign
 key(s). There are three alternatives:
 
-1.  Put the foreign key in dept.\
+1.  Put the foreign key in dept.
+    
     Doing so means that every instance of dept will record the empno of
     the employee who is boss. Because it is mandatory that all
     departments, in this case have a boss, the foreign key will always
     be non-null.
 
-2.  Put the foreign key in emp.\
+2.  Put the foreign key in emp.
+    
     Choosing this alternative means that every instance of emp should
     record deptname of the department this employee bosses. Since many
     employees are not bosses, the value of the foreign key column will
     generally be null.
 
-3.  Put a foreign key in both dept and emp.\
+3.  Put a foreign key in both dept and emp.
+    
     The consequence of putting a foreign key in both tables in the 1:1
     relationship is the combination of points 1 and 2.
 
@@ -121,7 +128,7 @@ relationship, and `empno` becomes a foreign key in `dept`, an end of the
 
 *The tables dept and emp*
 
-| [deptname]{.ul} | deptfloor | deptphone | *empno* |
+| *deptname       | deptfloor | deptphone | *empno* |
 |:----------------|:---------:|:---------:|:-------:|
 | Management      |     5     |   2001    |    1    |
 | Marketing       |     1     |   2002    |    2    |
@@ -129,7 +136,7 @@ relationship, and `empno` becomes a foreign key in `dept`, an end of the
 | Purchasing      |     4     |   2004    |    7    |
 | Personnel & PR  |     1     |   2005    |    9    |
 
-| [empno]{.ul} | empfname | empsalary | deptname         | bossno |
+| *empno       | empfname | empsalary | deptname         | bossno |
 |:------------:|:---------|----------:|:-----------------|:------:|
 |      1       | *Alice*  |     75000 | *Management*     |        |
 |      2       | *Ned*    |     45000 | *Marketing*      |   1    |
@@ -212,7 +219,9 @@ relationships between a pair of entities, use of a FOREIGN KEY clause
 may result in a deadlock. Always consider the consequences of using a
 FOREIGN KEY clause before applying it.
 
-> ❓*Skill builder* A consulting company has assigned each of its
+> ❓*Skill builder* 
+>
+> A consulting company has assigned each of its
 > employees to a specialist group (e.g., database management). Each
 > specialist group has a team leader. When employees join the company,
 > they are assigned a mentor for the first year. One person might mentor
@@ -264,14 +273,14 @@ SELECT wrk.empfname, wrk.empsalary,boss.empfname, boss.empsalary
 
 Many queries are solved by getting all the data you need to answer the
 request in one row. In this case, the query is easy to answer once the
-data for Nancy and her boss are in the one row. Thus, think of this
+data for Nancy and her boss are in the same row. Thus, think of this
 query as joining two copies of the table `emp` to get the worker and her
 boss's data in one row. Notice that there is a qualifier (`wrk` and
 `boss`) for each copy of the table to distinguish between them. It helps
 to use a qualifier that makes sense. In this case, the `wrk` and `boss`
 qualifiers can be thought of as referring to the worker and boss tables,
 respectively. You can understand how the query works by examining the
-following table illustrating the self-join.
+following table illustrating the result of the self-join.
 
 |  wrk  |          |           |                |        | boss  |          |           |            |        |
 |:-----:|----------|----------:|----------------|:------:|:-----:|----------|----------:|------------|:------:|
@@ -302,7 +311,7 @@ SELECT wrk.empfname, wrk.empsalary,boss.empfname, boss.empsalary
 
 This would be very easy if the employee and boss data were in the same
 row. We could simply compare the salaries of the two people. To get the
-data in the one row, we repeat the self-join with a different WHERE
+data in the same row, we repeat the self-join with a different WHERE
 condition. The result is as follows:
 
 ```{sql, connection = db, eval = T}
@@ -317,17 +326,6 @@ SELECT wrk.empfname FROM wrk JOIN boss
 > ❓*Skill builder*
 >
 > Find the name of Sophie's boss.
-
-![](Figures/Chapter%201/expeditioner.png){width="190"}
-
-Alice has found several histories of The Expeditioner from a variety of
-eras. Because many expeditions they outfitted were conducted under royal
-patronage, it was not uncommon for these histories to refer to British
-monarchs. Alice could remember very little about British history, let
-alone when various kings and queens reigned. This sounded like another
-database problem. She would ask Ned to create a database that recorded
-details of each monarch. She thought it also would be useful to record
-details of royal succession.
 
 ## Modeling a recursive one-to-one relationship {.unnumbered}
 
@@ -402,7 +400,7 @@ INSERT INTO MONARCH VALUES('Queen','Elizabeth','II','1952-02-06','George','VI');
 >
 > In a competitive bridge competition, the same pair of players play
 > together for the entire tournament. Draw a data model to record
-> details of all the players and the pairs of players.ß
+> details of all the players and the pairs of players.
 
 ## Querying a recursive one-to-one relationship {.unnumbered}
 
@@ -453,18 +451,6 @@ kings started their reigns in 1936; hence, the full date is required.
 >
 > Who succeeded Queen Victoria?
 
-![](Figures/Chapter%201/expeditioner.png){width="190"}
-
-Of course, Alice soon had another project for Ned. The Expeditioner
-keeps a wide range of products that are sometimes assembled into kits to
-make other products. For example, the animal photography kit is made up
-of eight items that The Expeditioner also sells separately. In addition,
-some kits became part of much larger kits. The animal photography kit is
-included as one of 45 items in the East African Safari package. All of
-the various items are considered products, and each has its own product
-code. Ned was now required to create a product database that would keep
-track of all the items in The Expeditioner's stock.
-
 ## Modeling a recursive many-to-many relationship {.unnumbered}
 
 The assembly of products to create other products is very common in
@@ -486,19 +472,19 @@ in the following figure.
 
 *Tables product and assembly*
 
-| [prodid]{.ul} | proddesc               | prodcost | prodprice |
-|--------------:|:-----------------------|---------:|----------:|
-|          1000 | Animal photography kit |          |       725 |
-|           101 | Camera                 |      150 |       300 |
-|           102 | Camera case            |       10 |        15 |
-|           103 | 70-210 zoom lens       |      125 |       200 |
-|           104 | 28-85 zoom lens        |      115 |       185 |
-|           105 | Photographer's vest    |       25 |        40 |
-|           106 | Lens cleaning cloth    |        1 |      1.25 |
-|           107 | Tripod                 |       35 |        45 |
-|           108 | 16 GB SDHC memory card |       30 |        37 |
+| *prodid | proddesc               | prodcost | prodprice |
+|--------:|:-----------------------|---------:|----------:|
+|    1000 | Animal photography kit |          |       725 |
+|     101 | Camera                 |      150 |       300 |
+|     102 | Camera case            |       10 |        15 |
+|     103 | 70-210 zoom lens       |      125 |       200 | 
+|     104 | 28-85 zoom lens        |      115 |       185 |
+|     105 | Photographer's vest    |       25 |        40 |
+|     106 | Lens cleaning cloth    |        1 |      1.25 |
+|     107 | Tripod                 |       35 |        45 |
+|     108 | 16 GB SDHC memory card |       30 |        37 |
 
-| quantity | [*prodid*]{.ul} | [*subprodid*]{.ul} |
+| quantity | \**prodid*      | \**subprodid*      |
 |---------:|----------------:|-------------------:|
 |        1 |            1000 |                101 |
 |        1 |            1000 |                102 |
@@ -543,8 +529,9 @@ CREATE TABLE assembly (
 > brigade, platoon). A unit can contain many other units (e.g., a
 > regiment contains two or more battalions), and a unit can be part of a
 > larger unit (e.g., a squad is a member of a platoon). Draw a data
-> model for this situation.\
-> ## Querying a recursive many-to-many relationship {-}
+> model for this situation.
+
+## Querying a recursive many-to-many relationship {-}
 
 *List the product identifier of each component of the animal photography
 kit.*
@@ -603,7 +590,7 @@ queries involving recursive relationships often requires a table to be
 joined with itself. Recursive many-to-many relationships occur in
 business in the form of a bill of materials.
 
-## Key terms and concepts {.unnumbered}
+### Key terms and concepts {.unnumbered}
 
 |                                |                              |
 |--------------------------------|------------------------------|
@@ -616,7 +603,7 @@ business in the form of a bill of materials.
 | Recursive relationship         | Views                        |
 | Referential integrity          | Virtual table                |
 
-## Exercise {.unnumbered}
+### Exercise {.unnumbered}
 
 1.  Draw data models for the following two problems:
 

@@ -1,9 +1,12 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
+```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
+library(DBI)
+library(RMySQL)
+db <- dbConnect(RMySQL::MySQL(),
+                  dbname = "Text",
+                  host = "www.richardtwatson.com",
+                  user="student",
+                  password = "student")
+```
 # Text mining & natural language processing
 
 > From now on I will consider a language to be a set (finite or
