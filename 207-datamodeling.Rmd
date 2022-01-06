@@ -1,8 +1,12 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
+```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
+library(DBI)
+library(RMySQL)
+db <- dbConnect(RMySQL::MySQL(),
+                  dbname = "Text",
+                  host = "www.richardtwatson.com",
+                  user="student",
+                  password = "student")
+```
 
 # Data Modeling
 
@@ -30,8 +34,8 @@ of journalism.[^datamodeling-1]
 
 *A broad perspective on modeling*
 
-|                |       | **Scope**      | **Model**            | **Technology**       |
-|----------------|-------|----------------|----------------------|----------------------|
+| | | Scope | Model | Technology |
+|----|---|:---|:----------|:----|
 | **Motivation** | Why   | Goals          | Business plan canvas | Groupware            |
 | **People**     | Who   | Business units | Organization chart   | System interface     |
 | **Time**       | When  | Key events     | PERT chart           | Scheduling           |
@@ -55,7 +59,7 @@ process modeling, which are typically covered in the core courses of an
 IS program.
 
 Technology, the final stage, converts models into operational systems to
-support the organization. Many organizations rely extensively on e-mail
+support the organization. Many organizations rely extensively on email
 and Web technology for communicating business decisions. People connect
 to systems through an interface, such as a Web browser. Ensuring that
 events occur at the right time is managed by scheduling software. This
@@ -101,10 +105,10 @@ we assume there is one client and one designer.
 Drawing a data model is an iterative process of trial and revision. A
 data model is a working document that will change as you learn more
 about the client's needs and world. Your early versions are likely to be
-quite different from the final product. Use a product such as MySQL
-Workbench for drawing and revising a data model.
+quite different from the final product. Use a product, such as MySQL
+Workbench, for drawing and revising a data model.
 
-## The building blocks {.unnumbered}
+### The building blocks {.unnumbered}
 
 The purpose of a database is to store data about things, which can
 include facts (e.g., an exchange rate), plans (e.g., scheduled
@@ -113,9 +117,9 @@ demand for smart phones), and a variety of other data. A data model
 describes these things and their relationships with other things using
 four components: entity, attribute, relationship, and identifier.
 
-### Entity {.unnumbered}
+#### Entity {.unnumbered}
 
-The entity is the basic building block of a data model. an entity is a
+The entity is the basic building block of a data model. An entity is a
 thing about which data should be stored, something we need to describe.
 Each entity in a data model has a unique name that we write in singular
 form. Why singular? Because we want to emphasize that an entity
@@ -144,7 +148,7 @@ the problem. If you were designing a student database, you might start
 with the student. Once you have picked a central entity, describe it.
 Then move to the others.
 
-### Attribute {.unnumbered}
+#### Attribute {.unnumbered}
 
 An attribute describes an entity. When an entity has been identified,
 the next step is to determine its attributes, that is, the data that
@@ -155,11 +159,11 @@ date" rather than just "date").
 
 Our convention is that the name of an attribute is recorded in lowercase
 letters within the entity rectangle. The following figure illustrates
-that SHARE has attributes *share code, share name, share price, share
-quantity, share dividend,* and *share PE*. Notice the frequent use of
+that SHARE has attributes *share code*, *share name*, *share price*, *share
+quantity*, *share dividend*, and *share PE*. Notice the frequent use of
 the modifier "share". It is possible that other entities in the database
 might also have a price and quantity, so we use a modifier to create
-unique attribute names. Note also that *share cod*e is the identifier.
+unique attribute names. Note also that *share code* is the identifier.
 
 *The entity SHARE with its attributes*
 
@@ -179,7 +183,7 @@ not allowed. If you need to store multiple values, it is a signal that
 you have a one-to-many (1:m) relationship and need to define another
 entity.
 
-### Relationship {.unnumbered}
+#### Relationship {.unnumbered}
 
 Entities are related to other entities. If there were no relationships
 between entities, there would be no need for a data model and no need
@@ -197,9 +201,7 @@ NATION and *nation of stock* for STOCK. The relationship descriptor
 *stocks of nation* has a degree of m because a nation may have zero or
 more listed stocks. The relationship descriptor *nation of stock* has a
 degree of 1 because a stock is listed in at most one nation. To reduce
-data model clutter, where necessary for clarification, we will use a
-single label for the pair of relationship descriptors. Experience shows
-this approach captures the meaning of the relationship and improves
+data model clutter, where necessary for clarification,  use a single label for the pair of relationship descriptors. Experience shows this approach captures the meaning of the relationship and improves
 readability.
 
 *A 1:m relationship between STOCK and NATION*
@@ -221,12 +223,12 @@ relationship as firm's boss.
 
 ![](Figures/Chapter%207/relationship%20labeling.png)
 
-### Identifier {.unnumbered}
+#### Identifier {.unnumbered}
 
 An identifier uniquely distinguishes an instance of an entity. An
 identifier can be one or more attributes and may include the identifier
 of a related entity. When a related entity's identifier is part of an
-identifier, a plus sign is placed on the line closest to the entity
+identifier, a plus sign is placed above the line closest to the entity
 being identified. In the following figure, an instance of the entity
 LINEITEM is identified by the composite of *lineno* and *saleno*, the
 identifier of SALE. The value *lineno* does not uniquely identify an
@@ -241,7 +243,7 @@ composite *saleno* and *lineno*.
 
 Occasionally, there will be several possible identifiers, and these are
 each given a different symbol. Our convention is to prefix an identifier
-with an asterisk (\*). If there are multiple identifiers, use other
+with an asterisk (*). If there are multiple identifiers, use other
 symbols such as #, !, or &. Be careful: If you have too many possible
 identifiers, your model will look like comic book swearing. In most
 cases, you will have only one identifier.
@@ -267,8 +269,9 @@ confusion.
 
 *Characteristics of a well-formed data model*
 
-| All construction rules are obeyed.                             |
+|                                                                |
 |:---------------------------------------------------------------|
+| All construction rules are obeyed.                             |
 | There is no ambiguity.                                         |
 | All entities are named.                                        |
 | Every entity has an identifier.                                |
@@ -278,7 +281,7 @@ confusion.
 | All attribute names are meaningful and unique.                 |
 
 All the attributes of an entity are listed because missing attributes
-create two types of problems. *First**,*** it is unclear what data will
+create two types of problems. *First*, it is unclear what data will
 be stored about each instance. *Second*, the data model may be missing
 some relationships. Attributes that can have multiple values become
 entities. It is only by listing all of an entity's attributes during
@@ -287,17 +290,17 @@ data modeling that these additional entities are recognized.
 In a well-formed data model, all attribute names are meaningful and
 unique. The names of entities, identifiers, attributes, and
 relationships must be meaningful to the client because they are describe
-the client's world. Indeed, in nearly all cases they are the client's
+the client's world. Indeed, in nearly all cases they should be the client's
 everyday names. Take care in selecting words because they are critical
 to communicating meaning. The acid test for comprehension is to get the
-client to read the data model to other potential users. Names need to be
+client to read the data model to other potential clients. Names need to be
 unique to avoid confusion.
 
 ### A high-fidelity image {.unnumbered}
 
 Music lovers aspire to own a high-fidelity stereo system---one that
 faithfully reproduces the original performance with minimal or no
-distortion. A data model is a high-fidelity image when it faithfully
+distortion. A data model is high-fidelity  when it faithfully
 describes the world it is supposed to represent. All relationships are
 recorded and are of the correct degree. There are no compromises or
 distortions. If the real-world relationship is many-to-many (m:m), then
@@ -330,7 +333,7 @@ figure. Try drawing the revised data model.
 ![](Figures/Chapter%204/nation-stock.png){width="374"}
 
 As you can see, the data model in the following figure is quite
-different from the initial data model of preceding figure. Which one is
+different from the initial data model of the preceding figure. Which one is
 better? They both can be valid models; it just depends on the world you
 are trying to represent and possible future queries. In the first case,
 the purpose was to determine the value of a portfolio. There was no
@@ -339,7 +342,7 @@ So the first model has high fidelity for the described situation.
 
 The second data model would be appropriate if the client needed to know
 the home exchange of stocks and their price on the various exchanges
-where they were listed. The second data model is an improvement on the
+where they are listed. The second data model is an improvement on the
 first if it incorporates the additional facts and relationships
 required. If it does not, then the additional detail is not worth the
 extra cost.
@@ -364,7 +367,9 @@ Before looking more closely at the data model, let's clarify the meaning
 of *unittype*. Because most countries are divided into administrative
 units that are variously called states, provinces, territories, and so
 forth, *unittype* indicates the type of administrative unit (e.g.,
-state). How many errors can you find in the initial data model?
+state). 
+
+How many errors can you find in the initial data model?
 
 Problems and solutions for the initial world's cities data model
 
@@ -373,7 +378,7 @@ Problems and solutions for the initial world's cities data model
 +:=============+:========================+:========================+
 | 1            | City names are not      | To identify a city      |
 |              | unique. There is an     | uniquely, you need to   |
-|              | Athens in Greece and    | specify its             |
+|              | Athens in Greece, and   | specify its             |
 |              | the U.S. has an Athens  | administrative unit and |
 |              | in Georgia, Alabama,    | country. Add a plus     |
 |              | Ohio, Pennsylvania,     | sign to the crow's feet |
@@ -457,7 +462,9 @@ model of low fidelity. By additional thinking about relationships and
 consideration of exceptions, you gradually create a high-fidelity data
 model.
 
-> ❓**Skill builder** Write SQL to determine which administrative units
+> ❓ **Skill builder** 
+>
+> Write SQL to determine which administrative units
 > have two capitals and which have a shared capital.
 
 ### Family matters {.unnumbered}
@@ -480,8 +487,7 @@ There are several things to notice about it.
     model records the current marriage.
 
 2.  MAN and WOMAN have the same attributes. A prefix is used to make
-    them unique. Both have an identifier (*id*, in the United States
-    this would probably be a Social Security number), date of birth
+    them unique. Both have an identifier (*id*), date of birth
     (*dob*), first name (*fname*), other names (*oname*), and last name
     (*name*).
 
@@ -578,7 +584,9 @@ You might want to consider how the model would change to handle
 single-parent families, adopted children, and other aspects of human
 relationships.
 
-> ❓**Skill builder** The International Commission for Border Resolution
+> ❓**Skill builder** 
+>
+> The International Commission for Border Resolution
 > Disputes requires a database to record details of which countries have
 > common borders. Design the database. Incidentally, which country
 > borders the most other countries?
@@ -608,7 +616,7 @@ book can be identified by *callno*, which is usually a Library of
 Congress number or Dewey number. A copy is identified by a *bookno*.
 This is a unique number allocated by the library to the copy of the
 book. If you look in a library book, you will generally find it pasted
-on the inside back cover and shown in numeric and bar code format.
+on the inside back cover and shown in numeric or bar code format.
 Notice that it is called *book number* despite the fact that it really
 identifies a copy of a book. This is because most people, including
 librarians, think of the copy as a book.
@@ -701,8 +709,10 @@ three entities in an m:m relationship.
 
 ![](Figures/Chapter%207/airline%20revised.png)
 
-> ❓**Skill builder** Horse racing is a popular sport in some parts of
-> the world. A horse\
+> ❓**Skill builder** 
+>
+> Horse racing is a popular sport in some parts of
+> the world. A horse
 > competes in at most one race on a course at a particular date. Over
 > time, a horse can compete in many races on many courses. A horse's
 > rider is called a jockey, and a jockey can ride many horses and a
@@ -725,7 +735,7 @@ will be more detailed because they are usually collected by getting
 those assigned to the project to log a daily account of how they spent
 their time. Also, resources used on a project are allocated to a
 particular activity. For the purposes of this data model, we will focus
-only on recording time and nothing else.
+ on recording only time and nothing else.
 
 *A project management data model*
 
@@ -759,23 +769,11 @@ end of the relationship.
 
 *Cardinality and modality options*
 
-+------------+------------+------------------------------------------+
-| C ardin    | Mo dal ity | Meaning                                  |
-| ality      |            |                                          |
-+:===========+:===========+:=========================================+
-| 0,1        | Op tio nal | There can be zero or one instance of the |
-|            |            | entity relative to the other entity.     |
-+------------+------------+------------------------------------------+
-| 0,n        |            | There can be zero or many instances of   |
-|            |            | the entity relative to the other entity. |
-+------------+------------+------------------------------------------+
-| 1,1        | Man dat    | There is exactly one instance of the     |
-|            | ory        | entity relative to the other entity.     |
-+------------+------------+------------------------------------------+
-| 1,n        |            | The entity must have at least one and    |
-|            |            | can have many instances relative to the  |
-|            |            | other entity.                            |
-+------------+------------+------------------------------------------+
+| Cardinality | Modality | Meaning                                  |
+|:------------|:---------|:--------------|
+| 0,1        | Optional  | There can be zero or one instance of the entity relative to the other entity.          | There can be zero or many instances of the entity relative to the other entity.  |
+| 1,1        | Mandatory  | There is exactly one instance of the entity relative to the other entity.   |
+| 1,n        |            | The entity must have at least one and can have many instances relative to the  other entity.    |
 
 The data modeling method of this text, as you now realize, has taken a
 broad approach to cardinality (is it 1:1 or 1:m?). We have not been
@@ -793,7 +791,7 @@ Modality, also known as optionality, specifies whether an instance of an
 entity must participate in a relationship. Cardinality indicates the
 range of instances of an entity participating in a relationship, while
 modality defines the minimum number of instances. Cardinality and
-modality are linked, as shown in the table above. If an entity is
+modality are linked, as shown in the previous table . If an entity is
 optional, the minimum cardinality will be 0, and if mandatory, the
 minimum cardinality is 1.
 
@@ -1084,7 +1082,7 @@ shown in the following figure.
 
 ![](Figures/Chapter%207/compaggregate.png)
 
-### Data modeling hints {.unnumbered}
+## Data modeling hints {.unnumbered}
 
 A high-fidelity data model takes time to develop. The client must
 explain the problem fully so that the database designer can understand
@@ -1115,7 +1113,7 @@ CERAMIC are all types of art. A more general entity, ART, could be used
 to represent the same data. Of course, it would need an additional
 attribute to distinguish the different types of art recordings.
 
-![](Figures/Chapter%207/art%20collection.png)
+![](Figures/Chapter%207/art%20collection.png){width="600"}
 
 *The shrunken data model*
 
@@ -1191,7 +1189,7 @@ part of a query. If an attribute has segments (e.g., a person's name),
 determine whether these could form part of a query. If so, then make
 them separate attributes and reapply the query test. When you apply the
 query test to *person name*, you will usually decide to create three
-attributes: ***f**irst name*, *other names*, and *last name*.
+attributes: *first name*, *other names*, and *last name*.
 
 What about titles? There are two sorts of modifier titles: preceding
 titles (e.g., Mr., Mrs., Ms., and Dr.) and following titles (e.g., Jr.
@@ -1208,7 +1206,7 @@ following figure works in most cases.
 ![](Figures/Chapter%207/address.png)
 
 Common features of every address are city, state (province in Canada,
-county in Eire), postal code (ZIP code in the United States), and
+county in Ireland), postal code (ZIP code in the United States), and
 nation. Some of these can be null. For example, Singapore does not have
 any units corresponding to states. In the United States, city and state
 can be derived from the zip code, but this is not necessarily true for
@@ -1228,7 +1226,7 @@ it is not adequate enough for student records. Students typically have
 multiple addresses: a home address, a school address, and maybe a summer
 address. The following data model fragment shows how to handle this
 situation. Any instance of ADDRESS LINE is identified by the composite
-of *studentid**,** addresstype*, and *address rank*.
+of *studentid**, *addresstype*, and *address rank*.
 
 *Students with multiple addresses*
 
@@ -1241,7 +1239,7 @@ where a business has different mailing and shipping addresses.
 When data modeling, can you take a shortcut with names and addresses? It
 is time consuming to write out all the components of name and address.
 It creates clutter and does not add much fidelity. Our practical advice
-is to do two things. *First**,*** create a policy for all names and
+is to do two things. *First*, create a policy for all names and
 addresses (e.g., all names will be stored as three parts: first name,
 other names, last name). *Second*, use shorthand forms of attributes for
 names and addresses when they obey the policy. So from now on, we will
@@ -1335,7 +1333,7 @@ more likely to have higher fidelity than a brand new one. A used data
 model has been subjected to much scrutiny and revision and should be a
 more accurate representation of the real world.
 
-## Meaningful identifiers {.unnumbered}
+### Meaningful identifiers {.unnumbered}
 
 An identifier is said to be meaningful when some attributes of the
 entity can be inferred from the identifier's value (e.g., a code of B78
@@ -1351,29 +1349,16 @@ The invoice number "12dec0001" is a meaningful identifier. The first
 five positions indicate in which period the invoice was generated. The
 last four digits of the invoice number have a meaning. The 0001
 indicates it was the first invoice sent in December. In addition, e-mail
-addresses, like [[mvdpas\@bizzo.nl]{.ul}](mailto:mvdpas@bizzo.nl), have
+addresses, like [mvdpas@bizzo.yx](mailto:mvdpas@bizzo.yx), have
 a meaning.
 
-When coding a person's gender, some systems use the codes "m" and "f"
-and others "1" and "2." The pair (m, f) is meaningful, but (1, 2) is not
-and puts the onus on the user to remember the meaning. The codes "m" and
-"f'" are derived from the reality that they represent. They are the
-first letters of the words male and female. The "1" and "2" are not
+When coding a person's employment status, a designer might use the codes "f" and "p" for full- and part-time
+and another might use "1" and "2." The pair (f, p) is meaningful, but (1, 2) is not
+and puts the onus on the client to remember the meaning. The codes "f" and
+"p" are derived from the reality that they represent. They are the
+first letters of the words full and part. The "1" and "2" are not
 abstracted from reality, and therefore they do not have an intuitive
 meaning.
-
-However, if you want to set an international standard suitable for many
-languages, then you need to revert to numeric codes, because "m" and "f"
-are not the first letters in all languages for male and female,
-respectively. Thus the English version of the International Organization
-for Standardization (ISO) information interchange standard for the
-representation of human sexes (ISO 5218) states:
-
-*No significance is to be placed on the fact that "Male" is coded "1"
-and "Female" is coded "2." This standard was developed based upon
-predominant practices of the countries involved and does not convey any
-meaning of importance, ranking or any other basis that could imply
-discrimination.*
 
 In determining whether an identifier is meaningful, one can look at the
 way new values of that identifier are generated. If the creation takes
@@ -1381,25 +1366,19 @@ place on the basis of characteristics that appear in reality, the
 identifier is meaningful. That is why the identifier of the invoice
 "12dec0002," which is the identifier assigned to the second invoice
 generated in December 2012, is meaningful. It is also why the e-mail
-address [[rwatson\@terry.uga.edu]{.ul}](mailto:rwatson@terry.uga.edu) is
-meaningful.
+address [rwatson@terry.uga.edu](mailto:rwatson@terry.uga.edu) is
+meaningful
 
 Meaningful identifiers clearly have some advantages and disadvantages,
 and these are now considered.
 
 *Advantages and disadvantages of meaningful identifiers*
 
-+-----------------------------+----------------------+
-| Advantages                  | Disadvantages        |
-+=============================+======================+
-| Recognizable and            | Identifier           |
-| rememberable                | exhaustion         |
-|                             |                      |
-| Administrative simplicity   | Reality changes      |
-|                             |                      |
-|                             | Loss of              |
-|                             | meaningfulness       |
-+-----------------------------+----------------------+
+| Advantages                     | Disadvantages             |
+|:-------------------------------|:-----------------------   |
+| Recognizable and  rememberable | Identifier  exhaustion    |
+| Administrative simplicity      | Reality changes           |
+|                                | Loss of  meaningfulness   |
 
 ### Advantages of meaningful identifiers {.unnumbered}
 
@@ -1407,8 +1386,7 @@ and these are now considered.
 
 People can often recognize and remember the significance of meaningful
 identifiers. If, for example, someone receives an e-mail from
-[[rwatson\@terry.uga.edu]{.ul}](mailto:rwatson@terry.uga.edu), this
-person can probably deduce the sender's name and workplace. If a
+rwatson@terry.uga.edu, this person can probably deduce the sender's name and workplace. If a
 manufacturer, for instance, uses the last two digits of its furniture
 code to indicate the color (e.g., 08 = beech), employees can then
 quickly determine the color of a packed piece of furniture. Of course,
@@ -1475,9 +1453,8 @@ identifier lengths (e.g., four digits for product group).
 The second problem of meaningful identifiers is that the reality they
 record changes. For example, a company changes its name. The College of
 Business at the University of Georgia was renamed the Terry College of
-Business. E-mail addresses changed (e.g.,
-[[rwatson\@cba.uga.edu]{.ul}](mailto:rwatson@cba.uga.edu) became
-[[rwatson\@terry.uga.edu]{.ul}](mailto:rwatson@terry.uga.edu)). An
+Business. Email addresses changed (e.g.,
+rwatson@cba.uga.edu became rwatson@terry.uga.edu). An
 identifier can remain meaningful over a long period only if the
 meaningful part rarely or never changes.
 
@@ -1655,7 +1632,7 @@ different meanings. Identifiers should generally have no meaning. Highly
 effective data modelers immerse, challenge, generalize, test, limit,
 integrate, and complete.
 
-## Key terms and concepts {.unnumbered}
+### Key terms and concepts {.unnumbered}
 
 |                       |                         |
 |:----------------------|-------------------------|
@@ -1684,7 +1661,7 @@ Hammer, M. 1990. Reengineering work: Don't automate, obliterate.
 
 ### Exercises {.unnumbered}
 
-### Short answers {.unnumbered}
+#### Short answers {.unnumbered}
 
 1.  What is data modeling?
 
@@ -1707,7 +1684,7 @@ Hammer, M. 1990. Reengineering work: Don't automate, obliterate.
 
 10. What is the difference between a synonym and a homonym?
 
-### Data modeling {.unnumbered}
+#### Data modeling {.unnumbered}
 
 Create a data model from the following narratives, which are sometimes
 intentionally incomplete. You will have to make some assumptions. Make
@@ -1737,7 +1714,8 @@ identifier(s) and attributes of each entity.
     foxtails).
 
 4.  Steve operates a cinema chain and has given you the following
-    information:\
+    information:
+
     "I have many cinemas. Each cinema can have multiple theaters. Movies
     are shown throughout the day starting at 11 a.m. and finishing at 1
     a.m. Each movie is given a two-hour time slot. We never show a movie
@@ -1783,16 +1761,16 @@ identifier(s) and attributes of each entity.
     Adventures, headquartered in Zaire, that has subsidiaries operating
     tours of Australia, Zaire, and New York. You have been commissioned
     to design a database to keep track of GT's businesses. The CEO has
-    provided you with the following information:\
-    \
+    provided you with the following information:
+    
     SBUs are headquartered in one country, not necessarily the United
     States. Each SBU has subsidiaries or foreign agents, depending on
     local legal requirements, in a number of countries. Each subsidiary
     or foreign agent operates in only one country but can operate in
     more than one market. GT uses the standard industrial code (SIC) to
     identify a market (e.g., newspaper publishing). The SIC is a unique
-    four-digit code.\
-    \
+    four-digit code.
+    
     While foreign agents operate as separate legal entities, GT needs to
     know in what countries and markets they operate. On the other hand,
     subsidiaries are fully or partly owned by GT, and it is important
@@ -1820,56 +1798,22 @@ identifier(s) and attributes of each entity.
     table for evaluating microwave ovens would have a similar layout,
     but different features would be reported (e.g., cooking quality).
 
-+-----+-----+-----+-----+-----+-----+-----+-----+
-| B   | Pr  | Ove | S o | Tap | FM\ | CD\ | E   |
-| r   | ice | r   | u   | i   | t u | ha  | ase |
-| and |     | a   | nd\ | ng\ | n   | n d |     |
-| and |     | ll\ | q u | qua | ing | l   | of  |
-| m   |     | s   | a   | l   |     | ing | use |
-| o   |     | c   | l   | ity |     |     |     |
-| del |     | ore | ity |     |     |     |     |
-+=====+=====+=====+=====+=====+=====+=====+=====+
-| Phi | 140 | 62  | V   | G   | V   | Exc | F   |
-| l   |     |     | ery | ood | ery | e l | air |
-| l   |     |     | g   |     | g   | l   |     |
-| ips |     |     | ood |     | ood | ent |     |
-| SC- |     |     |     |     |     |     |     |
-| A   |     |     |     |     |     |     |     |
-| K   |     |     |     |     |     |     |     |
-| 103 |     |     |     |     |     |     |     |
-+-----+-----+-----+-----+-----+-----+-----+-----+
-| P   | 215 | 55  | G   | G   | V   | V   | G   |
-| ana |     |     | ood | ood | ery | ery | ood |
-| s   |     |     |     |     | g   | g   |     |
-| o   |     |     |     |     | ood | ood |     |
-| nic |     |     |     |     |     |     |     |
-| M   |     |     |     |     |     |     |     |
-| C   |     |     |     |     |     |     |     |
-| -50 |     |     |     |     |     |     |     |
-+-----+-----+-----+-----+-----+-----+-----+-----+
-| Rio | 165 | 38  | G   | G   | F   | V   | P   |
-| G   |     |     | ood | ood | air | ery | oor |
-| 300 |     |     |     |     |     | g   |     |
-|     |     |     |     |     |     | ood |     |
-+-----+-----+-----+-----+-----+-----+-----+-----+
+| Brand and model   | Price | Overall score | Sound  quality | Taping quality | FM tuning | CD handling | Ease of use |
+|:-------------------|------:|--------:|:-----------|:---------|:-----------|:-----------|:--------|
+| Phillips SC-AK103 | 140   | 62      | Very good | Good    | Very good | Excellent | Fair   |
+| Panasonic MC-50   | 215   | 55      | Good      | Good    | Very good | Very good | Good   |
+| Rio G300          | 165   | 38      | Good      | Good    | Fair      | Very good | Poor   |
+
 
 12. Draw a data model for the following freight table taken from a mail
-    order catalog.
+    order catalog. All values are in USD.
 
-+----------------+----------------+----------------+----------------+
-| Merchandise    | Regular        | Rush delivery  | Express        |
-|                | delivery       |                | delivery       |
-| subtotals      |                | 4--5 business  |                |
-|                | 7--10 days     | days           | 1--2 business  |
-|                |                |                | days           |
-+================+================+================+================+
-| Up to \$30.00  | \$4.95         | \$9.95         | \$12.45        |
-+----------------+----------------+----------------+----------------+
-| \$             | \$6.95         | \$11.95        | \$15.45        |
-| 30.01--\$65.00 |                |                |                |
-+----------------+----------------+----------------+----------------+
-| \$6            | \$8.95         | \$13.95        | \$20.45        |
-| 5.01--\$125.00 |                |                |                |
-+----------------+----------------+----------------+----------------+
-| \$125.01+      | \$9.95         | \$15.95        | \$25.45        |
-+----------------+----------------+----------------+----------------+
+
+| Merchandise  subtotals | Regular delivery | Rush delivery     | Express delivery   |
+|:-----------------------|-----------------:|------------------:|-------------------:|
+|                        | 7-10 days        | 4-5 business days |  1-2 business days |
+| Up to 30.00            | 4.95             | 9.95              | 12.45              |
+| 30.01-65.00            | 6.95             | 11.95             | 15.45              |
+| 65.01-125.00           | 8.95             | 13.95             | 20.45              |
+| 125.01+                | 9.95             | 15.95             | 25.45              |
+

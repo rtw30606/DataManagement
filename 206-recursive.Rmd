@@ -354,8 +354,8 @@ table.
 
 *The table monarch*
 
-| montype | monname   | monnum | rgnbeg     | premonname | premonnum |
-|:--------|:----------|:------:|:-----------|:-----------|:---------:|
+| montype | *monname  | *monnum | rgnbeg    | *premonname* | *premonnum* |
+|:--------|:----------|:-------:|:----------|:-----------|:---------:|
 | King    | William   |   IV   | 1830/6/26  |            |           |
 | Queen   | Victoria  |   I    | 1837/6/20  | William    |    IV     |
 | King    | Edward    |  VII   | 1901/1/22  | Victoria   |     I     |
