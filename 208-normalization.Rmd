@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Normalization and Other Data Modeling Methods
 
 > *There are many paths to the top of the mountain, but the view is
@@ -11,7 +5,7 @@ editor_options:
 >
 > Chinese Proverb
 
-#### Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will
 
@@ -22,7 +16,7 @@ Students completing this chapter will
 -   recognize that different data modeling approaches, while they differ
     in representation methods, are essentially identical.
 
-### Introduction {.unnumbered}
+## Multiple paths {.unnumbered}
 
 There are often many ways to solve a problem, and different methods
 frequently produce essentially the same solution. When this is the case,
@@ -34,8 +28,7 @@ initial approach to database design. It was developed as part of the
 theoretical foundation of the relational data model. It is useful to
 understand the key concepts of normalization because they advance your
 understanding of the relational model. Experience and research indicate,
-however, that normalization is more difficult to master than data
-modeling.
+however, that data modeling is easier to master than normalization.
 
 Data modeling first emerged as entity-relationship (E-R) modeling in a
 paper by Peter Pin-Shan Chen. He introduced two key database design
@@ -45,10 +38,8 @@ concepts:
 
 -   A graphical representation improves design communication.
 
-Chen's core concepts spawned many species of data modeling. To give you
-an appreciation of the variation in data modeling approaches, we briefly
-review, later in this chapter, Chen's E-R approach and IDEF1X, an
-approach used by the Department of Defense.
+Chen's core concepts spawned many species of data modeling. We briefly
+review, later in this chapter, Chen's E-R approach.
 
 ## Normalization {.unnumbered}
 
@@ -93,7 +84,7 @@ An identifier functionally determines all the attributes in an entity.
 That is, if we know the value of stock code, then we can determine the
 value of stock name, stock price, and so on.
 
-Formulae, such as yield = stock dividend/stock price\*100, are a form of
+Formulae, such as yield = stock dividend/stock price*100, are a form of
 functional dependency. In this case, we have
 
 (stock dividend, stock price) → yield
@@ -107,12 +98,12 @@ determinant because it fully functionally determines stock PE. An
 identifier, usually called a key when discussing normalization, is a
 determinant. Unlike a key, a determinant need not be unique. For
 example, a university could have a simple fee structure where
-undergraduate courses are \$5000 and graduate courses are \$7500. Thus,
+undergraduate courses are $5000 and graduate courses are $7500. Thus,
 course type → fee. Since there are many undergraduate and graduate
 courses, course type is not unique for all records.
 
 There are situations where a given value determines multiple values.
-This **multidetermination** property is denoted as A → → B and reads "A
+This **multidetermination** property is denoted as A →→ B and reads "A
 multidetermines B." For instance, a department multidetermines a course.
 If you know the department, you can determine the set of courses it
 offers. **Multivalued dependency** means that functional dependencies
@@ -131,11 +122,11 @@ B, then three relations are possible, as shown in the following table.
 
 *Functional dependencies of two attributes*
 
-| ***Relationship***               | ***Functional dependency*** | ***Relationship*** |
-|:---------------------------------|:----------------------------|:-------------------|
-| They determine each other        | A → B and B → A             | 1:1                |
-| One determines the other         | A → B                       | 1:m                |
-| They do not determine each other | A not→ B and B not→A        | m:m                |
+| Relationship                     | Functional dependency       | Relationship |
+|:---------------------------------|:----------------------------|:-------------|
+| They determine each other        | A → B and B → A             | 1:1          |
+| One determines the other         | A → B                       | 1:m          |
+| They do not determine each other | A not → B and B not → A     | m:m          |
 
 #### One-to-one attribute relationship {.unnumbered}
 
@@ -160,7 +151,7 @@ and currency unit would be a nonkey column.
 #### Many-to-many attribute relationship {.unnumbered}
 
 The final case to investigate is when neither attribute determines the
-other (i.e., A not→ B and B not→A). The relationship between country
+other (i.e., A not → B and B not → A). The relationship between country
 name and language is many-to-many (m:m). For example, Belgium has two
 languages (French and Flemish), and French is spoken in many countries.
 To record the m:m relationship between these attributes, a table
@@ -224,8 +215,8 @@ attribute of `customer`, and you get the correct relational mapping.
 
 *Second normal form violation*
 
-| [itemno]{.ul} | [customerid]{.ul} | quantity | customer-credit |
-|:--------------|:------------------|:---------|:----------------|
+| *itemno       | *customerid       | quantity | customer-credit |
+|:--------------|:------------------|---------:|:----------------|
 | 12            | 57                | 25       | OK              |
 | 34            | 679               | 3        | POOR            |
 
@@ -261,8 +252,8 @@ model and relational map can be created readily .
 
 *Third normal form violation*
 
-| [stockcode]{.ul} | nation | exchange rate |
-|:-----------------|:-------|:--------------|
+| *stockcode       | nation | exchange rate |
+|:-----------------|:-------|--------------:|
 | MG               | USA    | 0.67          |
 | IR               | AUS    | 0.46          |
 
@@ -270,7 +261,9 @@ model and relational map can be created readily .
 
 ![](Figures/Chapter%204/nation-stock.png){width="370"}
 
-> ❓*Skill builder* You have been given a spreadsheet that contains
+> ❓ *Skill builder*
+>
+> You have been given a spreadsheet that contains
 > details of invoices. The\
 > column headers for the spreadsheet are *date*, *invoice number*,
 > *invoice amount*, *invoice tax*, *invoice total*, *cust number*,
@@ -278,6 +271,7 @@ model and relational map can be created readily .
 > code*, *cust nation*, *product code*, *product price*, *product
 > quantity*, *salesrep number*, *salesrep first name*, *salesrep last
 > name*, *salesrep district*, *district name*, and *district size*.
+>
 > Normalize this spreadsheet so that it can be converted to a
 > high-fidelity relational database.
 
@@ -312,7 +306,7 @@ table.
 
 *Boyce-Codd normal form violation*
 
-| [client]{.ul} | [probtype]{.ul} | consultant |
+| *client       | *probtype       | consultant |
 |:--------------|:----------------|:-----------|
 | Alpha         | Marketing       | Gomez      |
 | Alpha         | Production      | Raginiski  |
@@ -359,7 +353,7 @@ and her subject. Modification anomalies are very apparent.
 
 *Fourth normal form violation*
 
-| [studentid]{.ul} | [sport]{.ul} | [subject]{.ul} | ... |
+| *studentid       | *sport       | *subject       | ... |
 |:-----------------|:-------------|:---------------|:----|
 | 50               | Football     | English        | ... |
 | 50               | Football     | Music          | ... |
@@ -411,7 +405,7 @@ following table.
 
 *Relation table assignment*
 
-| [consultid]{.ul} | [firmid]{.ul} | [skilldesc]{.ul} |
+| *consultid       | *firmid       | *skilldesc       |
 |:-----------------|:--------------|:-----------------|
 | Tan              | IBM           | Database         |
 | Tan              | Apple         | Data comm        |
@@ -429,7 +423,7 @@ consultant advises that firm on that skill (i.e., he advises IBM on
 database). Notice that this rule means we can infer a relationship, and
 we no longer need the combination of the three columns. As a result, we
 break the single three-entity m:m relationship into three two-entity m:m
-relationships. Revised data model after the introduction of the rule
+relationships. The revised data model after the introduction of the rule is:
 
 ![](Figures/Chapter%208/5NF-2.png){width="600"}
 
@@ -443,7 +437,7 @@ tables below.
 
 *Relational table contract*
 
-| [consultid]{.ul} | [firmid]{.ul} |
+| *consultid       | *firmid |
 |:-----------------|:--------------|
 | Gonzales         | Apple         |
 | Gonzales         | IBM           |
@@ -454,7 +448,7 @@ tables below.
 
 *Relational table advise*
 
-| [consultid]{.ul} | [skilldesc]{.ul} |
+| *consultid       | *skilldesc       |
 |:-----------------|:-----------------|
 | Gonzales         | Database         |
 | Gonzales         | Data comm        |
@@ -465,7 +459,7 @@ tables below.
 
 *Relational table require*
 
-| [firmid]{.ul} | [skilldesc]{.ul} |
+| *firmid       | *skilldesc       |
 |:--------------|:-----------------|
 | IBM           | Data comm        |
 | IBM           | Groupware        |
@@ -483,7 +477,7 @@ determine whether IBM requires advice on database; it does not.
 
 *Relational table could advise*
 
-| [consultid]{.ul} | [firmid]{.ul} | [skilldesc]{.ul} |
+| *consultid       | *firmid       | *skilldesc       |
 |:-----------------|:--------------|:-----------------|
 | Gonzales         | Apple         | Database         |
 | Gonzales         | Apple         | Data comm        |
@@ -508,7 +502,7 @@ constructed by directly joining `contract`, `advise`, and `require`.
 Because we can construct `can advise` from three other tables, the data
 are in 5NF.
 
-| [consultid]{.ul} | [firmid]{.ul} | [skilldesc]{.ul} |
+| *consultid       | *firmid       | *skilldesc       |
 |:-----------------|:--------------|:-----------------|
 | Gonzales         | IBM           | Data comm        |
 | Gonzales         | IBM           | Groupware        |
@@ -569,12 +563,7 @@ a ménage-à-trois.
 ## Other data modeling methods {.unnumbered}
 
 As mentioned previously, there are many species of data modeling. Here
-we consider two methods.
-
-### The E-R model {.unnumbered}
-
-One of the most widely known data modeling methods is the E-R model
-developed by Chen. There is no standard for the E-R model, and it has
+we consider one of the most widely known data modeling methods, the the E-R model developed by Chen. There is no standard for the E-R model, and it has
 been extended and modified in a number of ways.
 
 As the following figure shows, an E-R model looks like the data models
@@ -600,7 +589,7 @@ attributes consumes space, particularly for large data models. It is
 more efficient to record attributes within an entity rectangle, as in
 the data modeling method you have learned.
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > Ken is a tour guide for trips that can last several weeks. He has
 > requested a database that will enable him to keep track of the people
@@ -715,7 +704,8 @@ each entity.
     foxtails).
 
 4.  Steve operates a cinema chain and has given you the following
-    information:\
+    information:
+    
     "I have many cinemas. Each cinema can have multiple theaters. Movies
     are shown throughout the day starting at 11 a.m. and finishing at 1
     a.m. Each movie is given a two-hour time slot. We never show a movie

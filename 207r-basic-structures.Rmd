@@ -1,8 +1,12 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
+```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
+library(DBI)
+library(RMySQL)
+db <- dbConnect(RMySQL::MySQL(),
+                  dbname = "Text",
+                  host = "www.richardtwatson.com",
+                  user="student",
+                  password = "student")
+```
 
 # Reference 1: Basic Structures {.unnumbered}
 
@@ -15,7 +19,7 @@ Every data model is composed of the same basic structures. This is a
 major advantage because you can focus on a small part of a full data
 model without being concerned about the rest of it. As a result,
 translation to a relational database is very easy because you
-systematically translate each basic structure. This section describes
+systematically translate each basic structure. This reference describes
 each of the basic structures and shows how they are mapped to a
 relational database. Because the mapping is shown as a diagram and SQL
 CREATE statements, you might use this section frequently when first
@@ -34,9 +38,9 @@ completeness.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE person (
-	personid		INTEGER,
-	attribute1		… ,
-	attribute2		… ,
+	personid	INTEGER,
+	attribute1	… ,
+	attribute2	… ,
 	…
 		PRIMARY KEY(personid));
 ```
@@ -58,9 +62,9 @@ constraint cannot refer to the table being created.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE person (
-	personid		INTEGER,
-	attribute1		… ,
-	attribute2		… ,
+	personid	INTEGER,
+	attribute1	… ,
+	attribute2	… ,
 	…
 	partner		INTEGER,
 		PRIMARY KEY(personid));
@@ -74,16 +78,16 @@ may have many biological children, but a child has only one biological
 father. The relationship is mapped like any other 1:m relationship. The
 identifier of the one end becomes a foreign key in the many end. Again,
 we must rename the identifier when it becomes a foreign key in the same
-table. Also, again the foreign key constraint is not defined because it
+table. Also, as before the foreign key constraint is not defined because it
 cannot refer to the table being created.
 
 ![](Figures/Reference%201/r1-person-1-m.png){width="312"}
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE person (
-	personid		INTEGER,
-	Attribute1		… ,
-	Attribute2		… ,
+	personid	INTEGER,
+	Attribute1	… ,
+	Attribute2	… ,
 	…
 	father		INTEGER,
 		PRIMARY KEY(personid));
@@ -117,19 +121,19 @@ between person and friendship.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE person (
-	personid		INTEGER,
-	Attribute1		… ,
-	attribute2		… ,
+	personid	INTEGER,
+	Attribute1	… ,
+	attribute2	… ,
 	…
 		PRIMARY KEY(personid));
 ```
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE friendship (
-	personid1		INTEGER,
-	personid2		INTEGER,
-	attribute3		… ,
-	attribute4		… ,
+	personid1	INTEGER,
+	personid2	INTEGER,
+	attribute3	… ,
+	attribute4	… ,
 	…
 		PRIMARY KEY(personid1,personid2),
 		CONSTRAINT fk_friendship_person1
@@ -174,8 +178,8 @@ employee who is the boss.
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE employee (
 	empid		INTEGER,
-	empattrib1		… ,
-	empattrib2		… ,
+	empattrib1	… ,
+	empattrib2	… ,
 	…
 		PRIMARY KEY(empid));
 ```
@@ -183,10 +187,10 @@ CREATE TABLE employee (
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE department (
 	deptid		CHAR(3),
-	deptattrib1		… ,
-	deptattrib2		… ,
+	deptattrib1	… ,
+	deptattrib2	… ,
 	…
-	bossid INTEGER,
+	bossid 		INTEGER,
 		PRIMARY KEY(deptid),
 		CONSTRAINT fk_department_employee
 			FOREIGN KEY(bossid) REFERENCES employee(empid));
@@ -204,7 +208,7 @@ mapping to the relational model is very simple. The primary key of the
 CREATE TABLE nation (
 	natcode		CHAR(3),
 	natname		VARCHAR(20),
-	exchrate		DECIMAL(9,5),
+	exchrate	DECIMAL(9,5),
 		PRIMARY KEY(natcode));
 ```
 
@@ -212,10 +216,10 @@ CREATE TABLE nation (
 CREATE TABLE stock (
 	stkcode		CHAR(3),
 	stkfirm		VARCHAR(20),
-	stkprice		DECIMAL(6,2),
+	stkprice	DECIMAL(6,2),
 	stkqty		DECIMAL(8),
 	stkdiv		DECIMAL(5,2),
-	stkpe			DECIMAL(5),
+	stkpe		DECIMAL(5),
 	natcode		CHAR(3),
 		PRIMARY KEY(stkcode),
 		CONSTRAINT fk_stock_nation
@@ -237,26 +241,26 @@ if it's sitting on the shelf, there is no borrower.
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE book (
 	callno		VARCHAR(12),
-	isbn			… ,
-	booktitle		… ,
+	isbn		… ,
+	booktitle	… ,
 	…
 		PRIMARY KEY(callno));
 ```
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE borrower (
-	borrowerid		INTEGER,
+	borrowerid	INTEGER,
 		…
 		PRIMARY KEY(borrowerid));
 ```
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE copy (
-	bookno			INTEGER,
+	bookno		INTEGER,
 	duedate		DATE,
 	… 
-	callno			VARCHAR(12),
-	borrowerid		INTEGER,
+	callno		VARCHAR(12),
+	borrowerid	INTEGER,
 		PRIMARY KEY(bookno),
 		CONSTRAINT fk_copy_book
 			FOREIGN KEY(callno) REFERENCES book(callno),
@@ -267,10 +271,12 @@ CREATE TABLE copy (
 ## Another entity's identifier as part of the identifier {.unnumbered}
 
 Using one entity's identifier as part of another entity's identifier
-tends to cause the most problems for novice data modelers. (One entity's
+tends to cause the most problems for novice data modelers. One entity's
 identifier is part of another identifier when there is a plus sign on an
 arc. The plus is almost always at the crow's foot end of a 1:m
-relationship.) Tables are formed by applying the following rule: The
+relationship. 
+
+Tables are formed by applying the following rule: The
 primary key of the table at the other end of the relationship becomes
 both a foreign key and part of the primary key in the table at the plus
 end. The application of this rule is shown for several common data model
@@ -288,17 +294,17 @@ the 1:m between region and city).
 CREATE TABLE region (
 	regname		VARCHAR(20),
 	regtype		…,
-	regpop		 …,
-	regarea		 …,
+	regpop		…,
+	regarea		…,
 		… 
 		PRIMARY KEY(regname));
 ```
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE city (
-	cityname		VARCHAR(20),
+	cityname	VARCHAR(20),
 	citypop		… ,
-	cityarea		… ,
+	cityarea	… ,
 	…
 	regname		VARCHAR(20),
 		PRIMARY KEY(cityname,regname),	
@@ -316,15 +322,15 @@ foreign keys (because of the two 1:m relationships) of store.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE city (
-	cityname		VARCHAR(20),
+	cityname	VARCHAR(20),
 	… 
 		PRIMARY KEY(cityname));
 ```
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE firm 
-	firmname		VARCHAR(15),
-	firmstreet		… ,
+	firmname	VARCHAR(15),
+	firmstreet	… ,
 	firmzip		… ,
 	…
 		PRIMARY KEY(firmname));
@@ -333,10 +339,10 @@ CREATE TABLE firm
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE store (
 	storestreet	VARCHAR(30), 
-	storezip		… ,
+	storezip	… ,
 	…
-	cityname		VARCHAR(20),
-	firmname		VARCHAR(15),
+	cityname	VARCHAR(20),
+	firmname	VARCHAR(15),
 		PRIMARY KEY(storestreet,cityname,firmname),
 		CONSTRAINT fk_store_city
 			FOREIGN KEY(cityname) REFERENCES city(cityname),
@@ -357,7 +363,7 @@ translation.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE firm (
-	firmname		VARCHAR(15),
+	firmname	VARCHAR(15),
 	… 
 		PRIMARY KEY(firmname));
 ```
@@ -366,7 +372,7 @@ CREATE TABLE firm (
 CREATE TABLE division (
 	divname		VARCHAR(15),
 	…
-	firmname		VARCHAR(15),
+	firmname	VARCHAR(15),
 		PRIMARY KEY(firmname,divname),
 		CONSTRAINT fk_division_firm 
 			FOREIGN KEY(firmname) REFERENCES firm(firmname));
@@ -374,10 +380,10 @@ CREATE TABLE division (
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE department (
-	deptname		VARCHAR(15), 
+	deptname	VARCHAR(15), 
 	… 
 	divname		VARCHAR(15),
-	firmname		VARCHAR(15),
+	firmname	VARCHAR(15),
 		PRIMARY KEY(firmname,divname,deptname),
 		CONSTRAINT fk_department_division
 			FOREIGN KEY (firmname,divname) 
@@ -386,11 +392,11 @@ CREATE TABLE department (
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE section (
-	sectionid		VARCHAR(15), 
+	sectionid	VARCHAR(15), 
 	… 
 	divname		VARCHAR(15),
-	firmname		VARCHAR(15),
-	deptname		VARCHAR(15),
+	firmname	VARCHAR(15),
+	deptname	VARCHAR(15),
 		PRIMARY KEY(firmname,divname,deptname,sectionid),
 		CONSTRAINT fk_department_department
 			FOREIGN KEY (firmname,divname,deptname) 
