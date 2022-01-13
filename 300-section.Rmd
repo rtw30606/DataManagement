@@ -1,37 +1,28 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # Section 3 Advanced Data Management {.unnumbered}
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
-library(DBI)
-library(RMySQL)
-db <- dbConnect(RMySQL::MySQL(),
-                  dbname = "Text",
-                  host = "www.richardtwatson.com",
-                  user="student",
-                  password = "student")
-```
+> *Advancement only comes with habitually doing more than you are
+> asked.*
+>
+> Gary Ryan Blair.[^section-1]
 
-```{css, echo=FALSE}
-.vignette {
-  background-color: lightpink;
-  border: 3px solid red;
-  font-weight: bold;
-}
-```
-
-> *Advancement only comes with habitually doing more than you are asked.*
-> 
-> Gary Ryan Blair.[^1]
-
-[^1]: [[http://www.garyryanblair.com]{.underline}](http://www.terry.uga.edu/people/rwatson/)
+[^section-1]: <http://www.everythingcounts.com>
 
 The wiring of the world has given us ubiquitous networks and broadened
 the scope of issues that data management must now embrace. In everyday
-life, you might use a variety of networks (e.g., the Internet, 4G, WiFi,
+life, you might use a variety of networks (e.g., the Internet, 5G, WiFi,
 and bluetooth) to gain access to information wherever you might be and
 whatever time it is. As a result, data managers need to be concerned
-with both the **spatial and temporal** dimensions of data. In a highly
-connected world, massive amounts of data are exchanged every minute
-between computers to enable a high level of global integration in
+with both the **spatial and temporal** dimensions of data. **Graph
+databases** have grown in popularity because they are optimized for
+analyzing networks, such as social connections and supply chains. In a
+highly connected world, massive amounts of data are exchanged every
+minute between computers to enable a high level of global integration in
 economic and social activity. **XML** has emerged as the foundation for
 data exchange across many industries. It is a core technology for global
 economic development. On the social side, every day people generate
@@ -65,18 +56,12 @@ component of the data manager's toolkit.
 
 The section covers the following topics.
 
-- Spatial and temporal data management
-
-- XML
-
-- Organizational intelligence
-
-- Introduction to R
-
-- Data visualization
-
-- Text mining
-
-- Cluster Computing
-
-- Dashboards
+-   Spatial and temporal data management
+-   Graph databases
+-   XML
+-   Organizational intelligence
+-   Introduction to R
+-   Data visualization
+-   Text mining
+-   Cluster Computing
+-   Dashboards

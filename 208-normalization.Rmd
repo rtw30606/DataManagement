@@ -103,7 +103,7 @@ course type → fee. Since there are many undergraduate and graduate
 courses, course type is not unique for all records.
 
 There are situations where a given value determines multiple values.
-This **multidetermination** property is denoted as A →→ B and reads "A
+This **multidetermination** property is denoted as A ↠ B and reads "A
 multidetermines B." For instance, a department multidetermines a course.
 If you know the department, you can determine the set of courses it
 offers. **Multivalued dependency** means that functional dependencies

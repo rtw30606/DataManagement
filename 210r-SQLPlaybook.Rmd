@@ -8,8 +8,16 @@
 
 SQL is a very powerful retrieval language, and most novices underestimate its capability. Furthermore, mastery of SQL takes considerable practice and exposure to a wide variety of problems. This reference serves the dual purpose of revealing the full power of SQL and providing an extensive set of diverse queries. To make this reference easier to use, we have named each of the queries to make them easy to remember.
 
-Lacroix and Pirotte1 have defined 66 queries for testing a query language's power, and their work is the foundation of this chapter. Not all their queries are included; some have been kept for the end- of - chapter exercises. Also, many of the queries have been reworded to various extents. Because these queries are more difficult than those normally used in business decision making, they provide a good test of your SQL skills. If you can answer all of them, then you are a proficient SQL programmer. You are encouraged to formulate and test your answer to a query before reading the suggested solution.2 A q has been prefixed to all entity and table names to distinguish them from entities and tables used in earlier problems. The going gets tough after the first few queries, and you can expect to spend some time formulating and testing each one, but remember, this is still considerably faster than using a procedural programming language, such as Java, to write the same queries.
+Lacroix and Pirotte[^r-sqlplaybook-1] have defined 66 queries for testing a query language's power, and their work is the foundation of this chapter. Not all their queries are included; some have been kept for the end-of-chapter exercises. Also, many of the queries have been reworded to various extents. Because these queries are more difficult than those normally used in business decision making, they provide a good test of your SQL skills. If you can answer all of them, then you are a proficient SQL programmer. You are encouraged to formulate and test your answer to a query before reading the suggested solution.[^r-sqlplaybook-2]
+
+[^r-sqlplaybook-1]: Lacroix, M., & Pirotte, A. (1976). Example queries in relational languages. Brussels: M.B.L.E. Technical note no. 107.
+
+[^r-sqlplaybook-2]: The author is indebted to Dr. Mohammad Dadashzadeh of Wichita State University in Kansas, who provided valuable assistance by checking each query. Dr. Gert Jan Hofstede of Wageningen University in the Netherlands also willingly contributed some improvements. Many of their suggestions for the SQL code to answer these queries have been incorporated. All the queries have been tested with a small database. If you discover a problem with a query or a better way of expressing it, please send an e-mail message to [rwatson@terry.uga.edu](mailto:rwatson@terry.uga.edu){.email}.
+
+A q has been prefixed to all entity and table names to distinguish them from entities and tables used in earlier problems. The going gets tough after the first few queries, and you can expect to spend some time formulating and testing each one, but remember, this is still considerably faster than using a procedural programming language, such as Java, to write the same queries.
 
 The data model accompanying Lacroix and Pirotte's queries is shown in the following figure. You will notice that the complexity of the real world has been reduced; a sale and a delivery are assumed to have only one item.
 
-The remainder of this [reference chapter](http://www.richardtwatson.com/dm6e/Reader/sql/playbook.pdf) is on the book's web site.
+![](Figures/Reference%202/Data%20model.png)
+
+The remainder of this [reference chapter](http://www.richardtwatson.com/open/Reader/sql/playbook.pdf) is on the book's web site.
