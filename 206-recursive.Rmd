@@ -1,13 +1,3 @@
-```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
-library(DBI)
-library(RMySQL)
-db <- dbConnect(RMySQL::MySQL(),
-                  dbname = "Text",
-                  host = "www.richardtwatson.com",
-                  user="student",
-                  password = "student")
-```
-
 # One-to-One and Recursive Relationships
 
 > *Self-reflection is the school of wisdom.*
@@ -22,11 +12,9 @@ Students completing this chapter will be able to
 
 -   define a database with one-to-one and recursive relationships;
 
--   write queries for a database with one-to-one and recursive
-    relationships.
+-   write queries for a database with one-to-one and recursive relationships.
 
-An organizational chart, as shown in the following diagram, can be
-modeled with several relationships.
+An organizational chart, as shown in the following diagram, can be modeled with several relationships.
 
 *An organizational chart*
 
@@ -34,12 +22,7 @@ modeled with several relationships.
 
 ## Modeling a one-to-one relationship {.unnumbered}
 
-Initially, the organization chart appears to record two relationships.
-*First**,*** a department has one or more employees, and an employee
-belongs to one department. *Second*, a department has one boss, and a
-person is boss of only one department. That is, boss is a 1:1
-relationship between DEPT and EMP. The data model for this situation is
-shown.
+Initially, the organization chart appears to record two relationships. *First**,*** a department has one or more employees, and an employee belongs to one department. *Second*, a department has one boss, and a person is boss of only one department. That is, boss is a 1:1 relationship between DEPT and EMP. The data model for this situation is shown.
 
 *A data model illustrating a 1:m and 1:1 relationship*
 
@@ -49,25 +32,11 @@ shown.
 
 ![](Figures/Chapter%206/1-1-wb.png)
 
-As a general rule, the 1:1 relationship is labeled to avoid confusion
-because the meaning of such a relationship cannot always be inferred.
-This label is called a **relationship descriptor**. The 1:m relationship
-between DEPT and EMP is not labeled because its meaning is readily
-understood by reading the model. Use a relationship descriptor when
-there is more than one relationship between entities or when the meaning
-of the relationship is not readily inferred from the model.
+As a general rule, the 1:1 relationship is labeled to avoid confusion because the meaning of such a relationship cannot always be inferred. This label is called a **relationship descriptor**. The 1:m relationship between DEPT and EMP is not labeled because its meaning is readily understood by reading the model. Use a relationship descriptor when there is more than one relationship between entities or when the meaning of the relationship is not readily inferred from the model.
 
-If we think about this problem, we realize there is more to boss than
-just a department. People also have a boss. Thus, Alice is the boss of
-all the other employees. In this case, we are mainly interested in who
-directly bosses someone else. So, Alice is the direct boss of Ned, Todd,
-Brier, and Sophie. We need to record the person-boss relationship as
-well as the department-boss relationship.
+If we think about this problem, we realize there is more to boss than just a department. People also have a boss. Thus, Alice is the boss of all the other employees. In this case, we are mainly interested in who directly bosses someone else. So, Alice is the direct boss of Ned, Todd, Brier, and Sophie. We need to record the person-boss relationship as well as the department-boss relationship.
 
-The person-boss relationship is a **recursive 1:m relationship** because
-it is a relationship between employees---an employee has one boss and a
-boss can have many employees. The data model is shown in the following
-figure.
+The person-boss relationship is a **recursive 1:m relationship** because it is a relationship between employees---an employee has one boss and a boss can have many employees. The data model is shown in the following figure.
 
 *A data model illustrating a recursive 1:m relationship*
 
@@ -77,83 +46,55 @@ figure.
 
 ![](Figures/Chapter%206/recursive-1-and-m-wb.png)
 
-It is a good idea to label the recursive relationship, because its
-meaning is often not obvious from the data model.
+It is a good idea to label the recursive relationship, because its meaning is often not obvious from the data model.
 
 ## Mapping a one-to-one relationship {.unnumbered}
 
-Since mapping a 1:1 relationship follows the same rules as for any other
-data model, the major consideration is where to place the foreign
-key(s). There are three alternatives:
+Since mapping a 1:1 relationship follows the same rules as for any other data model, the major consideration is where to place the foreign key(s). There are three alternatives:
 
 1.  Put the foreign key in dept.
-    
-    Doing so means that every instance of dept will record the empno of
-    the employee who is boss. Because it is mandatory that all
-    departments, in this case have a boss, the foreign key will always
-    be non-null.
+
+    Doing so means that every instance of dept will record the empno of the employee who is boss. Because it is mandatory that all departments, in this case have a boss, the foreign key will always be non-null.
 
 2.  Put the foreign key in emp.
-    
-    Choosing this alternative means that every instance of emp should
-    record deptname of the department this employee bosses. Since many
-    employees are not bosses, the value of the foreign key column will
-    generally be null.
+
+    Choosing this alternative means that every instance of emp should record deptname of the department this employee bosses. Since many employees are not bosses, the value of the foreign key column will generally be null.
 
 3.  Put a foreign key in both dept and emp.
-    
-    The consequence of putting a foreign key in both tables in the 1:1
-    relationship is the combination of points 1 and 2.
 
-The best approach is to put the foreign key in dept, because it is
-mandatory for each department to have a boss, and the foreign key will
-always be non-null.
+    The consequence of putting a foreign key in both tables in the 1:1 relationship is the combination of points 1 and 2.
+
+The best approach is to put the foreign key in dept, because it is mandatory for each department to have a boss, and the foreign key will always be non-null.
 
 ## Mapping a recursive one-to-many relationship {.unnumbered}
 
-A recursive 1:m relationship is mapped like a standard 1:m relationship.
-An additional column, for the foreign key, is created for the entity at
-the "many" end of the relationship. Of course, in this case the "one"
-and "many" ends are the same entity, so an additional column is added to
-`emp`. This column contains the key `empno` of the "one" end of the
-relationship. Since `empno` is already used as a column name, a
-different name needs to be selected. In this case, it makes sense to
-call the foreign key column `bossno` because it stores the boss's
-employee number.
+A recursive 1:m relationship is mapped like a standard 1:m relationship. An additional column, for the foreign key, is created for the entity at the "many" end of the relationship. Of course, in this case the "one" and "many" ends are the same entity, so an additional column is added to `emp`. This column contains the key `empno` of the "one" end of the relationship. Since `empno` is already used as a column name, a different name needs to be selected. In this case, it makes sense to call the foreign key column `bossno` because it stores the boss's employee number.
 
-The mapping of the data model is shown in the following table. Note that
-`deptname` becomes a column in `emp`, the "many" end of the 1:m
-relationship, and `empno` becomes a foreign key in `dept`, an end of the
-1:1 relationship.
+The mapping of the data model is shown in the following table. Note that `deptname` becomes a column in `emp`, the "many" end of the 1:m relationship, and `empno` becomes a foreign key in `dept`, an end of the 1:1 relationship.
 
 *The tables dept and emp*
 
-| *deptname       | deptfloor | deptphone | *empno* |
-|:----------------|:---------:|:---------:|:-------:|
-| Management      |     5     |   2001    |    1    |
-| Marketing       |     1     |   2002    |    2    |
-| Accounting      |     4     |   2003    |    5    |
-| Purchasing      |     4     |   2004    |    7    |
-| Personnel & PR  |     1     |   2005    |    9    |
+| *deptname      | deptfloor | deptphone | *empno* |
+|:---------------|:---------:|:---------:|:-------:|
+| Management     |     5     |   2001    |    1    |
+| Marketing      |     1     |   2002    |    2    |
+| Accounting     |     4     |   2003    |    5    |
+| Purchasing     |     4     |   2004    |    7    |
+| Personnel & PR |     1     |   2005    |    9    |
 
-| *empno       | empfname | empsalary | deptname         | bossno |
-|:------------:|:---------|----------:|:-----------------|:------:|
-|      1       | *Alice*  |     75000 | *Management*     |        |
-|      2       | *Ned*    |     45000 | *Marketing*      |   1    |
-|      3       | *Andrew* |     25000 | *Marketing*      |   2    |
-|      4       | *Clare*  |     22000 | *Marketing*      |   2    |
-|      5       | *Todd*   |     38000 | *Accounting*     |   1    |
-|      6       | *Nancy*  |     22000 | *Accounting*     |   5    |
-|      7       | *Brier*  |     43000 | *Purchasing*     |   1    |
-|      8       | *Sarah*  |     56000 | *Purchasing*     |   7    |
-|      9       | *Sophie* |     35000 | *Personnel & PR* |   1    |
+| *empno  | empfname | empsalary | deptname         | bossno |
+|:-------:|:---------|----------:|:-----------------|:------:|
+|    1    | *Alice*  |     75000 | *Management*     |        |
+|    2    | *Ned*    |     45000 | *Marketing*      |   1    |
+|    3    | *Andrew* |     25000 | *Marketing*      |   2    |
+|    4    | *Clare*  |     22000 | *Marketing*      |   2    |
+|    5    | *Todd*   |     38000 | *Accounting*     |   1    |
+|    6    | *Nancy*  |     22000 | *Accounting*     |   5    |
+|    7    | *Brier*  |     43000 | *Purchasing*     |   1    |
+|    8    | *Sarah*  |     56000 | *Purchasing*     |   7    |
+|    9    | *Sophie* |     35000 | *Personnel & PR* |   1    |
 
-If you examine `emp`, you will see that the boss of the employee with
-`empno` = 2 (Ned) has `bossno` = 1. You can then look up the row in
-`emp` with `empno` = 1 to find that Ned's boss is Alice. This "double
-lookup" is frequently used when manually interrogating a table that
-represents a recursive relationship. Soon you will discover how this is
-handled with SQL.
+If you examine `emp`, you will see that the boss of the employee with `empno` = 2 (Ned) has `bossno` = 1. You can then look up the row in `emp` with `empno` = 1 to find that Ned's boss is Alice. This "double lookup" is frequently used when manually interrogating a table that represents a recursive relationship. Soon you will discover how this is handled with SQL.
 
 Here is the SQL to create the two tables:
 
@@ -174,33 +115,15 @@ CREATE TABLE emp (
 	deptname		VARCHAR(15),
 	bossno			SMALLINT,
 	PRIMARY KEY(empno),
-	CONSTRAINT fk_belong_dept FOREIGN KEY(deptname) 
+	CONSTRAINT fk_belong_dept FOREIGN KEY(deptname)
 		REFERENCES dept(deptname),
-	CONSTRAINT fk_has_boss FOREIGN KEY(bossno) 
+	CONSTRAINT fk_has_boss FOREIGN KEY(bossno)
 		REFERENCES emp(empno));
 ```
 
-You will notice that there is no foreign key definition for `empno` in
-`dept` (the 1:1 department's boss relationship). Why? Observe that
-`deptname` is a foreign key in `emp`. If we make `empno` a foreign key
-in `dept`, then we have a *deadly embrace*. A new department cannot be
-added to the `dept` table until there is a boss for that department
-(i.e., there is a person in the `emp` table with the `empno` of the
-boss); however, the other constraint states that an employee cannot be
-added to the `emp` table unless there is a department to which that
-person is assigned. If we have both foreign key constraints, we cannot
-add a new department until we have added a boss, and we cannot add a
-boss until we have added a department for that person. Nothing, under
-these circumstances, can happen if both foreign key constraints are in
-place. Thus, only one of them is specified.
+You will notice that there is no foreign key definition for `empno` in `dept` (the 1:1 department's boss relationship). Why? Observe that `deptname` is a foreign key in `emp`. If we make `empno` a foreign key in `dept`, then we have a *deadly embrace*. A new department cannot be added to the `dept` table until there is a boss for that department (i.e., there is a person in the `emp` table with the `empno` of the boss); however, the other constraint states that an employee cannot be added to the `emp` table unless there is a department to which that person is assigned. If we have both foreign key constraints, we cannot add a new department until we have added a boss, and we cannot add a boss until we have added a department for that person. Nothing, under these circumstances, can happen if both foreign key constraints are in place. Thus, only one of them is specified.
 
-In the case of the recursive employee relationship, we can create a
-constraint to ensure that `bossno` exists for each employee, except of
-course the person, Alice, who is top of the pyramid. This form of
-constraint is known as a **self-referential** foreign key. However, we
-must make certain that the first person inserted into `emp` is Alice.
-The following statements illustrate that we must always insert a
-person's boss before we insert the person.
+In the case of the recursive employee relationship, we can create a constraint to ensure that `bossno` exists for each employee, except of course the person, Alice, who is top of the pyramid. This form of constraint is known as a **self-referential** foreign key. However, we must make certain that the first person inserted into `emp` is Alice. The following statements illustrate that we must always insert a person's boss before we insert the person.
 
 ```{sql, connection = db, eval = FALSE}
 INSERT INTO emp (empno, empfname, empsalary, deptname) VALUES (1,'Alice',75000,'Management');
@@ -214,23 +137,15 @@ INSERT INTO emp VALUES (8,'Sarah',56000,'Purchasing',7);
 INSERT INTO emp VALUES (9,'Sophie',35000,'Personnel',1);
 ```
 
-In more complex modeling situations, such as when there are multiple
-relationships between a pair of entities, use of a FOREIGN KEY clause
-may result in a deadlock. Always consider the consequences of using a
-FOREIGN KEY clause before applying it.
+In more complex modeling situations, such as when there are multiple relationships between a pair of entities, use of a FOREIGN KEY clause may result in a deadlock. Always consider the consequences of using a FOREIGN KEY clause before applying it.
 
-> ❓*Skill builder* 
+> ❓ *Skill builder*
 >
-> A consulting company has assigned each of its
-> employees to a specialist group (e.g., database management). Each
-> specialist group has a team leader. When employees join the company,
-> they are assigned a mentor for the first year. One person might mentor
-> several employees, but an employee has at most one mentor.
+> A consulting company has assigned each of its employees to a specialist group (e.g., database management). Each specialist group has a team leader. When employees join the company, they are assigned a mentor for the first year. One person might mentor several employees, but an employee has at most one mentor.
 
 ## Querying a one-to-one relationship {.unnumbered}
 
-Querying a 1:1 relationship presents no special difficulties but does
-allow us to see additional SQL features.
+Querying a 1:1 relationship presents no special difficulties but does allow us to see additional SQL features.
 
 *List the salary of each department's boss.*
 
@@ -249,13 +164,7 @@ SELECT empfname, dept.deptname, empsalary
 
 ## Querying a recursive 1:m relationship {.unnumbered}
 
-Querying a recursive relationship is puzzling until you realize that you
-can join a table to itself by creating two copies of the table. In SQL,
-you use the WITH clause, also known as the *common table expression
-(CTE)* to create a temporary copy, a **table alias.** First, use WITH to
-define two aliases, `wrk` and `boss` for `emp`. Table aliases are
-required so that SQL can distinguish which copy of the table is
-referenced. To demonstrate:
+Querying a recursive relationship is puzzling until you realize that you can join a table to itself by creating two copies of the table. In SQL, you use the WITH clause, also known as the *common table expression (CTE)* to create a temporary copy, a **table alias.** First, use WITH to define two aliases, `wrk` and `boss` for `emp`. Table aliases are required so that SQL can distinguish which copy of the table is referenced. To demonstrate:
 
 *Find the salary of Nancy's boss.*
 
@@ -263,24 +172,15 @@ First, use WITH to define two aliases, `wrk` and `boss` for `emp`.
 
 ```{sql, connection = db, eval = FALSE}
 WITH
-wrk AS (SELECT * FROM emp), 
-boss AS (SELECT * FROM emp) 
+wrk AS (SELECT * FROM emp),
+boss AS (SELECT * FROM emp)
 SELECT wrk.empfname, wrk.empsalary,boss.empfname, boss.empsalary
-	FROM wrk JOIN boss 
+	FROM wrk JOIN boss
 		ON wrk.bossno = boss.empno
 		WHERE wrk.empfname = 'Nancy';
 ```
 
-Many queries are solved by getting all the data you need to answer the
-request in one row. In this case, the query is easy to answer once the
-data for Nancy and her boss are in the same row. Thus, think of this
-query as joining two copies of the table `emp` to get the worker and her
-boss's data in one row. Notice that there is a qualifier (`wrk` and
-`boss`) for each copy of the table to distinguish between them. It helps
-to use a qualifier that makes sense. In this case, the `wrk` and `boss`
-qualifiers can be thought of as referring to the worker and boss tables,
-respectively. You can understand how the query works by examining the
-following table illustrating the result of the self-join.
+Many queries are solved by getting all the data you need to answer the request in one row. In this case, the query is easy to answer once the data for Nancy and her boss are in the same row. Thus, think of this query as joining two copies of the table `emp` to get the worker and her boss's data in one row. Notice that there is a qualifier (`wrk` and `boss`) for each copy of the table to distinguish between them. It helps to use a qualifier that makes sense. In this case, the `wrk` and `boss` qualifiers can be thought of as referring to the worker and boss tables, respectively. You can understand how the query works by examining the following table illustrating the result of the self-join.
 
 |  wrk  |          |           |                |        | boss  |          |           |            |        |
 |:-----:|----------|----------:|----------------|:------:|:-----:|----------|----------:|------------|:------:|
@@ -294,45 +194,38 @@ following table illustrating the result of the self-join.
 |   8   | Sarah    |     56000 | Purchasing     |   7    |   7   | Brier    |     43000 | Purchasing |   1    |
 |   9   | Sophie   |     35000 | Personnel & PR |   1    |   1   | Alice    |     75000 | Management |        |
 
-The result of the SQL query is now quite clear once we apply the WHERE
-clause (see the highlighted row in the preceding table):
+The result of the SQL query is now quite clear once we apply the WHERE clause (see the highlighted row in the preceding table):
 
 ```{sql, connection = db, eval = T}
 WITH
-wrk AS (SELECT * FROM emp), 
-boss AS (SELECT * FROM emp) 
+wrk AS (SELECT * FROM emp),
+boss AS (SELECT * FROM emp)
 SELECT wrk.empfname, wrk.empsalary,boss.empfname, boss.empsalary
-	FROM wrk JOIN boss 
+	FROM wrk JOIN boss
 		ON wrk.bossno = boss.empno
 		WHERE wrk.empfname = 'Nancy';
 ```
 
 *Find the names of employees who earn more than their boss.*
 
-This would be very easy if the employee and boss data were in the same
-row. We could simply compare the salaries of the two people. To get the
-data in the same row, we repeat the self-join with a different WHERE
-condition. The result is as follows:
+This would be very easy if the employee and boss data were in the same row. We could simply compare the salaries of the two people. To get the data in the same row, we repeat the self-join with a different WHERE condition. The result is as follows:
 
 ```{sql, connection = db, eval = T}
 WITH
-wrk AS (SELECT * FROM emp), 
-boss AS (SELECT * FROM emp) 
-SELECT wrk.empfname FROM wrk JOIN boss 
+wrk AS (SELECT * FROM emp),
+boss AS (SELECT * FROM emp)
+SELECT wrk.empfname FROM wrk JOIN boss
 		ON wrk.bossno = boss.empno
 		WHERE wrk.empsalary > boss.empsalary;
 ```
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > Find the name of Sophie's boss.
 
 ## Modeling a recursive one-to-one relationship {.unnumbered}
 
-The British monarchy can be represented by a simple one-entity model. A
-monarch has one direct successor and one direct predecessor. The
-sequencing of monarchs can be modeled by a recursive 1:1 relationship,
-shown in the following figure.
+The British monarchy can be represented by a simple one-entity model. A monarch has one direct successor and one direct predecessor. The sequencing of monarchs can be modeled by a recursive 1:1 relationship, shown in the following figure.
 
 *A data model illustrating a recursive 1:1 relationship*
 
@@ -344,25 +237,19 @@ shown in the following figure.
 
 ## Mapping a recursive one-to-one relationship {.unnumbered}
 
-The recursive 1:1 relationship is mapped by adding a foreign key to
-`monarch`. You can add a foreign key to represent either the successor
-or predecessor relationship. In this case, for no particular reason, the
-preceding relationship is selected. Because each instance of a monarch
-is identified by a composite key, two columns are added to `monarch` for
-the foreign key. Data for recent monarchs are shown in the following
-table.
+The recursive 1:1 relationship is mapped by adding a foreign key to `monarch`. You can add a foreign key to represent either the successor or predecessor relationship. In this case, for no particular reason, the preceding relationship is selected. Because each instance of a monarch is identified by a composite key, two columns are added to `monarch` for the foreign key. Data for recent monarchs are shown in the following table.
 
 *The table monarch*
 
-| montype | *monname  | *monnum | rgnbeg    | *premonname* | *premonnum* |
-|:--------|:----------|:-------:|:----------|:-----------|:---------:|
-| King    | William   |   IV   | 1830/6/26  |            |           |
-| Queen   | Victoria  |   I    | 1837/6/20  | William    |    IV     |
-| King    | Edward    |  VII   | 1901/1/22  | Victoria   |     I     |
-| King    | George    |   V    | 1910/5/6   | Edward     |    VII    |
-| King    | Edward    |  VIII  | 1936/1/20  | George     |     V     |
-| King    | George    |   VI   | 1936/12/11 | Edward     |   VIII    |
-| Queen   | Elizabeth |   II   | 1952/02/06 | George     |    VI     |
+| montype | *monname  | *monnum  | rgnbeg     | *premonname* | *premonnum* |
+|:--------|:----------|:--------:|:-----------|:-------------|:-----------:|
+| King    | William   |    IV    | 1830/6/26  |              |             |
+| Queen   | Victoria  |    I     | 1837/6/20  | William      |     IV      |
+| King    | Edward    |   VII    | 1901/1/22  | Victoria     |      I      |
+| King    | George    |    V     | 1910/5/6   | Edward       |     VII     |
+| King    | Edward    |   VIII   | 1936/1/20  | George       |      V      |
+| King    | George    |    VI    | 1936/12/11 | Edward       |    VIII     |
+| Queen   | Elizabeth |    II    | 1952/02/06 | George       |     VI      |
 
 The SQL statements to create the table are very straightforward.
 
@@ -379,12 +266,7 @@ CREATE TABLE monarch (
 		REFERENCES monarch(monname, monnum);
 ```
 
-Because the 1:1 relationship is recursive, you cannot insert Queen
-Victoria without first inserting King William IV. What you can do is
-first insert King William, without any reference to the preceding
-monarch (i.e., a null foreign key). The following code illustrates the
-order of record insertion so that the referential integrity constraint
-is obeyed.
+Because the 1:1 relationship is recursive, you cannot insert Queen Victoria without first inserting King William IV. What you can do is first insert King William, without any reference to the preceding monarch (i.e., a null foreign key). The following code illustrates the order of record insertion so that the referential integrity constraint is obeyed.
 
 ```{sql, connection = db, eval = FALSE}
 INSERT INTO MONARCH (montype,monname, monnum,rgnbeg) VALUES ('King','William','IV','1830-06-26');
@@ -396,16 +278,13 @@ INSERT INTO MONARCH VALUES('King','George','VI','1936-12-11','Edward','VIII');
 INSERT INTO MONARCH VALUES('Queen','Elizabeth','II','1952-02-06','George','VI');
 ```
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
-> In a competitive bridge competition, the same pair of players play
-> together for the entire tournament. Draw a data model to record
-> details of all the players and the pairs of players.
+> In a competitive bridge competition, the same pair of players play together for the entire tournament. Draw a data model to record details of all the players and the pairs of players.
 
 ## Querying a recursive one-to-one relationship {.unnumbered}
 
-Some queries on the monarch table demonstrate querying a recursive 1:1
-relationship.
+Some queries on the monarch table demonstrate querying a recursive 1:1 relationship.
 
 *Who preceded Elizabeth II?*
 
@@ -414,27 +293,23 @@ SELECT premonname, premonnum FROM monarch
 	WHERE monname = 'Elizabeth' and monnum = 'II';
 ```
 
-This is simple because all the data are in one row. A more complex query
-is:
+This is simple because all the data are in one row. A more complex query is:
 
 *Was Elizabeth II's predecessor a king or queen?*
 
 ```{sql, connection = db, eval = T}
 WITH
-cur AS (SELECT * FROM monarch), 
-pre AS (SELECT * FROM monarch) 
+cur AS (SELECT * FROM monarch),
+pre AS (SELECT * FROM monarch)
 SELECT pre.montype FROM cur JOIN  pre
 	ON cur.premonname = pre.monname AND cur.premonnum = pre.monnum
 	WHERE cur.monname = 'Elizabeth'
 	AND cur.monnum = 'II';
 ```
 
-Notice in the preceding query how to specify the ON clause when you have
-a composite key.
+Notice in the preceding query how to specify the ON clause when you have a composite key.
 
-This is very similar to the query to find the salary of Nancy's boss.
-The `monarch` table is joined with itself to create a row that contains
-all the details to answer the query.
+This is very similar to the query to find the salary of Nancy's boss. The `monarch` table is joined with itself to create a row that contains all the details to answer the query.
 
 *List the kings and queens of England in ascending chronological order.*
 
@@ -443,24 +318,15 @@ SELECT montype, monname, monnum, rgnbeg
 	FROM monarch ORDER BY rgnbeg;
 ```
 
-This is a simple query because `rgnbeg` is like a ranking column. It
-would not be enough to store just the year in `rgnbeg`, because two
-kings started their reigns in 1936; hence, the full date is required.
+This is a simple query because `rgnbeg` is like a ranking column. It would not be enough to store just the year in `rgnbeg`, because two kings started their reigns in 1936; hence, the full date is required.
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > Who succeeded Queen Victoria?
 
 ## Modeling a recursive many-to-many relationship {.unnumbered}
 
-The assembly of products to create other products is very common in
-business. Manufacturing even has a special term to describe it: a bill
-of materials. The data model is relatively simple once you realize that
-a product can appear as part of many other products and can be composed
-of many other products; that is, we have a recursive many-to-many (m:m)
-relationship for product. As usual, we turn an m:m relationship into two
-one-to-many (1:m) relationships. Thus, we get the data model displayed
-in the following figure.
+The assembly of products to create other products is very common in business. Manufacturing even has a special term to describe it: a bill of materials. The data model is relatively simple once you realize that a product can appear as part of many other products and can be composed of many other products; that is, we have a recursive many-to-many (m:m) relationship for product. As usual, we turn an m:m relationship into two one-to-many (1:m) relationships. Thus, we get the data model displayed in the following figure.
 
 *A data model illustrating a recursive m:m relationship*
 
@@ -473,34 +339,31 @@ in the following figure.
 *Tables product and assembly*
 
 | *prodid | proddesc               | prodcost | prodprice |
-|--------:|:-----------------------|---------:|----------:|
-|    1000 | Animal photography kit |          |       725 |
-|     101 | Camera                 |      150 |       300 |
-|     102 | Camera case            |       10 |        15 |
-|     103 | 70-210 zoom lens       |      125 |       200 | 
-|     104 | 28-85 zoom lens        |      115 |       185 |
-|     105 | Photographer's vest    |       25 |        40 |
-|     106 | Lens cleaning cloth    |        1 |      1.25 |
-|     107 | Tripod                 |       35 |        45 |
-|     108 | 16 GB SDHC memory card |       30 |        37 |
+|---------:|:-----------------------|---------:|----------:|
+|     1000 | Animal photography kit |          |       725 |
+|      101 | Camera                 |      150 |       300 |
+|      102 | Camera case            |       10 |        15 |
+|      103 | 70-210 zoom lens       |      125 |       200 |
+|      104 | 28-85 zoom lens        |      115 |       185 |
+|      105 | Photographer's vest    |       25 |        40 |
+|      106 | Lens cleaning cloth    |        1 |      1.25 |
+|      107 | Tripod                 |       35 |        45 |
+|      108 | 16 GB SDHC memory card |       30 |        37 |
 
-| quantity | \**prodid*      | \**subprodid*      |
-|---------:|----------------:|-------------------:|
-|        1 |            1000 |                101 |
-|        1 |            1000 |                102 |
-|        1 |            1000 |                103 |
-|        1 |            1000 |                104 |
-|        1 |            1000 |                105 |
-|        2 |            1000 |                106 |
-|        1 |            1000 |                107 |
-|       10 |            1000 |                108 |
+| quantity | **prodid* | **subprodid* |
+|---------:|-----------:|--------------:|
+|        1 |       1000 |           101 |
+|        1 |       1000 |           102 |
+|        1 |       1000 |           103 |
+|        1 |       1000 |           104 |
+|        1 |       1000 |           105 |
+|        2 |       1000 |           106 |
+|        1 |       1000 |           107 |
+|       10 |       1000 |           108 |
 
 ## Mapping a recursive many-to-many relationship {.unnumbered}
 
-Mapping follows the same procedure described previously, producing the
-two tables shown below. The SQL statements to create the tables are
-shown next. Observe that `assembly` has a composite key, and there are
-two foreign key constraints.
+Mapping follows the same procedure described previously, producing the two tables shown below. The SQL statements to create the tables are shown next. Observe that `assembly` has a composite key, and there are two foreign key constraints.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE product (
@@ -523,18 +386,13 @@ CREATE TABLE assembly (
 			REFERENCES product(prodid));
 ```
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
-> An army is broken up into many administrative units (e.g., army,
-> brigade, platoon). A unit can contain many other units (e.g., a
-> regiment contains two or more battalions), and a unit can be part of a
-> larger unit (e.g., a squad is a member of a platoon). Draw a data
-> model for this situation.
+> An army is broken up into many administrative units (e.g., army, brigade, platoon). A unit can contain many other units (e.g., a regiment contains two or more battalions), and a unit can be part of a larger unit (e.g., a squad is a member of a platoon). Draw a data model for this situation.
 
-## Querying a recursive many-to-many relationship {-}
+## Querying a recursive many-to-many relationship {.unnumbered}
 
-*List the product identifier of each component of the animal photography
-kit.*
+*List the product identifier of each component of the animal photography kit.*
 
 ```{sql, connection = db, eval = T}
 SELECT subprodid FROM product JOIN assembly
@@ -542,14 +400,9 @@ SELECT subprodid FROM product JOIN assembly
 	WHERE proddesc = 'Animal photography kit';
 ```
 
-Why are the values for `subprodid` listed in no apparent order?
-Remember, there is no implied ordering of rows in a table, and it is
-quite possible, as this example illustrates, for the rows to have what
-appears to be an unusual ordering. If you want to order rows, use the
-ORDER BY clause.
+Why are the values for `subprodid` listed in no apparent order? Remember, there is no implied ordering of rows in a table, and it is quite possible, as this example illustrates, for the rows to have what appears to be an unusual ordering. If you want to order rows, use the ORDER BY clause.
 
-*List the product description and cost of each component of the animal
-photography kit.*
+*List the product description and cost of each component of the animal photography kit.*
 
 ```{sql, connection = db, eval = FALSE}
 SELECT proddesc, prodcost FROM product
@@ -559,15 +412,12 @@ SELECT proddesc, prodcost FROM product
 				WHERE proddesc = 'Animal photography kit');
 ```
 
-In this case, first determine the `prodid` of those products in the
-animal photography kit (the inner query), and then report the
-description of these products. Alternatively, a three-way join can be
-done using two copies of `product`.
+In this case, first determine the `prodid` of those products in the animal photography kit (the inner query), and then report the description of these products. Alternatively, a three-way join can be done using two copies of `product`.
 
 ```{sql, connection = db, eval = T}
 WITH
-a AS (SELECT * FROM product), 
-b AS (SELECT * FROM product) 
+a AS (SELECT * FROM product),
+b AS (SELECT * FROM product)
 SELECT b.proddesc, b.prodcost FROM a JOIN assembly
 		ON a.prodid = assembly.prodid
 		JOIN b
@@ -575,20 +425,13 @@ SELECT b.proddesc, b.prodcost FROM a JOIN assembly
 		WHERE a.proddesc = 'Animal photography kit';
 ```
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > How many lens cleaning cloths are there in the animal photography kit?
 
 ### Summary {.unnumbered}
 
-Relationships can be one-to-one and recursive. A recursive relationship
-is within a single entity rather than between entities. Recursive
-relationships are mapped to the relational model in the same way as
-other relationships. A self-referential foreign key constraint permits a
-foreign key reference to a key within the same table. Resolution of
-queries involving recursive relationships often requires a table to be
-joined with itself. Recursive many-to-many relationships occur in
-business in the form of a bill of materials.
+Relationships can be one-to-one and recursive. A recursive relationship is within a single entity rather than between entities. Recursive relationships are mapped to the relational model in the same way as other relationships. A self-referential foreign key constraint permits a foreign key reference to a key within the same table. Resolution of queries involving recursive relationships often requires a table to be joined with itself. Recursive many-to-many relationships occur in business in the form of a bill of materials.
 
 ### Key terms and concepts {.unnumbered}
 
@@ -607,111 +450,43 @@ business in the form of a bill of materials.
 
 1.  Draw data models for the following two problems:
 
-    a.  
+    a.
 
-        (i) A dairy farmer, who is also a part-time cartoonist, has
-            several herds of cows. He has assigned each cow to a
-            particular herd. In each herd, the farmer has one cow that
-            is his favorite---often that cow is featured in a cartoon.\
+        (i) A dairy farmer, who is also a part-time cartoonist, has several herds of cows. He has assigned each cow to a particular herd. In each herd, the farmer has one cow that is his favorite---often that cow is featured in a cartoon.
 
-        (ii) A few malcontents in each herd, mainly those who feel they
-             should have appeared in the cartoon, disagree with the
-             farmer's choice of a favorite cow, whom they disparagingly
-             refer to as the sacred cow. As a result, each herd now has
-             elected a herd leader.
+        (ii) A few malcontents in each herd, mainly those who feel they should have appeared in the cartoon, disagree with the farmer's choice of a favorite cow, whom they disparagingly refer to as the sacred cow. As a result, each herd now has elected a herd leader.
 
-    b.  The originator of a pyramid marketing scheme has a system for
-        selling ethnic jewelry. The pyramid has three levels---gold,
-        silver, and bronze. New associates join the pyramid at the
-        bronze level. They contribute 30 percent of the revenue of their
-        sales of jewelry to the silver chief in charge of their clan. In
-        turn, silver chiefs contribute 30 percent of what they receive
-        from bronze associates to the gold master in command of their
-        tribe. Finally, gold masters pass on 30 percent of what they
-        receive to the originator of the scheme.
+    b.  The originator of a pyramid marketing scheme has a system for selling ethnic jewelry. The pyramid has three levels---gold, silver, and bronze. New associates join the pyramid at the bronze level. They contribute 30 percent of the revenue of their sales of jewelry to the silver chief in charge of their clan. In turn, silver chiefs contribute 30 percent of what they receive from bronze associates to the gold master in command of their tribe. Finally, gold masters pass on 30 percent of what they receive to the originator of the scheme.
 
-    c.  The legion, the basic combat unit of the ancient Roman army,
-        contained 3,000 to 6,000 men, consisting primarily of heavy
-        infantry (hoplites), supported by light infantry (velites), and
-        sometimes by cavalry. The hoplites were drawn up in three lines.
-        The hastati (youngest men) were in the first, the principes
-        (seasoned troops) in the second, and the triarii (oldest men)
-        behind them, reinforced by velites. Each line was divided into
-        10 maniples, consisting of two centuries (60 to 80 men per
-        century) each. Each legion had a commander, and a century was
-        commanded by a centurion. Julius Caesar, through one of his
-        Californian channelers, has asked you to design a database to
-        maintain details of soldiers. Of course, Julius is a little
-        forgetful at times, and he has not supplied the titles of the
-        officers who command maniples, lines, and hoplites, but he
-        expects that you can handle this lack of fine detail.
+    c.  The legion, the basic combat unit of the ancient Roman army, contained 3,000 to 6,000 men, consisting primarily of heavy infantry (hoplites), supported by light infantry (velites), and sometimes by cavalry. The hoplites were drawn up in three lines. The hastati (youngest men) were in the first, the principes (seasoned troops) in the second, and the triarii (oldest men) behind them, reinforced by velites. Each line was divided into 10 maniples, consisting of two centuries (60 to 80 men per century) each. Each legion had a commander, and a century was commanded by a centurion. Julius Caesar, through one of his Californian channelers, has asked you to design a database to maintain details of soldiers. Of course, Julius is a little forgetful at times, and he has not supplied the titles of the officers who command maniples, lines, and hoplites, but he expects that you can handle this lack of fine detail.
 
-    d.  A travel agency is frequently asked questions about tourist
-        destinations. For example, customers want to know details of the
-        climate for a particular month, the population of the city, and
-        other geographic facts. Sometimes they request the flying time
-        and distance between two cities. The manager has asked you to
-        create a database to maintain these facts.
+    d.  A travel agency is frequently asked questions about tourist destinations. For example, customers want to know details of the climate for a particular month, the population of the city, and other geographic facts. Sometimes they request the flying time and distance between two cities. The manager has asked you to create a database to maintain these facts.
 
-    e.  The Center for the Study of World Trade keeps track of trade
-        treaties between nations. For each treaty, it records details of
-        the countries signing the treaty and where and when it was
-        signed.
+    e.  The Center for the Study of World Trade keeps track of trade treaties between nations. For each treaty, it records details of the countries signing the treaty and where and when it was signed.
 
-    f.  Design a database to store details about U.S. presidents and
-        their terms in office. Also, record details of their date and
-        place of birth, gender, and political party affiliation (e.g.,
-        Caluthumpian Progress Party). You are required to record the
-        sequence of presidents so that the predecessor and successor of
-        any president can be identified. How will you model the case of
-        Grover Cleveland, who served nonconsecutive terms as president?
-        Is it feasible that political party affiliation may change? If
-        so, how will you handle it?
+    f.  Design a database to store details about U.S. presidents and their terms in office. Also, record details of their date and place of birth, gender, and political party affiliation (e.g., Caluthumpian Progress Party). You are required to record the sequence of presidents so that the predecessor and successor of any president can be identified. How will you model the case of Grover Cleveland, who served nonconsecutive terms as president? Is it feasible that political party affiliation may change? If so, how will you handle it?
 
-    g.  The IS department of a large organization makes extensive use of
-        software modules. New applications are built, where possible,
-        from existing modules. Software modules can also contain other
-        modules. The IS manager realizes that she now needs a database
-        to keep track of which modules are used in which applications or
-        other modules. (Hint: It is helpful to think of an application
-        as a module.)
+    g.  The IS department of a large organization makes extensive use of software modules. New applications are built, where possible, from existing modules. Software modules can also contain other modules. The IS manager realizes that she now needs a database to keep track of which modules are used in which applications or other modules. (Hint: It is helpful to think of an application as a module.)
 
-    h.  Data modeling is finally getting to you. Last night you dreamed
-        you were asked by Noah to design a database to store data about
-        the animals on the ark. All you can remember from Sunday school
-        is the bit about the animals entering the ark two-by-two, so you
-        thought you should check the real thing.\
-        Take with you seven pairs of every kind of clean animal, a male
-        and its mate, and two of every kind of unclean animal, a male
-        and its mate, and also seven pair of every kind of bird, male
-        and female. Genesis 7:2\
-        Next time Noah disturbs your sleep, you want to be ready. So,
-        draw a data model and make certain you record the two-by-two
-        relationship.
+    h.  Data modeling is finally getting to you. Last night you dreamed you were asked by Noah to design a database to store data about the animals on the ark. All you can remember from Sunday school is the bit about the animals entering the ark two-by-two, so you thought you should check the real thing.
+        Take with you seven pairs of every kind of clean animal, a male and its mate, and two of every kind of unclean animal, a male and its mate, and also seven pair of every kind of bird, male and female. Genesis 7:2
+        Next time Noah disturbs your sleep, you want to be ready. So, draw a data model and make certain you record the two-by-two relationship.
 
-2.  Write SQL to answer the following queries using the DEPT and EMP
-    tables described in this chapter:
+2.  Write SQL to answer the following queries using the DEPT and EMP tables described in this chapter:
 
-    a.  Find the departments where all the employees earn less than
-        their boss.
+    a.  Find the departments where all the employees earn less than their boss.
 
-    b.  Find the names of employees who are in the same department as
-        their boss (as an employee).
+    b.  Find the names of employees who are in the same department as their boss (as an employee).
 
-    c.  List the departments having an average salary greater than
-        \$25,000.
+    c.  List the departments having an average salary greater than $25,000.
 
-    d.  List the departments where the average salary of the employees,
-        excluding the boss, is greater than \$25,000.
+    d.  List the departments where the average salary of the employees, excluding the boss, is greater than $25,000.
 
-    e.  List the names and manager of the employees of the Marketing
-        department who have a salary greater than \$25,000.
+    e.  List the names and manager of the employees of the Marketing department who have a salary greater than $25,000.
 
-    f.  List the names of the employees who earn more than any employee
-        in the Marketing department.
+    f.  List the names of the employees who earn more than any employee in the Marketing department.
 
-3.  Write SQL to answer the following queries using the monarch table
-    described in this chapter:
+3.  Write SQL to answer the following queries using the monarch table described in this chapter:
 
     a.  Who succeeded Victoria I?
 
@@ -721,16 +496,12 @@ business in the form of a bill of materials.
 
     d.  Which monarch had the shortest reign?
 
-4.  Write SQL to answer the following queries using the product and
-    assembly tables:
+4.  Write SQL to answer the following queries using the product and assembly tables:
 
-    a.  How many different items are there in the animal photography
-        kit?
+    a.  How many different items are there in the animal photography kit?
 
     b.  What is the most expensive item in the animal photography kit?
 
-    c.  What is the total cost of the components of the animal
-        photography kit?
+    c.  What is the total cost of the components of the animal photography kit?
 
-    d.  Compute the total quantity for each of the items required to
-        assemble 15 animal photography kits.
+    d.  Compute the total quantity for each of the items required to assemble 15 animal photography kits.

@@ -1,12 +1,3 @@
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
-library(DBI)
-library(RMySQL)
-db <- dbConnect(RMySQL::MySQL(),
-                  dbname = "Text",
-                  host = "www.richardtwatson.com",
-                  user="student",
-                  password = "student")
-```
 # The Single Entity
 
 > *I want to be alone.*
@@ -129,7 +120,9 @@ The symbols are distinct and visual clutter is minimized because only the essent
 
 Models can be rapidly translated to a set of tables for a relational database. More importantly, since this text implements the fundamental notions of all data modeling languages, you can quickly convert to another data modeling dialect. Data modeling is a high-level skill, and the emphasis needs to be on learning to think like a data modeler rather than on learning a modeling language. This text's goal is to get you off to a fast start.
 
-> ❓*Skill builder* A ship has a name, registration code, gross tonnage, and a year of construction. Ships are classified as cargo or passenger. Draw a data model for a ship.
+> ❓ *Skill builder*
+
+>A ship has a name, registration code, gross tonnage, and a year of >construction. Ships are classified as cargo or passenger. Draw a data model >for a ship.
 
 ## Creating a single-table database {.unnumbered}
 
@@ -264,7 +257,9 @@ MySQL Workbench offers a spreadsheet interface for entering data, as explained i
 
 ![](Figures/Chapter%203/wb-input.png)
 
-> ❓*Skill builder* Create a relational database for the ship entity you modeled previously. Insert some rows.
+> ❓ *Skill builder*
+>
+>Create a relational database for the ship entity you modeled previously. >Insert some rows.
 
 ## Querying a single-table database {.unnumbered}
 
@@ -402,7 +397,8 @@ is equivalent to
 SELECT * FROM share WHERE shrcode <> 'CS' AND shrcode <> 'PT';
 ```
 
-> ❓ *Skill Builder*\
+> ❓ *Skill Builder*
+
 > List those shares where the value of the holding exceeds one million.
 
 ### Ordering columns {.unnumbered}
@@ -517,10 +513,11 @@ SELECT shrfirm, shrpe FROM share
   WHERE shrpe > (SELECT AVG(shrpe) FROM share);
 ```
 
-> ⚠️ The preceding query is often mistakenly written as\
-> SELECT shrfirm, shrpe from share WHERE shrpe \> avg(shrpe);
+> ⚠️ The preceding query is often mistakenly written as
+> SELECT shrfirm, shrpe from share WHERE shrpe > avg(shrpe);
 
-> ❓*Skill builder*\
+> ❓ *Skill builder*
+
 > Find the name of the firm for which the value of the holding is greatest.
 
 ### Regular expression---pattern matching {.unnumbered}
@@ -565,7 +562,7 @@ If you are interested in finding if a value in a column ends with a particular c
 SELECT shrfirm FROM share WHERE shrfirm REGEXP 'Geese$';
 ```
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 
 > List the firms containing "ian" in their name.
 

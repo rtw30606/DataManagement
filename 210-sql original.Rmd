@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # SQL
 
 > *The questing beast*.
@@ -198,7 +192,7 @@ general form is
 
 ```{sql, connection = db, eval = FALSE}
 CONSTRAINT constraint-name FOREIGN KEY(column-name [,…])
-	REFERENCES table-name(column-name [,…]) 
+	REFERENCES table-name(column-name [,…])
 		[ON DELETE (RESTRICT | CASCADE | SET NULL)]
 ```
 
@@ -228,7 +222,7 @@ the table containing the primary key. There are three options:
 For example:
 
 ```{sql, connection = db, eval = FALSE}
-CONSTRAINT fk_stock_nation FOREIGN KEY(natcode) 
+CONSTRAINT fk_stock_nation FOREIGN KEY(natcode)
 	REFERENCES nation(natcode)
 ```
 
@@ -285,7 +279,7 @@ following example sets legal values of color.
 
 ```{sql, connection = db, eval = FALSE}
 CREATE domain valid_color AS char(10)
-CONSTRAINT chk_qitem_color check( 
+CONSTRAINT chk_qitem_color check(
 	 IN ('Bamboo','Black','Brown','Green','Khaki','White'));
 ```
 
@@ -439,7 +433,7 @@ CLOB is a large-object data type that stores any kind of character data.
 Text data typically consists of reports, correspondence, chapters of a
 manual, or contracts. The CLOB data type has no maximum size.
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > What data types would you recommend for the following?
 >
@@ -537,13 +531,13 @@ functions for dealing with dates and times.
 
 ```{sql, connection = db, eval = FALSE}
 WITH
-late AS (SELECT * FROM sale), 
-early AS (SELECT * FROM sale) 
+late AS (SELECT * FROM sale),
+early AS (SELECT * FROM sale)
 SELECT DISTINCT DATEDIFF(late.saledate,early.saledate) AS Difference
 	FROM late JOIN early
-		ON late.saledate = 
+		ON late.saledate =
 			(SELECT MAX(saledate) FROM sale)
-		AND early.saledate = 
+		AND early.saledate =
 			(SELECT MIN(saledate) FROM sale);
 ```
 
@@ -561,7 +555,7 @@ control over the number of decimal places reported, as illustrated in
 the following example where yield is reported with two decimal places.
 
 ```{sql, connection = db, eval = FALSE}
-SELECT shrfirm, shrprice, shrqty, FORMAT(shrdiv/shrprice*100,2) AS yield 
+SELECT shrfirm, shrprice, shrqty, FORMAT(shrdiv/shrprice*100,2) AS yield
 	FROM share;
 ```
 
@@ -657,7 +651,7 @@ defined by a view. Thus, a stock's yield would be computed by a view
 rather than defined as a column in a base table.
 
 ```{sql, connection = db, eval = FALSE}
-CREATE VIEW stk 
+CREATE VIEW stk
 	(stkfirm, stkprice, stkqty, stkyield)
 	AS SELECT stkfirm, stkprice, stkqty, stkdiv/stkprice*100
 		FROM stock;
@@ -799,8 +793,8 @@ self-join to distinguish the copies of the table.
 
 ```{sql, connection = db, eval = FALSE}
 WITH
-wrk AS (SELECT * FROM emp), 
-boss AS (SELECT * FROM emp) 
+wrk AS (SELECT * FROM emp),
+boss AS (SELECT * FROM emp)
 SELECT wrk.empfname
 	FROM wrk JOIN boss
 		ON wrk.bossno = boss.empno;
@@ -960,7 +954,7 @@ CREATE VIEW total (totalcount) AS
 ```
 
 ```{sql, connection = db, eval = FALSE}
-SELECT auscount*100/totalcount as Percentage 
+SELECT auscount*100/totalcount as Percentage
 	FROM austotal, total;
 ```
 
@@ -974,7 +968,7 @@ Because of integer arithmetic, you might get a different answer if you
 used the following SQL.
 
 ```{sql, connection = db, eval = FALSE}
-SELECT auscount/totalcount*100 as Percentage 
+SELECT auscount/totalcount*100 as Percentage
 	FROM austotal, total;
 ```
 
@@ -1137,7 +1131,7 @@ that country.*
 ```{sql, connection = db, eval = FALSE}
 SELECT natname, stkfirm, stkqty FROM stock JOIN nation
 ON stock.natcode = nation.natcode
-WHERE stkqty > 
+WHERE stkqty >
 	(SELECT AVG(stkqty) FROM stock
 		WHERE stock.natcode = nation.natcode);
 ```
@@ -1377,7 +1371,7 @@ deleted using
 
 ```{sql, connection = db, eval = FALSE}
 DELETE FROM emp
-	WHERE deptname IN 
+	WHERE deptname IN
 		(SELECT deptname FROM dept WHERE deptfloor = 4);
 ```
 
@@ -1415,7 +1409,7 @@ conversion. For example:
 SELECT km_to_miles(100);
 ```
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > Create a table containing the average daily temperature in Tromsø,
 > Norway, then write a function to convert Celsius to Fahrenheit (F =
@@ -1466,8 +1460,8 @@ procedure is thus END // to indicate the end of the procedure.
 ```{sql, connection = db, eval = FALSE}
 DELIMITER //
 CREATE PROCEDURE transfer (
-IN `Credit account` INTEGER, 
-IN `Debit account` INTEGER, 
+IN `Credit account` INTEGER,
+IN `Debit account` INTEGER,
 IN Amount DECIMAL(9,2),
 IN `Transaction ID` INTEGER)
 LANGUAGE SQL
@@ -1500,7 +1494,7 @@ CALL transfer(1,2,100,1005);
 ```
 
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > 1.  After verifying that the system you use for learning SQL supports
 >     stored procedures, create the tables for the preceding data model
@@ -1553,7 +1547,9 @@ INSERT INTO stock_log VALUES
 END
 ```
 
-> ❓*Skill builder* Why is the primary key of `stock_log` not the same as
+> ❓ *Skill builder*
+>
+>Why is the primary key of `stock_log` not the same as
 > that of stock?
 
 ## Nulls---much ado about missing information {.unnumbered}
@@ -1737,7 +1733,7 @@ The `COLUMN` table stores details about each column in the database.
 *What columns in what tables store dates?*
 
 ```{sql, connection = db, eval = FALSE}
-SELECT table_name, column_name 
+SELECT table_name, column_name
 	FROM information_schema.columns
 		WHERE DATA_TYPE = 'date'
 			ORDER BY table_name, column_name;
@@ -2096,4 +2092,3 @@ Reading, MA: Addison-Wesley.
     the MSRP of all products in a product line by a specified
     percentage. Provide before and after queries to show your procedure
     works.
-

@@ -1,12 +1,3 @@
-```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
-library(DBI)
-library(RMySQL)
-db <- dbConnect(RMySQL::MySQL(),
-                  dbname = "Text",
-                  host = "www.richardtwatson.com",
-                  user="student",
-                  password = "student")
-```
 # Introduction to R
 
 > *Statistics are no substitute for judgment*
@@ -401,7 +392,7 @@ to add a new column to an existing table.
 
 ```{r, columns, eval = TRUE}
 library(measurements)
-library(readr) 
+library(readr)
 url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
 t <- read_delim(url, delim=',')
 # qualify with table name to reference a column
@@ -464,7 +455,7 @@ t
 colnames(t) <- c('year',1:4)
 t
 # gather with data in columns 2 through 5
-g <- gather(t,'quarter','value',2:5) 
+g <- gather(t,'quarter','value',2:5)
 g$quarter <- as.integer(g$quarter)
 g
 
@@ -618,7 +609,7 @@ t <- read_delim(url, delim=',')
 a <-  t %>% group_by(year) %>% summarize(mean = mean(temperature))
 # read yearly carbon data (source: http://co2now.org/Current-CO2/CO2-Now/noaa-mauna-loa-co2-data.html)
 url <-  'http://www.richardtwatson.com/data/carbon1959-2011.txt'
-carbon <- read_delim(url,  delim=',') 
+carbon <- read_delim(url,  delim=',')
 m <-  inner_join(a,carbon)
 head(m)
 ```

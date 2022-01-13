@@ -118,7 +118,7 @@ features common to all data management systems:
     scrolling. For example, you will notice the address book sample screen is
     truncated and will need to be scrolled to see full address details.
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > Smart phones have dramatically changed individual data management. We
 > now have calendars, address books, to-do lists, and many more apps

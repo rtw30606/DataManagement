@@ -1,13 +1,3 @@
-```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
-library(DBI)
-library(RMySQL)
-db <- dbConnect(RMySQL::MySQL(),
-                  dbname = "Text",
-                  host = "www.richardtwatson.com",
-                  user="student",
-                  password = "student")
-```
-
 # The Many-to-Many Relationship
 
 > *Fearful concatenation of circumstances.*
@@ -167,7 +157,7 @@ CREATE TABLE lineitem (
 
 Although the `sale` and `item` tables are created in a similar fashion to previous examples, there are two things to note about the definition of `lineitem`. *First,* the primary key is a composite of `lineno` and `saleno`, because together they uniquely identify an instance of `lineitem`. *Second*, there are two foreign keys, because `lineno` is at the "many" end of two 1: m relationships.
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > A hamburger shop makes several types of hamburgers, and the same type of ingredient can be used with several types of hamburgers. This does not literally mean the same piece of lettuce is used many times, but lettuce is used with several types of hamburgers. Draw the data model for this situation. What is a good name for the associative entity?
 
@@ -178,7 +168,7 @@ Although the `sale` and `item` tables are created in a similar fashion to previo
 The join operation can be easily extended from two tables to three or more merely by specifying the tables to be joined and the matching conditions. For example:
 
 ```{sql, connection = db, eval = FALSE}
-SELECT * FROM sale JOIN lineitem 
+SELECT * FROM sale JOIN lineitem
 	ON sale.saleno = lineitem.saleno
 	JOIN item
 	ON item.itemno = lineitem.itemno;
@@ -240,7 +230,7 @@ SELECT itemname, itemcolor FROM item
 
 You can also think of the query as, "Select clothing items for which no sales exist." Also remember, for NOT EXISTS to return *true*, no rows should satisfy the condition.
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > Report all red items that have not been sold. Write the query twice, once using EXISTS and once without EXISTS.
 
@@ -288,7 +278,7 @@ SELECT target1 FROM target
 					AND target-source.source# = source.source#));
 ```
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > Find the brown items that have appeared in all sales.
 
@@ -296,7 +286,7 @@ SELECT target1 FROM target
 
 Divide proves troublesome to most people because of the double negative---we just don't think that way. If divide sends your neurons into knots, then try the following approach.
 
-The query "Find the items that have appeared in all sales" can be rephrased as "Find the items for which the number of sales that include this item is equal to the total number of sales." This is an easier query to write than "Find items such that there does not exist a sale in which this item does not appear." 
+The query "Find the items that have appeared in all sales" can be rephrased as "Find the items for which the number of sales that include this item is equal to the total number of sales." This is an easier query to write than "Find items such that there does not exist a sale in which this item does not appear."
 
 The rephrased query has two parts. *First**,*** determine the total number of sales. Here we mean distinct sales (i.e., the number of rows with a distinct value for saleno). The SQL is
 
@@ -349,7 +339,7 @@ INTERSECT
 	SELECT itemname FROM item WHERE itemcolor = 'Brown';
 ```
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > List the items that contain the words "Hat", "Helmet", or "Stetson" in their names
 

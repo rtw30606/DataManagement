@@ -1,14 +1,14 @@
-# Section 2 Data Modeling and SQL {.unnumbered}
-
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
+```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
 library(DBI)
 library(RMySQL)
 db <- dbConnect(RMySQL::MySQL(),
                   dbname = "Text",
-                  host = "www.richardtwatson.com",
-                  user="student",
-                  password = "student")
+                  host = "localhost",
+                  user="root",
+                  password = "aussie48")
 ```
+# Section 2 Data Modeling and SQL {.unnumbered}
+
 > *It is a capital mistake to theorize before one has data.*
 >
 > Sir Arthur Conan Doyle, "A Scandal in Bohemia," *The Adventures of

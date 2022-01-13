@@ -705,7 +705,7 @@ each entity.
 
 4.  Steve operates a cinema chain and has given you the following
     information:
-    
+
     "I have many cinemas. Each cinema can have multiple theaters. Movies
     are shown throughout the day starting at 11 a.m. and finishing at 1
     a.m. Each movie is given a two-hour time slot. We never show a movie

@@ -1,13 +1,3 @@
-```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
-library(DBI)
-library(RMySQL)
-db <- dbConnect(RMySQL::MySQL(),
-                  dbname = "Text",
-                  host = "www.richardtwatson.com",
-                  user="student",
-                  password = "student")
-```
-
 # Reference 1: Basic Structures {.unnumbered}
 
 > *Few things are harder to put up with than the annoyance of a good
@@ -258,7 +248,7 @@ CREATE TABLE borrower (
 CREATE TABLE copy (
 	bookno		INTEGER,
 	duedate		DATE,
-	… 
+	…
 	callno		VARCHAR(12),
 	borrowerid	INTEGER,
 		PRIMARY KEY(bookno),
@@ -274,7 +264,7 @@ Using one entity's identifier as part of another entity's identifier
 tends to cause the most problems for novice data modelers. One entity's
 identifier is part of another identifier when there is a plus sign on an
 arc. The plus is almost always at the crow's foot end of a 1:m
-relationship. 
+relationship.
 
 Tables are formed by applying the following rule: The
 primary key of the table at the other end of the relationship becomes
@@ -296,7 +286,7 @@ CREATE TABLE region (
 	regtype		…,
 	regpop		…,
 	regarea		…,
-		… 
+		…
 		PRIMARY KEY(regname));
 ```
 
@@ -307,7 +297,7 @@ CREATE TABLE city (
 	cityarea	… ,
 	…
 	regname		VARCHAR(20),
-		PRIMARY KEY(cityname,regname),	
+		PRIMARY KEY(cityname,regname),
 		CONSTRAINT fk_city_region
 			FOREIGN KEY(regname) REFERENCES region(regname));
 ```
@@ -323,12 +313,12 @@ foreign keys (because of the two 1:m relationships) of store.
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE city (
 	cityname	VARCHAR(20),
-	… 
+	…
 		PRIMARY KEY(cityname));
 ```
 
 ```{sql, connection = db, eval = FALSE}
-CREATE TABLE firm 
+CREATE TABLE firm
 	firmname	VARCHAR(15),
 	firmstreet	… ,
 	firmzip		… ,
@@ -338,7 +328,7 @@ CREATE TABLE firm
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE store (
-	storestreet	VARCHAR(30), 
+	storestreet	VARCHAR(30),
 	storezip	… ,
 	…
 	cityname	VARCHAR(20),
@@ -346,7 +336,7 @@ CREATE TABLE store (
 		PRIMARY KEY(storestreet,cityname,firmname),
 		CONSTRAINT fk_store_city
 			FOREIGN KEY(cityname) REFERENCES city(cityname),
-		CONSTRAINT fk_store_firm 
+		CONSTRAINT fk_store_firm
 			FOREIGN KEY(firmname) REFERENCES firm(firmname));
 ```
 
@@ -364,7 +354,7 @@ translation.
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE firm (
 	firmname	VARCHAR(15),
-	… 
+	…
 		PRIMARY KEY(firmname));
 ```
 
@@ -374,32 +364,32 @@ CREATE TABLE division (
 	…
 	firmname	VARCHAR(15),
 		PRIMARY KEY(firmname,divname),
-		CONSTRAINT fk_division_firm 
+		CONSTRAINT fk_division_firm
 			FOREIGN KEY(firmname) REFERENCES firm(firmname));
 ```
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE department (
-	deptname	VARCHAR(15), 
-	… 
+	deptname	VARCHAR(15),
+	…
 	divname		VARCHAR(15),
 	firmname	VARCHAR(15),
 		PRIMARY KEY(firmname,divname,deptname),
 		CONSTRAINT fk_department_division
-			FOREIGN KEY (firmname,divname) 
+			FOREIGN KEY (firmname,divname)
 				REFERENCES division(firmname,divname));
 ```
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE section (
-	sectionid	VARCHAR(15), 
-	… 
+	sectionid	VARCHAR(15),
+	…
 	divname		VARCHAR(15),
 	firmname	VARCHAR(15),
 	deptname	VARCHAR(15),
 		PRIMARY KEY(firmname,divname,deptname,sectionid),
 		CONSTRAINT fk_department_department
-			FOREIGN KEY (firmname,divname,deptname) 
+			FOREIGN KEY (firmname,divname,deptname)
 				REFERENCES department(firmname,divname,deptname));
 ```
 
@@ -418,19 +408,19 @@ and this would be a good choice of name for the foreign key.
 
 Write the SQL CREATE statements for the following data models.
 
-1.  
+1.
 
   ![](Figures/Chapter%207/revised%20NATION-STOCK.png)
 
-2. 
+2.
 
 ![](Figures/Chapter%207/geography%20revised.png)
 
-3. 
+3.
 
   ![](Figures/Chapter%207/marriage-5.png){width="430"}
 
-4.  
+4.
 
   ![](Figures/Chapter%207/airline%20revised.png){width="600"}
 

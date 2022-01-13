@@ -1,12 +1,3 @@
-```{r, echo = FALSE, message = FALSE, warning = FALSE, suppressWarnings()}
-library(DBI)
-library(RMySQL)
-db <- dbConnect(RMySQL::MySQL(),
-                  dbname = "Text",
-                  host = "www.richardtwatson.com",
-                  user="student",
-                  password = "student")
-```
 # Text mining & natural language processing
 
 > From now on I will consider a language to be a set (finite or
@@ -256,10 +247,10 @@ sentiment(sample, n.before = 2, n.after = 2, amplifier.weight=.8, but.weight = .
 > analysis is to the n.before and n.after parameters.
 
 ```{r sentiment-5, eval = T}
-library(sentimentr) 
+library(sentimentr)
 library(syuzhet)
 sample = c("You're not crazy and I love you very much.")
-sentiment(sample, n.before = 4, n.after=3, amplifier.weight=1) 
+sentiment(sample, n.before = 4, n.after=3, amplifier.weight=1)
 sentiment(sample, n.before = Inf, n.after=Inf, amplifier.weight=1)
 ```
 
@@ -540,8 +531,8 @@ library(ggplot2)
 names <- names(v)
 # create a data frame for plotting
 d <- data.frame(word=names, freq=v)
-ggplot(d,aes(freq)) + 
-  geom_density(fill="salmon") + 
+ggplot(d,aes(freq)) +
+  geom_density(fill="salmon") +
   xlab("Frequency") +
   ylab("Density")
 ```
@@ -651,9 +642,9 @@ the clusters vary.
 tdm <- TermDocumentMatrix(stem.letters[1:15])
 colnames(tdm) <-  1998:2012
 # Remove sparse terms
-tdm1 <- removeSparseTerms(tdm, 0.5) 
+tdm1 <- removeSparseTerms(tdm, 0.5)
 # transpose the matrix
-tdmtranspose <-  t(tdm1) 
+tdmtranspose <-  t(tdm1)
 cluster = hclust(dist(tdmtranspose))
 # plot the tree
 plot(cluster)
@@ -797,11 +788,11 @@ is some code that starts with five topics.
 
 ```{r topic-4, eval = T, message = FALSE}
 # set number of topics to extract
-k <- 5 # number of topics 
+k <- 5 # number of topics
 SEED <- 2010 # seed for initializing the model rather than the default random
 # try multiple methods – takes a while for a big corpus
-TM <- list(VEM = LDA(dtm, k = k, control = list(seed = SEED)),  
-VEM_fixed = LDA(dtm, k = k, control = list(estimate.alpha = FALSE, seed = SEED)), 
+TM <- list(VEM = LDA(dtm, k = k, control = list(seed = SEED)),
+VEM_fixed = LDA(dtm, k = k, control = list(estimate.alpha = FALSE, seed = SEED)),
 Gibbs = LDA(dtm, k = k, method = "Gibbs", control = list(seed = SEED, burnin = 1000,  thin = 100, iter = 1000)), CTM = CTM(dtm, k = k,control = list(seed = SEED, var = list(tol = 10^-3), em = list(tol = 10^-3))))
 topics(TM[["VEM"]], 1)
 terms(TM[["VEM"]], 5)
