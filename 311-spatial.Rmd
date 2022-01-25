@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Spatial and Temporal Data Management
 
 > *Nothing puzzles me more than time and space; and yet nothing troubles
@@ -20,15 +14,15 @@ Students completing this chapter will
 -   be familiar with the issues surrounding the management of temporal
     data.
 
-## Introduction {.unnumbered}
+## Spatial data {.unnumbered}
 
 The introduction of ubiquitous networks and smartphones has led to the
 advent of location-based services. Customers expect information
 delivered based on, among other things, where they are. For example, a
 person touring the historic German city of Regensburg could receive
-information about its buildings and parks via her mobile phone in the
-language of her choice. Her smartphone will determine her location and
-then select from a database details of her immediate environment. Data
+information about its buildings and parks via their mobile phone in the
+language of choice. Their smartphone will determine their location and
+then select from a database details of the immediate environment. Data
 managers need to know how to manage the **spatial** data necessary to
 support location-based services.
 
@@ -36,17 +30,17 @@ Some aspect of time is an important fact to remember for many
 applications. Banks, for example, want to remember what dates customers
 made payments on their loans. Airlines need to recall for the current
 and future days who will occupy seats on each flight. Thus, the
-management of time-varying, or **temporal,** data would be assisted if a
-database management system had built-in temporal support. As a result,
-there has been extensive research on temporal data models and DBMSs for
+management of time-varying, or **temporal**, data is availed when a
+database management system has built-in temporal support. As a result,
+there has been extensive research on temporal data models and RDBMSs for
 more than a decade. The management of temporal data is another skill
 required of today's data management specialist.
 
-The Open Geospatial Consortium, Inc. (OGC) is a nonprofit international
+The [Open Geospatial Consortium](https://www.ogc.org), Inc. (OGC) is a nonprofit international
 organization developing standards for geospatial and location-based
 services. Its goal is to create open and extensible software application
 programming interfaces for geographic information systems (GIS) and
-other geospatial technologies. DBMS vendors (e.g., MySQL) have
+other geospatial technologies. RDBMS vendors (e.g., MySQL) have
 implemented some of OGC's recommendations for adding spatial features to
 SQL. MySQL is gradually adding further GIS features as it develops its
 DBMS.
@@ -56,7 +50,7 @@ DBMS.
 A spatial database is a data management system for the collection,
 storage, manipulation, and output of spatially referenced information.
 Also known as a geographic information system (GIS), it is an extended
-form of DBMS. Geospatial modeling is based on three key concepts: theme,
+form of RDBMS. Geospatial modeling is based on three key concepts: theme,
 geographic object, and map.
 
 A **theme** refers to data describing a particular topic (e.g., scenic
@@ -92,35 +86,24 @@ by an ordered set of line segments (a path).
 *Data model for political units*
 
 ![](Figures/Chapter%2014/political%20unit.png){width="360"}
+
 ### SQL/MM Spatial {.unnumbered}
 
 SQL/MM, also known as ISO 13249, is an extension of SQL to handle
-spatial data. It uses the prefix ST\_ for tables, views, data types, and
+spatial data. It uses the prefix ST_ for tables, views, data types, and
 function names. Originally, this prefix meant *Spatial* and *Temporal*,
 because the intention was to develop a standard that combined spatial
 and temporal extensions to SQL. However, it was realized that temporal
 required a broader perspective and should be separate standard. Thus,
-think of ST\_ as meaning *Spatial Type*.
+think of ST_ as meaning *Spatial Type*.
 
 MySQL has data types for storing geometric data, which are:
 
-+------------+-------------+------------------------------------------+
-| Type       | Rep         | Description                              |
-|            | resentation |                                          |
-+:===========+:============+:=========================================+
-| Point      | POINT(x y)  | A point in space (e.g., a city's center) |
-+------------+-------------+------------------------------------------+
-| LineString | LI          | A sequence of points with linear         |
-|            | NESTRING(x1 | interpolation between points (e.g., a    |
-|            | y1,x2       | road)                                    |
-|            | y2,...)     |                                          |
-+------------+-------------+------------------------------------------+
-| Polygon    | POLYGON((x1 | A polygon (e.g., a boundary) which has a |
-|            | y1,x2       | single exterior boundary and zero or     |
-|            | y2,...),    | more interior boundaries ( i.e., holes)  |
-|            | (x1 y1,x2   |                                          |
-|            | y2,...))    |                                          |
-+------------+-------------+------------------------------------------+
+| Type       | Representation | Description                       |
+|:-----------|:----------------|:-----------------------------------|
+| Point      | POINT(x y)  | A point in space (e.g., a city’s  |
+| LineString | LINESTRING(x1 y1,x2 y2,…)   | A sequence of points with linear interpolation between points (e.g., a road)   |
+| Polygon    | POLYGON((x1 y1,x2 y2,…), (x1 y1,x2 y2,…)) | A polygon (e.g., a boundary) which has a single exterior boundary and zero or more interior boundaries ( i.e., holes) |
 
 ### Spatial Reference Support System (SRS) {.unnumbered}
 
@@ -141,18 +124,19 @@ legend, such as the distance in miles or kilometers.
 #### Geographic {.unnumbered}
 
 For a geographic SRS, the coordinates are latitude and longitude. The
-SRID is 4326.^2^
+SRID is 4326. [^spatial-1]
+
+[^spatial-1]: epsg.io/4326
 
 #### Cartesian {.unnumbered}
 
 A Cartesian SRS, is an infinite flat plane with no specified units. The
 SRID is O, and this is the default if you don't specify an SRS.
 
-### Data model mapping {.unnumbered}
+## Data model mapping {.unnumbered}
 
 The data model in the preceding figure is mapped to MySQL. By specifying
-a SRID of 0, Ireland is represented using a Cartesian SRS. Since Ireland
-is small relative the size of the earth, this is a reasonable
+a SRID of 0, Ireland is represented in the following map using a Cartesian SRS. Since Ireland is small relative the size of the earth, this is a reasonable
 approximation.
 
 In the following definition of the database's tables, note two things.
@@ -167,28 +151,28 @@ tables.
 CREATE TABLE political_unit (
 	Unitname	VARCHAR(30) NOT NULL,
 	Unitcode	CHAR(2),
-	Unitpop	DECIMAL(6,2),
-	PRIMARY KEY(unitcode));
+	Unitpop	  DECIMAL(6,2),
+	  PRIMARY KEY(unitcode));
 ```
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE boundary (
-	Boundid	INTEGER,
+	Boundid	  INTEGER,
 	Boundpath	POLYGON NOT NULL SRID 0,
 	Unitcode	CHAR(2),
-	PRIMARY KEY(boundid),
-	CONSTRAINT fk_boundary_polunit FOREIGN KEY(unitcode)
+	  PRIMARY KEY(boundid),
+	  CONSTRAINT fk_boundary_polunit FOREIGN KEY(unitcode)
 		REFERENCES political_unit(unitcode));
 ```
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE city (
 	Cityname	VARCHAR(30),
-	Cityloc	POINT NOT NULL SRID 0,
+	Cityloc	  POINT NOT NULL SRID 0,
 	Unitcode	CHAR(2),
-	PRIMARY KEY(unitcode,cityname),
-	CONSTRAINT fk_city_polunit FOREIGN KEY(unitcode) 
-		REFERENCES political_unit(unitcode)); 
+	  PRIMARY KEY(unitcode,cityname),
+	  CONSTRAINT fk_city_polunit FOREIGN KEY(unitcode)
+		REFERENCES political_unit(unitcode));
 ```
 
 We now use the geographic entity of Ireland to demonstrate the
@@ -246,7 +230,9 @@ following screenshot.
 
 ![](Figures/Chapter%2011/boundary.png)
 
-> ❓**Skill builder** Create the three tables for the example and insert
+> ❓ **Skill builder**
+>
+>Create the three tables for the example and insert
 > the rows listed in the preceding SQL code.
 
 MySQL includes a number of geometry functions and operators for
@@ -271,25 +257,19 @@ Once the database is established, we can do some queries to gain an
 understanding of the additional capability provided by the spatial
 additions. Before starting, examine the scale on the map and note that
 one grid unit is about 37.5 kilometers (23 miles). This also means that
-the area of one grid unit is 1406 km[^spatial-1] (526 square miles).
-
-[^spatial-1]: epsg.io/4326
+the area of one grid unit is 1406 km (526 square miles).
 
 *What is the area of the Republic of Ireland?*
 
 Because we approximate the border by a polygon, we use the area function
 and multiply the result by 1406 to convert to square kilometers.
 
-```{sql, connection = db, eval = FALSE}
-SELECT ST_AREA(boundpath)*1406 
-	AS 'Area (km^2)' FROM political_unit JOIN boundary
-   ON political_unit.unitcode = boundary.unitcode
-   WHERE unitname = 'Republic of Ireland';
+```{sql, connection = db, eval = T}
+SELECT ST_AREA(boundpath)*1406
+  AS 'Area (km^2)' FROM political_unit JOIN boundary
+    ON political_unit.unitcode = boundary.unitcode
+      WHERE unitname = 'Republic of Ireland';
 ```
-
-| Area(km\^2) |
-|:------------|
-| 71706       |
 
 *How far, as the crow flies, is it from Sligo to Dublin?*
 
@@ -297,17 +277,13 @@ You can measure the distance between two points using ST_Distance. You
 will need to multiply the result by 37.5 or 23 to convert to kilometers
 or miles, respectively.
 
-```{sql, connection = db, eval = FALSE}
-SELECT ST_Distance(orig.cityloc,dest.cityloc)*37.5 
-AS 'Distance (kms)'
-	FROM city orig, city dest
- 		WHERE orig.cityname = 'Sligo'
-		AND dest.cityname = 'Dublin';
+```{sql, connection = db, eval = T}
+SELECT ST_Distance(orig.cityloc,dest.cityloc)*37.5
+  AS 'Distance (kms)'
+	  FROM city orig, city dest
+ 		  WHERE orig.cityname = 'Sligo'
+		  AND dest.cityname = 'Dublin';
 ```
-
-| Distance (kms) |
-|:---------------|
-| 167.71         |
 
 *What is the closest city to Limerick?*
 
@@ -316,18 +292,14 @@ minimum distance between Limerick and other cities. Notice that there is
 a need to exclude comparing the distance from Limerick to itself, which
 is zero.
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = T}
 SELECT dest.cityname FROM city orig, city dest
 WHERE orig.cityname = 'Limerick'
 AND ST_Distance(orig.cityloc,dest.cityloc)=
-	(SELECT MIN(ST_Distance(orig.cityloc,dest.cityloc)) 
+	(SELECT MIN(ST_Distance(orig.cityloc,dest.cityloc))
 	FROM city orig, city dest
 	WHERE orig.cityname = 'Limerick' AND dest.cityname <> 'Limerick');
 ```
-
-| cityname  |
-|:----------|
-| Tipperary |
 
 *What is the westernmost city in Ireland?*
 
@@ -335,18 +307,13 @@ The first thing to recognize is that by convention the west is shown on
 the left side of the map, which means the westernmost city will have the
 smallest x-coordinate.
 
-```{sql, connection = db, eval = FALSE}
+```{sql, connection = db, eval = T}
 SELECT west.cityname FROM city west
 WHERE NOT EXISTS
 	(SELECT * FROM city other WHERE ST_X(other.cityloc) < ST_X(west.cityloc));
 ```
 
-| cityname |
-|:---------|
-| Limerick |
-| Galway   |
-
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
 > 1.  What is the area of Northern Ireland? Because Northern Ireland is
 >     part of the United Kingdom and miles are still often used to
@@ -406,7 +373,9 @@ INSERT INTO table VALUES
 ST_GeomCollFromText('GEOMETRYCOLLECTION(POINT(1 1),LINESTRING(0 0,1 1,2 2,3 3,4 4))');
 ```
 
-> ❓**Skill builder** Modify the example database design to include:
+> ❓ **Skill builder**
+>
+> Modify the example database design to include:
 >
 > 1.  Historic buildings in a city
 >
@@ -428,15 +397,15 @@ by following this procedure.
 3.  Click on the link that says 'link to this page.' It is on the right
     side, just above the upper right corner of the map.
 
-4.  The address bar (URL) will change. Copy the full link. For example:
-    [[http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=ahn&aq=&sll=37.0625,-95.677068&sspn=48.822589,67.763672&ie=UTF8&hq=&hnear=Athens+Ben+Epps+Airport-Ahn,+1010+Ben+Epps+Dr,+Athens,+Georgia+30605&ll=33.953791,-83.323746&spn=0.025168,0.033088&z=15&iwloc=A]{.ul}](http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=ahn&aq=&sll=37.0625,-95.677068&sspn=48.822589,67.763672&ie=UTF8&hq=&hnear=Athens+Ben+Epps+Airport-Ahn,+1010+Ben+Epps+Dr,+Athens,+Georgia+30605&ll=33.953791,-83.323746&spn=0.025168,0.033088&z=15&iwloc=A).
+4.  The address bar (URL) will change. Examine the full link. For example:
+    https://www.google.com/maps/place/Athens-Ben+Epps+Airport+-+AHN/@33.9519038,-83.3273184,17z/data=!3m1!4b1!4m5!3m4!1s0x88f66b676ce4ce85:0x749d5ade6813b384!8m2!3d33.9519038!4d-83.3251297.
 
-5.  The latitude and longitude are contained in the URL following &ll.
-    In this case, latitude is: 33.953791 and longitude: -83.323746.
+5.  The latitude and longitude are contained in the URL following AHN/@.
+    In this case, latitude is: 33.9519038 and longitude: --83.3273184.
 
-### R-tree {.unnumbered}
+## R-tree {.unnumbered}
 
-Conventional DBMSs were developed to handle one-dimensional data
+Conventional RDBMSs were developed to handle one-dimensional data
 (numbers and text strings). In a spatial database, points, lines, and
 rectangles may be used to represent the location of retail outlets,
 roads, utilities, and land parcels. Such data objects are represented by
@@ -449,7 +418,7 @@ be extended to *n* dimensions, where *n* ≥ 2. This extension of the
 B-tree is called an **R-tree**. As well as storing pointers to records
 in the sequence set, an R-tree also stores boundary data for each
 object. For a two-dimensional application, the boundary data are the
-**x** and **y** coordinates of the lower left and upper-right corners of
+*x* and *y* coordinates of the lower left and upper-right corners of
 the *minimum bounding* rectangle, the smallest possible rectangle
 enclosing the object. The index set, which contains pointers to
 lower-level nodes as in a B-tree, also contains data for the minimum
@@ -475,7 +444,7 @@ screen. The minimum bounding rectangle for this region would then be
 determined and the coordinates used to locate geographic objects falling
 within the minimum boundary. Because an R-tree is an index, geographic
 objects falling within a region can be found rapidly. In the following
-figure, the drawn region (it has a bold border) completely covers object
+figure, the drawn region (it shaded) completely covers object
 E. The R-tree software would determine that the required object falls
 within intermediate region Y, and thus takes the middle node at the next
 level of the R-tree. Then, by examining coordinates in this node, it
@@ -493,7 +462,7 @@ next node in the tree (the index set) or the record (the sequence set).
 
 This short introduction to spatial data has given you some idea of how
 the relational model can be extended to support geometric information.
-Most of the major DBMS vendors support management of spatial data.
+Most of the major RDBMS vendors support management of spatial data.
 
 ## Managing temporal data {.unnumbered}
 
@@ -512,12 +481,12 @@ combines both valid and transaction time.
 -   **Transaction time** is the timestamp applied by the system when
     data are entered and cannot be changed by an application. It can be
     applied to a particular item or row. For example, when changing the
-    price of a product, the usual approach would be to update the
+    price of a product, one approach might be to update the
     existing product row with the new price. The old price would be lost
     unless it was stored explicitly. In contrast, with a temporal
     database, the old and new prices would automatically have separate
     timestamps. In effect, an additional row is inserted to store the
-    new price and the time when the insert occurred.
+    new price and the time when the insert occurred. In a database, **immmutable data** cannot be (or shouldn’t be) deleted or modified. Most traditional databases store data in a **mutable** format, meaning the database overwrites the older data when new data is available.
 
 -   **Valid time** is the actual time at which an item was or will be a
     valid or true value. Consider the case where a firm plans to
@@ -531,7 +500,7 @@ combines both valid and transaction time.
     usually requires four extra columns to record the upper and lower
     bounds for valid time and transaction time.
 
-Valid time records when the change takes effect, and transaction time
+Valid time records when the change will take effect, and transaction time
 records when the change was entered. Storing transaction time is
 essential for database recovery because the DMBS can roll back the
 database to a previous state. Valid time provides a historical record of
@@ -539,7 +508,7 @@ the state of the database. Both forms of time are necessary for a
 temporal database.
 
 As you might expect, a temporal database will be somewhat larger than a
-traditional database because data are never discarded and new
+traditional database because data are immmutable or never discarded, and new
 timestamped values are inserted so that there is a complete history of
 the values of an instance (e.g., the price of a product since it was
 first entered in the database). Thus, you can think of most of the
@@ -573,7 +542,7 @@ Anchored time is further split into an instant or interval. An
 instant can be represented by a date, time, or timestamp data type. An
 **interval** is the time between two specified instants, and can be
 defined as a value or a range with an upper and lower bound instant. For
-example, \[2011-01-01, 2011-01-23\] defines an interval in 2011
+example, [2011-01-01, 2011-01-23] defines an interval in 2011
 beginning January 1 and ending January 23.
 
 #### Interval {.unnumbered}
@@ -588,38 +557,28 @@ is
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE planet (
 	pltname 		VARCHAR(7),
-	pltday 		INTERVAL,
+	pltday 		  INTERVAL,
 	pltyear 		INTERVAL,
 	PRIMARY KEY(pltname));
 ```
 
 *Planetary data*
 
-+--------------+-----------------+--------------+
-| Planet       | Rotational      | Orbital      |
-|              | period\         | period\      |
-|              | (hours)         | (years)      |
-+:=============+:================+:=============+
-| Mercury      | 1407.51         | 0.24         |
-+--------------+-----------------+--------------+
-| Venus        | --5832.44^a^    | 0.62         |
-+--------------+-----------------+--------------+
-| Earth        | 23.93           | 1            |
-+--------------+-----------------+--------------+
-| Mars         | 24.62           | 1.88         |
-+--------------+-----------------+--------------+
-| Jupiter      | 9.92            | 11.86        |
-+--------------+-----------------+--------------+
-| Saturn       | 10.66           | 29.45        |
-+--------------+-----------------+--------------+
-| Uranus       | 17.24           | 84.02        |
-+--------------+-----------------+--------------+
-| Neptune      | 16.11           | 164.79       |
-+--------------+-----------------+--------------+
-| Pluto        | 153.28          | 247.92       |
-+--------------+-----------------+--------------+
 
-a\. Rotates in the opposite direction to the other planets
+| Planet  | Rotational period (hours) | Orbital period (hours) |
+|:--------|----------------:|------------:|
+| Mercury | 1407.51         | 0.24         |
+| Venus   | --5832.44[^spatial-3] |    | 0.62         |
+| Earth   | 23.93           | 1            |
+| Mars    | 24.62           | 1.88         |
+| Jupiter | 9.92            | 11.86        |
+| Saturn  | 10.66           | 29.45        |
+| Uranus  | 17.24           | 84.02        |
+| Neptune | 16.11           | 164.79       |
+| Pluto   | 153.28          | 247.92       |
+
+
+[^spatial-3]: Rotates in the opposite direction to the other planets
 
 To insert the values for Mercury, you would use
 
@@ -655,14 +614,14 @@ price. The number owned can be derived by using SUM.
 Recording the share's price requires further consideration. If the
 intention is to record every change in price, then a time stamp is
 required as there will be multiple price changes in a day, and even in
-an hour, in busy trading. If there is less interest in the volatility of
+an few minutes, in busy trading. If there is less interest in the volatility of
 the stock and only the closing price for each day is of interest, then a
 date would be recorded.
 
 You can add additional attributes to tables in a relational database to
 handle temporal data, but doing so does not make it a temporal database.
 The problem is that current relational implementations do not have
-built-in functions for querying time-varying data. Such queries can also
+built-in functions for querying time-varying data. Such queries can
 be difficult to specify in SQL.
 
 A temporal database has additional features for temporal data
@@ -691,12 +650,13 @@ and measured as an instant or as an interval.
 
 |                                     |                  |
 |:------------------------------------|:-----------------|
-| Anchored time                       | Spatial data     |
-| Geographic object                   | Temporal data    |
-| Geographic information system (GIS) | Theme            |
+| Anchored time                       | R-tree           |
+| Geographic object                   | Spatial data     |
+| Geographic information system (GIS) | Temporal data    |
+| Immutable                           | Theme            |
 | Interval                            | Transaction time |
 | Map                                 | Valid time       |
-| R-tree                              |                  |
+| Mutable                             |                  |
 
 ### References and additional readings {.unnumbered}
 

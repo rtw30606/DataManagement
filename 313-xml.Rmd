@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # XML: Managing Data Exchange
 
 > *Words can have no single fixed meaning. Like wayward electrons, they
@@ -27,7 +21,7 @@ Students completing this chapter will be able to
 
 -   discuss data management options for XML documents.
 
-### Introduction {.unnumbered}
+## Four problems {.unnumbered}
 
 There are four central problems in data management: capture, storage,
 retrieval, and exchange. The focus for most of this book has been on
@@ -38,7 +32,7 @@ possible manner.
 
 ## SGML {.unnumbered}
 
-The Standard Generalized Markup Language (SGML) was designed to reduce
+The **Standard Generalized Markup Language** (SGML) was designed to reduce
 the cost and increase the efficiency of document management. Its child,
 XML, has essentially replaced SGML. For example, the second edition of
 the *Oxford English Dictionary* was specified in SGML, and the third
@@ -48,14 +42,19 @@ edition is stored in XML format.[^xml-1]
     *IBM Journal of Research and Development*, 31(1), 73-80.
 
 A markup language embeds information about a document in the text. In
-the following table, the markup tags indicate that the text contains CD
+the following example, the markup tags indicate that the text contains CD
 liner notes. Note also that the titles and identifiers of the mentioned
 CDs are explicitly identified.
 
 *Markup language*
 
-```{sgml, eval = FALSE}
-<cdliner>This uniquely creative collaboration between Miles Davis and Gil Evans has already resulted in two extraordinary albums—<cdtitle>Miles Ahead</cdtitle><cdid>CL 1041</cdid> and <cdtitle>Porgy and Bess</cdtitle><cdid>CL 1274</cdid>.</cdliner>
+```
+<cdliner>This uniquely creative collaboration between
+Miles Davis and Gil Evans has already resulted in two
+extraordinary albums:
+<cdtitle>Miles Ahead</cdtitle><cdid>CL 1041</cdid> and
+<cdtitle>Porgy and Bess</cdtitle><cdid>CL 1274</cdid>.
+</cdliner>.
 ```
 
 SGML is an International Standard (ISO 8879) that defines the structure
@@ -97,17 +96,20 @@ SGML's power is derived from its recording of both text and the meaning
 of that text. A short section of SGML demonstrates clearly the features
 and strength of SGML. The tags surrounding a chunk of text describe its
 meaning and thus support presentation and retrieval. For example, the
-pair of tags \<title\> and \</title\> surrounding "XML: Managing Data
+pair of tags \<title> and \</title> surrounding "XML: Managing Data
 Exchange" indicates that it is the chapter title.
 
 *SGML code*
 
-```{sgml, eval = FALSE}
+```
 <chapter>
 <no>18</no>
 <title>XML: Managing Data Exchange</title>
 <section>
-<quote><emph type = '2'>Words can have no single fixed meaning. Like wayward electrons, they can spin away from their initial orbit and enter a wider magnetic field. No one owns them or has a proprietary right to dictate how they will be used.</emph>
+<quote><emph type = '2'>Words can have no single fixed meaning.
+Like wayward electrons, they can spin away from their initial
+orbit and enter a wider magnetic field. No one owns them or has
+a proprietary right to dictate how they will be used.</emph>
 </quote>
 </section>
 </chapter>
@@ -122,7 +124,7 @@ contain "Exchange" in their title.
 
 Now, consider the case where the text is stored as HTML. How do you,
 with complete certainty, identify the chapter title? Do you extract all
-text contained by \<h1\> and \</h1\> tags? You will then retrieve "18"
+text contained by \<h1> and \</h1> tags? You will then retrieve "18"
 as a possible chapter title. What happens if there is other text
 displayed using \<h1\> and \</h1\> tags? The problem with HTML is that
 it defines presentation and has very little meaning. A similar problem
@@ -130,12 +132,16 @@ exists for documents prepared with a word processor.
 
 *HTML code*
 
-```{html, eval = FALSE}
+```
 <html>
 <body>
 <h1><b>18 </b></h1>
 <h1><b>XML: Managing Data Exchange</b></h1>
-<p><i>Words can have no single fixed meaning. Like wayward electrons, they can spin away from their initial orbit and enter a wider magnetic field. No one owns them or has a proprietary right to dictate how they will be used.</i>
+<p><i>Words can have no single fixed meaning.
+Like wayward electrons, they can spin away from their
+initial orbit and enter a wider magnetic field.
+No one owns them or has a proprietary right to
+dictate how they will be used.</i>
 </body>
 </html>
 ```
@@ -149,9 +155,9 @@ derivative of SGML, was developed.
 
 ## XML {.unnumbered}
 
-Extensible Markup Language (XML), a language designed to make
+**Extensible Markup Language** (XML), a language designed to make
 information self-describing, retains the core ideas of SGML. You can
-think of XML as SGML for electronic and mobile commerce. Since the
+think of XML as SGML for electronic commerce. Since the
 definition of XML was completed in early 1998 by the World Wide Web
 Consortium (W3C), the standard has spread rapidly because it solves a
 critical data management problem. XML is a metalanguage---a language to
@@ -191,7 +197,7 @@ importantly, the data can be exchanged between computers and understood
 by the receiving system.
 
 XML consists of rules (that anyone can follow to create a markup
-language (e.g., a markup language for financial data such as XBRL).
+language (e.g., a markup language for financial data such as [XBRL](https://www.xbrl.org)).
 Hence, the "eXtensible" in the XML name, indicating that the language
 can be easily extended to include new tags. In contrast, HTML is not
 extensible and its set of tags is fixed, which is one of the major
@@ -215,18 +221,17 @@ Consider the credit card company that wants to send you your latest
 statement via the Internet so that you can load it into your financial
 management program. Since this is a common problem for credit card
 companies and financial software authors, these industry groups have
-combined to create Open Financial Exchange (OFX),[^xml-2] a language for the
+combined to create [Open Financial Exchange (OFX)](http://www.ofx.net), a language for the
 exchange of financial data across the Internet.
 
-[^xml-2]: <http://www.ofx.net>
 
 XML has a small number of rules. Tags always come in pairs, as in HTML.
 A pair of tags surrounds each piece of data (e.g.,
-\<price\>89.12\</price\>) to indicate its meaning, whereas in HTML ,they
+\<price>89.12\</price>) to indicate its meaning, whereas in HTML ,they
 indicate how the data are presented. Tag pairs can be nested inside one
 another to multiple levels, which effectively creates a tree or
 hierarchical structure. Because XML uses Unicode (see the discussion in
-Chapter 11), it enables the exchange of information not only between
+Chapter 20), it enables the exchange of information not only between
 different computer systems, but also across language boundaries.
 
 The differences between HTML and XML are captured in the following
@@ -236,17 +241,14 @@ bold), whereas XML describes the meaning of the data.
 
 *Comparison of HTML and XML coding*
 
-+--------------------------+------------------------------------+
+
 | HTML                     | XML                                |
-+==========================+====================================+
+|:-------------------------|:-----------------------------------|
 | \<p\>\<b\>MIST7600\</b\> | \<course\>                         |
-|                          |                                    |
 | Data Management\<br\>    | \<code\>MIST7600\</code\>          |
-|                          |                                    |
 | 3 credit hours\</p\>     | \<title\>Data Management\</title\> |
-|                          |                                    |
 | \</course\>              | \<credit\>3\</credit\>             |
-+--------------------------+------------------------------------+
+
 
 XML enables a shift of processing from the server to the browser. At
 present, most processing has to be done by the server because that is
@@ -269,20 +271,14 @@ adoption of XML will reduce network traffic.
 
 *Execution of HTML and XML code*
 
-+-----------------------------------+-----------------------------------+
-| HTML                              | XML                               |
-+===================================+===================================+
-| Retrieve shirt data with prices   | Retrieve shirt data with prices   |
-| in USD.                           | in USD.                           |
-|                                   |                                   |
-| Retrieve shirt data with prices   | Retrieve conversion rate of USD   |
-| in EUR.                           | to EUR.                           |
-|                                   |                                   |
-|                                   | Retrieve Java program to convert  |
-|                                   | currencies.                       |
-|                                   |                                   |
+
+| HTML                        | XML                         |
+|:----------------------------|:----------------------------|
+| Retrieve shirt data with prices in USD.  | Retrieve shirt data with prices in USD.  |
+| Retrieve shirt data with prices in EUR.  | Retrieve conversion rate of USD to EUR
+|                                   | Retrieve script to convert currencies. |
 |                                   | Compute prices in EUR.            |
-+-----------------------------------+-----------------------------------+
+
 
 XML can also make searching more efficient and effective. At present,
 search engines look for matching text strings, and consequently return
@@ -300,7 +296,7 @@ The major expected gains from the introduction of XML are
 
 -   Store once and format many ways---Data stored in XML format can be
     extracted and reformatted for multiple presentation styles (e.g.,
-    printed report, DVD).
+    PDF, ePUB).
 
 -   Hardware and software independence---One format is valid for all
     systems. Capture once and exchange many times---Data are captured as
@@ -330,11 +326,11 @@ the meaning of tags so they can write software to process an XML file.
 XML tags describe meaning, independent of the display medium. An XML
 stylesheet, another set of rules, defines how an XML file is
 automatically formatted for various devices. This set of rules is called
-an Extensible Stylesheet Language (XSL). Stylesheets allow data to be
+an **Extensible Stylesheet Language** (XSL). Stylesheets allow data to be
 rendered in a variety of ways, such as Braille or audio for visually
 impaired people.
 
-### XML schema {.unnumbered}
+## XML schema {.unnumbered}
 
 An XML schema (or just schema for brevity) is an XML file associated
 with an XML document that informs an application how to interpret markup
@@ -363,7 +359,7 @@ when parsing. A schema defines:
 
 -   The type of data the element can contain
 
-#### DOM {.unnumbered}
+### DOM {.unnumbered}
 
 The **Document Object Model** (DOM) is the model underlying XML. It is
 based on a tree (i.e., it directly supports one-to-one and one-to-many,
@@ -411,19 +407,19 @@ of a schema.[^xml-3]
 
 [^xml-3]: You should use an XML editor for creating XML files. I have not
     found a good open source product. Among the commercial products, my
-    preference is for [Oxygen,](http://www.oxygenxml.com/) which you can
+    preference is for [Oxygen](http://www.oxygenxml.com/), which you can
     get for a 30 days trial.
 
 *Schema for CD library (cdlib.xsd)*
 
-```{XML, eval = FALSE}
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
 <!--CD library-->
 	<xsd:element name="cdlibrary">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="cd" type="cdType" minOccurs="1" 
+				<xsd:element name="cd" type="cdType" minOccurs="1"
 					maxOccurs="unbounded"/>
 			</xsd:sequence>
 		</xsd:complexType>
@@ -435,7 +431,7 @@ of a schema.[^xml-3]
 			<xsd:element name="cdlabel" type="xsd:string"/>
 			<xsd:element name="cdtitle" type="xsd:string"/>
 			<xsd:element name="cdyear" type="xsd:integer"/>
-			<xsd:element name="track" type="trackType" minOccurs="1" 
+			<xsd:element name="track" type="trackType" minOccurs="1"
 					maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
@@ -516,7 +512,7 @@ schema.
 
 Some common data types are shown in the following table. The meaning is
 obvious in most cases for those familiar with SQL, except for
-uriReference. A Uniform Resource Identifier (URI) is a generalization of
+uriReference. A **Uniform Resource Identifier** (URI) is a generalization of
 the URL concept.
 
 *Some common data types*
@@ -553,7 +549,7 @@ to observe:
 
 *XML for describing a CD (cdlib.xml)*
 
-```{XML, eval = FALSE}
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <cdlibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="cdlib.xsd">
@@ -602,40 +598,31 @@ straightforward. It is a bit tedious with all the typing of tags to
 surround each data element. Fortunately, there are XML editors that
 relieve this tedium.
 
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
-> 1.  Use the Firefox browser[^xml-6] to access this book's Web site, link
->     to the Support \> XML section, and click on customerpayments.xml.
+> 1.  Use the Chrome browser to access this book's Web site [XML page](https://www.richardtwatson.com/open/Reader/xml.html), and click on customerpayments.xml.
 >     You\
 >     will see how this browser displays XML. Investigate what happens
->     when you click on the '-' and '+' signs next to some entries.
+>     when you click on the grey triangles next to some entries.
 >
-> 2.  Again, using Firefox, save the displayed XML code (Save Page As
+> 2.  Again, using Chrome, save the displayed XML code (Save Page As
 >     ...) as customerpayments.xml, and open it in a text editor.
 >
 > 3.  Now, add details of the customer and payment data displayed in the
 >     following table to the beginning of the XML file. Open the saved
->     file with Firefox, and verify your work.
-
-[^xml-6]: Overall, Firefox seems to do the best job of displaying xml files.
+>     file with Chrome, and verify your work.
 
 *Customer and payment data*
 
-+--------------+---------+------------+
-| AA Souvenirs |         |            |
-|              |         |            |
-| Yallingup    |         |            |
-|              |         |            |
-| Australia    |         |            |
-+==============+=========+============+
-| Check        | Amount  | Date       |
-+--------------+---------+------------+
-| QP45901      | 9387.45 | 2005-03-16 |
-+--------------+---------+------------+
-| AG9984       | 3718.67 | 2005-07-24 |
-+--------------+---------+------------+
+**AA Souvenirs, Yallingup, Western Australia**
 
-#### XSL {.unnumbered}
+| Check number | Amount  | Date       |
+|:-------------|--------:|----------:|
+| QP45901      | 9387.45 | 2005-03-16 |
+| AG9984       | 3718.67 | 2005-07-24 |
+
+
+## XSL {.unnumbered}
 
 As you now know from the prior exercise, the browser display of XML is
 not particularly useful. What is missing is a stylesheet that tells the
@@ -653,18 +640,18 @@ to the preceding XML.
 
 *Stylesheet for displaying an XML file of CD data (cdlib.xsl)*
 
-```{XLM, eval = FALSE}
+```
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" 
+<xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output encoding="UTF-8" indent="yes" method=“html" />
 	<xsl:template match="/">
 	<html>
 		<head>
-			<title> Complete List of Songs </title> 
+			<title> Complete List of Songs </title>
 		</head>
 	<body>
-		<h1> Complete List of Songs </h1> 
+		<h1> Complete List of Songs </h1>
 		<xsl:apply-templates select="cdlibrary" />
 		</body>
 		</html>
@@ -672,15 +659,15 @@ to the preceding XML.
 	<xsl:template match="cdlibrary">
 		<xsl:for-each select="cd">
 			<br/>
-			<font color="maroon"> 
+			<font color="maroon">
 				<xsl:value-of select="cdtitle" />
-				, 
+				,
 				<xsl:value-of select="cdlabel" />
-				, 
+				,
 				<xsl:value-of select="cdyear" />
-				[ 
+				[
 				<xsl:value-of select="cdid" />
-				] </font> 
+				] </font>
 			<br/>
 			<table>
 				<xsl:for-each select="track">
@@ -706,7 +693,7 @@ to the preceding XML.
 To use a stylesheet with an XML file, you must add a line of code to
 point to the stylesheet file. In this case, you add the following:
 
-```{XML, eval = FALSE}
+```
 <?xml-stylesheet type=”text/xsl” href=”cdlib.xsl” media=”screen”?>
 ```
 
@@ -737,7 +724,7 @@ commands are preceded by xsl:
 
 -   Define the values to be reported for each CD (i.e., title, label,
     year, and id) {19, 21, 23, 25}. The respective XSL commands select
-    the values. For example, \<xsl:value-of select="cdtitle" /\>
+    the values. For example, \<xsl:value-of select="cdtitle"/\>
     specifies selection of cdtitle.
 
 -   Create an inner loop for processing the tracks on a particular CD
@@ -746,10 +733,10 @@ commands are preceded by xsl:
 -   Present the track data in tabular form using HTML table commands
     interspersed with XSL {28--42}.
 
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
-> 1.  Use the Firefox browser to access this book's Web site, navigate
->     to the XML page, and download cdlib.xml and cdlib.xsl to a
+> 1.  Use the Chrome browser to access this book's Web site, navigate
+>     to the [XML page](https://www.richardtwatson.com/open/Reader/xml.html), and download cdlib.xml and cdlib.xsl to a
 >     directory or folder on your machine. Use Save Page As ... for
 >     downloading.
 >
@@ -759,7 +746,7 @@ commands are preceded by xsl:
 >     media="screen"?\>
 >
 > 3.  Save the edited file in the same directory or folder as cdlib.xsl.
->     Open the saved XML file with Firefox.
+>     Open the saved XML file with Chrome.
 
 ### Converting XML {.unnumbered}
 
@@ -799,7 +786,7 @@ and \<track length="00:02:30"\> {7} is an instance of an attribute node.
 
 *An XML document*
 
-```{XML, eval = FALSE}
+```
 <cdlibrary>
 	<cd>
  		<cdid>A2 1325</cdid>
@@ -850,7 +837,7 @@ provides a means of interrogating the file.
 | /cdlibrary/cd[cdyear=1960]                   | Selects all CDs released in 1960           |
 | /cdlibrary/cd[cdyear\>1950]/cdtitle          | Titles of CDs released after 1950          |
 
-## XQuery for querying an XML document {.unnumbered}
+### XQuery for querying an XML document {.unnumbered}
 
 XQuery is a query language for XML, and thus it plays a similar role
 that SQL plays for a relational database. It is used for finding and
@@ -866,7 +853,7 @@ values in an XML file
 
 *List the titles of CDs.*
 
-```{XQuery, eval = FALSE}
+```
 doc("http://www.richardtwatson.com/xml/cdlib.xml")/cdlibrary/cd/cdtitle
 <?xml version="1.0" encoding="UTF-8"?>
 <cdtitle>Pyramid</cdtitle>
@@ -877,7 +864,7 @@ You can also use an XPath expression to select particular information.
 
 *List the titles of CDs released under the Verve label*
 
-```{XQuery, eval = FALSE}
+```
 doc("http://www.richardtwatson.com/xml/cdlib.xml")/cdlibrary/cd[cdlabel='Verve']/cdtitle
 <?xml version="1.0" encoding="UTF-8"?>
 <cdtitle>Ella Fitzgerald</cdtitle>
@@ -889,7 +876,7 @@ Return.' Here is an example.
 
 *List the titles of tracks longer than 5 minutes*
 
-```{XQuery, eval = FALSE}
+```
 for $x in doc("http://www.richardtwatson.com/xml/cdlib.xml")/cdlibrary/cd/track
 where $x/'track length' > "00:05:00"
 order by $x/'trktitle'
@@ -906,158 +893,6 @@ return $x
 If you want to just report the data without the tags, use return
 data(\$x).
 
-## XML and databases {.unnumbered}
-
-XML is more than a document-processing technology. It is also a powerful
-tool for data management. For database developers, XML can be used to
-facilitate middle-tier data integration and schemas. Most of the major
-DBMS producers have XML-centric extensions for their product lines.
-
-Many XML documents are stored for the long term, because they are an
-important repository of organizational memory. A data exchange language,
-XML is a means of moving data between databases, which means a need for
-tools for exporting and importing XML.
-
-XML documents can be stored in the same format as you would store a word
-processing or HTML file: You just place them in an appropriately named
-folder. File systems, however, have limitations that become particularly
-apparent when a large number of files need to be stored, as in the
-corporate setting.
-
-What is needed is a DBMS for storing, retrieving, and manipulating XML
-documents. Such a DBMS should:
-
--   Be *MISSING CONTENT*
-
-Two possible solutions for XML document management are a relational
-database management system (RDBMS) or an XML database.
-
-### RDBMS {.unnumbered}
-
-An XML document can stored within an RDBMS. Storing an intact XML
-document as a CLOB is a sensible strategy if the XML document contains
-static content that will only be updated by replacing the entire
-document. Examples include written text such as articles,
-advertisements, books, or legal contracts. These document-centric files
-(e.g., articles and legal contracts) are retrieved and updated in their
-entirety.
-
-For more dynamic data-centric XML files (e.g., orders, price lists,
-airline schedules), the RDBMS must be extended to support the structure
-of the data so that portions of the document (e.g., an element such as
-the price for a product) can be retrieved and updated.
-
-### XML database {.unnumbered}
-
-A second approach is to build a special-purpose XML database. Tamino[^xml-7]
-is an example of such an approach.
-
-[^xml-7]: www.softwareag.com/Corporate/products/wm/tamino/default.asp
-
-## MySQL and XML {.unnumbered}
-
-MySQL has functions for storing, searching, and maintaining XML
-documents. Any XML file can be stored as a document, and each XML
-fragment is stored as a character string. Creation of a table is
-straightforward:
-
-```{sql, eval = FALSE}
-CREATE TABLE cdlib (
-	docid 	INT AUTO_INCREMENT,
-	doc 		VARCHAR(10000),
-	PRIMARY KEY(docid));
-```
-
-Insertion of an XML fragment follows the familiar pattern:
-
-```{sql, eval = FALSE}
-INSERT INTO cdlib (doc) VALUES
-('<cd>
-	<cdid>A2 1325</cdid>
-	<cdlabel>Atlantic</cdlabel>
-	<cdtitle>Pyramid</cdtitle>
-	<cdyear>1960</cdyear>
-	<track length="00:02:30">
-		<trknum>1</trknum>
-		<trktitle>Vendome</trktitle>
-	</track>
-	<track length="00:10:46">
-		<trknum>2</trknum>
-		<trktitle>Pyramid</trktitle>
-	</track>
-</cd>');
-```
-
-### Querying XML {.unnumbered}
-
-ExtractValue is the MySQL function for retrieving data from a node. It
-requires specification of the XML fragment to be retrieved and the XPath
-expression to locate the required node.
-
-*Report the title of the first CD in the library*
-
-```{sql, eval = FALSE}
-SELECT ExtractValue(doc,'/cd/cdtitle[1]') FROM cdlib;
-```
-
-| ExtractValue |
-|:-------------|
-| Pyramid      |
-
-*Report the title of the first track on the first CD.*
-
-```{sql, eval = FALSE}
-SELECT ExtractValue(doc,'//cd[1]/track[1]/trktitle') FROM cdlib;
-```
-
-| ExtractValue |
-|:-------------|
-| Vendome      |
-
-### Updating XML {.unnumbered}
-
-UpdateXML replaces a single fragment of XML with another fragment. It
-requires specification of the XML fragment to be replaced and the XPath
-expression to locate the required node.
-
-*Change the title for the CD with identifier A2 1325 to Stonehenge*
-
-```{sql, eval = FALSE}
-UPDATE cdlib SET doc = UpdateXML(doc,'//cd[cdid="A2 1325"]/cdtitle', '<cdtitle>Stonehenge</cdtitle>');
-```
-
-You can repeat the previous query to find the title of the first CD to
-verify the update.
-
-### Generating XML {.unnumbered}
-
-A set of user defined functions (UDF)[^xml-8] has been developed to convert
-the results of an SQL query into XML. The xql_element function is used
-to define the name and value of the XML element to be reported. Here is
-an example.
-
-[^xml-8]: The lib\\mysqludf\\xql library is housed at
-    [http://www.mysqludf.org.](http://www.mysqludf.org).) It might not
-    be installed for the version of MySQL you are using.
-
-*List in XML format the name of all stocks with a PE ratio greater than
-14.*
-
-```{sql, eval = FALSE}
-SELECT xql_element ('firm',shrfirm) FROM share WHERE shrpe > 14
-```
-
-*Query output*
-
-```{XML, eval = FALSE}
-<firm>Canadian Sugar</firm>
-<firm>Freedonia Copper</firm>
-<firm>Sri Lankan Gold</firm>
-```
-
-The preceding is just a brief example of what can be done. Read the
-documentation on UDF to learn how to handle more elaborate
-transformations.
 
 ### Conclusion {.unnumbered}
 
@@ -1089,8 +924,7 @@ language consists of an XML schema, document object model (DOM), and
 XSL. A schema defines the structure of a document and how an application
 should interpret XML markup tags. The DOM is a tree-based data model of
 an XML document. XSL is used to specify a stylesheet for displaying an
-XML document. XML documents can be stored in either a RDBMS or XML
-database.
+XML document.
 
 ## Key terms and concepts {.unnumbered}
 
@@ -1114,8 +948,7 @@ database.
 
 ### References and additional readings {.unnumbered}
 
-Watson, R. T., and others. 2004. *XML: managing data exchange*:\
-[[http://en.wikibooks.org/wiki/XML\_-\_Managing_Data_Exchange]{.ul}](http://en.wikibooks.org/wiki/XML_-_Managing_Data_Exchange).
+[Watson, R. T., and others. 2004. *XML: managing data exchange*](http://en.wikibooks.org/wiki/XML_-_Managing_Data_Exchange).
 
 ### Exercises {.unnumbered}
 
@@ -1142,7 +975,7 @@ Watson, R. T., and others. 2004. *XML: managing data exchange*:\
 4.  Create a schema for a bus timetable.
 
 5.  Using the portion of ClassicModels that has been converted to
-    XML,[^xml-9] answer the following questions using XPath.
+    [XML](http://www.richardtwatson.com/xml/customerpayments.xml), answer the following questions using XPath.
 
     a.  List all customers.
 
@@ -1186,5 +1019,3 @@ Watson, R. T., and others. 2004. *XML: managing data exchange*:\
     i.  Who made payments on 2003-12-04?
 
     j.  List the numbers of all checks from customers in Denmark.
-
-[^xml-9]: <http://www.richardtwatson.com/xml/customerpayments.xml>

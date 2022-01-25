@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Graph Databases
 
 > *When we use a network, the most important asset we get is access to
@@ -12,7 +6,7 @@ editor_options:
 > Clay Shirky, *Cognitive Surplus: Creativity and Generosity in a
 > Connected Age*, 2010
 
-#### Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to
 
@@ -25,7 +19,7 @@ Students completing this chapter will be able to
 
 -   identify applications of a graph database.
 
-### Introduction {.unnumbered}
+## A graph database {.unnumbered}
 
 Relational database technology was developed to support the processing
 of business transactions and the querying of organizational data. As
@@ -34,14 +28,12 @@ database** was introduced to support the processing of relationships
 between objects, such as people and organizations. Both are ways of
 modeling the world, and storing and retrieving data. Like a relational
 DBMS, a graph DBMS, supports Create, Read, Update, and Delete (CRUD)
-procedures. Both can be used for online transaction processing (OLTP)
-and online analytical processing (OLAP). The selection of one over the
+procedures. Both can be used for online transaction processing
+and data analytics. The selection of one over the
 other is dependent on the purpose of the database and the nature of
 frequent queries. A graph database, for instance, is likely a better
 choice for supply chain analytics because of the network structure of a
 supply chain.
-
-## A graph database {.unnumbered}
 
 A graph is a set of nodes and relationships (edges in graph
 terminology). A **node** is similar to a relational row in that it
@@ -56,7 +48,7 @@ a pair of nodes, and can have properties, whereas, in a relational
 database, a relationship is represented by a pair of primary and foreign
 keys.
 
-A graph description language (GDL) defines labels, nodes, and the
+A **graph description language** (GDL) defines labels, nodes, and the
 properties of nodes and relationships. A GDL statement defines a
 specific entry in a graph database. It is like the INSERT statement of
 SQL. In a relational database you first define a table and then insert
@@ -89,7 +81,7 @@ data types are:
 
 -   Spatial: Point
 
--   Temporal: Date, Time, LocalTime, DateTime, LocalDateTime or Duration
+-   Temporal: Date, Time, LocalTime, DateTime, LocalDateTime, or Duration
 
 A graph database is quite flexible because you can readily add nodes,
 relationships, and properties, while a relational database limits
@@ -141,7 +133,7 @@ databases based on openCypher and other GQLs.[^graph-2]
 ## Neo4j -- a graph database implementation {.unnumbered}
 
 Neo4j is a popular labeled property graph database that supports Cypher
-and has a free community version. These features make it suitable for
+and has a free community download. These features make it suitable for
 learning how to create and use a graph database. To get started:
 
 -   Watch the video titled *Neo4j in Two Minutes;*[^graph-3]
@@ -153,7 +145,7 @@ learning how to create and use a graph database. To get started:
 
 [^graph-4]: <https://neo4j.com/download/>
 
-## A single node {.unnumbered}
+### A single node {.unnumbered}
 
 We'll start, as we did with the relational model, with a simple example
 of a set of nodes with the same label of Stock. There is no relationship
@@ -183,7 +175,7 @@ specifying a path rather than a url.
 
 ```{cypher, eval = FALSE}
 LOAD CSV WITH HEADERS FROM "https://www.richardtwatson.com/data/stock.csv" AS row
-CREATE (s:Stock {StockCode: row.stkcode, Firm: row.stkfirm, 
+CREATE (s:Stock {StockCode: row.stkcode, Firm: row.stkfirm,
 	Price: toFloat(row.stkprice), Qty: toInteger(row.stkqty), Div: toFloat(row.stkdiv), 	PE: toInteger(row.stkpe)})
 RETURN count(s);
 ```
@@ -209,12 +201,12 @@ shown in the following figure.
 
 ![](Figures/Chapter%2012/unrelated-nodes.png)
 
-## Querying a node {.unnumbered}
+### Querying a node {.unnumbered}
 
 This section mimics Chapter Three's coverage of querying a single entity
 database. Many of the same queries are defined in Cypher code. As you
 should now have a clear idea of the results of a query, they are not
-shown in this chapter. You can alway run them in the Neo4j browser and
+shown in this chapter. You can alway run them with the Neo4j browser and
 look at the different forms of output it provides.
 
 ### Displaying data for nodes with the same label {.unnumbered}
@@ -227,7 +219,7 @@ RETURN s, lists all the properties of Stock.
 *List all Stock data*
 
 ```{cypher, eval = FALSE}
-MATCH (s:Stock) 
+MATCH (s:Stock)
 RETURN s;
 ```
 
@@ -242,7 +234,7 @@ s.Firm AS Firm)
 *Report a firm's name and price-earnings ratio.*
 
 ```{cypher, eval = FALSE}
-MATCH (s:Stock) 
+MATCH (s:Stock)
 RETURN s.Firm AS Firm, s.PE AS PE;
 ```
 
@@ -288,12 +280,14 @@ WHERE s.StockCode IN ['FC','AR','SLG']
 RETURN s;
 ```
 
-> ❓**Skill builder** List those shares where the value of the holding
+> ❓ **Skill builder**
+>
+>List those shares where the value of the holding
 > exceeds one million.
 
 ### Ordering rows {.unnumbered}
 
-In Cypher, the ORDER BY clause sorts properties.
+In Cypher, the ORDER BY clause sorts based on the value of one or more properties.
 
 *List all firms where the PE is at least 10, and order the report in
 descending PE. Where PE ratios are identical, list firms in alphabetical
@@ -314,7 +308,7 @@ Calculations can be included in a query.
 
 ```{cypher, eval = FALSE}
 MATCH (s:Stock)
-RETURN s.Firm AS Firm, s.Price AS Price, s.Qty AS Quantity, 
+RETURN s.Firm AS Firm, s.Price AS Price, s.Qty AS Quantity,
 s.Div/s.Price*100 AS Yield;
 ```
 
@@ -341,7 +335,7 @@ MATCH (s:Stock)
 RETURN avg(s.Div/s.Price*100) As `Average yield`;
 ```
 
-In the prior query, note how you use an angle quote (\`), rather than a
+In the prior query, note how you use an angle quote (`), rather than a
 straight quote, to specify a column header that contains spaces.
 
 ### String handling {.unnumbered}
@@ -354,14 +348,14 @@ manual.[^graph-5]
 
 [^graph-5]: <https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf>
 
-Cypher supports regular expression using the syntax of Java regular
+Cypher supports regular expression using the syntax of Java's regular
 expressions.
 
 *List the names of firms with a double 'e'.*
 
 In the following code, the regular expression looks for any number of
-characters at the beginning or end of each string (.\*) with two
-consecutive 'e's (\[e\]{2}) in between.
+characters at the beginning or end of each string (.*) with two
+consecutive 'e's ([e]{2}) in between.
 
 ```{cypher, eval = FALSE}
 MATCH (s:Stock)
@@ -423,12 +417,12 @@ RETURN count(n);
 ### Specifying relationships in Cypher {.unnumbered}
 
 Relationships are represented in Cypher using an arrow, either -> or
-\<-, between two nodes. A node can have relationships to itself (i.e.,
+<-, between two nodes. A node can have relationships to itself (i.e.,
 recursive). In Neo4j, all relationships are directed (i.e., they are ->
-or \<-).
+or <-).
 
 The nature of the relationship is defined within square brackets, such
-as \[:LISTS\] in the case where a nation lists a stock on its exchange:
+as [:LISTS] in the case where a nation lists a stock on its exchange:
 
 ```{cypher, eval = FALSE}
 (n:Nation)-[:LISTS]->(s:Stock);
@@ -478,7 +472,7 @@ RETURN r;
 
 ### Querying relationships {.unnumbered}
 
-When defining relationship in a graph database, a coder is effectively
+When defining relationship in a graph database, a programmer is effectively
 pre-specifying how two tables are joined. As a result, querying is
 slightly different from the relational style. Consider the following
 request:
@@ -498,7 +492,7 @@ round(s.Price*s.Qty*n.ExchRate) AS Value
 ORDER BY Nation, Firm
 ```
 
-#### WITH---reporting by groups {.unnumbered}
+### WITH---reporting by groups {.unnumbered}
 
 The WITH clause permits grouping nodes and it produces one row for each
 different value of the grouping node. The following example computes the
@@ -524,9 +518,11 @@ WITH n, count(s.StockCode) as Stocks, round(sum(s.Price*s.Qty*n.ExchRate)) as Va
 RETURN n.Nation AS Nation, Stocks, Value;
 ```
 
-> ❓**Skill builder** Report by nation the total value of dividends.
+> ❓ **Skill builder**
+>
+>Report by nation the total value of dividends.
 
-## Querying an m:m relationship {.unnumbered}
+### Querying an m:m relationship {.unnumbered}
 
 In a graph database, a relationship replaces the associative entity used
 in a relationship model for representing an m:m. In the following graph
@@ -621,9 +617,11 @@ WHERE i.ItemType = 'C' AND NOT (i.ItemNo IN SoldItems)
 RETURN DISTINCT i.ItemName AS Item, i.ItemColor AS Color;
 ```
 
-> ❓**Skill builder** Report all red items that have not been sold.
+> ❓ **Skill builder**
+>
+>Report all red items that have not been sold.
 
-## Recursive relationships {.unnumbered}
+### Recursive relationships {.unnumbered}
 
 As you will recall, in data modeling a recursive relationship relates an
 entity to itself. It maps one instance in the entity to another instance
@@ -665,7 +663,7 @@ CREATE (s)-[r:SUCCEEDED]->(p)
 SET r.Date = date('1837-06-20')
 RETURN(r);
 
-MATCH (p:Monarch), (s:Monarch) 
+MATCH (p:Monarch), (s:Monarch)
 WHERE p.Name = 'Victoria' AND p.Number = 'I' AND s.Name = 'Edward' AND s.Number = 'VII'
 CREATE (s)-[r:SUCCEEDED]->(p)
 SET r.Date = date('1901-01-22')
@@ -733,7 +731,7 @@ ORDER BY r.Date;
 ```
 
 We see the power of a Cypher for querying a recursive relationship with
-the following query that uses \*2 in the relationship pattern to select
+the following query that uses *2 in the relationship pattern to select
 the second node in a chain of relationships.
 
 *Who was Elizabeth II's predecessor's predecessor?*
@@ -745,7 +743,7 @@ RETURN (p.Type + ' ' + p.Name + ' ' + p.Number);
 ```
 
 We can also select a series of nodes in a chain, and in the following
-example the first to third are selected by specifying \*1..3 in the
+example the first to third are selected by specifying *1..3 in the
 relationship pattern.
 
 *Who were Elizabeth II's three immediate predecessors?*
@@ -812,8 +810,8 @@ To start afresh, use the following code to delete all nodes and
 relationships:
 
 ```{cypher, eval = FALSE}
-MATCH (a) 
-OPTIONAL MATCH (a)-[r]-() 
+MATCH (a)
+OPTIONAL MATCH (a)-[r]-()
 DELETE a, r
 ```
 
@@ -854,20 +852,19 @@ relationships between nodes.
 Francis, N., Green, A., Guagliardo, P., Libkin, L., Lindaaker, T.,
 Marsault, V., . . . Taylor, A. (2018). Cypher: An evolving query
 language for property graphs. Paper presented at the Proceedings of the
-2018 International Conference on Management of Data.
-<doi:10.1145/3183713.3190657>
+2018 International Conference on Management of Data. doi:10.1145/3183713.3190657.
 
 Robinson, I., Webber, J., & Eifrem, E. (2013). *Graph databases*:
 O'Reilly Media, Inc. ISBN: 1449356249
 
-Problem showcases: [[gist.neo4j.org/]{.ul}](http://gist.neo4j.org/) and
-[[neo4j.com/use-cases/]{.ul}](http://neo4j.com/use-cases/)
+Problem showcases: [gist.neo4j.org](http://gist.neo4j.org/) and
+[neo4j.com/use-cases/](http://neo4j.com/use-cases/).
 
 The following exercises are based on the NorthWinds graph database,
 which you can create on your desktop by running the supplied
 code.[^graph-7] The graph model for NorthWinds follows the questions.
 
-[^graph-7]: <https://www.richardtwatson.com/dm6e/reader/northwind.cypher>
+[^graph-7]: https://www.richardtwatson.com/dm6e/reader/northwind.cypher
 
 ### Exercises {.unnumbered}
 
