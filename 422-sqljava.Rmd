@@ -749,7 +749,7 @@ Barnes, D. J., and M. Kölling. 2005. Objects first with Java : a
 practical introduction using Blue J. 2nd ed. Upper Saddle River, NJ:
 Prentice Hall.
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Write a Java program to run a parameterized query against the
     ClassicModels database. For example, you might report the sum of

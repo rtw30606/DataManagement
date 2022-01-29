@@ -137,7 +137,7 @@ visualization. In this case, we want to depict the relative change in
 carbon levels since pre-industrial periods, when the value was 280 ppm.
 Here are sample R commands.
 
-```{r transform-1, eval = TRUE}
+```{r transform-1, eval = F}
 # compute a new column in carbon containing the relative change in CO2
 carbon$relCO2 = (carbon$CO2-280)/280
 ```
@@ -538,7 +538,7 @@ ggmap(map) +
 
 ![](Figures/Chapter%2016/google-map.png)
 
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
 > Create the following maps.
 >
@@ -596,7 +596,7 @@ visualization, and statistics*. Indianapolis, IN: Wiley.
 Wilkinson, L. (2005). *The grammar of graphics* (2nd ed.). New York:
 Springer.
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Given the following data on the world's cargo carrying capacity in
     millions of dead weight tons (dwt)[^dataviz-4] for the given years,

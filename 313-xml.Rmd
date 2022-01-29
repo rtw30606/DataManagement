@@ -950,7 +950,7 @@ XML document.
 
 [Watson, R. T., and others. 2004. *XML: managing data exchange*](http://en.wikibooks.org/wiki/XML_-_Managing_Data_Exchange).
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  A business has a telephone directory that records the first and last
     name, telephone number, and e-mail address of everyone working in

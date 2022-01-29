@@ -680,7 +680,7 @@ either totally relational or it is not relational.
 Codd, E. F. 1982. Relational database: A practical foundation for
 productivity. *Communications of the ACM* 25 (2):109--117.
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1. What reasons does Codd give for adopting the relational model?
 

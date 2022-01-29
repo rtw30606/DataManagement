@@ -467,7 +467,7 @@ A view can be used in a query, such as:
 
 *Find stocks with a value greater than £100,000.*
 
-```{sql, connection = db, eval = T}
+```{sql view, connection = db, eval = T}
 SELECT nation, firm, value FROM stkvalue WHERE value > 100000;
 ```
 
@@ -501,7 +501,7 @@ Join creates a new table from two existing tables by matching on a column common
 | HAVING                  | Virtual table                  |
 | Insert anomalies        |                                |
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Draw data models for the following situations. In each case, make certain that you show the attributes and feasible identifiers:
 

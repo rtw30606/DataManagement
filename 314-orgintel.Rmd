@@ -85,7 +85,7 @@ information system).
 
 *The data warehouse*
 
-![](Figures/Chapter 14/data warehouse.png){ width: 600px; }
+![](Figures/Chapter 14/data warehouse.png){width="500"}
 
 ## The data warehouse {.unnumbered}
 
@@ -384,7 +384,7 @@ table and some of the dimensional tables.
 
 *A star schema*
 
-![](Figures/Chapter 14/star structure.png){ width: 600px; }
+![](Figures/Chapter 14/star structure.png){width="500" }
 
 A **snowflake schema**, more complex than a star schema, resembles a
 snowflake. Dimensional data are grouped into multiple tables instead of
@@ -394,7 +394,7 @@ should opt for a star over a snowflake schema.
 
 *A snowflake schema*
 
-![](Figures/Chapter 14/snowflake.png){ width: 600px; }
+![](Figures/Chapter 14/snowflake.png){width="500" }
 
 *Rotation, drill-down, and drill-through*
 
@@ -459,7 +459,7 @@ building.
 
 *A hypercube*
 
-![](Figures/Chapter 14/hypercube.png){ width: 600px; }
+![](Figures/Chapter 14/hypercube.png){width="400" }
 
 Of course, on a screen or paper only two dimensions can be shown. This
 problem is typically overcome by selecting an attribute of one dimension
@@ -512,7 +512,7 @@ RDBMS to facilitate access to data stored in the relational system.
 
 *The relationship between RDBMS and MDDB*
 
-![](Figures/Chapter 14/RDBMS-MDDB.png){ width: 600px; }
+![](Figures/Chapter 14/RDBMS-MDDB.png){width="500" }
 
 ### Designing a multidimensional database {.unnumbered}
 
@@ -1067,7 +1067,7 @@ aggregation reporting.
 ### References and additional readings {.unnumbered}
 
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Identify data captured by a TPS at your university. Estimate how
     much data are generated in a year.

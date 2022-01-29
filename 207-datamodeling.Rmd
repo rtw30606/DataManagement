@@ -1649,7 +1649,7 @@ University of Minnesota.
 Hammer, M. 1990. Reengineering work: Don't automate, obliterate.
 *Harvard Business Review* 68 (4):104--112.
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 #### Short answers {.unnumbered}
 

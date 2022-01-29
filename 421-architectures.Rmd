@@ -1044,7 +1044,7 @@ understanding the seven capabilities of cloud computing. *MIS Executive,
 Watson, R. T., Wynn, D., & Boudreau, M.-C. (2005). JBoss: The evolution
 of professional open source software. *MISQ Executive, 4*(3), 329-341.
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  How does client/server differ from cloud computing?
 

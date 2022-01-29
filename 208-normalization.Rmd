@@ -663,7 +663,7 @@ data. *ACM Transactions on Database Systems* 1 (1):9--36.
 Kent, W. 1983. A simple guide to five normal forms in relational
 database theory. *Communications of the ACM 26 (2): 120-125.*
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 ### Short answers {.unnumbered}
 

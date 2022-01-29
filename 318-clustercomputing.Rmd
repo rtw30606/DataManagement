@@ -562,7 +562,7 @@ Lam, C. (2010). *Hadoop in action*: Manning Publications Co.
 
 Marz, N., & Warren, J. (2012). *Big Data*: Manning Publications.
 
-#### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Write Spark code for the following situations.
 

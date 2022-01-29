@@ -658,7 +658,7 @@ The relational database model is an effective means of representing real-world r
 | IN                    | UPDATE              |
 | INSERT                | WHERE               |
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Draw data models for the following entities. In each case, make certain that you show the attributes and identifiers. Also, create a relational database and insert some rows for each of the models.
 

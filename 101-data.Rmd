@@ -909,7 +909,7 @@ system. *Harvard Business Review*, 76(4), 121-131.
 Watson, R. T. (2020). [*Capital, Systems and Objects: The Foundation and Future of Organizations*](https://link.springer.com/book/10.1007/978-981-15-9418-2). Singapore: Springer
 
 
-#### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  What are the major differences between internal and external memory?
 

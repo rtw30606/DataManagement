@@ -866,7 +866,7 @@ code.[^graph-7] The graph model for NorthWinds follows the questions.
 
 [^graph-7]: https://www.richardtwatson.com/dm6e/reader/northwind.cypher
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Write Cypher code for the following queries.
 

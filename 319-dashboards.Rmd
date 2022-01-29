@@ -482,7 +482,7 @@ conjunction with RStudio.
 
 Few, S. (2006). *Information dashboard design*: O\'Reilly.
 
-#### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Create a dashboard to show the current conditions and temperatures
     in both Fahrenheit and Celsius at a location. Your will need the

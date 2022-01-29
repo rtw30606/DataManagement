@@ -998,7 +998,7 @@ provide one interface to an organization's information stores.
 Quinn, J. B., P. Anderson, and S. Finkelstein. 1996. Leveraging
 intellect. *Academy of Management Executive* 10 (3):7-27.
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  From an information perspective, what is likely to be different
     about the customer service era compared to the

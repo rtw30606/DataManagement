@@ -1546,7 +1546,7 @@ designed to reveal individual-level data.
 | Ensuring confidentiality  | Xlock                      |
 | GRANT                     |                            |
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  What are the three goals of maintaining organizational memory
     integrity?

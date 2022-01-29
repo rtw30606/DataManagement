@@ -357,7 +357,7 @@ There can be a many-to-many (m:m) relationship between entities, which is repres
 | EXISTS                 | Universal quantifier            |
 | INTERSECT              |                                 |
 
-### Exercises {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Draw data models for the following situations. In each case, think about the names you give each entity:
 
