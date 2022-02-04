@@ -7,7 +7,7 @@
 >
 > Noam Chomsky, *Syntactic Structures*
 
-#### Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will:
 
@@ -43,11 +43,11 @@ same level of exactness and starkness as numeric processing. NLP output
 can be messy, imprecise, and confusing -- just like the language that
 goes into an NLP program. One of the well-known maxims of information
 processing is "garbage-in, garbage-out." While language is not garbage,
-we can certainly observe that "language-in, language-out" is a truism.
+we can certainly observe that "ambiguity-in, ambiguity-out" is a truism.
 You can't start with something that is marginally ambiguous and expect a
 computer to turn it into a precise statement. Legal and religious
 scholars can spend years learning how to interpret a text and still
-reach different conclusions as to meaning.
+reach different conclusions as to its meaning.
 
 NLP, despite its limitations, enables humans to process large volumes of
 language data (e.g., text) quickly and to identify patterns and features
@@ -132,7 +132,7 @@ words as the foundation for analysis.
 
 To count the number of words in a string, simply count the number of
 times there are one or more consecutive spaces using the pattern
-"\[:space:\]+" and then add one, because the last word is not followed
+"[:space:]+" and then add one, because the last word is not followed
 by a space.
 
 ```{r counting, eval = TRUE}
@@ -233,15 +233,15 @@ achievement of unparalleled mediocrity.")
 sentiment(sample, n.before = 2, n.after = 2, amplifier.weight=.8, but.weight = .9)
 ```
 
-| **Type**     | **Code** | **Text**                                | **Sentiment** |
-|:-------------|:---------|:----------------------------------------|:--------------|
+| Type     | Code | Text  | Sentiment|
+|:---------|:-----:|:------|--------------:|
 |              |          | You're crazy, and I love you.           | 0             |
 | Negator      | 1        | You're not crazy, and I love you.       | 0.57          |
 | Amplifier    | 2        | You're crazy, and I love you very much. | 0.21          |
 | De-amplifier | 3        | You're slightly crazy, and I love you.  | 0.23          |
 | Conjunction  | 4        | You're crazy, but I love you.           | 0.45          |
 
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
 > Run the following R code and comment on how sensitive sentiment
 > analysis is to the n.before and n.after parameters.
@@ -271,17 +271,10 @@ A collection of text is called a corpus. It is common to use N for the
 number of distinct tokens.
 
 In the following examples, our corpus consists of Warren Buffett's
-annual letters to the shareholders of Berkshire Hathaway[^textmining-2]
-for the period 1998-2012.[^textmining-3] The letters, available in html
-or pdf, were converted to separate text files using Abbyy Fine Reader.
+annual letters for 1998-2012 to the [shareholders of Berkshire Hathaway](http://www.berkshirehathaway.com/letters/letters.html) for 1998-2012. The original letters, available in html
+or pdf, were converted to [separate text files](http://www.terry.uga.edu/people/rwatson/) using [Abbyy Fine Reader](https://pdf.abbyy.com).
 Tables, page numbers, and graphics were removed during the conversion.
 
-[^textmining-2]: <http://www.berkshirehathaway.com/letters/letters.html>
-
-[^textmining-3]: The converted letters are available at
-    [\<http://www.richardtwatson.com/BuffettLetters/>](http://www.terry.uga.edu/people/rwatson/)
-    and will be extended to include earlier and more recent letters. The
-    folder also contains the original letter in pdf.
 
 The following R code sets up a loop to read each of the letters and add
 it to a data frame. When all the letters have been read, they are turned
@@ -319,10 +312,8 @@ selection of text. They are usually based on counting the words in each
 sentence and the number of syllables in each word. For example, the
 Flesch-Kincaid method uses the formula:
 
-```{=tex}
-\begin{equation}
-(11.8 * syllables\: per\: word) + (0.39 * words\:per\:sentence) - 15.59
-\end{equation}
+```
+(11.8 * syllables: per: word) + (0.39 * words:per:sentence) - 15.59
 ```
 It estimates the grade-level or years of education required of the
 reader. The bands are:
@@ -333,7 +324,6 @@ reader. The bands are:
 | 16-18 | Masters         |
 | 19-   | PhD             |
 
-: Readability score and grade level
 
 The R package koRpus has a number of methods for calculating readability
 scores. You first need to tokenize the text using the package's tokenize
@@ -393,7 +383,7 @@ action.
 clean.letters <- tm_map(clean.letters,stripWhitespace)
 ```
 
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
 > Redo the readability calculation after executing the preprocessing
 > steps described in the previous section. What do you observe?
@@ -406,9 +396,7 @@ commonly agreed upon list of stop works, typically included are *the,
 is, be, and, but, to,* and *on*. Stop word lists are typically all
 lowercase, thus you should convert to lowercase before removing stop
 words. Each language has a set of stop words. In the following sample
-code, we use the SMART list of English stop words.[^textmining-4]
-
-[^textmining-4]: <http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop>
+code, we use the [SMART](http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop) list of English stop words.
 
 ```{r filtering, eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,removeWords,stopwords("SMART"))
@@ -445,10 +433,9 @@ For example, *cats* and *catty* stem to *cat*. *Fishlike* and *fishy*
 stem to *fish*. As a stemmer generally works by suffix stripping, so
 *catfish* should stem to *cat*. As you would expect, stemmers are
 available for different languages, and thus the language must be
-specified.
+specified. Stemming can take a while to process.
 
 ```{r stemming-1, eval = T, message = FALSE}
-# stem the document -- might take a while to run
 stem.letters <- tm_map(clean.letters,stemDocument, language =
 "english")
 ```
@@ -463,7 +450,6 @@ for the most frequent match, "first" for the first found completion, and
 completion in terms of characters
 
 ```{r stemming-2, eval = T, message = FALSE}
-# stem completion -- might take a while to run
 stem.letters <-  tm_map(clean.letters,stemDocument, language = "english")
 ```
 
@@ -548,7 +534,7 @@ pal = brewer.pal(5,"Accent")
 wordcloud(d$word, d$freq, min.freq=d$freq[30],colors=pal)
 ```
 
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
 > Start with the original letters corpus (i.e., prior to preprocessing)
 > and identify the 20 most common words and create a word cloud for
@@ -697,10 +683,8 @@ across documents.
 ![](Figures/Chapter%2017/idf.png)
 
 > Where
->
 > m = number of documents (i.e., rows in the case of a term-document
 > matrix);
->
 > df~t~ = number of documents containing term *t.*
 
 If a term occurs in every document, then its idf = 0, whereas if a term
@@ -719,7 +703,7 @@ df.idf <-  data.frame(idf)
 ggplot(df.idf,aes(idf)) + geom_histogram(fill="chocolate") + xlab("Inverse document frequency")
 ```
 
-The preceding graphic shows that about 5,000 terms occur in only one
+The generated graphic shows that about 5,000 terms occur in only one
 document (i.e., the idf = 3.91) and less than 500 terms occur in every
 document. The terms with an idf in the range 1 to 2 are likely to be the
 most useful in determining the topic of each document.
@@ -732,9 +716,7 @@ document frequency (idf).
 
 ![](Figures/Chapter%2017/tf-idf.png)
 
-Where
-
-tf~td~ = frequency of term *t* in document *d.*
+>Where tf~td~ = frequency of term *t* in document *d.*
 
 ### Topic modeling with R {.unnumbered}
 
@@ -762,7 +744,7 @@ document set. Thus, terms with low frequency should be omitted because
 they don't occur often enough to define a topic. Similarly, those terms
 occurring in many documents don't differentiate between documents.
 
-A common heuristic is to select those terms with a tf-idf \>
+A common heuristic is to select those terms with a tf-idf >
 median(tf-idf). As a result, we reduce the document-term matrix by
 keeping only those terms above the threshold and eliminating rows that
 have zero terms. Because the median is a measure of central tendency,
@@ -810,7 +792,7 @@ For this particular case, it might be that Buffett's letters don't vary
 much from year to year, and he returns to the same topics in each annual
 report.
 
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
 > Experiment with the topicmodels package to identify the topics in
 > Buffett's letters. You might need to use the dictionary feature of
@@ -866,7 +848,7 @@ capable of correctly recognizing entities with 90 percent accuracy.
 
 ### NER software {.unnumbered}
 
-OpenNLP[^textmining-7] is an Apache Java-based machine learning based
+[OpenNLP](http://opennlp.apache.org) is an Apache Java-based machine learning based
 toolkit for the processing of natural language in text format. It is a
 collection of natural language processing tools, including a sentence
 detector, tokenizer, parts-of-speech(POS)-tagger, syntactic parser, and
@@ -875,7 +857,6 @@ organizations, dates, times. percentages, and money. You will need to
 write a Java program to take advantage of the toolkit. The R package,
 openNLP, provides an interface to OpenNLP.
 
-[^textmining-7]: <http://opennlp.apache.org>
 
 ## Future developments {.unnumbered}
 
@@ -932,24 +913,24 @@ retrieval are all areas of research.
 
 ## Key terms and concepts {.unnumbered}
 
-|                                   |                                           |
-|-----------------------------------|-------------------------------------------|
-| Association                       | Readability                               |
-| Cluster analysis                  | Regex filtering                           |
-| Co-occurrence                     | Sentiment analysis                        |
-| Corpus                            | Statistical classification                |
-| Dendrogram                        | Stemming                                  |
-| Document-term matrix              | Stop word filtering                       |
-| Flesch-Kincaid formula            | Stripping extra white spaces              |
-| Inverse document frequency        | Term-document matrix                      |
-| KNIME                             | Term frequency                            |
+|                                   |              |
+|-----------------------------------|--------------|
+| Association                       | Readability |
+| Cluster analysis                  | Regex filtering |
+| Co-occurrence                     | Sentiment analysis |
+| Corpus                            | Statistical classification |
+| Dendrogram                        | Stemming |
+| Document-term matrix              | Stop word filtering |
+| Flesch-Kincaid formula            | Stripping extra white spaces |
+| Inverse document frequency        | Term-document matrix |
+| KNIME                             | Term frequency |
 | Named-entity recognition (NER)    | Term frequency inverse document frequency |
-| Natural language processing (NLP) | Text mining                               |
-| Number removal                    | Tokenization                              |
-| OpenNLP                           | Topic modeling                            |
-| Parts of speech (POS) filtering   | Word cloud                                |
-| Preprocessing                     | Word frequency analysis                   |
-| Punctuation removal               | Word length filtering                     |
+| Natural language processing (NLP) | Text mining |
+| Number removal                    | Tokenization |
+| OpenNLP                           | Topic modeling |
+| Parts of speech (POS) filtering   | Word cloud |
+| Preprocessing                     | Word frequency analysis |
+| Punctuation removal               | Word length filtering  |
 
 ### References {.unnumbered}
 
@@ -967,9 +948,9 @@ find, organize and manipulate it*. Greenwich, CT: Manning Publications.
 
 ## Exercises {.unnumbered}
 
-1.  Take the recent annual reports for UPS[^textmining-8] and convert
-    them to text using an online service, such as
-    [[http://www.fileformat.info/convert/doc/pdf2txt.htm]{.ul}](http://convertonlinefree.com/PDFToTXTEN.aspx).
+1.  Take the recent annual reports for [UPS](http://www.investors.ups.com/phoenix.zhtml?c=62900&p=irol-reportsannua) and convert
+    them to text using an online service, [such as](http://www.fileformat.info/convert/doc/pdf2txt.htm).
+
     Complete the following tasks:
 
     1.  Count the words in the most recent annual report.
@@ -999,5 +980,3 @@ find, organize and manipulate it*. Greenwich, CT: Manning Publications.
     2.  Build a topic model for the combined annual reports.
     3.  Do the cluster analysis and topic model suggest considerable
         differences in the two sets of reports?
-
-[^textmining-8]: <http://www.investors.ups.com/phoenix.zhtml?c=62900&p=irol-reportsannual>

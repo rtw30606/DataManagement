@@ -5,7 +5,7 @@
 >
 > Edward Tufte, *The Visual Display of Quantitative Information*
 
-#### Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will:
 
@@ -27,7 +27,7 @@ the right course of action (fight or flight). Our ancestors were those
 who were efficient visual processors and quickly detected threats and
 used this information to make effective decisions. They selected actions
 that led to survival. Those who were inefficient visual information
-processors did not survive to reproduce. Even those with good visual
+processors did not survive to reproduce. Moreover, those with good visual
 skills failed to propagate if they made poor decisions relative to
 detected dangers. Consequently, we should seek opportunities to present
 information visually and play to our evolved strength. As people vary in
@@ -35,7 +35,7 @@ their preference for visual and textual information, it often makes
 sense to support both types of reporting.
 
 In order to learn how to visualize data, you need to become familiar
-with the grammar of graphics and ggplot2 (an R extension for graphics).
+with the grammar of graphics and [ggplot2](https://ggplot2.tidyverse.org) (a popular R package for graphics).
 In line with the learning of data modeling and SQL, we will take an
 intertwined spiral approach. First we will tackle the grammar of
 graphics (the abstract) and then move to ggplot2 (the concrete). You
@@ -51,11 +51,11 @@ accurately and concisely. English has a rather complex grammar, as do
 most languages. In contrast, computer-related languages, such as SQL,
 have a relatively simple grammar because they are carefully designed for
 expressive power, consistency, and ease of use. Each of the dialects of
-data modeling also has a grammar, and each of these grammars is quite
+data modeling also has a grammar, and each of these  is quite
 similar in that they all have the same foundational elements: entities,
 attributes, identifiers, and relationships.
 
-A grammar has been designed by Wilkinson[^dataviz-1] for creating
+A grammar was designed by Wilkinson[^dataviz-1] for creating
 graphics to enhance their expressiveness and comprehensiveness. From a
 mathematical perspective, a graph is a set of points. A graphic is a
 physical representation of a graph. Thus, a graph can have many physical
@@ -75,7 +75,7 @@ shows the size of the army, its location, and the direction of its
 movement. The temperature during the retreat is drawn at the bottom of
 graphic.
 
-[^dataviz-1]: Wilkinson, L. (2005). \*The grammar of graphics\* (2nd
+[^dataviz-1]: Wilkinson, L. (2005). *The grammar of graphics* (2nd
     ed.). New York: Springer.
 
 *Charles Joseph Minard's graphic of Napoleon's Russian expedition in
@@ -101,32 +101,28 @@ Wilkinson's grammar is based on six elements:
 Interest in the grammar of data visualization has increased in recent
 years because of the growth in data. There is ongoing search to find
 ways to reveal clearly the information in large data sets.
-Vega[^dataviz-2] is a recent formulation building on Wilkinson's work.
+[Vega](http://trifacta.github.io/vega/) is a recent formulation building on Wilkinson's work.
 In Vega, a visualization consists of basic properties of a graph (such
 as the width and height) and definitions of the data to visualize,
 scales for mapping to data to a visual form, axes for representing
 scales, and graphic marks (such as rectangles, circles, and arcs) for
 displaying the data.
 
-[^dataviz-2]: <http://trifacta.github.io/vega/>
 
 ## ggplot2 {.unnumbered}
 
-ggplot2 is an implementation of Vega in R Because it is based on a
+ggplot2 is an implementation of Vega in R. Because it is based on a
 grammar, ggplot2 is a very powerful graphics tool for creating both
 simple and complex graphs. It is well-suited for generating
 multi-layered graphs because of its grammatical foundation. As a result,
 using ggplot2 you specify a series of steps (think of them as sentences)
 to create a graphic (think of it as a paragraph) to visually convey your
-message. ggplot2 is a descendant of ggplot2 and adds new features to
-support interactive visualization using shiny, another R package, which
-we will cover later.
+message.
 
 ### Data {.unnumbered}
 
 Most structured data, which is what we require for graphing, are
-typically stored in spreadsheets or databases. In the prior chapter
-introducing R, you learned how to read a spreadsheet exported as a CSV
+typically stored in spreadsheets or databases. In the prior chapter, you learned how to read a spreadsheet exported as a CSV
 file and access a database. These are also the skills you need for
 reading a file containing data to be visualized.
 
@@ -150,7 +146,7 @@ values from existing columns.
 ### Coord {.unnumbered}
 
 A coordinate system describes where things are located. A geopositioning
-system (GPS ) reading of latitude and longitude describes where you are
+system (GPS) reading of latitude and longitude describes where you are
 on the surface of the globe. It is typically layered onto a map so you
 can see where you are relative to your current location. Most graphs are
 plotted on a two-dimensional (2D) grid with x (horizontal) and y
@@ -174,17 +170,6 @@ for most packages is Cartesian.
 An element is a graph and its attributes. Let's start with a simple
 scatterplot of year against CO~2~ emissions. We do this in two steps
 applying the ggplot2 approach of building a graphic by adding layers.
-ggplot2 uses the pipe function to specify a linear sequence of
-processing.
-
--   The foundation is the ggplot2 function, which identifies the source
-    of the data and what is to be plotted. In the following example, the
-    file carbon is fed into the ggplot2 function, which selects year and
-    CO2 as the x and y, respectively, dimensions of the graph
-
--   A graph consists of a number of layers, and in the following example
-    the points layer receives the x and y values from ggplot2 and plots
-    each pair of points with a red dot.
 
 ```{r element, message = TRUE}
 library(tidyverse)
@@ -192,14 +177,17 @@ url <- 'http://www.richardtwatson.com/data/carbon.txt'
 carbon <- read_delim(url, delim = ',')
 # Select year(x) and CO2(y) to create a x-y point plot
 # Specify red points, as you find that aesthetically pleasing
-ggplot(carbon,aes(year,CO2)) + geom_point(color='red')
+ggplot(carbon,aes(year,CO2)) +
+  geom_point(color='red')
 # Add some axes labels
 # Notice how ‘+’ is used for commands that extend over one line
-ggplot(carbon,aes(year,CO2)) + geom_point(color='red') +
-xlab('Year') + ylab('CO2 ppm of the atmosphere')
+ggplot(carbon,aes(year,CO2)) +
+  geom_point(color='red') +
+  xlab('Year') +
+  ylab('CO2 ppm of the atmosphere')
 ```
 
-Graphics appear under the Plots tab of the bottom right window. You can
+Graphics appear under the Plots tab of the bottom right window of RStudio. You can
 select the Export tab to save a graphic to a file or the clipboard.
 Also, notice that you can use left and right arrows of the Plots tab to
 cycle through graphics created in a session.
@@ -208,7 +196,7 @@ cycle through graphics created in a session.
 
 It is usually a good idea to have a zero point for the y axis so you
 don't distort the slope of the line. In the following example, ylim()
-sets the range for y.
+sets the range for y. Notice the use of max() to automatically set an upper limit for y based on its values.
 
 ```{r zero, message = TRUE}
 library(tidyverse)
@@ -216,10 +204,11 @@ url <- 'http://www.richardtwatson.com/data/carbon.txt'
 carbon <- read_delim(url, delim = ',')
 # compute a new column in carbon containing the relative change in CO2
 carbon$relCO2 = (carbon$CO2-280)/280
-ggplot(carbon,aes(year,relCO2)) + geom_line(color='salmon') +
+ggplot(carbon,aes(year,relCO2)) +
+  geom_line(color='salmon') +
   xlab('Year') +
   ylab('Relative change of atmospheric CO2') +
-  ylim(0,.5)
+  ylim(0,max(carbon$relCO2))
 ```
 
 ### Axes and legends {.unnumbered}
@@ -264,13 +253,13 @@ diamond) and shape size to aid matching.
 
 ![](Figures/Chapter%2016/guides.png)
 
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
 > Create a line plot using the data in the following table.
 >
-> | year                  | 1804 | 1927 | 1960 | 1974 | 1987 | 1999 | 2012 | 2027 | 2046 |
-> |:----------------------|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
-> | population (billions) | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    |
+> | year | 1804 | 1927 | 1960 | 1974 | 1987 | 1999 | 2012 | 2027 | 2046 |
+> |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
+> | population (billions) | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8  | 9    |
 
 ## Some recipes {.unnumbered}
 
@@ -287,10 +276,8 @@ distribution of temperatures in Celsius for the Central Park temperature
 data. Notice that the Celsius conversion is rounded to an integer for
 plotting. Width specifies the size of the bin, which is two in this
 case. This means that the bin above the tick mark 10 contains all values
-in the range 9 to 11. There is online a list of names of colors you can
-use in ggplot2.[^dataviz-3]
-
-[^dataviz-3]: <http://www.w3schools.com/cssref/css_colornames.asp>
+in the range 9 to 11. There is [a range of named colors](http://www.w3schools.com/cssref/css_colornames.asp)  you can
+use in ggplot2.
 
 ```{r histogram, message = TRUE}
 library(measurements)
@@ -299,7 +286,9 @@ library(readr)
 url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
 t <- read_delim(url, delim=',')
 t$C <- conv_unit(t$temperature,'F','C')
-ggplot(t,aes(C)) + geom_histogram(fill='skyblue') + xlab('Celsius')
+ggplot(t,aes(C)) +
+  geom_histogram(fill='skyblue') +
+  xlab('Celsius')
 ```
 
 ### Bar graph {.unnumbered}
@@ -324,7 +313,7 @@ ggplot(d,aes(x=productLine)) +
 
 In the following example, we query a database to get data for plotting/
 We then count the number of products in each productLine, and as we have
-counts a column graph is created.
+counts a column graph is specified.
 
 ```{r columngraph, eval = TRUE}
 library(tidyverse)
@@ -339,8 +328,6 @@ da <-  d %>%
 ggplot(da,aes(productLine,count)) +
   geom_col(fill='chocolate')
 ```
-
-### Bar chart {.unnumbered}
 
 Because ggplot2 is based on a grammar of graphics, with a few changes,
 you can create a bar graph of the same data.
@@ -360,19 +347,19 @@ ggplot(d,aes(productLine)) +
   coord_flip()
 ```
 
-> ❓**Skill builder**
+> ❓ **Skill builder**
 >
 > Create a bar graph using the data in the following table. Set
 > population as the weight for each observation.
 >
-> | year                  | 1804 | 1927 | 1960 | 1974 | 1987 | 1999 | 2012 | 2027 | 2046 |
-> |:----------------------|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
-> | population (billions) | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    |
+> | year | 1804 | 1927 | 1960 | 1974 | 1987 | 1999 | 2012 | 2027 | 2046 |
+> |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
+> | population (billions) | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8  | 9    |
 
 ### Scatterplot {.unnumbered}
 
 A scatterplot shows points on an x-y grid, which means you need to have
-an x and y with numeric values.
+a pair of numeric values.
 
 ```{r scatterplot-1, eval = TRUE}
 library(tidyverse)
@@ -383,7 +370,9 @@ conn <- dbConnect(RMySQL::MySQL(), 'www.richardtwatson.com', dbname = 'ClassicMo
 d <- dbGetQuery(conn,"SELECT MONTH(orderDate) AS orderMonth, sum(quantityOrdered*priceEach) AS orderValue FROM Orders JOIN OrderDetails ON Orders.orderNumber = OrderDetails.orderNumber GROUP BY orderMonth;")
 # Plot data orders by month
 # Show the points and the line
-ggplot(d,aes(x=orderMonth,y=orderValue)) + geom_point(color='red') + geom_line(color='blue')
+ggplot(d,aes(x=orderMonth,y=orderValue)) +
+  geom_point(color='red') +
+  geom_line(color='blue')
 
 ```
 
@@ -413,7 +402,7 @@ d$Year <- as.character(d$orderYear)
 ```
 
 Sometimes the data that you want to graph will be in multiple files.
-Here is a case where we want to show ClassicCars orders and payments by
+Here is a case where we want to show ClassicCars' orders and payments by
 month on the same plot.
 
 ```{r scatterplot-3, eval = TRUE}
@@ -454,7 +443,9 @@ ggplot(ta,aes(year,temperature)) +
   geom_smooth()
 ```
 
-> ❓**Skill builder** Using the Central Park data, plot the temperatures
+> ❓ **Skill builder**
+>
+>Using the Central Park data, plot the temperatures
 > for February and fit a straight line to the points. Use
 > layer_model_predictions(). What do you observe?
 
@@ -473,7 +464,9 @@ conn <- dbConnect(RMySQL::MySQL(), "www.richardtwatson.com", dbname="ClassicMode
 d <- dbGetQuery(conn,"SELECT * from Payments;")
 # Boxplot of amounts paid
 ggplot(d,aes(factor(0),amount)) +
-  geom_boxplot(outlier.colour='red') +  xlab("") + ylab("Check")
+  geom_boxplot(outlier.colour='red') +
+   xlab("") +
+   ylab("Check")
 
 ```
 
@@ -496,7 +489,8 @@ da <- d %>% group_by(productLine, productScale) %>%
 ggplot(da,aes(productLine,productScale)) +
   geom_tile(aes(fill=count)) +
   scale_fill_gradient(low = 'light blue', high = 'dark blue') +
-  xlab('Line') + ylab('Scale')
+  xlab('Line') +
+  ylab('Scale')
 ```
 
 ## Geographic data {.unnumbered}
@@ -515,6 +509,8 @@ name of the table containing the values for longitude and latitude.
 Offices that are not in the U.S. (e.g., Sydney) are ignored. Adjust
 zoom, an integer, to get a suitably sized map. Zoom can range from 3 (a
 continent) to 20 (a building).
+
+You will need to a [GoogleAPIkey](https://developers.google.com/maps/documentation/javascript/get-api-key) to run this application on your computer.
 
 ```{r, eval = FALSE}
 # Google maps requires an [API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
@@ -541,20 +537,16 @@ ggmap(map) +
 > ❓ **Skill builder**
 >
 > Create the following maps.
->
 > 1.  Offices in Europe
->
 > 2.  Office location in Paris
->
 > 3.  Customers in the US
->
 > 4.  Customers in Sydney
 
 ## R resources {.unnumbered}
 
-The developer of ggplot2, Hadley Wickham, maintains a [[web
-site]{.ul}](http://ggplot2.tidyverse.org). Another useful web site for
-data visualization is [[FlowingData]{.ul}](http://flowingdata.com),
+The developer of ggplot2, Hadley Wickham, maintains a [web
+site](http://ggplot2.tidyverse.org). Another useful web site for
+data visualization is [FlowingData](http://flowingdata.com),
 which has an associated book, titled *Visualize This*. If you become
 heavily involved in visualization, we suggest you read some of the works
 of Edward Tufte. One of his books is listed in the references.
@@ -643,8 +635,8 @@ item <-  c('TV set', 'DVD player', 'Vacuum cleaner', 'Scotch whisky', 'Coffee', 
 *File input*
 
 9.  Access
-    [[http://www.richardtwatson.com/data/manheim.txt]{.ul}](http://people.terry.uga.edu/rwatson/data/manheim.txt),
-    which contains details of the sales of three car models: X, Y,
+  [sales data](http://people.terry.uga.edu/rwatson/data/manheim.txt),
+    for three car models: X, Y,
     and Z.
 
     a.  Create a bar chart for sales of each model (X, Y , or Z)
@@ -653,38 +645,24 @@ item <-  c('TV set', 'DVD player', 'Vacuum cleaner', 'Scotch whisky', 'Coffee', 
         auction).
 
 10. Use the 'Import Dataset' feature of RStudio to read
-    [[http://www.richardtwatson.com/data/electricityprices.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/electricityprices.csv),
-    which contains details of electricity prices for a major
+    [electricity prices](http://people.terry.uga.edu/rwatson/data/electricityprices.csv),
+     for a major
     city.[^dataviz-5] Do a Box plot of cost. What do you conclude about
     cost?
 
-11. Read the table
-    [[http://www.richardtwatson.com/data/wealth.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/wealth.csv)
-    containing details of the wealth of various countries. Create
-    histograms for each of the wealth measures. Consult the ggplot2
-    color chart[^dataviz-6] for a choice of colors.
+    [^dataviz-5]: Note these prices have been transformed from the original values, but are still representative of the changes over time.
 
-12. Merge the data for weather
-    \<[[http://www.richardtwatson.com/data/weather.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/weather.csv)\>
-    and electricity prices
-    \<[[http://www.richardtwatson.com/data/electricityprices.csv]{.ul}](http://people.terry.uga.edu/rwatson/data/electricityprices.csv)\>
+11. Read [wealth data](http://people.terry.uga.edu/rwatson/data/wealth.csv)
+    for various countries. Create
+    histograms for each of the wealth measures. Consult the [ggplot2
+    color chart](http://www.w3schools.com/cssref/css_colornames.asp) for a choice of colors.
+
+12. Merge the data for [weather](http://people.terry.uga.edu/rwatson/data/weather.csv) and [electricity prices](http://people.terry.uga.edu/rwatson/data/electricityprices.csv).
     for a major city. The merged file should contain air temperature and
     electricity cost. Also, you need to convert air temperature from a
     factor to a numeric (hint: first convert to a character). As readr
     does not currently handle date and time stamps, use the following
     code to read the files.
-
-[^dataviz-5]: Note these prices have been transformed from the original
-    values, but are still representative of the changes over time.
-
-[^dataviz-6]: <http://www.w3schools.com/cssref/css_colornames.asp>
-
-```{r, eval = FALSE}
-wurl <-  'http://www.richardtwatson.com/data/weather.csv'
-w <-  read.csv(wurl,sep=',',header=T)
-eurl <-  'http://www.richardtwatson.com/data/electricityprices.csv'
-e <-  read.csv(eurl,sep=',',header=T)
-```
 
     a. Compute the correlation between temperature and electricity price.
        What do you conclude?
