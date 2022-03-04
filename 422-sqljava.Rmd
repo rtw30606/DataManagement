@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # SQL and Java
 
 > *The vision for Java is to be the concrete and nails that people use
@@ -12,20 +6,16 @@ editor_options:
 >
 > James Gosling, 2000
 
-#### Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will be able to
-
 -   write Java program to process a parameterized SQL query;
-
 -   read a CSV file and insert rows into tables;
-
 -   write a program using HMTL and JavaServer Pages (JSP) to insert data
     collected by a form data into a relational database;
-
 -   understand how SQL commands are used for transaction processing.
 
-### Introduction {.unnumbered}
+## JAVA {.unnumbered}
 
 Java is a platform-independent application development language. Its
 object-oriented nature makes it easy to create and maintain software and
@@ -41,7 +31,7 @@ examples, but the fundamental principles are the same for all relational
 databases. With a few changes, your program will work with another
 implementation of the relational model.
 
-## JDBC {.unnumbered}
+### JDBC {.unnumbered}
 
 Java Database Connectivity (JDBC), a Java version of a portable SQL
 command line interface (CLI), is modeled on Open Database Connectivity
@@ -53,32 +43,17 @@ these is summarized in the following table.
 
 *JDBC core interfaces and classes*
 
-+----------------+-----------------------------------------------------+
-| Interfaces     | Description                                         |
-+:===============+:====================================================+
-| Connection     | Connects an application to a database               |
-+----------------+-----------------------------------------------------+
-| Statement      | A container for an SQL statement                    |
-+----------------+-----------------------------------------------------+
-| Pre            | Precompiles an SQL statement and then uses it       |
-| paredStatement | multiple times                                      |
-+----------------+-----------------------------------------------------+
-| Cal            | Executes a stored procedure                         |
-| lableStatement |                                                     |
-+----------------+-----------------------------------------------------+
-| ResultSet      | The rows returned when a query is executed          |
-+----------------+-----------------------------------------------------+
-| Res            | The number, types, and properties of the result set |
-| ultSetMetaData |                                                     |
-+----------------+-----------------------------------------------------+
-| Classes        |                                                     |
-+----------------+-----------------------------------------------------+
-| DriverManager  | Loads driver objects and creates database           |
-|                | connections                                         |
-+----------------+-----------------------------------------------------+
-| Driv           | Used by specialized clients                         |
-| erPropertyInfo |                                                     |
-+----------------+-----------------------------------------------------+
+| Interfaces         | Description        |
+|:--------------------|:---------------|
+| Connection         | Connects an application to a database                        |
+| Statement          | A container for an SQL statement                             |
+| PreparedStatement  | Precompiles an SQL statement and then uses it multiple times |
+| CallableStatement  | Executes a stored procedure                                  |
+| ResultSet          | The rows returned when a query is executed                   |
+| ResultSetMetaData  | The number, types, and properties of the result set          |
+| Classes            |                                                              |
+| DriverManager      | Loads driver objects and creates database connections        |
+| DriverPropertyInfo | Used by specialized clients                                  |
 
 For each DBMS, implementations of these interfaces are required because
 they are specific to the DBMS and not part of the Java package. For
@@ -88,7 +63,7 @@ DBMS you plan to access. The standard practice appears to be to refer to
 this set of interfaces as the driver, but the 'driver' also includes
 implementations of all the interfaces.
 
-## Java EE {.unnumbered}
+### Java EE {.unnumbered}
 
 Java EE (Java Platform Enterprise Edition) is a platform for
 multi-tiered enterprise applications. In the typical three-tier model, a
@@ -99,10 +74,7 @@ variety, is needed to process JSP.
 ## Using SQL within Java {.unnumbered}
 
 In this section, you will need a Java integrated development environment
-to execute the sample code. A good option is Eclipse,[^sqljava-1] a widely used
-open source IDE.
-
-[^sqljava-1]: Install [Eclipse IDE for Java EE Developers]{.underline}.
+to execute the sample code. A good option is [Eclipse](https://www.eclipse.org), a widely used open source IDE.
 
 We now examine each of the major steps in processing an SQL query and,
 in the process, create Java methods to query a database.
@@ -142,11 +114,8 @@ port is "3306."
 
 For example:
 
-jdbc:mysql://[[www.richardtwatson.com:3306/Text]{.ul}](http://www.richardtwatson.com:3306/Text)
-
-will enable connection to the database "Text" on the host
-"[[www.richardtwatson.com]{.ul}](http://www.richardtwatson.com)" on port
-3306.
+jdbc:mysql://www.richardtwatson.com:3306/Text will enable connection to the database Text on the host
+http://www.richardtwatson.com on port 3306.
 
 ### Create and execute an SQL statement {.unnumbered}
 
@@ -243,7 +212,7 @@ method to execute and report an SQL. The second program,
 DatabaseAccess.java, contains the methods called by the first. Both
 programs are available on the book's web site for examination and use.
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > 1.  Get from this book's supporting Web site the code of
 >     DatabaseTest.java and DatabaseAccess.java.
@@ -265,11 +234,7 @@ tables.
 
 We will illustrate loading data from a text file into the ArtCollection
 database with the following design. Notice that there different tables
-for different types of art, paintings, and sculptures in this case.[^sqljava-2]
-
-[^sqljava-2]: The code for creating the database is online at
-    [<http://richardtwatson.com/dm6e/Reader/java.html>](http://www.richardtwatson.com/dm6e/Reader/java.html]{.underline}](http://richardtwatson.com/dm6e/Reader/java.html).)
-    [.](http://www.richardtwatson.com/dm6e/Reader/java.html]{.underline}](http://richardtwatson.com/dm6e/Reader/java.html).)
+for different types of art, paintings, and sculptures in this case. The code for creating the database is [online](http://richardtwatson.com/open/Reader/java.html)
 
 *ArtCollection data model*
 
@@ -277,7 +242,7 @@ for different types of art, paintings, and sculptures in this case.[^sqljava-2]
 
 #### CSV file {.unnumbered}
 
-A comma-separated values (CSV) file[^sqljava-3] is a common form of text file
+A [comma-separated values](http://en.wikipedia.org/wiki/Comma-separated_values) (CSV) file  is a common form of text file
 because most spreadsheet programs offer it as an export option. There
 are a variety of options available in terms of the separator for fields
 (usually a comma or tab) and the use of quotation marks to denote text
@@ -287,72 +252,55 @@ example file that follows that a record contains details of an artist
 and one piece of that person's art. As the data model specifies, these
 two sets of data go into separate tables.
 
-[^sqljava-3]: <http://en.wikipedia.org/wiki/Comma-separated_values>
-
 *A CSV file*
 
+```{eval = FALSE}
 firstName,lastName,birthyear,deathyear,nationality,title,length,breadth,year,style,medium
-
 Edvard,Munch,1863,1944,Norwegian,The Scream,36,29,1893,Cubist,Oil
-
 Claude,Monet,1840,1926,French,Bridge over a Pond of Water
 Lilies,36,29,1899,Impressionist,Oil
-
 Toulouse,Lautrec,1864,1901,French,Avril,55,33,1893,Impressionist,Oil
-
 Vincent,Van Gogh,1853,1890,French,The Starry
 Night,29,36,1889,Impressionist,Oil
-
 Johannes,Vermeer,1632,1675,Dutch,Girl with a Pearl
 Earring,17,15,1665,Impressionist,Oil
-
 Salvador,Dali,1904,1989,Spanish,The Persistence of
 Memory,9.5,13,1931,Surreal,Oil
-
 Andrew,Wyeth,1917,2009,American,Christina's World
 ,32,47,1948,Surreal,Oil
-
 William,Turner,1789,1862,English,The Battle of
 Trafalgar,103,145,1822,Surreal,Oil
-
 Tom,Roberts,1856,1931,Australian,Shearing the
 Rams,48,72,1890,Surreal,Oil
-
 Paul,Gauguin,1848,1903,French,Spirit of the Dead
 Watching,28,36,1892,Surreal,Watercolor
+```
 
 Because CSV files are so widely used, there are Java libraries for
-processing them. We have opted for CsvReader.[^sqljava-4] Here is some code for
+processing them. We have opted for [CsvReader](http://sourceforge.net/projects/javacsv/). Here is some code for
 connecting to a CSV file defined by its URL. You can also connect to
 text files on your personal computer.
-
-[^sqljava-4]: Get the Java archive from
-    <http://sourceforge.net/projects/javacsv/>
 
 *Connecting to a CSV file*
 
 ```{java, eval = FALSE}
 try {
-	csvurl = new URL("http://www.richardtwatson.com/data/painting.csv"); 
+	csvurl = new URL("http://www.richardtwatson.com/data/painting.csv");
 } catch (IOException error) {
 	System.out.println("Error accessing url: " + error.toString());
 	System.exit(1);
-} 
+}
 ```
 
 A CSV file is read a record at a time, and the required fields are
 extracted for further processing. The following code illustrates how a
 loop is used to read each record in a CSV file and extract some fields.
 Note the following:
-
 -   The first record, the header, contains the names of each field and
     is read before the loop starts.
-
 -   Field names can be used to extract each field with a get() method.
-
 -   You often need to convert the input string data to another format,
     such as integer.
-
 -   Methods, addArtist, and addArt are included in the loop to add
     details of an artist to the artist table and a piece of art to the
     art table.
@@ -420,11 +368,9 @@ addArt(conn, title, length, breadth, year,artistPK);
 ```
 
 The Java code for the complete application is available on the book's
-web site.[^sqljava-5]
+[web site](http://richardtwatson.com/dm6e/Reader/java.html).
 
-[^sqljava-5]: <http://richardtwatson.com/dm6e/Reader/java.html>
-
-> ❓*Skill builder*
+> ❓ **Skill builder**
 >
 > 1.  Add a few sculptors and a piece of sculpture to the CSV file.
 >     Also, decide how you will differentiate between a painting and a
@@ -521,15 +467,13 @@ associated code follow.
 The data entry form captures a map's identifier, scale, type, and the
 number of countries covered by the map. A map identifier is of the form
 M001 to M999, and a regular expression is used to validate the
-input.[^sqljava-6] A map scale must be numeric with a minimum of 1000 and
+input.[ A map scale must be numeric with a minimum of 1000 and
 maximum of 100000 in increments of 1000. The type of map is selected
 from the list, which is defined so that only one type can be selected.
 Multiple countries can be selected by holding down an appropriate key
 combination when selected from the displayed list of countries. When the
 "Add map" button is clicked, the page mapinsert.jsp is called, which is
 specified in the first line of the HTML body code.
-
-[^sqljava-6]: This is a feature of HTML5 and is not supported by older browsers.
 
 #### Passing data from a form to a JSP {.unnumbered}
 
@@ -618,9 +562,7 @@ conn.close(); // close database
 
 You have now seen some of the key pieces for the event handler that
 processes a transaction to add a map and the countries on that map. The
-code can be downloaded from the book's Web site.[^sqljava-7]
-
-[^sqljava-7]: <http://richardtwatson.com/dm6e/Reader/java.html>
+[code](http://richardtwatson.com/open/Reader/java.html) can be downloaded from the book's Web site.
 
 *mapinsert.jsp*
 
@@ -648,8 +590,8 @@ code can be downloaded from the book's Web site.[^sqljava-7]
 	boolean transOK = true;
 	PreparedStatement insertMap;
 	PreparedStatement insertMapCountry;
-	Connection conn = null;	
-	// make connection	
+	Connection conn = null;
+	// make connection
 	url = jdbc + database;
 	try {
 		conn = DriverManager.getConnection(url, username, password);
@@ -733,20 +675,20 @@ enables programs that are DBMS independent. SQL statements can be
 embedded within Java programs. JSP is used to support server side
 processing. COMMIT and ROLLBACK are used for transaction processing.
 
-## Key terms and concepts {.unnumbered}
+### Key terms and concepts {.unnumbered}
 
 |                        |                                   |
-|:-----------------------|:----------------------------------| 
-| Autocommit             | Java Database Connectivity (JDBC) | 
-| Comma-separated values | Java Server Pages (JSP)           | 
-| COMMIT                 | ROLLBACK                          | 
-| IDE                    | Transaction processing            | 
+|:-----------------------|:----------------------------------|
+| Autocommit             | Java Database Connectivity (JDBC) |
+| Comma-separated values | Java Server Pages (JSP)           |
+| COMMIT                 | ROLLBACK                          |
+| IDE                    | Transaction processing            |
 | Java                   |                                   |
 
 ### References and additional readings {.unnumbered}
 
-Barnes, D. J., and M. Kölling. 2005. Objects first with Java : a
-practical introduction using Blue J. 2nd ed. Upper Saddle River, NJ:
+Barnes, D. J., and M. Kölling. 2005. *Objects first with Java : a
+practical introduction using Blue J*. 2nd ed. Upper Saddle River, NJ:
 Prentice Hall.
 
 ## Exercises {.unnumbered}

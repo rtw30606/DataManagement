@@ -146,5 +146,6 @@ Richard T. Watson
 Athens, Georgia
 
 \newpage
+\setcounter{tocdepth}{2}
 \tableofcontents
 \newpage

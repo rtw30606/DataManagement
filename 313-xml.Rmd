@@ -598,7 +598,7 @@ straightforward. It is a bit tedious with all the typing of tags to
 surround each data element. Fortunately, there are XML editors that
 relieve this tedium.
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 > 1.  Use the Chrome browser to access this book's Web site [XML page](https://www.richardtwatson.com/open/Reader/xml.html), and click on customerpayments.xml.
 >     You\
@@ -733,7 +733,7 @@ commands are preceded by xsl:
 -   Present the track data in tabular form using HTML table commands
     interspersed with XSL {28--42}.
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 > 1.  Use the Chrome browser to access this book's Web site, navigate
 >     to the [XML page](https://www.richardtwatson.com/open/Reader/xml.html), and download cdlib.xml and cdlib.xsl to a

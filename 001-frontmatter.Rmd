@@ -8,7 +8,6 @@
 #     toc_depth: 1
 ---
 
-
 # Data Management: Databases and Organizations {.unnumbered}
 
 ### *Open Edition* {.unnumbered}
@@ -25,7 +24,6 @@ Release date `r as.Date(Sys.time())`
 
 ![](Figures/Front%20matter/CC.by.png){width="200"}
 
-The online version of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-<!-- You can purchase a hardcopy from [Prospect Press](https://www.prospectpressvt.com). -->
+The online version of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). <!-- You can purchase a hardcopy from [Prospect Press](https://www.prospectpressvt.com). -->
 
 \newpage

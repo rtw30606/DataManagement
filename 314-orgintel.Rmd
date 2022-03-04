@@ -266,7 +266,7 @@ as possible from the data.
 | What is the average sale for in-store and catalog customers? | What is the best predictor of sales? |
 | What is the average high school GPA of students who graduate from college compared to those who do not? | What are the best predictors of college graduation? |
 
-## OLAP {.unnumbered}
+### OLAP {.unnumbered}
 
 Edgar F. Codd, the father of the relational model, and some colleagues[^orgintel-2] proclaimed in 1993 that RDBMSs were never intended to provide powerful functions for data
 synthesis, analysis, and consolidation. This was the role of
@@ -638,7 +638,7 @@ to build some prototype systems, preferably with different vendor
 implementations of the multidimensional concept, to enable analysts to
 test the usefulness of your design.
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 >A national cinema chain has commissioned you to design a
 > multidimensional database for its marketing department. What identifier
@@ -853,7 +853,7 @@ SQL-99 includes extensions to the GROUP BY clause to support some of the
 data aggregation capabilities typically required for OLAP. Prior to
 SQL-99, the following questions required separate queries:
 
-1.  Find the total revenue.
+1. Find the total revenue.
 
 2. Report revenue by location.
 
@@ -861,7 +861,7 @@ SQL-99, the following questions required separate queries:
 
 4. Report revenue by location and channel.
 
-> ❓**Skill builder**
+> ❓*Skill builder*
 >
 >Write SQL to answer each of the four preceding queries using the exped
 > table, which is a sample of 1,000 sales transactions from The
@@ -997,7 +997,7 @@ SELECT location, channel, FORMAT(SUM(revenue),0) FROM exped
 	GROUP BY location, channel WITH ROLLUP;
 ```
 
-> ❓**Skill builder**
+> ❓*Skill builder*
 >
 >Using MySQL's ROLLUP capability, report the sales by location and
 > channel for each item.

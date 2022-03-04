@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Data Administration
 
 > *Bad administration, to be sure, can destroy good policy; but good
@@ -11,27 +5,20 @@ editor_options:
 >
 > Adlai Stevenson, speech given in Los Angeles, September 11, 1952
 
-#### Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 Students completing this chapter will
-
 -   understand the role of the Chief Data Officer (CDO);
-
 -   understand the importance and role of data administration;
-
 -   understand how system-level data administration functions are used
     to manage a database environment successfully;
-
 -   understand how project-level data administration activities support
     the development of a database system;
-
 -   understand what skills data administration requires and why it needs
     a balance of people, technology, and business skills to carry out
     its roles effectively;
-
 -   understand how computer-based tools can be used to support data
     administration activities;
-
 -   understand the management issues involved in initiating, staffing,
     and locating data administration organizationally.
 
@@ -89,16 +76,11 @@ In summary, the problems arising from poor data management are:
 
 -   The same data may be represented through multiple, inconsistent
     definitions.
-
 -   There may be inconsistencies among different representations.
-
 -   Essential data may be missing from the database.
-
 -   Data may be inaccurate or incomplete.
-
 -   Some data may never be captured for the database and thus are
     effectively lost to the organization.
-
 -   There may be no way of knowing how to locate data when they are
     needed.
 
@@ -209,21 +191,21 @@ role rather than a confining specification.
 *CDO archetypes*
 
 | Archetype    | Definition                                                                                                                                                      |
-|:-------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Coordinator  | Fosters internal collaboration using transactional data to support business services.                                                                           |
-| Reporter     | Provides high quality enterprise data delivery services for external reporting.                                                                                 |
-| Architect    | Designs databases and internal business processes to create new opportunities for the organization.                                                             |
-| Ambassador   | Develops internal data policies to support business strategy and external collaboration using traditional data sources.                                         |
-| Analyst      | Improves internal business performance by exploiting big data to provide new services.                                                                          |
-| Marketer     | Develops relationships with external data partners and stakeholders to improve externally provided data services using big data.                                |
-| Developer    | Navigates and negotiates with internal enterprise divisions in order to create new services by exploiting big data.                                             |
+|:-------------|:--------------------------------------------------------|
+| Coordinator  | Fosters internal collaboration using transactional data to support business services.    |
+| Reporter     | Provides high quality enterprise data delivery services for external reporting.  |
+| Architect    | Designs databases and internal business processes to create new opportunities for the organization.     |
+| Ambassador   | Develops internal data policies to support business strategy and external collaboration using traditional data sources.  |
+| Analyst      | Improves internal business performance by exploiting big data to provide new services.   |
+| Marketer     | Develops relationships with external data partners and stakeholders to improve externally provided data services using big data.   |
+| Developer    | Navigates and negotiates with internal enterprise divisions in order to create new services by exploiting big data.     |
 | Experimenter | Engages with external parties, such as suppliers and industry peers, to explore new, unidentified markets and products based on insights derived from big data. |
 
 ## Management of the database environment {.unnumbered}
 
 In many large organizations, there is a formal data administration
 function to manage corporate data. For those companies with a CDO, data
-administration is subsumed within this function. For those without, data
+administration might be subsumed within this function. For those without, data
 administration is typically the responsibility of the CIO. The
 relationship among the various components of data administration is
 shown in the following figure.
@@ -253,8 +235,7 @@ the data using programming languages or other data-handling tools.
 
 ### Data dictionary {.unnumbered}
 
-A data dictionary is a reference repository containing *metadata* (i.e.,
-*data about data*) that is stored in the database. Among other things,
+A data dictionary is a reference repository containing *metadata* (*data about data*) that is stored in the database. Among other things,
 the data dictionary contains a list of all the databases; their
 component parts and detailed descriptions such as field sizes, data
 types, and data validation information for data capture purposes;
@@ -347,9 +328,7 @@ address books have existed for a long time. The availability of laptops,
 tablets, and smartphones have made it convenient to maintain
 synchronized electronic personal databases across multiple devices.
 Behind the interface of many of these apps is a lightweight relational
-database, such as SQLite.[^administration-2]
-
-[^administration-2]: <http://www.sqlite.org>
+database, such as [SQLite](http://www.sqlite.org).
 
 Workgroup databases cannot be as idiosyncratic because they are shared
 by many people. Managing them requires more planning and coordination to
@@ -413,8 +392,7 @@ architecture is an organization's overall strategy for data and
 applications, it should dovetail with the organization's long-term plans
 and objectives.[^administration-3]
 
-[^administration-3]: For more on information architecture, see Smith, H. A., Watson, R.
-    T., & Sullivan, P. (2012). Delivering Effective Enterprise
+[^administration-3]: For more on information architecture, see Smith, H. A., Watson, R. T., & Sullivan, P. (2012). Delivering Effective Enterprise
     Architecture at Chubb Insurance. *MISQ Executive*. 11(2)
 
 #### Developing data standards and policies {.unnumbered}
@@ -525,21 +503,14 @@ of the organization need to be assessed in terms of capacity as well as
 features. Relevant questions include the following:
 
 -   How many people and apps will simultaneously access the database?
-
 -   Will the database need to be geographically distributed? If so, what
     is the degree to which the database will be replicated, and what is
     the nature of database replication that is supported?
-
 -   What is the maximum size of the database?
-
 -   How many transactions per second can the DBMS handle?
-
 -   What kind of support for online transaction processing is available?
-
 -   What are the initial and ongoing costs of using the product?
-
 -   Can the database be extended to include new data types?
-
 -   What is the extent of training required, who can provide it, and
     what are the associated costs?
 
@@ -553,7 +524,9 @@ usually desirable to gain confirming evidence of a vendor's claims. The
 final decision should be based on the manner and degree to which each
 vendor's proposal satisfies these criteria.
 
-> ❓*Skill builder*A small nonprofit organization has asked for your help
+> ❓ *Skill builder*
+>
+>A small nonprofit organization has asked for your help
 > in selecting a relational database management system (RDBMS) for
 > general-purpose management tasks. Because of budget limitations, it is
 > very keen to adopt an open source RDBMS. Search the Web to find at
@@ -566,11 +539,7 @@ Benchmarking, the comparison of alternative hardware and software
 combinations, is an important step in the selection phase. Because
 benchmarking is an activity performed by many IS units, the IS community
 gains if there is one group that specializes in rigorous benchmarking of
-a wide range of systems. The Transaction Processing Council (TPC)[^administration-4] is
-the IS profession's Consumer Union. TPC has established benchmarks for a
-variety of business situations.
-
-[^administration-4]: <http://www.tpc.org>
+a wide range of systems. The [Transaction Processing Council](http://www.tpc.org) (TPC) is the IS profession's Consumer Union. TPC has established benchmarks for a variety of business situations.
 
 #### Managing external databases {.unnumbered}
 
@@ -671,10 +640,8 @@ System development may proceed in three different ways:
 
 1.  The database may be developed independently of applications,
     following only the DDLC steps.
-
 2.  Applications may be developed for existing databases, following only
     the ADLC steps.
-
 3.  Application and database development may proceed in parallel, with
     both simultaneously stepping through the ADLC and DDLC.
 
@@ -712,37 +679,16 @@ outlined in the following table.
 
 *Database development roles*
 
-+-------------------+------------------+-------------+---------------+
-| Database          | Database         | Data        | Client        |
-| development phase | developer        | ad          |               |
-|                   |                  | ministrator |               |
-+:==================+:=================+:============+:==============+
-| Project planning  | Does             | Consults    | Provides      |
-|                   |                  |             | information   |
-+-------------------+------------------+-------------+---------------+
-| Requirements      | Does             | Consults    | Provides      |
-| definition        |                  |             | requirements  |
-+-------------------+------------------+-------------+---------------+
-| Database design   | Does             | Consults\   | Validates     |
-|                   |                  | Data        | data models   |
-|                   |                  | integrity   |               |
-+-------------------+------------------+-------------+---------------+
-| Database testing  | System and       | Consults\   | Testing       |
-|                   | client testing   | Data        |               |
-|                   |                  | integrity   |               |
-+-------------------+------------------+-------------+---------------+
-| Database          | System-related   | Consults\   | Client        |
-| implementation    | activities       | Data        | activities    |
-|                   |                  | integrity   |               |
-+-------------------+------------------+-------------+---------------+
-| Database usage    | Consults         | Data        | Uses          |
-|                   |                  | integrity\  |               |
-|                   |                  | monitoring  |               |
-+-------------------+------------------+-------------+---------------+
-| Database          | Does             | Change      | Provides      |
-| evolution         |                  | control     | additional\   |
-|                   |                  |             | requirements  |
-+-------------------+------------------+-------------+---------------+
+Delopment phase | Database developer | Data administrator | Client   |
+|:--------------|:-------------------|:-------------------|:---------|
+| Project planning  | Does | Consults  | Provides information  |
+| Requirements definition    | Does   | Consults  | Provides requirements |
+| Database design  | Does    | Consults  | Validates data models |
+| Database testing  | System and client testing | Consults  &  data integrity  | Testing   |
+| Database implementation    | System-related activities | Consults & data integrity         | Client activities     |
+| Database usage  | Consults   | Data integrity & monitoring | Uses |
+| Database evolution | Does | Change control | Provides additional requirements   |
+
 
 The database developer shoulders the bulk of the responsibility for
 developing data models and implementing the database. This can be seen
@@ -832,10 +778,8 @@ operational data to support testing the database with realistic
 transactions. Testing should address a number of key questions.
 
 -   Does the DBMS support all the operational and security requirements?
-
 -   Is the system able to handle the expected number of transactions per
     second?
-
 -   How long does it take to process a realistic mix of queries?
 
 Testing assists in making early decisions regarding the suitability of
@@ -1016,66 +960,15 @@ cycle.
 
 *Data administration tool use during the DDLC*
 
-+-----------+-----------+-----------+-----------+-----------+-----------+
-|           | Database  | Data      | DBMS      | Performan | Case      |
-|           | developme |           |           | ce\       | tools     |
-|           | nt phase  |           |           | monitorin |           |
-|           |           |           |           | g         |           |
-+===========+===========+===========+===========+===========+===========+
-| 1         | Project   | Dictionar |           |           | Estimatio |
-|           | planning  | y (DD)    |           |           | n         |
-|           | tools     |           |           |           |           |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| 2         | Requireme | Document  |           |           | Document  |
-|           | nts\      |           |           |           |           |
-|           | definitio | Design    |           |           | Design    |
-|           | n         | aid       |           |           | aid       |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| 3         | Database  | Document  |           |           | Document  |
-|           | design    |           |           |           |           |
-|           |           | Data map  |           |           | Design    |
-|           |           |           |           |           | aid       |
-|           |           | Design    |           |           |           |
-|           |           | aid       |           |           | Data map  |
-|           |           |           |           |           |           |
-|           |           | Schema    |           |           |           |
-|           |           | generator |           |           |           |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| 4         | Database  | Data map  | Define,   | Impact    | Data      |
-|           | testing   |           | create,   | analysis  | generator |
-|           |           | Design    | test,     |           |           |
-|           |           | aid       | data      |           | Design    |
-|           |           |           | integrity |           | aid       |
-|           |           | Schema    |           |           |           |
-|           |           | generator |           |           |           |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| 5         | Database\ | Document  | Data      | Monitor   |           |
-|           | implement |           | integrity |           |           |
-|           | ation     | Change    |           | Tune      |           |
-|           |           | control   | Implement |           |           |
-|           |           |           |           |           |           |
-|           |           |           | Design    |           |           |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| 6         | Database  | Document  | Provide   | Monitor   |           |
-|           | usage     |           | tools for |           |           |
-|           |           | Data map  | retrieval | Tune      |           |
-|           |           |           | and       |           |           |
-|           |           | Schema    | update    |           |           |
-|           |           | generator |           |           |           |
-|           |           |           | Enforce   |           |           |
-|           |           | Change    | integrity |           |           |
-|           |           | control   | controls  |           |           |
-|           |           |           | and       |           |           |
-|           |           |           | procedure |           |           |
-|           |           |           | s         |           |           |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| 7         | Database  | Document  | Redefine  | Impact    |           |
-|           | evolution |           |           | analysis  |           |
-|           |           | Data map  |           |           |           |
-|           |           |           |           |           |           |
-|           |           | Change    |           |           |           |
-|           |           | control   |           |           |           |
-+-----------+-----------+-----------+-----------+-----------+-----------+
+|    | Database development phase | Data | DBMS | Performance monitoring | Case tools  |
+|:---|:-------|:-----------|:-----------|:----------|:----------|
+| 1  | Project planning tools | Dictionary (DD) |           |           | Estimation |
+| 2  | Requirements definition | Document & design aid  |           |           | Document & design aid |
+| 3 | Database design | Document, data map design aid & schema generator  |           |           | Document, design aid & data map  |
+| 4 | Database testing | Data map design aid & schema generator | Define, create, test & data integrity   | Impact analysis   | Data generator & design aid     |
+| 5 | Database implementation | Document & change control | Data integrity, implement & design  | Monitor & tune |     |
+| 6 | Database usage | Document, data map, schema generator & change control | Provide tools for retrieval and update & enforce integrity controls and procedures | Monitor & tune  |           |
+| 7 | Database evolution | Document, data map & change control  | Redefine  | Impact analysis   |           |
 
 Data administration staff, clients, and computer operations all require
 information about organizational databases. Ideally, such information
@@ -1098,7 +991,6 @@ about characteristics of data stored in organizational databases such as
 
 -   What are the names of all tables for which the user Todd has delete
     privileges?
-
 -   Where does the data item *customer number* appear or where is it
     used?
 
@@ -1124,24 +1016,18 @@ contain descriptions of the following:
     data type, display format, internal storage format, validation
     rules, and integrity constraints. It indicates to which table a
     column belongs.
-
 -   All relationships among data elements, what elements are involved,
     and characteristics of relationships, such as cardinality and
     degree.
-
 -   All defined databases, including who created each database, the date
     of creation, and where the database is located.
-
 -   All tables defined in all databases. The data dictionary is likely
     to store details of who created the table, the date of creation,
     primary key, and the number of columns.
-
 -   All indexes defined for each of the database tables. For each of the
     indexes, the DBMS stores data such as the index name, location,
     specific index characteristics, and creation date.
-
 -   All clients and their access authorizations for various databases.
-
 -   All programs that access the database, including screen formats,
     report formats, application programs, and SQL queries.
 
@@ -1151,18 +1037,14 @@ the following:
 
 1.  Documentation support: recording, classifying, and reporting
     metadata.
-
 2.  Data maps: a map of available data for data administration staff and
     users. A data map allows users to discover what data exist, what
     they mean, where they are stored, and how they are accessed.
-
 3.  Design aid: documenting the relationships between data entities and
     performing impact analysis.
-
 4.  Schema generation: automatic generation of data definition
     statements needed by software systems such as the DBMS and
     application programs.
-
 5.  Change control: setting and enforcing standards, evaluating the
     impact of proposed changes, and implementing amendments, such as
     adding new data items.
@@ -1199,13 +1081,9 @@ storage space. Database access patterns can be scrutinized to record
 data such as:
 
 -   Type of function requested: query, insert, update, or delete
-
 -   Response time (elapsed time from query to response)
-
 -   Number of disk accesses
-
 -   Identification of client
-
 -   Identification of error conditions
 
 The observed patterns help to determine performance enhancements. For
@@ -1255,14 +1133,11 @@ which can manifest in a number of ways:
 
 -   Different identifiers for the same instance of an entity (e.g., the
     same product with different codes in different divisions)
-
 -   The same, or what should be the same, data stored in multiple
     systems (e.g., a customer's name and address)
-
 -   Data for, or related to, a key entity stored in different databases
     (e.g., a customer's transaction history and profile stored in
     different databases)
-
 -   Different rules for computing the same business indicator (e.g., the
     Australian office computes net profit differently from the U.S.
     office)
@@ -1279,41 +1154,26 @@ how much it sold to each of its customers in the last six months.
 
 *Firm with data integration*
 
-+-----------------------+-----------------------+-----------------------+
+
 |                       | Red division          | Blue division         |
-+=======================+=======================+=======================+
-| partnumber            | 27                    | 27                    |
-|                       |                       |                       |
-| (code for green       |                       |                       |
-| widget)               |                       |                       |
-+-----------------------+-----------------------+-----------------------+
-| customerid            | 53                    | 53                    |
-|                       |                       |                       |
-| (code for UPS)        |                       |                       |
-+-----------------------+-----------------------+-----------------------+
-| Definition of         | The date the customer | The date the customer |
-| salesdate             | signs the order       | signs the order       |
-+-----------------------+-----------------------+-----------------------+
+|-----------------------|:----------------------:|:---------------------:|
+| partnumber (code for green widget)           | 27     | 27
+| customerid (code for UPS)           | 53       | 53                    |
+| Definition of  salesdate  | The date the customer signs the order| The date the customer signs the order |
 
 *Firm without data integration*
 
-+-----------------------+-----------------------+-----------------------+
 |                       | Red division          | Blue division         |
-+=======================+=======================+=======================+
-| partnumber            | 27                    | 10056                 |
-|                       |                       |                       |
-| (code for green       |                       |                       |
-| widget)               |                       |                       |
-+-----------------------+-----------------------+-----------------------+
-| customerid            | 53                    | 613                   |
-|                       |                       |                       |
-| (code for UPS)        |                       |                       |
-+-----------------------+-----------------------+-----------------------+
-| Definition of         | The date the customer | The date the customer |
-| salesdate             | signs the order       | receives the order    |
-+-----------------------+-----------------------+-----------------------+
+|-----------------------|:----------------------:|:---------------------:|
+| partnumber (code for green widget)           | 27     | 10056
+| customerid (code for UPS)           | 53       | 613                    |
+| Definition of  salesdate  | The date the customer signs the order| The date the customer receives the order |
 
-> ❓*Skill builder* Complete the data integration lab exercise described
+
+
+> ❓ *Skill builder*
+>
+>Complete the data integration lab exercise described
 > on the book's Web site (Lab exercises \> Data integration).
 
 Not surprisingly, many organizations seek to increase their degree of
@@ -1326,17 +1186,13 @@ There are several goals of data integration:
 1.  A standard meaning for all data elements within the organization
     (e.g., customer acquisition date is the date on which the customer
     first purchased a product)
-
 2.  A standard format for each and every data element (e.g., all dates
     are stored in the format yyyymmdd and reported in the format
     yyyy-mm-dd)
-
 3.  A standard coding system (e.g., female is coded "f" and male is
     coded "m")
-
 4.  A standard measurement system (e.g., all measurements are stored in
     metric format and reported in the client's preferred system)
-
 5.  A single corporate data model, or a least a single data model for
     each major business entity
 
@@ -1386,19 +1242,15 @@ targeting common systems for both units.
 
 *Target level of data integration between organizational units*
 
-+---------------+------+----------------------+----------+
-|               |      | Unit interdependence |          |
-+===============+======+======================+==========+
-|               |      | Low                  | High     |
-+---------------+------+----------------------+----------+
-| Environmental | High | Low                  | Moderate |
-|               |      |                      |          |
-| turbulence    |      |                      |          |
-+---------------+------+----------------------+----------+
-|               | Low  | Moderate             | High     |
-+---------------+------+----------------------+----------+
 
-> ❓*Skill builder*
+|               |      | Unit interdependence        | |
+|---------------|------|----------------------|----------|
+|               |      | *Low*                 | *High*     |
+| Environmental turbulence | *High* | Low                  | Moderate |
+|               | *Low*  | Moderate             | High     |
+
+
+> ❓ *Skill builder*
 >
 > 1.  Global Electronics has nine factories in the United States and
 >     Asia producing components for the computer industry, and each has
@@ -1470,7 +1322,7 @@ Data administration is complex, and its success partly depends on a
 range of computer-based tools. Available tools include DD/DS, DBMS,
 performance monitoring tools, CASE tools, and groupware.
 
-## Key terms and concepts {.unnumbered}
+### Key terms and concepts {.unnumbered}
 
 +:-----------------------------------+:--------------------------------+
 | Application development life cycle | Database management system      |

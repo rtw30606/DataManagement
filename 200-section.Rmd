@@ -7,75 +7,31 @@ db <- dbConnect(RMySQL::MySQL(),
                   user="root",
                   password = "aussie48")
 ```
+
 # Section 2 Data Modeling and SQL {.unnumbered}
 
 > *It is a capital mistake to theorize before one has data.*
 >
-> Sir Arthur Conan Doyle, "A Scandal in Bohemia," *The Adventures of
-> Sherlock Holmes*, 1891
+> Sir Arthur Conan Doyle, "A Scandal in Bohemia," *The Adventures of Sherlock Holmes*, 1891
 
-The application backlog, a large number of requests for new information
-systems, has been a recurring problem in many organizations for decades.
-The demand for new information systems and the need to maintain existing
-systems have usually outstripped available information systems skills.
-The application backlog, unfortunately, is not a new problem. In the
-1970s, Codd laid out a plan for improving programmer productivity and
-accelerating systems development by improving the management of data.
-Codd's **relational model**, designed to solve many of the shortcomings
-of earlier systems, has long been the most popular database model.
+The application backlog, a large number of requests for new information systems, has been a recurring problem in many organizations for decades. The demand for new information systems and the need to maintain existing systems have usually outstripped available information systems skills. The application backlog, unfortunately, is not a new problem. In the 1970s, Codd laid out a plan for improving programmer productivity and accelerating systems development by improving the management of data. Codd's **relational model**, designed to solve many of the shortcomings of earlier systems, has long been the most popular database model.
 
-This section develops two key skills---data modeling and query
-formation---that are required to take advantage of the relational model.
-You will concentrate on the design and use of relational databases. This very
-abrupt change in focus is part of the plan to give you a dual
-understanding of data management. Section 1 is the managerial
-perspective, whereas this section covers technical skills development.
-Competent data managers are able to accommodate both views and apply
-whichever (or some blend of the two) is appropriate.
+This section develops two key skills---data modeling and query formation---that are required to take advantage of the relational model. You will concentrate on the design and use of relational databases. This very abrupt change in focus is part of the plan to give you a dual understanding of data management. Section 1 is the managerial perspective, whereas this section covers technical skills development. Competent data managers are able to accommodate both views and apply whichever (or some blend of the two) is appropriate.
 
-In Chapter 1, many forms of organizational memory were identified, and
-in this section we focus on files and their components. Thus, only the
-files branch of organizational memory is detailed in the following figure.
+In Chapter 1, many forms of organizational memory were identified, and in this section we focus on files and their components. Thus, only the files branch of organizational memory is detailed in the following figure.
 
-![](Figures/Section 2/Org Memory Files.png)
+![](Figures/Section%202/Org%20Memory%20Files.png)
 
-A collection of related files is a **database**. Describing the
-collection of files as related means that it has a common purpose (e.g., data about students). Sometimes files are also called tables, and there
-are synonyms for some other terms (the alternative names are shown in
-parentheses). Files contain **records** (or rows). Each record contains
-the data for one instance of an observation. For example, if
-the file stores data about students, each record will contain data about
-a single student. Records have **fields** (or columns) that store the
-fine detail of each instance (e.g., student's first name, last name, and
-date of birth). Fields are composed of **characters** (a, b, c,.., 1,
-2, 3,..., %, $, #,..., A, B, etc.). A **byte**, a unit of
-storage sufficient to store a single letter (in English),
-consists of a string of eight contiguous **bits** or binary digits.
+A collection of related files is a **database**. Describing the collection of files as related means that it has a common purpose (e.g., data about students). Sometimes files are also called tables, and there are synonyms for some other terms (the alternative names are shown in parentheses). Files contain **records** (or rows). Each record contains the data for one instance of an observation. For example, if the file stores data about students, each record will contain data about a single student. Records have **fields** (or columns) that store the fine detail of each instance (e.g., student's first name, last name, and date of birth). Fields are composed of **characters** (a, b, c,.., 1, 2, 3,..., %, \$, #,..., A, B, etc.). A **byte**, a unit of storage sufficient to store a single letter (in English), consists of a string of eight contiguous **bits** or binary digits.
 
-The data management hierarchy stimulates three database design
-questions:
+The data management hierarchy stimulates three database design questions:
 
-- What collection of files should the database contain?
+-   What collection of files should the database contain?
 
-- How are these files related?
+-   How are these files related?
 
-- What fields should each record in the file contain?
+-   What fields should each record in the file contain?
 
-The first objective of this section is to describe data modeling, a
-technique for answering the three questions. Data modeling helps you to
-understand the structure and meaning of data, which is necessary before
-a database can be created. Once a database has been designed, built, and loaded with data, the aim is to deploy it to satisfy management's
-requests for information. Thus, the second objective is to teach you to
-query a relational database. The learning of modeling and querying will
-be intertwined, making it easier to grasp the intent of database design
-and to understand why data modeling is so critical to making a database
-an effective tool for managerial decision making.
+The first objective of this section is to describe data modeling, a technique for answering the three questions. Data modeling helps you to understand the structure and meaning of data, which is necessary before a database can be created. Once a database has been designed, built, and loaded with data, the aim is to deploy it to satisfy management's requests for information. Thus, the second objective is to teach you to query a relational database. The learning of modeling and querying will be intertwined, making it easier to grasp the intent of database design and to understand why data modeling is so critical to making a database an effective tool for managerial decision making.
 
-Chapter 3 covers modeling a single entity and querying a single-table
-database. This is the simplest database that can be created. As you will soon discover, a **data model** is a graphical description of the
-components of a database. One of these components is an entity, some
-feature of the real world about which data must be stored. This section
-also introduces the notions of a **data definition language** (DDL),
-which is used to describe a database, and a **data manipulation language** (DML), which is used to maintain and query a database.
-Subsequent chapters in this section cover advanced data modeling
-concepts and querying capabilities.
+Chapter 3 covers modeling a single entity and querying a single-table database. This is the simplest database that can be created. As you will soon discover, a **data model** is a graphical description of the components of a database. One of these components is an entity, some feature of the real world about which data must be stored. This section also introduces the notions of a **data definition language** (DDL), which is used to describe a database, and a **data manipulation language** (DML), which is used to maintain and query a database. Subsequent chapters in this section cover advanced data modeling concepts and querying capabilities.

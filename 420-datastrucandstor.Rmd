@@ -1,21 +1,12 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Data Structure and Storage
 
-> *The modern age has a false sense of superiority because it relies on
-> the mass of knowledge that it can use, but what is important is the
-> extent to which knowledge is organized and mastered.*
+> *The modern age has a false sense of superiority because it relies on the mass of knowledge that it can use, but what is important is the extent to which knowledge is organized and mastered.*
 >
 > Goethe, 1810
 
-#### Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
-Students completing this chapter will, for a given situation, be able
-to:
+Students completing this chapter will, for a given situation, be able to:
 
 -   understand the implications of the data deluge;
 
@@ -25,15 +16,7 @@ to:
 
 ## The data deluge {.unnumbered}
 
-With petabytes of new data being created daily, and the volume
-continuing to grow, many IS departments and storage vendors struggle to
-handle this data flood. "Big Data," as the deluge is colloquially known,
-arises from the flow of data created by Internet searches, Web site
-visits, social networking activity, streaming of videos, electronic
-health care records, sensor networks, large-scale simulations, and a
-host of other activities that are part of everyday business in today's
-world. The deluge requires a continuing investment in the management and
-storage of data.
+With petabytes of new data being created daily, and the volume continuing to grow, many IS departments and storage vendors struggle to handle this data flood. "Big Data," as the deluge is colloquially known, arises from the flow of data created by Internet searches, Web site visits, social networking activity, streaming of videos, electronic health care records, sensor networks, large-scale simulations, and a host of other activities that are part of everyday business in today's world. The deluge requires a continuing investment in the management and storage of data.
 
 *A byte size table*
 
@@ -48,122 +31,53 @@ storage of data.
 | Z            | zetta  | 10^21^ |                                                    |
 | Y            | yotta  | 10^24^ |                                                    |
 
-The following pages explore territory that is not normally the concern
-of application programmers or database users. Fortunately, the
-relational model keeps data structures and data access methods hidden.
-Nevertheless, an overview of what happens under the hood is part of a
-well-rounded education in data management and will equip you to work on
-some of the problems of the data deluge.
+The following pages explore territory that is not normally the concern of application programmers or database users. Fortunately, the relational model keeps data structures and data access methods hidden. Nevertheless, an overview of what happens under the hood is part of a well-rounded education in data management and will equip you to work on some of the problems of the data deluge.
 
-Data structures and access methods are the province of the person
-responsible for physically designing the database so that it responds in
-a timely manner to both queries and maintenance operations. Of course,
-there may be installations where application programmers have such
-responsibilities, and in these situations you will need to know physical
-database design.
+Data structures and access methods are the province of the person responsible for physically designing the database so that it responds in a timely manner to both queries and maintenance operations. Of course, there may be installations where application programmers have such responsibilities, and in these situations you will need to know physical database design.
 
 ## Data structures {.unnumbered}
 
-An in-depth consideration of the internals of database architecture
-provides an understanding of the basic structures and access mechanisms
-underlying the technology. As you will see, the overriding concern of
-the internal level is to minimize disk access. In dealing with this
-level, we will speak in terms of files, records, and fields rather than
-the relational database terms of tables, rows, and columns. We do this
-because the discussion extends beyond the relational model to file
-structures in general.
+An in-depth consideration of the internals of database architecture provides an understanding of the basic structures and access mechanisms underlying the technology. As you will see, the overriding concern of the internal level is to minimize disk access. In dealing with this level, we will speak in terms of files, records, and fields rather than the relational database terms of tables, rows, and columns. We do this because the discussion extends beyond the relational model to file structures in general.
 
-The time required to access data on a magnetic disk, the storage device
-for many databases, is relatively long compared to that for main memory.
-Disk access times are measured in milliseconds (10^--3^), and main
-memory access times are referred to in nanoseconds (10^--9^). There are
-generally around five orders of magnitude difference between disk and
-main memory access---it takes about 10^5^ times longer. This distinction
-is more meaningful if placed in an everyday context; it is like asking
-someone a question by phone or writing them a letter. The phone response
-takes seconds, and the written response takes days.
+The time required to access data on a magnetic disk, the storage device for many databases, is relatively long compared to that for main memory. Disk access times are measured in milliseconds (10^3^), and main memory access times are referred to in nanoseconds (10^9^). There are generally around five orders of magnitude difference between disk and main memory access---it takes about 10^5^ times longer. This distinction is more meaningful if placed in an everyday context; it is like asking someone a question by phone or writing them a letter. The phone response takes seconds, and the written response takes days.
 
-For many business applications, slow disk drives are a bottleneck. The
-computer often must wait for a disk to retrieve data before it can
-continue processing a request for information. This delay means that
-customers are also kept waiting. Appropriate selection of data
-structures and data access methods can considerably reduce delays.
-Database designers have two options: decrease disk read/write head
-movement or reduce disk accesses. Before considering these options, we
-need a general model of database access.
+For many business applications, slow disk drives are a bottleneck. The computer often must wait for a disk to retrieve data before it can continue processing a request for information. This delay means that customers are also kept waiting. Appropriate selection of data structures and data access methods can considerably reduce delays. Database designers have two options: decrease disk read/write head movement or reduce disk accesses. Before considering these options, we need a general model of database access.
 
 ### Database access {.unnumbered}
 
-A three-layer model provides a framework for thinking about minimization
-of data access. This is a generic model, and a particular DBMS may
-implement the approach using a different number of layers. For
-simplicity, the discussion is based on retrieving a single record in a
-file, although the principles also apply to the retrieval of multiple
-records or an entire file.
+A three-layer model provides a framework for thinking about minimization of data access. This is a generic model, and a particular DBMS may implement the approach using a different number of layers. For simplicity, the discussion is based on retrieving a single record in a file, although the principles also apply to the retrieval of multiple records or an entire file.
 
 *Database access layers*
 
 ![](Figures/Chapter%2020/database-access-layers.png)
 
-1.  The DBMS determines which record is required and passes a request to
-    the file manager to retrieve a particular record in a file.
+1.  The DBMS determines which record is required and passes a request to the file manager to retrieve a particular record in a file.
 
-2.  The **file manager** converts this request into the address of the
-    unit of storage (usually called a page) containing the specified
-    record. A **page** is the minimum amount of storage accessed at one
-    time and is typically around 1--4 kbytes. A page will often contain
-    several short records (e.g., 200 bytes), but a long record (e.g., 10
-    kbytes) might be spread over several pages. In this example, we
-    assume that records are shorter than a page.
+2.  The **file manager** converts this request into the address of the unit of storage (usually called a page) containing the specified record. A **page** is the minimum amount of storage accessed at one time and is typically around 1-4 kbytes. A page will often contain several short records (e.g., 200 bytes), but a long record (e.g., 10 kbytes) might be spread over several pages. In this example, we assume that records are shorter than a page.
 
-3.  The **disk manager** determines the physical location of the page,
-    issues the retrieval instructions, and passes the page to the file
-    manager.
+3.  The **disk manager** determines the physical location of the page, issues the retrieval instructions, and passes the page to the file manager.
 
-4.  The file manager extracts the requested record from the page and
-    passes it to the DBMS.
+4.  The file manager extracts the requested record from the page and passes it to the DBMS.
 
 ### The disk manager {.unnumbered}
 
-The disk manager is that part of the operating system responsible for
-physical input and output (I/O). It maintains a directory of the
-location of each page on the disk with all pages identified by a unique
-page number. The disk manager's main functions are to retrieve pages,
-replace pages, and keep track of free pages.
+The disk manager is that part of the operating system responsible for physical input and output (I/O). It maintains a directory of the location of each page on the disk with all pages identified by a unique page number. The disk manager's main functions are to retrieve pages, replace pages, and keep track of free pages.
 
-Page retrieval requires the disk manager to convert the page number to a
-physical address and issue the command to read the physical location.
-Since a page can contain multiple records, when a record is updated, the
-disk manager must retrieve the relevant page, update the appropriate
-portion containing the record, and then replace the page without
-changing any of the other data on it.
+Page retrieval requires the disk manager to convert the page number to a physical address and issue the command to read the physical location. Since a page can contain multiple records, when a record is updated, the disk manager must retrieve the relevant page, update the appropriate portion containing the record, and then replace the page without changing any of the other data on it.
 
-The disk manager thinks of the disk as a collection of uniquely numbered
-pages. Some of these pages are allocated to the storage of data, and
-others are unused. When additional storage space is required, the disk
-manager allocates a page address from the set of unused page addresses.
-When a page becomes free because a file or some records are deleted, the
-disk manager moves that page's address to the unallocated set. Note, it
-does not erase the data, but simply indicates the page is available to
-be overwritten. This means that it is sometimes possible to read
-portions of a deleted file. If you want to ensure that an old file is
-truly deleted, you need to use an erase program that writes random data
-to the deleted page.
+The disk manager thinks of the disk as a collection of uniquely numbered pages. Some of these pages are allocated to the storage of data, and others are unused. When additional storage space is required, the disk manager allocates a page address from the set of unused page addresses. When a page becomes free because a file or some records are deleted, the disk manager moves that page's address to the unallocated set. Note, it does not erase the data, but simply indicates the page is available to be overwritten. This means that it is sometimes possible to read portions of a deleted file. If you want to ensure that an old file is truly deleted, you need to use an erase program that writes random data to the deleted page.
 
 *Disk manager's view of the world*
 
-![](Figures/Chapter%2020/disk-manager.png)
+![](Figures/Chapter%2020/disk-manager.png){width="320"}
 
 ### The file manager {.unnumbered}
 
-The file manager, a level above the disk manager, is concerned with the
-storage of files. It thinks of the disk as a set of stored files. Each
-file has a unique file identifier, and each record within a file has a
-record identifier that is unique within that file.
+The file manager, a level above the disk manager, is concerned with the storage of files. It thinks of the disk as a set of stored files. Each file has a unique file identifier, and each record within a file has a record identifier that is unique within that file.
 
 *File manager's view of the world*
 
-![](Figures/Chapter%2020/file-manager.png)
+![](Figures/Chapter%2020/file-manager.png){width="600"}
 
 The file manager can
 
@@ -181,148 +95,60 @@ The file manager can
 
 ### Techniques for reducing head movement {.unnumbered}
 
-All disk storage devices have some common features. They have one or
-more recording surfaces. Typically, a magnetic disk drive has multiple
-recording surfaces, with data stored on tracks on each surface.
+All disk storage devices have some common features. They have one or more recording surfaces. Typically, a magnetic disk drive has multiple recording surfaces, with data stored on tracks on each surface.
 
-The key characteristics of disk storage devices that affect database
-access are **rotational speed** and **access arm speed**. The rotational
-speed of a magnetic disk is in the range of 3,000 to 15,000 rpm. Reading
-or writing a page to disk requires moving the read/write head to the
-destination track and waiting for the storage address to come under the
-head. Because moving the head usually takes more time (e.g., about 9
-msec) than waiting for the storage address to appear under it (e.g.,
-about 4 msec), data access times can be reduced by minimizing the
-movement of the read/write head or by rotating the disk faster. Since
-rotational speed is set by the disk manufacturer, minimizing read/write
-head movement is the only option available to database designers.
+The key characteristics of disk storage devices that affect database access are **rotational speed** and **access arm speed**. The rotational speed of a magnetic disk is in the range of 3,000 to 15,000 rpm. Reading or writing a page to disk requires moving the read/write head to the destination track and waiting for the storage address to come under the head. Because moving the head usually takes more time (e.g., about 9 msec) than waiting for the storage address to appear under it (e.g., about 4 msec), data access times can be reduced by minimizing the movement of the read/write head or by rotating the disk faster. Since rotational speed is set by the disk manufacturer, minimizing read/write head movement is the only option available to database designers.
 
 #### Cylinders {.unnumbered}
 
-Head movement is reduced by storing data that are likely to be accessed
-at the same time, such as records in a file, on the same track on a
-single surface. When a file is too large to fit on one track, then it
-can be stored on the same track on different surfaces (i.e., one
-directly above or below the current track); such a collection of tracks
-is called a cylinder. The advantage of cylinder storage is that all
-tracks can be accessed without moving the read/write head. When a
-cylinder is full, remaining data are stored on adjacent cylinders.
-Adjacent cylinders are ideal for sequential file storage because the
-record retrieval pattern is predefined---the first record is read, then
-the second, and so on.
+Head movement is reduced by storing data that are likely to be accessed at the same time, such as records in a file, on the same track on a single surface. When a file is too large to fit on one track, then it can be stored on the same track on different surfaces (i.e., one directly above or below the current track); such a collection of tracks is called a cylinder. The advantage of cylinder storage is that all tracks can be accessed without moving the read/write head. When a cylinder is full, remaining data are stored on adjacent cylinders. Adjacent cylinders are ideal for sequential file storage because the record retrieval pattern is predefined---the first record is read, then the second, and so on.
 
 #### Clustering {.unnumbered}
 
-Cylinder storage can also be used when the record retrieval pattern has
-some degree of regularity to it. Consider the following familiar data
-model of the following figure. Converting this data model to a
-relational database creates two tables. Conceptually, we may think of
-the data in each of the tables as being stored in adjacent cylinders.
-If, however, you frequently need to retrieve one row of nation and all
-the corresponding rows of stock, then nation and stock rows should be
-intermingled to minimize access time.
+Cylinder storage can also be used when the record retrieval pattern has some degree of regularity to it. Consider the following familiar data model of the following figure. Converting this data model to a relational database creates two tables. Conceptually, we may think of the data in each of the tables as being stored in adjacent cylinders. If, however, you frequently need to retrieve one row of nation and all the corresponding rows of stock, then nation and stock rows should be intermingled to minimize access time.
 
 *Data model for nation and stock*
 
-![](Figures/Chapter%204/nation-stock.png)
+![](Figures/Chapter%204/nation-stock.png){width="320"}
 
-The term **clustering** denotes the concept that records that are
-frequently used together should be physically close together on a disk.
-Some DBMSs permit the database designer to specify clustering of
-different files to tune the database to reduce average access times. If
-usage patterns change, clustering specifications should be altered. Of
-course, clustering should be totally transparent to application programs
-and clients.
+The term **clustering** denotes the concept that records that are frequently used together should be physically close together on a disk. Some DBMSs permit the database designer to specify clustering of different files to tune the database to reduce average access times. If usage patterns change, clustering specifications should be altered. Of course, clustering should be totally transparent to application programs and clients.
 
 ### Techniques for reducing disk accesses {.unnumbered}
 
-Several techniques are used to accelerate retrieval by reducing disk
-accesses. The ideal situation is when the required record is obtained
-with a single disk access. In special circumstances, it may be possible
-to create a file where the primary key can convert directly to a unique
-disk address (e.g., the record with primary key 1 is stored at address
-1001, the record with primary key 2 is stored at address 1002, and so
-on). If possible, this method of **direct addressing** should be used
-because it is the fastest form of data access; however, it is most
-unusual to find such a direct mapping between the primary key and a disk
-address. For example, it would not be feasible to use direct addressing
-with a student file that has a Social Security number as the primary key
-because so many disk addresses would be wasted. Furthermore, direct
-addressing can work only for the primary key. What happens if there is a
-need for rapid retrieval on another field?
+Several techniques are used to accelerate retrieval by reducing disk accesses. The ideal situation is when the required record is obtained with a single disk access. In special circumstances, it may be possible to create a file where the primary key can convert directly to a unique disk address (e.g., the record with primary key 1 is stored at address 1001, the record with primary key 2 is stored at address 1002, and so on). If possible, this method of **direct addressing** should be used because it is the fastest form of data access; however, it is most unusual to find such a direct mapping between the primary key and a disk address. For example, it would not be feasible to use direct addressing with a personnel file that has a Social Security number as the primary key because so many disk addresses would be wasted. Furthermore, direct addressing can work only for the primary key. What happens if there is a need for rapid retrieval on another field?
 
-In most cases, database designers use features such as indexing,
-hashing, and linked lists. **Indexing**, a flexible and commonly used
-method of reducing disk accesses when searching for data, centers on the
-creation of a compact file containing the index field and the address of
-its corresponding record. The **B-tree** is a particular form of index
-structure that is widely used as the storage structure of relational
-DBMSs. **Hashing** is a direct access method based on using an
-arithmetic function to compute a disk address from a field within a
-file. A **linked list** is a data structure that accelerates data access
-by using pointers to show relationships existing between records.
+In most cases, database designers use features such as indexing, hashing, and linked lists. **Indexing**, a flexible and commonly used method of reducing disk accesses when searching for data, centers on the creation of a compact file containing the index field and the address of its corresponding record. The **B-tree** is a particular form of index structure that is widely used as the storage structure of relational DBMSs. **Hashing** is a direct access method based on using an arithmetic function to compute a disk address from a field within a file. A **linked list** is a data structure that accelerates data access by using pointers to show relationships existing between records.
 
 ### Indexing {.unnumbered}
 
-Consider the item file partially shown in the following table. Let's
-assume that this file has 10,000 records and each record requires 1
-kbyte, which is a page on the particular disk system used. Suppose a
-common query is to request all the items of a particular type. Such a
-query might be
+Consider the item file partially shown in the following table. Let's assume that this file has 10,000 records and each record requires 1 kbyte, which is a page on the particular disk system used. Suppose a common query is to request all the items of a particular type. Such a query might be
 
 *Find all items of type E.*
 
-Regardless of the number of records with ITEMTYPE = 'E', this query will
-require 10,000 disk accesses. Every record has to be retrieved and
-examined to determine the value of `itemtype`. For instance, if 20
-percent of the items are of type E, then 8,000 of the disk accesses are
-wasted because they retrieve a record that is not required. The ideal
-situation would be to retrieve only those 2,000 records that contain an
-item of type E. We get closer to this ideal situation by creating a
-small file containing just the value of `itemtype` for each record and
-the address of the full record. This small file is called an index.
+Regardless of the number of records with ITEMTYPE = 'E', this query will require 10,000 disk accesses. Every record has to be retrieved and examined to determine the value of `itemtype`. For instance, if 20 percent of the items are of type E, then 8,000 of the disk accesses are wasted because they retrieve a record that is not required. The ideal situation would be to retrieve only those 2,000 records that contain an item of type E. We get closer to this ideal situation by creating a small file containing just the value of `itemtype` for each record and the address of the full record. This small file is called an index.
 
 *Portion of a 10,000 Record File*
 
-| [itemno]{.ul} | itemname              | itemtype | itemcolor |
-|:--------------|:----------------------|:---------|:----------|
-| 1             | Pocket knife---Nile   | E        | Brown     |
-| 2             | Pocket knife---Thames | E        | Brown     |
-| 3             | Compass               | N        | ---       |
-| 4             | Geopositioning system | N        | ---       |
-| 5             | Map measure           | N        | ---       |
-| 6             | Hat---polar explorer  | C        | Red       |
-| 7             | Hat---polar explorer  | C        | White     |
-| 8             | Boots---snake proof   | C        | Green     |
-| 9             | Boots---snake proof   | C        | Black     |
-| 10            | Safari chair          | F        | Khaki     |
+| *itemno | itemname              | itemtype | itemcolor |
+|:---------|:----------------------|:---------|:----------|
+| 1        | Pocket knife---Nile   | E        | Brown     |
+| 2        | Pocket knife---Thames | E        | Brown     |
+| 3        | Compass               | N        | ---       |
+| 4        | Geopositioning system | N        | ---       |
+| 5        | Map measure           | N        | ---       |
+| 6        | Hat---polar explorer  | C        | Red       |
+| 7        | Hat---polar explorer  | C        | White     |
+| 8        | Boots---snake proof   | C        | Green     |
+| 9        | Boots---snake proof   | C        | Black     |
+| 10       | Safari chair          | F        | Khaki     |
 
 *Part of the itemtype index*
 
 ![](Figures/Chapter%2020/index.png)
 
-The `itemtype` index is a file. It contains 10,000 records and two
-fields. There is one record in the index for each record in `item`. The
-first columns contains a value of `itemtype` and the second contains a
-pointer, an address, to the matching record of item. Notice that the
-index is in `itemtype` sequence. Storing the index in a particular order
-is another means of reducing disk accesses, as we will see shortly. The
-index is quite small. One byte is required for `itemtype` and four bytes
-for the pointer. So the total size of the index is 50 kbytes, which in
-this case is 50 pages of disk space.
+The `itemtype` index is a file. It contains 10,000 records and two fields. There is one record in the index for each record in `item`. The first columns contains a value of `itemtype` and the second contains a pointer, an address, to the matching record of item. Notice that the index is in `itemtype` sequence. Storing the index in a particular order is another means of reducing disk accesses, as we will see shortly. The index is quite small. One byte is required for `itemtype` and four bytes for the pointer. So the total size of the index is 50 kbytes, which in this case is 50 pages of disk space.
 
-Now consider finding all records with an item type of E. One approach is
-to read the entire index into memory, search it for type E items, and
-then use the pointers to retrieve the required records from `item`. This
-method requires 2,050 disk accesses---50 to load the index and 2,000
-accesses of `item`, as there are 2,000 items of type E. Creating an
-index for item results in substantial savings in disk accesses for this
-example. Here, we assume that 20 percent of the records in item
-contained `itemtype` = 'E'. The number of disk accesses saved varies
-with the proportion of records meeting the query's criteria. If there
-are no records meeting the criteria, 9,950 disk accesses are avoided. At
-the other extreme, when all records meet the criteria, it takes 50 extra
-disk accesses to load the index.
+Now consider finding all records with an item type of E. One approach is to read the entire index into memory, search it for type E items, and then use the pointers to retrieve the required records from `item`. This method requires 2,050 disk accesses---50 to load the index and 2,000 accesses of `item`, as there are 2,000 items of type E. Creating an index for item results in substantial savings in disk accesses for this example. Here, we assume that 20 percent of the records in item contained `itemtype` = 'E'. The number of disk accesses saved varies with the proportion of records meeting the query's criteria. If there are no records meeting the criteria, 9,950 disk accesses are avoided. At the other extreme, when all records meet the criteria, it takes 50 extra disk accesses to load the index.
 
 The SQL for creating the index is
 
@@ -330,45 +156,23 @@ The SQL for creating the index is
 CREATE INDEX itemtypeindx ON item (itemtype);
 ```
 
-The entire index need not be read into memory. As you will see when we
-discuss tree structures, we can take advantage of an index's ordering to
-reduce disk accesses further. Nevertheless, the clear advantage of an
-index is evident: it speeds up retrieval by reducing disk accesses. Like
-many aspects of database management, however, indexes have a drawback.
-Adding a record to a file without an index requires a single disk write.
-Adding a record to an indexed file requires at least two, and maybe
-more, disk writes, because an entry has to be added to both the file and
-its index. The trade-off is between faster retrievals and slower
-updates. If there are many retrievals and few updates, then opt for an
-index, especially if the indexed field can have a wide variety of
-values. If the file is very volatile and updates are frequent and
-retrievals few, then an index may cost more disk accesses than it saves.
+The entire index need not be read into memory. As you will see when we discuss tree structures, we can take advantage of an index's ordering to reduce disk accesses further. Nevertheless, the clear advantage of an index is evident: it speeds up retrieval by reducing disk accesses. Like many aspects of database management, however, indexes have a drawback. Adding a record to a file without an index requires a single disk write. Adding a record to an indexed file requires at least two, and maybe more, disk writes, because an entry has to be added to both the file and its index. The trade-off is between faster retrievals and slower updates. If there are many retrievals and few updates, then opt for an index, especially if the indexed field can have a wide variety of values. If the file is very volatile and updates are frequent and retrievals few, then an index may cost more disk accesses than it saves.
 
-Indexes can be used for both sequential and direct access. Sequential
-access means that records are retrieved in the sequence defined by the
-values in the index. In our example, this means retrieving records in
-`itemtype` sequence with a range query such as
+Indexes can be used for both sequential and direct access. Sequential access means that records are retrieved in the sequence defined by the values in the index. In our example, this means retrieving records in `itemtype` sequence with a range query such as
 
 *Find all items with a type code in the range E through K.*
 
-Direct access means records are retrieved according to one or more
-specified values. A sample query requiring direct access would be
+Direct access means records are retrieved according to one or more specified values. A sample query requiring direct access would be
 
 *Find all items with a type code of E or N.*
 
-Indexes are also handy for existence testing. Remember, the EXISTS
-clause of SQL returns *true* or *false* and not a value. An index can be
-searched to check whether the indexed field takes a particular value,
-but there is no need to access the file because no data are returned.
-The following query can be answered by an index search:
+Indexes are also handy for existence testing. Remember, the EXISTS clause of SQL returns *true* or *false* and not a value. An index can be searched to check whether the indexed field takes a particular value, but there is no need to access the file because no data are returned. The following query can be answered by an index search:
 
 *Are there any items with a code of R?*
 
 #### Multiple indexes {.unnumbered}
 
-Multiple indexes can be created for a file. The `item` file could have
-an index defined on `itemcolor` or any other field. Multiple indexes may
-be used independently, as in this query:
+Multiple indexes can be created for a file. The `item` file could have an index defined on `itemcolor` or any other field. Multiple indexes may be used independently, as in this query:
 
 *List red items.*
 
@@ -376,32 +180,17 @@ or jointly, with a query such as
 
 *Find red items of type C.*
 
-The preceding query can be solved by using the indexes for `itemtype`
-and `itemcolor`.
+The preceding query can be solved by using the indexes for `itemtype` and `itemcolor`.
 
 *Indexes for fields itemtype and itemcolor*
 
 ![](Figures/Chapter%2020/multiple%20indexes.png)
 
-Examination of the `itemtype` index indicates that items of type C are
-stored at addresses d6, d7, d8, and d9. The only red item recorded in
-the `itemcolor` index is stored at address d6, and since it is the only
-record satisfying the query, it is the only record that needs to be
-retrieved.
+Examination of the `itemtype` index indicates that items of type C are stored at addresses d6, d7, d8, and d9. The only red item recorded in the `itemcolor` index is stored at address d6, and since it is the only record satisfying the query, it is the only record that needs to be retrieved.
 
-Multiple indexes, as you would expect, involve a trade-off. Whenever a
-record is added or updated, each index must also be updated. Savings in
-disk accesses for retrieval are exchanged for additional disk accesses
-in maintenance. Again, you must consider the balance between retrieval
-and maintenance operations.
+Multiple indexes, as you would expect, involve a trade-off. Whenever a record is added or updated, each index must also be updated. Savings in disk accesses for retrieval are exchanged for additional disk accesses in maintenance. Again, you must consider the balance between retrieval and maintenance operations.
 
-Indexes are not restricted to a single field. It is possible to specify
-an index that is a combination of several fields. For instance, if item
-type and color queries were very common, then an index based on the
-concatenation of both fields could be created. As a result, such queries
-could be answered with a search of a single index rather than scanning
-two indexes as in the preceding example. The SQL for creating the
-combined index is
+Indexes are not restricted to a single field. It is possible to specify an index that is a combination of several fields. For instance, if item type and color queries were very common, then an index based on the concatenation of both fields could be created. As a result, such queries could be answered with a search of a single index rather than scanning two indexes as in the preceding example. The SQL for creating the combined index is
 
 ```{sql, eval = FALSE}
 CREATE INDEX typecolorindx ON item (itemtype, itemcolor);
@@ -409,54 +198,23 @@ CREATE INDEX typecolorindx ON item (itemtype, itemcolor);
 
 #### Sparse indexes {.unnumbered}
 
-Indexes are used to reduce disk accesses to accelerate retrieval. The
-simple model of an index introduced earlier suggests that the index
-contains an entry for each record of the file. If we can shrink the
-index to eliminate an entry for each record, we can save more disk
-accesses. Indeed, if an index is small enough, it, or key parts of it,
-can be retained continuously in primary memory.
+Indexes are used to reduce disk accesses to accelerate retrieval. The simple model of an index introduced earlier suggests that the index contains an entry for each record of the file. If we can shrink the index to eliminate an entry for each record, we can save more disk accesses. Indeed, if an index is small enough, it, or key parts of it, can be retained continuously in primary memory.
 
-There is a physical sequence to the records in a file. Records within a
-page are in a physical sequence, and pages on a disk are in a physical
-sequence. A file can also have a logical sequence, the ordering of the
-file on some field within a record. For instance, the item file could be
-ordered on itemno. Making the physical and logical sequences correspond
-is a way to save disk accesses. Remember that the item file was assumed
-to have a record size of 1,024 bytes, the same size as a page, and one
-record was stored per page. If we now assume the record size is 512
-bytes, then two records are stored per page. Furthermore, suppose that
-item is physically stored in `itemno` sequence. The index can be
-compressed by storing `itemno` for the second record on each page and
-that page's address.
+There is a physical sequence to the records in a file. Records within a page are in a physical sequence, and pages on a disk are in a physical sequence. A file can also have a logical sequence, the ordering of the file on some field within a record. For instance, the item file could be ordered on itemno. Making the physical and logical sequences correspond is a way to save disk accesses. Remember that the item file was assumed to have a record size of 1,024 bytes, the same size as a page, and one record was stored per page. If we now assume the record size is 512 bytes, then two records are stored per page. Furthermore, suppose that item is physically stored in `itemno` sequence. The index can be compressed by storing `itemno` for the second record on each page and that page's address.
 
 *A sparse index for item*
 
 ![](Figures/Chapter%2020/sparse%20index.png)
 
-Consider the process of finding the record with ITEMNO = 7. First, the
-index is scanned to find the first value for `itemno` that is greater
-than or equal to 7, the entry for ITEMNO = 8. Second, the page on which
-this record is stored (page p + 3) is loaded into memory. Third, the
-required record is extracted from the page.
+Consider the process of finding the record with ITEMNO = 7. First, the index is scanned to find the first value for `itemno` that is greater than or equal to 7, the entry for ITEMNO = 8. Second, the page on which this record is stored (page p + 3) is loaded into memory. Third, the required record is extracted from the page.
 
-Indexes that take advantage of the physical sequencing of a file are
-known as sparse or non-dense because they do not contain an entry for
-every value of the indexed field. (A dense index is one that contains an
-entry for every value of the indexed field.)
+Indexes that take advantage of the physical sequencing of a file are known as sparse or non-dense because they do not contain an entry for every value of the indexed field. (A dense index is one that contains an entry for every value of the indexed field.)
 
-As you would expect, a sparse index has pros and cons. One major
-advantage is that it takes less storage space and so requires fewer disk
-accesses for reading. One disadvantage is that it can no longer be used
-for existence tests because it does not contain a value for every record
-in the file.
+As you would expect, a sparse index has pros and cons. One major advantage is that it takes less storage space and so requires fewer disk accesses for reading. One disadvantage is that it can no longer be used for existence tests because it does not contain a value for every record in the file.
 
-A file can have only one sparse index because it can have only one
-physical sequence. This field on which a sparse index is based is often
-called the primary key. Other indexes, which must be dense, are called
-secondary indexes.
+A file can have only one sparse index because it can have only one physical sequence. This field on which a sparse index is based is often called the primary key. Other indexes, which must be dense, are called secondary indexes.
 
-In SQL, a sparse index is created using the CLUSTER option. For example,
-to define a sparse index on item the command is
+In SQL, a sparse index is created using the CLUSTER option. For example, to define a sparse index on item the command is
 
 ```{sql, eval = FALSE}
 CREATE INDEX itemnoindx ON item (itemno) CLUSTER;
@@ -464,270 +222,118 @@ CREATE INDEX itemnoindx ON item (itemno) CLUSTER;
 
 ### B-trees {.unnumbered}
 
-The B-tree is a particular form of index structure that is frequently
-the main storage structure for relational systems. It is also the basis
-for IBM's VSAM (Virtual Storage Access Method), the file structure
-underlying DB2, IBM's relational database. A B-tree is an efficient
-structure for both sequential and direct accessing of a file. It
-consists of two parts: the sequence set and the index set.
+The B-tree is a particular form of index structure that is frequently the main storage structure for relational systems. It is also the basis for IBM's VSAM (Virtual Storage Access Method), the file structure underlying DB2, IBM's relational database. A B-tree is an efficient structure for both sequential and direct accessing of a file. It consists of two parts: the sequence set and the index set.
 
-The **sequence set** is a single-level index to the file with pointers
-to the records (the vertical arrows in the lower part of the following
-figure). It can be sparse or dense, but is normally dense. Entries in
-the sequence set are grouped into pages, and these pages are linked
-together (the horizontal arrows) so that the logical ordering of the
-sequence set is the physical ordering of the file. Thus, the file can be
-processed sequentially by processing the records pointed to by the first
-page (records with identifiers 1, 4, and 5), the records pointed to by
-the next logical page (6, 19, and 20), and so on.
+The **sequence set** is a single-level index to the file with pointers to the records (the vertical arrows in the lower part of the following figure). It can be sparse or dense, but is normally dense. Entries in the sequence set are grouped into pages, and these pages are linked together (the horizontal arrows) so that the logical ordering of the sequence set is the physical ordering of the file. Thus, the file can be processed sequentially by processing the records pointed to by the first page (records with identifiers 1, 4, and 5), the records pointed to by the next logical page (6, 19, and 20), and so on.
 
 *Structure of a simple B-tree*
 
 ![](Figures/Chapter%2020/b-tree.png)
 
-The **index set** is a tree-structured index to the sequence set. The
-top of the index set is a single node called the **root**. In this
-example, it contains two values (29 and 57) and three pointers. Records
-with an identifier less than or equal to 29 are found in the left
-branch, records with an identifier greater than 29 and less than or
-equal to 57 are found in the middle branch, and records with an
-identifier greater than 57 are found in the right branch. The three
-pointers are the page numbers of the left, middle, and right branches.
-The nodes at the next level have similar interpretations. The pointer to
-a particular record is found by moving down the tree until a node entry
-points to a value in the sequence set; this value can be used to
-retrieve the record. Thus, the index set provides direct access to the
-sequence set and then the data.
+The **index set** is a tree-structured index to the sequence set. The top of the index set is a single node called the **root**. In this example, it contains two values (29 and 57) and three pointers. Records with an identifier less than or equal to 29 are found in the left branch, records with an identifier greater than 29 and less than or equal to 57 are found in the middle branch, and records with an identifier greater than 57 are found in the right branch. The three pointers are the page numbers of the left, middle, and right branches. The nodes at the next level have similar interpretations. The pointer to a particular record is found by moving down the tree until a node entry points to a value in the sequence set; this value can be used to retrieve the record. Thus, the index set provides direct access to the sequence set and then the data.
 
-The index set is a B-tree. The combination of index set and sequence set
-is generally known as a B+ tree (**B-plus tree**). The B-tree simplifies
-the concept in two ways. *First**,*** the number of data values and
-pointers for any given node is not restricted to 2 and 3, respectively.
-In its general form, a B-tree of order *n* can have at least *n* and no
-more than 2*n* data values. If it has *k* values, the B-tree will have
-*k* + 1 pointers (in the example tree, nodes have two data values, *k* =
-2, and there are three, *k* + 1 = 3, pointers). *Second*, B-trees
-typically have free space to permit rapid insertion of data values and
-possible updating of pointers when a new record is added.
+The index set is a B-tree. The combination of index set and sequence set is generally known as a B+ tree (**B-plus tree**). The B-tree simplifies the concept in two ways. *First*, the number of data values and pointers for any given node is not restricted to 2 and 3, respectively. In its general form, a B-tree of order *n* can have at least *n* and no more than *2n* data values. If it has *k* values, the B-tree will have *k+1* pointers (in the example tree, nodes have two data values, *k* = 2, and there are three, *k+1* = 3, pointers). *Second*, B-trees typically have free space to permit rapid insertion of data values and possible updating of pointers when a new record is added.
 
-As usual, there is a trade-off with B-trees. Retrieval will be fastest
-when each node occupies one page and is packed with data values and
-pointers. This lack of free space will slow down the addition of new
-records, however. Most implementations of the B+ tree permit a specified
-portion of free space to be defined for both the index and sequence set.
+As usual, there is a trade-off with B-trees. Retrieval will be fastest when each node occupies one page and is packed with data values and pointers. This lack of free space will slow down the addition of new records, however. Most implementations of the B+ tree permit a specified portion of free space to be defined for both the index and sequence set.
 
 ### Hashing {.unnumbered}
 
-**Hashing** reduces disk accesses by allowing direct access to a file.
-As you know, direct accessing via an index requires at least two or more
-accesses. The index must be loaded and searched, and then the record
-retrieved. For some applications, direct accessing via an index is too
-slow. Hashing can reduce the number of accesses to almost one by using
-the value in some field (the **hash field**, which is usually the
-primary key) to compute a record's address. A **hash function** converts
-the hash field into a **hash address**.
+**Hashing** reduces disk accesses by allowing direct access to a file. As you know, direct accessing via an index requires at least two or more accesses. The index must be loaded and searched, and then the record retrieved. For some applications, direct accessing via an index is too slow. Hashing can reduce the number of accesses to almost one by using the value in some field (the **hash field**, which is usually the primary key) to compute a record's address. A **hash function** converts the hash field into a **hash address**.
 
-Consider the case of a university that uses the nine-digit Social
-Security number (SSN) as the student key. If the university has 10,000
-students, it could simply use the last four digits of the SSN as the
-address. In effect, the file space is broken up into 10,000 slots with
-one student record in each slot. For example, the data for the student
-with SSN 417-03-4356 would be stored at address 4356. In this case, the
-hash field is SSN, and the hash function is
+Consider the case of an organization that uses the nine-digit Social Security number (SSN) as the personnel key. If the organization has 10,000 students, it could simply use the last four digits of the SSN as the address. In effect, the file space is broken up into 10,000 slots with one personnel record in each slot. For example, the data for the person with SSN 417-03-4356 would be stored at address 4356. In this case, the hash field is SSN, and the hash function is
 
 hash address = remainder after dividing SSN by 10,000.
 
-What about the student with SSN 532-67-4356? Unfortunately, the hashing
-function will give the same address because most hashing schemes cannot
-guarantee a unique hash address for every record. When two hash fields
-have the same address, they are called **synonyms**, and a **collision**
-is said to have occurred.
+What about the person with SSN 532-67-4356? Unfortunately, the hashing function will give the same address because most hashing schemes cannot guarantee a unique hash address for every record. When two hash fields have the same address, they are called **synonyms**, and a **collision** is said to have occurred.
 
-There are techniques for handling synonyms. Essentially, you store the
-colliding record in an overflow area and point to it from the hash
-address. Of course, more than two records can have the same hash
-address, which in turn creates a synonym chain. The following figure
-shows an example of hashing with a synonym chain. Three SSNs hash to the
-same address. The first record (417-03-4356) is stored at the hash
-address. The second record (532-67-4356) is stored in the overflow area
-and is connected by a pointer to the first record. The third record
-(891-55-4356) is also stored in the overflow area and connected by a
-pointer from the second record. Because each record contains the full
-key (SSN in this case), during retrieval the system can determine
-whether it has the correct record or should follow the chain to the next
-record.
+There are techniques for handling synonyms. Essentially, you store the colliding record in an overflow area and point to it from the hash address. Of course, more than two records can have the same hash address, which in turn creates a synonym chain. The following figure shows an example of hashing with a synonym chain. Three SSNs hash to the same address. The first record (417-03-4356) is stored at the hash address. The second record (532-67-4356) is stored in the overflow area and is connected by a pointer to the first record. The third record (891-55-4356) is also stored in the overflow area and connected by a pointer from the second record. Because each record contains the full key (SSN in this case), during retrieval the system can determine whether it has the correct record or should follow the chain to the next record.
 
 *An example of hashing*
 
 ![](Figures/Chapter%2020/hashing.png)
 
-If there are no synonyms, hashing gives very fast direct retrieval,
-taking only one disk access to retrieve a record. Even with a small
-percentage of synonyms, retrieval via hashing is very fast. Access time
-degrades, however, if there are long synonym chains.
+If there are no synonyms, hashing gives very fast direct retrieval, taking only one disk access to retrieve a record. Even with a small percentage of synonyms, retrieval via hashing is very fast. Access time degrades, however, if there are long synonym chains.
 
-There are a number of different approaches to defining hashing
-functions. The most common method is to divide by a prime and use the
-remainder as the address. Before adopting a particular hashing function,
-test several functions on a representative sample of the hash field.
-Compute the percentage of synonyms and the length of synonym chains for
-each potential hashing function and compare the results.
+There are a number of different approaches to defining hashing functions. The most common method is to divide by a prime and use the remainder as the address. Before adopting a particular hashing function, test several functions on a representative sample of the hash field. Compute the percentage of synonyms and the length of synonym chains for each potential hashing function and compare the results.
 
-Of course, hashing has trade-offs. There can be only one hashing field.
-In contrast, a file can have many indexed fields. The file can no longer
-be processed sequentially because its physical sequence loses any
-logical meaning if the records are not in primary key sequence or are
-sequenced on any other field.
+Of course, hashing has trade-offs. There can be only one hashing field. In contrast, a file can have many indexed fields. The file can no longer be processed sequentially because its physical sequence loses any logical meaning if the records are not in primary key sequence or are sequenced on any other field.
 
 ### Linked lists {.unnumbered}
 
-A **linked list** is a useful data structure for interfile clustering.
-Suppose that the query, *Find all stocks of country X*, is a frequent
-request. Disk accesses can be reduced by storing a nation and its
-corresponding stocks together in a linked list.
+A **linked list** is a useful data structure for interfile clustering. Suppose that the query, *Find all stocks of country X*, is a frequent request. Disk accesses can be reduced by storing a nation and its corresponding stocks together in a linked list.
 
 *A linked list*
 
 ![](Figures/Chapter%2020/linked.png)
 
-In this example, we have two files: `nation` and `stock`. Records in
-`nation` are connected by pointers (e.g., the horizontal arrow between
-Australia and USA). The pointers are used to maintain the nation file in
-logical sequence (by nation, in this case). Each record in `nation` is
-linked to its `stock` records by a forward-pointing chain. The `nation`
-record for Australia points to the first `stock` record (Indooroopilly
-Ruby), which points to the next (Narembeen Plum), which points to the
-final record in the chain (Queensland Diamond). Notice that the last
-record in this `stock` chain points to the `nation` record to which the
-chain belongs (i.e., Australia). Similarly, there is a chain for the two
-USA stocks. In any chain, the records are maintained in logical sequence
-(by firm name, in this case).
+In this example, we have two files: `nation` and `stock`. Records in `nation` are connected by pointers (e.g., the horizontal arrow between Australia and USA). The pointers are used to maintain the nation file in logical sequence (by nation, in this case). Each record in `nation` is linked to its `stock` records by a forward-pointing chain. The `nation` record for Australia points to the first `stock` record (Indooroopilly Ruby), which points to the next (Narembeen Plum), which points to the final record in the chain (Queensland Diamond). Notice that the last record in this `stock` chain points to the `nation` record to which the chain belongs (i.e., Australia). Similarly, there is a chain for the two USA stocks. In any chain, the records are maintained in logical sequence (by firm name, in this case).
 
-This linked-list structure is also known as a parent/child structure.
-(The parent in this case is `nation` and the child is `stock`.) Although
-it is a suitable structure for representing a one-to-many (1:m)
-relationship, it is possible to depict more than one parent/child
-relationship. For example, stocks could be grouped into classes (e.g.,
-high, medium, and low risk). A second chain linking all stocks of the
-same risk class can run through the file. Interfile clustering of a
-nation and its corresponding stocks will speed up access; so, the record
-for the parent Australia and its three children should be stored on one
-page. Similarly, all American stocks could be clustered with the USA
-record and so on for all other nations.
+This linked-list structure is also known as a parent/child structure. (The parent in this case is `nation` and the child is `stock`.) Although it is a suitable structure for representing a one-to-many (1:m) relationship, it is possible to depict more than one parent/child relationship. For example, stocks could be grouped into classes (e.g., high, medium, and low risk). A second chain linking all stocks of the same risk class can run through the file. Interfile clustering of a nation and its corresponding stocks will speed up access; so, the record for the parent Australia and its three children should be stored on one page. Similarly, all American stocks could be clustered with the USA record and so on for all other nations.
 
-Of course, you expect some trade-offs. What happens with a query such as
-*Find the country in which Minnesota Gold is listed?* There is no quick
-way to find Minnesota Gold except by sequentially searching the `stock`
-file until the record is found and then following the chain to the
-parent nation record. This could take many disk accesses. One way to
-circumvent this is to build an index or hashing scheme for `stock` so
-that any record can be found directly. Building an index for the parent,
-`nation`, will speed up access as well.
+Of course, you expect some trade-offs. What happens with a query such as *Find the country in which Minnesota Gold is listed?* There is no quick way to find Minnesota Gold except by sequentially searching the `stock` file until the record is found and then following the chain to the parent nation record. This could take many disk accesses. One way to circumvent this is to build an index or hashing scheme for `stock` so that any record can be found directly. Building an index for the parent, `nation`, will speed up access as well.
 
 Linked lists come in a variety of flavors:
 
--   Lists that have two-way pointers, both forward and backward, speed
-    up deletion.
+-   Lists that have two-way pointers, both forward and backward, speed up deletion.
 
--   For some lists, every child record has a parent pointer. This helps
-    prevent chain traversal when the query is concerned with finding the
-    parent of a particular child.
+-   For some lists, every child record has a parent pointer. This helps prevent chain traversal when the query is concerned with finding the parent of a particular child.
 
 ### Bitmap index {.unnumbered}
 
-A **bitmap index** uses a single bit, rather than multiple bytes, to
-indicate the specific value of a field. For example, instead of using
-three bytes to represent *red* as an item's color, the color red is
-represented by a single bit. The relative position of the bit within a
-string of bits is then mapped to a record address.
+A **bitmap index** uses a single bit, rather than multiple bytes, to indicate the specific value of a field. For example, instead of using three bytes to represent *red* as an item's color, the color red is represented by a single bit. The relative position of the bit within a string of bits is then mapped to a record address.
 
-Conceptually, you can think of a bitmap as a matrix. The following
-figure shows a bitmap containing details of an item's color and code. An
-item can have three possible colors; so, three bits are required, and
-two bits are needed for the two codes for the item. Thus, you can see
-that, in general, *n* bits are required if a field can have *n* possible
-values.
+Conceptually, you can think of a bitmap as a matrix. The following figure shows a bitmap containing details of an item's color and code. An item can have three possible colors; so, three bits are required, and two bits are needed for the two codes for the item. Thus, you can see that, in general, *n* bits are required if a field can have *n* possible values.
 
 *A bitmap index*
 
-| itemcode    | color    | code     | Disk address |
-|:------------|:---------|:---------|:-------------|
-|             | Red      | Green    | Blue         |
-| :---------- | :------- | :------- | :------      |
-| 1001        | 0        | 0        | 1            |
-| 1002        | 1        | 0        | 0            |
-| 1003        | 1        | 0        | 0            |
-| 1004        | 0        | 1        | 0            |
+| itemcode | color |       |      | code |     | Disk address |
+|:--------:|:-----:|:-----:|:----:|:----:|:---:|:------------:|
+|          |  Red  | Green | Blue |  A   |  N  |              |
+|   1001   |   0   |   0   |  1   |  0   |  1  |      d1      |
+|   1002   |   1   |   0   |  0   |  1   |  0  |      d2      |
+|   1003   |   1   |   0   |  0   |  1   |  0  |      d3      |
+|   1004   |   0   |   1   |  0   |  1   |  0  |      d4      |
 
-When an item has a large number of values (i.e., *n* is large), the
-bitmap for that field will be very sparse, containing a large number of
-zeros. Thus, a bitmap is typically useful when the value of *n* is
-relatively small. When is *n* small or large? There is no simple answer;
-rather, database designers have to simulate alternative designs and
-evaluate the trade-offs.
+When an item has a large number of values (i.e., *n* is large), the bitmap for that field will be very sparse, containing a large number of zeros. Thus, a bitmap is typically useful when the value of *n* is relatively small. When is *n* small or large? There is no simple answer; rather, database designers have to simulate alternative designs and evaluate the trade-offs.
 
-In some situations, the bit string for a field can have multiple bits
-set to *on* (set to 1). A location field, for instance, may have two
-bits *on* to represent an item that can be found in Atlanta and New
-York.
+In some situations, the bit string for a field can have multiple bits set to *on* (set to 1). A location field, for instance, may have two bits *on* to represent an item that can be found in Atlanta and New York.
 
-The advantage of a bitmap is that it usually requires little storage.
-For example, we can recast the bitmap index as a conventional index. The
-core of the bitmap in the previous figure (i.e., the cells storing data
-about the color and code) requires 5 bits for each record, but the core
-of the traditional index requires 9 bytes, or 72 bits, for each record.
+The advantage of a bitmap is that it usually requires little storage. For example, we can recast the bitmap index as a conventional index. The core of the bitmap in the previous figure (i.e., the cells storing data about the color and code) requires 5 bits for each record, but the core of the traditional index requires 9 bytes, or 72 bits, for each record.
 
 *An index*
 
-+-----------+---------+---------+--------------+
-| i temcode | color   | code    | Disk address |
-|           |         |         |              |
-|           | char(8) | char(1) |              |
-+===========+=========+=========+==============+
-| 1001      | Blue    | N       | d1           |
-+-----------+---------+---------+--------------+
-| 1002      | Red     | A       | d2           |
-+-----------+---------+---------+--------------+
-| 1003      | Red     | A       | d3           |
-+-----------+---------+---------+--------------+
-| 1004      | Green   | A       | d4           |
-+-----------+---------+---------+--------------+
+| itemcode |  color  |  code   | Disk address |
+|:--------:|:-------:|:-------:|:------------:|
+|          | char(8) | char(1) |              |
+|   1001   |  Blue   |    N    |      d1      |
+|   1002   |   Red   |    A    |      d2      |
+|   1003   |   Red   |    A    |      d3      |
+|   1004   |  Green  |    A    |      d4      |
 
 Bitmaps can accelerate query time for complex queries.
 
 ### Join index {.unnumbered}
 
-Many RDBMS queries frequently require two or more tables to be joined.
-Indeed, some people refer to the RDBMS as a join machine. A join index
-can be used to improve the execution speed of joins by creating indexes
-based on the matching columns of tables that are highly likely to be
-joined. For example, `natcode` is the common column used to join nation
-and stock, and each of these tables can be indexed on `natcode`.
+Many RDBMS queries frequently require two or more tables to be joined. Indeed, some people refer to the RDBMS as a join machine. A join index can be used to improve the execution speed of joins by creating indexes based on the matching columns of tables that are highly likely to be joined. For example, `natcode` is the common column used to join nation and stock, and each of these tables can be indexed on `natcode`.
 
 *Indexes on natcode for nation and stock*
 
-| nation index   | stock index    |
-|:---------------|:---------------|
-| natcode        | Disk address   |
-| :------------- | :------------- |
-| UK             | d1             |
-| USA            | d2             |
-|                |                |
-|                |                |
-|                |                |
+| nation index |              |
+|:-------------|:------------:|
+| natcode      | Disk address |
+| UK           |      d1      |
+| USA          |      d2      |
 
-A join index is a list of the disk addresses of the rows for matching
-columns. All indexes, including the join index, must be updated whenever
-a row is inserted into or deleted from the `nation` or `stock` tables.
-When a join of the two tables on the matching column is made, the join
-index is used to retrieve only those records that will be joined. This
-example demonstrates the advantage of a join index. If you think of a
-join as a product with a WHERE clause, then without a join index, 10
-(2\*5) rows have to be retrieved, but with the join index only 5 rows
-are retrieved. Join indexes can also be created for joins involving
-several tables. As usual, there is a trade-off. Joins will be faster,
-but insertions and deletions will be slower because of the need to
-update the indexes.
+| stock index |              |
+|-------------|:------------:|
+| natcode     | Disk address |
+| UK          |     d101     |
+| UK          |     d102     |
+| UK          |     d103     |
+| USA         |     d104     |
+| USA         |     d105     |
+
+A join index is a list of the disk addresses of the rows for matching columns. All indexes, including the join index, must be updated whenever a row is inserted into or deleted from the `nation` or `stock` tables. When a join of the two tables on the matching column is made, the join index is used to retrieve only those records that will be joined. This example demonstrates the advantage of a join index. If you think of a join as a product with a WHERE clause, then without a join index, 10 (2*5) rows have to be retrieved, but with the join index only 5 rows are retrieved. Join indexes can also be created for joins involving several tables. As usual, there is a trade-off. Joins will be faster, but insertions and deletions will be slower because of the need to update the indexes.
 
 *Join Index*
 
@@ -742,42 +348,21 @@ update the indexes.
 
 ## Data coding standards {.unnumbered}
 
-The successful exchange of data between two computers requires agreement
-on how information is coded. The American Standard Code for Information
-Interchange (ASCII) and Unicode are two widely used data coding
-standards.
+The successful exchange of data between two computers requires agreement on how information is coded. The American Standard Code for Information Interchange (ASCII) and Unicode are two widely used data coding standards.
 
 ### ASCII {.unnumbered}
 
-ASCII is the most common format for digital text files. In an ASCII
-file, each alphabetic, numeric, or special character is represented by a
-7-bit code. Thus, 128 (2^7^) possible characters are defined. Because
-most computers process data in eight-bit bytes or multiples thereof, an
-ASCII code usually occupies one byte.
+[ASCII](https://en.wikipedia.org/wiki/ASCII) is the most common format for digital text files. In an ASCII file, each alphabetic, numeric, or special character is represented by a 7-bit code. Thus, 128 (2^7^) possible characters are defined. Because most computers process data in eight-bit bytes or multiples thereof, an ASCII code usually occupies one byte.
 
 ### Unicode {.unnumbered}
 
-Unicode, officially the Unicode Worldwide Character Standard, is a
-system for the interchange, processing, and display of the written texts
-of the diverse languages of the modern world. Unicode provides a unique
-binary code for every character, no matter what the platform, program,
-or language. The Unicode standard currently contains 34,168 distinct
-coded characters derived from 24 supported language scripts. These
-characters cover the principal written languages of the world.
+[Unicode](https://en.wikipedia.org/wiki/Unicode), officially the Unicode Worldwide Character Standard, is a system for the interchange, processing, and display of the written texts of the diverse languages of the modern world. Unicode provides a unique binary code for every character, no matter what the platform, program, or language. The Unicode standard currently contains around 145,000 distinct coded characters derived from 159 supported language scripts. These characters cover the principal written languages of the world.
 
-Unicode provides for two encoding forms: a default 16-bit form, and a
-byte (8-bit) form called UTF-8 that has been designed for ease of use
-with existing ASCII-based systems. As the default encoding of HTML and
-XML, Unicode is required for Internet protocols. It is implemented in
-all modern operating systems and computer languages such as Java.
-Unicode is the basis of software that must function globally.
+Unicode provides for two encoding forms: a default 16-bit form, and a byte (8-bit) form called UTF-8 that has been designed for ease of use with existing ASCII-based systems. As the default encoding of HTML and XML, Unicode is required for Internet protocols. It is implemented in all modern operating systems and computer languages such as Java. Unicode is the basis of software that must function globally.
 
 ## Data storage devices {.unnumbered}
 
-Many corporations double the amount of data they need to store every two
-to three years. Thus, the selection of data storage devices is a key
-consideration for data managers. When evaluating data storage options,
-data managers need to consider possible uses, which include:
+Many corporations double the amount of data they need to store every two to three years. Thus, the selection of data storage devices is a key consideration for data managers. When evaluating data storage options, data managers need to consider possible uses, which include:
 
 1.  Online data
 
@@ -785,16 +370,9 @@ data managers need to consider possible uses, which include:
 
 3.  Archival storage
 
-Many systems require data to be online---continually available. Here the
-prime concerns are usually access speed and capacity, because many firms
-require rapid response to large volumes of data. Backup files are
-required to provide security against data loss. Ideally, backup storage
-is high volume capacity at low cost. Archived data may need to be stored
-for many years; so the archival medium should be highly reliable, with
-no data decay over extended periods, and low-cost.
+Many systems require data to be online---continually available. Here the prime concerns are usually access speed and capacity, because many firms require rapid response to large volumes of data. Backup files are required to provide security against data loss. Ideally, backup storage is high volume capacity at low cost. Archived data may need to be stored for many years; so the archival medium should be highly reliable, with no data decay over extended periods, and low-cost.
 
-In deciding what data will be stored where, database designers need to
-consider a number of variables:
+In deciding what data will be stored where, database designers need to consider a number of variables:
 
 1.  Volume of data
 
@@ -808,301 +386,107 @@ consider a number of variables:
 
 6.  Legal standing of stored data
 
-The design options are discussed and considered in terms of the
-variables just identified. First, we review some of the options.
+The design options are discussed and considered in terms of the variables just identified. First, we review some of the options.
 
 ### Magnetic technology {.unnumbered}
 
-Over USD 20 billion is spent annually on magnetic storage
-devices.[^datastrucandstor-1] A significant proportion of many units IS
-hardware budgets is consumed by magnetic storage. Magnetic technology,
-the backbone of data storage for five decades, is based on magnetization
-and demagnetization of spots on a magnetic recording surface. The same
-spot can be magnetized and demagnetized repeatedly. Magnetic recording
-materials may be coated on rigid platters (hard disks), thin ribbons of
-material (magnetic tapes), or rectangular sheets (magnetic cards).
+Over USD 80 billion is spent annually on magnetic storage devices.[^datastrucandstor-1] A significant proportion of many units IS hardware budgets is consumed by magnetic storage. Magnetic technology, the backbone of data storage for five decades, is based on magnetization and demagnetization of spots on a magnetic recording surface. The same spot can be magnetized and demagnetized repeatedly. Magnetic recording materials may be coated on rigid platters (hard disks), thin ribbons of material (magnetic tapes), or rectangular sheets (magnetic cards).
 
-[^datastrucandstor-1]: [\[[http://www.gartner.com/it/page.jsp?id=2149415]{.ul}\](http://www.terry.uga.edu/people/rwatson/)](http://www.gartner.com/it/page.jsp?id=2149415%5D%7B.underline%7D%5D(http://www.terry.uga.edu/people/rwatson/))
+[^datastrucandstor-1]: [Physics World](https://physicsworld.com/a/hot-time-for-hard-disks-why-magnetic-recording-technology-is-still-going-strong/)
 
-The main advantages of magnetic technology are its relative maturity,
-widespread use, and declining costs. A major disadvantage is
-susceptibility to strong magnetic fields, which can corrupt data stored
-on a disk. Another shortcoming is data storage life; magnetization
-decays with time.
+The main advantages of magnetic technology are its relative maturity, widespread use, and declining costs. A major disadvantage is susceptibility to strong magnetic fields, which can corrupt data stored on a disk. Another shortcoming is data storage life; magnetization decays with time.
 
-As organizations continue to convert paper to images, they need a very
-long-term, unalterable storage medium for documents that could be
-demanded in legal proceedings (e.g., a customer's handwritten insurance
-claim or a client's completed form for a mutual fund investment).
-Because data resident on magnetic media can be readily changed and decay
-with time, magnetic storage is not an ideal medium for storing archival
-data or legal documents.
+As organizations continue to convert paper to images, they need a very long-term, unalterable storage medium for documents that could be demanded in legal proceedings (e.g., a customer's handwritten insurance claim or a client's completed form for a mutual fund investment). Because data resident on magnetic media can be readily changed and decay with time, magnetic storage is not an ideal medium for storing archival data or legal documents.
 
 #### Fixed magnetic disk {.unnumbered}
 
-A fixed magnetic disk, also known as a hard disk drive (HDD), containing
-one or more recording surfaces is permanently mounted in the disk drive
-and cannot be removed. The recording surfaces and access mechanism are
-assembled in a clean room and then sealed to eliminate contaminants,
-making the device more reliable and permitting higher recording density
-and transfer rates. Access time is typically between 4 and 10 ms, and
-transfer rates can be as high as 1,300 Mbytes per second. Disk unit
-capacities range from gigabytes to terabytes. Magnetic disk units are
-sometimes called direct-access storage devices or **DASD** (pronounced
-*dasdee*).
+A fixed magnetic disk, also known as a **hard disk drive** (HDD), containing one or more recording surfaces is permanently mounted in the disk drive and cannot be removed. The recording surfaces and access mechanism are assembled in a clean room and then sealed to eliminate contaminants, making the device more reliable and permitting higher recording density and transfer rates. Access time is typically between 4 and 10 ms, and transfer rates can be as high as 1,300 Mbytes per second. Disk unit capacities range from gigabytes to terabytes. Magnetic disk units are sometimes called direct-access storage devices or **DASD** (pronounced *dasdee*).
 
-Fixed disk is the medium of choice for most systems, from personal
-computers to supercomputers. It gives rapid, direct access to large
-volumes of data and is ideal for highly volatile files. The major
-disadvantage of magnetic disk is the possibility of a head crash, which
-destroys the disk surface and data. With the read/write head of a disk
-just 15 millionths of an inch (40 millionths of a centimeter) above the
-surface of the disk, there is little margin for error. Hence, it is
-crucial to make backup copies of fixed disk files regularly.
+Fixed disk is the medium of choice for most systems, from personal computers to supercomputers. It gives rapid, direct access to large volumes of data and is ideal for highly volatile files. The major disadvantage of magnetic disk is the possibility of a head crash, which destroys the disk surface and data. With the read/write head of a disk just 15 millionths of an inch (40 millionths of a centimeter) above the surface of the disk, there is little margin for error. Hence, it is crucial to make backup copies of fixed disk files regularly.
 
 #### RAID {.unnumbered}
 
-RAID (redundant array of independent, or inexpensive, disks) takes
-advantage of the economies of scale in manufacturing disks for the
-personal computing market. The cost of drives increases with their
-capacity and speed. RAIDs use several cheaper drives whose total cost is
-less than one high-capacity drive but have the same capacity. In
-addition to lower cost, RAID offers greater data security. All RAID
-levels (except level 0) can reconstruct the data on any single disk from
-the data stored on the remaining disks in the array in a manner that is
-quite transparent to the user.
+RAID (redundant array of independent, or inexpensive, disks) takes advantage of the economies of scale in manufacturing disks for the personal computing market. The cost of drives increases with their capacity and speed. RAIDs use several cheaper drives whose total cost is less than one high-capacity drive but have the same capacity. In addition to lower cost, RAID offers greater data security. All RAID levels (except level 0) can reconstruct the data on any single disk from the data stored on the remaining disks in the array in a manner that is quite transparent to the user.
 
-RAID uses a combination of mirroring and striping to provide greater
-data protection. When a file is written to a mirrored array, the disk
-controller writes identical copies of each record to each drive in the
-array. When a file is read from a mirrored array, the controller reads
-alternate pages simultaneously from each of the drives. It then puts
-these pages together in the correct sequence before delivering them to
-the computer. Mirroring reduces data access time by approximately the
-number of drives in the array because it interleaves the reading of
-records. During the time a conventional disk drive takes to read one
-page, a RAID system can read two or more pages (one from each drive). It
-is simply a case of moving from sequential to parallel retrieval of
-pages. Access times are halved for a two-drive array, quartered for a
-four-drive array, and so on.
+RAID uses a combination of mirroring and striping to provide greater data protection. When a file is written to a mirrored array, the disk controller writes identical copies of each record to each drive in the array. When a file is read from a mirrored array, the controller reads alternate pages simultaneously from each of the drives. It then puts these pages together in the correct sequence before delivering them to the computer. Mirroring reduces data access time by approximately the number of drives in the array because it interleaves the reading of records. During the time a conventional disk drive takes to read one page, a RAID system can read two or more pages (one from each drive). It is simply a case of moving from sequential to parallel retrieval of pages. Access times are halved for a two-drive array, quartered for a four-drive array, and so on.
 
-If a read error occurs on a particular disk, the controller can always
-read the required page from another drive in the array because each
-drive has a full copy of the file. Mirroring, which requires at least
-two drives, improves response time and data security; however, it does
-take considerably more space to store a file because multiple copies are
-created.
+If a read error occurs on a particular disk, the controller can always read the required page from another drive in the array because each drive has a full copy of the file. Mirroring, which requires at least two drives, improves response time and data security; however, it does take considerably more space to store a file because multiple copies are created.
 
 *Mirroring*
 
 ![](Figures/Chapter%2020/mirroring.png)
 
-When a file is written to a striping array of three drives, for
-instance, one half of the file is written to the first drive and the
-second half to the second drive. The third drive is used for error
-correction. A parity bit is constructed for each corresponding pair of
-bits written to drives one and two, and this parity bit is written to
-the third drive. A parity bit is a bit added to a chunk of data (e.g., a
-byte) to ensure that the number of bits in the chunk with a value of one
-is even or odd. Parity bits can be checked when a file is read to detect
-data errors, and in many cases the data errors can be corrected. Parity
-bits demonstrate how redundancy supports recovery.
+When a file is written to a striping array of three drives, for instance, one half of the file is written to the first drive and the second half to the second drive. The third drive is used for error correction. A parity bit is constructed for each corresponding pair of bits written to drives one and two, and this parity bit is written to the third drive. A parity bit is a bit added to a chunk of data (e.g., a byte) to ensure that the number of bits in the chunk with a value of one is even or odd. Parity bits can be checked when a file is read to detect data errors, and in many cases the data errors can be corrected. Parity bits demonstrate how redundancy supports recovery.
 
-When a file is read by a striping array, portions are retrieved from
-each drive and assembled in the correct sequence by the controller. If a
-read error occurs, the lost bits can be reconstructed by using the
-parity data on the third drive. If a drive fails, it can be replaced and
-the missing data restored on the new drive. Striping requires at least
-three drives. Normally, data are written to every drive but one, and
-that remaining drive is used for the parity bit. Striping gives added
-data security without requiring considerably more storage, but it does
-not have the same response time increase as mirroring.
+When a file is read by a striping array, portions are retrieved from each drive and assembled in the correct sequence by the controller. If a read error occurs, the lost bits can be reconstructed by using the parity data on the third drive. If a drive fails, it can be replaced and the missing data restored on the new drive. Striping requires at least three drives. Normally, data are written to every drive but one, and that remaining drive is used for the parity bit. Striping gives added data security without requiring considerably more storage, but it does not have the same response time increase as mirroring.
 
 *Striping*
 
 ![](Figures/Chapter%2020/striping.png)
 
-RAID subsystems are divided into seven levels, labeled 0 through 6. All
-RAID levels, except level 0, have common features:
+RAID subsystems are divided into seven levels, labeled 0 through 6. All RAID levels, except level 0, have common features:
 
--   There is a set of physical disk drives viewed by the operating
-    system as a single, logical drive.
+-   There is a set of physical disk drives viewed by the operating system as a single, logical drive.
 
 -   Data are distributed across corresponding physical drives.
 
 -   Parity bits are used to recover data in the event of a disk failure.
 
-Level 0 has been in use for many years. Data are broken into blocks that
-are interleaved or *striped* across disks. By spreading data over
-multiple drives, read and write operations can occur in parallel. As a
-result, I/O rates are higher, which makes level 0 ideal for I/O
-intensive applications such as recording video. There is no additional
-parity information and thus no data recovery when a drive failure
-occurs.
+Level 0 has been in use for many years. Data are broken into blocks that are interleaved or *striped* across disks. By spreading data over multiple drives, read and write operations can occur in parallel. As a result, I/O rates are higher, which makes level 0 ideal for I/O intensive applications such as recording video. There is no additional parity information and thus no data recovery when a drive failure occurs.
 
-Level 1 implements mirroring, as described previously. This is possibly
-the most popular form of RAID because of its effectiveness for critical
-nonstop applications, although high levels of data availability and I/O
-rates are counteracted by higher storage costs. Another disadvantage is
-that every write command must be executed twice (assuming a two-drive
-array), and thus level 1 is inappropriate for applications that have a
-high ratio of writes to reads.
+Level 1 implements *mirroring*, as described previously. This is possibly the most popular form of RAID because of its effectiveness for critical nonstop applications, although high levels of data availability and I/O rates are counteracted by higher storage costs. Another disadvantage is that every write command must be executed twice (assuming a two-drive array), and thus level 1 is inappropriate for applications that have a high ratio of writes to reads.
 
-Level 2 implements striping by interleaving blocks of data on each disk
-and maintaining parity on the check disk. This is a poor choice when an
-application has frequent, short random disk accesses, because every disk
-in the array is accessed for each read operation. However, RAID 2
-provides excellent data transfer rates for large sequential data
-requests. It is therefore suitable for computer-aided drafting and
-computer-aided manufacturing (CAD/CAM) and multimedia applications,
-which typically use large sequential files. RAID 2 is rarely used,
-however, because the same effect can be achieved with level 3 at a lower
-cost.
+Level 2 implements *striping by interleaving* blocks of data on each disk and maintaining parity on the check disk. This is a poor choice when an application has frequent, short random disk accesses, because every disk in the array is accessed for each read operation. However, RAID 2 provides excellent data transfer rates for large sequential data requests. It is therefore suitable for computer-aided drafting and computer-aided manufacturing (CAD/CAM) and multimedia applications, which typically use large sequential files. RAID 2 is rarely used, however, because the same effect can be achieved with level 3 at a lower cost.
 
-Level 3 utilizes striping at the bit or byte level, so only one I/O
-operation can be executed at a time. Compared to level 1, RAID level 3
-gives lower-cost data storage at lower I/O rates and tends to be most
-useful for the storage of large amounts of data, common with CAD/CAM and
-imaging applications.
+Level 3 utilizes *striping at the bit or byte level*, so only one I/O operation can be executed at a time. Compared to level 1, RAID level 3 gives lower-cost data storage at lower I/O rates and tends to be most useful for the storage of large amounts of data, common with CAD/CAM and imaging applications.
 
-Level 4 uses sector-level striping; thus, only a single disk needs to be
-accessed for a read request. Write requests are slower, however, because
-there is only one parity drive.
+Level 4 uses *sector-level striping*; thus, only a single disk needs to be accessed for a read request. Write requests are slower, however, because there is only one parity drive.
 
-Level 5, a variation of striping, reads and writes data to separate
-disks independently and permits simultaneous reading and writing of
-data. Data and parity are written on the same drive. Spreading parity
-data evenly across several drives avoids the bottleneck that can occur
-when there is only one parity drive. RAID 5 is well designed for the
-high I/O rates required by transaction processing systems and servers,
-particularly e-mail servers. It is the most balanced implementation of
-the RAID concept in terms of price, reliability, and performance. It
-requires less capacity than mirroring with level 1 and higher I/O rates
-than striping with level 3, although performance can decrease with
-update-intensive operations. RAID 5 is frequently found in local-area
-network (LAN) environments.
+Level 5, *a variation of striping*, reads and writes data to separate disks independently and permits simultaneous reading and writing of data. Data and parity are written on the same drive. Spreading parity data evenly across several drives avoids the bottleneck that can occur when there is only one parity drive. RAID 5 is well designed for the high I/O rates required by transaction processing systems and servers, particularly e-mail servers. It is the most balanced implementation of the RAID concept in terms of price, reliability, and performance. It requires less capacity than mirroring with level 1 and higher I/O rates than striping with level 3, although performance can decrease with update-intensive operations. RAID 5 is frequently found in local-area network (LAN) environments.
 
 *RAID level 5*
 
 ![](Figures/Chapter%2020/raid-5.png)
 
-RAID 6 takes fault tolerance to another level by enabling a RAID system
-to still function when two drives fail. Using a method called double
-parity, it distributes parity information across multiple drives so
-that, on the fly, a disk array can be rebuild even if another drive
-fails before the rebuild is complete.
+RAID 6 takes fault tolerance to another level by enabling a RAID system to still function when two drives fail. Using a method called *double parity*, it distributes parity information across multiple drives so that, on the fly, a disk array can be rebuild even if another drive fails before the rebuild is complete.
 
-RAID does have drawbacks. It often lowers a system's performance in
-return for greater reliability and increased protection against data
-loss. Extra disk space is required to store parity information. Extra
-disk accesses are required to access and update parity information. You
-should remember that RAID is not a replacement for standard backup
-procedures; it is a technology for increasing the fault tolerance of
-critical online systems. RAID systems offer terabytes of storage.
+RAID does have drawbacks. It often lowers a system's performance in return for greater reliability and increased protection against data loss. Extra disk space is required to store parity information. Extra disk accesses are required to access and update parity information. You should remember that RAID is not a replacement for standard backup procedures; it is a technology for increasing the fault tolerance of critical online systems. RAID systems offer terabytes of storage.
 
 #### Removable magnetic disk {.unnumbered}
 
-Removable drives can be plugged into a system as required. The disk's
-removability is its primary advantage, making it ideal for backup and
-transport. For example, you might plug in a removable drive to the USB
-port of your laptop once a day to backup its hard drive. Removable disk
-is also useful when applications need not be continuously online. For
-instance, the monthly payroll system can be stored on a removable drive
-and mounted as required. Removable drives cost about USD 100 per
-terabyte.
+Removable drives can be plugged into a system as required. The disk's removability is its primary advantage, making it ideal for backup and transport. For example, you might plug in a removable drive to the USB port of your laptop once a day to backup its hard drive. Removable disk is also useful when applications need not be continuously online. For instance, the monthly payroll system might be stored on a removable drive and mounted as required. Removable drives cost about USD 100 per terabyte.
 
 #### Magnetic tape {.unnumbered}
 
-A magnetic tape is a thin ribbon of plastic coated with ferric oxide.
-The once commonly used nine-track 2,400-foot (730 m) tape has a capacity
-of about 160 Mbytes and a data transfer rate of 2 Mbytes per second. The
-designation **nine-track** means nine bits are stored across the tape (8
-bits plus one parity bit). Magnetic tape was used extensively for
-archiving and backup in early database systems; however, its limited
-capacity and sequential nature have resulted in its replacement by other
-media, such as magnetic tape cartridge.
+A magnetic tape is a thin ribbon of plastic coated with ferric oxide. The once commonly used nine-track 2,400-foot (730 m) tape has a capacity of about 160 Mbytes and a data transfer rate of 2 Mbytes per second. The designation **nine-track** means nine bits are stored across the tape (8 bits plus one parity bit). Magnetic tape was used extensively for archiving and backup in early database systems; however, its limited capacity and sequential nature have resulted in its replacement by other media, such as magnetic tape cartridge.
 
 #### Magnetic tape cartridges {.unnumbered}
 
-Tape cartridges, with a capacity measured in Gbytes and transfer rates
-of up to 6 Mbytes per second, have replaced magnetic tape. They are the
-most cost effective (from a purchase price \$/GB perspective) magnetic
-recording device. Furthermore, a tape cartridge does not consume any
-power when unmounted and stored in a library. Thus, the operating costs
-for a tape storage archival system are much lower than an equivalent
-hard disk storage system, though hard disks provide faster access to
-archived data.
+Tape cartridges, with a capacity measured in Gbytes and transfer rates of up to 6 Mbytes per second, have replaced magnetic tape. They are the most cost effective (from a purchase price USD/GB perspective) magnetic recording device. Furthermore, a tape cartridge does not consume any power when unmounted and stored in a library. Thus, the operating costs for a tape storage archival system are much lower than an equivalent hard disk storage system, though hard disks provide faster access to archived data.
 
 #### Mass storage {.unnumbered}
 
-There exists a variety of mass storage devices that automate
-labor-intensive tape and cartridge handling. The storage medium, with a
-capacity of terabytes, is typically located and mounted by a robotic
-arm. Mass storage devices can currently handle hundreds of petabytes of
-data. They have slow access time because of the mechanical loading of
-tape storage, and it might take several minutes to load a file.
+There exists a variety of mass storage devices that automate labor-intensive tape and cartridge handling. The storage medium, with a capacity of terabytes, is typically located and mounted by a robotic arm. Mass storage devices can currently handle hundreds of petabytes of data. They have slow access time because of the mechanical loading of tape storage, and it might take several minutes to load a file.
 
 ### Solid-state memory {.unnumbered}
 
-A solid-state disk (SSD) connects to a computer in the same way as
-regular magnetic disk drives do, but they store data on arrays of memory
-chips. SSDs require lower power consumption (longer battery life) and
-come in smaller sizes (smaller and lighter devices). As well, SSDs have
-faster access times. However, they cost around six times as much as
-equivalent size HDDs, but they declining in prices rapidly, and might be
-as little as twice as costly by 2021.[^datastrucandstor-2] SSD is
-rapidly becoming the standard for laptops.
+A solid-state disk (SSD) connects to a computer in the same way as regular magnetic disk drives do, but they store data on arrays of memory chips. SSDs require lower power consumption (longer battery life) and come in smaller sizes (smaller and lighter devices). As well, SSDs have faster access times. However, they cost around six times as much as equivalent size HDDs, but they declining in prices rapidly, and might be as little as twice as costly by 2021. SSD is common for laptops.
 
-[^datastrucandstor-2]: [https://www.theregister.co.uk/2017/05/22/ssd\\\_price\\\_premium\\\_over\\\_disk\\\_falling/](https://www.theregister.co.uk/2017/05/22/ssd_price_premium_over_disk_falling/)
-
-A **flash drive**, also known as a keydrive or jump drive, is a small,
-removable storage device with a Universal Serial Bus (USB) connector. It
-contains solid-state memory and is useful for transporting small amounts
-of data. Capacity is in the range 1 to 128 Gbytes. The price for low
-capacity drives is about about USD 1-2 per Gbytes.
-
-While price is a factor, the current major drawback holding back the
-adoption of SSD is the lack of manufacturing capacity for the NAND chips
-used in SSDs.[^datastrucandstor-3] The introduction of tablets, such as
-the iPad, and smartphones is exacerbating this problem.
-
-[^datastrucandstor-3]: <http://www.pcworld.com/businesscenter/article/217883/seagate_solidstate_disks_are_doomed_at_least_for_now.html>
+A **flash drive**, also known as a keydrive or jump drive, is a small, removable storage device with a Universal Serial Bus (USB) connector. It contains solid-state memory and is useful for transporting small amounts of data. Capacity is in the range 1 to 128 Gbytes. The price for low capacity drives is about about USD 1-2 per Gbytes.
 
 ### Optical technology {.unnumbered}
 
-Optical technology is a more recent development than magnetic. Its
-advantages are high-storage densities, low-cost media, and direct
-access. Optical storage systems work by reflecting beams of laser light
-off a rotating disk with a minutely pitted surface. As the disk rotates,
-the amount of light reflected back to a sensor varies, generating a
-stream of ones and zeros. A tiny change in the wavelength of the laser
-translates into as much as a tenfold increase in the amount of
-information that can be stored. Optical technology is highly reliable
-because it is not susceptible to head crashes.
+Optical technology is a more recent development than magnetic. Its advantages are high-storage densities, low-cost media, and direct access. Optical storage systems work by reflecting beams of laser light off a rotating disk with a minutely pitted surface. As the disk rotates, the amount of light reflected back to a sensor varies, generating a stream of ones and zeros. A tiny change in the wavelength of the laser translates into as much as a tenfold increase in the amount of information that can be stored. Optical technology is highly reliable because it is not susceptible to head crashes.
 
-There are three storage media based on optical technology: CD-ROM, DVD,
-and Blu-ray. Most optical disks can reliably store records for at least
-10 years under prescribed conditions of humidity and temperature. Actual
-storage life may be in the region of 30 to 50 years. Optical media are
-compact medium for the storage of permanent data. Measuring 12 cm (\~
-4.75 inches) in diameter, the size consistency often means later
-generation optical readers can read earlier generation media.
+There are three storage media based on optical technology: CD-ROM, DVD, and Blu-ray. Most optical disks can reliably store records for at least 10 years under prescribed conditions of humidity and temperature. Actual storage life may be in the region of 30 to 50 years. Optical media are compact medium for the storage of permanent data. Measuring 12 cm (~ 4.75 inches) in diameter, the size consistency often means later generation optical readers can read earlier generation media.
 
 *Optical technology*
 
 | Medium                       | Introduced | Capacity      |
-|:-----------------------------|:-----------|:--------------|
-| Compact disc (CD)            | 1982       | .65 Gbytes    |
-| Digital versatile disc (DVD) | 1995       | 1.5-17 Gbytes |
-| Blu-ray disc (BD)            | 2006       | 25-50 Gbytes  |
-
-Optical media come in three types. Read-only memory (ROM) is typically
-used for the large scale manufacturing of information to be distributed,
-such as a music album or movie, and it will also usually incorporate
-some form of digital rights management to prevent illegal copying.
-Recordable (R) for write-once media can be purchased for the storing of
-information that should not be alterable. Re-recordable media are
-re-usable, and are a general backup and distribution medium.
+|:-----------------------------|:----------:|:--------------|
+| Compact disc (CD)            |    1982    | .65 Gbytes    |
+| Digital versatile disc (DVD) |    1995    | 1.5-17 Gbytes |
+| Blu-ray disc (BD)            |    2006    | 25-50 Gbytes  |
 
 *Optical media options*
 
@@ -1112,162 +496,58 @@ re-usable, and are a general backup and distribution medium.
 | R      | Recordable or write-once    |
 | RW     | Read/write or re-recordable |
 
-Optical media are commonly used to distribute various types of
-information. DVDs and Blu-ray have replaced CDs to distribute documents,
-music, and software, though the use of optical media for information
-distribution is declining because it is cheaper and faster to transmit
-via the Internet. Services such as Apple's App store and Netflix are
-pushing the distribution of software and movies, respectively, to the
-Internet.
-
-Data stored on read-only or write-once optical media are generally
-reckoned to have the highest legal standing of any of the forms
-discussed because, once written, the data cannot be altered. Thus, they
-are ideal for storage of documents that potentially may be used in
-court. Consequently, we are likely to see archival storage emerge as the
-major use for optical technology.
+Data stored on read-only or write-once optical media are generally reckoned to have the highest legal standing of any of the forms discussed because, once written, the data cannot be altered. Thus, they are ideal for storage of documents that potentially may be used in court. Consequently, we are likely to see archival storage emerge as the major use for optical technology.
 
 ### Storage-area networks {.unnumbered}
 
-A storage-area network (SAN) is a high-speed network for connecting and
-sharing different kinds of storage devices, such as tape libraries and
-disk arrays. In the typical LAN, the storage device (usually a disk) is
-closely coupled to a server and communicates through a bus connection.
-Communication among storage devices occurs through servers and over the
-LAN, which can lead to network congestion.
+A storage-area network (SAN) is a high-speed network for connecting and sharing different kinds of storage devices, such as tape libraries and disk arrays. In the typical LAN, the storage device (usually a disk) is closely coupled to a server and communicates through a bus connection. Communication among storage devices occurs through servers and over the LAN, which can lead to network congestion.
 
-SANs support disk mirroring, backup and restore, archival and retrieval
-of archived data, data migration from one storage device to another, and
-the sharing of data among different servers in a network. Typically, a
-SAN is part of the overall network of computing resources for an
-enterprise. SANs are likely to be a critical element for supporting
-e-commerce and applications requiring large volumes of data. As Storage
-Area Networks (SANs) have become increasingly affordable, their use in
-enterprises and even smaller businesses has become widespread.
+SANs support disk mirroring, backup and restore, archival and retrieval of archived data, data migration from one storage device to another, and the sharing of data among different servers in a network. Typically, a SAN is part of the overall network of computing resources for an enterprise. SANs are likely to be a critical element for supporting e-commerce and applications requiring large volumes of data. As Storage Area Networks (SANs) have become increasingly affordable, their use in enterprises and even smaller businesses has become widespread.
 
 ### Long-term storage {.unnumbered}
 
-Long-term data storage has always been of concern to societies and
-organizations. Some data, such as the location of toxic-waste sites,
-must be stored for thousands of years. Increasingly, governments are
-converting their records to electronic format. Unlike paper, magnetic
-media do not show degradation until it is too late to recover the data.
-Magnetic tapes can become so brittle that the magnetic coating separates
-from the backing. In addition, computer hardware and software rapidly
-become obsolete. The medium may be readable, but there could be no
-hardware to read it and no software to decode it.
+Long-term data storage has always been of concern to societies and organizations. Some data, such as the location of toxic-waste sites, must be stored for thousands of years. Increasingly, governments are converting their records to electronic format. Unlike paper, magnetic media do not show degradation until it is too late to recover the data. Magnetic tapes can become so brittle that the magnetic coating separates from the backing. In addition, computer hardware and software rapidly become obsolete. The medium may be readable, but there could be no hardware to read it and no software to decode it.
 
-Paper, it seems, is still the best medium for long-term storage, and
-research is being conducted to create extra-long-life paper that can
-store information for hundreds of years. This paper, resistant to damage
-from heat, cold, and magnetism, will store data in a highly compact
-format but, obviously, nowhere near optical disk densities.
+Paper, it seems, is still the best medium for long-term storage, and research is being conducted to create extra-long-life paper that can store information for hundreds of years. This paper, resistant to damage from heat, cold, and magnetism, will store data in a highly compact format but, obviously, nowhere near optical disk densities.
 
-*The life expectancy of various media at 20°C (68°F) and 40 percent
-relative humidity (source: National Media Lab)*
+*The life expectancy of various media at 20°C (68°F) and 40 percent relative humidity (source: National Media Lab)*
 
 ![](Figures/Chapter%2020/storage%20life.png)
 
 ## Data compression {.unnumbered}
 
-Data compression is a method for encoding digital data so that they
-require less storage space and thus less communication bandwidth. There
-are two basic types of compression: lossless methods, in which no data
-are lost when the files are restored to their original format, and lossy
-methods, in which some data are lost when the files are decompressed.
+Data compression is a method for encoding digital data so that they require less storage space and thus less communication bandwidth. There are two basic types of compression: lossless methods, in which no data are lost when the files are restored to their original format, and lossy methods, in which some data are lost when the files are decompressed.
 
 ### Lossless compression {.unnumbered}
 
-During lossless compression, the data-compression software searches for
-redundant or repetitive data and encodes it. For example, a string of
-100 asterisks (\*) can be stored more compactly by a compression system
-that records the repeated character (i.e., \*) and the length of the
-repetition (i.e., 100). The same principle can be applied to a photo
-that contains a string of horizontal pixels of the same color. Clearly,
-you want to use lossless compression with text files (e.g., a business
-report or spreadsheet).
+During lossless compression, the data-compression software searches for redundant or repetitive data and encodes it. For example, a string of 100 asterisks (*) can be stored more compactly by a compression system that records the repeated character (i.e.,* ) and the length of the repetition (i.e., 100). The same principle can be applied to a photo that contains a string of horizontal pixels of the same color. Clearly, you want to use lossless compression with text files (e.g., a business report or spreadsheet).
 
 ### Lossy compression {.unnumbered}
 
-Lossy compression is used for graphics, video, and audio files because
-humans are often unable to detect minor data losses in these formats.
-Audio files can often be compressed to 10 percent of their original size
-(e.g., an MP3 version of a CD recording).
+Lossy compression is used for graphics, video, and audio files because humans are often unable to detect minor data losses in these formats. Audio files can often be compressed to 10 percent of their original size (e.g., an MP3 version of a CD recording).
 
-> ❓*Skill builder* An IS department in a major public university records
-> the lectures for 10 of its classes for video streaming to its partner
-> universities in India and China. Each twice-weekly lecture runs for
-> 1.25 hours and a semester is 15 weeks long. A video streaming expert
-> estimates that one minute of digital video requires 6.5 Mbytes using
-> MPEG-4 and Apple's QuickTime software. What is MPEG-4? Calculate how
-> much storage space will be required and recommend a storage device for
-> the department.
+> ❓ *Skill builder*
+>
+> An IS department in a major public university records the lectures for 10 of its classes for video streaming to its partner universities in India and China. Each twice-weekly lecture runs for 1.25 hours and a semester is 15 weeks long. A video streaming expert estimates that one minute of digital video requires 6.5 Mbytes using MPEG-4 and Apple's QuickTime software. What is MPEG-4? Calculate how much storage space will be required and recommend a storage device for the department.
 
-Details of the various storage devices are summarized in the following
-table. A simple three-star rating system has been used for each
-device---the more stars, the better. In regard to access speed, RAID
-gets more stars than DVD-RAM because it retrieves a stored record more
-quickly. Similarly, optical rates three stars because it costs less per
-megabyte to store data on a magneto-optical disk than on a fixed disk.
-The scoring system is relative. The fact that removable disk gets two
-stars for reliability does not mean it is an unreliable storage medium;
-it simply means that it is not as reliable as some other media.
+Details of the various storage devices are summarized in the following table. A simple three-star rating system has been used for each device---the more stars, the better. In regard to access speed, RAID gets more stars than DVD-RAM because it retrieves a stored record more quickly. Similarly, optical rates three stars because it costs less per megabyte to store data on a magneto-optical disk than on a fixed disk. The scoring system is relative. The fact that removable disk gets two stars for reliability does not mean it is an unreliable storage medium; it simply means that it is not as reliable as some other media.
 
 *Relative merits of data storage devices*
 
-+---------+---------+---------+---------+---------+---------+---------+
-| D evice | A ccess | Vo lu   | Volat   | Cost    | Relia b | Legal   |
-|         | speed   | me      | ility   | per me  | ility   | st a    |
-|         |         |         |         | g abyte |         | nding   |
-+:========+:========+:========+:========+:========+:========+:========+
-| Solid   | \       | \*      | \       | \*      | \       | \*      |
-| state   | \*\*\*  |         | \       |         | \*\*\*  |         |
-|         |         |         | \       |         |         |         |
-|         |         |         | \*\*\*  |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| Fixed   | \       | \* \*   | \       | \       | \*\*    | \*      |
-| disk    | \*\*\*  | \*      | \       | \*\*\*  |         |         |
-|         |         |         | \       |         |         |         |
-|         |         |         | \*\*\*  |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| RAID    | \       | \* \*   | \       | \       | \       | \*      |
-|         | \*\*\*  | \*      | \       | \*\*\*  | \*\*\*  |         |
-|         |         |         | \       |         |         |         |
-|         |         |         | \*\*\*  |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| R em o  | \*\*    | \* \*   | \       | \*\*    | \*\*    | \*      |
-| vable   |         |         | \       |         |         |         |
-| disk    |         |         | \       |         |         |         |
-|         |         |         | \*\*\*  |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| Flash m | \*\*    | \*      | \       | \*      | \       | \*      |
-| emory   |         |         | \       |         | \*\*\*  |         |
-|         |         |         | \       |         |         |         |
-|         |         |         | \*\*\*  |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| Tape    | \*      | \* \*   | \*      | \       | \*\*    | \*      |
-|         |         |         |         | \*\*\*  |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| C ar t  | \*\*    | \* \*   | \*      | \       | \*\*    | \*      |
-| ridge   |         | \*      |         | \*\*\*  |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| Mass S  | \*\*    | \* \*   | \*      | \       | \*\*    | \*      |
-| t orage |         | \*      |         | \*\*\*  |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| SAN     | \       | \* \*   | \       | \       | \       | \*      |
-|         | \*\*\*  | \*      | \       | \*\*\*  | \*\*\*  |         |
-|         |         |         | \       |         |         |         |
-|         |         |         | \*\*\*  |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| Opt ic  | \*      | \* \*   | \*      | \       | \       | \       |
-| a l-ROM |         | \*      |         | \*\*\*  | \*\*\*  | \*\*\*  |
-+---------+---------+---------+---------+---------+---------+---------+
-| O pt i  | \*      | \* \*   | \*      | \       | \       | \*\*    |
-| cal-R   |         | \*      |         | \*\*\*  | \*\*\*  |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| Op ti c | \*      | \* \*   | \*\*    | \       | \       | \*      |
-| al-RW   |         | \*      |         | \*\*\*  | \*\*\*  |         |
-+---------+---------+---------+---------+---------+---------+---------+
+| Device | Access speed | Volume | Volatility | Cost per megabyte | Reliability | Legal standing |
+|:---------------|-----|-----|-----|-----|-----|-----|
+| Solid state    | *** | *   | *** | *   | *** | *   |
+| Fixed disk     | *** | *** | *** | *** | **  | *   |
+| RAID           | *** | *** | *** | *** | *** | *   |
+| Removable disk | **  | **  | *** | **  | **  | *   |
+| Flash memory   | **  | *   | *** | *   | *** | *   |
+| Tape           | *   | **  | *   | *** | **  | *   |
+| Cartridge      | **  | *** | *   | *** | **  | *   |
+| Mass Storage   | **  | *** | *   | *** | **  | *   |
+| SAN            | *** | *** | *** | *** | *** | *   |
+| Optical-ROM    | *   | *** | *   | *** | *** | *** |
+| Optical-R      | *   | *** | *   | *** | *** | **  |
+| Optical-RW     | *   | *** | **  | *** | *** | *   |
 
 *Legend*
 
@@ -1282,102 +562,71 @@ it simply means that it is not as reliable as some other media.
 
 ### Conclusion {.unnumbered}
 
-The internal and physical aspects of database design are a key
-determinant of system performance. Selection of appropriate data
-structures can substantially curtail disk access and reduce response
-times. In making data structure decisions, the database administrator
-needs to weigh the pros and cons of each choice. Similarly, in selecting
-data storage devices, the designer needs to be aware of the trade-offs.
-Various devices and media have both strengths and weaknesses, and these
-need to be considered.
+The internal and physical aspects of database design are a key determinant of system performance. Selection of appropriate data structures can substantially curtail disk access and reduce response times. In making data structure decisions, the database administrator needs to weigh the pros and cons of each choice. Similarly, in selecting data storage devices, the designer needs to be aware of the trade-offs. Various devices and media have both strengths and weaknesses, and these need to be considered.
 
 ### Summary {.unnumbered}
 
-The data deluge is increasing the importance of data management for
-organizations. It takes considerably longer to retrieve data from a hard
-disk than from main memory. Appropriate selection of data structures and
-data access methods can considerably reduce delays by reducing disk
-accesses. The key characteristics of disk storage devices that affect
-database access are rotational speed and access arm speed. Access arm
-movement can be minimized by storing frequently used data on the same
-track on a single surface or on the same track on different surfaces.
-Records that are frequently used together should be clustered together.
-Intrafile clustering applies to the records within a single file.
-Interfile clustering applies to multiple files. The disk manager, the
-part of the operating system responsible for physical I/O, maintains a
-directory of pages. The file manager, a level above the disk manager,
-contains a directory of files.
+The data deluge is increasing the importance of data management for organizations. It takes considerably longer to retrieve data from a hard disk than from main memory. Appropriate selection of data structures and data access methods can considerably reduce delays by reducing disk accesses. The key characteristics of disk storage devices that affect database access are rotational speed and access arm speed. Access arm movement can be minimized by storing frequently used data on the same track on a single surface or on the same track on different surfaces. Records that are frequently used together should be clustered together. Intrafile clustering applies to the records within a single file. Interfile clustering applies to multiple files. The disk manager, the part of the operating system responsible for physical I/O, maintains a directory of pages. The file manager, a level above the disk manager, contains a directory of files.
 
-Indexes are used to speed up retrieval by reducing disk accesses. An
-index is a file containing the value of the index field and the address
-of its full record. The use of indexes involves a trade-off between
-faster retrievals and slower updates. Indexes can be used for both
-sequential and direct access. A file can have multiple indexes. A sparse
-index does not contain an entry for every value of the indexed field.
-The B-tree, a particular form of index structure, consists of two parts:
-the sequence set and the index set. Hashing is a technique for reducing
-disk accesses that allows direct access to a file. There can be only one
-hashing field. A hashed file can no longer be processed sequentially
-because its physical sequence has lost any logical meaning. A linked
-list is a useful data structure for interfile clustering. It is a
-suitable structure for representing a 1:m relationship. Pointers between
-records are used to maintain a logical sequence. Lists can have forward,
-backward, and parent pointers.
+Indexes are used to speed up retrieval by reducing disk accesses. An index is a file containing the value of the index field and the address of its full record. The use of indexes involves a trade-off between faster retrievals and slower updates. Indexes can be used for both sequential and direct access. A file can have multiple indexes. A sparse index does not contain an entry for every value of the indexed field. The B-tree, a particular form of index structure, consists of two parts: the sequence set and the index set. Hashing is a technique for reducing disk accesses that allows direct access to a file. There can be only one hashing field. A hashed file can no longer be processed sequentially because its physical sequence has lost any logical meaning. A linked list is a useful data structure for interfile clustering. It is a suitable structure for representing a 1:m relationship. Pointers between records are used to maintain a logical sequence. Lists can have forward, backward, and parent pointers.
 
-Systems designers have to decide what data storage devices will be used
-for online data, backup files, and archival storage. In making this
-decision, they must consider the volume of data, volatility of data,
-required speed of access to data, cost of data storage, reliability of
-the data storage medium, and the legal standing of the stored data.
-Magnetic technology, the backbone of data storage for six decades, is
-based on magnetization and demagnetization of spots on a magnetic
-recording surface. Fixed disk, removable disk, magnetic tape, tape
-cartridge, and mass storage are examples of magnetic technology. RAID
-uses several cheaper drives whose total cost is less than one
-high-capacity drive. RAID uses a combination of mirroring or striping to
-provide greater data protection. RAID subsystems are divided into six
-levels labeled 0 through 6. A storage-area network (SAN) is a high-speed
-network for connecting and sharing different kinds of storage devices,
-such as tape libraries and disk arrays.
+Systems designers have to decide what data storage devices will be used for online data, backup files, and archival storage. In making this decision, they must consider the volume of data, volatility of data, required speed of access to data, cost of data storage, reliability of the data storage medium, and the legal standing of the stored data. Magnetic technology, the backbone of data storage for six decades, is based on magnetization and demagnetization of spots on a magnetic recording surface. Fixed disk, removable disk, magnetic tape, tape cartridge, and mass storage are examples of magnetic technology. RAID uses several cheaper drives whose total cost is less than one high-capacity drive. RAID uses a combination of mirroring or striping to provide greater data protection. RAID subsystems are divided into six levels labeled 0 through 6. A storage-area network (SAN) is a high-speed network for connecting and sharing different kinds of storage devices, such as tape libraries and disk arrays.
 
-Optical technology offers high storage densities, low-cost medium, and
-direct access. CD, DVD, and Blu-ray are examples of optical technology.
-Optical disks can reliably store records for at least 10 years and
-possibly up to 30 years. Optical technology is not susceptible to head
-crashes.
+Optical disks can reliably store records for at least 10 years and possibly up to 30 years. Optical technology is not susceptible to head crashes.
 
-Data compression techniques reduce the need for storage capacity and
-bandwidth. Lossless methods result in no data loss, whereas with lossy
-techniques, some data are lost during compression.
+Data compression techniques reduce the need for storage capacity and bandwidth. Lossless methods result in no data loss, whereas with lossy techniques, some data are lost during compression.
 
 ## Key terms and concepts {.unnumbered}
 
-|                              |                                                              |
-|:-----------------------------|:-------------------------------------------------------------|
-| Access time                  | Index set                                                    |
-| Archival file                | Interfile clustering                                         |
-| ASCII                        | Internal schema                                              |
-| B-tree                       | Intrafile clustering                                         |
-| Backup file                  | Join index                                                   |
-| Bitmap index                 | Linked list                                                  |
-| Blue-ray disc (BD)           | Lossless compression                                         |
-| Compact disc (CD)            | Lossy compression                                            |
-| Clustering                   | Magnetic disk                                                |
-| Conceptual schema            | Magnetic tape                                                |
-| Cylinder                     | Mass storage                                                 |
-| Data compression             | Mirroring                                                    |
-| Data deluge                  | Page                                                         |
-| Data storage device          | Parity                                                       |
-| Database architecture        | Pointer                                                      |
-| Digital versatile disc (DVD) | Redundant arrays of inexpensive or independent drives (RAID) |
-| Disk manager                 | Sequence set                                                 |
-| External schema              | Solid-state disk (SSD)                                       |
-| File manager                 | Sparse index                                                 |
-| Hash address                 | Storage-area network (SAN)                                   |
-| Hash field                   | Striping                                                     |
-| Hash function                | Track                                                        |
-| Hashing                      | Unicode                                                      |
-| Index                        | VSAM                                                         |
++:---------------------------------+:-------------------------------------------------------------+
+| Access time                      | Index set                                                    |
++----------------------------------+--------------------------------------------------------------+
+| Archival file                    | Interfile clustering                                         |
++----------------------------------+--------------------------------------------------------------+
+| ASCII                            | Internal schema                                              |
++----------------------------------+--------------------------------------------------------------+
+| B-tree                           | Intrafile clustering                                         |
++----------------------------------+--------------------------------------------------------------+
+| Backup file                      | Join index                                                   |
++----------------------------------+--------------------------------------------------------------+
+| Bitmap index                     | Linked list                                                  |
++----------------------------------+--------------------------------------------------------------+
+| Blue-ray disc (BD)               | Lossless compression                                         |
++----------------------------------+--------------------------------------------------------------+
+| Compact disc (CD)                | Lossy compression                                            |
++----------------------------------+--------------------------------------------------------------+
+| Clustering                       | Magnetic disk                                                |
++----------------------------------+--------------------------------------------------------------+
+| Conceptual schema                | Magnetic tape                                                |
++----------------------------------+--------------------------------------------------------------+
+| Cylinder                         | Mass storage                                                 |
++----------------------------------+--------------------------------------------------------------+
+| Data compression                 | Mirroring                                                    |
++----------------------------------+--------------------------------------------------------------+
+| Data deluge                      | Page                                                         |
++----------------------------------+--------------------------------------------------------------+
+| Data storage device              | Parity                                                       |
++----------------------------------+--------------------------------------------------------------+
+| Database architecture            | Pointer                                                      |
++----------------------------------+--------------------------------------------------------------+
+| Digital versatile disc (DVD)     | Redundant arrays of inexpensive or independent drives (RAID) |
++----------------------------------+--------------------------------------------------------------+
+| Disk manager                     | Sequence set                                                 |
++----------------------------------+--------------------------------------------------------------+
+| External schema                  | Solid-state disk (SSD)                                       |
++----------------------------------+--------------------------------------------------------------+
+| File manager                     | Sparse index                                                 |
++----------------------------------+--------------------------------------------------------------+
+| Hash address                     | Storage-area network (SAN)                                   |
++----------------------------------+--------------------------------------------------------------+
+| Hash field                       | Striping                                                     |
++----------------------------------+--------------------------------------------------------------+
+| Hash function                    | Track                                                        |
++----------------------------------+--------------------------------------------------------------+
+| Hashing                          | Unicode                                                      |
++----------------------------------+--------------------------------------------------------------+
+| Index                            | VSAM                                                         |
++----------------------------------+--------------------------------------------------------------+
 
 ## Exercises {.unnumbered}
 
@@ -1385,11 +634,9 @@ techniques, some data are lost during compression.
 
 2.  What is the difference between a record and a page?
 
-3.  Describe the two types of delay that can occur prior to reading a
-    record from a disk. What can be done to reduce these delays?
+3.  Describe the two types of delay that can occur prior to reading a record from a disk. What can be done to reduce these delays?
 
-4.  What is clustering? What is the difference between intrafile and
-    interfile clustering?
+4.  What is clustering? What is the difference between intrafile and interfile clustering?
 
 5.  Describe the differences between a file manager and a disk manager.
 
@@ -1397,67 +644,24 @@ techniques, some data are lost during compression.
 
 7.  What are the advantages and disadvantages of indexing?
 
-8.  Write the SQL to create an index on the column natcode in the nation
-    table.
+8.  Write the SQL to create an index on the column natcode in the nation table.
 
-9.  A Paris insurance firm keeps paper records of all policies and
-    claims made on it. The firm now has a vault containing 100 filing
-    cabinets full of forms. Because Paris rental costs are so high, the
-    CEO has asked you to recommend a more compact medium for long-term
-    storage of these documents. Because some insurance claims are
-    contested, she is very concerned with ensuring that documents, once
-    stored, cannot be altered. What would you recommend and why?
+9.  A Paris insurance firm keeps paper records of all policies and claims made on it. The firm now has a vault containing 100 filing cabinets full of forms. Because Paris rental costs are so high, the CEO has asked you to recommend a more compact medium for long-term storage of these documents. Because some insurance claims are contested, she is very concerned with ensuring that documents, once stored, cannot be altered. What would you recommend and why?
 
-10. A video producer has asked for your advice on a data storage device.
-    She has specified that she must be able to record video at 5 to 7
-    Mbytes per second. What would you recommend and why?
+10. A video producer has asked for your advice on a data storage device. She has specified that she must be able to record video at 5 to 7 Mbytes per second. What would you recommend and why?
 
-11. A German consumer research company collects scanning data from
-    supermarkets throughout central Europe. The scanned data include
-    product code identifier, price, quantity purchased, time, date,
-    supermarket location, and supermarket name, and in some cases where
-    the supermarket has a frequent buyer plan, it collects a consumer
-    identification code. It has also created a table containing details
-    of the manufacturer of each product. The database contains over 500
-    Tbytes of data. The data are used by market researchers in consumer
-    product companies. A researcher will typically request access to a
-    slice of the database (e.g., sales of all detergents) and analyze
-    these data for trends and patterns. The consumer research company
-    promises rapid access to its data. Its goal is to give clients
-    access to requested data within one to two minutes. Once clients
-    have access to the data, they expect very rapid response to queries.
-    What data storage and retrieval strategy would you recommend?
+11. A German consumer research company collects scanning data from supermarkets throughout central Europe. The scanned data include product code identifier, price, quantity purchased, time, date, supermarket location, and supermarket name, and in some cases where the supermarket has a frequent buyer plan, it collects a consumer identification code. It has also created a table containing details of the manufacturer of each product. The database contains over 500 Tbytes of data. The data are used by market researchers in consumer product companies. A researcher will typically request access to a slice of the database (e.g., sales of all detergents) and analyze these data for trends and patterns. The consumer research company promises rapid access to its data. Its goal is to give clients access to requested data within one to two minutes. Once clients have access to the data, they expect very rapid response to queries. What data storage and retrieval strategy would you recommend?
 
-12. A magazine subscription service has a Web site for customers to
-    place orders, inquire about existing orders, or check subscription
-    rates. All customers are uniquely identified by an 11-digit numeric
-    code. All magazines are identified by a 2- to 4-character code. The
-    company has approximately 10 million customers who subscribe to an
-    average of four magazines. Subscriptions are available to 126
-    magazines. Draw a data model for this situation. Decide what data
-    structures you would recommend for the storage of the data. The
-    management of the company prides itself on its customer service and
-    strives to answer customer queries as rapidly as possible.
+12. A magazine subscription service has a Web site for customers to place orders, inquire about existing orders, or check subscription rates. All customers are uniquely identified by an 11-digit numeric code. All magazines are identified by a 2- to 4-character code. The company has approximately 10 million customers who subscribe to an average of four magazines. Subscriptions are available to 126 magazines. Draw a data model for this situation. Decide what data structures you would recommend for the storage of the data. The management of the company prides itself on its customer service and strives to answer customer queries as rapidly as possible.
 
-13. A firm offers a satellite-based digital radio service to the
-    continental U.S. market. It broadcasts music, sports, and talk-radio
-    programs from a library of 1.5 million digital audio files, which
-    are sent to a satellite uplink and then beamed to car radios
-    equipped to accept the service. Consumers pay \$9.95 per month to
-    access 100 channels.
+13. A firm offers a satellite-based digital radio service to the continental U.S. market. It broadcasts music, sports, and talk-radio programs from a library of 1.5 million digital audio files, which are sent to a satellite uplink and then beamed to car radios equipped to accept the service. Consumers pay \$9.95 per month to access 100 channels.
 
-    a.  Assuming the average size of a digital audio file is 5 Mbytes
-        (\~4 minutes of music), how much storage space is required?
+    a.  Assuming the average size of a digital audio file is 5 Mbytes (\~4 minutes of music), how much storage space is required?
 
     b.  What storage technology would you recommend?
 
 14. Is MP3 a lossless or lossy compression standard?
 
-15. What is the data deluge? What are the implications for data
-    management?
+15. What is the data deluge? What are the implications for data management?
 
-16. According to Wikipedia, Apple has more than 28 million songs in the
-    iTunes store.[^datastrucandstor-4] What storage technology might be
-    a good choice for this library?
-
-[^datastrucandstor-4]: <http://en.wikipedia.org/wiki/ITunes_Store>
+16. Apple's music subscription service offers around 50 million songs in the iTunes store. What storage technology might be a good choice for this library?

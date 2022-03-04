@@ -280,7 +280,7 @@ WHERE s.StockCode IN ['FC','AR','SLG']
 RETURN s;
 ```
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 >List those shares where the value of the holding
 > exceeds one million.
@@ -518,7 +518,7 @@ WITH n, count(s.StockCode) as Stocks, round(sum(s.Price*s.Qty*n.ExchRate)) as Va
 RETURN n.Nation AS Nation, Stocks, Value;
 ```
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 >Report by nation the total value of dividends.
 
@@ -617,7 +617,7 @@ WHERE i.ItemType = 'C' AND NOT (i.ItemNo IN SoldItems)
 RETURN DISTINCT i.ItemName AS Item, i.ItemColor AS Color;
 ```
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 >Report all red items that have not been sold.
 

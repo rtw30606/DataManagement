@@ -1,36 +1,16 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
-library(DBI)
-library(RMySQL)
-db <- dbConnect(RMySQL::MySQL(),
-                  dbname = "Text",
-                  host = "www.richardtwatson.com",
-                  user="student",
-                  password = "student")
-```
-
 # Data Processing Architectures
 
 > *The difficulty in life is the choice*.
 >
 > George Moore, *The Bending of the Bough*, 1900
 
-#### Learning Objectives {.unnumbered}
+### Learning Objectives {.unnumbered}
 
 Students completing this chapter will be able to
-
 -   recommend a data architecture for a given situation;
-
 -   understand multi-tier client/server architecture;
-
 -   discuss the fundamental principles that a hybrid architecture should
     satisfy;
-
 -   demonstrate the general principles of distributed database design.
 
 ## Architectural choices {.unnumbered}
@@ -46,19 +26,18 @@ architectures.
 ## Remote job entry {.unnumbered}
 
 In remote job entry, data are stored locally and processed remotely.
-Data are sent over a network to a remote computer for processing, and
-the output is returned the same way. This once fairly common form of
-data processing is still used today because remote job entry can
+Data are sent over a network to a remote computer cluster for processing, and
+the output is returned the same way. Remote job entry can
 overcome speed or memory shortcomings of a personal computer. Scientists
 and engineers typically need occasional access to a supercomputer for
 applications, such as simulating global climate change, that are data or
-computational intensive. Supercomputers typically have the main memory
+computational intensive. Clusters typically have the main memory
 and processing power to handle such problems.
 
 Local storage is used for several reasons. *First*, it may be cheaper
-than storing on a supercomputer. *Second*, the analyst might be able to
+than storing on a cluster. *Second*, the analyst might be able to
 do some local processing and preparation of the data before sending them
-to the supercomputer. Supercomputing time can be expensive. Where
+to the cluster. Cluster time can be expensive. Where
 possible, local processing is used for tasks such as data entry,
 validation, and reporting. *Third*, local data storage might be deemed
 more secure for particularly sensitive data.
@@ -71,19 +50,19 @@ FileMaker) permit people to develop their own applications, and many
 common desktop applications require local database facilities (e.g., a
 calendar).
 
-Of course, there is a downside to personal databases. *First**,*** there
+Of course, there is a downside to personal databases. *First*, there
 is a great danger of repetition and redundancy. The same application
-might be developed in a slightly different way by many users. The same
+might be developed in a slightly different way by many people. The same
 data get stored on many different systems. (It is not always the same,
 however, because data entry errors or maintenance inconsistencies result
 in discrepancies between personal databases.) *Second*, data are not
-readily shared because various users are not aware of what is available
+readily shared because people are not always aware of what is available
 or find it inconvenient to share data. Personal databases are exactly
 that; but much of the data may be of corporate value and should be
 shared. *Third*, data integrity procedures are often quite lax for
 personal databases. People might not make regular backups, databases are
 often not secured from unauthorized access, and data validation
-procedures are often ignored. *Fourth*, often when the employee leaves
+procedures are often ignored. *Fourth*, often when an employee leaves
 the organization or moves to another role, the application and data are
 lost because they are not documented and the organization is unaware of
 their existence. *Fifth*, most personal databases are poorly designed
@@ -148,20 +127,13 @@ databases, and legacy systems.
 
 *Evolution of client/server computing*
 
-+-----------+---------------------------------------------------------+
-| Arch itec | Description                                             |
-| ture      |                                                         |
-+:==========+:========================================================+
-| Two- tier | Processing is split between client and server, which    |
-|           | also runs the DBMS.                                     |
-+-----------+---------------------------------------------------------+
-| Th ree-   | Client does presentation, processing is done by the     |
-| tier      | server, and the DBMS is on a separate server.           |
-+-----------+---------------------------------------------------------+
-| N- tier   | Client does presentation. Processing and DBMS can be    |
-|           | spread across multiple servers. This is a distributed   |
-|           | resources environment.                                  |
-+-----------+---------------------------------------------------------+
+
+| Architecture  | Description                                         |
+|-----------|---------------------------------------------------------|
+| Two- tier | Processing is split between client and server, which  also runs the DBMS.   |
+| Three-tier    | Client does presentation, processing is done by the server, and the DBMS is on a separate server.    |
+| N- tier   | Client does presentation. Processing and DBMS can be spread across multiple servers. This is a distributed  resources environment.                                  |
+
 
 The rise of n-tier client/server can be attributed to the benefits of
 adopting a component-based architecture. The goal is to build quickly
@@ -182,7 +154,9 @@ available via the Web, tablet, or smartphone because the database
 already existed. A middle-tier was written to connect customers using a
 range of devices to the database.
 
-> ❓*Skill builder* A European city plans to establish a fleet of
+> ❓ *Skill builder*
+>
+>A European city plans to establish a fleet of
 > two-person hybrid cars that can be rented for short periods (e.g.,
 > less than a day) for one-way trips. Potential renters first register
 > online and then receive via the postal system a smart card that is
@@ -248,29 +222,17 @@ levels or layers of clouds.
 
 [^architectures-2]: This section is based on Iyer, B., & Henderson, J.
     C. (2010). Preparing for the future: understanding the seven
-    capabilities of cloud computing \*MIS Executive\*, 9(2), 117-131.
+    capabilities of cloud computing *MIS Executive*, 9(2), 117-131.
 
 *Cloud layers*
 
-+--------------+---------------------------------------+--------------+
-| Layer        | Description                           | Example      |
-+:=============+:======================================+:=============+
-| Infras       | A virtual server over which the       | Amazon       |
-| tructure     | developer has complete control        | Elastic      |
-|              |                                       | Compute      |
-|              |                                       | Cloud (EC2)  |
-+--------------+---------------------------------------+--------------+
-| Platform as  | A developer can build a new           | Sa           |
-| a service    | application with the provided tools   | lesforce.com |
-|              | and programming language              |              |
-+--------------+---------------------------------------+--------------+
-| App lication | Access to cloud applications          | Google docs  |
-+--------------+---------------------------------------+--------------+
-| Colla        | A special case of an application      | Facebook     |
-| boration     | cloud                                 |              |
-+--------------+---------------------------------------+--------------+
-| Service      | Consulting and integration services   | Appirio      |
-+--------------+---------------------------------------+--------------+
+| Layer   | Description         | Example |
+|:--------|:--------------------|:--------|
+| Infrastructure       | A virtual server over which the developer has complete control     | Amazon Elastic Compute Cloud (EC2) |
+| Platform as a service | A developer can build a new application with the provided tools and programming language | Salesforce.com     |
+| Application           | Access to cloud applications    | Google docs    |
+| Collaboration   | A special case of an application cloud   | Facebook      |
+| Service        | Consulting and integration services           | Appirio    |
 
 As the preceding table illustrates, there a several options for the
 cloud customer. Someone looking to replace an office package installed
@@ -279,30 +241,19 @@ layer. A CIO looking to have complete control over a new application
 being developed from scratch could look to the infrastructure cloud,
 which also has the potential for high scalability.
 
-Ownership is another way of looking at cloud
-offerings.[^architectures-3]
+Ownership is another way of looking at cloud offerings.[^architectures-3]
 
 [^architectures-3]: Mell, P., & Grance, T. (2009). The NIST definition
     of cloud computing: National Institute of Standards and Technology.
 
 *Cloud ownership*
 
-+----------+-----------------------------------------------------------+
-| Type     | Description                                               |
-+:=========+:==========================================================+
-| Public   | A cloud provided to the general public by its owner       |
-+----------+-----------------------------------------------------------+
-| Private  | A cloud restricted to an organization. It has many of the |
-|          | same capabilities as a public cloud but provides greater  |
-|          | control.                                                  |
-+----------+-----------------------------------------------------------+
-| C        | A cloud shared by several organizations to support a      |
-| ommunity | community project                                         |
-+----------+-----------------------------------------------------------+
-| Hybrid   | Multiple distinct clouds sharing a standardized or        |
-|          | proprietary technology that enables data and application  |
-|          | portability                                               |
-+----------+-----------------------------------------------------------+
+| Type      | Description   |
+|-----------|-----------------------------------------|
+| Public    | A cloud provided to the general public by its owner                                                                         |
+| Private   | A cloud restricted to an organization. It has many of the same capabilities as a public cloud but provides greater control. |
+| Community | A cloud shared by several organizations to support a community project                                                      |
+| Hybrid    | Multiple distinct clouds sharing a standardized or proprietary technology that enables data and application portability     |
 
 ### Cloud capabilities {.unnumbered}
 
@@ -320,7 +271,7 @@ Customers and the vendor work together to determine the roadmap for
 future services. Amazon follows this approach. The *qualified retail*
 model requires developers to acquire permission and be certified before
 releasing any new application on the vendor's platform. This is the
-model Apple uses with its iTunes application store. *Qualified
+model Apple uses with its app store. *Qualified
 co-innovation* involves the community in the creation and maintenance of
 application programming interfaces (APIs). Third parties using the APIs,
 however, must be certified before they can be listed in the vendor's
@@ -359,9 +310,9 @@ Under cloud computing, some special needs systems can be built quickly
 and later abandoned. For example, in 2009 the U.S. Government had a
 *Cash for Clunkers* program that ran for a few months to encourage
 people to trade-in their old car for a more fuel-efficient new car. This
-short-lived system whose processing needs are hard to estimate is well
-suited to a cloud environment. No resources need to be acquired, and
-processing power can be obtained as required.
+short-lived system whose processing needs were hard to estimate was well
+suited to a cloud environment. No resources need be acquired, and
+processing power could be obtained as required.
 
 #### Addressability and traceability {.unnumbered}
 
@@ -477,15 +428,15 @@ from which device, and when.
 
 *Cloud capabilities and strategic risks*
 
-| Risk/Capability                 | Demand | Inefficiency | Innovation | Scaling | Control |
-|:--------------------------------|:-------|:-------------|:-----------|:--------|:--------|
-| Interface control               |        |              | ✔          |         | ✔       |
-| Location independence           |        | ✔            |            |         |         |
-| Sourcing independence           |        | ✔            |            | ✔       |         |
-| Virtual business environment    |        | ✔            | ✔          |         |         |
-| Ubiquitous access               | ✔      | ✔            | ✔          |         |         |
+| Risk/Capability | Demand | Inefficiency | Innovation | Scaling | Control |
+|:---------------:|:------:|:------------:|:----------:|:-------:|:-------:|
+| Interface control              |        |              | ✔          |         | ✔       |
+| Location independence          |        | ✔            |            |         |         |
+| Sourcing independence          |        | ✔            |            | ✔       |         |
+| Virtual business environment   |        | ✔            | ✔          |         |         |
+| Ubiquitous access              | ✔      | ✔            | ✔          |         |         |
 | Addressability and traceability | ✔      |              | ✔          |         | ✔       |
-| Rapid elasticity                | ✔      |              |            | ✔       |         |
+| Rapid elasticity               | ✔      |              |            | ✔       |         |
 
 Most people think of cloud computing as an opportunity to lower costs by
 shifting processing from the corporate data center to a third party.
@@ -831,9 +782,9 @@ employee is based in the United States or Norway.
 
 ```{sql, connection = db, eval = F}
 BEGIN WORK;
-CREATE VIEW temp 
+CREATE VIEW temp
 	(empcode, empfname, emplname, empsalary)
-AS 
+AS
 	SELECT empcode, empfname, emplname, empsalary
 		FROM atlserver.bankdb.employee
 	UNION
@@ -951,7 +902,9 @@ the indexes only. This will increase the speed of query processing. The
 index can be processed locally, and then the required rows retrieved
 from the remote database.
 
-> ❓*Skill builder* A company supplies pharmaceuticals to sheep and
+> ❓ **Skill builder**
+>
+> A company supplies pharmaceuticals to sheep and
 > cattle stations in outback Australia. Its agents often visit remote
 > areas and are usually out of reach of a mobile phone network. To
 > advise station owners, what data management strategy would you
@@ -1034,15 +987,15 @@ processing at the cost of maintaining the replicas.
 ### References and additional readings {.unnumbered}
 
 Child, J. (1987). Information technology, organizations, and the
-response to strategic challenges. *California Management Review, 30*(1),
+response to strategic challenges. *California Management Review*, 30(1),
 33-50.
 
 Iyer, B., & Henderson, J. C. (2010). Preparing for the future:
-understanding the seven capabilities of cloud computing. *MIS Executive,
-9*(2), 117-131.
+understanding the seven capabilities of cloud computing. *MISQ Executive*,
+9(2), 117-131.
 
 Watson, R. T., Wynn, D., & Boudreau, M.-C. (2005). JBoss: The evolution
-of professional open source software. *MISQ Executive, 4*(3), 329-341.
+of professional open source software. *MISQ Executive*, 4(3), 329-341.
 
 ## Exercises {.unnumbered}
 

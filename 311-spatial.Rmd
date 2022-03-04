@@ -151,7 +151,7 @@ Workbench can show you the boundaries for you spatial database. See the followin
 
 ![](Figures/Chapter%2011/boundary.png)
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 > Create the three tables for the example and insert the rows listed in the preceding SQL code.
 
@@ -215,7 +215,7 @@ WHERE NOT EXISTS
 	(SELECT * FROM city other WHERE ST_X(other.cityloc) < ST_X(west.cityloc));
 ```
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 > 1.  What is the area of Northern Ireland? Because Northern Ireland is part of the United Kingdom and miles are still often used to measure distances, report the area in square miles.
 >
@@ -266,7 +266,7 @@ INSERT INTO table VALUES
 ST_GeomCollFromText('GEOMETRYCOLLECTION(POINT(1 1),LINESTRING(0 0,1 1,2 2,3 3,4 4))');
 ```
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 > Modify the example database design to include:
 >

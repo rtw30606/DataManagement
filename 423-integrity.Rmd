@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Data Integrity
 
 > *Integrity without knowledge is weak and useless, and knowledge
@@ -11,23 +5,17 @@ editor_options:
 >
 > Samuel Johnson, ***Rasselas***, 1759
 
-#### Learning objectives {.unnumbered}
+### Learning objectives {.unnumbered}
 
 After completing this chapter, you will
-
 -   understand the three major data integrity outcomes;
-
 -   understand the strategies for achieving each of the data integrity
     outcomes;
-
 -   understand the possible threats to data integrity and how to deal
     with them;
-
 -   understand the principles of transaction management;
-
 -   realize that successful data management requires making data
     available and maintaining data integrity.
-
 
 ## Introduction {.unnumbered}
 
@@ -42,8 +30,8 @@ implies three goals:[^integrity-1]
 
 [^integrity-1]: To the author's knowledge, Gordon C. Everest was the first to
     define data integrity in terms of these three goals. See Everest, G.
-    (1986). Database management: objectives, systems functions, and
-    administration. New York, NY: McGraw-Hill.
+    (1986). *Database management: objectives, systems functions, and
+    administration*. New York, NY: McGraw-Hill.
 
 1.  Protecting existence: Data are available when needed.
 
@@ -67,7 +55,7 @@ data integrity:
     all backup files in a locked vault.
 
 3.  **Technical** strategies are those incorporated in the computer
-    system (e.g., database management system [DBMS], application
+    system (e.g., database management system, application
     program, or operating system). An example is the inclusion of
     validation rules (e.g., NOT NULL) in a database definition that are
     used to ensure data quality when a database is updated.
@@ -86,7 +74,7 @@ administrative strategies. Both administrative and technical strategies
 are still needed.
 
 Who is responsible for database integrity? Some would say the data
-users, others the database administrator. Both groups are right;
+owners, others the database administrator. Both groups are right;
 database integrity is a shared responsibility, and the way it is managed
 may differ across organizations. Our focus is on the tools and
 strategies for maintaining data integrity, regardless of who is
@@ -100,23 +88,17 @@ goals, we need to examine the general issue of transaction management.
 
 *Strategies for maintaining database integrity*
 
-+----------------------------+-----------------------------------------+
+
 | Database integrity outcome | Strategies for achieving the outcome    |
-+============================+=========================================+
+|:---------------------------|:----------------------------------------|
 | Protecting existence       | Isolation (preventive)                  |
-|                            |                                         |
 |                            | Database backup and recovery (curative) |
-+----------------------------+-----------------------------------------+
 | Maintaining quality        | Update authorization                    |
-|                            |                                         |
 |                            | Integrity constraints/data validation   |
-|                            |                                         |
 |                            | Concurrent update control               |
-+----------------------------+-----------------------------------------+
 | Ensuring confidentiality   | Access control                          |
-|                            |                                         |
 |                            | Encryption                              |
-+----------------------------+-----------------------------------------+
+
 
 ## Transaction management {.unnumbered}
 
@@ -164,7 +146,7 @@ integrity of the database. For example, in an accounting system, a debit
 and credit would be an appropriate transaction, because this is the
 minimum amount of work needed to keep the books in balance.
 
-Serializability relates to the execution of a set of transactions. An
+**Serializability** relates to the execution of a set of transactions. An
 interleaved execution schedule (i.e., the elements of different
 transactions are intermixed) is serializable if its outcome is
 equivalent to a non-interleaved (i.e., serial) schedule. Interleaved
@@ -216,18 +198,18 @@ of 80 units, transaction A, is lost during the update process.
 
 *Lost update when concurrent accessing is allowed*
 
-| Time | Action                                                 |     | Database record |          |
-|:-----|:-------------------------------------------------------|-----|:----------------|----------|
-|      |                                                        |     | Part\#          | Quantity |
-|      |                                                        |     | P10             | 40       |
-| T1   | App A receives message for delivery of 80 units of P10 |     |                 |          |
-| T2   | App A reads the record for P10                         | ←   | P10             | 40       |
-| T3   | App B receives message for sale of 20 units of P10     |     |                 |          |
-| T4   | App B reads the record for P10                         | ←   | P10             | 40       |
-| T5   | App A processes delivery (40 + 80 = 120)               |     |                 |          |
-| T6   | App A updates the record for P10                       | →   | P10             | 120      |
-| T7   | App B processes the sale of (40 - 20 = 20)             |     |                 |          |
-| T8   | App B updates the record P10                           | →   | P10             | 20       |
+| Time | Action   |     | Database record |          |
+|:-----|:---------|-----|:----------------|----------|
+|      |        |     | Part\#          | Quantity |
+|      |        |     | P10             | 40       |
+| T1   | App A receives message for delivery of 80 units of P10 |    |    |    |
+| T2   | App A reads the record for P10  | ←   | P10  | 40      |
+| T3   | App B receives message for sale of 20 units of P10  |     |      |   |
+| T4   | App B reads the record for P10   | ←   | P10             | 40       |
+| T5   | App A processes delivery (40 + 80 = 120)  |     |   |  |
+| T6   | App A updates the record for P10  | →   | P10             | 120      |
+| T7   | App B processes the sale of (40 - 20 = 20)  |     |  |          |
+| T8   | App B updates the record P10  | →   | P10             | 20       |
 
 Inconsistent retrievals occur when a transaction calculates some
 aggregate function (e.g., sum) over a set of data while other
@@ -271,25 +253,23 @@ problems.
 
 *Valid update when concurrent accessing is not allowed*
 
-| Time | Action                                                 |      | Database record |          |
-|:-----|:-------------------------------------------------------|------|:----------------|----------|
-|      |                                                        |      | Part\#          | Quantity |
-|      |                                                        |      | P10             | 40       |
-| T1   | App A receives message for delivery of 80 units of P10 |      |                 |          |
-| T2   | App A reads the record for P10                         | ←    | P10             | 40       |
-| T3   | App B receives message for sale of 20 units of P10     |      |                 |          |
-| T4   | App B attempts to read the record for P10              | deny | P10             | 40       |
-| T5   | App A process delivery (40 + 80 = 120)                 |      |                 |          |
-| T6   | App A updates the record for P10                       | →    | P10             | 120      |
-| T7   | App B reads the record for P10                         | ←    | P10             | 120      |
-| T8   | App B processes the sale of (120 - 20 = 100)           |      |                 |          |
-| T9   | App B updates the record P10                           | →    | P10             | 100      |
+| Time | Action    |      | Database record |          |
+|:-----|:------|------|:--------------|----------|
+|      |   |      | Part#          | Quantity |
+|      |   |      | P10             | 40       |
+| T1   | App A receives message for delivery of 80 units of P10 |      |  |   |
+| T2   | App A reads the record for P10  | ←    | P10  | 40  |
+| T3   | App B receives message for sale of 20 units of P10  |  |   |  |
+| T4   | App B attempts to read the record for P10   | deny | P10  | 40       |
+| T5   | App A process delivery (40 + 80 = 120)  |      |  |          |
+| T6   | App A updates the record for P10   | →    | P10   | 120      |
+| T7   | App B reads the record for P10   | ←    | P10             | 120      |
+| T8   | App B processes the sale of (120 - 20 = 100)  |      |       |    |
+| T9   | App B updates the record P10   | →    | P10           | 100      |
 
 To administer locking procedures, a DBMS requires two pieces of
 information:
-
 1.  Whether a particular transaction will update the database;
-
 2.  Where the transaction begins and ends.
 
 Usually, the data required by an update transaction are locked when the
@@ -432,20 +412,20 @@ statistics on the length of the disruption.[^integrity-2]
 
 *Most frequent IT disasters*
 
-| Category        | Description                                                                                                                             |
-|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------|
+| Category   | Description    |
+|:-----------|:---------------|
 | Disruptive act  | Strikes and other intentional human acts, such as bombs or civil unrest, that are designed to interrupt normal organizational processes |
-| Fire            | Electrical or natural fires                                                                                                             |
-| IT failure      | Hardware, software, or network problems                                                                                                 |
-| IT move/upgrade | Data center moves and CPU upgrades                                                                                                      |
-| Natural event   | Earthquakes, hurricanes, severe weather                                                                                                 |
-| Power outage    | Loss of power                                                                                                                           |
-| Water leakage   | Unintended escape of contained water (e.g., pipe leaks, main breaks)                                                                    |
+| Fire            | Electrical or natural fires   |
+| IT failure      | Hardware, software, or network problems  |
+| IT move/upgrade | Data center moves and CPU upgrades   |
+| Natural event   | Earthquakes, hurricanes, severe weather  |
+| Power outage    | Loss of power   |
+| Water leakage   | Unintended escape of contained water (e.g., pipe leaks, main breaks)                            |
 
 *Days of disruption per year*
 
 | Category        | Number | Minimum | Maximum | Mean  |
-|:----------------|:-------|:--------|:--------|:------|
+|:----------------|-------:|--------:|--------:|------:|
 | Natural event   | 122    | 0       | 85      | 6.38  |
 | IT failure      | 98     | 1       | 61      | 6.89  |
 | Power outage    | 67     | 1       | 20      | 4.94  |
@@ -585,22 +565,13 @@ backup procedure.
 
 *Backup option*
 
-+-----------------------------------+-----------------------------------+
-| Objective                         | Action                            |
-+===================================+===================================+
-| Complete copy of database         | Dual recording of data            |
-|                                   | (mirroring)                       |
-+-----------------------------------+-----------------------------------+
-| Past states of the database (also | Database backup                   |
-| known as database dumps)          |                                   |
-+-----------------------------------+-----------------------------------+
+| Objective                     | Action                            |
+|-------------------------------|-----------------------------------|
+| Complete copy of database     | Dual recording of data  (mirroring)          |
+| Past states of the database (also backup known as database dumps)              | Database backup                   |
 | Changes to the database           | Before-image log or journal       |
-|                                   |                                   |
 |                                   | After-image log or journal        |
-+-----------------------------------+-----------------------------------+
-| Transactions that caused a change | Transaction log or journal        |
-| in the state of the database      |                                   |
-+-----------------------------------+-----------------------------------+
+| Transactions that caused a change in the state of the database | Transaction log or journal        |
 
 Data stored for backup and recovery are generally some combination of
 periodic database backups, transaction logs, and before- and after-image
@@ -665,13 +636,13 @@ before images of the records updated by transaction B.
 
 Backward recovery reverses the changes made when a transaction
 abnormally terminates or produces erroneous results. To illustrate the
-need for rollback, consider the example of a budget transfer of \$1,000
+need for rollback, consider the example of a budget transfer of $1,000
 between two departments.
 
 1.  The program reads the account record for Department X and subtracts
-    \$1,000 from the account balance and updates the database.
+    $1,000 from the account balance and updates the database.
 
-2.  The program then reads the record for Department Y and adds \$1,000
+2.  The program then reads the record for Department Y and adds $1,000
     to the account balance, but while attempting to update the database,
     the program encounters a disk error and cannot write the record.
 
@@ -720,33 +691,18 @@ backward recovery, but other procedures could be used.
 
 *What to do when data loss occurs*
 
-+-----------------------------------+-----------------------------------+
-| Problem                           | Recovery procedures               |
-+===================================+===================================+
-| Storage medium destruction        | \*Switch to a duplicate           |
-|                                   | database---this can be            |
-| (database is unreadable)          | transparent with RAID             |
-|                                   |                                   |
-|                                   | Forward recovery                  |
-|                                   |                                   |
-|                                   | Reprocessing transactions         |
-+-----------------------------------+-----------------------------------+
-| Abnormal termination of an \|     | \*Backward recovery               |
-| update transaction (transaction   |                                   |
-| error or system failure)          | Forward recovery or reprocessing  |
-|                                   | transactions---bring forward to   |
-|                                   | the state just before termination |
-|                                   | of the transaction                |
-+-----------------------------------+-----------------------------------+
-| Incorrect data detected (database | \*Backward recovery               |
-| has been incorrectly updated)     |                                   |
-|                                   | Reprocessing transactions         |
-|                                   | (excluding those from the update  |
-|                                   | program that created the          |
-|                                   | incorrect data)                   |
-+-----------------------------------+-----------------------------------+
 
-\* Preferred strategy
+| Problem                           | Recovery procedures               |
+|:----------------------------------|:----------------------------------|
+| Storage medium destruction (database is unreadable) | *Switch to a duplicate  database---this can be   transparent with RAID        |
+|                                   | Forward recovery                  |
+|                                   | Reprocessing transactions         |
+| Abnormal termination of an update transaction (transaction recovery error or system failure)      | *Backward   recovery            |
+|           | Forward recovery or reprocessing transactions---bring forward to the state just before termination of the transaction|
+| Incorrect data detected (database has been incorrectly updated)  | *Backward recovery               |
+|                                   | Reprocessing transactions has been (excluding those from the update program that created the incorrect data)
+
+* Preferred strategy
 
 ### Use of recovery procedures {.unnumbered}
 
@@ -759,7 +715,9 @@ the two SQL statements COMMIT and ROLLBACK. These commands are employed
 when a procedural programming language such as Java is used to update a
 database. They are illustrated in the chapter on SQL and Java.
 
-> ❓*Skill builder* An Internet bank with more than 10 million customers
+> ❓ *Skill builder*
+>
+> An Internet bank with more than 10 million customers
 > has asked for your advice on developing procedures for protecting the
 > existence of its data. What would you recommend?
 
@@ -818,16 +776,11 @@ vary little over time because the characteristics of a mutual fund
 (e.g., intermediate tax-exempt bond) do not change.
 
 **Tracking**: Some firms operate in environments where they don't have a
-lot of control over all the factors that affect performance. Handling
-more than 2,200 take-offs and landings and over 250,000 passengers per
-day,[^integrity-4] Atlanta's Hartsfield Airport becomes congested when bad
+lot of control over all the factors that affect performance. One of the busiest airports in the world, Atlanta's Hartsfield Airport becomes congested when bad
 weather, such as a summer thunderstorm, slows down operations.
 Passengers clearly know what they want---data on flight delays and their
 consequences. They assess data quality in terms of how well data tracks
 delays and notifies them of alternative travel arrangements.
-
-[^integrity-4]: November 2012.
-    [http://www.atlanta-airport.com/docs/Traffic/201211.pdf](http://www.atlanta-airport.com/docs/Traffic/201211.pdf]{.underline}](http://www.atlanta-airport.com/docs/Traffic/201211.pdf))
 
 **Knowledge management**: When customers are uncertain about their needs
 for products delivered by firms that don't perform consistently, they
@@ -860,23 +813,20 @@ Once they have settled on a dominant data quality strategy,
 organizations need a corporate-wide approach to data quality, just like
 product and service quality. There are three generations of data
 quality:
-
 -   **First generation**: Errors in existing data stores are found and
     corrected. This data cleansing is necessary when much of the data is
     captured by manual systems.
-
 -   **Second generation**: Errors are prevented at the source.
     Procedures are put in place to capture high-quality data so that
     there is no need to cleanse it later. As more data are born digital,
     this approach becomes more feasible. Thus, when customers enter
     their own data or barcodes are scanned, the data should be
     higher-quality than when entered by a data-processing operator.
-
 -   **Third generation**: Defects are highly unlikely. Data capture
     systems meet six-sigma standards (3.4 defects per million), and data
     quality is no longer an issue.
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > 1.  A consumer electronics company with a well-respected brand offers
 >     a wide range of products. For example, it offers nine world-band
@@ -906,28 +856,28 @@ failure in one area is likely to diminish overall data quality.
 
 The dimensions of data quality
 
-| Dimension                  | Conditions for high-quality data                                                                                            |
-|:---------------------------|:----------------------------------------------------------------------------------------------------------------------------|
-| Accuracy                   | Data values agree with known correct values.                                                                                |
-| Completeness               | Values for all reasonably expected attributes are available.                                                                |
+| Dimension | Conditions for high-quality data |
+|:----------|:---------------------------------|
+| Accuracy  | Data values agree with known correct values.  |
+| Completeness | Values for all reasonably expected attributes are available.                                                                |
 | Representation consistency | Values for a particular attribute have the same representation across all tables (e.g., dates).                             |
 | Organizational consistency | There is one organization wide table for each entity and one organization wide domain for each attribute.                   |
-| Row consistency            | The values in a row are internally consistent (e.g., a home phone number's area code is consistent with a city's location). |
-| Timeliness                 | A value's recentness matches the needs of the most time-critical application requiring it.                                  |
-| Stewardship                | Responsibility has been assigned for managing data.                                                                         |
-| Sharing                    | Data sharing is widespread across organizational units.                                                                     |
-| Fitness                    | The format and presentation of data fit each task for which they are required.                                              |
-| Interpretation             | Clients correctly interpret the meaning of data elements.                                                                   |
-| Flexibility                | The content and format of presentations can be readily altered to meet changing circumstances.                              |
-| Precision                  | Data values can be conveniently formatted to the required degree of accuracy.                                               |
-| International              | Data values can be displayed in the measurement unit of choice (e.g., kilometers or miles).                                 |
-| Accessibility              | Authorized users can readily access data values through a variety of devices from a variety of locations.                   |
-| Security and privacy       | Data are appropriately protected from unauthorized access.                                                                  |
-| Continuity                 | The organization continues to operate in spite of major disruptive events.                                                  |
-| Granularity                | Data are represented at the lowest level necessary to support all uses (e.g., hourly sales).                                |
-| Metadata                   | There is ready access to accurate data about data.                                                                          |
+| Row consistency  | The values in a row are internally consistent (e.g., a home phone number's area code is consistent with a city's location). |
+| Timeliness  | A value's recentness matches the needs of the most time-critical application requiring it.                                  |
+| Stewardship | Responsibility has been assigned for managing data.                                                                         |
+| Sharing | Data sharing is widespread across organizational units.                                                                     |
+| Fitness  | The format and presentation of data fit each task for which they are required.                                              |
+| Interpretation | Clients correctly interpret the meaning of data elements.                                                                   |
+| Flexibility | The content and format of presentations can be readily altered to meet changing circumstances.                              |
+| Precision  | Data values can be conveniently formatted to the required degree of accuracy.                                               |
+| International  | Data values can be displayed in the measurement unit of choice (e.g., kilometers or miles).                                 |
+| Accessibility  | Authorized users can readily access data values through a variety of devices from a variety of locations.                   |
+| Security and privacy | Data are appropriately protected from unauthorized access.                                                                  |
+| Continuity | The organization continues to operate in spite of major disruptive events.                                                  |
+| Granularity  | Data are represented at the lowest level necessary to support all uses (e.g., hourly sales).                                |
+| Metadata  | There is ready access to accurate data about      |
 
-> ❓*Skill builder*
+> ❓ *Skill builder*
 >
 > 1.  What level of granularity of sales data would you recommend for an
 >     online retailer?
@@ -967,9 +917,7 @@ follows:
 
 -   UPDATE (privilege to change field values using UPDATE; this can be
     column specific)
-
 -   DELETE (privilege to delete records from a table)
-
 -   INSERT (privilege to insert records into a table)
 
 Separate privileges for each of the update commands allow tighter
@@ -986,11 +934,8 @@ relational database described previously would have constraints such as
 
 -   Delivery number (`delno`) must be unique, numeric, and in the range
     1--99999.
-
 -   Delivered quantity (`delqty`) must be nonzero.
-
 -   Item name (`itemname`) must appear in the `qitem` table.
-
 -   Supplier code (`splno`) must appear in the `qspl` table.
 
 Once integrity constraints are specified, the DBMS must monitor or
@@ -1035,90 +980,44 @@ a DBMS, and a particular database may not use all types.
 
 *Types of data items in integrity constraint*
 
-+-----------------------+-----------------------+-----------------------+
-| Type of integrity     | Explanation           | Example               |
-| constraint            |                       |                       |
-+=======================+=======================+=======================+
-| type                  | Validating a data     | Supplier number is    |
-|                       | item value against a  | numeric.              |
-|                       | specified data type   |                       |
-+-----------------------+-----------------------+-----------------------+
-| size                  | Defining and          | Delivery number must  |
-|                       | validating the        | be at least 3 digits, |
-|                       | minimum and maximum   | and at most 5.        |
-|                       | size of a data item   |                       |
-+-----------------------+-----------------------+-----------------------+
-| values                | Providing a list of   | Item colors must      |
-|                       | acceptable values for | match the list        |
-|                       | a data item           | provided.             |
-+-----------------------+-----------------------+-----------------------+
-| range                 | Providing one or more | Employee numbers must |
-|                       | ranges within which   | be in the range       |
-|                       | the data item must    | 1--100.               |
-|                       | lie                   |                       |
-+-----------------------+-----------------------+-----------------------+
-| pattern               | Providing a pattern   | Department phone      |
-|                       | of allowable          | number must be of the |
-|                       | characters that       | form 542-nnnn (stands |
-|                       | define permissible    | for exactly four      |
-|                       | formats for data      | decimal digits).      |
-|                       | values                |                       |
-+-----------------------+-----------------------+-----------------------+
-| procedure             | Providing a procedure | A delivery must have  |
-|                       | to be invoked to      | valid item name,      |
-|                       | validate data items   | department, and       |
-|                       |                       | supplier values       |
-|                       |                       | before it can be      |
-|                       |                       | added to the database |
-|                       |                       | (tables are checked   |
-|                       |                       | for valid entries).   |
-+-----------------------+-----------------------+-----------------------+
-| Conditional           | Providing one or more | If item type is "Y,"  |
-|                       | conditions to apply   | then color is null.   |
-|                       | against data values   |                       |
-+-----------------------+-----------------------+-----------------------+
-| Not null              | Indicating whether    | Employee number is    |
-|                       | the data item value   | mandatory.            |
-| (mandatory)           | is mandatory (not     |                       |
-|                       | null) or optional;    |                       |
-|                       | the not-null option   |                       |
-|                       | is required for       |                       |
-|                       | primary keys          |                       |
-+-----------------------+-----------------------+-----------------------+
-| Unique                | Indicating whether    | Supplier number is    |
-|                       | stored values for     | unique.               |
-|                       | this data item must   |                       |
-|                       | be compared to other  |                       |
-|                       | values of the item    |                       |
-|                       | within the same table |                       |
-+-----------------------+-----------------------+-----------------------+
+
+| Type of integrity constraint | Explanation                                                                                                                  | Example                                                                                                                                              |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type  | Validating a data item value against a specified data type   | Supplier number is numeric.  |
+| size                         | Defining and validating the minimum and maximum size of a data item     | Delivery number must be at least 3 digits, and at most 5.   |
+| values                       | Providing a list of acceptable values for a data item   | Item colors must match the list provided.   |
+| range                        | Providing one or more ranges within which the data item must lie                                                             | Employee numbers must be in the range 1–100.   |
+| pattern                      | Providing a pattern of allowable characters that define permissible formats for data values                                  | Department phone number must be of the form 542-nnnn (stands for exactly four decimal digits).                                                       |
+| procedure                    | Providing a procedure to be invoked to validate data items  | A delivery must have valid item name, department, and supplier values before it can be added to the database (tables are checked for valid entries). |
+| Conditional | Providing one or more conditions to apply against data values    | If item type is “Y,” then color is null.           |
+| Not null (mandatory)   | Indicating whether the data item value is mandatory (not null) or optional; the not-null option is required for primary keys | Employee number is mandatory.     |
+| Unique  | Indicating whether stored values for this data item must be compared to other values of the item within the same table       | Supplier number is unique.   |
 
 As mentioned, integrity constraints are usually specified as part of the
-database definition supplied to the DBMS. The following table contains
-some typical specifications of integrity constraints for a relational
+database definition supplied to the DBMS. The following example contains
+typical specifications of integrity constraints for a relational
 DBMS.
 
-+-----------------------------------+-----------------------------------+
-| Examples                          | Explanation                       |
-+===================================+===================================+
-| CREATE TABLE stock (              | Column stkcode must always have 3 |
-|                                   | or fewer alphanumeric characters, |
-| stkcode CHAR(3),                  | and stkcode must be unique        |
-|                                   | because it is a primary key.      |
-| ...,                              |                                   |
-|                                   | Column natcode must be assigned a |
-| natcode CHAR(3),                  | value of 3 or less alphanumeric   |
-|                                   | characters and must exist as the  |
-| PRIMARY KEY(stkcode),             | primary key of the nation.        |
-|                                   |                                   |
-| CONSTRAINT fk_stock_nation        | Do not allow the deletion of a    |
-|                                   | row in nation while there still   |
-| FOREIGN KEY(natcode)              | exist rows in stock containing    |
-|                                   | the corresponding value of        |
-| REFERENCES nation(natcode)        | natcode.                          |
-|                                   |                                   |
-| ON DELETE RESTRICT);              |                                   |
-+-----------------------------------+-----------------------------------+
+*Example*
+
+```{SQL, Eval = FALSE}
+CREATE TABLE stock (
+	stkcode CHAR(3),
+	…,
+	natcode CHAR(3),
+		PRIMARY KEY(stkcode),
+		CONSTRAINT fk_stock_nation
+			FOREIGN KEY(natcode)
+				REFERENCES nation(natcode)
+					ON DELETE RESTRICT);
+```
+> *Explanation*
+>
+> Column stkcode must always have 3 or fewer alphanumeric characters, and stkcode must be unique because it is a primary key.
+>
+> Column natcode must be assigned a value of 3 or less alphanumeric characters and must exist as the primary key of the nation.
+>
+> Do not allow the deletion of a row in nation while there still exist rows in stock containing the corresponding value of natcode.
 
 Data quality control does not end with the application of integrity
 constraints. Whenever an error or unusual situation is detected by the
@@ -1208,8 +1107,8 @@ is an authenticated client.
 
 *Authenticating mechanisms^1^*
 
-| Class                                            | Examples                                      |
-|:-------------------------------------------------|:----------------------------------------------|
+| Class   | Examples  |
+|:--------|:----------|
 | Something a person knows: remembered information | Name, account number, password                |
 | Something the person has: possessed object       | Badge, plastic card, key                      |
 | Something the person is: personal characteristic | Fingerprint, voiceprint, signature, hand size |
@@ -1245,8 +1144,8 @@ Brier is authorized to delete supplier records with no restrictions.
 
 *Sample authorization table*
 
-| Subject/Client                 | Action | Object         | Constraint          |
-|:-------------------------------|:-------|:---------------|:--------------------|
+| Subject/Client  | Action | Object  | Constraint  |
+|:----------------|:-------|:--------|:------------|
 | Accounting department          | Insert | Supplier table | None                |
 | Purchase department clerk      | Insert | Supplier table | If quantity \< 200  |
 | Purchase department supervisor | Insert | Delivery table | If quantity \>= 200 |
@@ -1355,7 +1254,9 @@ transmitted over communication channels. Other DBMS products provide
 exits that allow users to code their own encryption routines. Encrypted
 data may also take less storage space because they are often compressed.
 
-> ❓*Skill builder* A university has decided that it will e-mail students
+> ❓*Skill builder*
+>
+>A university has decided that it will e-mail students
 > their results at the end of each semester. What procedures would you
 > establish to ensure that only the designated student opened and viewed
 > the e-mail?
@@ -1384,28 +1285,28 @@ Assume we know that a professor in the IS department is aged 40 to 50,
 is single, and attended the University of Minnesota. Consider the
 results of the following set of queries.[^integrity-5]
 
-[^integrity-5]: Adapted from Helman, P. (1994). The science of database
-    management. Burr Ridge, IL: Richard D. Irwin, Inc. p. 434
+[^integrity-5]: Adapted from Helman, P. (1994). *The science of database
+    management*. Burr Ridge, IL: Richard D. Irwin, Inc. p. 434
 
 ```{sql, eval = FALSE}
 SELECT COUNT(*) from faculty
 	WHERE dept = 'MIS'
-	AND age >= 40 AND age <= 50; 
+	AND age >= 40 AND age <= 50;
 ```
 
 |     |
-|:----|
+|----:|
 | 10  |
 
 ```{sql, eval = FALSE}
 SELECT COUNT(*) FROM faculty
 	WHERE dept = 'MIS'
 	AND age >= 40 AND age <= 50
-	AND degree_from = 'Minnesota'; 
+	AND degree_from = 'Minnesota';
 ```
 
 |     |
-|:----|
+|----:|
 | 2   |
 
 ```{sql, eval = FALSE}
@@ -1413,11 +1314,11 @@ SELECT COUNT(*) FROM faculty
 	WHERE = 'MIS'
 	AND age >= 40 AND age <= 50;
 	AND degree_from = 'Minnesota'
-	AND marital_status = 'S'; 
+	AND marital_status = 'S';
 ```
 
 |     |
-|:----|
+|----:|
 | 1   |
 
 ```{sql, eval = FALSE}
@@ -1425,11 +1326,11 @@ SELECT AVG(salary) FROM faculty
 	WHERE dept = 'MIS'
 	AND age >= 40 AND age <= 50
 	AND degree_from = 'Minnesota'
-	AND marital_status = 'S'; 
+	AND marital_status = 'S';
 ```
 
 |       |
-|:------|
+|------:|
 | 85000 |
 
 The preceding set of queries, while all at the aggregate level, enables

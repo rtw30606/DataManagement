@@ -374,8 +374,7 @@ with R. In particular, it supports dplyr for data manipulation of Spark
 datasets and access to Sparks ML library.
 
 Before starting with sparklyr, you need to check that you have latest
-version of [Java](https://www.java.com/en/download/help/version_manual.xml) on your machine.[ Use RStudio to
-install sparklyr. For developing and testing on your computer, install a
+version of [Java](https://www.java.com/en/download/help/version_manual.xml) on your machine. Use RStudio to install sparklyr. For developing and testing on your computer, install a
 local version of Spark.
 
 
@@ -399,7 +398,7 @@ In this example, we have a list of average monthly temperatures for [New
 York's Central Park](http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html) and we want to determine how
 often each particular temperature occurred.
 
-Average monthly temperatures since 1869 are read, and the temperature
+Average monthly temperatures since 1869 are read, and temperature is
 rounded to an integer for the convenience of tabulation.
 
 ```{r eval = F, message = F}
@@ -447,7 +446,7 @@ round(13.5,0). R follows the IEEE standard, but Spark apparently does
 not.
 
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 >Aedo the tabulation example with temperatures in
 > Celsius.

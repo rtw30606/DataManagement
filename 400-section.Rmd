@@ -1,13 +1,5 @@
 # Section 4 Managing Organizational Memory {.unnumbered}
 
-```{css, echo=FALSE}
-.vignette {
-  background-color: lightpink;
-  border: 3px solid red;
-  font-weight: bold;
-}
-```
-
 > *Every one complains of his memory, none of his judgment.*
 >
 > François Duc de La Rochefoucauld "Sentences et Maximes," Morales No. 89 1678
@@ -21,7 +13,7 @@ architecture that simultaneously achieves multiple goals:
 2.  Minimizes the cost of
 
     a. processing data,
-    
+
     b. storing data,
 
     c. data delivery,
@@ -36,15 +28,6 @@ provides the knowledge necessary to determine an appropriate **data
 storage structure** and device for a given situation. It also addresses
 the fundamental questions of where to store the data and where they
 should be processed.
-
-**Java** has become a popular choice for writing programs that operate
-on multiple operating systems. Combining the interoperability of Java
-with standard SQL provides software developers with an opportunity to
-develop applications that can run on multiple operating systems and
-multiple DBMSs, and this typically reduces the cost of application
-development. Thus, for a comprehensive understanding of data management,
-it is important to learn how Java and SQL interface, which is the
-subject of the third chapter in this section.
 
 As you now realize, organizational memory is an important resource
 requiring management. An inaccurate memory can result in bad decisions

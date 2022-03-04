@@ -27,7 +27,6 @@ In a relational database, each row must be uniquely identified. There must be a 
 > There is no global standard for identifying legal entities across markets and jurisdictions. The need for such a standard was amplified by Lehman Brothers collapse in 2008. Lehman had 209 registered subsidiaries, legal entities, in 21 countries, and it was party to more than 900,000 derivatives contracts upon its collapse. Key stakeholders, such as financial regulators and Lehman's creditors, were unable to assess their exposure. Furthermore, others were unable to assess the possible ripple on them of the effects of the collapse because of the transitive nature of many investments (i.e., A owes B, B owes C, and C owes D).
 >
 > The adoption of a global [legal entity identifier](https://www.lei-worldwide.com) (LEI), should improve financial system regulation and corporate risk management. Regulators will find it easier to monitor and analyze threats to financial stability and risk managers will be more able evaluate their companies' risks.
->
 
 The tables in a relational database are **connected** or **related** by means of the data in the tables. You will learn, in the next chapter, that this connection is through a pair of values---a primary key and a foreign key. Consider a table of airlines serving a city. When examining this table, you may not recognize the code of an airline, so you then go to another table to find the name of the airline. For example, if you inspect the next table, you find that AM is an international airline serving Atlanta.
 
@@ -75,18 +74,18 @@ As with most construction projects, building a relational database must be prece
 
 Rather than getting bogged down with a *theory first, application later* approach to database design and use, we will start with application. We will get back to theory when you have some experience in data modeling and database querying. After all, you did not learn to talk by first studying sentence formation; you just started by learning and using simple words. We start with the simplest data model, a single entity, and the simplest database, a single table, as follows.
 
-| Share code | Share name         | Share price |  Share quantity | Share dividend | PE ratio |
-|:-----------|:--------------------|------:|----------:|---------:|---------:|
-| FC        | Freedonia Copper    |  27.5 |    10,529 |     1.84 |       16 |
-| PT        | Patagonian Tea      | 55.25 |    12,635 |     2.50 |       10 |
-| AR        | Abyssinian Ruby     | 31.82 |    22,010 |     1.32 |       13 |
-| SLG       | Sri Lankan Gold     | 50.37 |    32,868 |     2.68 |       16 |
-| ILZ       | Indian Lead & Zinc  | 37.75 |     6,390 |     3.00 |       12 |
-| BE        | Burmese Elephant    |  0.07 |   154,713 |     0.01 |        3 |
-| BS        | Bolivian Sheep      | 12.75 |   231,678 |     1.78 |       11 |
-| NG        | Nigerian Geese      | 35.00 |    12,323 |     1.68 |       10 |
-| CS        | Canadian Sugar      | 52.78 |     4,716 |     2.50 |       15 |
-| ROF       | Royal Ostrich Farms | 33.75 | 1,234,923 |     3.00 |        6 |
+| Share code | Share name          | Share price | Share quantity | Share dividend | PE ratio |
+|:-----------|:-----------|-----------:|-----------:|-----------:|-----------:|
+| FC         | Freedonia Copper    |        27.5 |         10,529 |           1.84 |       16 |
+| PT         | Patagonian Tea      |       55.25 |         12,635 |           2.50 |       10 |
+| AR         | Abyssinian Ruby     |       31.82 |         22,010 |           1.32 |       13 |
+| SLG        | Sri Lankan Gold     |       50.37 |         32,868 |           2.68 |       16 |
+| ILZ        | Indian Lead & Zinc  |       37.75 |          6,390 |           3.00 |       12 |
+| BE         | Burmese Elephant    |        0.07 |        154,713 |           0.01 |        3 |
+| BS         | Bolivian Sheep      |       12.75 |        231,678 |           1.78 |       11 |
+| NG         | Nigerian Geese      |       35.00 |         12,323 |           1.68 |       10 |
+| CS         | Canadian Sugar      |       52.78 |          4,716 |           2.50 |       15 |
+| ROF        | Royal Ostrich Farms |       33.75 |      1,234,923 |           3.00 |        6 |
 
 ## Modeling a single-entity database {.unnumbered}
 
@@ -104,7 +103,7 @@ An entity has characteristics or attributes. An **attribute** is a discrete elem
 
 ![](Figures/Chapter%203/share%20with%20attributes.png){width="152"}
 
-An **instance** is a particular occurrence of an entity (e.g., facts about Freedonia Copper). To avoid confusion, each instance of an entity needs to be uniquely identified. Consider the case of customer billing. In most cases, a request to bill Smith $100 cannot be accurately processed because a firm might have more than one Smith in its customer file. If a firm has carefully controlled procedures for ensuring that each customer has a unique means of identification, then a request to bill customer number 1789 $100 can be accurately processed. An attribute or collection of attributes that uniquely identifies an instance of an entity is called an **identifier**. The identifier for the entity SHARE is *share code*, a unique identifier assigned by the stock exchange to a firm issuing shares.
+An **instance** is a particular occurrence of an entity (e.g., facts about Freedonia Copper). To avoid confusion, each instance of an entity needs to be uniquely identified. Consider the case of customer billing. In most cases, a request to bill Smith \$100 cannot be accurately processed because a firm might have more than one Smith in its customer file. If a firm has carefully controlled procedures for ensuring that each customer has a unique means of identification, then a request to bill customer number 1789 \$100 can be accurately processed. An attribute or collection of attributes that uniquely identifies an instance of an entity is called an **identifier**. The identifier for the entity SHARE is *share code*, a unique identifier assigned by the stock exchange to a firm issuing shares.
 
 There may be several attributes, or combinations of attributes, that are feasible identifiers for an instance of an entity. Attributes that are identifiers are prefixed by an asterisk. The following figure shows an example of a representation of an entity, its attributes, and identifier.
 
@@ -122,7 +121,7 @@ Models can be rapidly translated to a set of tables for a relational database. M
 
 > ❓ *Skill builder*
 
->A ship has a name, registration code, gross tonnage, and a year of >construction. Ships are classified as cargo or passenger. Draw a data model >for a ship.
+> A ship has a name, registration code, gross tonnage, and a year of \>construction. Ships are classified as cargo or passenger. Draw a data model \>for a ship.
 
 ## Creating a single-table database {.unnumbered}
 
@@ -177,21 +176,21 @@ The following table shows some of the data types supported by most relational da
 
 *Some allowable data types*
 
-| Category | Data type | Description |
-|:---------|:----------|:------------|
-| Numeric  | SMALLINT  | A 15-bit signed binary value  |
-|          | INTEGER   | A 31-bit signed binary value  |
-|          | FLOAT(p)  | A scientific format number of p binary digits precision  |
-|          | DECIMAL(p,q) | A packed decimal number of p digits total length; q decimal spaces to the right of the decimal point may be specified |
-| String   | CHAR(n) | A fixed-length string of n characters  |
-|          | VARCHAR(n) | A variable-length string of up to n characters  |
-|          | text| A variable-length string of up to 65,535 characters   |
-| Date/time | DATE  | Date in the form yyyymmdd  |
-|           | TIME  | Time in the form hhmmss  |
-|           | timesTAMP | A combination of date and time to the nearest microsecond  |
-|           | time with time zone  | Same as time, with the addition of an offset from universal time coordinated (UTC) of the specified time |
-|           | timestamp with time zone  | Same as timestamp, with the addition of an offset from UTC of the specified time |
-| Logical | Boolean | A set of truth values: TRUE, FALSE, or UNKNOWN |
+| Category  | Data type                | Description                                                                                                           |
+|:-----------|:-----------|:----------------------------------------------|
+| Numeric   | SMALLINT                 | A 15-bit signed binary value                                                                                          |
+|           | INTEGER                  | A 31-bit signed binary value                                                                                          |
+|           | FLOAT(p)                 | A scientific format number of p binary digits precision                                                               |
+|           | DECIMAL(p,q)             | A packed decimal number of p digits total length; q decimal spaces to the right of the decimal point may be specified |
+| String    | CHAR(n)                  | A fixed-length string of n characters                                                                                 |
+|           | VARCHAR(n)               | A variable-length string of up to n characters                                                                        |
+|           | text                     | A variable-length string of up to 65,535 characters                                                                   |
+| Date/time | DATE                     | Date in the form yyyymmdd                                                                                             |
+|           | TIME                     | Time in the form hhmmss                                                                                               |
+|           | timesTAMP                | A combination of date and time to the nearest microsecond                                                             |
+|           | time with time zone      | Same as time, with the addition of an offset from universal time coordinated (UTC) of the specified time              |
+|           | timestamp with time zone | Same as timestamp, with the addition of an offset from UTC of the specified time                                      |
+| Logical   | Boolean                  | A set of truth values: TRUE, FALSE, or UNKNOWN                                                                        |
 
 The CHAR and VARCHAR data types are similar but differ in the way character strings are stored and retrieved. Both can be up to 255 characters long. The length of a CHAR column is fixed to the declared length. When values are stored, they are right-padded with spaces to the specified length. When CHAR values are retrieved, trailing spaces are removed. VARCHAR columns store variable-length strings and use only as many characters as are needed to store the string. Values are not padded; instead, trailing spaces are removed. In this book, we use VARCHAR to define most character strings, unless they are short (less than five characters is a good rule-of-thumb).
 
@@ -205,11 +204,11 @@ The CHAR and VARCHAR data types are similar but differ in the way character stri
 
 You will notice some differences from the data model we have created previously. Workbench automatically generates the SQL code to create the table, so when modeling you establish the names you want for tables and columns. A gold key symbol is used to indicate the identifier, which becomes the primary key. An open diamond indicates that a column can be null, whereas a closed blue diamond indicate the column must have a value, as with `shrfirm` in this case.
 
-When specifying columns in Workbench you must also indicate the datatype. We opt to turn off the display of a column's datatype[^singleentity-7] in a model to maintain focus on the entity.
+When specifying columns in Workbench you must also indicate the datatype. We opt to turn off the display of a column's datatype[^singleentity-5] in a model to maintain focus on the entity.
 
-[^singleentity-7]: Preferences > Diagram > Show Column Types
+[^singleentity-5]: Preferences \> Diagram \> Show Column Types
 
-A major advantage of using a tool such as Workbench is that it will automatically generate the CREATE statement code (Database > Forward Engineer ...) and execute the code to create the database. The Workbench tutorial will have shown you how to do this, and you should try this out for yourself by creating a database with the single `share` table.
+A major advantage of using a tool such as Workbench is that it will automatically generate the CREATE statement code (Database \> Forward Engineer ...) and execute the code to create the database. The Workbench tutorial will have shown you how to do this, and you should try this out for yourself by creating a database with the single `share` table.
 
 ### Inserting rows into a table {.unnumbered}
 
@@ -236,20 +235,20 @@ The data for the `share` table will be used in subsequent examples. If you have 
 
 *Data for share*
 
-| *Code | Name  | Price |  Quantity | Dividend | PE |
-|:-------|:------|------:|----------:|---------:|---:|
-| FC        | Freedonia Copper    |  27.5 |    10,529 |     1.84 |       16 |
-| PT        | Patagonian Tea      | 55.25 |    12,635 |     2.50 |       10 |
-| AR        | Abyssinian Ruby     | 31.82 |    22,010 |     1.32 |       13 |
-| SLG       | Sri Lankan Gold     | 50.37 |    32,868 |     2.68 |       16 |
-| ILZ       | Indian Lead & Zinc  | 37.75 |     6,390 |     3.00 |       12 |
-| BE        | Burmese Elephant    |  0.07 |   154,713 |     0.01 |        3 |
-| BS        | Bolivian Sheep      | 12.75 |   231,678 |     1.78 |       11 |
-| NG        | Nigerian Geese      | 35.00 |    12,323 |     1.68 |       10 |
-| CS        | Canadian Sugar      | 52.78 |     4,716 |     2.50 |       15 |
-| ROF       | Royal Ostrich Farms | 33.75 | 1,234,923 |     3.00 |        6 |
+| \*Code | Name                | Price |  Quantity | Dividend |  PE |
+|:-------|:--------------------|------:|----------:|---------:|----:|
+| FC     | Freedonia Copper    |  27.5 |    10,529 |     1.84 |  16 |
+| PT     | Patagonian Tea      | 55.25 |    12,635 |     2.50 |  10 |
+| AR     | Abyssinian Ruby     | 31.82 |    22,010 |     1.32 |  13 |
+| SLG    | Sri Lankan Gold     | 50.37 |    32,868 |     2.68 |  16 |
+| ILZ    | Indian Lead & Zinc  | 37.75 |     6,390 |     3.00 |  12 |
+| BE     | Burmese Elephant    |  0.07 |   154,713 |     0.01 |   3 |
+| BS     | Bolivian Sheep      | 12.75 |   231,678 |     1.78 |  11 |
+| NG     | Nigerian Geese      | 35.00 |    12,323 |     1.68 |  10 |
+| CS     | Canadian Sugar      | 52.78 |     4,716 |     2.50 |  15 |
+| ROF    | Royal Ostrich Farms | 33.75 | 1,234,923 |     3.00 |   6 |
 
-Notice that `shrcode`,the primary key, is asterisked in the preceding table. This is a convention we will use, as in  data modeling, to denote the primary key. In the relational model, an identifier becomes a primary key, a column that guarantees that each row of the table can be uniquely addressed.
+Notice that `shrcode`,the primary key, is asterisked in the preceding table. This is a convention we will use, as in data modeling, to denote the primary key. In the relational model, an identifier becomes a primary key, a column that guarantees that each row of the table can be uniquely addressed.
 
 MySQL Workbench offers a spreadsheet interface for entering data, as explained in the [tutorial](http://www.youtube.com/watch?v=X_umYKqKaF0).
 
@@ -259,7 +258,7 @@ MySQL Workbench offers a spreadsheet interface for entering data, as explained i
 
 > ❓ *Skill builder*
 >
->Create a relational database for the ship entity you modeled previously. >Insert some rows.
+> Create a relational database for the ship entity you modeled previously. \>Insert some rows.
 
 ## Querying a single-table database {.unnumbered}
 
@@ -279,7 +278,7 @@ Generally we use a four-phase format for describing queries:
 
 ### Displaying an entire table {.unnumbered}
 
-All the data in a table can be displayed using the SELECT statement. In SQL, the *all* part is indicated by an asterisk (*).
+All the data in a table can be displayed using the SELECT statement. In SQL, the *all* part is indicated by an asterisk (\*).
 
 List all data in the share table.
 
@@ -312,13 +311,13 @@ SELECT * FROM share WHERE shrpe < 12;
 In this example, we have a less than condition for the WHERE clause. All permissible comparison operators are listed below.
 
 | Operator | Meaning                  |
-|:-------|:-------------------------|
-| =      | Equal to                 |
-| <      | Less than                |
-| <=     | Less than orequal to     |
-| >      | Greater than             |
-| >=     | Greater than or equal to |
-| <>     | Not equal to             |
+|:---------|:-------------------------|
+| =        | Equal to                 |
+| \<       | Less than                |
+| \<=      | Less than orequal to     |
+| \>       | Greater than             |
+| \>=      | Greater than or equal to |
+| \<\>     | Not equal to             |
 
 In addition to the comparison operators, the BETWEEN construct is available.
 
@@ -432,7 +431,7 @@ Numeric data in character fields (e.g., a product code) do not always sort the w
 
 -   Character fields are left justified and have trailing spaces.
 
-For example, the value 1066 stored as CHAR(4) would be stored as '1066' and the value 45 would be stored as '45 '. If the column containing these data is sorted in ascending order, then '1066' precedes '45  ' because the leftmost character '1' is less than '4'. You can avoid this problem by always storing numeric values as numeric data types (e.g., integer or decimal) or preceding numeric values with zeros when they are stored as character data. Alternatively, start numbering at 1,000 so that all values are four digits, though the best solution is to store numeric data as numbers rather than characters.
+For example, the value 1066 stored as CHAR(4) would be stored as '1066' and the value 45 would be stored as '45 '. If the column containing these data is sorted in ascending order, then '1066' precedes '45 ' because the leftmost character '1' is less than '4'. You can avoid this problem by always storing numeric values as numeric data types (e.g., integer or decimal) or preceding numeric values with zeros when they are stored as character data. Alternatively, start numbering at 1,000 so that all values are four digits, though the best solution is to store numeric data as numbers rather than characters.
 
 ### Derived data {.unnumbered}
 
@@ -454,7 +453,7 @@ SQL has built-in functions to enhance its retrieval power and handle many common
 
 #### COUNT {.unnumbered}
 
-COUNT computes the number of rows in a table. Use COUNT(*) to count all rows irrespective of their content (i.e., null or not null), and use COUNT(`columnname`) to count rows without a null value for `columname`. Count can be used with a WHERE clause to specify a condition.
+COUNT computes the number of rows in a table. Use COUNT(\*) to count all rows irrespective of their content (i.e., null or not null), and use COUNT(`columnname`) to count rows without a null value for `columname`. Count can be used with a WHERE clause to specify a condition.
 
 *How many firms are there in the portfolio?*
 
@@ -513,11 +512,10 @@ SELECT shrfirm, shrpe FROM share
   WHERE shrpe > (SELECT AVG(shrpe) FROM share);
 ```
 
-> ⚠️ The preceding query is often mistakenly written as
-> SELECT shrfirm, shrpe from share WHERE shrpe > avg(shrpe);
+> ⚠️ The preceding query is often mistakenly written as SELECT shrfirm, shrpe from share WHERE shrpe \> avg(shrpe); You need to use a subquery to find the average, so the computed value can be used in the outer query
 
 > ❓ *Skill builder*
-
+>
 > Find the name of the firm for which the value of the holding is greatest.
 
 ### Regular expression---pattern matching {.unnumbered}
@@ -620,7 +618,7 @@ There are three types of quotes that you can typically use with SQL. Double and 
 |:--------------|:---------------|
 | Single        | **'**          |
 | Double        | **"**          |
-| Back          | **`**         |
+| Back          | **\`**         |
 
 The following SQL illustrates the use of three types of quotes to find a person with a last name of O'Hara and where the column names are `person first` and `person last`.
 
@@ -688,7 +686,7 @@ The relational database model is an effective means of representing real-world r
 
     h.  Find the share(s) with the minimum yield.
 
-    i.  Find the total value of all shares with a PE ratio > 10.
+    i.  Find the total value of all shares with a PE ratio \> 10.
 
     j.  Find the share(s) with the maximum total dividend payment.
 

@@ -83,15 +83,13 @@ The previous script
 -   Creates an x-y plot of year and co2, which is shown in the
     lower-right window.
 
-+-----------------------------------------------------------------------+
-| Note the use of <- for assigning values to an object and that c is   |
-| short for combine in the expression:[^intror-1]                       |
-+-----------------------------------------------------------------------+
 
-[^intror-1]: RStudio provides a keyboard command, which is Alt+-
-    (Windows & Linux) or Option+- (Mac)
+> Note the use of <- for assigning values to an object.
+> RStudio provides a keyboard command, Alt + - (Windows & Linux)
+> or Option + - (Mac).
+> In R, c is short for combine values.
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 > Plot kWh per square foot by year for the following University of
 > Georgia data.
@@ -151,7 +149,7 @@ m[4,3] # show the value in row 4, column 3
 | **[3,]** | 3      | 7      | 11     |
 | **[4,]** | 4      | 8      | 12     |
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 >Create a matrix with 6 rows and 3 columns
 > containing the numbers 1 through 18.
@@ -226,13 +224,19 @@ the preceding subsection.
 ### Types of data {.unnumbered}
 
 R can handle the four types of data: nominal, ordinal, interval, and
-ratio. *Nominal* data, typically character strings, are used for
-classification (e.g., high, medium, or low). *Ordinal* data represent an
+ratio.
+
+*Nominal* data, typically character strings, are used for
+classification (e.g., high, medium, or low).
+
+*Ordinal* data represent an
 ordering and thus can be sorted (e.g., the seeding or ranking of players
 for a tennis tournament). The intervals between ordinal data are not
 necessarily equal. Thus, the top seeded tennis play (ranked 1) might be
 far superior to the second seeded (ranked 2), who might be only
-marginally better than the third seed (ranked 3). *Interval* and *ratio* are
+marginally better than the third seed (ranked 3).
+
+*Interval* and *ratio* are
 forms of measurement data. The interval between the units of measure for
 interval data are equal. In other words, the distance between 50cm and
 51cm is the same as the distance between 105cm and 106cm. Ratio data

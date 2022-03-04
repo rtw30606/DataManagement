@@ -1,9 +1,6 @@
 # Text mining & natural language processing
 
-> From now on I will consider a language to be a set (finite or
-> infinite) of sentences, each finite in length and constructed out of a
-> finite set of elements. All natural languages in their spoken or
-> written form are languages in this sense.
+> From now on I will consider a language to be a set (finite or infinite) of sentences, each finite in length and constructed out of a finite set of elements. All natural languages in their spoken or written form are languages in this sense.
 >
 > Noam Chomsky, *Syntactic Structures*
 
@@ -11,72 +8,23 @@
 
 Students completing this chapter will:
 
--   Have a realistic understanding of the capabilities of current text
-    mining and NLP software;
+-   Have a realistic understanding of the capabilities of current text mining and NLP software;
 
 -   Be able to use R and associated packages for text mining and NLP.
 
 ## The nature of language {.unnumbered}
 
-Language enables humans to cooperate through information exchange. We
-typically associate language with sound and writing, but gesturing,
-which is older than speech, is also a means of collaboration. The
-various dialects of sign languages are effective tools for visual
-communication. Some species, such as ants and bees, exchange information
-using chemical substances known as pheromones. Of all the species,
-humans have developed the most complex system for cooperation, starting
-with gestures and progressing to digital technology, with language being
-the core of our ability to work collectively.
+Language enables humans to cooperate through information exchange. We typically associate language with sound and writing, but gesturing, which is older than speech, is also a means of collaboration. The various dialects of sign languages are effective tools for visual communication. Some species, such as ants and bees, exchange information using chemical substances known as pheromones. Of all the species, humans have developed the most complex system for cooperation, starting with gestures and progressing to digital technology, with language being the core of our ability to work collectively.
 
-Natural language processing (NLP) focuses on developing and implementing
-software that enables computers to handle large scale processing of
-language in a variety of forms, such as written and spoken. While it is
-a relatively easy task for computers to process numeric information,
-language is far more difficult because of the flexibility with which it
-is used, even when grammar and syntax are precisely obeyed. There is an
-inherent ambiguity of written and spoken speech. For example, the word
-"set" can be a noun, verb, or adjective, and the *Oxford English
-Dictionary* defines over 40 different meanings. Irregularities in
-language, both in its structure and use, and ambiguities in meaning make
-NLP a challenging task. Be forewarned. Don't expect NLP to provide the
-same level of exactness and starkness as numeric processing. NLP output
-can be messy, imprecise, and confusing -- just like the language that
-goes into an NLP program. One of the well-known maxims of information
-processing is "garbage-in, garbage-out." While language is not garbage,
-we can certainly observe that "ambiguity-in, ambiguity-out" is a truism.
-You can't start with something that is marginally ambiguous and expect a
-computer to turn it into a precise statement. Legal and religious
-scholars can spend years learning how to interpret a text and still
-reach different conclusions as to its meaning.
+Natural language processing (NLP) focuses on developing and implementing software that enables computers to handle large scale processing of language in a variety of forms, such as written and spoken. While it is a relatively easy task for computers to process numeric information, language is far more difficult because of the flexibility with which it is used, even when grammar and syntax are precisely obeyed. There is an inherent ambiguity of written and spoken speech. For example, the word "set" can be a noun, verb, or adjective, and the *Oxford English Dictionary* defines over 40 different meanings. Irregularities in language, both in its structure and use, and ambiguities in meaning make NLP a challenging task. Be forewarned. Don't expect NLP to provide the same level of exactness and starkness as numeric processing. NLP output can be messy, imprecise, and confusing -- just like the language that goes into an NLP program. One of the well-known maxims of information processing is "garbage-in, garbage-out." While language is not garbage, we can certainly observe that "ambiguity-in, ambiguity-out" is a truism. You can't start with something that is marginally ambiguous and expect a computer to turn it into a precise statement. Legal and religious scholars can spend years learning how to interpret a text and still reach different conclusions as to its meaning.
 
-NLP, despite its limitations, enables humans to process large volumes of
-language data (e.g., text) quickly and to identify patterns and features
-that might be useful. A well-educated human with domain knowledge
-specific to the same data might make more sense of these data, but it
-might take months or years. For example, a firm might receive over a
-1,000 tweets, 500 Facebook mentions, and 20 blog references in a day. It
-needs NLP to identify within minutes or hours which of these many
-messages might need human action.
+NLP, despite its limitations, enables humans to process large volumes of language data (e.g., text) quickly and to identify patterns and features that might be useful. A well-educated human with domain knowledge specific to the same data might make more sense of these data, but it might take months or years. For example, a firm might receive over a 1,000 tweets, 500 Facebook mentions, and 20 blog references in a day. It needs NLP to identify within minutes or hours which of these many messages might need human action.
 
-Text mining and NLP overlap in their capabilities and goals. The
-ultimate objective is to extract useful and valuable information from
-text using analytical methods and NLP. Simply counting words in a
-document is a an example of text mining because it requires minimal NLP
-technology, other than separating text into words. Whereas, recognizing
-entities in a document requires prior extensive machine learning and
-more intensive NLP knowledge. Whether you call it text mining or NLP,
-you are processing natural language. We will use the terms somewhat
-interchangeably in this chapter.
+Text mining and NLP overlap in their capabilities and goals. The ultimate objective is to extract useful and valuable information from text using analytical methods and NLP. Simply counting words in a document is a an example of text mining because it requires minimal NLP technology, other than separating text into words. Whereas, recognizing entities in a document requires prior extensive machine learning and more intensive NLP knowledge. Whether you call it text mining or NLP, you are processing natural language. We will use the terms somewhat interchangeably in this chapter.
 
-The human brain has a special capability for learning and processing
-languages and reconciling ambiguities,[^textmining-1] and it is a skill
-we have yet to transfer to computers. NLP can be a good servant, but
-enter its realm with realistic expectations of what is achievable with
-the current state-of-the-art.
+The human brain has a special capability for learning and processing languages and reconciling ambiguities,[^textmining-1] and it is a skill we have yet to transfer to computers. NLP can be a good servant, but enter its realm with realistic expectations of what is achievable with the current state-of-the-art.
 
-[^textmining-1]: Ambiguities are often the inspiration for puns. "You
-    can tune a guitar, but you can't tuna fish. Unless of course, you
-    play bass," by Douglas Adams
+[^textmining-1]: Ambiguities are often the inspiration for puns. "You can tune a guitar, but you can't tuna fish. Unless of course, you play bass," by Douglas Adams
 
 ## Levels of processing {.unnumbered}
 
@@ -84,56 +32,23 @@ There are three levels to consider when processing language.
 
 ### Semantics {.unnumbered}
 
-Semantics focuses on the meaning of words and the interactions between
-words to form larger units of meaning (such as sentences). Words in
-isolation often provide little information. We normally need to read or
-hear a sentence to understand the sender's intent. One word can change
-the meaning of a sentence (e.g., "Help needed versus Help not needed").
-It is typically an entire sentence that conveys meaning. Of course,
-elaborate ideas or commands can require many sentences.
+Semantics focuses on the meaning of words and the interactions between words to form larger units of meaning (such as sentences). Words in isolation often provide little information. We normally need to read or hear a sentence to understand the sender's intent. One word can change the meaning of a sentence (e.g., "Help needed versus Help not needed"). It is typically an entire sentence that conveys meaning. Of course, elaborate ideas or commands can require many sentences.
 
 ### Discourse {.unnumbered}
 
-Building on semantic analysis, discourse analysis aims to determine the
-relationships between sentences in a communication, such as a
-conversation, consisting of multiple sentences in a particular order.
-Most human communications are a series of connected sentences that
-collectively disclose the sender's goals. Typically, interspersed in a
-conversation are one or more sentences from one or more receivers as
-they try to understand the sender's purpose and maybe interject their
-thoughts and goals into the discussion. The points and counterpoints of
-a blog are an example of such a discourse. As you might imagine, making
-sense of discourse is frequently more difficult, for both humans and
-machines, than comprehending a single sentence. However, the braiding of
-question and answer in a discourse, can sometimes help to reduce
-ambiguity.
+Building on semantic analysis, discourse analysis aims to determine the relationships between sentences in a communication, such as a conversation, consisting of multiple sentences in a particular order. Most human communications are a series of connected sentences that collectively disclose the sender's goals. Typically, interspersed in a conversation are one or more sentences from one or more receivers as they try to understand the sender's purpose and maybe interject their thoughts and goals into the discussion. The points and counterpoints of a blog are an example of such a discourse. As you might imagine, making sense of discourse is frequently more difficult, for both humans and machines, than comprehending a single sentence. However, the braiding of question and answer in a discourse, can sometimes help to reduce ambiguity.
 
 ### Pragmatics {.unnumbered}
 
-Finally, pragmatics studies how context, world knowledge, language
-conventions, and other abstract properties contribute to the meaning of
-human conversation. Our shared experiences and knowledge often help us
-to make sense of situations. We derive meaning from the manner of the
-discourse, where it takes place, its time and length, who else is
-involved, and so forth. Thus, we usually find it much easier to
-communicate with those with whom we share a common culture, history, and
-socioeconomic status because the great collection of knowledge we
-jointly share assists in overcoming ambiguity.
+Finally, pragmatics studies how context, world knowledge, language conventions, and other abstract properties contribute to the meaning of human conversation. Our shared experiences and knowledge often help us to make sense of situations. We derive meaning from the manner of the discourse, where it takes place, its time and length, who else is involved, and so forth. Thus, we usually find it much easier to communicate with those with whom we share a common culture, history, and socioeconomic status because the great collection of knowledge we jointly share assists in overcoming ambiguity.
 
 ## Tokenization {.unnumbered}
 
-Tokenization is the process of breaking a document into chunks (e.g.,
-words), which are called tokens. Whitespaces (e.g., spaces and tabs) are
-used to determine where a break occurs. Tokenization typically creates a
-*bag of words* for subsequent processing. Many text mining functions use
-words as the foundation for analysis.
+Tokenization is the process of breaking a document into chunks (e.g., words), which are called tokens. Whitespaces (e.g., spaces and tabs) are used to determine where a break occurs. Tokenization typically creates a *bag of words* for subsequent processing. Many text mining functions use words as the foundation for analysis.
 
 ### Counting words {.unnumbered}
 
-To count the number of words in a string, simply count the number of
-times there are one or more consecutive spaces using the pattern
-"[:space:]+" and then add one, because the last word is not followed
-by a space.
+To count the number of words in a string, simply count the number of times there are one or more consecutive spaces using the pattern "[:space:]+" and then add one, because the last word is not followed by a space.
 
 ```{r counting, eval = TRUE}
 library(stringr)
@@ -142,27 +57,11 @@ str_count("The dead batteries were given out free of charge", "[:space:]+") + 1
 
 ## Sentiment analysis {.unnumbered}
 
-Sentiment analysis is a popular and simple method of measuring aggregate
-feeling. In its simplest form, it is computed by giving a score of +1 to
-each "positive" word and -1 to each "negative" word and summing the
-total to get a sentiment score. A text is decomposed into words. Each
-word is then checked against a list to find its score (i.e., +1 or -1),
-and if the word is not in the list, it doesn't score.
+Sentiment analysis is a popular and simple method of measuring aggregate feeling. In its simplest form, it is computed by giving a score of +1 to each "positive" word and -1 to each "negative" word and summing the total to get a sentiment score. A text is decomposed into words. Each word is then checked against a list to find its score (i.e., +1 or -1), and if the word is not in the list, it doesn't score.
 
-A major shortcoming of sentiment analysis is that irony (e.g., "The name
-of Britain's biggest dog (until it died) was Tiny") and sarcasm (e.g.,
-"I started out with nothing and still have most of it left") are usually
-misclassified. Also, a phrase such as "not happy" might be scored as +1
-by a sentiment analysis program that simply examines each word and not
-those around it.
+A major shortcoming of sentiment analysis is that irony (e.g., "The name of Britain's biggest dog (until it died) was Tiny") and sarcasm (e.g., "I started out with nothing and still have most of it left") are usually misclassified. Also, a phrase such as "not happy" might be scored as +1 by a sentiment analysis program that simply examines each word and not those around it.
 
-The **sentimentr package** offers an advanced implementation of
-sentiment analysis. It is based on a polarity table, in which a word and
-its polarity score (e.g., -1 for a negative word) are recorded. The
-default polarity table is provided by the syuzhet package. You can
-create a polarity table suitable for your context, and you are not
-restricted to 1 or -1 for a word's polarity score. Here are the first
-few rows of the default polarity table.
+The **sentimentr package** offers an advanced implementation of sentiment analysis. It is based on a polarity table, in which a word and its polarity score (e.g., -1 for a negative word) are recorded. The default polarity table is provided by the syuzhet package. You can create a polarity table suitable for your context, and you are not restricted to 1 or -1 for a word's polarity score. Here are the first few rows of the default polarity table.
 
 ```{r sentiment-1, eval = T, message = F, warning = F}
 library(sentimentr)
@@ -170,19 +69,9 @@ library(syuzhet)
 head(get_sentiment_dictionary())
 ```
 
-In addition, sentimentr supports valence shifters, which are words that
-alter or intensify the meaning of a polarizing word (i.e., a word
-appearing in the polarity table) appearing in the text or document under
-examination. Each word has a value to indicate how to interpret its
-effect (negators (1), amplifiers(2), de-amplifiers (3), and conjunction
-(4).
+In addition, sentimentr supports valence shifters, which are words that alter or intensify the meaning of a polarizing word (i.e., a word appearing in the polarity table) appearing in the text or document under examination. Each word has a value to indicate how to interpret its effect (negators (1), amplifiers(2), de-amplifiers (3), and conjunction (4).
 
-Now, let's see how we use the **sentiment function**. We'll start with
-an example that does not use valence shifters, in which case we specify
-that the sentiment function should not look for valence words before or
-after any polarizing word. We indicate this by setting n.before and
-n.after to 0. Our sample text consists of several sentences, as shown in
-the following code.
+Now, let's see how we use the **sentiment function**. We'll start with an example that does not use valence shifters, in which case we specify that the sentiment function should not look for valence words before or after any polarizing word. We indicate this by setting n.before and n.after to 0. Our sample text consists of several sentences, as shown in the following code.
 
 ```{r sentiment-2, eval = T}
 library(sentimentr)
@@ -193,11 +82,7 @@ achievement of unparalleled mediocrity.")
 sentiment(sample, n.before=0, n.after=0, amplifier.weight=0)
 ```
 
-Notice that the sentiment function breaks each element (the text between
-quotes in this case) into sentences, identifies each sentence in an
-element, and computes the word count for each of these sentences. The
-sentiment score is the sum of the polarity scores divided by the square
-root of the number of words in the associated sentence.
+Notice that the sentiment function breaks each element (the text between quotes in this case) into sentences, identifies each sentence in an element, and computes the word count for each of these sentences. The sentiment score is the sum of the polarity scores divided by the square root of the number of words in the associated sentence.
 
 To get the overall sentiment for the sample text, use:
 
@@ -210,19 +95,7 @@ n.before=0, n.after=0)
 mean(y$sentiment)
 ```
 
-When a **valence shift** is detected before or after a polarizing word,
-its effect is incorporated in the sentiment calculation. The size of the
-effect is indicated by the amplifier.weight, a sentiment function
-parameter with a value between 0 and 1. The weight amplifies or
-de-amplifies by multiplying the polarized terms by 1 + the amplifier
-weight. A ***negator*** flips the sign of a polarizing word. A
-***conjunction*** amplifies the current clause and down weights the
-prior clause. Some examples in the following table illustrate the
-results of applying the code to a variety of input text. The polarities
-are -1 (crazy) and 1 (love). There is a negator (not), two amplifiers
-(very and much), and a conjunction (but). Contractions are treated as
-amplifiers and so get weights based on the contraction (.9 in this case)
-and amplification (.8) in this case.
+When a **valence shift** is detected before or after a polarizing word, its effect is incorporated in the sentiment calculation. The size of the effect is indicated by the amplifier.weight, a sentiment function parameter with a value between 0 and 1. The weight amplifies or de-amplifies by multiplying the polarized terms by 1 + the amplifier weight. A ***negator*** flips the sign of a polarizing word. A ***conjunction*** amplifies the current clause and down weights the prior clause. Some examples in the following table illustrate the results of applying the code to a variety of input text. The polarities are -1 (crazy) and 1 (love). There is a negator (not), two amplifiers (very and much), and a conjunction (but). Contractions are treated as amplifiers and so get weights based on the contraction (.9 in this case) and amplification (.8) in this case.
 
 ```{r sentiment-4, eval = T}
 library(sentimentr)
@@ -233,18 +106,17 @@ achievement of unparalleled mediocrity.")
 sentiment(sample, n.before = 2, n.after = 2, amplifier.weight=.8, but.weight = .9)
 ```
 
-| Type     | Code | Text  | Sentiment|
-|:---------|:-----:|:------|--------------:|
-|              |          | You're crazy, and I love you.           | 0             |
-| Negator      | 1        | You're not crazy, and I love you.       | 0.57          |
-| Amplifier    | 2        | You're crazy, and I love you very much. | 0.21          |
-| De-amplifier | 3        | You're slightly crazy, and I love you.  | 0.23          |
-| Conjunction  | 4        | You're crazy, but I love you.           | 0.45          |
+| Type         | Code | Text                                    | Sentiment |
+|:-------------|:----:|:----------------------------------------|----------:|
+|              |      | You're crazy, and I love you.           |         0 |
+| Negator      |  1   | You're not crazy, and I love you.       |      0.57 |
+| Amplifier    |  2   | You're crazy, and I love you very much. |      0.21 |
+| De-amplifier |  3   | You're slightly crazy, and I love you.  |      0.23 |
+| Conjunction  |  4   | You're crazy, but I love you.           |      0.45 |
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
-> Run the following R code and comment on how sensitive sentiment
-> analysis is to the n.before and n.after parameters.
+> Run the following R code and comment on how sensitive sentiment analysis is to the n.before and n.after parameters.
 
 ```{r sentiment-5, eval = T}
 library(sentimentr)
@@ -254,31 +126,17 @@ sentiment(sample, n.before = 4, n.after=3, amplifier.weight=1)
 sentiment(sample, n.before = Inf, n.after=Inf, amplifier.weight=1)
 ```
 
-> What are the correct polarities for each word, and weights for
-> negators, amplifiers and so on? It is a judgment call and one that is
-> difficult to justify.
+> What are the correct polarities for each word, and weights for negators, amplifiers and so on? It is a judgment call and one that is difficult to justify.
 
-Sentiment analysis has given you an idea of some of the issues
-surrounding text mining. Let's now look at the topic in more depth and
-explore some of the tools available in **tm**, a general purpose text
-mining package for R. We will also use a few other R packages which
-support text mining and displaying the results.
+Sentiment analysis has given you an idea of some of the issues surrounding text mining. Let's now look at the topic in more depth and explore some of the tools available in **tm**, a general purpose text mining package for R. We will also use a few other R packages which support text mining and displaying the results.
 
 ## Corpus {.unnumbered}
 
-A collection of text is called a corpus. It is common to use N for the
-*corpus size*, the number of tokens, and V for the *vocabulary*, the
-number of distinct tokens.
+A collection of text is called a corpus. It is common to use N for the *corpus size*, the number of tokens, and V for the *vocabulary*, the number of distinct tokens.
 
-In the following examples, our corpus consists of Warren Buffett's
-annual letters for 1998-2012 to the [shareholders of Berkshire Hathaway](http://www.berkshirehathaway.com/letters/letters.html) for 1998-2012. The original letters, available in html
-or pdf, were converted to [separate text files](http://www.terry.uga.edu/people/rwatson/) using [Abbyy Fine Reader](https://pdf.abbyy.com).
-Tables, page numbers, and graphics were removed during the conversion.
+In the following examples, our corpus consists of Warren Buffett's annual letters for 1998-2012 to the [shareholders of Berkshire Hathaway](http://www.berkshirehathaway.com/letters/letters.html) for 1998-2012. The original letters, available in html or pdf, were converted to [separate text files](http://www.terry.uga.edu/people/rwatson/) using [Abbyy Fine Reader](https://pdf.abbyy.com). Tables, page numbers, and graphics were removed during the conversion.
 
-
-The following R code sets up a loop to read each of the letters and add
-it to a data frame. When all the letters have been read, they are turned
-into a corpus.
+The following R code sets up a loop to read each of the letters and add it to a data frame. When all the letters have been read, they are turned into a corpus.
 
 ```{r corpus-creation, eval = T, message = FALSE}
 library(stringr)
@@ -307,16 +165,11 @@ letters <-  Corpus(DataframeSource(df))
 
 ## Readability {.unnumbered}
 
-There are several approaches to estimating the readability of a
-selection of text. They are usually based on counting the words in each
-sentence and the number of syllables in each word. For example, the
-Flesch-Kincaid method uses the formula:
+There are several approaches to estimating the readability of a selection of text. They are usually based on counting the words in each sentence and the number of syllables in each word. For example, the Flesch-Kincaid method uses the formula:
 
-```
-(11.8 * syllables: per: word) + (0.39 * words:per:sentence) - 15.59
-```
-It estimates the grade-level or years of education required of the
-reader. The bands are:
+    (11.8 * syllables: per: word) + (0.39 * words:per:sentence) - 15.59
+
+It estimates the grade-level or years of education required of the reader. The bands are:
 
 | Score | Education level |
 |:------|:----------------|
@@ -324,10 +177,7 @@ reader. The bands are:
 | 16-18 | Masters         |
 | 19-   | PhD             |
 
-
-The R package koRpus has a number of methods for calculating readability
-scores. You first need to tokenize the text using the package's tokenize
-function. Then complete the calculation.
+The R package koRpus has a number of methods for calculating readability scores. You first need to tokenize the text using the package's tokenize function. Then complete the calculation.
 
 ```{r readability, eval = T, message = FALSE}
 library(koRpus)
@@ -342,14 +192,11 @@ readability(tagged.text, hyphen=NULL,index="FORCAST", quiet = TRUE)
 
 ## Preprocessing {.unnumbered}
 
-Before commencing analysis, a text file typically needs to be prepared
-for processing. Several steps are usually taken.
+Before commencing analysis, a text file typically needs to be prepared for processing. Several steps are usually taken.
 
 ### Case conversion {.unnumbered}
 
-For comparison purposes, all text should be of the same case.
-Conventionally, the choice is to convert to all lower case. First
-convert to UTF-8.
+For comparison purposes, all text should be of the same case. Conventionally, the choice is to convert to all lower case. First convert to UTF-8.
 
 ```{r case, eval = T, message = FALSE}
 content_transformer <- function(x) iconv(x, to='UTF-8-MAC', sub='byte')
@@ -359,8 +206,7 @@ clean.letters <- tm_map(letters,tolower)
 
 ### Punctuation removal {.unnumbered}
 
-Punctuation is usually removed when the focus is just on the words in a
-text and not on higher level elements such as sentences and paragraphs.
+Punctuation is usually removed when the focus is just on the words in a text and not on higher level elements such as sentences and paragraphs.
 
 ```{r punctuation, eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,removePunctuation)
@@ -376,27 +222,19 @@ clean.letters <- tm_map(clean.letters,removeNumbers)
 
 ### Stripping extra white spaces {.unnumbered}
 
-Removing extra spaces, tabs, and such is another common preprocessing
-action.
+Removing extra spaces, tabs, and such is another common preprocessing action.
 
 ```{r stripping, eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,stripWhitespace)
 ```
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
-> Redo the readability calculation after executing the preprocessing
-> steps described in the previous section. What do you observe?
+> Redo the readability calculation after executing the preprocessing steps described in the previous section. What do you observe?
 
 ### Stop word filtering {.unnumbered}
 
-Stop words are short common words that can be removed from a text
-without affecting the results of an analysis. Though there is no
-commonly agreed upon list of stop works, typically included are *the,
-is, be, and, but, to,* and *on*. Stop word lists are typically all
-lowercase, thus you should convert to lowercase before removing stop
-words. Each language has a set of stop words. In the following sample
-code, we use the [SMART](http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop) list of English stop words.
+Stop words are short common words that can be removed from a text without affecting the results of an analysis. Though there is no commonly agreed upon list of stop works, typically included are *the, is, be, and, but, to,* and *on*. Stop word lists are typically all lowercase, thus you should convert to lowercase before removing stop words. Each language has a set of stop words. In the following sample code, we use the [SMART](http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop) list of English stop words.
 
 ```{r filtering, eval = T, message = FALSE}
 clean.letters <- tm_map(clean.letters,removeWords,stopwords("SMART"))
@@ -404,10 +242,7 @@ clean.letters <- tm_map(clean.letters,removeWords,stopwords("SMART"))
 
 ### Specific word removal {.unnumbered}
 
-There can also specify particular words to be removed via a character
-vector. For instance, you might not be interested in tracking references
-to *Berkshire Hathaway* in Buffett's letters. You can set up a
-dictionary with words to be removed from the corpus.
+There can also specify particular words to be removed via a character vector. For instance, you might not be interested in tracking references to *Berkshire Hathaway* in Buffett's letters. You can set up a dictionary with words to be removed from the corpus.
 
 ```{r dictonary, eval = T, message = FALSE}
 dictionary <- c("berkshire","hathaway", "million", "billion", "dollar")
@@ -416,38 +251,22 @@ clean.letters <- tm_map(clean.letters,removeWords,dictionary)
 
 ### Word length filtering {.unnumbered}
 
-You can also apply a filter to remove all words less than or greater
-than a specified lengths. The tm package provides this option when
-generating a term frequency matrix, something you will read about
-shortly.
+You can also apply a filter to remove all words less than or greater than a specified lengths. The tm package provides this option when generating a term frequency matrix, something you will read about shortly.
 
 ### Parts of speech (POS) filtering {.unnumbered}
 
-Another option is to remove particular types of words. For example, you
-might scrub all adverbs and adjectives.
+Another option is to remove particular types of words. For example, you might scrub all adverbs and adjectives.
 
 ### Stemming {.unnumbered}
 
-Stemming reduces inflected or derived words to their stem or root form.
-For example, *cats* and *catty* stem to *cat*. *Fishlike* and *fishy*
-stem to *fish*. As a stemmer generally works by suffix stripping, so
-*catfish* should stem to *cat*. As you would expect, stemmers are
-available for different languages, and thus the language must be
-specified. Stemming can take a while to process.
+Stemming reduces inflected or derived words to their stem or root form. For example, *cats* and *catty* stem to *cat*. *Fishlike* and *fishy* stem to *fish*. As a stemmer generally works by suffix stripping, so *catfish* should stem to *cat*. As you would expect, stemmers are available for different languages, and thus the language must be specified. Stemming can take a while to process.
 
 ```{r stemming-1, eval = T, message = FALSE}
 stem.letters <- tm_map(clean.letters,stemDocument, language =
 "english")
 ```
 
-Following stemming, you can apply **stem completion** to return stems to
-their original form to make the text more readable. The original
-document that was stemmed, in this case, is used as the dictionary to
-search for possible completions. Stem completion can apply several
-different rules for converting a stem to a word, including "prevalent"
-for the most frequent match, "first" for the first found completion, and
-"longest" and "shortest" for the longest and shortest, respectively,
-completion in terms of characters
+Following stemming, you can apply **stem completion** to return stems to their original form to make the text more readable. The original document that was stemmed, in this case, is used as the dictionary to search for possible completions. Stem completion can apply several different rules for converting a stem to a word, including "prevalent" for the most frequent match, "first" for the first found completion, and "longest" and "shortest" for the longest and shortest, respectively, completion in terms of characters
 
 ```{r stemming-2, eval = T, message = FALSE}
 stem.letters <-  tm_map(clean.letters,stemDocument, language = "english")
@@ -455,18 +274,13 @@ stem.letters <-  tm_map(clean.letters,stemDocument, language = "english")
 
 ### Regex filtering {.unnumbered}
 
-The power of regex (regular expressions) can also be used for filtering
-text or searching and replacing text. You might recall that we covered
-regex when learning SQL.
+The power of regex (regular expressions) can also be used for filtering text or searching and replacing text. You might recall that we covered regex when learning SQL.
 
 ## Word frequency analysis {.unnumbered}
 
-Word frequency analysis is a simple technique that can also be the
-foundation for other analyses. The method is based on creating a matrix
-in one of two forms.
+Word frequency analysis is a simple technique that can also be the foundation for other analyses. The method is based on creating a matrix in one of two forms.
 
-A **term-document matrix** contains one row for each term and one column
-for each document.
+A **term-document matrix** contains one row for each term and one column for each document.
 
 ```{r tdm,eval = T, message = FALSE}
 tdm <-  TermDocumentMatrix(stem.letters,control = list(minWordLength=3))
@@ -475,22 +289,18 @@ dim(tdm)
 findFreqTerms(tdm, lowfreq = 100, highfreq = Inf)
 ```
 
-A **document-term matrix** contains one row for each document and one
-column for each term.
+A **document-term matrix** contains one row for each document and one column for each term.
 
 ```{r dtm, eval = T, message = FALSE}
 dtm <- DocumentTermMatrix(stem.letters,control = list(minWordLength=3))
 dim(dtm)
 ```
 
-The function dtm() reports the number of distinct terms, the vocabulary,
-and the number of documents in the corpus.
+The function dtm() reports the number of distinct terms, the vocabulary, and the number of documents in the corpus.
 
 ### Term frequency {.unnumbered}
 
-Words that occur frequently within a document are usually a good
-indicator of the document's content. Term frequency (tf) measures word
-frequency.
+Words that occur frequently within a document are usually a good indicator of the document's content. Term frequency (tf) measures word frequency.
 
 tf~td~ = number of times term t occurs in document d.
 
@@ -506,10 +316,7 @@ v <- sort(rowSums(m), decreasing=TRUE)
 v[1:10]
 ```
 
-A probability density plot shows the distribution of words in a document
-visually. As you can see, there is a very long and thin tail because a
-very small number of words occur frequently. Note that this plot shows
-the distribution of words after the removal of stop words.
+A probability density plot shows the distribution of words in a document visually. As you can see, there is a very long and thin tail because a very small number of words occur frequently. Note that this plot shows the distribution of words after the removal of stop words.
 
 ```{r density-plot, eval = T, message = FALSE, fig.cap = 'Probability density plot of word frequency'}
 library(ggplot2)
@@ -536,20 +343,13 @@ wordcloud(d$word, d$freq, min.freq=d$freq[30],colors=pal)
 
 > ❓ **Skill builder**
 >
-> Start with the original letters corpus (i.e., prior to preprocessing)
-> and identify the 20 most common words and create a word cloud for
-> these words.
+> Start with the original letters corpus (i.e., prior to preprocessing) and identify the 20 most common words and create a word cloud for these words.
 
 ## Co-occurrence and association {.unnumbered}
 
-Co-occurrence measures the frequency with which two words appear
-together. In the case of document level association, if the two words
-both appear or neither appears, then the correlation or association is
-1. If two words never appear together in the same document, their
-association is -1.
+Co-occurrence measures the frequency with which two words appear together. In the case of document level association, if the two words both appear or neither appears, then the correlation or association is 1. If two words never appear together in the same document, their association is -1.
 
-A simple example illustrates the concept. The following code sets up a
-corpus of five elementary documents.
+A simple example illustrates the concept. The following code sets up a corpus of five elementary documents.
 
 ```{r co-occurence, eval = T, message = FALSE}
 library(tm)
@@ -559,8 +359,7 @@ tdm <-  TermDocumentMatrix(corpus)
 as.matrix(tdm)
 ```
 
-We compute the correlation of rows to get a measure of association
-across documents.
+We compute the correlation of rows to get a measure of association across documents.
 
 ```{r correlation, eval = T, message = FALSE}
 # Correlation between word2 and word3, word4, and word5
@@ -569,9 +368,7 @@ cor(c(0,1,1,1,1),c(0,0,0,1,1))
 cor(c(0,1,1,1,1),c(0,0,0,0,1))
 ```
 
-Alternatively, use the findAssocs function, which computes all
-correlations between a given term and all terms in the term-document
-matrix and reports those higher than the correlation threshold.
+Alternatively, use the findAssocs function, which computes all correlations between a given term and all terms in the term-document matrix and reports those higher than the correlation threshold.
 
 ```{r association-1, eval = T, message = FALSE}
 library(tm)
@@ -579,8 +376,7 @@ library(tm)
 findAssocs(tdm,"word2",0.1)
 ```
 
-Now that you have an understanding of how association works across
-documents, here is an example for the corpus of Buffett letters.
+Now that you have an understanding of how association works across documents, here is an example for the corpus of Buffett letters.
 
 ```{r association-2, eval = T, message = FALSE}
 # Select the first ten letters
@@ -591,36 +387,13 @@ findAssocs(tdm, "invest",0.80)
 
 ## Cluster analysis {.unnumbered}
 
-Cluster analysis is a statistical technique for grouping together sets
-of observations that share common characteristics. Objects assigned to
-the same group are more similar in some way than those allocated to
-another cluster. In the case of a corpus, cluster analysis groups
-documents based on their similarity. Google, for instance, uses
-clustering for its news site.
+Cluster analysis is a statistical technique for grouping together sets of observations that share common characteristics. Objects assigned to the same group are more similar in some way than those allocated to another cluster. In the case of a corpus, cluster analysis groups documents based on their similarity. Google, for instance, uses clustering for its news site.
 
-The general principle of cluster analysis is to map a set of
-observations in multidimensional space. For example, if you have seven
-measures for each observation, each will be mapped into
-seven-dimensional space. Observations that are close together in this
-space will be grouped together. In the case of a corpus, cluster
-analysis is based on mapping frequently occurring words into a
-multidimensional space. The frequency with which each word appears in a
-document is used as a weight, so that frequently occurring words have
-more influence than others.
+The general principle of cluster analysis is to map a set of observations in multidimensional space. For example, if you have seven measures for each observation, each will be mapped into seven-dimensional space. Observations that are close together in this space will be grouped together. In the case of a corpus, cluster analysis is based on mapping frequently occurring words into a multidimensional space. The frequency with which each word appears in a document is used as a weight, so that frequently occurring words have more influence than others.
 
-There are multiple statistical techniques for clustering, and multiple
-methods for calculating the distance between points. Furthermore, the
-analyst has to decide how many clusters to create. Thus, cluster
-analysis requires some judgment and experimentation to develop a
-meaningful set of groups.
+There are multiple statistical techniques for clustering, and multiple methods for calculating the distance between points. Furthermore, the analyst has to decide how many clusters to create. Thus, cluster analysis requires some judgment and experimentation to develop a meaningful set of groups.
 
-The following code computes all possible clusters using the Ward method
-of cluster analysis. A term-document matrix is sparse, which means it
-consists mainly of zeroes. In other words, many terms occur in only one
-or two documents, and the cell entries for the remaining documents are
-zero. In order to reduce the computations required, sparse terms are
-removed from the matrix. You can vary the sparse parameter to see how
-the clusters vary.
+The following code computes all possible clusters using the Ward method of cluster analysis. A term-document matrix is sparse, which means it consists mainly of zeroes. In other words, many terms occur in only one or two documents, and the cell entries for the remaining documents are zero. In order to reduce the computations required, sparse terms are removed from the matrix. You can vary the sparse parameter to see how the clusters vary.
 
 ```{r cluster, eval = T, message = FALSE, fig.cap = 'Dendrogram for Buffett letters from 1998-2012'}
 # Cluster analysis
@@ -636,62 +409,31 @@ cluster = hclust(dist(tdmtranspose))
 plot(cluster)
 ```
 
-The cluster analysis is shown in the following figure as a dendrogram, a
-tree diagram, with a leaf for each year. Clusters seem to from around
-consecutive years. Can you think of an explanation?
+The cluster analysis is shown in the following figure as a dendrogram, a tree diagram, with a leaf for each year. Clusters seem to from around consecutive years. Can you think of an explanation?
 
 ## Topic modeling {.unnumbered}
 
-Topic modeling is a set of statistical techniques for identifying the
-themes that occur in a document set. The key assumption is that a
-document on a particular topic will contain words that identify that
-topic. For example, a report on gold mining will likely contain words
-such as "gold" and "ore." Whereas, a document on France, would likely
-contain the terms "France," "French," and "Paris."
+Topic modeling is a set of statistical techniques for identifying the themes that occur in a document set. The key assumption is that a document on a particular topic will contain words that identify that topic. For example, a report on gold mining will likely contain words such as "gold" and "ore." Whereas, a document on France, would likely contain the terms "France," "French," and "Paris."
 
-The package **topicmodels** implements topic modeling techniques within
-the R framework. It extends tm to provide support for topic modeling. It
-implements two methods: latent Dirichlet allocation (LDA), which assumes
-topics are uncorrelated; and correlated topic models (CTM), an extension
-of LDA that permits correlation between topics.[^textmining-5] Both LDA
-and CTM require that the number of topics to be extracted is determined
-a priori. For example, you might decide in advance that five topics
-gives a reasonable spread and is sufficiently small for the diversity to
-be understood.[^textmining-6]
+The package **topicmodels** implements topic modeling techniques within the R framework. It extends tm to provide support for topic modeling. It implements two methods: latent Dirichlet allocation (LDA), which assumes topics are uncorrelated; and correlated topic models (CTM), an extension of LDA that permits correlation between topics.[^textmining-2] Both LDA and CTM require that the number of topics to be extracted is determined a priori. For example, you might decide in advance that five topics gives a reasonable spread and is sufficiently small for the diversity to be understood.[^textmining-3]
 
-[^textmining-5]: The mathematics of LDA and CTM are beyond the scope of
-    this text. For details, see Grün, B., & Hornik, K. (2011).
-    Topicmodels: An R package for fitting topic models. *Journal of
-    Statistical Software*, 40(13), 1-30. 
+[^textmining-2]: The mathematics of LDA and CTM are beyond the scope of this text. For details, see Grün, B., & Hornik, K. (2011). Topicmodels: An R package for fitting topic models. *Journal of Statistical Software*, 40(13), 1-30. 
 
-[^textmining-6]: Humans have a capacity to handle about 7±2 concepts at
-    a time. Miller, G. A. (1956). The magical number seven, plus or
-    minus two: some limits on our capacity for processing information.
-    *The Psychological Review*, 63(2), 81-97. 
+[^textmining-3]: Humans have a capacity to handle about 7±2 concepts at a time. Miller, G. A. (1956). The magical number seven, plus or minus two: some limits on our capacity for processing information. *The Psychological Review*, 63(2), 81-97. 
 
-Words that occur frequently in many documents are not good at
-distinguishing among documents. The weighted term frequency inverse
-document frequency (tf-idf) is a measure designed for determining which
-terms discriminate among documents. It is based on the term frequency
-(tf), defined earlier, and the inverse document frequency.
+Words that occur frequently in many documents are not good at distinguishing among documents. The weighted term frequency inverse document frequency (tf-idf) is a measure designed for determining which terms discriminate among documents. It is based on the term frequency (tf), defined earlier, and the inverse document frequency.
 
 ### Inverse document frequency {.unnumbered}
 
-The inverse document frequency (idf) measures the frequency of a term
-across documents.
+The inverse document frequency (idf) measures the frequency of a term across documents.
 
 ![](Figures/Chapter%2017/idf.png)
 
-> Where
-> m = number of documents (i.e., rows in the case of a term-document
-> matrix);
-> df~t~ = number of documents containing term *t.*
+> Where m = number of documents (i.e., rows in the case of a term-document matrix); df~t~ = number of documents containing term *t.*
 
-If a term occurs in every document, then its idf = 0, whereas if a term
-occurs in only one document out of 15, its idf = 3.91.
+If a term occurs in every document, then its idf = 0, whereas if a term occurs in only one document out of 15, its idf = 3.91.
 
-To calculate and display the idf for the letters corpus, we can use the
-following R script.
+To calculate and display the idf for the letters corpus, we can use the following R script.
 
 ```{r topic-1, eval = T, message = FALSE, fig.cap = 'Inverse document frequency (corpus has 15 documents)'}
 # calculate idf for each term
@@ -703,30 +445,21 @@ df.idf <-  data.frame(idf)
 ggplot(df.idf,aes(idf)) + geom_histogram(fill="chocolate") + xlab("Inverse document frequency")
 ```
 
-The generated graphic shows that about 5,000 terms occur in only one
-document (i.e., the idf = 3.91) and less than 500 terms occur in every
-document. The terms with an idf in the range 1 to 2 are likely to be the
-most useful in determining the topic of each document.
+The generated graphic shows that about 5,000 terms occur in only one document (i.e., the idf = 3.91) and less than 500 terms occur in every document. The terms with an idf in the range 1 to 2 are likely to be the most useful in determining the topic of each document.
 
 ### Term frequency inverse document frequency (tf-idf) {.unnumbered}
 
-The weighted term frequency inverse document frequency (tf-idf or ω~td~)
-is calculated by multiplying a term's frequency (tf) by its inverse
-document frequency (idf).
+The weighted term frequency inverse document frequency (tf-idf or ω~td~) is calculated by multiplying a term's frequency (tf) by its inverse document frequency (idf).
 
 ![](Figures/Chapter%2017/tf-idf.png)
 
->Where tf~td~ = frequency of term *t* in document *d.*
+> Where tf~td~ = frequency of term *t* in document *d.*
 
 ### Topic modeling with R {.unnumbered}
 
-Prior to topic modeling, pre-process a text file in the usual fashion
-(e.g., convert to lower case, remove punctuation, and so forth). Then,
-create a document-term matrix.
+Prior to topic modeling, pre-process a text file in the usual fashion (e.g., convert to lower case, remove punctuation, and so forth). Then, create a document-term matrix.
 
-The mean term frequency-inverse document frequency (tf-idf) is used to
-select the vocabulary for topic modeling. We use the median value of
-tf-idf for all terms as a threshold.
+The mean term frequency-inverse document frequency (tf-idf) is used to select the vocabulary for topic modeling. We use the median value of tf-idf for all terms as a threshold.
 
 ```{r topic-2, eval = T, message = FALSE}
 library(topicmodels)
@@ -739,16 +472,9 @@ dim(tfidf)
 median(tfidf)
 ```
 
-The goal of topic modeling is to find those terms that distinguish a
-document set. Thus, terms with low frequency should be omitted because
-they don't occur often enough to define a topic. Similarly, those terms
-occurring in many documents don't differentiate between documents.
+The goal of topic modeling is to find those terms that distinguish a document set. Thus, terms with low frequency should be omitted because they don't occur often enough to define a topic. Similarly, those terms occurring in many documents don't differentiate between documents.
 
-A common heuristic is to select those terms with a tf-idf >
-median(tf-idf). As a result, we reduce the document-term matrix by
-keeping only those terms above the threshold and eliminating rows that
-have zero terms. Because the median is a measure of central tendency,
-this approach reduces the number of columns by roughly half.
+A common heuristic is to select those terms with a tf-idf > median(tf-idf). As a result, we reduce the document-term matrix by keeping only those terms above the threshold and eliminating rows that have zero terms. Because the median is a measure of central tendency, this approach reduces the number of columns by roughly half.
 
 ```{r topic-3, eval = T, message = FALSE}
 # select columns with tf-idf > median
@@ -759,14 +485,7 @@ dtm <- dtm[row_sums(dtm) > 0,]
 dim(dtm)
 ```
 
-As mentioned earlier, the topic modeling method assumes a set number of
-topics, and it is the responsibility of the analyst to estimate the
-correct number of topics to extract. It is common practice to fit models
-with a varying number of topics, and use the various results to
-establish a good choice for the number of topics. The analyst will
-typically review the output of several models and make a judgment on
-which model appears to provide a realistic set of distinct topics. Here
-is some code that starts with five topics.
+As mentioned earlier, the topic modeling method assumes a set number of topics, and it is the responsibility of the analyst to estimate the correct number of topics to extract. It is common practice to fit models with a varying number of topics, and use the various results to establish a good choice for the number of topics. The analyst will typically review the output of several models and make a judgment on which model appears to provide a realistic set of distinct topics. Here is some code that starts with five topics.
 
 ```{r topic-4, eval = T, message = FALSE}
 # set number of topics to extract
@@ -780,176 +499,82 @@ topics(TM[["VEM"]], 1)
 terms(TM[["VEM"]], 5)
 ```
 
-The output indicates that the first three letter (1998-2000) are about
-topic 4, the fourth (2001) topic 2, and so on.
+The output indicates that the first three letter (1998-2000) are about topic 4, the fourth (2001) topic 2, and so on.
 
-Topic 1 is defined by the following terms: thats, bnsf, cant,
-blacksholes, and railroad. As we have seen previously, some of these
-words (e.g., thats and cant, which we can infer as being that's and
-can't) are not useful differentiators, and the dictionary could be
-extended to remove them from consideration and topic modeling repeated.
-For this particular case, it might be that Buffett's letters don't vary
-much from year to year, and he returns to the same topics in each annual
-report.
+Topic 1 is defined by the following terms: thats, bnsf, cant, blacksholes, and railroad. As we have seen previously, some of these words (e.g., thats and cant, which we can infer as being that's and can't) are not useful differentiators, and the dictionary could be extended to remove them from consideration and topic modeling repeated. For this particular case, it might be that Buffett's letters don't vary much from year to year, and he returns to the same topics in each annual report.
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
-> Experiment with the topicmodels package to identify the topics in
-> Buffett's letters. You might need to use the dictionary feature of
-> text mining to remove selected words from the corpus to develop a
-> meaningful distinction between topics.
+> Experiment with the topicmodels package to identify the topics in Buffett's > letters. You might need to use the dictionary feature of text mining to remove selected words from the corpus to develop a meaningful distinction between topics.
 
 ## Named-entity recognition (NER) {.unnumbered}
 
-Named-entity recognition (NER) places terms in a corpus into predefined
-categories such as the names of persons, organizations, locations,
-expressions of times, quantities, monetary values, and percentages. It
-identifies some or all mentions of these categories, as shown in the
-following figure, where an organization, place, and date are recognized.
+Named-entity recognition (NER) places terms in a corpus into predefined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, and percentages. It identifies some or all mentions of these categories, as shown in the following figure, where an organization, place, and date are recognized.
 
 Named-entity recognition example
 
 ![](Figures/Chapter%2017/name-entity-recognition.png)
 
-Tags are added to the corpus to denote the category of the terms
-identified.
+Tags are added to the corpus to denote the category of the terms identified.
 
-The \<organization>Olympics\</organization> were in
-\<place>London\</place> in \<date>2012\</date>.
+The <organization>Olympics</organization> were in <place>London</place> in <date>2012</date>.
 
-There are two approaches to developing an NER capability. A
-*rules-based* approach works well for a well-understood domain, but it
-requires maintenance and is language dependent. *Statistical
-classifiers*, based on machine learning, look at each word in a sentence
-to decide whether it is the start of a named-entity, a continuation of
-an already identified named-entity, or not part of a named-entity. Once
-a named-entity is distinguished, its category (e.g., place) must be
-identified and surrounding tags inserted.
+There are two approaches to developing an NER capability. A *rules-based* approach works well for a well-understood domain, but it requires maintenance and is language dependent. *Statistical classifiers*, based on machine learning, look at each word in a sentence to decide whether it is the start of a named-entity, a continuation of an already identified named-entity, or not part of a named-entity. Once a named-entity is distinguished, its category (e.g., place) must be identified and surrounding tags inserted.
 
-Statistical classifiers need to be trained on a large collection of
-human-annotated text that can be used as input to machine learning
-software. Human-annotation, while time-consuming, does not require a
-high level of skill. It is the sort of task that is easily parallelized
-and distributed to a large number of human coders who have a reasonable
-understanding of the corpus's context (e.g., able to recognize that
-London is a place and that the Olympics is an organization). The
-software classifier need to be trained on approximately 30,000 words.
+Statistical classifiers need to be trained on a large collection of human-annotated text that can be used as input to machine learning software. Human-annotation, while time-consuming, does not require a high level of skill. It is the sort of task that is easily parallelized and distributed to a large number of human coders who have a reasonable understanding of the corpus's context (e.g., able to recognize that London is a place and that the Olympics is an organization). The software classifier need to be trained on approximately 30,000 words.
 
-The accuracy of NER is dependent on the corpus used for training and the
-domain of the documents to be classified. For example, NER is based on a
-collection of news stories and is unlikely to be very accurate for
-recognizing entities in medical or scientific literature. Thus, for some
-domains, you will likely need to annotate a set of sample documents to
-create a relevant model. Of course, as times change, it might be
-necessary to add new annotated text to the learning script to
-accommodate new organizations, place, people and so forth. A
-well-trained statistical classifier applied appropriately is usually
-capable of correctly recognizing entities with 90 percent accuracy.
+The accuracy of NER is dependent on the corpus used for training and the domain of the documents to be classified. For example, NER is based on a collection of news stories and is unlikely to be very accurate for recognizing entities in medical or scientific literature. Thus, for some domains, you will likely need to annotate a set of sample documents to create a relevant model. Of course, as times change, it might be necessary to add new annotated text to the learning script to accommodate new organizations, place, people and so forth. A well-trained statistical classifier applied appropriately is usually capable of correctly recognizing entities with 90 percent accuracy.
 
 ### NER software {.unnumbered}
 
-[OpenNLP](http://opennlp.apache.org) is an Apache Java-based machine learning based
-toolkit for the processing of natural language in text format. It is a
-collection of natural language processing tools, including a sentence
-detector, tokenizer, parts-of-speech(POS)-tagger, syntactic parser, and
-named-entity detector. The NER tool can recognize people, locations,
-organizations, dates, times. percentages, and money. You will need to
-write a Java program to take advantage of the toolkit. The R package,
-openNLP, provides an interface to OpenNLP.
-
+[OpenNLP](http://opennlp.apache.org) is an Apache Java-based machine learning based toolkit for the processing of natural language in text format. It is a collection of natural language processing tools, including a sentence detector, tokenizer, parts-of-speech(POS)-tagger, syntactic parser, and named-entity detector. The NER tool can recognize people, locations, organizations, dates, times. percentages, and money. You will need to write a Java program to take advantage of the toolkit. The R package, openNLP, provides an interface to OpenNLP.
 
 ## Future developments {.unnumbered}
 
-Text mining and natural language processing are developing areas and you
-can expect new tools to emerge. Document summarization, relationship
-extraction, advanced sentiment analysis, and cross-language information
-retrieval (e.g., a Chinese speaker querying English documents and
-getting a Chinese translation of the search and selected documents) are
-all areas of research that will likely result in generally available
-software with possible R versions. If you work in this area, you will
-need to continually scan for new software that extends the power of
-existing methods and adds new text mining capabilities.
+Text mining and natural language processing are developing areas and you can expect new tools to emerge. Document summarization, relationship extraction, advanced sentiment analysis, and cross-language information retrieval (e.g., a Chinese speaker querying English documents and getting a Chinese translation of the search and selected documents) are all areas of research that will likely result in generally available software with possible R versions. If you work in this area, you will need to continually scan for new software that extends the power of existing methods and adds new text mining capabilities.
 
 ### Summary {.unnumbered}
 
-Language enables cooperation through information exchange. Natural
-language processing (NLP) focuses on developing and implementing
-software that enables computers to handle large scale processing of
-language in a variety of forms, such as written and spoken. The inherent
-ambiguity in written and spoken speech makes NLP challenging. Don't
-expect NLP to provide the same level of exactness and starkness as
-numeric processing. There are three levels to consider when processing
-language: semantics, discourse, and pragmatics.
+Language enables cooperation through information exchange. Natural language processing (NLP) focuses on developing and implementing software that enables computers to handle large scale processing of language in a variety of forms, such as written and spoken. The inherent ambiguity in written and spoken speech makes NLP challenging. Don't expect NLP to provide the same level of exactness and starkness as numeric processing. There are three levels to consider when processing language: semantics, discourse, and pragmatics.
 
-Sentiment analysis is a popular and simple method of measuring aggregate
-feeling. Tokenization is the process of breaking a document into chunks.
-A collection of text is called a corpus. The Flesch-Kincaid formula is a
-common way of assessing readability. Preprocessing, which prepares a
-corpus for text mining, can include case conversion, punctuation
-removal, number removal, stripping extra white spaces, stop word
-filtering, specific word removal, word length filtering, parts of speech
-(POS) filtering, Stemming, and regex filtering.
+Sentiment analysis is a popular and simple method of measuring aggregate feeling. Tokenization is the process of breaking a document into chunks. A collection of text is called a corpus. The Flesch-Kincaid formula is a common way of assessing readability. Preprocessing, which prepares a corpus for text mining, can include case conversion, punctuation removal, number removal, stripping extra white spaces, stop word filtering, specific word removal, word length filtering, parts of speech (POS) filtering, Stemming, and regex filtering.
 
-Word frequency analysis is a simple technique that can also be the
-foundation for other analyses. A term-document matrix contains one row
-for each term and one column for each document. A document-term matrix
-contains one row for each document and one column for each term. Words
-that occur frequently within a document are usually a good indicator of
-the document's content. A word cloud is way of visualizing the most
-frequent words. Co-occurrence measures the frequency with which two
-words appear together. Cluster analysis is a statistical technique for
-grouping together sets of observations that share common
-characteristics. Topic modeling is a set of statistical techniques for
-identifying the topics that occur in a document set. The inverse
-document frequency (idf) measures the frequency of a term across
-documents. Named-entity recognition (NER) places terms in a corpus into
-predefined categories such as the names of persons, organizations,
-locations, expressions of times, quantities, monetary values, and
-percentages. Statistical classification is used for NER. OpenNLP is an
-Apache Java-based machine learning-based toolkit for the processing of
-natural language in text format. Document summarization, relationship
-extraction, advanced sentiment analysis, and cross-language information
-retrieval are all areas of research.
+Word frequency analysis is a simple technique that can also be the foundation for other analyses. A term-document matrix contains one row for each term and one column for each document. A document-term matrix contains one row for each document and one column for each term. Words that occur frequently within a document are usually a good indicator of the document's content. A word cloud is way of visualizing the most frequent words. Co-occurrence measures the frequency with which two words appear together. Cluster analysis is a statistical technique for grouping together sets of observations that share common characteristics. Topic modeling is a set of statistical techniques for identifying the topics that occur in a document set. The inverse document frequency (idf) measures the frequency of a term across documents. Named-entity recognition (NER) places terms in a corpus into predefined categories such as the names of persons, organizations, locations, expressions of times, quantities, monetary values, and percentages. Statistical classification is used for NER. OpenNLP is an Apache Java-based machine learning-based toolkit for the processing of natural language in text format. Document summarization, relationship extraction, advanced sentiment analysis, and cross-language information retrieval are all areas of research.
 
 ## Key terms and concepts {.unnumbered}
 
-|                                   |              |
-|-----------------------------------|--------------|
-| Association                       | Readability |
-| Cluster analysis                  | Regex filtering |
-| Co-occurrence                     | Sentiment analysis |
-| Corpus                            | Statistical classification |
-| Dendrogram                        | Stemming |
-| Document-term matrix              | Stop word filtering |
-| Flesch-Kincaid formula            | Stripping extra white spaces |
-| Inverse document frequency        | Term-document matrix |
-| KNIME                             | Term frequency |
+|                                   |                                           |
+|-----------------------------------|-------------------------------------------|
+| Association                       | Readability                               |
+| Cluster analysis                  | Regex filtering                           |
+| Co-occurrence                     | Sentiment analysis                        |
+| Corpus                            | Statistical classification                |
+| Dendrogram                        | Stemming                                  |
+| Document-term matrix              | Stop word filtering                       |
+| Flesch-Kincaid formula            | Stripping extra white spaces              |
+| Inverse document frequency        | Term-document matrix                      |
+| KNIME                             | Term frequency                            |
 | Named-entity recognition (NER)    | Term frequency inverse document frequency |
-| Natural language processing (NLP) | Text mining |
-| Number removal                    | Tokenization |
-| OpenNLP                           | Topic modeling |
-| Parts of speech (POS) filtering   | Word cloud |
-| Preprocessing                     | Word frequency analysis |
-| Punctuation removal               | Word length filtering  |
+| Natural language processing (NLP) | Text mining                               |
+| Number removal                    | Tokenization                              |
+| OpenNLP                           | Topic modeling                            |
+| Parts of speech (POS) filtering   | Word cloud                                |
+| Preprocessing                     | Word frequency analysis                   |
+| Punctuation removal               | Word length filtering                     |
 
 ### References {.unnumbered}
 
-Feinerer, I. (2008). An introduction to text mining in R. *R News*,
-8(2), 19-22.
+Feinerer, I. (2008). An introduction to text mining in R. *R News*, 8(2), 19-22.
 
-Feinerer, I., Hornik, K., & Meyer, D. (2008). Text mining infrastructure
-in R. *Journal of Statistical Software*, 25(5), 1-54.
+Feinerer, I., Hornik, K., & Meyer, D. (2008). Text mining infrastructure in R. *Journal of Statistical Software*, 25(5), 1-54.
 
-Grün, B., & Hornik, K. (2011). topicmodels: An R package for fitting
-topic models. *Journal of Statistical Software*, 40(13), 1-30.
+Grün, B., & Hornik, K. (2011). topicmodels: An R package for fitting topic models. *Journal of Statistical Software*, 40(13), 1-30.
 
-Ingersoll, G., Morton, T., & Farris, L. (2012). *Taming Text: How to
-find, organize and manipulate it*. Greenwich, CT: Manning Publications.
+Ingersoll, G., Morton, T., & Farris, L. (2012). *Taming Text: How to find, organize and manipulate it*. Greenwich, CT: Manning Publications.
 
 ## Exercises {.unnumbered}
 
-1.  Take the recent annual reports for [UPS](http://www.investors.ups.com/phoenix.zhtml?c=62900&p=irol-reportsannua) and convert
-    them to text using an online service, [such as](http://www.fileformat.info/convert/doc/pdf2txt.htm).
+1.  Take the recent annual reports for [UPS](http://www.investors.ups.com/phoenix.zhtml?c=62900&p=irol-reportsannua) and convert them to text using an online service, [such as](http://www.fileformat.info/convert/doc/pdf2txt.htm).
 
     Complete the following tasks:
 
@@ -961,22 +586,16 @@ find, organize and manipulate it*. Greenwich, CT: Manning Publications.
 
     4.  Preprocess the corpus.
 
-    5.  Create a term-document matrix and compute the frequency of words
-        in the corpus.
+    5.  Create a term-document matrix and compute the frequency of words in the corpus.
 
     6.  Construct a word cloud for the 25 most common words.
 
-    7.  Undertake a cluster analysis, identify which reports are similar
-        in nature, and see if you can explain why some reports are in
-        different clusters.
+    7.  Undertake a cluster analysis, identify which reports are similar in nature, and see if you can explain why some reports are in different clusters.
 
     8.  Build a topic model for the annual reports.
 
-2.  Merge the annual reports for Berkshire Hathaway (i.e., Buffett's
-    letters) and UPS into a single corpus.
+2.  Merge the annual reports for Berkshire Hathaway (i.e., Buffett's letters) and UPS into a single corpus.
 
-    1.  Undertake a cluster analysis and identify which reports are
-        similar in nature.
+    1.  Undertake a cluster analysis and identify which reports are similar in nature.
     2.  Build a topic model for the combined annual reports.
-    3.  Do the cluster analysis and topic model suggest considerable
-        differences in the two sets of reports?
+    3.  Do the cluster analysis and topic model suggest considerable differences in the two sets of reports?

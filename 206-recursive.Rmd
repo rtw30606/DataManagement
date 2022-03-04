@@ -446,7 +446,7 @@ Relationships can be one-to-one and recursive. A recursive relationship is withi
 | Recursive relationship         | Views                        |
 | Referential integrity          | Virtual table                |
 
-### Exercise {.unnumbered}
+## Exercises {.unnumbered}
 
 1.  Draw data models for the following two problems:
 

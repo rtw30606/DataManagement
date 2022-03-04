@@ -253,7 +253,7 @@ diamond) and shape size to aid matching.
 
 ![](Figures/Chapter%2016/guides.png)
 
-> ❓ **Skill builder**
+> ❓ *Skill builder*
 >
 > Create a line plot using the data in the following table.
 >
