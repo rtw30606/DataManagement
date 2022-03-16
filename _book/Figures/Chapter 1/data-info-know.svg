@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="161.376 367.72 272.909 69.284" width="272.909" height="69.284">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="#221f20">
+      <g>
+        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Myriad Pro" font-size="10" panose-1="2 11 5 3 3 4 3 2 2 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="0" x-height="484" cap-height="674" ascent="750.0015" descent="-250.0005" font-weight="400">
+      <font-face-src>
+        <font-face-name name="MyriadPro-Regular"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2013-03-15 21:23:26 +0000</metadata>
+  <g id="Canvas_1" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Line_4">
+        <line x1="279.932" y1="404.127" x2="279.932" y2="392.427" marker-start="url(#FilledArrow_Marker)" stroke="#221f20" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+      </g>
+      <g id="Line_6">
+        <line x1="234.92322" y1="419.09117" x2="224.333" y2="414.117" marker-start="url(#FilledArrow_Marker)" stroke="#221f20" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+      </g>
+      <g id="Line_8">
+        <line x1="360.41487" y1="394.2335" x2="312.744" y2="380.901" marker-start="url(#FilledArrow_Marker)" stroke="#221f20" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+      </g>
+      <g id="Line_10">
+        <line x1="360.41482" y1="410.72534" x2="312.744" y2="424.057" marker-start="url(#FilledArrow_Marker)" stroke="#221f20" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+      </g>
+      <g id="Graphic_13">
+        <path d="M 220.361 411.51 L 220.361 393.47 L 161.876 393.47 L 161.876 411.51 L 220.361 411.51 Z" fill="#cbe1fb"/>
+        <path d="M 220.361 411.51 L 220.361 393.47 L 161.876 393.47 L 161.876 411.51 L 220.361 411.51 Z" stroke="#221f20" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+      </g>
+      <g id="Graphic_14">
+        <text transform="translate(181.1185 395.99)" fill="black">
+          <tspan font-family="Myriad Pro" font-size="10" font-weight="400" fill="black" x="0" y="8">Data</tspan>
+        </text>
+      </g>
+      <g id="Graphic_16">
+        <rect x="375.241" y="393.47" width="58.485" height="18.04" fill="#f0f1f1"/>
+      </g>
+      <g id="Graphic_17">
+        <path d="M 433.785 410.783 L 433.785 392.743 L 375.299 392.743 L 375.299 410.783 L 433.785 410.783 Z" fill="#cbe1fb"/>
+        <path d="M 433.785 410.783 L 433.785 392.743 L 375.299 392.743 L 375.299 410.783 L 433.785 410.783 Z" stroke="#221f20" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+      </g>
+      <g id="Graphic_18">
+        <text transform="translate(385.9835 395.8315)" fill="black">
+          <tspan font-family="Myriad Pro" font-size="10" font-weight="400" fill="black" x="0" y="8">Decision</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <rect x="248.909" y="368.22" width="58.485" height="18.322" fill="#f0f1f1"/>
+      </g>
+      <g id="Graphic_21">
+        <path d="M 307.394 386.542 L 307.394 368.22 L 248.908 368.22 L 248.908 386.542 L 307.394 386.542 Z" fill="#cbe1fb"/>
+        <path d="M 307.394 386.542 L 307.394 368.22 L 248.908 368.22 L 248.908 386.542 L 307.394 386.542 Z" stroke="#221f20" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+      </g>
+      <g id="Graphic_22">
+        <text transform="translate(254.63862 370.881)" fill="black">
+          <tspan font-family="Myriad Pro" font-size="10" font-weight="400" fill="black" x="0" y="8">Knowledge</tspan>
+        </text>
+      </g>
+      <g id="Graphic_24">
+        <rect x="248.909" y="418.673" width="58.485" height="17.831" fill="#f0f1f1"/>
+      </g>
+      <g id="Graphic_25">
+        <path d="M 307.394 436.504 L 307.394 418.673 L 248.908 418.673 L 248.908 436.504 L 307.394 436.504 Z" fill="#cbe1fb"/>
+        <path d="M 307.394 436.504 L 307.394 418.673 L 248.908 418.673 L 248.908 436.504 L 307.394 436.504 Z" stroke="#221f20" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+      </g>
+      <g id="Graphic_26">
+        <text transform="translate(253.6386 421.0885)" fill="black">
+          <tspan font-family="Myriad Pro" font-size="10" font-weight="400" fill="black" x="0" y="8">Information</tspan>
+        </text>
+      </g>
+      <g id="Graphic_27">
+        <text transform="translate(182.5204 418.673)" fill="black">
+          <tspan font-family="Myriad Pro" font-size="10" font-weight="400" fill="black" x="0" y="8">Conversion</tspan>
+        </text>
+      </g>
+      <g id="Graphic_28">
+        <text transform="translate(239.43125 395.8315)" fill="black">
+          <tspan font-family="Myriad Pro" font-size="10" font-weight="400" fill="black" x="0" y="8">Request</tspan>
+        </text>
+      </g>
+      <g id="Graphic_29">
+        <text transform="translate(295.33612 396.9)" fill="black">
+          <tspan font-family="Myriad Pro" font-size="10" font-weight="400" fill="black" x="0" y="8">Interpretation</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
