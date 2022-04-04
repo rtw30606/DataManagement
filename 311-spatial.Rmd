@@ -51,11 +51,11 @@ MySQL has data types for storing geometric data, which are:
 +---------------+-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Type          | Representation                                | Description                                                                                                           |
 +:==============+:==============================================+:======================================================================================================================+
-| Point         | POINT(x y)                                    | A point in space (e.g., a city's                                                                                      |
+| Point         | POINT(x y)  | A point in space (e.g., a city's location)  |
 +---------------+-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | LineString    | LINESTRING(x1 y1,x2 y2,...)                   | A sequence of points with linear interpolation between points (e.g., a road)                                          |
 +---------------+-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| Polygon       | POLYGON((x1 y1,x2 y2,...), (x1 y1,x2 y2,...)) | A polygon (e.g., a boundary) which has a single exterior boundary and zero or more interior boundaries ( i.e., holes) |
+| Polygon       | POLYGON((x1 y1,x2 y2,...), (x1 y1,x2 y2,...)) | A polygon (e.g., a boundary) which has a single exterior boundary and zero or more interior boundaries ( i.e., no holes) |
 +---------------+-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
 ### Spatial Reference Support System (SRS) {.unnumbered}
@@ -185,11 +185,13 @@ SELECT ST_AREA(boundpath)*1406
 You can measure the distance between two points using ST_Distance. You will need to multiply the result by 37.5 or 23 to convert to kilometers or miles, respectively.
 
 ```{sql, connection = db, eval = T}
-SELECT ST_Distance(orig.cityloc,dest.cityloc)*37.5
-  AS 'Distance (kms)'
-	  FROM city orig, city dest
- 		  WHERE orig.cityname = 'Sligo'
-		  AND dest.cityname = 'Dublin';
+WITH
+  orig AS (SELECT * FROM city),
+  dest AS (SELECT * FROM city)
+SELECT ST_Distance(orig.cityloc,dest.cityloc)*37.5  AS "Distance (kms)"
+	FROM orig, dest
+     WHERE orig.cityname = 'Sligo'
+     AND dest.cityname = 'Dublin';
 ```
 
 *What is the closest city to Limerick?*
@@ -197,7 +199,10 @@ SELECT ST_Distance(orig.cityloc,dest.cityloc)*37.5
 This query has a familiar structure. The inner query determines the minimum distance between Limerick and other cities. Notice that there is a need to exclude comparing the distance from Limerick to itself, which is zero.
 
 ```{sql, connection = db, eval = T}
-SELECT dest.cityname FROM city orig, city dest
+WITH
+  orig AS (SELECT * FROM city),
+  dest AS (SELECT * FROM city)
+SELECT dest.cityname FROM orig, dest
 WHERE orig.cityname = 'Limerick'
 AND ST_Distance(orig.cityloc,dest.cityloc)=
 	(SELECT MIN(ST_Distance(orig.cityloc,dest.cityloc))
@@ -207,12 +212,15 @@ AND ST_Distance(orig.cityloc,dest.cityloc)=
 
 *What is the westernmost city in Ireland?*
 
-The first thing to recognize is that by convention the west is shown on the left side of the map, which means the westernmost city will have the smallest x-coordinate.
+The first thing to recognize is that by convention west is shown on the left side of the map, which means the westernmost city will have the smallest x-coordinate.
 
 ```{sql, connection = db, eval = T}
-SELECT west.cityname FROM city west
+WITH
+  west AS (SELECT * FROM city),
+  other AS (SELECT * FROM city)
+SELECT west.cityname FROM  west
 WHERE NOT EXISTS
-	(SELECT * FROM city other WHERE ST_X(other.cityloc) < ST_X(west.cityloc));
+	(SELECT * FROM  other WHERE ST_X(other.cityloc) < ST_X(west.cityloc));
 ```
 
 > ❓ *Skill builder*
