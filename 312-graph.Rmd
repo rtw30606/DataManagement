@@ -633,7 +633,20 @@ Francis, N., Green, A., Guagliardo, P., Libkin, L., Lindaaker, T., Marsault, V.,
 Robinson, I., Webber, J., & Eifrem, E. (2013). *Graph databases*: O'Reilly Media, Inc. ISBN: 1449356249
 
 
-The following exercises are based on the NorthWinds graph database, which you can create on your compter by running the supplied [code](https://www.richardtwatson.com/open/Reader/northwind.cypher). 
+The following exercises are based on the NorthWinds graph database, which you can create on your computer by running the supplied [code](https://www.richardtwatson.com/open/Reader/northwinds.cypher).
+
+*Graph model for NorthWinds*
+
+![](Figures/Chapter%2012/graph-NorthWinds.png)
+
+The graph database has the following relationships:
+
+* (order)-[:CONTAINS]->(product)
+* (employee)-[:SOLD]->(order)
+* (customer)-[:PURCHASED]->(order)
+* (supplier)-[:SUPPLIES]->(product)
+* (product)-[:PART_OF]->(category)
+* (employee)-[:REPORTS_TO]->(manager)
 
 ## Exercises {.unnumbered}
 
@@ -647,7 +660,7 @@ The following exercises are based on the NorthWinds graph database, which you ca
 
     d.  In what category are sauces?
 
-    e.  List in alphabetical order those customers have placed an order.
+    e.  List in alphabetical order those customers who have placed an order.
 
     f.  List in alphabetical order those customers who have not placed an order.
 
