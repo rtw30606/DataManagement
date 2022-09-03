@@ -570,3 +570,5 @@ Join creates a new table from two existing tables by matching on a column common
 9.  Find stocks where the third or fourth letter in their name is an 'm'.
 
 10. An electricity supply company needs a database to record details of solar panels installed on its customers' homes so it can estimate how much solar energy will be generated based on the forecast level of solar radiation for each house's location. A solar panel has an area, measured in square meters, and an efficiency expressed as a percentage (e.g., 22% efficiency means that 22% of the incident solar energy is converted into electrical energy). Create a data model. How will you identify each customer and each panel?
+
+\newpage

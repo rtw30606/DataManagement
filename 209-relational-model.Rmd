@@ -705,3 +705,5 @@ productivity. *Communications of the ACM* 25 (2):109--117.
 10. What is a fully relational database?
 
 11. How well does LibreOffice's database satisfy Codd's rules.
+
+\newpage

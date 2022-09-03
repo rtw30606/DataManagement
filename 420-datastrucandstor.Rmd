@@ -665,3 +665,5 @@ Data compression techniques reduce the need for storage capacity and bandwidth. 
 15. What is the data deluge? What are the implications for data management?
 
 16. Apple's music subscription service offers around 50 million songs in the iTunes store. What storage technology might be a good choice for this library?
+
+\newpage

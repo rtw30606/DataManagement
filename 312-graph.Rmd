@@ -284,7 +284,7 @@ Relationships are represented in Cypher using an arrow, either -\> or \<-, betwe
 The nature of the relationship is defined within square brackets, such as [:LISTS] in the case where a nation lists a stock on its exchange:
 
 ```{cypher, eval = FALSE}
-(n:Nation)-[:LISTS]->(s:Stock);
+(n:Nation)-[:LISTS]->(s:Stock)
 ```
 
 If you want to refer to a relationship later in a query, you can define a temporary name. In the follow code sample, r is the temporary name for referring to the relationship LISTS.
@@ -326,7 +326,7 @@ The first step is define the relationship between the two nodes that contains th
 MATCH (n:Nation)-[:LISTS]->(s:Stock)
 RETURN n.Nation AS Nation, s.Firm AS Firm, s.Price AS Price, s.Qty as Quantity,
 round(s.Price*s.Qty*n.ExchRate) AS Value
-ORDER BY Nation, Firm
+ORDER BY Nation, Firm;
 ```
 
 ### WITH---reporting by groups {.unnumbered}
@@ -605,7 +605,7 @@ To start afresh, use the following code to delete all nodes and relationships:
 ```{cypher, eval = FALSE}
 MATCH (a)
 OPTIONAL MATCH (a)-[r]-()
-DELETE a, r
+DELETE a, r;
 ```
 
 ### Conclusion {.unnumbered}
@@ -639,7 +639,7 @@ The following exercises are based on the NorthWinds graph database, which you ca
 
 ![](Figures/Chapter%2012/graph-NorthWinds.png)
 
-The graph database has the following relationships:
+The NorthWinds database has the following relationships:
 
 * (order)-[:CONTAINS]->(product)
 * (employee)-[:SOLD]->(order)

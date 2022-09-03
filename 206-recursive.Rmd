@@ -505,3 +505,5 @@ Relationships can be one-to-one and recursive. A recursive relationship is withi
     c.  What is the total cost of the components of the animal photography kit?
 
     d.  Compute the total quantity for each of the items required to assemble 15 animal photography kits.
+
+\newpage

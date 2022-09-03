@@ -399,16 +399,16 @@ be used to process the form on the server.
 
 ### Map collection case {.unnumbered}
 
-The Expeditioner has added a new product line to meet the needs of its
+An international retailer  has added a new product line to meet the needs of its
 changing clientele. It now stocks a range of maps. The firm's data
 modeler has created a data model describing the situation . A map has a
 scale; for example, a scale of 1:1 000 000 means that 1 unit on the map
 is 1,000,000 units on the ground (or 1 cm is 10 km, and 1 inch is \~16
 miles). There are three types of maps: road, rail, and canal. Initially,
-The Expeditioner decided to stock maps for only a few European
+The retailer decided to stock maps for only a few European
 countries.
 
-*The Expeditioner's map collection data model*
+*The retailer's map collection data model*
 
 ![](Figures/Chapter%2022/map-collection.png)
 

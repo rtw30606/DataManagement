@@ -1019,3 +1019,5 @@ XML document.
     i.  Who made payments on 2003-12-04?
 
     j.  List the numbers of all checks from customers in Denmark.
+
+\newpage

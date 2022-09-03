@@ -571,3 +571,5 @@ Marz, N., & Warren, J. (2012). *Big Data*: Manning Publications.
     e.  Read the national [GDP file](http://www.richardtwatson.com/data/GDP.csv), which records
         GDP in millions, and count how many countries have a GDP greater
         than or less than 10,000 million.
+
+\newpage

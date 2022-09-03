@@ -55,3 +55,5 @@ be managed. Consequently, **data administration** has become a formal
 organizational structure in many enterprises. It is designed to
 administer the data management and exploitation resources of an
 organization.
+
+\newpage

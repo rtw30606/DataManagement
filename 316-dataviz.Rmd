@@ -499,7 +499,7 @@ The ggmap package supports a variety of mapping systems, including
 Google maps. As you might expect, it offers many features, and we just
 touch on the basics in this example.
 
-The Offices table in the Classic Models database includes the latitude
+The Offices table in the ClassicModels database includes the latitude
 and longitude of each office in officeLocation, which has a datatype of
 POINT. The following R code can be used to mark each office on a Google
 map. After loading the required packages, a database query is executed

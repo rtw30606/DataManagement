@@ -1449,3 +1449,5 @@ Press.
 
 25. Why is database monitoring important? What data would you ask for in
     a database monitoring report?
+
+\newpage

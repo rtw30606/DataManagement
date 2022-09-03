@@ -599,3 +599,5 @@ Ingersoll, G., Morton, T., & Farris, L. (2012). *Taming Text: How to find, organ
     1.  Undertake a cluster analysis and identify which reports are similar in nature.
     2.  Build a topic model for the combined annual reports.
     3.  Do the cluster analysis and topic model suggest considerable differences in the two sets of reports?
+
+\newpage

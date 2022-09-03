@@ -463,3 +463,5 @@ Rigaux, P., M. O. Scholl, and A. Voisard. 2002. *Spatial databases: with applica
 *Iberian Peninsula*
 
 ![](Figures/Chapter%2011/Iberia-grid.png)
+
+\newpage

@@ -21,3 +21,5 @@ The data model accompanying Lacroix and Pirotte's queries is shown in the follow
 ![](Figures/Reference%202/Data%20model.png)
 
 The remainder of this [reference chapter](http://www.richardtwatson.com/open/Reader/sql/playbook.pdf) is on the book's web site.
+
+\newpage

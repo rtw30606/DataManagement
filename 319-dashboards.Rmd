@@ -527,3 +527,5 @@ Few, S. (2006). *Information dashboard design*: O'Reilly.
 
     c.  Show the exchange rate between the two selected currencies over the
         last 100 days
+
+\newpage

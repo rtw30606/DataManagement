@@ -1045,3 +1045,5 @@ of professional open source software. *MISQ Executive*, 4(3), 329-341.
     software is installed. The software is Linux-based. Investigate
     three cloud computing offerings and make a recommendation as to
     which one the university should use.
+
+\newpage

@@ -1,4 +1,7 @@
 # Preface {.unnumbered}
+
+## About the text {.unnumbered}
+
 This is not your traditional database textbook. It differs in three
 fundamental ways.
 
@@ -26,7 +29,7 @@ you gain hands-on experience more quickly.
 component of an expansive organizational memory. You need to develop a wide perspective of data management if you are to comprehend fully the organizational role of information
 systems.
 
-In essence, the book is deeper where it matters---data modeling and
+This book is deeper where it matters---data modeling and
 SQL---and broader to give you a managerial outlook and an
 understanding of the latest technological advancements. Information is a
 key resource for modern organizations. It is a critical input to
@@ -40,7 +43,7 @@ going concern.
 
 The central concern of information systems management is to design,
 build, and maintain information delivery systems. Information systems
-managemers needs to discover their organization's information
+managers needs to discover their organization's information
 requirements, which includes the needs of its customers, so that it can
 design systems to serve these demands. It must merge a system's design
 and information technology to build applications that provide the
@@ -57,6 +60,8 @@ you need to understand the role of data management that is aligned
 with current practice. In my view, data management is the design and
 maintenance of computer-based organizational memory. Thus, you will find
 chapters on XML and organizational intelligence technologies.
+
+## Overview of the text {.unnumbered}
 
 The decision to start the book with a managerial perspective arises from
 the observation that successful information systems practice is based on
@@ -87,11 +92,13 @@ The third section has chapters on R, a statistics and graphics package,
 which provides the foundation necessary for the  chapters on data
 visualization, text mining, cluster computing, and dashboards. These
 chapters provide you with the skills they need to work in
-topical areas such as data analytics. The third section, Advanced Data Management, which also covers spatial and temporal data, XML, and organizational intelligence, and greaph databases
+topical areas such as data analytics. The third section, Advanced Data Management, which also covers spatial and temporal data, XML, and organizational intelligence, and graph databases
 
 The fourth and final section examines the management of organizational
 data stores. It covers data structures and storage, data processing
 architectures, SQL and Java, data integrity, and data administration.
+
+## Benefits of studying this text {.unnumbered}
 
 As a result of completing this text you will
 
@@ -130,10 +137,16 @@ managing data in today's organization.
 Accompanying this book are an instructor's manual and an extensive [Web
 site](https://www.richardtwatson.com/open/) that provides
 -   slides in PowerPoint format;
--   all relational tables in the book in electronic format;
+-   all relational tables in the book as a set of insert statements;
 -   code for examples in the book;
--   answers to many of the exercises;
+-   the answers to every second exercise;
+-   the answers to the skill builder exercises found in each chapter
+-   an extensive set of exercises using the ClassicModels database
 -   additional exercises.
+
+## Changes for this seventh edition {.unnumbered}
+
+I've shortened the sixth edition by deleting material that was no longer relevant because of changes in technology and business practices. For instance, I remove the discussion of Map-Reduce, which has been outmoded by software that hides the complexity of  parallel processing  I cut *The Expeditioner*, short introductory case used for some chapters because it was not critical and had become dated. I deleted the CD case study. CDs are obsolete and the case was not longer a meaningful example. Very few people seem to use  this case. I updated costs and facts that had changed over the last few years (e.g., cost per megabyte of storage). The result is a shorter text with minimal reduction in the core material required to master data management and introduce data analytics.
 
 ## Acknowledgments {.unnumbered}
 

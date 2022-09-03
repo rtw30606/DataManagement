@@ -1526,3 +1526,5 @@ designed to reveal individual-level data.
     hundred thousand dollars because of advance knowledge of one firm's
     unexpectedly high quarterly profits. How could the stock exchange
     reduce the likelihood of this event?
+
+\newpage

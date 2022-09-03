@@ -864,8 +864,7 @@ SQL-99, the following questions required separate queries:
 > ❓*Skill builder*
 >
 >Write SQL to answer each of the four preceding queries using the exped
-> table, which is a sample of 1,000 sales transactions from The
-> Expeditioner.
+> table, which is a sample of 1,000 sales transactions for a retailer.
 
 Writing separate queries is time-consuming for the analyst and is
 inefficient because it requires multiple passes of the table. SQL-99
@@ -1134,7 +1133,7 @@ aggregation reporting.
 
 11. Download the file [exped.xls](https://www.richardtwatson.com/open/Reader/extras/exped.xls) from the book's web site and open it as
     a spreadsheet in [LibreOffice](https://www.libreoffice.org). This file is a sample of 1,000 sales
-    transactions for The Expeditioner. For each sale, there is a row
+    transactions for a retailer. For each sale, there is a row
     recording when it was sold, where it was sold, what was sold, how it
     was sold, the quantity sold, and the sales revenue. Use the
     PivotTable Wizard (Data\>PivotTable) to produce the following

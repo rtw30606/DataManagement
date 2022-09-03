@@ -2014,7 +2014,7 @@ Reading, MA: Addison-Wesley.
 
 19. What are the two modes in which you can use SQL?
 
-20. Using the Classic Models database, write an SQL procedure to change
+20. Using the ClassicModels database, write an SQL procedure to change
     the credit limit of all customers in a specified country by a
     specified amount. Provide before and after queries to show your
     procedure works.
@@ -2023,7 +2023,9 @@ Reading, MA: Addison-Wesley.
     they process data? How is this difference handled in an application
     program? What is embedded SQL?
 
-22. Using the Classic Models database, write an SQL procedure to change
+22. Using the ClassicModels database, write an SQL procedure to change
     the MSRP of all products in a product line by a specified
     percentage. Provide before and after queries to show your procedure
     works.
+
+\newpage
