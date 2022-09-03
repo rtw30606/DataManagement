@@ -1166,3 +1166,5 @@ aggregation reporting.
 
     f. How many elephant polo sticks were sold in New York in each month of
        2002?
+
+\newpage

@@ -709,3 +709,5 @@ a single artist.
     separate transactions.
 
 ![](Figures/Chapter%2022/person-car.png)
+
+\newpage

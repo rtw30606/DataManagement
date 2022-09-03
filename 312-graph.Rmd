@@ -693,3 +693,5 @@ The NorthWinds database has the following relationships:
 *Graph model for NorthWinds*
 
 ![](Figures/Chapter%2012/graph-NorthWinds.png)
+
+\newpage

@@ -675,3 +675,5 @@ item <-  c('TV set', 'DVD player', 'Vacuum cleaner', 'Scotch whisky', 'Coffee', 
     d. Create a single graph showing the relationship between temperature
        and electricity price differentiating by color when the temperature
        is above or below 90ºF. (Hint: Trying recoding temperature).
+
+\newpage
