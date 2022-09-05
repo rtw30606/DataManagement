@@ -4,7 +4,7 @@ editor_options:
     wrap: 72
 ---
 
-# Section 3 Advanced Data Management {.unnumbered}
+# Section 3 Data Science an advanced Data Management {.unnumbered}
 
 > *Advancement only comes with habitually doing more than you are
 > asked.*
@@ -27,16 +27,20 @@ economic and social activity. **XML** has emerged as the foundation for
 data exchange across many industries. It is a core technology for global
 economic development. On the social side, every day people generate
 millions of messages, photos, and videos that fuel services such as
-Twitter, Flickr, and YouTube. Many organizations are interested in
-analyzing these data streams to learn about social trends, customers'
-opinions, and entrepreneurial opportunities. Organizations need skills
+Twitter, Flickr, and YouTube.
+
+Most organizations are interested in applying data science to
+analyzing the vast volumes of data they can access to learn about social trends, customers'
+opinions, and entrepreneurial opportunities. The discipline of data science combines data cleaning and transformation, statistical analysis, data visualization, and machine learning (ML) techniques. Organizations need extensive skills
 in collecting, processing, and interpreting the myriad data flows that
-intersect with their everyday business. **Organizational or business
+intersect with their everyday business. 
+
+**Organizational or business
 intelligence** is the general term for describing an enterprise's
 efforts to collect, store, process, and interpret data from internal and
 external sources. It is the first stage of data-driven decision making.
 Once data have been captured and stored in an organizational repository,
-there are several techniques that can be applied.
+data science techniques can be applied.
 
 In a world awash with data, **visualization** has become increasingly
 important for enabling executives to make sense of the business

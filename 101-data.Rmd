@@ -42,7 +42,7 @@ systems of modern organizations. It requires multiple perspectives. Data
 managers need to see the organization as a social system and to
 understand data management technology. The integration of these views,
 the socio-technical perspective, is a prerequisite for successful data
-management.
+management. Today's organizations are data-driven, and decisions are increasingly based on insights arising from data analytics.
 
 Individuals also need to manage data. You undoubtedly are more familiar
 with individual memory management systems. They provide a convenient way
@@ -801,9 +801,9 @@ applications to which they are well-suited. For example, graph databases
 are a good fit for the analysis of social networks.
 
 This book concentrates on the relational model, currently the most
-widely used data management system. As mentioned, Section 2 is devoted
-to the development of the necessary skills for designing and using a
-relational database.
+widely used data management system. In 2022, the relational database market generated over USD50 billion in revenue.[^data-2] As mentioned, Section 2 is devotedto the development of the necessary skills for designing and using a relational database.
+
+[^data-2]: Abadi, D. et al., (2022). The Seattle report on database research. *Communications of the ACM*, 65(8), 72-79.
 
 ## Data, information, and knowledge {.unnumbered}
 

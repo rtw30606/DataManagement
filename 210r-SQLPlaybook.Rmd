@@ -18,6 +18,8 @@ A q has been prefixed to all entity and table names to distinguish them from ent
 
 The data model accompanying Lacroix and Pirotte's queries is shown in the following figure. You will notice that the complexity of the real world has been reduced; a sale and a delivery are assumed to have only one item.
 
+Also see the more than 80 SQL exercises for the ClassicModels database  {https://www.richardtwatson.com/open/Reader/ClassicModels.html} [https://www.richardtwatson.com/open/Reader/ClassicModels.html] that gradually increase in difficulty and demonstrate useful business applications.
+
 ![](Figures/Reference%202/Data%20model.png)
 
 The remainder of this [reference chapter](http://www.richardtwatson.com/open/Reader/sql/playbook.pdf) is on the book's web site.

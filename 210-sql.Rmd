@@ -18,7 +18,7 @@ Versions have since been implemented by commercial database vendors and
 open source teams for a wide range of operating systems. Both the
 American National Standards Institute (ANSI) and the International
 Organization for Standardization (ISO) have designated SQL as a standard
-language for relational database systems.
+language for relational database systems. Most data management systems have adopted an SQL style language to query data.
 
 SQL is a **complete database language**. It is used for defining a
 relational database, creating views, and specifying queries. In
