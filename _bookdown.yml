@@ -5,7 +5,8 @@ language:
     chapter_name: 'Chapter '
 rmd_files:
   - 001-frontmatter.Rmd
-  - 002-preface.Rmd
+#  - 002-preface-7.Rmd
+  - 002-preface-open.Rmd
   - 100-section.Rmd
   - 101-data.Rmd
   - 102-information.Rmd
@@ -35,5 +36,5 @@ rmd_files:
   - 421-architectures.Rmd
   - 422-sqljava.Rmd
   - 423-integrity.Rmd
-  - 424-administration.Rmd
+  # - 424-administration.Rmd
 
