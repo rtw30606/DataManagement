@@ -8,7 +8,8 @@
 #     toc_depth: 1
 ---
 
-# Data Management: Databases and Organizations {.unnumbered}
+# Data Management: Databases and Analytics {.unnumbered}
+# Data Management: Databases and Analytics {.unnumbered}
 
 ### *Open Edition* {.unnumbered}
 

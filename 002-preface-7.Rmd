@@ -1,0 +1,178 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Preface {.unnumbered}
+
+## The pedagogical advantages of this text {.unnumbered}
+
+This is not your traditional database textbook. It differs in three
+fundamental ways.
+
+*First*, it is deeper than most database books in its coverage of data
+modeling and SQL. The market seeks graduates who have these fundamental
+skills. Time and again, students who have completed my data management
+class have told me how these skills have been invaluable in their first
+and subsequent jobs. The book places great emphasis on the
+core skills of data management. Consequently, there is a
+better match between the skills you develop and those the market
+needs. This means you will find this text highly relevant.
+
+*Second*, the treatments of data modeling and SQL are intertwined
+because my database teaching experience indicates that students more
+readily understand the purpose of data modeling when they grasp the
+long-term goal---querying a well-designed relational database. The
+double helix, upward, intertwined, spiraling of data modeling and SQL is
+a unique pedagogical feature. Classroom testing indicates it is a
+superior method of teaching compared to handling data modeling and SQL
+separately. You will quickly understand the reason for data modeling and
+appreciate why it is a valuable skill. Also, rapid exposure to SQL means
+you gain hands-on experience more quickly.
+
+*Third*, the book is broader than most database books. Databases are one
+component of an expansive organizational memory. You need to develop a wide perspective of data management if you are to comprehend fully the organizational role of information
+systems.
+
+This book is deeper where it matters---data modeling and
+SQL---and broader to give you a managerial outlook and an
+understanding of the latest technological advancements. Information is a
+key resource for modern organizations. It is a critical input to
+managerial tasks. Because managers need high-quality information to
+manage change in a turbulent, global environment, nearly every organizations
+has established systems for storing and retrieving data, the raw
+material of information. These storage and retrieval systems are an
+organization's memory. The organization relies on them, just as
+individuals rely on their personal memory, to be able to continue as a
+going concern.
+
+## Overview of the text {.unnumbered}
+
+The central concern of information systems management is to design,
+build, and maintain information delivery systems. Information systems
+managers needs to discover their organization's information
+requirements, which includes the needs of its customers, so that it can
+design systems to serve these demands. It must merge a system's design
+and information technology to build applications that provide the
+organization and its customers with data in a timely manner, appropriate
+formats, and at convenient locations. Furthermore, it must manage
+applications so they evolve to meet changing needs, continue to operate
+under adverse conditions, and are protected from unauthorized access.
+
+An information delivery system has two components: data and processes.
+This book concentrates on data, which is customarily thought of as a
+database. I deliberately set out to extend this horizon, however, by
+including all forms of organizational data stores because I believe
+you need to understand the role of data management that is aligned
+with current practice. In my view, data management is the design and
+maintenance of computer-based organizational memory. Thus, you will find
+chapters on XML and organizational intelligence technologies.
+
+The decision to start the book with a managerial perspective arises from
+the observation that successful information systems practice is based on
+matching managerial needs, social system constraints, and technical
+opportunities in an ecologically sound way. I want you to appreciate
+the big picture before you become immersed in the intricacies of data
+modeling and SQL.
+
+The second section of the book provides in-depth coverage of data
+modeling and SQL. Data modeling is the foundation of database quality. A
+solid grounding in data modeling principles and extensive practice are
+necessary for successful database design. In addition, this section
+exposes you to the full power of SQL.
+
+I intend this book to be a long-term investment. There are useful
+reference sections for data modeling and SQL. The data modeling section
+details the standard structures and their relational mappings. The SQL
+section contains an extensive list of queries that serves as a basis for
+developing other SQL queries. The purpose of these sections is to
+facilitate pattern matching. For example, if you have an SQL query
+that is similar to a previous problem you can rapidly search the SQL
+reference section to find the closest match. You can then use
+the model answer as a guide to formulating the SQL query for the problem
+at hand. These reference sections are another unique teaching feature
+that will serve you well during the course and in your career.
+
+The third section, Data Science & Advanced Data Management, has chapters on R, a statistics and graphics package,
+which provides the foundation necessary for the chapters on data
+visualization, text mining, cluster computing, and dashboards. These
+chapters provide you with the skills they need to work in
+topical areas such as data analytics. The  advanced data management portion of this section covers spatial and temporal data, XML, and graph databases.
+
+The fourth and final section examines the management of organizational
+data stores. It covers data structures and storage, data processing
+architectures, SQL and Java, data integrity, and data administration.
+
+## Benefits of studying this text {.unnumbered}
+
+As a result of completing this text you will
+
+-   have a broad, managerial perspective of an organization's need for a
+    memory;
+
+-   be able to design and create a relational database;
+
+-   be able to formulate complex SQL queries;
+
+-   be able to use R to create data visualizations, mine text data,
+    write an R script for big data problems, and create dashboards;
+
+-   understand the purpose of XML and be able to design an XML schema,
+    prepare an XML document, and write an XML stylesheet;
+
+-   be able to use Cypher to query a graph database
+
+-   have a sound understanding of database architectures and their
+    managerial implications;
+
+-   be familiar with the full range of technologies available for
+    organizational memory;
+
+-   be able to write a Java program to create a table from a CSV file
+    and process a transaction;
+
+-   understand the fundamentals of data administration;
+
+My goal is to give you a data management text that is innovative,
+relevant, and lively. I trust that you will enjoy learning about
+managing data in today's organization.
+
+## Supplements {.unnumbered}
+
+Accompanying this book are an instructor's manual and an extensive [Web
+site](https://www.richardtwatson.com/open/) [www.richardtwatson.com] that provides
+-   over 80 SQL exercises for the ClassicModels database  {https://www.richardtwatson.com/open/Reader/ClassicModels.html}  [https://www.richardtwatson.com/open/Reader/ClassicModels.html] that gradually increase in difficulty and demonstrate useful business applications, such as a basket-of-goods analysis;  
+-   slides in PowerPoint format;
+-   all relational tables in the book as a set of insert statements;
+-   code for examples in the book;
+-   the answers to every second exercise;
+-   answers to the skill builder exercises found in each chapter
+-   additional exercises at the end of each chapter.
+
+## Changes for this seventh edition {.unnumbered}
+
+I made several key changes in creating the seventh edition.
+
+-  I shortened the sixth edition by deleting material that is no longer relevant because of changes in technology and business practices. 
+-  I removed the discussion of Map-Reduce, which has been outmoded by software that hides the complexity of parallel processing.
+-  I cut *The Expeditioner* introductory case used for some chapters, because it was not critical and had become dated.
+-  I deleted the CD case study. CDs are obsolete and the case was no longer a meaningful example. Very few people seemed to usethis case. 
+-  I updated costs and facts that had changed over the last few years (e.g., cost per megabyte of storage).
+
+The result is a shorter text with minimal reduction in the core material required to master data management and introduce data analytics.
+
+
+## Acknowledgments {.unnumbered}
+
+I thank my wife, Clare, and son, Ned, for help with prior editions of
+the book. I appreciate the efforts of Christopher Gauthier in converting
+the prior edition to [Bookdown](https://bookdown.org) format.
+
+Richard T. Watson
+
+Athens, Georgia
+
+\newpage
+\setcounter{tocdepth}{2}
+\tableofcontents
+\newpage
