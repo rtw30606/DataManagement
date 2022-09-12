@@ -9,9 +9,8 @@
 ---
 
 # Data Management: Databases and Analytics {.unnumbered}
-# Data Management: Databases and Analytics {.unnumbered}
 
-### *Open Edition* {.unnumbered}
+### *Seventh Edition* {.unnumbered}
 
 ### Richard T. Watson {.unnumbered}
 

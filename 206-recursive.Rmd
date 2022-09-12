@@ -250,6 +250,7 @@ The recursive 1:1 relationship is mapped by adding a foreign key to `monarch`. Y
 | King    | Edward    |   VIII   | 1936/1/20  | George       |      V      |
 | King    | George    |    VI    | 1936/12/11 | Edward       |    VIII     |
 | Queen   | Elizabeth |    II    | 1952/02/06 | George       |     VI      |
+| King    | Charles   |    III   | 2022/09/08 | Elizabeth    |     ii      |
 
 The SQL statements to create the table are very straightforward.
 
@@ -269,13 +270,14 @@ CREATE TABLE monarch (
 Because the 1:1 relationship is recursive, you cannot insert Queen Victoria without first inserting King William IV. What you can do is first insert King William, without any reference to the preceding monarch (i.e., a null foreign key). The following code illustrates the order of record insertion so that the referential integrity constraint is obeyed.
 
 ```{sql, connection = db, eval = FALSE}
-INSERT INTO MONARCH (montype,monname, monnum,rgnbeg) VALUES ('King','William','IV','1830-06-26');
-INSERT INTO MONARCH VALUES ('Queen','Victoria','I','1837-06-20','William','IV');
-INSERT INTO MONARCH VALUES ('King','Edward','VII','1901-01-22','Victoria','I');
-INSERT INTO MONARCH VALUES ('King','George','V','1910-05-06','Edward','VII');
-INSERT INTO MONARCH VALUES ('King','Edward','VIII','1936-01-20','George','V');
-INSERT INTO MONARCH VALUES('King','George','VI','1936-12-11','Edward','VIII');
-INSERT INTO MONARCH VALUES('Queen','Elizabeth','II','1952-02-06','George','VI');
+INSERT INTO monarch (montype,monname, monnum,rgnbeg) VALUES ('King','William','IV','1830-06-26');
+INSERT INTO monarch VALUES ('Queen','Victoria','I','1837-06-20','William','IV');
+INSERT INTO monarch VALUES ('King','Edward','VII','1901-01-22','Victoria','I');
+INSERT INTO monarch VALUES ('King','George','V','1910-05-06','Edward','VII');
+INSERT INTO monarch VALUES ('King','Edward','VIII','1936-01-20','George','V');
+INSERT INTO monarch VALUES('King','George','VI','1936-12-11','Edward','VIII');
+INSERT INTO monarch VALUES('Queen','Elizabeth','II','1952-02-06','George','VI');
+INSERT INTO monarch VALUES ('King','Charles','III','2022-09-08','Elizabeth','II');
 ```
 
 > ❓ *Skill builder*
