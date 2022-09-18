@@ -250,7 +250,7 @@ The recursive 1:1 relationship is mapped by adding a foreign key to `monarch`. Y
 | King    | Edward    |   VIII   | 1936/1/20  | George       |      V      |
 | King    | George    |    VI    | 1936/12/11 | Edward       |    VIII     |
 | Queen   | Elizabeth |    II    | 1952/02/06 | George       |     VI      |
-| King    | Charles   |    III   | 2022/09/08 | Elizabeth    |     ii      |
+| King    | Charles   |    III   | 2022/09/08 | Elizabeth    |     II      |
 
 The SQL statements to create the table are very straightforward.
 

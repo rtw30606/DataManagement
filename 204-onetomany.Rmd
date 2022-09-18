@@ -301,16 +301,16 @@ The ^ (carat) is the symbol for NOT. It is used when we want to find a string no
 *List the names of nations with non-alphabetic characters in their names*
 
 ```{sql, connection = db, eval = T}
-SELECT natname FROM nation WHERE natname REGEXP '[^a-z|A-Z]'
+SELECT natname FROM nation WHERE LOWER(natname) REGEXP '[^a-z]'
 ```
 
-Notice that the nations reported have a space in their name, which is a character not in the range a-z and not in A-Z.
+Notice that the nations reported have a space in their name, which is a character not in the range a-z.
 
 ### Search for string containing a repeated pattern or repetition {.unnumbered}
 
 A pair of curly brackets is used to denote the repetition factor for a pattern. For example, {n} means repeat a specified pattern n times.
 
-*List the names of firms with a double 'e'.*
+*List the names of firms with a double lower case 'e'.*
 
 ```{sql, connection = db, eval = T}
 SELECT stkfirm FROM stock WHERE stkfirm REGEXP '[e]{2}';
@@ -323,7 +323,7 @@ Regular expressions becomes very powerful when you combine several of the basic 
 *List the names of firms with a double 's' or a double 'n'.*
 
 ```{sql, connection = db, eval = T}
-SELECT stkfirm FROM stock WHERE stkfirm REGEXP '[s]{2}|[n]{2}';
+SELECT stkfirm FROM stock WHERE LOWER(stkfirm) REGEXP '[s]{2}|[n]{2}';
 ```
 
 ### Search for multiple versions of a string {.unnumbered}
@@ -333,7 +333,7 @@ If you are interested in find a string containing several specified string, you 
 *List the names of firms with names that include 'inia' or 'onia'.*
 
 ```{sql, connection = db, eval = T}
-SELECT stkfirm FROM stock WHERE stkfirm REGEXP '[io]nia';
+SELECT stkfirm FROM stock WHERE LOWER(stkfirm) REGEXP '[io]nia';
 ```
 
 ### Search for a string in a particular position {.unnumbered}
@@ -343,7 +343,7 @@ Sometimes you might be interested in identifying a string with a character in a 
 *Find firms with 't' as the third letter of their name.*
 
 ```{sql, connection = db, eval = T}
-SELECT stkfirm FROM stock WHERE stkfirm REGEXP '^(.){2}t';
+SELECT stkfirm FROM stock WHERE LOWER(stkfirm) REGEXP '^(.){2}t';
 ```
 
 The regular expression has three elements:
@@ -361,13 +361,13 @@ There might be a need to find rows not containing specified characters anywhere 
 *List the names of nations without s or S **anywhere** in their names*
 
 ```{sql, connection = db, eval = T}
-SELECT * FROM nation WHERE natname REGEXP '^[^s|S]*$'
+SELECT * FROM nation WHERE LOWER(natname) REGEXP '^[^s]*$'
 ```
 
 -   ^  start searching at the beginning of the string;
 -   $  end searching at the end of the string;
 -   \*  any character in a string;
--   ^s|S  no lower or upper case s.
+-   ^s  no lower case s (remember you have converted natname to all lowercase)
 
 You have seen a few of the features of a very powerful tool. To learn more about regular expressions, see [regexlib.com](http://regexlib.com), which contains a library of regular expressions and a feature for finding expressions to solve specific problems. Check out the regular expression for checking whether a character string is a valid email address.
 

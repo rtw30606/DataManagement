@@ -536,15 +536,19 @@ In some situations you want to find columns that contain more than one string. I
 
 *List firms containing gold or zinc in their name, irrespective of case.*
 
+There can be variations on the spelling of zinc in a company name, such as Zinc and ZINC. To cater for all variations, convert a firm's name to lowercase with the built-in MySQL function LOWER().[^singleentity-7]
+
+[^singleentity-7]: For a full list of MySQL functions and operators, see [https://dev.mysql.com/doc/refman/8.0/en/string-functions.html](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html).
+
 ```{sql, connection = db, eval = T}
-SELECT shrfirm FROM share WHERE shrfirm REGEXP 'gold|zinc|Gold|Zinc';
+SELECT shrfirm FROM share WHERE LOWER(shrfirm) REGEXP 'gold|zinc';
 ```
 
 #### Search for a beginning string {.unnumbered}
 
 If you are interested in finding a value in a column that starts with a particular character string, then use \^ to indicate this option.
 
-*List the firms whose name begins with Sri.*
+*List the firms whose name begins exactly with Sri.*
 
 ```{sql, connection = db, eval = T}
 SELECT shrfirm FROM share WHERE shrfirm REGEXP '^Sri';
@@ -554,10 +558,10 @@ SELECT shrfirm FROM share WHERE shrfirm REGEXP '^Sri';
 
 If you are interested in finding if a value in a column ends with a particular character string, then use \$ to indicate this option.
 
-*List the firms whose name ends with Geese.*
+*List the firms whose name ends with any form of geese.*
 
 ```{sql, connection = db, eval = T}
-SELECT shrfirm FROM share WHERE shrfirm REGEXP 'Geese$';
+SELECT shrfirm FROM share WHERE LOWER(shrfirm) REGEXP 'geese$';
 ```
 
 > ❓ *Skill builder*
