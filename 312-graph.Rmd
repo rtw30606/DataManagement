@@ -456,7 +456,7 @@ To assist with understanding the monarch model, we repeat the prior data.
 | King  | Edward    | VIII   | 1936-01-20  |
 | King  | George    | VI     | 1936-12-11  |
 | Queen | Elizabeth | II     | 1952-02-06  |
-| King  | Charles |    III   | 2022/09/08  | 
+| King  | Charles |    III   | 2022-09-08  | 
 
 In the following Cypher code, observe the use of MATCH to connect each predecessor and successor monarch pair and the use of SET to define the succession date as a property of the succession relationship.
 
