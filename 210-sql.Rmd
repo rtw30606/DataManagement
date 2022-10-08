@@ -913,6 +913,8 @@ An equijoin creates a new table that contains two identical columns. If
 one of these is dropped, then the remaining table is called a natural
 join.
 
+### Theta join {.unnumbered}
+
 As you now realize, join can be thought of as a product with a condition
 clause. There is no reason why this condition needs to be restricted to
 equality. There could easily be another comparison operator between the
@@ -926,11 +928,14 @@ each of them a unique name.
 
 *Find the names of employees who earn more than their boss.*
 
-```{sql, connection = db, eval = F}
-SELECT wrk.empfname
-	FROM emp wrk JOIN emp boss
-		ON wrk.bossno = boss.empno
-		WHERE wrk.empsalary > boss.empsalary;
+```{sql, connection = db, eval = T}
+WITH wrk AS (SELECT * FROM emp),
+     boss AS (SELECT * FROM emp)
+SELECT wrk.empfname AS Worker, wrk.empsalary AS Salary, 
+  boss.empfname AS Boss, boss.empsalary AS Salary
+FROM wrk JOIN boss
+	ON wrk.bossno = boss.empno
+	WHERE wrk.empsalary > boss.empsalary;
 ```
 
 ### Outer join {.unnumbered}
@@ -1106,7 +1111,7 @@ WITH temp AS
       GROUP BY customerName)
 SELECT customerName, orderCount,
     CASE orderCount
-		  WHEN 1 THEN 'One-time Customer'
+	  WHEN 1 THEN 'One-time Customer'
       WHEN 2 THEN 'Repeated Customer'
       WHEN 3 THEN 'Frequent Customer'
       ELSE 'Loyal Customer'
@@ -1319,7 +1324,7 @@ Consider the case of an Austrian firm with a database in which all
 measurements are in SI units (e.g., meters). Because its U.S. staff is
 not familiar with SI,[^sql-1] it decides to implement a series of
 user-defined functions to handle the conversion. Here is the function
-for converting from kilometers to miles.
+for converting from kilometers to miles. Note that MySQL requires that you include the word DETERMINISTIC for a function that always produces the same result for the same input parameters.
 
 [^sql-1]: The international system of units of measurement. SI is the
     from French *Système International*.
@@ -1327,6 +1332,7 @@ for converting from kilometers to miles.
 ```{sql, connection = db, eval = F}
 CREATE FUNCTION km_to_miles(km REAL)
 	RETURNS REAL
+	DETERMINISTIC
 	RETURN 0.6213712*km;
 ```
 

@@ -650,7 +650,7 @@ item <-  c('TV set', 'DVD player', 'Vacuum cleaner', 'Scotch whisky', 'Coffee', 
     city.[^dataviz-5] Do a Box plot of cost. What do you conclude about
     cost?
 
-    [^dataviz-5]: Note these prices have been transformed from the original values, but are still representative of the changes over time.
+    [^dataviz-5]: Note these prices have been transformed from the original values, but they are still representative of the changes over time.
 
 11. Read [wealth data](http://people.terry.uga.edu/rwatson/data/wealth.csv)
     for various countries. Create

@@ -26,6 +26,6 @@ Release date `r as.Date(Sys.time())`
 
 The online version of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-You can purchase a print version of the book from [Prospect Press](https://www.prospectpressvt.com). [https://www.prospectpressvt.com]
+You can purchase a physical version of the book from [Prospect Press](https://www.prospectpressvt.com).
 
 \newpage

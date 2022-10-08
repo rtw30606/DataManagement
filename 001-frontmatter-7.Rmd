@@ -8,24 +8,40 @@
 #     toc_depth: 1
 ---
 
-# Data Management: Databases and Analytics {.unnumbered}
+Data Management: Databases and Analytics by Richard T. Watson
 
-### *Seventh Edition* {.unnumbered}
+Copyright © 2023 Richard T. Watson
 
-### Richard T. Watson {.unnumbered}
+The online version of this book is licensed under the Creative Commons Attribution-NonCommercialShareAlike 4.0 International License CC BY-NC-SA 4.0.
 
-> Department of MIS
->
-> Terry College of Business
->
-> The University of Georgia
+Published by Prospect Press,
 
 Release date `r as.Date(Sys.time())`
 
-![](Figures/Front%20matter/CC.by.png){width="200"}
+  
 
-The online version of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+![](Figures/Front%20matter/ProspectPress.png){width="303"}
 
-You can purchase a print version of the book from [Prospect Press](https://www.prospectpressvt.com). [https://www.prospectpressvt.com]
+Founded in 2014, Prospect Press serves the academic discipline of Information Systems by publishing essential and innovative textbooks across the curriculum including introductory, emerging, and upper-level courses. Based in Burlington, Vermont, Prospect Press distributes titles worldwide. We welcome new authors to send proposals or inquiries to [Beth.golub\@prospectpressvt.com](mailto:Beth.golub@prospectpressvt.com){.email}.
+
+  
+
+Editor: Beth Lang Golub
+
+Cover Design: Annie Clark
+
+  
+
+Printed Paperback:
+
+Edition 7.0
+
+ISBN: 978-1-958303-02-3
+
+Available from Redshelf
+
+  
+
+For more information, visit [richardtwatson.com/open/](https:/www.richardtwatson.com/open/) and [prospectpressvt.com/textbooks/watson-data-management-7-0](https://www.prospectpressvt.com/textbooks/watson-data-management-7-0)].
 
 \newpage

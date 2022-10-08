@@ -231,11 +231,13 @@ Cypher supports regular expression using the syntax of Java's regular expression
 
 *List the names of firms with a double 'e'.*
 
-In the following code, the regular expression looks for any number of characters at the beginning or end of each string (.*) with two consecutive 'e's ([e]{2}) in between.
+In the following code, the regular expression looks for any number of characters at the beginning or end of each string (.*) with two consecutive 'e's ([e]{2}) in between. 
+
+Notice use of the toLower function to convert the firm name to all lower case so this query will work with any variation on consecutive 'e's, such as 'GEese'.
 
 ```{cypher, eval = FALSE}
 MATCH (s:Stock)
-WHERE s.Firm =~ '.*[e]{2}.*'
+WHERE toLower(s.Firm) =~ '.*[e]{2}.*'
 RETURN s.Firm;
 ```
 
