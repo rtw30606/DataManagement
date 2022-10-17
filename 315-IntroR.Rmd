@@ -411,47 +411,37 @@ Data are not always in the shape that you want. For example, you might
 have a spreadsheet that, for each year, lists the quarterly observations
 (i.e., year and four quarterly values in one row). For analysis, you
 typically need to have a row for each distinct observation (e.g., year,
-quarter, value). *Gathering* converts a document from what is commonly
+quarter, value). *pivot_longer* converts a document from what is commonly
 called *wide* to *narrow* format. It is akin to normalization in that
 the new table has year and quarter as the identifier of each
 observation.
 
-Once the file has been read, you create appropriate column names for the
-converted file using the colnames() function applied to the file t.
-Thus, the input file has column names of Q1, Q2, etc, but it makes sense
-for these to be integers in the new file in a new column called quarter.
+The pivot_longer() command specifies the file to be conveted to a normalized table, the columns of the input file to be pivoted (i.e., the columns starting with Q), their column name in the new file (i.e., quarter), and the name of the new column containg the spreadsheet's cells (i.e., value). Note that you also need convert the column quarter from character to integer.
 
-The gather command specifies the file to be gathered, the column names
-of the new file, and the columns of the input file to be gathered (i.e.,
-the four quarters in columns 2 through 5). Note that you also need
-convert the column quarter from character to integer.
+The pivot_wider() command revserses the process by converting a table to a spreadsheet.
 
-*Reshaping a file with gathering and spreading*
+*Reshaping a file with  and pivoting*
 
-![](Figures/Chapter%2015/gather-spread.png)
+![](Figures/Chapter%2015/R%20pivot.png)
 
 ```{r, reshaping, eval = F}
 library(tidyverse)
-url <-  'http://www.richardtwatson.com/data/gatherExample.csv'
-t <- read_csv(url)
-t
-colnames(t) <- c('year',1:4)
-t
-# gather with data in columns 2 through 5
-g <- gather(t,'quarter','value',2:5)
-g$quarter <- as.integer(g$quarter)
-g
-
-# spread
-s <- spread(g,quarter,value)
-s
-colnames(s) <- c('year', 'Q1','Q2','Q3','Q4')
-s
-# Spreading takes a narrow file and converts it to wide or spreadsheet format. This is the reverse of gathering.
-s <- spread(g,quarter,value)
-s
-colnames(s) <- c('year', 'Q1','Q2','Q3','Q4')
-s
+url <-  'http://www.richardtwatson.com/data/pivotExample.csv'
+sheet <- read_csv(url)
+table <- sheet %>% 
+  pivot_longer(
+    cols = starts_with('Q'),
+    names_to = 'quarter',
+    names_prefix = 'Q',
+    names_transform = list(quarter = as.integer),
+    values_to = 'value')
+table  
+# table to sheet with pivot_wider
+sheet <- pivot_wider(table,
+    names_from = quarter,
+    names_prefix = "Q",
+    values_from = value)
+sheet
 ```
 
 ### Writing a file {.unnumbered}

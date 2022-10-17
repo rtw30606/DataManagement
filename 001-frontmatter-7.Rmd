@@ -5,10 +5,10 @@
 # output:
 #   html_document:
 #     toc: False
-#     toc_depth: 1
+#    toc_depth: 1
 ---
 
-Data Management: Databases and Analytics by Richard T. Watson
+Data Management Databases and Analytics by Richard T. Watson
 
 Copyright © 2023 Richard T. Watson
 
