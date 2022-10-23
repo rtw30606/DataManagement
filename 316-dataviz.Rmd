@@ -257,7 +257,7 @@ diamond) and shape size to aid matching.
 >
 > Create a line plot using the data in the following table.
 >
-> | year | 1804 | 1927 | 1960 | 1974 | 1987 | 1999 | 2012 | 2027 | 2046 |
+> | year | 1804 | 1927 | 1960 | 1974 | 1987 | 1999 | 2012 | 2022 | 2037 |
 > |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
 > | population (billions) | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8  | 9    |
 
@@ -352,7 +352,7 @@ ggplot(d,aes(productLine)) +
 > Create a bar graph using the data in the following table. Set
 > population as the weight for each observation.
 >
-> | year | 1804 | 1927 | 1960 | 1974 | 1987 | 1999 | 2012 | 2027 | 2046 |
+> | year | 1804 | 1927 | 1960 | 1974 | 1987 | 1999 | 2012 | 2022 | 2037 |
 > |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
 > | population (billions) | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8  | 9    |
 
