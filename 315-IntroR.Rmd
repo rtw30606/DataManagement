@@ -877,11 +877,9 @@ Wickham, H., & Grolemund, G. (2017). [R for data science](https://r4ds.had.co.nz
     which contains details of the sales of three car models: X, Y,
     and Z.
 
-    a.  Use the table function to compute the number of sales for each
-        type of model.
+    a.  Compute the number of sales for each type of model.
 
-    b.  Use the table function to compute the number of sales for each
-        type of sale.
+    b.  Compute the number of sales for each type of sale.
 
     c.  Report the mean price for each model.
 
