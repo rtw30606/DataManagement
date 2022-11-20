@@ -30,7 +30,7 @@ With petabytes of new data being created daily, and the volume continuing to gro
 | E            | exa    | 10^18^ | 5 times all the world's printed material           |
 | Z            | zetta  | 10^21^ |                                                    |
 | Y            | yotta  | 10^24^ | Around 2030, the world will generate a yottabyte of data per year |
-| Y            | ronna  | 10^27^ |                                                    |
+| R            | ronna  | 10^27^ |                                                    |
 | Q            | quetta | 10^30^ |                                                    |
 
 
