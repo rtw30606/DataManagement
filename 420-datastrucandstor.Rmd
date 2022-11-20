@@ -29,7 +29,10 @@ With petabytes of new data being created daily, and the volume continuing to gro
 | P            | peta   | 10^15^ | 50 percent of all books in U.S. academic libraries |
 | E            | exa    | 10^18^ | 5 times all the world's printed material           |
 | Z            | zetta  | 10^21^ |                                                    |
-| Y            | yotta  | 10^24^ |                                                    |
+| Y            | yotta  | 10^24^ | Around 2030, the world will generate a yottabyte of data per year |
+| Y            | ronna  | 10^27^ |                                                    |
+| Q            | quetta | 10^30^ |                                                    |
+
 
 The following pages explore territory that is not normally the concern of application programmers or database users. Fortunately, the relational model keeps data structures and data access methods hidden. Nevertheless, an overview of what happens under the hood is part of a well-rounded education in data management and will equip you to work on some of the problems of the data deluge.
 

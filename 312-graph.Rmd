@@ -642,13 +642,13 @@ Francis, N., Green, A., Guagliardo, P., Libkin, L., Lindaaker, T., Marsault, V.,
 Robinson, I., Webber, J., & Eifrem, E. (2013). *Graph databases*: O'Reilly Media, Inc. ISBN: 1449356249
 
 
-The following exercises are based on the NorthWinds graph database, which you can create on your computer by running the supplied [code](https://www.richardtwatson.com/open/Reader/northwinds.cypher).
+The following exercises are based on the Northwind graph database, which you can create on your computer by running the supplied [code](https://www.richardtwatson.com/data/northwind/create_northwind.cypher).
 
-*Graph model for NorthWinds*
+*Graph model for Northwind*
 
-![](Figures/Chapter%2012/graph-NorthWinds.png)
+![](Figures/Chapter%2012/graph-northwind.png)
 
-The NorthWinds database has the following relationships:
+The Northwind database has the following relationships:
 
 * (order)-[:CONTAINS]->(product)
 * (employee)-[:SOLD]->(order)
@@ -699,8 +699,5 @@ The NorthWinds database has the following relationships:
 
 4.  **Same as Last Year (SALY) analysis**: Compute the ratio for each product of sales for 1997 versus 1996.
 
-*Graph model for NorthWinds*
-
-![](Figures/Chapter%2012/graph-NorthWinds.png)
 
 \newpage
