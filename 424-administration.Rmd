@@ -1,3 +1,9 @@
+---
+editor_options:
+  markdown:
+    wrap: 72
+---
+
 # Data Administration
 
 > *Bad administration, to be sure, can destroy good policy; but good
@@ -7,20 +13,18 @@
 
 ### Learning objectives {.unnumbered}
 
-Students completing this chapter will
--   understand the role of the Chief Data Officer (CDO);
--   understand the importance and role of data administration;
--   understand how system-level data administration functions are used
-    to manage a database environment successfully;
--   understand how project-level data administration activities support
-    the development of a database system;
--   understand what skills data administration requires and why it needs
-    a balance of people, technology, and business skills to carry out
-    its roles effectively;
--   understand how computer-based tools can be used to support data
-    administration activities;
--   understand the management issues involved in initiating, staffing,
-    and locating data administration organizationally.
+Students completing this chapter will - understand the role of the Chief
+Data Officer (CDO); - understand the importance and role of data
+administration; - understand how system-level data administration
+functions are used to manage a database environment successfully; -
+understand how project-level data administration activities support the
+development of a database system; - understand what skills data
+administration requires and why it needs a balance of people,
+technology, and business skills to carry out its roles effectively; -
+understand how computer-based tools can be used to support data
+administration activities; - understand the management issues involved
+in initiating, staffing, and locating data administration
+organizationally.
 
 ## Introduction {.unnumbered}
 
@@ -98,19 +102,20 @@ C-level position of Chief Data Officer (CDO), who is responsible for the
 strategic management of data systems and ensuring that the organization
 fully seizes data-driven opportunities to create new business, reduce
 costs, and increase revenues. The CDO assists the top management team in
-gaining full value from data, a key strategic asset.[^administration-1] In 2003,
-Capital One was perhaps to first firm to appoint a CDO. Other early
-creators of this new executive role were Yahoo! and Microsoft Germany.
-The US Federal Communications Commission (FCC) has appointed a CDO for
-each of its 11 major divisions. Many firms report plans to create data
-stewards and CDOs. Given the strategic nature of data for business, it
-is not surprising that one study reports that 30 percent of CDOs report
-to the CEO, with another 20% reporting to the COO.
+gaining full value from data, a key strategic
+asset.[^424-administration-old-1] In 2003, Capital One was perhaps to
+first firm to appoint a CDO. Other early creators of this new executive
+role were Yahoo! and Microsoft Germany. The US Federal Communications
+Commission (FCC) has appointed a CDO for each of its 11 major divisions.
+Many firms report plans to create data stewards and CDOs. Given the
+strategic nature of data for business, it is not surprising that one
+study reports that 30 percent of CDOs report to the CEO, with another
+20% reporting to the COO.
 
-[^administration-1]: This section is based on Lee, Y., Madnick, S., Wang, R., Forea,
-    W., & Zhang, H. (2014). A cubic framework for the Chief Data Officer
-    (CDO): Succeeding in a world of Big Data emergence of Chief Data
-    Officers. *MISQ Executive*.
+[^424-administration-old-1]: This section is based on Lee, Y., Madnick,
+    S., Wang, R., Forea, W., & Zhang, H. (2014). A cubic framework for
+    the Chief Data Officer (CDO): Succeeding in a world of Big Data
+    emergence of Chief Data Officers. *MISQ Executive*.
 
 ### CDO role dimensions {.unnumbered}
 
@@ -190,24 +195,100 @@ role rather than a confining specification.
 
 *CDO archetypes*
 
-| Archetype    | Definition                                                                                                                                                      |
-|:-------------|:--------------------------------------------------------|
-| Coordinator  | Fosters internal collaboration using transactional data to support business services.    |
-| Reporter     | Provides high quality enterprise data delivery services for external reporting.  |
-| Architect    | Designs databases and internal business processes to create new opportunities for the organization.     |
-| Ambassador   | Develops internal data policies to support business strategy and external collaboration using traditional data sources.  |
-| Analyst      | Improves internal business performance by exploiting big data to provide new services.   |
-| Marketer     | Develops relationships with external data partners and stakeholders to improve externally provided data services using big data.   |
-| Developer    | Navigates and negotiates with internal enterprise divisions in order to create new services by exploiting big data.     |
-| Experimenter | Engages with external parties, such as suppliers and industry peers, to explore new, unidentified markets and products based on insights derived from big data. |
++--------------+------------------------------------------------------+
+| Archetype    | Definition                                           |
++:=============+:=====================================================+
+| Coordinator  | Fosters internal collaboration using transactional   |
+|              | data to support business services.                   |
++--------------+------------------------------------------------------+
+| Reporter     | Provides high quality enterprise data delivery       |
+|              | services for external reporting.                     |
++--------------+------------------------------------------------------+
+| Architect    | Designs databases and internal business processes to |
+|              | create new opportunities for the organization.       |
++--------------+------------------------------------------------------+
+| Ambassador   | Develops internal data policies to support business  |
+|              | strategy and external collaboration using            |
+|              | traditional data sources.                            |
++--------------+------------------------------------------------------+
+| Analyst      | Improves internal business performance by exploiting |
+|              | big data to provide new services.                    |
++--------------+------------------------------------------------------+
+| Marketer     | Develops relationships with external data partners   |
+|              | and stakeholders to improve externally provided data |
+|              | services using big data.                             |
+|              |                                                      |
+|              | --------------------------------------------------   |
++--------------+------------------------------------------------------+
+| Developer    | Navigates and negotiates with internal enterprise    |
+|              | divisions in order to create new services by         |
+|              | exploiting big data.                                 |
++--------------+------------------------------------------------------+
+| Experimenter | Engages with external parties, such as suppliers and |
+|              | industry peers, to explore new, unidentified markets |
+|              | and products based on insights derived from big      |
+|              | data.                                                |
++--------------+------------------------------------------------------+
+
+------------------------------------------------------------------------
+
+## Case Study {.unnumbered}
+
+### The role of the Chief Data and Analytics Officer {.unnumbered}
+
+ABC Services is a leading provider of innovative,
+sustainable,sion-critical infrastructure solutions. It focuses on
+serving the natural gas industry, while offering specialty services that
+support the advancement of water, wastewater, electric,
+telecommunications, and specialized critical urban infrastructures. The
+firm collects data in order to service its clients. To ensure that this
+data is accurate, complete, and useful, ABC Services has established an
+effective data management program that combines data governance and data
+quality.
+
+    In this case study, we explore the role of the Chief Data and Analytics Officer (CDAO) in managing data as a combination of data governance and data quality.
+
+#### The challenge: ensuring data accuracy and quality {.unnumbered}
+
+    As an infrastructure provider, ABC Services relies on data to inform  decision-making and to deliver high-quality services to its clients. However, the organization faced several challenges in managing its data effectively.
+
+    First, ABC Services struggled with data quality. The data collected are often incomplete or contains errors, which makes it difficult to use effectively and lowers decision quality. This leads to operational inefficiencies and impairs the ability to deliver high-quality services to clients.
+
+    Second, the organization lacked a clear system for data governance. There was no central authority responsible for managing organizational data, and there were no established policies or procedures for data collection, storage, and use. This led to confusion and inconsistency in the way data were managed.
+
+#### The solution: Establish a data management program
+
+    In order to address these challenges, ABC Services decided to create a data management program by combining data governance and data quality. To lead this effort, it appointed a Chief Data and Analytics Officer (CDAO).
+
+    The CDAO's primary responsibilities include defining the data strategy, establishing data governance and data quality standard, and implementing data management processes and systems. The CDAO  works closely with other departments to ensure that data are used effectively and in compliance with regulations.
+
+    To improve data quality, the CDAO implemented a system for tracking and monitoring data accuracy and completeness. This system includes regular audits and checks to ensure that employees are educated to properly collect, store, and use data.
+
+    To establish a clear system for data governance, the CDAO worked with the organization's legal and compliance teams to develop policies and procedures for data collection, storage, and use. The CDAO also defined roles and responsibilities for data management and established guidelines for how data should be managed within the organization.
+
+    The CDAO also implemented a data analytics platform to help the organization make better informed decisions based on data. This platform allows the organization to collect, analyze, and visualize data from multiple sources, giving executives a more comprehensive view of operations.
+
+#### The results: Improved data quality and governance
+
+    Through the efforts of the CDAO and the establishment of an effective data management program, ABC Services was able to significantly improve the accuracy and quality of its data. The organization's data are now more complete and accurate, which enables it to make better informed decisions and deliver higher quality services to its clients.
+
+    In addition, the establishment of clear data governance policies and procedures improved the consistency and efficiency of data management within the organization. The CDAO plays a crucial role in this process, overseeing the data management function and working to ensure that the organization is using data effectively.
+
+    The implementation of the data analytics platform also helps the organization to better understand its operations and identify areas for improvement. By using data to inform their decision-making, ABC Services is able to streamline its processes and improve its overall efficiency.
+
+### Conclusion
+
+    This case study illustrates the importance of data management in ensuring the accuracy and quality of  organizational data. By combining data governance and data quality, organizations can ensure that their data is well-managed and meets business needs. The CDAO plays a crucial role by overseeing the data management function and working with clients to satisfy their information requirements.
+
+------------------------------------------------------------------------
 
 ## Management of the database environment {.unnumbered}
 
 In many large organizations, there is a formal data administration
 function to manage corporate data. For those companies with a CDO, data
-administration might be subsumed within this function. For those without, data
-administration is typically the responsibility of the CIO. The
-relationship among the various components of data administration is
+administration might be subsumed within this function. For those
+without, data administration is typically the responsibility of the CIO.
+The relationship among the various components of data administration is
 shown in the following figure.
 
 *Management of the database environment*
@@ -235,11 +316,12 @@ the data using programming languages or other data-handling tools.
 
 ### Data dictionary {.unnumbered}
 
-A data dictionary is a reference repository containing *metadata* (*data about data*) that is stored in the database. Among other things,
-the data dictionary contains a list of all the databases; their
-component parts and detailed descriptions such as field sizes, data
-types, and data validation information for data capture purposes;
-authorized clients and their access privileges; and ownership details.
+A data dictionary is a reference repository containing *metadata* (*data
+about data*) that is stored in the database. Among other things, the
+data dictionary contains a list of all the databases; their component
+parts and detailed descriptions such as field sizes, data types, and
+data validation information for data capture purposes; authorized
+clients and their access privileges; and ownership details.
 
 A data dictionary is a map of the data in organizational data stores. It
 permits the data administration staff and users to document the
@@ -390,10 +472,12 @@ information architecture also may address issues such as how data will
 be transmitted and where they will be stored. Since an information
 architecture is an organization's overall strategy for data and
 applications, it should dovetail with the organization's long-term plans
-and objectives.[^administration-3]
+and objectives.[^424-administration-old-2]
 
-[^administration-3]: For more on information architecture, see Smith, H. A., Watson, R. T., & Sullivan, P. (2012). Delivering Effective Enterprise
-    Architecture at Chubb Insurance. *MISQ Executive*. 11(2)
+[^424-administration-old-2]: For more on information architecture, see
+    Smith, H. A., Watson, R. T., & Sullivan, P. (2012). Delivering
+    Effective Enterprise Architecture at Chubb Insurance. *MISQ
+    Executive*. 11(2)
 
 #### Developing data standards and policies {.unnumbered}
 
@@ -526,12 +610,12 @@ vendor's proposal satisfies these criteria.
 
 > ❓ *Skill builder*
 >
->A small nonprofit organization has asked for your help
-> in selecting a relational database management system (RDBMS) for
-> general-purpose management tasks. Because of budget limitations, it is
-> very keen to adopt an open source RDBMS. Search the Web to find at
-> least two open source RDBMSs, compare the two systems, and make a
-> recommendation to the organization.
+> A small nonprofit organization has asked for your help in selecting a
+> relational database management system (RDBMS) for general-purpose
+> management tasks. Because of budget limitations, it is very keen to
+> adopt an open source RDBMS. Search the Web to find at least two open
+> source RDBMSs, compare the two systems, and make a recommendation to
+> the organization.
 
 #### Benchmarking {.unnumbered}
 
@@ -539,7 +623,10 @@ Benchmarking, the comparison of alternative hardware and software
 combinations, is an important step in the selection phase. Because
 benchmarking is an activity performed by many IS units, the IS community
 gains if there is one group that specializes in rigorous benchmarking of
-a wide range of systems. The [Transaction Processing Council](http://www.tpc.org) (TPC) is the IS profession's Consumer Union. TPC has established benchmarks for a variety of business situations.
+a wide range of systems. The [Transaction Processing
+Council](http://www.tpc.org) (TPC) is the IS profession's Consumer
+Union. TPC has established benchmarks for a variety of business
+situations.
 
 #### Managing external databases {.unnumbered}
 
@@ -679,16 +766,15 @@ outlined in the following table.
 
 *Database development roles*
 
-Delopment phase | Database developer | Data administrator | Client   |
-|:--------------|:-------------------|:-------------------|:---------|
-| Project planning  | Does | Consults  | Provides information  |
-| Requirements definition    | Does   | Consults  | Provides requirements |
-| Database design  | Does    | Consults  | Validates data models |
-| Database testing  | System and client testing | Consults  &  data integrity  | Testing   |
-| Database implementation    | System-related activities | Consults & data integrity         | Client activities     |
-| Database usage  | Consults   | Data integrity & monitoring | Uses |
-| Database evolution | Does | Change control | Provides additional requirements   |
-
+| Delopment phase          | Database developer        | Data administrator          | Client                           |
+|:-------------------------|:--------------------------|:----------------------------|:---------------------------------|
+| Project planning         | Does                      | Consults                    | Provides information             |
+| Requirements definition  | Does                      | Consults                    | Provides requirements            |
+| Database design          | Does                      | Consults                    | Validates data models            |
+| Database testing         | System and client testing | Consults & data integrity   | Testing                          |
+| Database im plementation | System-related activities | Consults & data integrity   | Client activities                |
+| Database usage           | Consults                  | Data integrity & monitoring | Uses                             |
+| Database evolution       | Does                      | Change control              | Provides additional requirements |
 
 The database developer shoulders the bulk of the responsibility for
 developing data models and implementing the database. This can be seen
@@ -960,15 +1046,15 @@ cycle.
 
 *Data administration tool use during the DDLC*
 
-|    | Database development phase | Data | DBMS | Performance monitoring | Case tools  |
-|:---|:-------|:-----------|:-----------|:----------|:----------|
-| 1  | Project planning tools | Dictionary (DD) |           |           | Estimation |
-| 2  | Requirements definition | Document & design aid  |           |           | Document & design aid |
-| 3 | Database design | Document, data map design aid & schema generator  |           |           | Document, design aid & data map  |
-| 4 | Database testing | Data map design aid & schema generator | Define, create, test & data integrity   | Impact analysis   | Data generator & design aid     |
-| 5 | Database implementation | Document & change control | Data integrity, implement & design  | Monitor & tune |     |
-| 6 | Database usage | Document, data map, schema generator & change control | Provide tools for retrieval and update & enforce integrity controls and procedures | Monitor & tune  |           |
-| 7 | Database evolution | Document, data map & change control  | Redefine  | Impact analysis   |           |
+|     | Database dev elopment phase | Data                                                    | DBMS                                                                                  | Per formance mo nitoring | Case tools                       |
+|:----|:----------------------------|:--------------------------------------------------------|:--------------------------------------------------------------------------------------|:-------------------------|:---------------------------------|
+| 1   | Project planning tools      | Di ctionary (DD)                                        |                                                                                       |                          | Es timation                      |
+| 2   | Requ irements de finition   | Document & design aid                                   |                                                                                       |                          | Document & design aid            |
+| 3   | Database design             | D ocument, data map design aid & schema g enerator      |                                                                                       |                          | D ocument, design aid & data map |
+| 4   | Database testing            | Data map design aid & schema g enerator                 | Define, create, test & data i ntegrity                                                | Impact analysis          | Data g enerator & design aid     |
+| 5   | Database implem entation    | Document & change control                               | Data in tegrity, i mplement & design                                                  | Monitor & tune           |                                  |
+| 6   | Database usage              | D ocument, data map, schema g enerator & change control | Provide tools for r etrieval and update & enforce i ntegrity controls and pr ocedures | Monitor & tune           |                                  |
+| 7   | Database e volution         | D ocument, data map & change control                    | Redefine                                                                              | Impact analysis          |                                  |
 
 Data administration staff, clients, and computer operations all require
 information about organizational databases. Ideally, such information
@@ -1154,27 +1240,24 @@ how much it sold to each of its customers in the last six months.
 
 *Firm with data integration*
 
-
-|                       | Red division          | Blue division         |
-|-----------------------|:----------------------:|:---------------------:|
-| partnumber (code for green widget)           | 27     | 27
-| customerid (code for UPS)           | 53       | 53                    |
-| Definition of  salesdate  | The date the customer signs the order| The date the customer signs the order |
+|                                    |             Red division              |             Blue division             |
+|------------------------------------|:-------------------------------------:|:-------------------------------------:|
+| partnumber (code for green widget) |                  27                   |                  27                   |
+| customerid (code for UPS)          |                  53                   |                  53                   |
+| Definition of salesdate            | The date the customer signs the order | The date the customer signs the order |
 
 *Firm without data integration*
 
-|                       | Red division          | Blue division         |
-|-----------------------|:----------------------:|:---------------------:|
-| partnumber (code for green widget)           | 27     | 10056
-| customerid (code for UPS)           | 53       | 613                    |
-| Definition of  salesdate  | The date the customer signs the order| The date the customer receives the order |
-
-
+|                                    |             Red division              |              Blue division               |
+|------------------------------------|:-------------------------------------:|:----------------------------------------:|
+| partnumber (code for green widget) |                  27                   |                  10056                   |
+| customerid (code for UPS)          |                  53                   |                   613                    |
+| Definition of salesdate            | The date the customer signs the order | The date the customer receives the order |
 
 > ❓ *Skill builder*
 >
->Complete the data integration lab exercise described
-> on the book's Web site (Lab exercises \> Data integration).
+> Complete the data integration lab exercise described on the book's Web
+> site (Lab exercises \> Data integration).
 
 Not surprisingly, many organizations seek to increase their degree of
 data integration so that they can improve the accuracy of managerial
@@ -1242,13 +1325,11 @@ targeting common systems for both units.
 
 *Target level of data integration between organizational units*
 
-
-|               |      | Unit interdependence        | |
-|---------------|------|----------------------|----------|
-|               |      | *Low*                 | *High*     |
+|                          |        | Unit interdependence |          |
+|--------------------------|--------|----------------------|----------|
+|                          |        | *Low*                | *High*   |
 | Environmental turbulence | *High* | Low                  | Moderate |
-|               | *Low*  | Moderate             | High     |
-
+|                          | *Low*  | Moderate             | High     |
 
 > ❓ *Skill builder*
 >
@@ -1324,39 +1405,20 @@ performance monitoring tools, CASE tools, and groupware.
 
 ### Key terms and concepts {.unnumbered}
 
-+:-----------------------------------+:--------------------------------+
-| Application development life cycle | Database management system      |
-| (ADLC)                             | (DBMS)                          |
-+------------------------------------+---------------------------------+
-| Benchmark                          | External database               |
-+------------------------------------+---------------------------------+
-| Change agent                       | Groupware                       |
-+------------------------------------+---------------------------------+
-| Computer-aided software            | Matrix organization             |
-| engineering (CASE)                 |                                 |
-+------------------------------------+---------------------------------+
-| Data administration                | Performance monitoring          |
-+------------------------------------+---------------------------------+
-| Data dictionary                    | Project-level data              |
-|                                    | administration                  |
-+------------------------------------+---------------------------------+
-| Data dictionary/directory system   | Request for proposal (RFP)      |
-| (DD/DS)                            |                                 |
-+------------------------------------+---------------------------------+
-| Data integrity                     | System-level data               |
-|                                    | administration                  |
-+------------------------------------+---------------------------------+
-| Data steward                       | Systems development life cycle  |
-|                                    | (SDLC)                          |
-+------------------------------------+---------------------------------+
-| Database administrator             | Transaction Processing Council  |
-|                                    | (TPC)                           |
-+------------------------------------+---------------------------------+
-| Database developer                 | User interface                  |
-+------------------------------------+---------------------------------+
-| Database development life cycle    |                                 |
-| (DDLC)                             |                                 |
-+------------------------------------+---------------------------------+
+|                                            |                                       |
+|:-------------------------------------------|:--------------------------------------|
+| Application development life cycle (ADLC)  | Database management system (DBMS)     |
+| Benchmark                                  | External database                     |
+| Change agent                               | Groupware                             |
+| Computer-aided software engineering (CASE) | Matrix organization                   |
+| Data administration                        | Performance monitoring                |
+| Data dictionary                            | Project-level data administration     |
+| Data dictionary/directory system (DD/DS)   | Request for proposal (RFP)            |
+| Data integrity                             | System-level data administration      |
+| Data steward                               | Systems development life cycle (SDLC) |
+| Database administrator                     | Transaction Processing Council (TPC)  |
+| Database developer                         | User interface                        |
+| Database development life cycle (DDLC)     |                                       |
 
 ### References and additional readings {.unnumbered}
 
