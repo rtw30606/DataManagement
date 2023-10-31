@@ -363,6 +363,12 @@ A query based on a non-primary-key column cannot guarantee that a single row is 
 SELECT * FROM share WHERE shrdiv = 2.5;
 ```
 
+> 💠 **Mis-identification mess**
+>
+> Jieun Kim of Los Angeles and Jieun Kim of Chicagoland were mistakenly issued the same Social Security number when they emigrated to the US. They have the same name and were born on the same day in South Korea. As a result, their banking and savings accounts have been shut down and their credit cards  blocked. They have suspected of engaging in identity theft
+>
+> Source: https://apple.news/AhdshG6GLTq2S98knnma67A
+
 ### The IN crowd {.unnumbered}
 
 The keyword IN is used with a list to specify a set of values. IN is always paired with a column name. All rows for which a value in the specified column has a match in the list are selected. It is a simpler way of writing a series of OR statements.

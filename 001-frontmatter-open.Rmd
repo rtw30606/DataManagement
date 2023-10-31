@@ -14,11 +14,11 @@
 
 ### Richard T. Watson {.unnumbered}
 
-> Department of MIS
+> Research Director, Digital Frontier Partners, Melbourne, Australia 
 >
-> Terry College of Business
+> Regents Professor & J. Rex Fuqua Distinguished Chair for Internet Strategy Emeritus, University of Georgia
 >
-> The University of Georgia
+
 
 Release date `r as.Date(Sys.time())`
 
