@@ -1072,6 +1072,31 @@ a column. Use COUNT(columnname) to exclude a null value in columnname.
 | MAX   | Determines the largest value in a column         |
 | MIN   | Determines the smallest value in a column        |
 
+#### Computing a median {.unnumbered}
+A median is the midpoint of a frequency distribution of observed values. MySQL does not include median in its set of aggregate functions, but it can be computed.
+
+*Find median value for stock holdings.*
+
+To simplify coding, we first create a view v1 of sorted stock holdings with rows numbered.
+
+CREATE VIEW v1 AS (SELECT stkfirm, SUM(stkprice*stkqty*exchrate) AS total,  
+	ROW_NUMBER() OVER(ORDER BY SUM(stkprice*stkqty*exchrate)) AS rownum
+	FROM stock JOIN nation ON stock.natcode = nation.natcode
+    GROUP BY stkfirm);
+
+The next stage is to count the number of rows in view v1 to create view v2.
+
+CREATE VIEW v2 As (SELECT COUNT(*) AS num_records 
+FROM stock JOIN nation ON stock.natcode = nation.natcode);
+
+If there an even number of rows, then the median is the average of the middle two. For an odd number, there is one middle row. We use the FLOOR function to determine which rows to use for computing the median. FLOOR  computes the greatest integer less than or equal to a given value. For example, FLOOR(3.7) is 3. 
+
+Putting the pieces together we have:
+
+SELECT AVG(total) AS Median FROM v1, v2
+ WHERE rownum IN (FLOOR((num_records + 1) / 2), 
+        FLOOR((num_records + 2) / 2));
+        
 ### GROUP BY and HAVING {.unnumbered}
 
 The GROUP BY clause is an elementary form of control break reporting and

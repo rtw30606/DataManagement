@@ -70,7 +70,7 @@ Consider two attributes that determine each other (A → B and B → A), for ins
 
 #### One-to-many attribute relationship {.unnumbered}
 
-Examine the situation where one attribute determines another (i.e., A→ B), but the reverse is not true (i.e., A not→ B), as is the case with country name and its currency unit. If you know a country's name, you can determine its currency, but if you know the currency unit (e.g., the euro), you cannot always determine the country (e.g., both Italy and Portugal use the euro). As a result, if A and B occur in the same table, then A must be the key. In our example, country name would be the key, and currency unit would be a nonkey column.
+Examine the situation where one attribute determines another (i.e., A → B), but the reverse is not true (i.e., B not → A), as is the case with country name and its currency unit. If you know a country's name, you can determine its currency, but if you know the currency unit (e.g., the euro), you cannot always determine the country (e.g., both Italy and Portugal use the euro). As a result, if A and B occur in the same table, then A must be the key. In our example, country name would be the key, and currency unit would be a nonkey column.
 
 #### Many-to-many attribute relationship {.unnumbered}
 

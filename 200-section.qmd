@@ -4,8 +4,8 @@ library(RMySQL)
 db <- dbConnect(RMySQL::MySQL(),
                   dbname = "Text",
                   host = "localhost",
-                  user="root",
-                  password = "aussie48")
+                  user="student",
+                  password = "student")
 ```
 
 # Section 2 Data Modeling and SQL {.unnumbered}
