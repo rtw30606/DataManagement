@@ -10,13 +10,13 @@
 
 Data Management Databases and Analytics by Richard T. Watson
 
-Copyright © 2023 Richard T. Watson
+Copyright © 2025 Richard T. Watson
 
 The online version of this book is licensed under the Creative Commons Attribution-NonCommercialShareAlike 4.0 International License CC BY-NC-SA 4.0.
 
 Published by Prospect Press,
 
-Release date `r as.Date(Sys.time())`
+Release date 2025-08-06
 
   
 
