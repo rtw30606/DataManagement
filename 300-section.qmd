@@ -1,0 +1,73 @@
+---
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+# Section 3 Data Science and Advanced Data Management {.unnumbered}
+
+> *Advancement only comes with habitually doing more than you are
+> asked.*
+>
+> Gary Ryan Blair.[^section-1]
+
+[^section-1]: <http://www.everythingcounts.com>
+
+The wiring of the world has given us ubiquitous networks and broadened
+the scope of issues that data management must now embrace. In everyday
+life, you might use a variety of networks (e.g., the Internet, 5G, WiFi,
+and bluetooth) to gain access to information wherever you might be and
+whatever time it is. As a result, data managers need to be concerned
+with both the **spatial and temporal** dimensions of data. **Graph
+databases** have grown in popularity because they are optimized for
+analyzing networks, such as social connections and supply chains. In a
+highly connected world, massive amounts of data are exchanged every
+minute between computers to enable a high level of global integration in
+economic and social activity. **XML** has emerged as the foundation for
+data exchange across many industries. It is a core technology for global
+economic development. On the social side, every day people generate
+millions of messages, photos, and videos that fuel services such as
+Twitter, Flickr, and YouTube.
+
+Most organizations are interested in applying data science to
+analyzing the vast volumes of data they can access to learn about social trends, customers'
+opinions, and entrepreneurial opportunities. The discipline of data science combines data cleaning and transformation, statistical analysis, data visualization, and machine learning (ML) techniques. Organizations need extensive skills
+in collecting, processing, and interpreting the myriad data flows that
+intersect with their everyday business. 
+
+**Organizational or business
+intelligence** is the general term for describing an enterprise's
+efforts to collect, store, process, and interpret data from internal and
+external sources. It is the first stage of data-driven decision making.
+Once data have been captured and stored in an organizational repository,
+data science techniques can be applied.
+
+In a world awash with data, **visualization** has become increasingly
+important for enabling executives to make sense of the business
+environment, to identify problems, and highlight potential new
+directions. **Text mining** is a popular tool for trying to make sense
+of data streams emanating from tweets and blogs. The many new sources of
+data and their high growth rate have made it more difficult to support
+real time analysis of the torrents of data that might contain valuable
+insights for an organization's managers. Fortunately, **Hadoop
+distributed file system (HDFS)** and **cluster computing** methods are a
+breakthrough in storing and processing data that enable faster
+processing at lower cost. **Dashboards** are widely used for presenting
+key information. Furthermore, the open source statistics and graphical
+package, **R**, provides a common foundation for handling text mining,
+data visualization, HDFS, and cluster computing. It has become another
+component of the data manager's toolkit.
+
+The section covers the following topics.
+
+-   Spatial and temporal data management
+-   Graph databases
+-   XML
+-   Organizational intelligence
+-   Introduction to R
+-   Data visualization
+-   Text mining
+-   Cluster Computing
+-   Dashboards
+
+\newpage
