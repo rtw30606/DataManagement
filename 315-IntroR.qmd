@@ -1,0 +1,953 @@
+# Introduction to R
+
+> *Statistics are no substitute for judgment*
+>
+> Henry Clay, U.S. congressman and senator
+
+### Learning objectives {.unnumbered}
+
+Students completing this chapter will:
+
+-   Be able to use R for file handling and basic statistics;
+
+-   Be competent in the use of RStudio.
+
+## The R project {.unnumbered}
+
+The [R project](http://www.r-project.org) supports ongoing
+development of R, a free software environment for statistical computing,
+data visualization, and data analytics. It is a highly-extensible
+platform, the R programming language is object-oriented, and R runs on
+the common operating systems. The adoption of R has grown in recent years, and is now the one of the most popular analytics platform.
+
+[RStudio](http://www.rstudio.com) is a commonly used **integrated
+development environment** (IDE) for R. It contains four windows. The
+upper-left window contains scripts, one or more lines of R code that
+constitute a task. Scripts can be saved and reused. It is good practice
+to save scripts as you will find you can often edit an existing script
+to meet the needs of a new task. The upper-right window provides details
+of all datasets created. It also useful for importing datasets and
+reviewing the history of R commands executed. The lower-left window
+displays the results of executed scripts. If you want to clear this
+window, then press control-L. The lower-right window can be used to show
+files on your system, plots you have created by executing a script,
+packages installed and loaded, and help information.
+
+### Creating a project {.unnumbered}
+
+It usually makes sense to store all R scripts and data for a project in the same
+folder or directory. Thus, when you first start RStudio, create a new
+project.
+
+Project > Create Project...
+
+RStudio remembers the state of each window, so when you quit and reopen,
+it will restore the windows to their prior state. You can also open an
+existing project, which sets the path to the folder for that project. As
+a result, all saved scripts and files during a session are stored in
+that folder.
+
+*RStudio interface*
+
+![](Figures/Section%202/RStudio.png){width="500"}
+
+### Scripting {.unnumbered}
+
+A script is a set of R commands. You can also think of it as a short
+program.
+
+```{r, sample-script, eval = F}
+# CO2 parts per million (ppm) for 2000-2009
+co2 <- c(369.40,371.07,373.17,375.78,377.52,379.76,381.85,383.71,385.57,384.78)
+year <-  (2000:2009) # a range of values
+# show values
+co2
+year
+# compute mean and standard deviation
+mean(co2)
+sd(co2)
+plot(year,co2)
+```
+
+The previous script
+
+-   Creates an object co2 with the values 369.40, 371.07, ... , 348.78.
+
+-   Creates an object year with values 2000 through 2009.
+
+-   Displays in the lower-left window the values stored in these two
+    objects.
+
+-   Computes the mean for each variable.
+
+-   Creates an x-y plot of year and co2, which is shown in the
+    lower-right window.
+
+
+> Note the use of <- for assigning values to an object.
+> RStudio provides a keyboard command, Alt + - (Windows & Linux)
+> or Option + - (Mac).
+> In R, c is short for combine values.
+
+> ❓ *Skill builder*
+>
+> Plot kWh per square foot by year for the following University of
+> Georgia data.
+>
+> | year | square feet | kWh       |
+> |-----:|-----------:|----------:|
+> | 2007 | 14,214,216  | 2,141,705 |
+> | 2008 | 14,359,041  | 2,108,088 |
+> | 2009 | 14,752,886  | 2,150,841 |
+> | 2010 | 15,341,886  | 2,211,414 |
+> | 2011 | 15,573,100  | 2,187,164 |
+> | 2012 | 15,740,742  | 2,057,364 |
+>
+> *Data in R format*
+>
+> year <- (2007:2012)
+>
+> sqft <- c(14214216, 14359041, 14752886, 15341886, 15573100, 15740742)
+>
+> kwh <- c(2141705, 2108088, 2150841, 2211414, 2187164, 2057364)
+
+## Datasets {.unnumbered}
+
+An R dataset is the familiar table of the relational model. There is one
+row for each observation, and the columns contain the observed values or
+facts about each observation. R supports multiple data structures and
+data types.
+
+### Vector {.unnumbered}
+
+A vector is a single row table where data are all of the same type
+(e.g., character, logical, numeric). In the following sample code, two
+numeric vectors are created.
+
+```{r, vector, eval = F}
+co2 <-  c(369.40,371.07,373.17,375.78,377.52,379.76,381.85,383.71,385.57,384.78)
+year <-  (2000:2009)
+co2[2] # show the second value
+```
+
+### Matrix {.unnumbered}
+
+A matrix is a table where all data are of the same type. Because it is a
+table, a matrix has two dimensions, which need to be specified when
+defining the matrix. The sample code creates a matrix with 4 rows and 3
+columns, as the results of the executed code illustrate.
+
+```{r, matrix, eval = F}
+m <- matrix(1:12, nrow=4,ncol=3)
+m[4,3] # show the value in row 4, column 3
+```
+
+|        | [,1]   | [,2] | [,3] |
+|--------|--------:|--------:|--------:|
+| **[1,]** | 1      | 5      | 9      |
+| **[2,]** | 2      | 6      | 10     |
+| **[3,]** | 3      | 7      | 11     |
+| **[4,]** | 4      | 8      | 12     |
+
+> ❓ *Skill builder*
+>
+>Create a matrix with 6 rows and 3 columns
+> containing the numbers 1 through 18.
+
+### Array {.unnumbered}
+
+An array is a multidimensional table. It extends a matrix beyond two
+dimensions. Review the results of running the following code by
+displaying the array created.
+
+```{r, array, eval = F}
+a <-  array(letters[seq(1:24)], c(4,3,2))
+a[1,1,1] # show the first value in the array
+```
+
+### Data frame {.unnumbered}
+
+While vectors, matrices, and arrays are all forms of a table, they are
+restricted to data of the same type (e.g., numeric). A data frame, like
+a relational table, can have columns of different data types. The sample
+code creates a data frame with character and numeric data types.
+
+```{r, data-frame, eval = F}
+gender <- c("m","f","f")
+age <- c(5,8,3)
+df <-  data.frame(gender,age)
+# show some data frame values
+df[1,2] # a cell
+df[1,] # a row
+df[,2] # a column
+```
+
+### List {.unnumbered}
+
+The most general form of data storage is a list, which is an ordered
+collection of objects. It permits you to store a variety of objects
+together under a single name. In other words, a list is an object that
+contains other objects. Retrieve a list member with a *single square
+bracket* []. To reference a list member directly, use a *double square
+bracket* [[]].
+
+```{r, list, eval = F}
+l <-  list(co2,m,df)
+# show a list member
+l[3] # retrieves list member
+l[[3]] # reference a list member
+l[[1]][2] # second element of list 1
+```
+
+### Logical operators {.unnumbered}
+
+R supports the common logical operators, as shown in the following
+table.
+
+| Logical operator | Symbol |
+|:-----------------|:-------|
+| EQUAL            | ==    |
+| AND              | &      |
+| OR               | |     |
+| NOT              | !      |
+
+### Object {.unnumbered}
+
+In R, an object is anything that can be assigned to a variable. It can
+be a constant, a function, a data structure, a graph, a times series,
+and so on. You find that the various packages in R support the creation
+of a wide range of objects and provide functions to work with these and
+other objects. A variable is a way of referring to an object. Thus, we
+might use the variable named *l* to refer to the list object defined in
+the preceding subsection.
+
+### Types of data {.unnumbered}
+
+R can handle the four types of data: nominal, ordinal, interval, and
+ratio.
+
+*Nominal* data, typically character strings, are used for
+classification (e.g., high, medium, or low).
+
+*Ordinal* data represent an
+ordering and thus can be sorted (e.g., the seeding or ranking of players
+for a tennis tournament). The intervals between ordinal data are not
+necessarily equal. Thus, the top seeded tennis play (ranked 1) might be
+far superior to the second seeded (ranked 2), who might be only
+marginally better than the third seed (ranked 3).
+
+*Interval* and *ratio* are
+forms of measurement data. The interval between the units of measure for
+interval data are equal. In other words, the distance between 50cm and
+51cm is the same as the distance between 105cm and 106cm. Ratio data
+have equal intervals and a natural zero point. Time, distance, and mass
+are examples of ratio scales. Celsius and Fahrenheit are interval data
+types, but not ratio, because the zero point is arbitrary. As a result,
+10ºC is not twice as hot as 5ºC. Whereas, Kelvin is a ratio data type
+because nothing can be colder than 0º K, a natural zero point.
+
+In R, nominal and ordinal data types are also known as *factors*.
+Defining a column as a factor determines how its data are analyzed and
+presented. By default, factor levels for character vectors are created
+in alphabetical order, which is often not what is desired. To be
+precise, specify using the levels option.
+
+```{r, factors, eval = F}
+rating <-   c('high','medium','low')
+rating <-  factor(rating, order=T, levels = c('high','medium','low'))
+```
+
+Thus, the preceding code will result in changing the default reporting
+of factors from alphabetical order (i.e., high, low, and medium) to
+listing them in the specified order (i.e., high, medium, and low).
+
+### Missing values {.unnumbered}
+
+Missing values in R are represented as NA, meaning not available.
+Infeasible values, such as the result of dividing by zero, are indicated
+by NaN, meaning not a number. Any arithmetic expression or function
+operating on data containing missing values will return NA. Thus
+`sum(c(1,NA,2))` will return NA.
+
+To exclude missing values from calculations, use the option `na.rm = T`,
+which specifies the removal of missing values prior to calculations.
+Thus, `sum(c(1,NA,2),na.rm=T)` will return 3.
+
+You can remove rows with missing data by using `na.omit()`, which will
+delete those rows containing missing values.
+
+```{r, missing-values, eval = F}
+gender <- c("m","f","f","f")
+age <- c(5,8,3,NA)
+df <-  data.frame(gender,age)
+df2 <-  na.omit(df)
+```
+
+## Packages {.unnumbered}
+
+A major advantage of R is that the basic software can be easily extended
+by installing additional packages, of which close to 20,000 exist. You
+can consult the [R package directory](https://cran.r-project.org/web/packages/) to help find a package that has the
+functions you need. RStudio has an interface for finding and
+installing packages. See the Packages tab on RStudio's lower-right
+window.
+
+
+Before running a script, you need to indicate which packages it needs,
+beyond the default packages that are automatically loaded. The library
+statement specifies that a package is required for execution. The
+following example uses the measurements package to handle the conversion
+of Fahrenheit to Celsius. The package's documentation provides details
+of how to use its various conversion options.
+
+```{r, load-package, eval = F}
+library(measurements) # previously installed
+# convert F to C
+conv_unit(100,'F','C')
+```
+
+> ❓ **Skill builder**
+>
+>Install the measurements package and run the
+> preceding code.
+
+## File handing {.unnumbered}
+
+Files are the usual form of input for R scripts. Fortunately, R can
+handle a wide variety of input formats, including text (e.g., CSV),
+statistical package (e.g., SAS), and XML. A common approach is to use a
+spreadsheet to prepare a data file, export it as CSV, and then read it
+into R.
+
+### Reading a file {.unnumbered}
+
+Files can be read from the local computer on which R is installed or the
+Internet, as the following sample code illustrates. We will use the
+readr library for handling files, so you will need to install it before
+running the following code.
+
+```{r, read-file, eval = FALSE}
+library(readr)
+# read a local file (this will not work on your computer)
+t <- read_delim("Documents/R/Data/centralparktemps.txt", delim=",")
+```
+
+You can also read a remote file using a URL.
+
+```{r, read-remote, eval = F}
+library(readr)
+# read using a URL
+url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
+t <- read_delim(url, delim = ',')
+```
+
+You must define the separator for data fields with the delim keyword
+(e.g., for a tab use `delim = 't')`.
+
+### Learning about a file {.unnumbered}
+
+After reading a file, you might want to learn about its contents. First,
+you can click on the file's name in the top-right window. This will open
+the file in the top-left window. If it is a long file, only a portion,
+such as the first 1000 rows, will be displayed. Second, you can execute
+some R commands, as shown in the following code, to show the first few
+and last few rows. You can also report the dimensions of the file, its
+structure, and the type of object.
+
+```{r, file-information, eval = F}
+library(readr)
+url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
+t <- read_delim(url, delim=',')
+head(t) #  first few rows
+tail(t) #  last few rows
+dim(t) # dimension
+str(t) # structure of a dataset
+class(t) #type of object
+```
+
+### Referencing columns {.unnumbered}
+
+Columns within a table are referenced by using the format
+tablename$columname. This is similar to the qualification method used
+in SQL. The following code shows a few examples. It also illustrates how
+to add a new column to an existing table.
+
+```{r, columns, eval = F}
+library(measurements)
+library(readr)
+url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
+t <- read_delim(url, delim=',')
+# qualify with table name to reference a column
+mean(t$temperature)
+max(t$year)
+range(t$month)
+# create a new column with the temperature in Celsius
+t$Ctemp = round(conv_unit(t$temperature,'F','C'),1) # round to one decimal
+```
+
+### Recoding {.unnumbered}
+
+Some analyses might be facilitated by the recoding of data. For
+instance, you might want to split a continuous measure into two
+categories. Imagine you decide to classify all temperatures greater than
+or equal to 25ºC as 'hot' and the rest as 'other.' Here are the R
+command to create a new column in table t called Category.
+
+```{r, recoding, eval = F}
+t$Category <- ifelse(t$Ctemp >= 30, 'Hot','Other')
+```
+
+### Deleting a column {.unnumbered}
+
+You can delete a column by setting each of its values to NULL.
+
+```{r, deleting, eval = F}
+t$Category <-  NULL
+```
+
+### Reshaping a file {.unnumbered}
+
+Data are not always in the shape that you want. For example, you might
+have a spreadsheet that, for each year, lists the quarterly observations
+(i.e., year and four quarterly values in one row). For analysis, you
+typically need to have a row for each distinct observation (e.g., year,
+quarter, value). *pivot_longer* converts a document from what is commonly
+called *wide* to *narrow* format. It is akin to normalization in that
+the new table has year and quarter as the identifier of each
+observation.
+
+The pivot_longer() command specifies the file to be conveted to a normalized table, the columns of the input file to be pivoted (i.e., the columns starting with Q), their column name in the new file (i.e., quarter), and the name of the new column containg the spreadsheet's cells (i.e., value). Note that you also need convert the column quarter from character to integer.
+
+The pivot_wider() command revserses the process by converting a table to a spreadsheet.
+
+*Reshaping a file with  and pivoting*
+
+![](Figures/Chapter%2015/R%20pivot.png)
+
+```{r, reshaping, eval = F}
+library(tidyverse)
+url <-  'http://www.richardtwatson.com/data/pivotExample.csv'
+sheet <- read_csv(url)
+table <- sheet %>% 
+  pivot_longer(
+    cols = starts_with('Q'),
+    names_to = 'quarter',
+    names_prefix = 'Q',
+    names_transform = list(quarter = as.integer),
+    values_to = 'value')
+table  
+# table to sheet with pivot_wider
+sheet <- pivot_wider(table,
+    names_from = quarter,
+    names_prefix = "Q",
+    values_from = value)
+sheet
+```
+
+### Writing a file {.unnumbered}
+
+R can write data in a few file formats. We just focus on text format in
+this brief introduction. The following code illustrates how to create a
+new column containing the temperature in C and renaming an existing
+column. The revised table is then written as a csv text file to the
+project's folder.
+
+```{r, writing, eval = F}
+library(measurements)
+library(readr)
+url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
+t <- read_delim(url, delim=',')
+# compute Celsius and round to one decimal place
+t$Ctemp = round(conv_unit(t$temperature,'F','C'),1)
+colnames(t)[3] <-  'Ftemp' # rename third column to indicate Fahrenheit
+write_csv(t,"centralparktempsCF.txt")
+```
+
+## Data manipulation with dplyr {.unnumbered}
+
+The [dplyr](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.htm) package provides functions for efficiently
+manipulating data sets. By providing a series of basic data handling
+functions and use of the pipe function ( %>% ),[^intror-4] dplyr
+implements a grammar for data manipulation. The pipe function is used to
+pass data from one operation to the next.
+
+
+[^intror-4]: Short cut is Ctrl+Shift+M (Windows & Linux) or
+    Cmd+Shift+M (Mac)
+
+*Some dplyr functions*
+
+| Function     | Purpose      |
+|:-------------|:---------------------------------|
+| filter()     | Select rows              |
+| select()     | Select columns                         |
+| arrange()    | Sort rows                          |
+| summarize()  | Compute a single summary statistic       |
+| group_by()   | Pair with summarize() to analyze groups within a dataset |
+| inner_join() | Join two tables                |
+| mutate()     | Create a new column           |
+
+Here are some examples using dplyr with data frame t.
+
+```{r, dplyr, eval = F}
+library(dplyr)
+library(readr)
+url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
+t <- read_delim(url, delim=',')
+# a row subset
+trow <-  filter(t, year == 1999)
+# a column subset
+tcol <-  select(t, year)
+```
+
+The following example illustrates application of the pipe function. The
+data frame t is piped to select(), and the results of select method
+passed onto filter(). The final output is stored in trowcol, which
+contains year, month, and Celsius temperature for the years 1990 through
+1999.
+
+```{r, pipe, eval = F}
+# a combo subset and use of the pipe function
+trowcol <-  t %>%
+  select(year, month, temperature) %>%
+  filter(year > 1989 & year < 2000)
+```
+
+### Sorting {.unnumbered}
+
+You can also use dplyr for sorting.
+
+```{r, eorting, eval = F}
+t <-  arrange(t, desc(year),month)
+```
+
+> ❓ **Skill builder**
+>
+> -   View the [web page](https://cdiac.ess-dive.lbl.gov/ftp/ndp030/global.1751_2011.ems) of yearly CO~2~ emissions (million metric
+>     tons) since the beginning of the industrial revolution.
+>
+> -   Create a new text file using R
+> -   Clean up the file for use with R and save it as CO2.txt
+> -   Import (Import Dataset) the file into R
+> -   Plot year versus CO~2~ emissions
+
+### Summarizing data {.unnumbered}
+
+The dplyr function can be used for summarizing data in a specified way
+(e.g., mean, minimum, standard deviation). In the sample code, a file
+containing the mean temperature for each year is created. Notice the use
+of the pipe function to first group the data by year and then compute
+the mean for each group.
+
+```{r, summarizing, eval = F}
+library(dplyr)
+url <- 'http://www.richardtwatson.com/data/centralparktemps.txt'
+t <- read_delim(url, delim=',')
+w <-  t  %>%
+  group_by(year) %>%
+  summarize(averageF = mean(temperature))
+```
+
+### Adding a column {.unnumbered}
+
+The following example shows how to add a column and compute its average.
+
+```{r, adding-column, eval = F}
+# add column
+t <-  mutate(t, CTemp = (temperature-32)*5/9)
+# summarize
+summarize(t, mean(CTemp))
+```
+
+> ❓ **Skill builder**
+>
+>Create a file with the maximum temperature for each
+> year.
+
+### Merging files {.unnumbered}
+
+If there is a common column in two files, then they can be merged using
+dplyr.::inner_join().[^intror-5] This is the same as joining two tables
+using a primary key and foreign key match. In the following code, a file
+is created with the mean temperature for each year, and it is merged
+with CO~2~ readings for the same set of years.
+
+[^intror-5]: This is the R notation for indicating the package (dplyr)
+    to which a method (inner_join) belongs.
+
+```{r, merging, eval = F}
+library(dplyr)
+library(readr)
+url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
+t <- read_delim(url, delim=',')
+# average monthly temp for each year
+a <-  t %>%
+  group_by(year) %>%
+  summarize(mean = mean(temperature))
+# read yearly carbon data (source: http://co2now.org/Current-CO2/CO2-Now/noaa-mauna-loa-co2-data.html)
+url <-  'http://www.richardtwatson.com/data/carbon1959-2011.txt'
+carbon <- read_delim(url,  delim=',')
+m <-  inner_join(a,carbon)
+head(m)
+```
+
+### Data manipulation with sqldf {.unnumbered}
+
+The sqldf package enables use of the broad power of SQL to extract rows
+or columns from a data frame to meet the needs of a particular analysis.
+It provides essentially the same data manipulation capabilities as
+dplyr. The following example illustrates use of sqldf.
+
+```{r, sqldf, eval = F}
+library(sqldf)
+library(readr)
+options(sqldf.driver = "SQLite") # to avoid a conflict with RMySQL
+url <-  'http://www.richardtwatson.com/data/centralparktemps.txt'
+t <- read_delim(url, delim=',')
+# a row subset
+trowcol <-  sqldf("select year, month, temperature from t where year > 1989 and year < 2000")
+```
+
+However, sqldf does not enable you to embed R functions within an SQL
+command. For this reason, dplyr is the recommended approach for data
+manipulation. However, there might be occasions when you find it more
+efficient to first execute a complex query in SQL and then do further
+analysis with dplyr.
+
+### Correlation coefficient {.unnumbered}
+
+A correlation coefficient is a measure of the covariation between two
+sets of observations. In this case, we are interested in whether there
+is a statistically significant covariation between temperature and the
+level of atmospheric CO~2~.[^intror-6]
+
+[^intror-6]: As I continually revise data files to include the latest
+    observations, your answer might differ for this and other analyses.
+
+The following example shows how to create reproducible analytics, whereby the results of the analysis are used to provide text for the report.
+
+```{r, correlation-1, eval = F}
+cor.test(m$mean, m$CO2)
+```
+The following results indicate that a correlation of .40 is a statistically significant as the p-value is less than 0.05, the common threshold for significance testing. Thus, we conclude that, because there is a small chance (p = .002997) of observing by chance such a value for the correlation coefficient, there is a relationship between mean temperature and the level of atmospheric CO2. Given that global warming theory predicts an increase in temperature with an increase in atmospheric CO2, we can also state that the observations support this theory. In other words, an increase in CO2 increases temperatures in Central Park.
+
+```
+Pearson's product-moment correlation
+data:  m$mean and m$CO2
+t = 3.1173, df = 51, p-value = 0.002997
+95 percent confidence interval:
+0.1454994 0.6049393
+sample estimates:
+    cor
+0.4000598
+```
+
+When reporting correlation coefficients, you can you use the terms
+small, moderate, and large in accordance with the values specified in
+following table.
+
+*Effect size table*
+
+| Correlation coefficient | Effect size |
+|:------------------------|:------------|
+| .10 - .30               | Small       |
+| .30 - .50               | Moderate    |
+| > .50                  | Large       |
+
+If we want to understand the nature of the relationship, we could fit a
+linear model.
+
+```{r, linear-model, eval = F}
+mod <- lm(m$mean ~ m$CO2)
+summary(mod)
+```
+
+The following results indicate a linear model is significant (p < .05),
+and it explains 14.36% (adjusted multiple R-squared) of the variation
+between temperature and atmospheric CO~2~. The linear equation is
+
+$$temperature = 48.29 + 0.019208* CO2$$
+
+As CO~2~ emissions are measured in parts per millions (ppm), an increase
+of 1.0 ppm predicts an annual mean temperature increase in Central Park
+of .01920 F°. Currently CO~2~ emissions are increasing at about 2.0 ppm
+per year.
+
+As a linear model explains about 14% of the variation, this suggests
+that there might other variables that should be considered (e.g., level
+of volcanic activity) and that the relationship might not be linear.
+
+```
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)  48.291319    2.149937   22.462    <2e-16 ***
+ m$CO2        0.019208    0.006162    3.117    0.003 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Residual standard error: 1.016 on 51 degrees of freedom
+Multiple R-squared:   0.16,	Adjusted R-squared:  0.1436
+F-statistic: 9.718 on 1 and 51 DF,  p-value: 0.002997
+```
+
+## Database access {.unnumbered}
+
+The DBI package provides a convenient way for a direct connection
+between R and a relational database, such as MySQL or PostgreSQL. Once
+the connection has been made, you can run an SQL query and load the
+results into a R data frame.
+
+The dbConnect() function makes the connection. You specify the type of
+relational database, url, database name, userid, and password, as shown
+in the following code.[^intror-7]
+
+[^intror-7]: You will likely get a warning message of the form
+    "unrecognized MySQL field type 7 in column 0 imported as character,"
+    because R does does recognize the first column as a timestamp. You
+    can ignore it, but later you might need to convert the column to R's
+    timestamp format.
+
+```{r, database, eval = F}
+library(DBI)
+conn <- dbConnect(RMySQL::MySQL(), "www.richardtwatson.com", dbname="Weather", user="student", password="student")
+# Query the database and create file t for use with R
+t <- dbGetQuery(conn,"select * from record;")
+head(t)
+```
+
+For security reasons, it is not a good idea to put database access
+details in your R code. They should be hidden in a file. I recommend
+that you create a csv file within your R code folder to containing
+database access parameters. First, create a new directory or folder
+(File > New Project > New Directory > Empty Project), called dbaccess
+for containing you database access files. Then, create a csvfile (Use
+File > New File > Text File) with the name weather_richardtwatson.csv
+in the newly created folder containing the following data:
+
+```
+url,dbname,user,password:
+richardtwatson.com,Weather,student,student
+```
+
+The R code will now be:
+
+```{r, database-weather, eval = FALSE}
+# Database access
+library(readr)
+library(DBI)
+url <-  'dbaccess/weather_richardtwatson.csv'
+d <-  read_csv(url)
+conn <- dbConnect(RMySQL::MySQL(), d$url, dbname=d$dbname, user=d$user, password=d$password)
+t <- dbGetQuery(conn,"SELECT timestamp, airTemp from record;")
+head(t)
+```
+
+Despite the prior example, I will continue to show database access
+parameters because you need them to run the sample code. However, in
+practice you should follow the security advice given.
+
+### Timestamps {.unnumbered}
+
+Many data sets include a timestamp to indicate when an observation was
+recorded. A timestamp will show the data and time to the second or
+microsecond. The format of a standard timestamp is yyyy-mm-dd hh:mm:ss
+(e.g., 2010-01-31 03:05:46).
+
+Some R functions, including those in the lubridate package, can detect a
+standard format timestamp and support operations for extracting parts of
+it, such as the year, month, day, hour, and so forth. The following
+example shows how to use lubridate to extract the month and year from a
+character string in standard timestamp format.
+
+```{r, time-stamp, eval = FALSE}
+library(lubridate)
+library(DBI)
+conn <- dbConnect(RMySQL::MySQL(), "www.richardtwatson.com", dbname="Weather", user="student", password="student")
+# Query the database and create file t for use with R
+t <- dbGetQuery(conn,"select * from record;")
+t$year <- year(t$timestamp)
+t$month <- month(t$timestamp)
+head(t)
+```
+
+## Excel files {.unnumbered}
+
+There are a number of packages with methods for reading an Excel file.
+Of these, readxl seems to be the simplest. However, it can handle only
+files stored locally, which is the case with most of the packages
+examined. If the required Excel spreadsheet is stored remotely, then
+download it and store it locally.
+
+```{r, excel, eval = F}
+library(readxl)
+library(httr)
+# read remote file and store on disk
+url <-  'http://www.richardtwatson.com/data/GDP.xlsx'
+GET(url,write_disk('temp.xlsx',overwrite = TRUE))
+e <-  read_excel('temp.xlsx',sheet = 1,col_names = TRUE)
+```
+
+## R resources {.unnumbered}
+
+The vast number of packages makes the learning of R a major challenge.
+The basics can be mastered quite quickly, but you will soon find that
+many problems require special features or the data need some
+manipulation. Once you learn how to solve a particular problem, make
+certain you save the script, with some embedded comments, so you can
+reuse the code for a future problem. There are books that you might find
+useful to have in electronic format on your computer or tablet, and one
+of these is listed at the end of the chapter. There are, however, many
+more [books](http://www.r-project.org/doc/bib/R-books.html), both of a general and specialized nature. The
+[R Reference Card](http://cran.r-project.org/doc/contrib/Short-refcard.pdf) is
+handy to keep nearby when you are writing scripts. I printed and
+laminated a copy, and it's in the top drawer of my desk. A useful
+website is [Quick-R](http://www.statmethods.net), which is an
+online reference for common tasks, such as those covered in this
+chapter.
+
+
+## R and data analytics {.unnumbered}
+
+R is a platform for a wide variety of data analytics, including
+
+-   Statistical analysis
+
+-   Data visualization
+
+-   HDFS and cluster computing
+
+-   Text mining
+
+-   Energy Informatics
+
+-   Dashboards
+
+You have probably already completed an introductory statistical analysis
+course, and you can now use R for all your statistical needs. In
+subsequent chapters, we will discuss data visualization, HDFS and
+cluster computing, and text mining.
+
+R is also a programming language. You might find that in some
+situations, R provides a quick method for reshaping files and performing
+calculations.
+
+### Summary {.unnumbered}
+
+R is a free software environment for statistical computing, data
+visualization, and data analytics. RStudio is a commonly used integrated
+development environment (IDE) for R. A script is a set of R commands.
+Store all R scripts and data for a project in the same folder or
+directory. An R dataset is a table that can be stored as a vector,
+matrix, array, data frame, and list. In R, an object is anything that
+can be assigned to a variable. R can handle the four types of data:
+nominal, ordinal, interval, and ratio. Nominal and ordinal data types
+are also known as factors. Defining a column as a factor determines how
+its data are analyzed and presented. Missing values are indicated by NA.
+R can handle a wide variety of input formats, including text (e.g.,
+CSV), statistical package (e.g., SAS), and XML. Data can be reshaped.
+Gathering converts a document from what is commonly called wide to
+narrow format. Spreading takes a narrow file and converts it to wide
+format. Columns within a table are referenced using the format
+tablename$columname. R can write data to a file. A major advantage of R
+is that the basic software can be easily extended by installing
+additional packages. The dplyr packages adds functionality for data
+management and reporting. Learning R is a major challenge because of the
+many packages available.
+
+### Key terms and concepts {.unnumbered}
+
+|            |         |
+|:-----------|:--------|
+| Aggregate  | R       |
+| Array      | Reshape |
+| Data frame | Script  |
+| Data type  | Spread  |
+| Factor     | SQL     |
+| Gather     | Tibble  |
+| List       | Subset  |
+| Matrix     | Vector  |
+| Package    |         |
+
+### References {.unnumbered}
+
+Wickham, H., & Grolemund, G. (2017). [R for data science](https://r4ds.had.co.nz): O'Reilly.
+
+## Exercises {.unnumbered}
+
+1.  Access a [car sales file](http://richardtwatson.com/data/manheim.txt)
+    which contains details of the sales of three car models: X, Y,
+    and Z.
+
+    a.  Compute the number of sales for each type of model.
+
+    b.  Compute the number of sales for each type of sale.
+
+    c.  Report the mean price for each model.
+
+    d.  Report the mean price for each type of sale.
+
+2.  Use the 'Import Dataset' feature of RStudio to read
+    [electricity data](http://www.richardtwatson.com/data/electricityprices.csv), which
+    contains details of electricity prices for a major city.[^intror-10]
+    [^intror-10]: Note these prices have been transformed from the original
+        values, but are still representative of the changes over time.
+
+    a.  What is the maximum cost?
+
+    b.  What is the minimum cost?
+
+    c.  What is the mean cost?
+
+    d.  What is the median cost?
+
+3.  Read the table containing [details of the wealth of various countries](http://richardtwatson.com/data/wealth.csv) and complete
+    the following exercises.
+
+    a.  Sort the table by GDP per capita.
+
+    b.  What is the average GDP per capita?
+
+    c.  Compute the ratio of US GDP per capita to the average GDP per
+        capita.
+
+    d.  What's the correlation between GDP per capita and wealth per
+        capita?
+
+4.  Merge the data for weather (database weather
+    discussed in the chapter) and electricity prices (Use RStudio's
+    'Import Dataset' to read [electricity data](http://www.richardtwatson.com/data/electricityprices.csv) and
+    compute the correlation between temperature and electricity price.
+    *Hint*: MySQL might return a timestamp with decimal seconds (e.g.,
+    2010-01-01 01:00:00.0), and you can remove the rightmost two
+    characters using [substr()](http://www.statmethods.net/management/functions.html), so that the two timestamp
+    columns are of the same format and length. Also, you need to ensure
+    that the timestamps from the two data frames are of the same data
+    type (e.g., both character).
+
+5.  Get the list of [failed US banks](https://explore.data.gov/Banking-Finance-and-Insurance/FDIC-Failed-Bank-List/pwaj-zn2n).
+
+    a.  Determine how many banks failed in each state.
+
+    b.  How many banks were not acquired (hint: nrow() will count rows
+        in a table)?
+
+    c.  How many banks were closed each year (hint: use strptime() and
+        the lubridate package)?
+
+6.  Use Table01 reporting [U.S. broccoli data on farms and area harvested](http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1816).
+    Get rid of unwanted rows to create a spreadsheet for the area
+    harvested with one header row and the 50 states. Change cells
+    without integer values to 0 and save the file in CSV format for
+    reading with R.
+
+    a.  Reshape the data so that each observation contains state name,
+        year, and area harvested.
+
+    b.  Add hectares as a column in the table. Round the calculation to
+        two decimal places.
+
+    c.  Compute total hectares harvested each year for which data are
+        available.
+
+    d.  Save the reshaped file.
+
+\newpage

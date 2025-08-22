@@ -1,0 +1,1548 @@
+# Data Administration
+
+> *Bad administration, to be sure, can destroy good policy; but good
+> administration can never save bad policy.*
+>
+> Adlai Stevenson, speech given in Los Angeles, September 11, 1952
+
+### Learning objectives {.unnumbered}
+
+Students completing this chapter will
+-   understand the role of the Chief Data Officer (CDO);
+-   understand the importance and role of data administration;
+-   understand how system-level data administration functions are used
+    to manage a database environment successfully;
+-   understand how project-level data administration activities support
+    the development of a database system;
+-   understand what skills data administration requires and why it needs
+    a balance of people, technology, and business skills to carry out
+    its roles effectively;
+-   understand how computer-based tools can be used to support data
+    administration activities;
+-   understand the management issues involved in initiating, staffing,
+    and locating data administration organizationally.
+
+## Introduction {.unnumbered}
+
+In the information age, data are the lifeblood of every organization and
+need to be properly managed to retain their value to the organization.
+The importance of data as a key organizational resource has been
+emphasized throughout this book. Data administration is the management
+of organizational data stores.
+
+Information technology permits organizations to capture, organize, and
+maintain a greater variety of data. These data can be hard (e.g.,
+financial or production figures) or soft (e.g., management reports,
+correspondence, voice conversations, and video). If these data are to be
+used in the organization, they must be managed just as diligently as
+accounting information. *Data administration* is the common term applied
+to the task of managing organizational memory. Although common, basic
+management principles apply to most kinds of organizational data stores,
+the discussion in this chapter refers primarily to databases.
+
+### Why manage data? {.unnumbered}
+
+Data are constantly generated in every act and utterance of every
+stakeholder (employee, shareholder, customer, or supplier) in relation
+to the organization. Some of these data are formal and structured, such
+as invoices, grade sheets, or bank withdrawals. A large amount of
+relatively unstructured data is generated too, such as tweets, blogs,
+and Facebook comments from customers. Much of the unstructured data
+generated within and outside the organizations are frequently captured
+but rarely analyzed deeply.
+
+Organization units typically begin maintaining systematic records for
+data most likely to impinge on their performance. Often, different
+departments or individuals maintain records for the same data. As a
+result, the same data may be used in different ways by each department,
+and so each of them may adopt a different system of organizing its data.
+Over time, an organization accumulates a great deal of redundant data
+which demands considerable, needless administrative overhead for its
+maintenance. Inconsistencies may begin to emerge between the various
+forms of the same data. A department may incorrectly enter some data,
+which could result in embarrassment at best or a serious financial loss
+for the organization at worst.
+
+When data are fragmented across several departments or individuals, and
+especially when there is personnel turnover, data may not be accessible
+when most needed. This is nearly as serious a problem as not having any
+data. Yet another motivation is that effective data management can
+greatly simplify and assist in the identification of new information
+system application development opportunities. Also, poor data management
+can result in breaches of security. Valuable information may be revealed
+to competitors or antagonists.
+
+In summary, the problems arising from poor data management are:
+
+-   The same data may be represented through multiple, inconsistent
+    definitions.
+-   There may be inconsistencies among different representations.
+-   Essential data may be missing from the database.
+-   Data may be inaccurate or incomplete.
+-   Some data may never be captured for the database and thus are
+    effectively lost to the organization.
+-   There may be no way of knowing how to locate data when they are
+    needed.
+
+The overall goal of data administration is to prevent the occurrence of
+these problems by enabling users to access the data they need in the
+format most suitable for achieving organizational goals and by ensuring
+the integrity of organizational databases.
+
+## The Chief Data Officer {.unnumbered}
+
+Firms are increasingly recognizing the importance of data to
+organizational performance, particularly with the attention given to big
+data in the years following 2010. As a result, some have created the new
+C-level position of Chief Data Officer (CDO), who is responsible for the
+strategic management of data systems and ensuring that the organization
+fully seizes data-driven opportunities to create new business, reduce
+costs, and increase revenues. The CDO assists the top management team in
+gaining full value from data, a key strategic asset.[^administration-1] In 2003,
+Capital One was perhaps to first firm to appoint a CDO. Other early
+creators of this new executive role were Yahoo! and Microsoft Germany.
+The US Federal Communications Commission (FCC) has appointed a CDO for
+each of its 11 major divisions. Many firms report plans to create data
+stewards and CDOs. Given the strategic nature of data for business, it
+is not surprising that one study reports that 30 percent of CDOs report
+to the CEO, with another 20% reporting to the COO.
+
+[^administration-1]: This section is based on Lee, Y., Madnick, S., Wang, R., Forea,
+    W., & Zhang, H. (2014). A cubic framework for the Chief Data Officer
+    (CDO): Succeeding in a world of Big Data emergence of Chief Data
+    Officers. *MISQ Executive*.
+
+### CDO role dimensions {.unnumbered}
+
+Three dimensions of the CDO role have been identified and described (see
+the following figure), namely, collaboration direction (inward or
+outward), data management focus (traditional transaction or big data,
+and value orientation (service or strategy). We now discuss each of
+these dimensions.
+
+*The three dimensions of the CDO role*
+
+![](Figures/Chapter%2024/cdo.png)
+
+#### Inward vs. outward collaboration {.unnumbered}
+
+A CDO can focus collaborative efforts inward or outward. An inward
+emphasis might mean working with production to improve the processes for
+capturing manufacturing data. An outward oriented CDO, in contrast,
+might work with customers to improve the data flow between the firm and
+the customer.
+
+Inward oriented initiatives might include developing data quality
+assessment methods, establishing data products standards, creating
+procedures for managing metadata, and establishing data governance. The
+goal is to ensure consistent data delivery and quality inside the
+organization.
+
+An outwardly-focused CDO will strive to cooperate with an organization's
+external stakeholders. For example, one CDO led a program for "global
+unique product identification" to improve collaboration with external
+global partners. Another might pay attention to improving the quality of
+data supplied to external partners.
+
+#### Traditional vs. big data management focus {.unnumbered}
+
+A CDO can stress managing traditional transactional data, which is
+typically managed with a relational databases, or shift direction
+towards handling expanding data volumes with new files structures, such
+as Hadoop data file structure (HDFS).
+
+Traditional data are still the foundation of many organization's
+operations, and there remains in many firms a need for a CDO with a
+transactional data orientation. Big data promises opportunities for
+improving operations or developing new business strategies based on
+analyses and insights not available from traditional data. A CDO
+attending to big data can provide leadership in helping a business gain
+deeper knowledge of its customers, suppliers, and so forth based on
+mining large volumes of data.
+
+#### Service vs. strategy orientation {.unnumbered}
+
+A CDO can stress improving services or exploring an organization's
+strategic opportunities. This dimension should reflect the
+organization's goals for the CDO position. If the top management team is
+mainly concerned with oversight and accountability, then the CDO should
+pay attention to improving existing data-related processes.
+Alternatively, if the senior team actively seeks new data-driven
+strategic value, then the CDO needs to be similarly aligned and might
+look at how to exploit digit data streams, for example. One
+strategy-directed CDO, for instance, led an initiative to identify new
+information products for advancing the firm's position in the financial
+industry.
+
+### CDO archetypes {.unnumbered}
+
+Based on the three dimensions just discussed, eight different CDO roles
+can be identified, as shown in the following table.
+
+*Dimensions of CDO archetypes*
+
+![](Figures/Chapter%2024/cdo-archetypes.png)
+
+While eight different roles are possible, it is important to note that a
+CDO might take on several of these roles as the situation changes and
+the position evolves. Also, treat an archetype as a broad indicator of a
+role rather than a confining specification.
+
+*CDO archetypes*
+
+| Archetype    | Definition                                                                                                                                                      |
+|:-------------|:--------------------------------------------------------|
+| Coordinator  | Fosters internal collaboration using transactional data to support business services.    |
+| Reporter     | Provides high quality enterprise data delivery services for external reporting.  |
+| Architect    | Designs databases and internal business processes to create new opportunities for the organization.     |
+| Ambassador   | Develops internal data policies to support business strategy and external collaboration using traditional data sources.  |
+| Analyst      | Improves internal business performance by exploiting big data to provide new services.   |
+| Marketer     | Develops relationships with external data partners and stakeholders to improve externally provided data services using big data.   |
+| Developer    | Navigates and negotiates with internal enterprise divisions in order to create new services by exploiting big data.     |
+| Experimenter | Engages with external parties, such as suppliers and industry peers, to explore new, unidentified markets and products based on insights derived from big data. |
+
+> 💠 **Case Study - The role of the Chief Data and Analytics Officer**
+>
+> [Artera Services](https://artera.com) is a leading provider of innovative, sustainable,
+> mission-critical infrastructure solutions. It focuses on serving the
+> natural gas industry, while offering specialty services that support
+> the advancement of water, wastewater, electricity, telecommunications,
+> and specialized critical urban infrastructures. The firm collects data
+> in order to service its clients. To ensure that these data are
+> accurate, complete, and useful, Artera Services has established an data
+> management program that combines data governance and data quality.
+>
+> In this case study, we explore the role of the Chief Data and
+> Analytics Officer (CDAO) in managing data as a combination of data
+> governance and data quality.
+
+> *The challenge: ensuring data accuracy and quality*
+>
+> ?As an infrastructure provider, Artera Services relies on data to inform
+> decision-making and to deliver high-quality services to its clients.
+> However, it faced several challenges in managing its data effectively.
+>
+> First, Artera Services struggled with data quality. The data collected
+> are often incomplete or contain errors, which makes it difficult to
+> use them effectively and lowers decision quality. This leads to
+> operational inefficiencies and impairs the ability to deliver
+> high-quality services to clients.
+>
+> Second, the organization lacked a clear system for data governance.
+> There was no central authority responsible for managing organizational
+> data, and there were no established policies or procedures for data
+> collection, storage, and use. This led to confusion and inconsistency
+> in the way data were managed.
+>
+> *The solution: Establish a data management program*
+>
+> In order to address these challenges, Artera Services decided to create a
+> data management program by combining data governance and data quality.
+> To lead this effort, it appointed a Chief Data and Analytics Officer
+> (CDAO).
+>
+> The CDAO's primary responsibilities include defining the data
+> strategy, establishing data governance and data quality standard, and
+> implementing data management processes and systems. The CDAO works
+> closely with other departments to ensure that data are used
+> effectively and in compliance with regulations.
+>
+> To improve data quality, the CDAO implemented a system for tracking
+> and monitoring data accuracy and completeness. This system includes
+> regular audits and checks to ensure that employees are educated to
+> properly collect, store, and use data.
+>
+> To establish a clear system for data governance, the CDAO worked with
+> the organization's legal and compliance teams to develop policies and
+> procedures for data collection, storage, and use. The CDAO also
+> defined roles and responsibilities for data management and established
+> guidelines for how data should be managed within the organization.
+>
+> The CDAO also implemented a data analytics platform to help the
+> organization make highly informed decisions based on data. This
+> platform allows the organization to collect, analyze, and visualize
+> data from multiple sources, giving executives a more comprehensive
+> view of operations.
+>
+> *The results: Improved data quality and governance*
+>
+> Through the efforts of the CDAO and the establishment of an effective
+> data management program, Artera Services was able to significantly
+> improve the accuracy and quality of its data. The organization's data
+> are now more complete and accurate, which enables it to make more
+> informed decisions and deliver higher quality services to its clients.
+>
+> In addition, the establishment of clear data governance policies and
+> procedures improved the consistency and efficiency of data management
+> within the organization. The CDAO plays a crucial role in this
+> process, overseeing the data management function and working to ensure
+> that the organization is using data effectively.
+>
+> The implementation of the data analytics platform also helps the
+> organization to better understand its operations and identify areas
+> for improvement. By using data to inform their decision-making, Artera
+> Services is able to streamline its processes and improve its overall
+> efficiency.
+>
+> *Conclusion*
+>
+> This case study illustrates the importance of data management in
+> ensuring the accuracy and quality of organizational data. By combining
+> data governance and data quality, organizations can ensure that their
+> data are well-managed and meet their business needs. The CDAO plays a
+> crucial role by overseeing the data management function and working
+> with clients to satisfy their information requirements.
+>
+
+> The case was contributed by Balaram Tidhi (Chief Data and Analytics Officer, [Artera](https://artera.com)).
+
+## Management of the database environment {.unnumbered}
+
+In many large organizations, there is a formal data administration
+function to manage corporate data. For those companies with a CDO, data
+administration might be subsumed within this function. For those without, data
+administration is typically the responsibility of the CIO. The
+relationship among the various components of data administration is
+shown in the following figure.
+
+*Management of the database environment*
+
+![](Figures/Chapter%2024/database-environment.png)
+
+### Databases {.unnumbered}
+
+A database management system (DBMS) can manage multiple databases
+covering different aspects of an organization's activities. When a
+database has multiple clients, it may be designed to meet all their
+requirements, even though a specific person may need only a portion of
+the data contained within the database. For instance, a finished-goods
+database may be accessed by Production and Finance, as well as
+Marketing. It may contain cost information that is accessible by
+Production and Finance but not by Marketing.
+
+### System interface {.unnumbered}
+
+The interface consists of windows, menus, icons, and commands that
+enable clients to direct the system to manipulate data. Clients may
+range from casual novices, who need to be insulated from the underlying
+complexity of the data, to expert application developers, who manipulate
+the data using programming languages or other data-handling tools.
+
+### Data dictionary {.unnumbered}
+
+A data dictionary is a reference repository containing *metadata* (*data about data*) that is stored in the database. Among other things,
+the data dictionary contains a list of all the databases; their
+component parts and detailed descriptions such as field sizes, data
+types, and data validation information for data capture purposes;
+authorized clients and their access privileges; and ownership details.
+
+A data dictionary is a map of the data in organizational data stores. It
+permits the data administration staff and users to document the
+database, design new applications, and redesign the database if
+necessary. The data dictionary/directory system (DD/DS), itself a DBMS,
+is software for managing the data dictionary.
+
+### External databases {.unnumbered}
+
+For organizations to remain competitive in a rapidly changing
+marketplace, access to data from external sources is becoming
+increasingly critical. Research and development groups need access to
+the latest developments in their technical fields and need to track
+information such as patents filed, research reports, and new product
+releases. Marketing departments need access to data on market conditions
+and competitive situations as reported in various surveys and the media
+in general. Financial data regarding competitors and customers are
+important to senior executives. Monitoring political situations may be
+critical to many business decisions, especially in the international
+business arena.
+
+Extensive external data are available electronically through information
+services such as Bloomberg (financial data), Reuters (news), and
+LexisNexis (legal data), various government sites,such as data.gov, or
+from various Web sites. Tools are available to download external data
+into internal databases, from which they may be accessed through the
+same interface as for internal data.
+
+## Data administration {.unnumbered}
+
+Data administration is responsible for the management of data-related
+activities. There are two levels of data administration activities:
+system and project.
+
+**System-level administration** is concerned with establishing overall
+policies and procedures for the management and use of data in the
+organization. Formulating a data strategy and specifying an information
+architecture for the organization are also system-level data
+administration functions.
+
+**Project-level administration** deals more with the specifics, such as
+optimizing specific databases for operational efficiency, establishing
+and implementing database access rights, creating new databases, and
+monitoring database use.
+
+In general, the system-level function takes a broader perspective of the
+role played by data in achieving business objectives, while the
+project-level function is more concerned with the actual mechanics of
+database implementation and operation. We use the term *data
+administration* to refer to both functional levels.
+
+### Data administration functions and roles {.unnumbered}
+
+The functions of data administration may be accomplished through
+multiple roles or job titles such as database administrator, database
+developer, database consultant, and database analyst, collectively
+referred to as the data administration staff. A single role could be
+responsible for both system and project levels of data administration,
+or responsibility may be distributed among several persons, depending on
+the size of the organization, the number of database applications, and
+the number of clients.
+
+In addition, data administration could be carried out entirely in a
+client department. For instance, a client could be the data steward
+responsible for managing all corporate data for some critical
+business-related entity or activity (e.g., a customer, a production
+facility, a supplier, a division, a project, or a product) regardless of
+the purpose for which the data are used.
+
+**Data stewards** coordinate planning of the data for which they are
+responsible. Tasks include data definition, quality control and
+improvement, security, and access authorization. The data steward's role
+is especially important today because of the emphasis on customer
+satisfaction and cross-functional teams. Data stewardship seeks to align
+data management with organizational strategy.
+
+### Database levels {.unnumbered}
+
+Databases may be maintained at several levels of use: personal,
+workgroup (e.g., project team or department), and organizational. More
+clients usually results in greater complexity of both the database and
+its management.
+
+Personal databases in the form of calendars, planners, and name and
+address books have existed for a long time. The availability of laptops,
+tablets, and smartphones have made it convenient to maintain
+synchronized electronic personal databases across multiple devices.
+Behind the interface of many of these apps is a lightweight relational
+database, such as [SQLite](http://www.sqlite.org).
+
+Workgroup databases cannot be as idiosyncratic because they are shared
+by many people. Managing them requires more planning and coordination to
+ensure that all the various clients' needs are addressed and data
+integrity is maintained. Organizational databases are the most complex
+in terms of both structure and need for administration. All databases,
+regardless of scope or level, require administration.
+
+Managing a personal database is relatively simple. Typically, the owner
+of the database is also its developer and administrator. Issues such as
+access rights and security are settled quite easily, perhaps by locking
+the computer when away from the desk. Managing workgroup databases is
+more complex. Controls almost certainly will be needed to restrict
+access to certain data. On the other hand, some data will need to be
+available to many group members. Also, responsibility for backup and
+recovery must be established. Small workgroups may jointly perform both
+system- and project-level data administration activities. Meetings may
+be a way to coordinate system-level data administration activities, and
+project-level activities may be distributed among different workgroup
+members. Larger groups may have a designated data administrator, who is
+also a group member.
+
+Managing organizational databases is typically a full-time job requiring
+special skills to work with complex database environments. In large
+organizations, several persons may handle data administration, each
+carrying out different data administration activities. System-level data
+administration activities may be carried out by a committee led by a
+senior IS executive (who may be a full- or part-time data
+administrator), while project-level data administration activities may
+be delegated to individual data administration staff members.
+
+### System-level data administration functions {.unnumbered}
+
+System-level data administration functions, which may be performed by
+one or more persons, are summarized in the following table.
+
+| Function                                         |
+|:-------------------------------------------------|
+| Planning                                         |
+| Developing data standards and policies           |
+| Defining XML data schemas                        |
+| Maintaining data integrity                       |
+| Resolving data conflict                          |
+| Managing the DBMS                                |
+| Establishing and maintaining the data dictionary |
+| Selecting hardware and software                  |
+| Managing external databases                      |
+| Benchmarking                                     |
+| Internal marketing                               |
+
+#### Planning {.unnumbered}
+
+Because data are a strategic corporate resource, planning is perhaps the
+most critical data administration function. A key planning activity is
+creating an organization's information architecture, which includes all
+the major data entities and the relationships between them. It indicates
+which business functions and applications access which entities. An
+information architecture also may address issues such as how data will
+be transmitted and where they will be stored. Since an information
+architecture is an organization's overall strategy for data and
+applications, it should dovetail with the organization's long-term plans
+and objectives.[^administration-3]
+
+[^administration-3]: For more on information architecture, see Smith, H. A., Watson, R. T., & Sullivan, P. (2012). Delivering Effective Enterprise
+    Architecture at Chubb Insurance. *MISQ Executive*. 11(2)
+
+#### Developing data standards and policies {.unnumbered}
+
+Whenever data are used by more than one person, there must be standards
+to govern their use. Data standards become especially critical in
+organizations using heterogeneous hardware and software environments.
+Why could this become a problem? For historical reasons, different
+departments may use different names and field sizes for the same data
+item. These differences can cause confusion and misunderstanding. For
+example, "sale date" may have different meanings for the legal
+department (e.g., the date the contract was signed) and the sales
+department (e.g., the date of the sales call). Furthermore, the legal
+department may store data in the form *yyyy-mm-dd* and the sales
+department as *dd-mm-yy*. Data administration's task is to develop and
+publish data standards so that field names are clearly defined, and a
+field's size and format are consistent across the enterprise.
+
+Furthermore, some data items may be more important to certain
+departments or divisions. For instance, customer data are often critical
+to the marketing department. It is useful in such cases to appoint a
+data steward from the appropriate functional area as custodian for these
+data items.
+
+Policies need to be established regarding who can access and manipulate
+which data, when, and from where. For instance, should employees using
+their home computers be allowed to access corporate data? If such access
+is permitted, then data security and risk exposure must be considered
+and adequate data safeguards implemented.
+
+#### Defining XML data schemas {.unnumbered}
+
+Data administration is also often responsible for defining data schemas
+for data exchange within the organization and among business partners.
+Data administration is also responsible for keeping abreast of industry
+schema standards so that the organization is in conformance with common
+practice. Some data administrators may even work on defining a common
+data schema for an industry.
+
+#### Maintaining data integrity {.unnumbered}
+
+Data must be made available when needed, but only to authorized users.
+The data management aspects of data integrity are discussed at length in
+the Data Integrity chapter.
+
+#### Resolving data conflict {.unnumbered}
+
+Data administration involves the custodianship of data *owned* or
+originating in various organizational departments or functions, and
+conflicts are bound to arise at some point. For instance, one department
+may be concerned about a loss of security when another department is
+allowed access to its data. In another instance, one group may feel that
+another is contaminating a commonly used data pool because of inadequate
+data validation practices. Incidents like these, and many others,
+require management intervention and settlement through a formal or
+informal process of discussion and negotiation in which all parties are
+assured of an outcome that best meets the needs of the organization.
+Data administration facilitates negotiation and mediates dispute
+resolution.
+
+#### Managing the DBMS {.unnumbered}
+
+While project-level data administration is concerned more directly with
+the DBMS, the performance and characteristics of the DBMS ultimately
+impinge on the effectiveness of the system-level data administration
+function. It is, therefore, important to monitor characteristics of the
+DBMS. Over a period, benchmark statistics for different projects or
+applications will need to be compiled. These statistics are especially
+useful for addressing complaints regarding the performance of the DBMS,
+which may then lead to design changes, tuning of the DBMS, or additional
+hardware.
+
+Database technology is rapidly advancing. For example, relational DBMSs
+are continually being extended, and Hadoop offers a new approach to
+handle large data processing tasks. Keeping track of developments,
+evaluating their benefits, and deciding on converting to new database
+environments are critical system-level data administration functions
+that can have strategic implications for the corporation.
+
+#### Establishing and maintaining the data dictionary {.unnumbered}
+
+A data dictionary is a key data administration tool that provides
+details of data in the organizational database and how they are used
+(e.g., by various application programs). If modifications are planned
+for the database (e.g., changing the size of a column in a table), the
+data dictionary helps to determine which applications will be affected
+by the proposed changes.
+
+More sophisticated data dictionary systems are closely integrated with
+specific database products. They are updated automatically whenever the
+structure of the underlying database is changed.
+
+#### Selecting hardware and software {.unnumbered}
+
+Evaluating and selecting the appropriate hardware and software for an
+organizational database are critical responsibilities with strategic
+organizational implications. These are not easy tasks because of the
+dynamic nature of the database industry, the continually changing
+variety of available hardware and software products, and the rapid pace
+of change within many organizations. Today's excellent choice might
+become tomorrow's nightmare if, for instance, the vendor of a key
+database component goes out of business or ceases product development.
+
+Extensive experience and knowledge of the database software business and
+technological progress in the field are essential to making effective
+database hardware and software decisions. The current and future needs
+of the organization need to be assessed in terms of capacity as well as
+features. Relevant questions include the following:
+
+-   How many people and apps will simultaneously access the database?
+-   Will the database need to be geographically distributed? If so, what
+    is the degree to which the database will be replicated, and what is
+    the nature of database replication that is supported?
+-   What is the maximum size of the database?
+-   How many transactions per second can the DBMS handle?
+-   What kind of support for online transaction processing is available?
+-   What are the initial and ongoing costs of using the product?
+-   Can the database be extended to include new data types?
+-   What is the extent of training required, who can provide it, and
+    what are the associated costs?
+
+DBMS selection should cover technical, operational, and financial
+considerations. An organization's selection criteria are often specified
+in a request for proposal (RFP). This document is sent to a short list
+of potential vendors, who are invited to respond with a software or
+hardware/software proposal outlining how their product or service meets
+each criterion in the RFP. Discussions with current customers are
+usually desirable to gain confirming evidence of a vendor's claims. The
+final decision should be based on the manner and degree to which each
+vendor's proposal satisfies these criteria.
+
+> ❓ *Skill builder*
+>
+>A small nonprofit organization has asked for your help
+> in selecting a relational database management system (RDBMS) for
+> general-purpose management tasks. Because of budget limitations, it is
+> very keen to adopt an open source RDBMS. Search the Web to find at
+> least two open source RDBMSs, compare the two systems, and make a
+> recommendation to the organization.
+
+#### Benchmarking {.unnumbered}
+
+Benchmarking, the comparison of alternative hardware and software
+combinations, is an important step in the selection phase. Because
+benchmarking is an activity performed by many IS units, the IS community
+gains if there is one group that specializes in rigorous benchmarking of
+a wide range of systems. The [Transaction Processing Council](http://www.tpc.org) (TPC) is the IS profession's Consumer Union. TPC has established benchmarks for a variety of business situations.
+
+#### Managing external databases {.unnumbered}
+
+Providing access to external databases has increased the level of
+complexity of data administration, which now has the additional
+responsibility of identifying information services that meet existing or
+potential managerial needs. Data administration must determine the
+quality of such data and the means by which they can be channeled into
+the organization's existing information delivery system. Costs of data
+may vary among vendors. Some may charge a flat monthly or annual fee,
+while others may have a usage charge. Data may arrive in a variety of
+formats, and data administration may need to make them adhere to
+corporate standards. Data from different vendors and sources may need to
+be integrated and presented in a unified format and on common screens.
+
+Monitoring external data sources is critical because data quality may
+vary over time. Data administration must determine whether
+organizational needs are continuing to be met and data quality is being
+maintained. If they are not, a subscription may be canceled and an
+alternative vendor sought. Security is another critical problem. When
+corporate databases are connected to external communication links, there
+is a threat of hackers breaking into the system and gaining unauthorized
+access to confidential internal data. Also, corporate data may be
+contaminated by spurious data or even by viruses entering from external
+sources. Data administration must be cautious when incorporating
+external data into the database.
+
+#### Internal marketing {.unnumbered}
+
+Because IS applications can have a major impact on organizational
+performance, the IS function is becoming more proactive in initiating
+the development of new applications. Many clients are not aware of what
+is possible with newly emergent technologies, and hence do not see
+opportunities to exploit these developments. Also, as custodian of
+organizational data, data administration needs to communicate its goals
+and responsibilities throughout the organization. People and departments
+need to be persuaded to share data that may be of value to other parts
+of the organization. There may be resistance to change when people are
+asked to switch to newly set data standards. In all these instances,
+data administration must be presented in a positive light to lessen
+resistance to change. Data administration needs to market internally its
+products and services to its customers.
+
+### Project-level data administration {.unnumbered}
+
+At the project level, data administration focuses on the detailed needs
+of individual clients and applications. It supports the development and
+use of a specific database system.
+
+### Systems development life cycle (SDLC) {.unnumbered}
+
+Database development follows a fairly predictable sequence of steps or
+phases similar to the systems development life cycle (SDLC) for
+applications. This sequence is called the database development life
+cycle (DDLC). The database and application development life cycles
+together constitute the systems development life cycle (SDLC).
+
+*Systems development life cycles*
+
+| Application development life cycle (ADLC) | Database development life cycle (DDLC) |
+|:------------------------------------------|:---------------------------------------|
+| Project planning                          | Project planning                       |
+| Requirements definition                   | Requirements definition                |
+| Application design                        | Database design                        |
+| Application construction                  |                                        |
+| Application testing                       | Database testing                       |
+| Application implementation                | Database implementation                |
+| Operations                                | Database usage                         |
+| Maintenance                               | Database evolution                     |
+
+Application development involves the eight phases shown in the preceding
+table. It commences with project planning which, among other things,
+involves determining project feasibility and allocating the necessary
+personnel and material resources for the project. This is followed by
+requirements definition, which involves considerable interaction with
+clients to clearly specify the system. These specifications become the
+basis for a conceptual application design, which is then constructed
+through program coding and tested. Once the system is thoroughly tested,
+it is installed and user operations begin. Over time, changes may be
+needed to upgrade or repair the system, and this is called system
+maintenance.
+
+The database development phases parallel application development. Data
+administration is responsible for the DDLC. Data are the focus of
+database development, rather than procedures or processes. Database
+construction is folded into the testing phase because database testing
+typically involves minimal effort. In systems with integrated data
+dictionaries, the process of constructing the data dictionary also
+creates the database shell (i.e., tables without data). While the
+sequence of phases in the cycle as presented is generally followed,
+there is often a number of iterations within and between steps. Data
+modeling is iterative, and the final database design evolves from many
+data modeling sessions. A previously unforeseen requirement may surface
+during the database design phase, and this may prompt a revision of the
+specifications completed in the earlier phase.
+
+System development may proceed in three different ways:
+
+1.  The database may be developed independently of applications,
+    following only the DDLC steps.
+2.  Applications may be developed for existing databases, following only
+    the ADLC steps.
+3.  Application and database development may proceed in parallel, with
+    both simultaneously stepping through the ADLC and DDLC.
+
+Consider each of these possibilities.
+
+Database development may proceed independently of application
+development for a number of reasons. The database may be created and
+later used by an application or for ad hoc queries using SQL. In another
+case, an existing database may undergo changes to meet changed business
+requirements. In such situations, the developer goes through the
+appropriate stages of the DDLC.
+
+Application development may proceed based on an existing database. For
+instance, a personnel database may already exist to serve a set of
+applications, such as payroll. This database could be used as the basis
+for a new personnel benefits application, which must go through all the
+phases of the ADLC.
+
+A new system requires both application and database development.
+Frequently, a new system will require creation of both a new database
+and applications. For instance, a computer manufacturer may start a new
+Web-based order sales division and wish to monitor its performance. The
+vice-president in charge of the division may be interested in receiving
+daily sales reports by product and by customer as well as a weekly
+moving sales trend analysis for the prior 10 weeks. This requires both
+the development of a new sales database as well as a new application for
+sales reporting. Here, the ADLC and DDLC are both used to manage
+development of the new system.
+
+#### Database development roles {.unnumbered}
+
+Database development involves several roles, chiefly those of developer,
+client, and data administrator. The roles and their responsibilities are
+outlined in the following table.
+
+*Database development roles*
+
+Delopment phase | Database developer | Data administrator | Client   |
+|:--------------|:-------------------|:-------------------|:---------|
+| Project planning  | Does | Consults  | Provides information  |
+| Requirements definition    | Does   | Consults  | Provides requirements |
+| Database design  | Does    | Consults  | Validates data models |
+| Database testing  | System and client testing | Consults  &  data integrity  | Testing   |
+| Database implementation    | System-related activities | Consults & data integrity         | Client activities     |
+| Database usage  | Consults   | Data integrity & monitoring | Uses |
+| Database evolution | Does | Change control | Provides additional requirements   |
+
+
+The database developer shoulders the bulk of the responsibility for
+developing data models and implementing the database. This can be seen
+in the table, where most of the cells in the database developer column
+are labeled "Does." The database developer does project planning,
+requirements definition, database design, database testing, and database
+implementation, and in addition, is responsible for database evolution.
+
+The client's role is to establish the goals of a specific database
+project, provide the database developers with access to all information
+needed for project development, and review and regularly scrutinize the
+developer's work.
+
+The data administrator's prime responsibilities are implementing and
+controlling, but the person also may be required to perform activities
+and consult. In some situations, the database developer is not part of
+the data administration staff and may be located in a client department,
+or may be an analyst from an IS project team. In these cases, the data
+administrator advises the developer on organizational standards and
+policies as well as provides specific technical guidelines for
+successful construction of a database. When the database developer is
+part of the data administration staff, developer and data administration
+activities may be carried out by the same person, or by the person(s)
+occupying the data administration role. In all cases, the data
+administrator should understand the larger business context in which the
+database will be used and should be able to relate business needs to
+specific technical capabilities and requirements.
+
+#### Database development life cycle (DDLC) {.unnumbered}
+
+Previously, we discussed the various roles involved in database
+development and how they may be assigned to different persons. In this
+section, we will assume that administration and development are carried
+out by the data administration staff, since this is the typical
+situation encountered in many organizations. The activities of developer
+and administrator, shown in the first two columns of the table, are
+assumed to be performed by data administration staff. Now, let us
+consider data administration project-level support activities in detail
+. These activities are discussed in terms of the DDLC phase they
+support.
+
+*Database development life cycle*
+
+![](Figures/Chapter%2024/DDLC.png)
+
+##### Database project planning {.unnumbered}
+
+Database project planning includes establishing project goals,
+determining project feasibility (financial, technical, and operational),
+creating an implementation plan and schedule, assigning project
+responsibilities (including data stewards), and establishing standards.
+All project stakeholders, including clients, senior management, and
+developers, are involved in planning. They are included for their
+knowledge as well as to gain their commitment to the project.
+
+##### Requirements definition {.unnumbered}
+
+During requirements definition, clients and developers establish
+requirements and develop a mutual understanding of what the new system
+will deliver. Data are defined and the resulting definitions stored in
+the data dictionary. Requirements definition generates documentation
+that should serve as an unambiguous reference for database development.
+Although in theory the clients are expected to *sign-off* on the
+specifications and accept the developed database as is, their needs may
+actually change in practice. Clients may gain a greater understanding of
+their requirements and business conditions may change. Consequently, the
+original specifications may require revision. In the preceding figure,
+the arrows connecting phase 4 (testing) and phase 3 (design) to phase 2
+(requirements definition) indicate that modeling and testing may
+identify revisions to the database specification, and these amendments
+are then incorporated into the design.
+
+##### Database design {.unnumbered}
+
+Conceptual and internal models of the database are developed during
+database design. Conceptual design, or data modeling, is discussed
+extensively in Section 2 of this book. Database design should also
+include specification of procedures for testing the database. Any
+additional controls for ensuring data integrity are also specified. The
+external model should be checked and validated by the user.
+
+##### Database testing {.unnumbered}
+
+Database testing requires previously developed specifications and models
+to be tested using the intended DBMS. Clients are often asked to provide
+operational data to support testing the database with realistic
+transactions. Testing should address a number of key questions.
+
+-   Does the DBMS support all the operational and security requirements?
+-   Is the system able to handle the expected number of transactions per
+    second?
+-   How long does it take to process a realistic mix of queries?
+
+Testing assists in making early decisions regarding the suitability of
+the selected DBMS. Another critical aspect of database testing is
+verifying data integrity controls. Testing may include checking backup
+and recovery procedures, access control, and data validation rules.
+
+##### Database implementation {.unnumbered}
+
+Testing is complete when the clients and developers are extremely
+confident the system meets specified needs. Data integrity controls are
+implemented, operational data are loaded (including historical data, if
+necessary), and database documentation is finalized. Clients are then
+trained to operate the system.
+
+##### Database use {.unnumbered}
+
+Clients may need considerable support as they learn and adapt to the
+system. Monitoring database performance is critical to keeping them
+satisfied; enables the data administrator to anticipate problems even
+before the clients begin to notice and complain about them, and tune the
+system to meet organizational needs; and also helps to enforce data
+standards and policies during the initial stages of database
+implementation.
+
+##### Database evolution {.unnumbered}
+
+Since organizations cannot afford to stand still in today's dynamic
+business environment, business needs are bound to change over time,
+perhaps even after a few months. Data administration should be prepared
+to meet the challenge of change. Minor changes, such as changes in
+display formats, or performance improvements, may be continually
+requested. These have to be attended to on an ongoing basis. Other
+evolutionary changes may emerge from constant monitoring of database use
+by the data administration staff. Implementing these evolutionary
+changes involves repeating phases 3 to 6. Significant business changes
+may merit a radical redesign of the database. Major redesign may require
+repeating all phases of the DDLC.
+
+### Data administration interfaces {.unnumbered}
+
+Data administration is increasingly a key corporate function, and it
+requires the existence of established channels of communication with
+various organizational groups. The key data administration interfaces
+are with clients, management, development staff, and computer
+operations. The central position of the data administration staff, shown
+in the following figure, reflects the liaison role that it plays in
+managing databases. Each of the groups has a different focus and
+different terminology and jargon. Data administration should be able to
+communicate effectively with all participants. For instance, operations
+staff will tend to focus on technical, day-to-day issues to which
+management is likely to pay less attention. These different focuses can,
+and frequently do, lead to conflicting views and expectations among the
+different groups. Good interpersonal skills are a must for data
+administration staff in order to deal with a variety of conflict-laden
+situations. Data administration, therefore, needs a balance of people,
+technical, and business skills for effective execution of its tasks.
+
+*Major data administration interfaces*
+
+![](Figures/Chapter%2024/data-interfaces.png)
+
+Data administration probably will communicate most frequently with
+computer operations and development staff, somewhat less frequently with
+clients, and least frequently with management. These differences,
+however, have little to do with the relative importance of communicating
+with each group. The interactions between the data administration staff
+and each of the four groups are discussed next.
+
+#### Management {.unnumbered}
+
+Management sets the overall business agenda for data administration,
+which must ensure that its actions directly contribute to the
+achievement of organizational goals. In particular, management
+establishes overall policy guidelines, approves data administration
+budgets, evaluates proposals, and champions major changes. For instance,
+if the data administration staff is interested in introducing new
+technology, management may request a formal report on the anticipated
+benefits of the proposed expenditure.
+
+Interactions between the data administration staff and management may
+focus on establishing and evolving the information architecture for the
+organization. In some instances, these changes may involve the
+introduction of a new technology that could fundamentally transform
+roles or the organization.
+
+#### Clients {.unnumbered}
+
+On an ongoing basis, most clients will be less concerned with
+architectural issues and will focus on their personal needs. Data
+administration must determine what data should be collected and stored,
+how they should be validated to ensure integrity, and in what form and
+frequency they should be made available.
+
+Typically, the data administration staff is responsible for managing the
+database, while the data supplier is responsible for ensuring accuracy.
+This may cause conflict, however, if there are multiple clients from
+separate departments. If conflict does arise, data administration has to
+arbitrate.
+
+#### Development staff {.unnumbered}
+
+Having received strategic directions from management, and after
+determining clients' needs, data administration works with application
+and database developers, in order to fulfill the organization's goals
+for the new system. On an ongoing basis, this may consist of developing
+specifications for implementation. Data administration works on an
+advisory basis with systems development, providing inputs on the
+database aspects. Data administration is typically responsible for
+establishing standards for program and database interfaces and making
+developers aware of these standards. Developers may need to be told
+which commands may be used in their programs and which databases they
+can access.
+
+In many organizations, database development is part of data
+administration, and it has a very direct role in database design and
+implementation. In such instances, communication between data
+administration and database development is within the group. In other
+organizations, database development is not part of data administration,
+and communication is between groups.
+
+#### Computer operations {.unnumbered}
+
+The focus of computer operations is on the physical hardware,
+procedures, schedules and shifts, staff assignments, physical security
+of data, and execution of programs. Data administration responsibilities
+include establishing and monitoring procedures for operating the
+database. The data administration staff needs to establish and
+communicate database backup, recovery, and archiving procedures to
+computer operations. Also, the scheduling of new database and
+application installations needs to be coordinated with computer
+operations personnel.
+
+Computer operations provide data administration with operational
+statistics and exception reports. These data are used by data
+administration to ensure that corporate database objectives are being
+fulfilled.
+
+#### Communication {.unnumbered}
+
+The diverse parties with which data administration communicates often
+see things differently. This can lead to misunderstandings and results
+in systems that fail to meet requirements. Part of the problem arises
+from a difference in perspective and approaches to viewing database
+technology.
+
+Management is interested in understanding how implementing database
+technology will contribute to strategic goals. In contrast, clients are
+interested in how the proposed database and accompanying applications
+will affect their daily work. Developers are concerned with translating
+management and client needs into conceptual models and converting these
+into tables and applications. Operations staff are concerned primarily
+with efficient daily management of DBMS, computer hardware, and
+software.
+
+Data models can serve as a common language for bridging the varying
+goals of clients, developers, management, and operational staff. A data
+model can reduce the ambiguity inherent in verbal communications and
+thereby ensure that overall needs are more closely met and all parties
+are satisfied with the results. A data model provides a common meeting
+point and language for understanding the needs of each group.
+
+Data administration does not work in isolation. It must communicate
+successfully with all its constituents in order to be successful. The
+capacity to understand and correctly translate the needs of each
+stakeholder group is the key to competent data administration.
+
+#### Data administration tools {.unnumbered}
+
+Several computer-based tools have emerged to support data
+administration. There are five major classes of tools: data dictionary,
+DBMS, performance monitoring, computer-aided software engineering
+(CASE), and groupware tools. Each of these tools is now examined and its
+role in supporting data administration considered. We focus on how these
+tools support the DDLC. Note, however, that groupware is not shown in
+the following table because it is useful in all phases of the life
+cycle.
+
+*Data administration tool use during the DDLC*
+
+|    | Database development phase | Data | DBMS | Performance monitoring | Case tools  |
+|:---|:-------|:-----------|:-----------|:----------|:----------|
+| 1  | Project planning tools | Dictionary (DD) |           |           | Estimation |
+| 2  | Requirements definition | Document & design aid  |           |           | Document & design aid |
+| 3 | Database design | Document, data map design aid & schema generator  |           |           | Document, design aid & data map  |
+| 4 | Database testing | Data map design aid & schema generator | Define, create, test & data integrity   | Impact analysis   | Data generator & design aid     |
+| 5 | Database implementation | Document & change control | Data integrity, implement & design  | Monitor & tune |     |
+| 6 | Database usage | Document, data map, schema generator & change control | Provide tools for retrieval and update & enforce integrity controls and procedures | Monitor & tune  |           |
+| 7 | Database evolution | Document, data map & change control  | Redefine  | Impact analysis   |           |
+
+Data administration staff, clients, and computer operations all require
+information about organizational databases. Ideally, such information
+should be stored in one central repository. This is the role of the
+DD/DS, perhaps the main data administration tool. Thus, we start our
+discussion with this tool.
+
+#### Data dictionary/directory system (DD/DS) {.unnumbered}
+
+The DD/DS, a database application that manages the data dictionary, is
+an essential tool for data administration. The DD/DS is the repository
+for organizational metadata, such as data definitions, relationships,
+and privileges. The DBMS manages data, and the DD/DS manages data about
+data. The DD/DS also uses the data dictionary to generate table
+definitions or schema required by the DBMS and application programs to
+access databases.
+
+Clients and data administration can utilize the DD/DS to ask questions
+about characteristics of data stored in organizational databases such as
+
+-   What are the names of all tables for which the user Todd has delete
+    privileges?
+-   Where does the data item *customer number* appear or where is it
+    used?
+
+The report for the second query could include the names and tables,
+transactions, reports, display screens, account names, and application
+programs.
+
+In some systems, such as a relational DBMS, the catalog, discussed in
+the SQL chapter, performs some of the functions of a DD/DS, although the
+catalog does not contain the same level of detail. The catalog
+essentially contains data about tables, columns, and owners of tables,
+whereas the DD/DS can include data about applications, forms,
+transactions, and many other aspects of the system. Consequently, a
+DD/DS is of greater value to data administration.
+
+Although there is no standard format for data stored in a data
+dictionary, several features are common across systems. For example, a
+data dictionary for a typical relational database environment would
+contain descriptions of the following:
+
+-   All columns that are defined in all tables of all databases. The
+    data dictionary stores specific data characteristics such as name,
+    data type, display format, internal storage format, validation
+    rules, and integrity constraints. It indicates to which table a
+    column belongs.
+-   All relationships among data elements, what elements are involved,
+    and characteristics of relationships, such as cardinality and
+    degree.
+-   All defined databases, including who created each database, the date
+    of creation, and where the database is located.
+-   All tables defined in all databases. The data dictionary is likely
+    to store details of who created the table, the date of creation,
+    primary key, and the number of columns.
+-   All indexes defined for each of the database tables. For each of the
+    indexes, the DBMS stores data such as the index name, location,
+    specific index characteristics, and creation date.
+-   All clients and their access authorizations for various databases.
+-   All programs that access the database, including screen formats,
+    report formats, application programs, and SQL queries.
+
+A data dictionary can be useful for both systems and project level data
+administration activities. The five major uses of a data dictionary are
+the following:
+
+1.  Documentation support: recording, classifying, and reporting
+    metadata.
+2.  Data maps: a map of available data for data administration staff and
+    users. A data map allows users to discover what data exist, what
+    they mean, where they are stored, and how they are accessed.
+3.  Design aid: documenting the relationships between data entities and
+    performing impact analysis.
+4.  Schema generation: automatic generation of data definition
+    statements needed by software systems such as the DBMS and
+    application programs.
+5.  Change control: setting and enforcing standards, evaluating the
+    impact of proposed changes, and implementing amendments, such as
+    adding new data items.
+
+## Database management systems (DBMSs) {.unnumbered}
+
+The DBMS is the primary tool for maintaining database integrity and
+making data available to users. Availability means making data
+accessible to whoever needs them, when and where they need them, and in
+a meaningful form. Maintaining database integrity implies the
+implementation of control procedures to achieve the three goals
+discussed in a prior chapter: protecting existence, maintaining quality,
+and ensuring confidentiality. In terms of the DDLC life cycle (see the
+following figure), data administration uses, or helps others to use, the
+DBMS to create and test new databases, define data integrity controls,
+modify existing database definitions, and provide tools for clients to
+retrieve and update databases. Since much of this book has been devoted
+to DBMS functions, we limit our discussion to reviewing its role as a
+data administration tool.
+
+### Performance monitoring tools {.unnumbered}
+
+Monitoring the performance of DBMS and database operations by gathering
+usage statistics is essential to improving performance, enhancing
+availability, and promoting database evolution. Monitoring tools are
+used to collect statistics and improve database performance during the
+implementation and use stages of the DDLC. Monitoring tools can also be
+used to collect data to evaluate design choices during testing.
+
+Many database factors can be monitored and a variety of statistics
+gathered. Monitoring growth in the number of rows in each table can
+reveal trends that are helpful in projecting future needs for physical
+storage space. Database access patterns can be scrutinized to record
+data such as:
+
+-   Type of function requested: query, insert, update, or delete
+-   Response time (elapsed time from query to response)
+-   Number of disk accesses
+-   Identification of client
+-   Identification of error conditions
+
+The observed patterns help to determine performance enhancements. For
+example, these statistics could be used to determine which tables or
+files should be indexed. Since gathering statistics can result in some
+degradation of overall performance, it should be possible to turn the
+monitoring function on or off with regard to selected statistics.
+
+### CASE tools {.unnumbered}
+
+A CASE tool, as broadly defined, provides automated assistance for
+systems development, maintenance, and project management activities.
+Data administration may use project management tools to coordinate all
+phases within the DDLC. The dictionary provided by CASE systems can be
+used to supplement the DD/DS, especially where the database development
+effort is part of a systems development project.
+
+One of the most important components of a CASE tool is an extensive
+dictionary that tracks all objects created by systems designers.
+Database and application developers can use the CASE dictionary to store
+descriptions of data elements, application processes, screens, reports,
+and other relevant information. Thus, during the first three phases of
+the life cycle, the CASE dictionary performs functions similar to a
+DD/DS. During stages 4 and 5, data from the CASE dictionary would be
+transferred, usually automatically, to the DD/DS.
+
+## Groupware {.unnumbered}
+
+Groupware can be applied by data administration to support any of the
+DDLC phases shown in the figure. Groupware supports communication among
+people and thus enhances access to organizational memory residing within
+humans. As pointed out, data administration interfaces with four major
+groups during the DDLC: management, clients, developers, and computer
+operations. Groupware supports interactions with all of these groups.
+
+Data administration is a complex task involving a variety of
+technologies and the need to interact with, and satisfy the needs of, a
+diverse range of clients. Managing such a complex environment demands
+the use of computer-based tools, which make data administration more
+manageable and effective. Software tools, such as CASE and groupware,
+can improve data administration.
+
+## Data integration {.unnumbered}
+
+A common problem for many organizations is a lack of data integration,
+which can manifest in a number of ways:
+
+-   Different identifiers for the same instance of an entity (e.g., the
+    same product with different codes in different divisions)
+-   The same, or what should be the same, data stored in multiple
+    systems (e.g., a customer's name and address)
+-   Data for, or related to, a key entity stored in different databases
+    (e.g., a customer's transaction history and profile stored in
+    different databases)
+-   Different rules for computing the same business indicator (e.g., the
+    Australian office computes net profit differently from the U.S.
+    office)
+
+In the following table, we see an example of a firm that practices data
+integration. Different divisions use the same numbers for parts, the
+same identifiers for customers, and have a common definition of sales
+date. In contrast, the table after that shows the case of a firm where
+there is a lack of data integration. The different divisions have
+different identifiers for the same part and different codes for the same
+customer, as well as different definitions for the sales date. Imagine
+the problems this nonintegrated firm would have in trying to determine
+how much it sold to each of its customers in the last six months.
+
+*Firm with data integration*
+
+
+|                       | Red division          | Blue division         |
+|-----------------------|:----------------------:|:---------------------:|
+| partnumber (code for green widget)           | 27     | 27
+| customerid (code for UPS)           | 53       | 53                    |
+| Definition of  salesdate  | The date the customer signs the order| The date the customer signs the order |
+
+*Firm without data integration*
+
+|                       | Red division          | Blue division         |
+|-----------------------|:----------------------:|:---------------------:|
+| partnumber (code for green widget)           | 27     | 10056
+| customerid (code for UPS)           | 53       | 613                    |
+| Definition of  salesdate  | The date the customer signs the order| The date the customer receives the order |
+
+
+
+> ❓ *Skill builder*
+>
+>Complete the data integration lab exercise described
+> on the book's Web site (Lab exercises \> Data integration).
+
+Not surprisingly, many organizations seek to increase their degree of
+data integration so that they can improve the accuracy of managerial
+reporting, reduce the cost of managing data, and improve customer
+service by having a single view of the customer.
+
+There are several goals of data integration:
+
+1.  A standard meaning for all data elements within the organization
+    (e.g., customer acquisition date is the date on which the customer
+    first purchased a product)
+2.  A standard format for each and every data element (e.g., all dates
+    are stored in the format yyyymmdd and reported in the format
+    yyyy-mm-dd)
+3.  A standard coding system (e.g., female is coded "f" and male is
+    coded "m")
+4.  A standard measurement system (e.g., all measurements are stored in
+    metric format and reported in the client's preferred system)
+5.  A single corporate data model, or a least a single data model for
+    each major business entity
+
+These are challenging goals for many organizations and sometimes take
+years to achieve. Many organizations are still striving to achieve the
+fifth, and most difficult, goal of a single corporate data model.
+Sometimes, however, data integration might not be a goal worth pursuing
+if the costs outweigh the benefits.
+
+The two major factors that determine the desirable degree of data
+integration between organizational units are unit interdependence and
+environmental turbulence. There is a high level of interdependence
+between organizational units when they affect each other's success (for
+example, the output of one unit is used by the other). As a result of
+the commonality of some of their goals, these units will gain from
+sharing standardized information. Data integration will make it easier
+for them to coordinate their activities and manage their operations.
+Essentially, data integration means that they will speak a common
+information language. When there is low interdependence between two
+organizational units, the gains from data integration are usually
+outweighed by the bureaucratic costs and delays of trying to enforce
+standards. If two units have different approaches to marketing and
+manufacturing, then a high level of data integration is unlikely to be
+beneficial. They gain little from sharing data because they have so
+little in common.
+
+When organizational units operate in highly turbulent environments, they
+need flexibility to be able to handle rapid change. They will often need
+to change their information systems quickly to respond to new
+competitive challenges. Forcing such units to comply with organizational
+data integration standards will slow down their ability to create new
+systems and thus threaten their ability to respond in a timely fashion.
+
+Firms have three basic data integration strategies based on the level of
+organizational unit interdependence and environmental turbulence. When
+unit interdependence is low and environmental turbulence high, a unit
+should settle for a low level of data integration, such as common
+financial reporting and human resources systems. Moderate data
+integration might mean going beyond the standard financial reporting and
+human resources system to include a common customer database. If unit
+independence is high and turbulence high, then moderate data integration
+would further extend to those areas where the units overlap (e.g., if
+they share a manufacturing system, this would be a target for data
+integration). A high level of data integration, a desirable target when
+unit interdependence is high and environmental turbulence low, means
+targeting common systems for both units.
+
+*Target level of data integration between organizational units*
+
+
+|               |      | Unit interdependence        | |
+|---------------|------|----------------------|----------|
+|               |      | *Low*                 | *High*     |
+| Environmental turbulence | *High* | Low                  | Moderate |
+|               | *Low*  | Moderate             | High     |
+
+
+> ❓ *Skill builder*
+>
+> 1.  Global Electronics has nine factories in the United States and
+>     Asia producing components for the computer industry, and each has
+>     its own information systems. Although there is some
+>     specialization, production of any item can be moved to another
+>     factory, if required. What level of data integration should the
+>     company seek, and what systems should be targeted for integration?
+>
+> 2.  European Radio, the owner of 15 FM radio stations throughout
+>     Europe, has just purchased an electronics retailing chain of 50
+>     stores in Brazil. What level of data integration should the
+>     company seek, and what systems should be targeted for integration?
+>
+> 3.  Australian Leather operates several tanneries in Thailand, two
+>     leather goods manufacturing plants in Vietnam, and a chain of\
+>     leather retailers in Australia and New Zealand. Recently, it
+>     purchased an entertainment park in Singapore. The various units
+>     have been assembled over the last five years, and many still
+>     operate their original information systems. What level of data
+>     integration should the company seek, and what systems should be
+>     targeted for integration?
+
+## Conclusion {.unnumbered}
+
+Data administration has become increasingly important for most
+organizations, particularly for those for whom data-driven decision
+making can significantly enhance performance. The emergence of the Chief
+Data Officer is a strong indicator of the growing impact of data on the
+ability of an organization to fulfill its mission. For many
+organizations, it is no longer sufficient to just focus on administering
+data. Rather, it is now critical for many to insert to insert data
+management and exploitation into the strategic thinking of the top
+management team.
+
+### Summary {.unnumbered}
+
+Companies are finding that data management is so critical to their
+future that they need a Chief Data Officer (CDO). Eight different types
+of CDO roles have been identified: coordinator, reporter, architect,
+ambassador, analyst, marketer, developer, and experimenter. In practice,
+a CDO is likely to shift among these roles depending on the enterprise's
+needs.
+
+Data administration is the task of managing that part of organizational
+memory that involves electronically available data. Managing electronic
+data stores is important because key organizational decisions are based
+on data drawn from them, and it is necessary to ensure that reliable
+data are available when needed. Data administration is carried out at
+both the system level, which involves overall policies and alignment
+with organizational goals, and the project level, where the specific
+details of each database are handled. Key modules in data administration
+are the DBMS, the DD/DS, user interfaces, and external databases.
+
+Data administration is a function performed by those with assigned
+organizational roles. Data administration may be carried out by a
+variety of persons either within the IS department or in user
+departments. Also, this function may occur at the personal, workgroup,
+or organizational level.
+
+Data administration involves communication with management, clients,
+developers, and computer operations staff. It needs the cooperation of
+all four groups to perform its functions effectively. Since each group
+may hold very different perspectives, which could lead to conflicts and
+misunderstandings, it is important for data administration staff to
+possess superior communication skills. Successful data administration
+requires a combination of interpersonal, technical, and business skills.
+
+Data administration is complex, and its success partly depends on a
+range of computer-based tools. Available tools include DD/DS, DBMS,
+performance monitoring tools, CASE tools, and groupware.
+
+### Key terms and concepts {.unnumbered}
+
++:-----------------------------------+:--------------------------------+
+| Application development life cycle | Database management system      |
+| (ADLC)                             | (DBMS)                          |
++------------------------------------+---------------------------------+
+| Benchmark                          | External database               |
++------------------------------------+---------------------------------+
+| Change agent                       | Groupware                       |
++------------------------------------+---------------------------------+
+| Computer-aided software            | Matrix organization             |
+| engineering (CASE)                 |                                 |
++------------------------------------+---------------------------------+
+| Data administration                | Performance monitoring          |
++------------------------------------+---------------------------------+
+| Data dictionary                    | Project-level data              |
+|                                    | administration                  |
++------------------------------------+---------------------------------+
+| Data dictionary/directory system   | Request for proposal (RFP)      |
+| (DD/DS)                            |                                 |
++------------------------------------+---------------------------------+
+| Data integrity                     | System-level data               |
+|                                    | administration                  |
++------------------------------------+---------------------------------+
+| Data steward                       | Systems development life cycle  |
+|                                    | (SDLC)                          |
++------------------------------------+---------------------------------+
+| Database administrator             | Transaction Processing Council  |
+|                                    | (TPC)                           |
++------------------------------------+---------------------------------+
+| Database developer                 | User interface                  |
++------------------------------------+---------------------------------+
+| Database development life cycle    |                                 |
+| (DDLC)                             |                                 |
++------------------------------------+---------------------------------+
+
+### References and additional readings {.unnumbered}
+
+Bostrom, R. P. 1989. Successful application of communication techniques
+to improve the systems development process. *Information & Management*
+16:279--295.
+
+Goodhue, D. L., J. A. Quillard, and J. F. Rockart. 1988. Managing the
+data resource: A contingency perspective. *MIS Quarterly* 12
+(3):373--391.
+
+Goodhue, D. L., M. D. Wybo, and L. J. Kirsch. 1992. The impact of data
+integration on the costs and benefits of information systems. *MIS
+Quarterly* 16 (3):293--311.
+
+Redman, T. C. 2001. Data quality: *The field guide*. Boston: Digital
+Press.
+
+## Exercises {.unnumbered}
+
+1.  Why do organizations need to manage data?
+
+2.  What problems can arise because of poor data administration?
+
+3.  What is the purpose of a data dictionary?
+
+4.  Do you think a data dictionary should be part of a DBMS or a
+    separate package?
+
+5.  How does the management of external databases differ from internal
+    databases?
+
+6.  What is the difference between system- and project-level data
+    administration?
+
+7.  What is a data steward? What is the purpose of this role?
+
+8.  What is the difference between workgroups and organizational
+    databases? What are the implications for data administration?
+
+9.  What is an information architecture?
+
+10. Why do organizations need data standards? Give some examples of
+    typical data items that may require standardization.
+
+11. You have been asked to advise a firm on the capacity of its database
+    system. Describe the procedures you would use to estimate the size
+    of the database and the number of transactions per second it will
+    have to handle.
+
+12. Why would a company issue an RFP?
+
+13. How do the roles of database developer and data administrator
+    differ?
+
+14. What do you think is the most critical task for the user during
+    database development?
+
+15. A medium-sized manufacturing company is about to establish a data
+    administration group within the IS department. What software tools
+    would you recommend that group acquire?
+
+16. What is a stakeholder? Why should stakeholders be involved in
+    database project planning?
+
+17. What support do CASE tools provide for the DDLC?
+
+18. How can groupware support the DDLC?
+
+19. A large international corporation has typically operated in a very
+    decentralized manner with regional managers having considerable
+    autonomy. How would you recommend the corporation establish its data
+    administration function?
+
+20. Describe the personality of a successful data administration
+    manager. Compare your assessment to the personality appropriate for
+    a database technical adviser.
+
+21. Write a job advertisement for a data administrator for your
+    university.
+
+22. What types of organizations are likely to have data administration
+    reporting directly to the CIO?
+
+23. What do you think are the most critical phases of the DDLC? Justify
+    your decision.
+
+24. When might application development and database development proceed
+    independently?
+
+25. Why is database monitoring important? What data would you ask for in
+    a database monitoring report?
+
+\newpage

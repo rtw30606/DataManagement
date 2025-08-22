@@ -1,0 +1,22 @@
+
+
+# Data Management: Databases and Analytics {.unnumbered}
+
+### *Open Edition* {.unnumbered}
+
+### Richard T. Watson {.unnumbered}
+
+
+> Regents Professor & J. Rex Fuqua Distinguished Chair for Internet Strategy Emeritus, University of Georgia, USA
+
+
+
+Release date 2025-08-06
+
+![](Figures/Front%20matter/CC.by.png){width="200"}
+
+The online version of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+You can purchase a physical version of the book from [Prospect Press](https://www.prospectpressvt.com).
+
+\newpage

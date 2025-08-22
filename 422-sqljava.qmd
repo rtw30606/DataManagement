@@ -1,0 +1,713 @@
+# SQL and Java
+
+> *The vision for Java is to be the concrete and nails that people use
+> to build this incredible network system that is happening all around
+> us.*
+>
+> James Gosling, 2000
+
+### Learning objectives {.unnumbered}
+
+Students completing this chapter will be able to
+-   write Java program to process a parameterized SQL query;
+-   read a CSV file and insert rows into tables;
+-   write a program using HMTL and JavaServer Pages (JSP) to insert data
+    collected by a form data into a relational database;
+-   understand how SQL commands are used for transaction processing.
+
+## JAVA {.unnumbered}
+
+Java is a platform-independent application development language. Its
+object-oriented nature makes it easy to create and maintain software and
+prototypes. These features make Java an attractive development language
+for many applications, including database systems.
+
+This chapter assumes that you have some knowledge of Java programming,
+can use an integrated development environment (IDE) (e.g., BlueJ,
+Eclipse, or NetBeans), and know how to use a Java library. It is also
+requires some HTML skills because JavaServer Pages (JSP) are created by
+embedding Java code within an HTML document. MySQL is used for all the
+examples, but the fundamental principles are the same for all relational
+databases. With a few changes, your program will work with another
+implementation of the relational model.
+
+### JDBC {.unnumbered}
+
+Java Database Connectivity (JDBC), a Java version of a portable SQL
+command line interface (CLI), is modeled on Open Database Connectivity
+(ODBC.) JDBC enables programmers to write Java software that is both
+operating system and DBMS independent. The JDBC core, which handles 90
+percent of database programming, contains seven interfaces and two
+classes, which are part of the java.sql package. The purpose of each of
+these is summarized in the following table.
+
+*JDBC core interfaces and classes*
+
+| Interfaces         | Description        |
+|:--------------------|:---------------|
+| Connection         | Connects an application to a database                        |
+| Statement          | A container for an SQL statement                             |
+| PreparedStatement  | Precompiles an SQL statement and then uses it multiple times |
+| CallableStatement  | Executes a stored procedure                                  |
+| ResultSet          | The rows returned when a query is executed                   |
+| ResultSetMetaData  | The number, types, and properties of the result set          |
+| Classes            |                                                              |
+| DriverManager      | Loads driver objects and creates database connections        |
+| DriverPropertyInfo | Used by specialized clients                                  |
+
+For each DBMS, implementations of these interfaces are required because
+they are specific to the DBMS and not part of the Java package. For
+example, specific drivers are needed for MySQL, DB2, Oracle, and MS SQL.
+Before using JDBC, you will need to install these interfaces for the
+DBMS you plan to access. The standard practice appears to be to refer to
+this set of interfaces as the driver, but the 'driver' also includes
+implementations of all the interfaces.
+
+### Java EE {.unnumbered}
+
+Java EE (Java Platform Enterprise Edition) is a platform for
+multi-tiered enterprise applications. In the typical three-tier model, a
+Java EE application server sits between the client's browser and the
+database server. A Java EE compliant server, of which there are a
+variety, is needed to process JSP.
+
+## Using SQL within Java {.unnumbered}
+
+In this section, you will need a Java integrated development environment
+to execute the sample code. A good option is [Eclipse](https://www.eclipse.org), a widely used open source IDE.
+
+We now examine each of the major steps in processing an SQL query and,
+in the process, create Java methods to query a database.
+
+### Connect to the database {.unnumbered}
+
+The getConnection method of the DriverManager specifies the URL of the
+database, the account identifier, and its password. You cannot assume
+that connecting to the database will be trouble-free. Thus, good coding
+practice requires that you detect and report any errors using Java's
+try-catch structure.
+
+You connect to a DBMS by supplying its url and the account name and
+password.
+
+```{java, eval = FALSE}
+try {
+	conn = DriverManager.getConnection(url, account, password);
+} catch (SQLException error) {
+	System.out.println("Error connecting to database: " + error.toString());
+	System.exit(1);
+}
+```
+
+The format of the url parameter varies with the JDBC driver, and you
+will need to consult the documentation for the driver. In the case of
+MySQL, the possible formats are
+
+jdbc:mysql:database
+
+jdbc:mysql://host/database
+
+jdbc:mysql://host:port/database
+
+The default value for host is "localhost" and, for MySQL, the default
+port is "3306."
+
+For example:
+
+jdbc:mysql://www.richardtwatson.com:3306/Text will enable connection to the database Text on the host
+http://www.richardtwatson.com on port 3306.
+
+### Create and execute an SQL statement {.unnumbered}
+
+The prepareStatement method is invoked to produce a Statement object
+(see the following code). Note that the conn in conn.prepareStatement()
+refers to the connection created by the getConnection method. Parameters
+are used in prepareStatement to set execution time values, with each
+parameter indicated by a question mark (?). Parameters are identified by
+an integer for the order in which they appear in the SQL statement. In
+the following sample code, shrdiv is a parameter and is set to indiv by
+stmt.setInit(1,indiv), where 1 is its identifier (i.e., the first
+parameter in the SQL statement) and indiv is the parameter. The value of
+indiv is received as input at run time.
+
+The SQL query is run by the executeQuery() method of the Statement
+object. The results are returned in a ResultSet object.
+
+*Create and execute an SQL statement*
+
+```{java, eval = FALSE}
+try {
+	stmt = conn.prepareStatement("SELECT shrfirm, shrdiv FROM shr WHERE shrdiv > ?");
+	// set the value for shrdiv to indiv
+	stmt.setInt(1,indiv);
+ 	rs = stmt.executeQuery();
+	}
+catch (SQLException error)
+	{
+		System.out.println("Error reporting from database: "
+			+ error.toString());
+		System.exit(1);
+	}
+```
+
+### Report a SELECT {.unnumbered}
+
+The rows in the table containing the results of the query are processed
+a row at a time using the next method of the ResultSet object (see the
+following code). Columns are retrieved one at a time using a get method
+within a loop, where the integer value specified in the method call
+refers to a column (e.g., rs.getString(1) returns the first column of
+the result set as a string). The get method used depends on the type of
+data returned by the query. For example, getString() gets a character
+string, getInt() gets an integer, and so on.
+
+*Reporting a SELECT*
+
+```{java, eval = FALSE}
+while (rs.next()) {
+	String firm = rs.getString(1);
+	int div = rs.getInt(2);
+	System.out.println(firm + " " + div);
+}
+```
+
+### Inserting a row {.unnumbered}
+
+The prepareStatement() is also used for inserting a row in a similar
+manner, as the following example shows. The executeUpdate() method
+performs the insert. Notice the use of try and catch to detect and
+report an error during an insert.
+
+*Inserting a row*
+
+```{java, eval = FALSE}
+try {
+	stmt = conn.prepareStatement("INSERT INTO alien (alnum, alname) VALUES (?,?)");
+	stmt.setInt(1,10);
+	stmt.setString(2, "ET");
+	stmt.executeUpdate();
+	}
+catch (SQLException error)
+{
+	System.out.println("Error inserting row into database: "
+	 + error.toString());
+	System.exit(1);
+}
+```
+
+### Release the Statement object {.unnumbered}
+
+The resources associated with the various objects created are freed as
+follows:
+
+stmt.close();
+
+rs.close();
+
+conn.close();
+
+To illustrate the use of Java, a pair of programs is available. The
+first, DataTest.java, creates a database connection and then calls a
+method to execute and report an SQL. The second program,
+DatabaseAccess.java, contains the methods called by the first. Both
+programs are available on the book's web site for examination and use.
+
+> ❓ *Skill builder*
+>
+> 1.  Get from this book's supporting Web site the code of
+>     DatabaseTest.java and DatabaseAccess.java.
+>
+> 2.  Inspect the code to learn how you use SQL from within a Java
+>     application.
+>
+> 3.  Run DatabaseTest.java with a few different values for indiv.
+>
+> 4.  Make modifications to query a different table.
+
+### Loading a text file into a database {.unnumbered}
+
+Java is useful when you have a dataset that you need to load into a
+database. For example, you might have set up a spreadsheet and later
+realized that it would be more efficient to use a database. In this
+case, you can export the spreadsheet and load the data into one or more
+tables.
+
+We will illustrate loading data from a text file into the ArtCollection
+database with the following design. Notice that there different tables
+for different types of art, paintings, and sculptures in this case. The code for creating the database is [online](http://richardtwatson.com/open/Reader/java.html)
+
+*ArtCollection data model*
+
+![](Figures/Chapter%2022/ArtCollection.png)
+
+#### CSV file {.unnumbered}
+
+A [comma-separated values](http://en.wikipedia.org/wiki/Comma-separated_values) (CSV) file  is a common form of text file
+because most spreadsheet programs offer it as an export option. There
+are a variety of options available in terms of the separator for fields
+(usually a comma or tab) and the use of quotation marks to denote text
+fields. Usually, each record has the same number of fields. Frequently,
+the first record contains names for each of the fields. Notice in the
+example file that follows that a record contains details of an artist
+and one piece of that person's art. As the data model specifies, these
+two sets of data go into separate tables.
+
+*A CSV file*
+
+```{eval = FALSE}
+firstName,lastName,birthyear,deathyear,nationality,title,length,breadth,year,style,medium
+Edvard,Munch,1863,1944,Norwegian,The Scream,36,29,1893,Cubist,Oil
+Claude,Monet,1840,1926,French,Bridge over a Pond of Water
+Lilies,36,29,1899,Impressionist,Oil
+Toulouse,Lautrec,1864,1901,French,Avril,55,33,1893,Impressionist,Oil
+Vincent,Van Gogh,1853,1890,French,The Starry
+Night,29,36,1889,Impressionist,Oil
+Johannes,Vermeer,1632,1675,Dutch,Girl with a Pearl
+Earring,17,15,1665,Impressionist,Oil
+Salvador,Dali,1904,1989,Spanish,The Persistence of
+Memory,9.5,13,1931,Surreal,Oil
+Andrew,Wyeth,1917,2009,American,Christina's World
+,32,47,1948,Surreal,Oil
+William,Turner,1789,1862,English,The Battle of
+Trafalgar,103,145,1822,Surreal,Oil
+Tom,Roberts,1856,1931,Australian,Shearing the
+Rams,48,72,1890,Surreal,Oil
+Paul,Gauguin,1848,1903,French,Spirit of the Dead
+Watching,28,36,1892,Surreal,Watercolor
+```
+
+Because CSV files are so widely used, there are Java libraries for
+processing them. We have opted for [CsvReader](http://sourceforge.net/projects/javacsv/). Here is some code for
+connecting to a CSV file defined by its URL. You can also connect to
+text files on your personal computer.
+
+*Connecting to a CSV file*
+
+```{java, eval = FALSE}
+try {
+	csvurl = new URL("http://www.richardtwatson.com/data/painting.csv");
+} catch (IOException error) {
+	System.out.println("Error accessing url: " + error.toString());
+	System.exit(1);
+}
+```
+
+A CSV file is read a record at a time, and the required fields are
+extracted for further processing. The following code illustrates how a
+loop is used to read each record in a CSV file and extract some fields.
+Note the following:
+-   The first record, the header, contains the names of each field and
+    is read before the loop starts.
+-   Field names can be used to extract each field with a get() method.
+-   You often need to convert the input string data to another format,
+    such as integer.
+-   Methods, addArtist, and addArt are included in the loop to add
+    details of an artist to the artist table and a piece of art to the
+    art table.
+
+*Processing a CSV file*
+
+```{java, eval = FALSE}
+try {
+	input = new CsvReader(new InputStreamReader(csvurl.openStream()));
+	input.readHeaders();
+	while (input.readRecord())
+	{
+	// Artist
+		String firstName = input.get("firstName");
+		String lastName = input.get("lastName");
+		String nationality = input.get("nationality");
+		int birthYear = Integer.parseInt(input.get("birthyear"));
+		int deathYear = Integer.parseInt(input.get("deathyear"));
+		artistPK = addArtist(conn, firstName, lastName, nationality, birthYear, deathYear);
+		// Painting
+		String title = input.get("title");
+		double length = Double.parseDouble(input.get("length"));
+		double breadth = Double.parseDouble(input.get("breadth"));
+		int year = Integer.parseInt(input.get("year"));
+		addArt(conn, title, length, breadth, year,artistPK);
+	}
+input.close();
+} catch (IOException error) {
+	System.out.println("Error reading CSV file: " + error.toString());
+	System.exit(1);
+}
+```
+
+We now need to consider the addArtist method. Its purpose is to add a
+row to the artist table. The primary key, artistID, is specified as
+AUTO_INCREMENT, which means it is set by the DBMS. Because of the 1:m
+relationship between artist and art, we need to know the value of
+artistID, the primary key of art, to set the foreign key for the
+corresponding piece of art. We can use the following code to determine
+the primary key of the last insert.
+
+*Determining the value of the primary key of the last insert*
+
+```{java, eval = FALSE}
+rs = stmt.executeQuery("SELECT LAST_INSERT_ID()");
+	if (rs.next()) {
+		autoIncKey = rs.getInt(1);
+	}
+```
+
+The addArtist method returns the value of the primary key of the most
+recent insert so that we can then use this value as the foreign key for
+the related piece of art.
+
+```{java, eval = FALSE}
+artistPK = addArtist(conn, firstName, lastName, nationality, birthYear, deathYear);
+```
+
+The call to the addArt method includes the returned value as a
+parameter. That is, it passes the primary key of artist to be used as
+foreign key of art.
+
+```{java, eval = FALSE}
+addArt(conn, title, length, breadth, year,artistPK);
+```
+
+The Java code for the complete application is available on the book's
+[web site](http://richardtwatson.com/dm6e/Reader/java.html).
+
+> ❓ **Skill builder**
+>
+> 1.  Add a few sculptors and a piece of sculpture to the CSV file.
+>     Also, decide how you will differentiate between a painting and a
+>     sculpture.
+>
+> 2.  Add a method to ArtCollector.java to insert an artist and that
+>     person's sculpture.
+>
+> 3.  Run the revised program so that it adds both paintings and\
+>     sculptures for various artists.
+
+## JavaServer Pages (JSP) {.unnumbered}
+
+Standard HTML pages are static. They contain text and graphics that
+don't change unless someone recodes the page. JSP and other
+technologies, such as PHP and ASP, enable you to create dynamic pages
+whose content can change based to suit the goals of the person accessing
+the page, the browser used, or the device on which the page is
+displayed.
+
+A JSP contains standard HTML code, the static, and JSP elements, the
+dynamic. When someone requests a JSP, the server combines HTML and JSP
+elements to deliver a dynamic page. JSP is also useful for server side
+processing. For example, when someone submits a form, JSP elements can
+be used to process the form on the server.
+
+### Map collection case {.unnumbered}
+
+An international retailer  has added a new product line to meet the needs of its
+changing clientele. It now stocks a range of maps. The firm's data
+modeler has created a data model describing the situation . A map has a
+scale; for example, a scale of 1:1 000 000 means that 1 unit on the map
+is 1,000,000 units on the ground (or 1 cm is 10 km, and 1 inch is \~16
+miles). There are three types of maps: road, rail, and canal. Initially,
+The retailer decided to stock maps for only a few European
+countries.
+
+*The retailer's map collection data model*
+
+![](Figures/Chapter%2022/map-collection.png)
+
+#### Data entry {.unnumbered}
+
+Once the tables have been defined, we want to insert some records. This
+could be done using the insertSQL method of the Java code just created,
+but it would be very tedious, as we would type insert statements for
+each row (e.g., INSERT INTO map VALUES (1, 1000000, 'Rail');). A better
+approach is to use a HTML data entry form. An appropriate form and its
+associated code follow.
+
+*Map collection data entry form*
+
+![](Figures/Chapter%2022/data-entry.png)
+
+*Map collection data entry HTML code (index.html)*
+
+```{html, eval = FALSE}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Map collection</title>
+</head>
+</body>
+<form name="MapInsert" action="mapinsert.jsp" method="post">
+	<p>
+		<label>Map identifier: <input type="number" required
+			pattern="[0-9]{3}" name="mapid" size="24" value=""
+			placeholder="Enter map identifier"></label>
+	<p>
+		<label>Map scale: <input type="number" required
+			pattern="[0-9]+" min="1000" max="100000" step="1000" name="mapscale"
+			size="24" value="" placeholder="Enter 1:1000 as 1000"></label>
+	<p>
+		<label>Map type: <select name="maptype" size="3"
+			placeholder="Select type of map"></label>
+	</p>
+	<option value="Bicycle">Bicycle</option>
+	<option value="Canal">Canal</option>
+	<option value="Rail" selected>Rail</option>
+	<option value="Road">Road</option>
+	</select> <label>Countries: <select name="countries" size="4" multiple
+		placeholder="Select countries"></label>
+	<option value="at">Austria</option>
+	<option value="de">Germany</option>
+	<option value="li">Liechtenstein</option>
+	<option value="ch">Switzerland</option>
+	<input type="submit" name="submitbutton" value="Add map">
+</form>
+</body>
+</html>
+```
+
+The data entry form captures a map's identifier, scale, type, and the
+number of countries covered by the map. A map identifier is of the form
+M001 to M999, and a regular expression is used to validate the
+input.[ A map scale must be numeric with a minimum of 1000 and
+maximum of 100000 in increments of 1000. The type of map is selected
+from the list, which is defined so that only one type can be selected.
+Multiple countries can be selected by holding down an appropriate key
+combination when selected from the displayed list of countries. When the
+"Add map" button is clicked, the page mapinsert.jsp is called, which is
+specified in the first line of the HTML body code.
+
+#### Passing data from a form to a JSP {.unnumbered}
+
+In a form, the various entry fields are each identified by a name
+specification (e.g., name="mapid" and name="mapscale"). In the
+corresponding JSP, which is the one defined in the form's action
+statement (i.e., action="mapinsert.jsp") these same fields are accessed
+using the getParameter method when there is a single value or
+getParameterValues when there are multiple values. The following chunks
+of code show corresponding form and JSP code for maptype.
+
+```{html, eval = FALSE}
+<label>Map type: <select name="maptype" size="3"
+			placeholder="Select type of map"></label>
+```
+
+```{java, eval = FALSE}
+maptype = request.getParameter("maptype");
+```
+
+#### Transaction processing {.unnumbered}
+
+A transaction is a logical unit of work. In the case of adding a map, it
+means inserting a row in map for the map and inserting one row in
+mapCountry for each country on the map. All of these inserts must be
+executed without failure for the entire transaction to be processed. SQL
+has two commands for supporting transaction processing: COMMIT and
+ROLLBACK. If no errors are detected, then the various changes made by a
+transaction can be *committed*. In the event of any errors during the
+processing of a transaction, the database should be *rolled back* to the
+state prior to the transaction.
+
+##### Autocommit {.unnumbered}
+
+Before processing a transaction, you need to turn off autocommit to
+avoid committing each database change separately before the entire
+transaction is complete. It is a good idea to set the value for
+autocommit immediately after a successful database connection, which is
+what you will see when you inspect the code for mapinsert.jsp. The
+following code sets autocommit to false in the case where conn is the
+connection object.
+
+```{java, eval = FALSE}
+conn.setAutoCommit(false);
+```
+
+##### Commit {.unnumbered}
+
+The COMMIT command is executed when all parts of a transaction have been
+successfully executed. It makes the changes to the database permanent.
+
+```{java, eval = FALSE}
+conn.commit(); // all inserts successful
+```
+
+##### Rollback {.unnumbered}
+
+The ROLLBACK command is executed when any part of a transaction fails.
+All changes to the database since the beginning of the transaction are
+reversed, and the database is restored to its state before the
+transaction commenced.
+
+```{java, eval = FALSE}
+conn.rollback(); // at least one insert failed
+```
+
+##### Completing the transaction {.unnumbered}
+
+The final task, to commit or roll back the transaction depending on
+whether errors were detected during any of the inserts, is determined by
+examining transOK, which is a boolean variable set to false when any
+errors are detected during a transaction.
+
+*Completing the transaction*
+
+```{java, eval = FALSE}
+if (transOK) {
+	conn.commit(); // all inserts successful
+} else {
+	conn.rollback(); // at least one insert failed
+}
+conn.close(); // close database
+```
+
+#### Putting it all together {.unnumbered}
+
+You have now seen some of the key pieces for the event handler that
+processes a transaction to add a map and the countries on that map. The
+[code](http://richardtwatson.com/open/Reader/java.html) can be downloaded from the book's Web site.
+
+*mapinsert.jsp*
+
+```{html, eval = FALSE}
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="java.util.*"%>
+<%@ page import="java.lang.*"%>
+<%@ page import="java.sql.*"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Map insert page</title>
+</head>
+<body>
+	<%
+	String url;
+	String jdbc = "jdbc:mysql:";
+	String database = "//localhost:3306/MapCollection";
+	String username = "student", password = "student";
+	String mapid, maptype, countries;
+	String[] country;
+	int mapscale = 0;
+	boolean transOK = true;
+	PreparedStatement insertMap;
+	PreparedStatement insertMapCountry;
+	Connection conn = null;
+	// make connection
+	url = jdbc + database;
+	try {
+		conn = DriverManager.getConnection(url, username, password);
+	} catch (SQLException error) {
+		System.out.println("Error connecting to database: "
+					+ error.toString());
+		System.exit(1);
+	}
+	try {
+		conn.setAutoCommit(false);
+	} catch (SQLException error) {
+		System.out.println("Error turning off autocommit"
+					+ error.toString());
+		System.exit(2);
+	}
+	//form data
+	mapid = request.getParameter("mapid");
+	mapscale = Integer.parseInt(request.getParameter("mapscale"));
+	maptype = request.getParameter("maptype");
+	country = request.getParameterValues("countries");
+	transOK = true;
+	// insert the map
+	try {
+		insertMap = conn.prepareStatement("INSERT INTO map (mapid, mapscale, maptype) VALUES (?,?,?)");
+		insertMap.setString(1, mapid);
+		insertMap.setInt(2, mapscale);
+		insertMap.setString(3, maptype);
+		System.out.println(insertMap);
+		insertMap.executeUpdate();
+		// insert the countries
+		for (int loopInx = 0; loopInx < country.length; loopInx++) {
+			insertMapCountry = conn.prepareStatement("INSERT INTO mapCountry (mapid ,cntrycode ) VALUES (?,?)");
+			insertMapCountry.setString(1, mapid);
+			insertMapCountry.setString(2, country[loopInx]);
+			System.out.println(insertMapCountry);
+			insertMapCountry.executeUpdate();
+		}
+	} catch (SQLException error) {
+		System.out.println("Error inserting row: " + error.toString());
+		transOK = false;
+	}
+	if (transOK) {
+		conn.commit(); // all inserts successful
+		System.out.println("Transaction commit");
+	} else {
+		conn.rollback(); // at least one insert failed
+		System.out.println("Transaction rollback");
+	}
+	conn.close();
+	System.out.println("Database close"); // close database
+	%>
+</body>
+</html>
+```
+
+The code in mapinsert.jsp does the following:
+
+1.  Creates a connection to a database
+
+2.  Gets the data from the map entry form
+
+3.  Inserts a row for a new map
+
+4.  Uses a loop to insert a row for each country on the map
+
+5.  Shows how to handle a transaction failure.
+
+### Conclusion {.unnumbered}
+
+Java is a widely used object-oriented programming language for
+developing distributed multi-tier applications. JDBC is a key technology
+in this environment because it enables a Java application to interact
+with various implementations of the relational database model (e.g.,
+Oracle, SQL Server, MySQL). As this chapter has demonstrated, with the
+help of a few examples, JDBC can be readily understood and applied.
+
+### Summary {.unnumbered}
+
+Java is a platform-independent application development language. JDBC
+enables programs that are DBMS independent. SQL statements can be
+embedded within Java programs. JSP is used to support server side
+processing. COMMIT and ROLLBACK are used for transaction processing.
+
+### Key terms and concepts {.unnumbered}
+
+|                        |                                   |
+|:-----------------------|:----------------------------------|
+| Autocommit             | Java Database Connectivity (JDBC) |
+| Comma-separated values | Java Server Pages (JSP)           |
+| COMMIT                 | ROLLBACK                          |
+| IDE                    | Transaction processing            |
+| Java                   |                                   |
+
+### References and additional readings {.unnumbered}
+
+Barnes, D. J., and M. Kölling. 2005. *Objects first with Java : a
+practical introduction using Blue J*. 2nd ed. Upper Saddle River, NJ:
+Prentice Hall.
+
+## Exercises {.unnumbered}
+
+1.  Write a Java program to run a parameterized query against the
+    ClassicModels database. For example, you might report the sum of
+    payments for a given customer's name.
+
+Extend ArtCollection.java so that it can handle inserting rows for
+multiple pieces of art for a single artist. You will have to rethink the
+structure of the CSV file and how to record multiple pieces of art from
+a single artist.
+
+2.  Write a JSP application to maintain the database defined by the
+    following data model. The database keeps track of the cars sold by a
+    salesperson in an automotive dealership. Your application should be
+    able to add a person and the cars a person has sold. These should be
+    separate transactions.
+
+![](Figures/Chapter%2022/person-car.png)
+
+\newpage

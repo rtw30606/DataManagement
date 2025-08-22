@@ -1,0 +1,41 @@
+Data Management
+#Databases and Analytics
+
+##Richard T. Watson
+###Regents Professor & J. Rex Fuqua Distinguished Chair for Internet Strategy Emeritus, University of Georgia, USA
+
+Copyright © 2025 Richard T. Watson
+
+The online version of this book is licensed under the Creative Commons Attribution-NonCommercialShareAlike 4.0 International License CC BY-NC-SA 4.0.
+
+Published by Prospect Press,
+
+Release date 2025-08-06
+
+  
+
+![](Figures/Front%20matter/ProspectPress.png){width="303"}
+
+Founded in 2014, Prospect Press serves the academic discipline of Information Systems by publishing essential and innovative textbooks across the curriculum including introductory, emerging, and upper-level courses. Based in Burlington, Vermont, Prospect Press distributes titles worldwide. We welcome new authors to send proposals or inquiries to [Beth.golub\@prospectpressvt.com](mailto:Beth.golub@prospectpressvt.com){.email}.
+
+  
+
+Editor: Beth Lang Golub
+
+Cover Design: Annie Clark
+
+  
+
+Printed Paperback:
+
+Edition 7.0
+
+ISBN: 978-1-958303-02-3
+
+Available from Redshelf
+
+  
+
+For more information, visit [richardtwatson.com/open/](https:/www.richardtwatson.com/open/) and [prospectpressvt.com/textbooks/watson-data-management-7-0](https://www.prospectpressvt.com/textbooks/watson-data-management-7-0)].
+
+\newpage

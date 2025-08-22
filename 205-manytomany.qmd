@@ -1,0 +1,486 @@
+# The Many-to-Many Relationship
+
+> *Fearful concatenation of circumstances.*
+>
+> Daniel Webster
+
+### Learning objectives {.unnumbered}
+
+Students completing this chapter will be able to
+
+-   model a many-to-many relationship between two entities;
+-   define a database with a many-to-many relationship;
+-   write queries for a database with a many-to-many relationship.
+
+## The many-to-many relationship {.unnumbered}
+
+Consider the case when items are sold. We can immediately identify two entities: SALE and ITEM. A sale can contain many items, and an item can appear in many sales. We are not saying the same item can be sold many times, but the particular type of item (e.g., a compass) can be sold many times; thus we have a many-to-many (m:m) relationship between SALE and ITEM. When we have an m:m relationship, we create a third entity to link the entities through two 1:m relationships. Usually, it is fairly easy to name this third entity. In this case, this third entity, typically known as an **associative entity**, is called LINE ITEM. A typical old style sales form lists the items purchased by a customer. Each of the lines appearing on the order form is generally known in retailing as a line item, which links an item and a sale.
+
+*A sales form* ![](Figures/Chapter%205/sales%20form.png)
+
+The representation of this m:m relationship is shown. We say many-to-many because there are two relationships---an ITEM is related to many SALEs, and a SALE is related to many ITEMs. This data model can also be read as: "a sale has many line items, but a line item refers to only one sale. Similarly, an item can appear as many line items, but a line item references only one item."
+
+*An m:m relationship between SALE and ITEM*
+
+![](Figures/Chapter%205/sale-item.png){width="566"}
+
+The entity SALE is identified by *saleno* and has the attributes *saledate* and *saletext* (a brief comment on the customer---soft information). LINEITEM is partially identified by *lineno* and has attributes *lineqty* (the number of units sold) and *lineprice* (the unit selling price for this sale). ITEM is identified by *itemno* and has attributes *itemname*, *itemtype* (e.g., clothing, equipment, navigation aids, furniture, and so on), and *itemcolor*.
+
+If you look carefully at the m:m relationship figure, you will notice that there is a plus sign (+) above the crow's foot at the "many" end of the 1:m relationship between SALE and LINEITEM. This plus sign provides information about the identifier of LINEITEM. As you know, every entity must have a unique identifier. A sales order is a series of rows or lines, and *lineno* is unique only within a particular order. If we just use *lineno* as the identifier, we cannot guarantee that every instance of LINEITEM is unique. If we use *saleno* and *lineno* together, however, we have a unique identifier for every instance of LINEITEM. Identifier *saleno* is unique for every sale, and *lineno* is unique within any sale. The plus indicates that LINEITEM's unique identifier is the concatenation of *saleno* and *lineno*. The order of concatenation does not matter.
+
+LINEITEM is termed a **weak entity** because it relies on another entity for its existence and identification.
+
+### MySQL Workbench {.unnumbered}
+
+Workbench automatically creates an associative entity for an m:m relationship and populates it with a composite primary key based on concatenating the primary keys of the two entities forming the m:m relationship. *First*, draw the two tables and enter their respective primary keys and columns. *Second*, select the m:m symbol and connect the two tables through clicking on one and dragging to the second and releasing. You can then modify the associative entity as required, such as changing its primary key. The capability to automatically create an associative entity for an m:m relationship is a very useful Workbench feature.
+
+*An m:m relationship with Workbench*
+
+![](Figures/Chapter%205/m-m-wb.png)
+
+Workbench distinguishes between two types of relationships. An **identifying relationship**, shown by a solid line, is used when the entity at the many end of the relationship is a weak entity and needs the identifier of the one end of the relationship to uniquely identify an instance of the relationship, as in LINEITEM. An identifying relationship corresponds to the + sign associated with a crow's foot. The other type of relationship, shown by a dashed line, is known as a *non-identifying* relationship. The mapping between the type of relationship and the representation (i.e., dashed or solid line) is arbitrary and thus not always easily recalled. We think that using a + on the crow's foot is a better way of denoting weak entities.
+
+When the relationship between SALE and ITEM is drawn in Workbench, as shown in the following figure, there are two things to notice. *First*, the table, lineitem, maps the associative entity generated for the m:m relationship. *Second*, lineitem has an identifying relationship with sale and a non-identifying relationship with item.
+
+*An m:m relationship between SALE and ITEM in MySQL Workbench*
+
+![](Figures/Chapter%205/sale-item-wb.png)
+
+### Why did we create a third entity? {.unnumbered}
+
+When we have an m:m relationship, we create an associative entity to store data about the relationship. In this case, we have to store data about the items sold. We cannot store the data with SALE because a sale can have many items, and an instance of an entity stores only single-value facts. Similarly, we cannot store data with ITEM because an item can appear in many sales. Since we cannot store data in SALE or ITEM, we must create another entity to store data about the m:m relationship.
+
+You might find it useful to think of the m:m relationship as two 1:m relationships. An item can appear on many line item listings, and a line item entry refers to only one item. A sale has many line items, and each line item entry refers to only one sale.
+
+> ***Social Security number is notunique!***
+>
+> Two girls named Sarah Lee Ferguson were born on May 3, 1959. The U.S. government considered them one and the same and issued both the same Social Security number (SSN), a nine-digit identifier of U.S. residents. Now Sarah Lee Ferguson Boles and Sarah Lee Ferguson Johnson share the same SSN.[^manytomany-1]
+>
+> Mrs. Boles became aware of her SSN twin in 1987 when the Internal Revenue Service claimed there was a discrepancy in her reported income Because SSN is used as an identifier in IRS systems. Mrs. Boles encountered other incidents of mistaken identity. Some of Mrs. Johnson's purchases appeared on Mrs. Boles' credit reports.
+>
+> In late 1989, the Social Security Administration notified Mrs. Boles that her original number was given to her in error and she had to provide evidence of her age, identity, and citizenship to get a new number. When Mrs. Boles got her new SSN, it is likely she had to also get a new driver's license and establish a new credit history.
+
+[^manytomany-1]: "Two women share a name, birthday, and S.S. number!" Athens Daily News, January 29 1990, 7A. Also, see <https://www.computerworld.com/article/3004659/a-tale-of-two-women-same-birthday-same-social-security-number-same-big-data-mess.html>
+
+## Creating a relational database with an m:m relationship {.unnumbered}
+
+As before, each entity becomes a table in a relational database, the entity name becomes the table name, each attribute becomes a column, and each identifier becomes a primary key. Remember, a 1:m relationship is mapped by adding a column to the entity of the many end of the relationship. The new column contains the identifier of the one end of the relationship.
+
+Conversion of the foregoing data model results in the three tables following. Note the one-to-one correspondence between attributes and columns for sale and item. Observe the lineitem has two additional columns, saleno and itemno. Both of these columns are foreign keys in lineitem (remember the use of italics to signify foreign keys). Two foreign keys are required to record the two 1:m relationships. Notice in lineitem that saleno is both part of the primary key and a foreign key.
+
+*Tables sale, lineitem, and item*
+
+| *saleno | saledate   | saletext                                       |
+|:---------|:-----------|:-----------------------------------------------|
+| 1        | 2020-01-15 | Scruffy Australian---called himself Bruce.     |
+| 2        | 2020-01-15 | Man. Rather fond of hats.                      |
+| 3        | 2020-01-15 | Woman. Planning to row Atlantic---lengthwise!  |
+| 4        | 2020-01-15 | Man. Trip to New York---thinks NY is a jungle! |
+| 5        | 2020-01-16 | Expedition leader for African safari.          |
+
+| *lineno | lineqty | lineprice | \**saleno* | *itemno* |
+|:---------|--------:|----------:|--------------:|---------:|
+| 1        |       1 |      4.50 |             1 |        2 |
+| 1        |       1 |     25.00 |             2 |        6 |
+| 2        |       1 |     20.00 |             2 |       16 |
+| 3        |       1 |     25.00 |             2 |       19 |
+| 4        |       1 |      2.25 |             2 |        2 |
+| 1        |       1 |    500.00 |             3 |        4 |
+| 2        |       1 |      2.25 |             3 |        2 |
+| 1        |       1 |    500.00 |             4 |        4 |
+| 2        |       1 |     65.00 |             4 |        9 |
+| 3        |       1 |     60.00 |             4 |       13 |
+| 4        |       1 |     75.00 |             4 |       14 |
+| 5        |       1 |     10.00 |             4 |        3 |
+| 6        |       1 |      2.25 |             4 |        2 |
+| 1        |      50 |     36.00 |             5 |       10 |
+| 2        |      50 |     40.50 |             5 |       11 |
+| 3        |       8 |    153.00 |             5 |       12 |
+| 4        |       1 |     60.00 |             5 |       13 |
+| 5        |       1 |      0.00 |             5 |        2 |
+
+| *itemno | itemname              | itemtype | itemcolor |
+|:---------|:----------------------|:---------|:----------|
+| 1        | Pocket knife---Nile   | E        | Brown     |
+| 2        | Pocket knife---Avon   | E        | Brown     |
+| 3        | Compass               | N        | ---       |
+| 4        | Geopositioning system | N        | ---       |
+| 5        | Map measure           | N        | ---       |
+| 6        | Hat---Polar Explorer  | C        | Red       |
+| 7        | Hat---Polar Explorer  | C        | White     |
+| 8        | Boots---snake proof   | C        | Green     |
+| 9        | Boots---snake proof   | C        | Black     |
+| 10       | Safari chair          | F        | Khaki     |
+| 11       | Hammock               | F        | Khaki     |
+| 12       | Tent---8 person       | F        | Khaki     |
+| 13       | Tent---2 person       | F        | Khaki     |
+| 14       | Safari cooking kit    | E        | ---       |
+| 15       | Pith helmet           | C        | Khaki     |
+| 16       | Pith helmet           | C        | White     |
+| 17       | Map case              | N        | Brown     |
+| 18       | Sextant               | N        | ---       |
+| 19       | Stetson               | C        | Black     |
+| 20       | Stetson               | C        | Brown     |
+
+The SQL commands to create the three tables are as follows:
+
+```{sql, connection = db, eval = FALSE}
+CREATE TABLE sale (
+	saleno		INTEGER,
+	saledate		DATE NOT NULL,
+	saletext		VARCHAR(50),
+	  PRIMARY KEY(saleno));
+```
+
+```{sql, connection = db, eval = FALSE}
+CREATE TABLE item (
+	itemno		INTEGER,
+	itemname		VARCHAR(30) NOT NULL,
+	itemtype		CHAR(1) NOT NULL,
+	itemcolor		VARCHAR(10),
+		PRIMARY KEY(itemno));
+```
+
+```{sql, connection = db, eval = FALSE}
+CREATE TABLE lineitem (
+	lineno		INTEGER,
+	lineqty		INTEGER NOT NULL,
+	lineprice		DECIMAL(7,2) NOT NULL,
+	saleno		INTEGER,
+	itemno		INTEGER,
+		PRIMARY KEY(lineno,saleno),
+		CONSTRAINT fk_has_sale FOREIGN KEY(saleno)
+			REFERENCES sale(saleno),
+		CONSTRAINT fk_has_item FOREIGN KEY(itemno)
+			REFERENCES item(itemno));
+```
+
+Although the `sale` and `item` tables are created in a similar fashion to previous examples, there are two things to note about the definition of `lineitem`. *First,* the primary key is a composite of `lineno` and `saleno`, because together they uniquely identify an instance of `lineitem`. *Second*, there are two foreign keys, because `lineno` is at the "many" end of two 1: m relationships.
+
+> ❓ *Skill builder*
+>
+> A hamburger shop makes several types of hamburgers, and the same type of ingredient can be used with several types of hamburgers. This does not literally mean the same piece of lettuce is used many times, but lettuce is used with several types of hamburgers. Draw the data model for this situation. What is a good name for the associative entity?
+
+## Querying an m:m relationship {.unnumbered}
+
+### A three-table join {.unnumbered}
+
+The join operation can be easily extended from two tables to three or more merely by specifying the tables to be joined and the matching conditions. For example:
+
+```{sql, connection = db, eval = FALSE}
+SELECT * FROM sale JOIN lineitem
+	ON sale.saleno = lineitem.saleno
+	JOIN item
+	ON item.itemno = lineitem.itemno;
+```
+
+There are two matching conditions: one for `sale` and `lineitem` (`sale.saleno` = `lineitem.saleno`) and one for the item and `lineitem` tables (`item.itemno` = `lineitem.itemno`). The table `lineitem` is the link between `sale` and `item` and must be referenced in both matching conditions.
+
+You can tailor the join to be more precise and report some columns rather than all.
+
+*List the name, quantity, price, and value of items sold on January 16, 2011.*
+
+```{sql, connection = db, eval = T}
+SELECT itemname, lineqty, lineprice, lineqty*lineprice AS total
+	FROM sale, lineitem, item
+		WHERE lineitem.saleno = sale.saleno
+		AND item.itemno = lineitem.itemno
+		AND saledate = '2011-01-16';
+```
+
+### EXISTS---does a value exist {.unnumbered}
+
+EXISTS is used in a WHERE clause to test whether a table contains at least one row satisfying a specified condition. It returns the value **true** if and only if some row satisfies the condition; otherwise it returns **false**. EXISTS represents the **existential quantifier** of formal logic. The best way to get a feel for EXISTS is to examine a query.
+
+*Report all clothing items (type "C") for which a sale is recorded.*
+
+```{sql, connection = db, eval = T}
+SELECT itemname, itemcolor FROM item
+	WHERE itemtype = 'C'
+	AND EXISTS (SELECT * FROM lineitem
+		WHERE lineitem.itemno = item.itemno);
+```
+
+Conceptually, we can think of this query as evaluating the subquery for each row of item. The first item with itemtype = 'C', Hat---Polar Explorer (red), in item has itemno = 6. Thus, the query becomes
+
+```{sql, connection = db, eval = FALSE}
+SELECT itemname, itemcolor FROM item
+	WHERE itemtype = 'C'
+	AND EXISTS (SELECT * FROM lineitem
+		WHERE lineitem.itemno = 6);
+```
+
+Because there is at least one row in `lineitem` with `itemno` = 6, the subquery returns *true*. The item has been sold and should be reported. The second clothing item, Hat---Polar Explorer (white), in `item` has `itemno` = 7. There are no rows in `lineitem` with `itemno` = 7, so the subquery returns *false*. That item has not been sold and should not be reported.
+
+You can also think of the query as, "Select clothing items for which a sale exists." Remember, for EXISTS to return *true*, there needs to be only one row for which the condition is *true*.
+
+### NOT EXISTS---select a value if it does not exist {.unnumbered}
+
+NOT EXISTS is the negative of EXISTS. It is used in a WHERE clause to test whether all rows in a table fail to satisfy a specified condition. It returns the value *true* if there are no rows satisfying the condition; otherwise it returns *false*.
+
+*Report all clothing items that have not been sold.*
+
+```{sql, connection = db, eval = T}
+SELECT itemname, itemcolor FROM item
+	WHERE itemtype = 'C'
+	AND NOT EXISTS
+		(SELECT * FROM lineitem
+			WHERE item.itemno = lineitem.itemno);
+```
+
+You can also think of the query as, "Select clothing items for which no sales exist." Also remember, for NOT EXISTS to return *true*, no rows should satisfy the condition.
+
+> ❓ *Skill builder*
+>
+> Report all red items that have not been sold. Write the query twice, once using EXISTS and once without EXISTS.
+
+### Divide (and be conquered) {.unnumbered}
+
+In addition to the existential quantifier that you have already encountered, formal logic has a **universal quantifier** known as **forall** that is necessary for queries such as
+
+Find the items that have appeared in all sales.
+
+If a universal quantifier were supported by SQL, this query could be phrased as, "Select item names where *forall* sales there *exists* a `lineitem` row recording that this item was sold." A quick inspection of the first set of tables shows that one item satisfies this condition (`itemno` = 2).
+
+While SQL does not directly support the universal quantifier, formal logic shows that *forall* can be expressed using EXISTS. The query becomes, "Find items such that there does not exist a sale in which this item does not appear." The equivalent SQL expression is
+
+```{sql, connection = db, eval = T}
+SELECT itemno, itemname FROM item
+	WHERE NOT EXISTS
+		(SELECT * FROM sale
+			WHERE NOT EXISTS
+				(SELECT * FROM lineitem
+					WHERE lineitem.itemno = item.itemno
+					AND lineitem.saleno = sale.saleno));
+```
+
+If you are interested in learning the inner workings of the preceding SQL for divide, see the additional material for Chapter 5 on the book's Web site.
+
+Relational algebra (Chapter 9) has the divide operation, which makes divide queries easy to write. Be careful: Not all queries containing the word *all* are divides. With experience, you will learn to recognize and conquer divide.
+
+To save the tedium of formulating this query from scratch, we have developed a template for dealing with these sorts of queries. Divide queries typically occur with m:m relationships.
+
+*A template for divide*
+
+![](Figures/Chapter%205/divide%20template.png){width="566"}
+
+An appropriate generic query and template SQL command are
+
+*Find the target1 that have appeared in all sources.*
+
+```{sql, connection = db, eval = FALSE}
+SELECT target1 FROM target
+	WHERE NOT EXISTS
+		(SELECT * FROM source
+			WHERE NOT EXISTS
+				(SELECT * FROM target-source
+					WHERE target-source.target# = target.target#
+					AND target-source.source# = source.source#));
+```
+
+> ❓ *Skill builder*
+>
+> Find the brown items that have appeared in all sales.
+
+### Beyond the great divide {.unnumbered}
+
+Divide proves troublesome to most people because of the double negative---we just don't think that way. If divide sends your neurons into knots, then try the following approach.
+
+The query "Find the items that have appeared in all sales" can be rephrased as "Find the items for which the number of sales that include this item is equal to the total number of sales." This is an easier query to write than "Find items such that there does not exist a sale in which this item does not appear."
+
+The rephrased query has two parts. *First**,*** determine the total number of sales. Here we mean distinct sales (i.e., the number of rows with a distinct value for saleno). The SQL is
+
+```{sql, connection = db, eval =FALSE}
+SELECT COUNT (DISTINCT saleno) FROM sale;
+```
+
+*Second*, group the items sold by `itemno` and `itemname` and use a HAVING clause with COUNT to calculate the number of sales in which the item has occurred. Forcing the count in the HAVING clause to equal the result of the first query, which becomes an inner query, results in a list of items appearing in all sales.
+
+```{sql, connection = db, eval = FALSE}
+SELECT item.itemno, item.itemname
+	FROM item JOIN lineitem
+		ON item.itemno = lineitem.itemno
+			GROUP BY item.itemno, item.itemname
+				HAVING COUNT(DISTINCT saleno)
+					= (SELECT COUNT(DISTINCT saleno) FROM sale);
+```
+
+### Set operations {.unnumbered}
+
+Set operators are useful for combining the values derived from two or more SQL queries. The UNION operation is equivalent to *or*, and INTERSECT is equivalent to *and*.
+
+*List items that were sold on January 16, 2011, or are brown.*
+
+Resolution of this query requires two tables: one to report items sold on January 16, 2011, and one to report the brown items. UNION (i.e., or) then combines the results of the tables, including *any* rows in both tables and excluding duplicate rows.
+
+```{sql, connection = db, eval = T}
+SELECT itemname FROM item JOIN lineitem
+	ON item.itemno = lineitem.itemno
+	JOIN sale
+	ON lineitem.saleno = sale.saleno
+	WHERE saledate = '2011-01-16'
+UNION
+	SELECT itemname FROM item WHERE itemcolor = 'Brown';
+```
+
+*List items that were sold on January 16, 2011, and are brown.*
+
+This query uses the same two tables as the previous query. In this case, INTERSECT (i.e., and) then combines the results of the tables including ***only*** rows in both tables and excluding duplicates.[^manytomany-2]
+
+[^manytomany-2]: MySQL does not support INTERSECT. Use another AND in the WHERE statement.
+
+```{sql, connection = db, eval = F}
+SELECT itemname FROM item JOIN lineitem
+	ON item.itemno = lineitem.itemno
+	JOIN sale
+	ON lineitem.saleno = sale.saleno
+	WHERE saledate = '2011-01-16'
+INTERSECT
+	SELECT itemname FROM item WHERE itemcolor = 'Brown';
+```
+
+> ❓ *Skill builder*
+>
+> List the items that contain the words "Hat", "Helmet", or "Stetson" in their names
+
+### Summary {.unnumbered}
+
+There can be a many-to-many (m:m) relationship between entities, which is represented by creating an associative entity and two 1:m relationships. An associative entity stores data about an m:m relationship. The join operation can be extended from two tables to three or more tables. EXISTS tests whether a table has at least one row that meets a specified condition. NOT EXISTS tests whether all rows in a table do not satisfy a specified condition. Both EXISTS and NOT EXISTS can return *true* or *false*. The relational operation divide, also known as *forall*, can be translated into a double negative. It is represented in SQL by a query containing two NOT EXISTS statements. Set operations enable the results of queries to be combined.
+
+## Key terms and concepts {.unnumbered}
+
+|                        |                                 |
+|:-----------------------|---------------------------------|
+| Associative entity     | Many-to-many (m:m) relationship |
+| Divide                 | NOT EXISTS                      |
+| Existential quantifier | UNION                           |
+| EXISTS                 | Universal quantifier            |
+| INTERSECT              |                                 |
+
+## Exercises {.unnumbered}
+
+1.  Draw data models for the following situations. In each case, think about the names you give each entity:
+
+    a.  Farmers can own cows or share cows with other farmers.
+
+    b.  A track and field meet can have many competitors, and a competitor can participate in more than one event.
+
+    c.  A patient can have many physicians, and a physician can have many patients.
+
+    d.  A student can attend more than one class, and the same class can have many students.
+
+    e.  *The Marathoner*, a monthly magazine, regularly reports the performance of professional marathon runners. It has asked you to design a database to record the details of all major marathons (e.g., Boston, London, and Paris). Professional marathon runners compete in several races each year. A race may have thousands of competitors, but only about 200 or so are professional runners, the ones *The Marathoner* tracks. For each race, the magazine reports a runner's time and finishing position and some personal details such as name, gender, and age.
+
+2.  The data model shown was designed by a golf statistician. Write SQL statements to create the corresponding relational database.
+
+![](Figures/Chapter%205/golf.png){width="523"}
+
+3.  Write the following SQL queries for the database described in this chapter:
+
+    a.  List the names of items for which the quantity sold is greater than one for any sale.
+
+    b.  Compute the total value of sales for each item by date.
+
+    c.  Report all items of type "F" that have been sold.
+
+    d.  List all items of type "F" that have not been sold.
+
+    e.  Compute the total value of each sale.
+
+4.  Why do you have to create a third entity when you have an m:m relationship?
+
+5.  What does a plus sign near a relationship arc mean?
+
+6.  How does EXISTS differ from other clauses in an SQL statement?
+
+7.  Answer the following queries based on the described relational database.
+
+    ![](Figures/Chapter%205/gift.png){width="443"}
+
+    a.  List the phone numbers of donors Hays and Jefts.
+
+    b.  How many donors are there in the donor table?
+
+    c.  How many people made donations in 1999?
+
+    d.  What is the name of the person who made the largest donation in 1999?
+
+    e.  What was the total amount donated in 2000?
+
+    f.  List the donors who have made a donation every year.
+
+    g.  List the donors whose average donation is more than twice the average donation of all donors.
+
+    h.  List the total amount given by each person across all years; sort the report by the donor's name.
+
+    i.  Report the total donations in 2001 by state.
+
+    j.  In which years did the total donated exceed the goal for the year?
+
+8.  The following table records data found on the side of a breakfast cereal carton. Use these data as a guide to develop a data model to record nutrition facts for a meal. In this case, a meal is a cup of cereal and 1/2 cup of skim milk.
+
++---------------------------------+-------------+---------------------------+
+| **Nutrition facts**             |             |                           |
+| Serving size 1 cup (30g)        |             |                           |
+| Servings per container about 17 |             |                           |
++=================================+============:+==========================:+
+| Amount per serving              | Cereal      | with 1/2 cup of skim milk |
++---------------------------------+-------------+---------------------------+
+| Calories                        | 110         | 150                       |
++---------------------------------+-------------+---------------------------+
+| Calories from Fat               | 10          | 10                        |
++---------------------------------+-------------+---------------------------+
+|                                 |             | % Daily Value            |
++---------------------------------+-------------+---------------------------+
+| Total Fat 1g                    | 1%          | 2%                        |
++---------------------------------+-------------+---------------------------+
+| Saturated Fat 0g                | 0%          | 0%                        |
++---------------------------------+-------------+---------------------------+
+| Polyunsaturated Fat 0g          |             |                           |
++---------------------------------+-------------+---------------------------+
+| Monounsaturated Fat 0g          |             |                           |
++---------------------------------+-------------+---------------------------+
+| Cholesterol 0mg                 | 0%          | 1%                        |
++---------------------------------+-------------+---------------------------+
+| Sodium 220mg                    | 9%          | 12%                       |
++---------------------------------+-------------+---------------------------+
+| Potassium 105 mg                | 3%          | 9%                        |
++---------------------------------+-------------+---------------------------+
+| Total Carbohydrate 24g          | 8%          | 10%                       |
++---------------------------------+-------------+---------------------------+
+| Dietary Fiber 3g                | 13%         | 13%                       |
++---------------------------------+-------------+---------------------------+
+| Sugars 4g                       |             |                           |
++---------------------------------+-------------+---------------------------+
+| Other Carbohydrate 17g          |             |                           |
++---------------------------------+-------------+---------------------------+
+| Protein 3g                      |             |                           |
++---------------------------------+-------------+---------------------------+
+| Vitamin A                       | 10%         | 15%                       |
++---------------------------------+-------------+---------------------------+
+| Vitamin C                       | 10%         | 10%                       |
++---------------------------------+-------------+---------------------------+
+| Calcium                         | 2%          | 15%                       |
++---------------------------------+-------------+---------------------------+
+| Iron                            | 45%         | 45%                       |
++---------------------------------+-------------+---------------------------+
+| Vitamin D                       | 10%         | 25%                       |
++---------------------------------+-------------+---------------------------+
+| Thiamin                         | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Riboflavin                      | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Niacin                          | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Vitamin B12                     | 50%         | 60%                       |
++---------------------------------+-------------+---------------------------+
+| Phosphorus                      | 10%         | 20%                       |
++---------------------------------+-------------+---------------------------+
+| Magnesium                       | 8%          | 10%                       |
++---------------------------------+-------------+---------------------------+
+| Zinc                            | 50%         | 50%                       |
++---------------------------------+-------------+---------------------------+
+| Copper                          | 4%          | 4%                        |
++---------------------------------+-------------+---------------------------+
+
+\newpage

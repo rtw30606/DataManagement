@@ -1,0 +1,59 @@
+# Section 4 Managing Organizational Memory {.unnumbered}
+
+> *Every one complains of his memory, none of his judgment.*
+>
+> François Duc de La Rochefoucauld "Sentences et Maximes," Morales No. 89 1678
+
+In order to manage data, you need a database architecture, a design for
+the storage and processing of data. Organizations strive to find an
+architecture that simultaneously achieves multiple goals:
+
+1.  Responds in a timely manner.
+
+2.  Minimizes the cost of
+
+    a. processing data,
+
+    b. storing data,
+
+    c. data delivery,
+
+    d. application development.
+
+3.  Highly secure.
+
+The section deals with the approaches that can be used to achieve these
+goals. It covers **database structure and storage** alternatives. It
+provides the knowledge necessary to determine an appropriate **data
+storage structure** and device for a given situation. It also addresses
+the fundamental questions of where to store the data and where they
+should be processed.
+
+As you now realize, organizational memory is an important resource
+requiring management. An inaccurate memory can result in bad decisions
+and poor customer service. Some aspects of organizational memory (e.g.,
+chemical formulae, marketing strategy, and R&D plans) are critical to
+the well-being of an organization. The financial consequences can be
+extremely significant if these memories are lost or fall into the hands
+of competitors. Consequently, organizations must develop and implement
+procedures for maintaining data integrity. They need policies to protect
+the existence of data, maintain its quality, and ensure its
+confidentiality. Some of these procedures may be embedded in
+organizational memory technology, and others may be performed by data
+management staff. **Data integrity** is also addressed in this section.
+
+When organizations recognize a resource as important to their long-term
+viability, they typically create a formal mechanism to manage it. For
+example, most companies have a human resources department responsible
+for activities such as compensation, recruiting, training, and employee
+counseling. People are the major resource of nearly every company, and
+the human resources department manages this resource. Similarly, the
+finance department manages a company's financial assets.
+
+In the information age, data---the raw material of information---need to
+be managed. Consequently, **data administration** has become a formal
+organizational structure in many enterprises. It is designed to
+administer the data management and exploitation resources of an
+organization.
+
+\newpage
